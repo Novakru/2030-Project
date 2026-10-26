@@ -1,0 +1,149 @@
+<Synthesis>
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="glacial acetic acid" />
+    <Reagent
+      name="2,6-Dimethylaniline" />
+    <Reagent
+      name="chloroacetyl chloride" />
+    <Reagent
+      name="half-saturated aqueous sodium acetate" />
+    <Reagent
+      name="diethylamine" />
+    <Reagent
+      name="toluene" />
+    <Reagent
+      name="water" />
+    <Reagent
+      name="3 M hydrochloric acid" />
+    <Reagent
+      name="3 M sodium hydroxide" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="glacial acetic acid"
+      vessel="filter"
+      volume="15 mL"
+      port="top"
+      stir="False" />
+    <Add
+      reagent="2,6-Dimethylaniline"
+      vessel="filter"
+      volume="3 mL"
+      port="top"
+      stir="True" />
+    <Add
+      reagent="chloroacetyl chloride"
+      vessel="filter"
+      volume="2 mL"
+      port="top"
+      stir="True" />
+    <Add
+      reagent="half-saturated aqueous sodium acetate"
+      vessel="filter"
+      volume="25 mL"
+      port="top"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="10°C" />
+    <Add
+      reagent="water"
+      vessel="filter"
+      volume="60 mL"
+      port="top"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="60 mins" />
+    <StopHeatChill
+      vessel="filter" />
+    <Filter
+      vessel="filter" />
+    <Dry
+      vessel="filter" />
+    <Add
+      reagent="diethylamine"
+      vessel="filter"
+      volume="7.5 mL"
+      port="top"
+      stir="False" />
+    <Add
+      reagent="toluene"
+      vessel="filter"
+      volume="25 mL"
+      port="top"
+      stir="True" />
+    <HeatChill
+      vessel="filter"
+      temp="110.6°C"
+      time="60 mins" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="25°C" />
+    <Separate
+      purpose="wash"
+      from_vessel="filter"
+      separation_vessel="separator"
+      to_vessel="separator"
+      solvent="water"
+      product_phase="top"
+      to_port="top"
+      solvent_volume="50 mL"
+      repeats="4" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="filter"
+      solvent="3 M hydrochloric acid"
+      product_phase="bottom"
+      to_port="top"
+      solvent_volume="20 mL"
+      repeats="1"
+      waste_phase_to_vessel="separator" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="filter"
+      solvent="water"
+      product_phase="bottom"
+      to_port="top"
+      solvent_volume="20 mL"
+      repeats="1" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="10°C" />
+    <Add
+      reagent="3 M sodium hydroxide"
+      vessel="filter"
+      volume="20 mL"
+      port="top"
+      stir="True" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="water"
+      temp="10°C"
+      stir="solvent"
+      repeats="1" />
+    <Dry
+      vessel="filter" />
+    <Dry
+      vessel="filter"
+      time="3 hrs" />
+  </Procedure>
+
+</Synthesis>

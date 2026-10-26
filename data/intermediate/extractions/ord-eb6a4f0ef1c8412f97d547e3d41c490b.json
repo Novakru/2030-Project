@@ -1,0 +1,250 @@
+{
+  "id": "pos_eb6a4f0ef1c8412f97d547e3d41c490b",
+  "source": {
+    "dataset_id": "ord_dataset-99c23cf435dc42f1af884053bc8b11c7",
+    "dataset_name": "Borylation dataset from Roche",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+    "file_sha256": "59cd8c35e021be300944f8e556b8fd7ec30a6bc32ff36a54be133aad8e44c393",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": null,
+    "reaction_id": "ord-eb6a4f0ef1c8412f97d547e3d41c490b",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet"
+  },
+  "raw_id": "ord-eb6a4f0ef1c8412f97d547e3d41c490b",
+  "raw_sha256": "44dfe1b36f5bb171e33efca973a92093ab8688599db9c2820981c64bd50c8e7e",
+  "reaction_smiles": "O=C(NCCCC=1C=CC=CC1C2=CC=C(C=C2)C)C(F)(F)F>>O=C(NCCCC1=CC(=CC=C1C=2C=CC(=CC2)C)B3OC(C)(C)C(O3)(C)C)C(F)(F)F.O=C(NCCCC1=CC=C(C=C1C=2C=CC(=CC2)C)B3OC(C)(C)C(O3)(C)C)C(F)(F)F",
+  "reaction_class": "borylation",
+  "yield_percent": 45.0,
+  "reagents": [
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.00375
+      },
+      "id": "r1",
+      "input_key": "catalyst_1",
+      "name": "C[OH2+].C[OH2+].C1CC=CCCC=C1.C1CC=CCCC=C1.[Ir].[Ir]",
+      "role": "CATALYST",
+      "smiles": "C[OH2+].C[OH2+].C1CC=CCCC=C1.C1CC=CCCC=C1.[Ir].[Ir]",
+      "source_path": "/inputs/catalyst_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.5
+      },
+      "id": "r2",
+      "input_key": "reagent_1",
+      "name": "O1B(OC(C)(C)C1(C)C)B2OC(C)(C)C(O2)(C)C",
+      "role": "REAGENT",
+      "smiles": "O1B(OC(C)(C)C1(C)C)B2OC(C)(C)C(O2)(C)C",
+      "source_path": "/inputs/reagent_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.0075
+      },
+      "id": "r3",
+      "input_key": "reagent_2",
+      "name": "N=1C=CC(=CC1C=2N=CC=C(C2)C(C)(C)C)C(C)(C)C",
+      "role": "REAGENT",
+      "smiles": "N=1C=CC(=CC1C=2N=CC=C(C2)C(C)(C)C)C(C)(C)C",
+      "source_path": "/inputs/reagent_2/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 1.25
+      },
+      "id": "r4",
+      "input_key": "solvent_1",
+      "name": "O1CCCC1",
+      "role": "SOLVENT",
+      "smiles": "O1CCCC1",
+      "source_path": "/inputs/solvent_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.25
+      },
+      "id": "r5",
+      "input_key": "startingmat_1",
+      "name": "O=C(NCCCC=1C=CC=CC1C2=CC=C(C=C2)C)C(F)(F)F",
+      "role": "REACTANT",
+      "smiles": "O=C(NCCCC=1C=CC=CC1C2=CC=C(C=C2)C)C(F)(F)F",
+      "source_path": "/inputs/startingmat_1/components/0"
+    }
+  ],
+  "steps": [
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "id": "s001",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "using 2,2,2‐trifluoro‐N‐(3‐(4'‐methyl‐[1,1'‐biphenyl]‐2‐ yl)propyl)acetamide",
+        "stage": "reaction",
+        "amount_source": "/inputs/startingmat_1/components/0/amount",
+        "source_alias": "2,2,2‐trifluoro‐N‐(3‐(4'‐methyl‐[1,1'‐biphenyl]‐2‐ yl)propyl)acetamide"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.25
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "id": "s002",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "B2pin2",
+        "stage": "reaction",
+        "amount_source": "/inputs/reagent_1/components/0/amount",
+        "source_alias": "B2pin2"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.5
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "id": "s003",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "[Ir(COD)OMe]2",
+        "stage": "reaction",
+        "amount_source": "/inputs/catalyst_1/components/0/amount",
+        "source_alias": "[Ir(COD)OMe]2"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.00375
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "id": "s004",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "dtbpy",
+        "stage": "reaction",
+        "amount_source": "/inputs/reagent_2/components/0/amount",
+        "source_alias": "dtbpy"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.0075
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "id": "s005",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "in THF (1.25 mL)",
+        "stage": "reaction",
+        "amount_source": "/inputs/solvent_1/components/0/amount",
+        "source_alias": "THF"
+      },
+      "amount": {
+        "unit": "mL",
+        "value": 1.25
+      }
+    },
+    {
+      "op": "HeatChill",
+      "temp_C": 50,
+      "duration_s": 72000,
+      "stir": true,
+      "id": "s006",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The reaction was stirred at 50 °C for 20 hours",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "HeatChill",
+      "id": "s007",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "before cooling",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Evaporate",
+      "id": "s008",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the solvents removed",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Purify",
+      "method": "chromatography",
+      "id": "s009",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The crude product was purified by silica gel chromatography (Pet. Ether (40‐60):EtOAc (19:1‐9:1)",
+        "stage": "purification"
+      }
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "atmosphere": {
+      "type": "ARGON"
+    },
+    "pressure_control": "SEALED",
+    "source_setup": {}
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "model": "gpt-5.6-terra",
+    "usage": {
+      "completion_tokens": 687,
+      "prompt_tokens": 1275,
+      "total_tokens": 1962,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 1272
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 148
+      }
+    },
+    "cache_key": "fa0e6b01104551bf084e12c3926a5590dcff86fb0f1ca3232f04da32a793c8ad",
+    "unresolved": [
+      "The contents and conditions of \"general procedure F\" are not provided.",
+      "The target temperature and conditions for \"cooling\" are not specified.",
+      "No explicit vessel, atmosphere, reagent-addition order, or solvent-removal conditions are specified.",
+      "s007: temperature unspecified"
+    ],
+    "unmapped_actions": [
+      "\"Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane showed 1:1 meta:para borylation in 100% yield.\" is analytical monitoring and is not represented as a physical operation.",
+      "\"to give the title compound\" reports an outcome rather than an operation.",
+      "\"By subtracting the resonances for the meta isomer, the NMR data of the para isomer can be assigned\" is analytical interpretation and is not represented as a physical operation."
+    ],
+    "alias_provenance": "original API response; literal source substring verified; numeric crosscheck performed separately"
+  }
+}

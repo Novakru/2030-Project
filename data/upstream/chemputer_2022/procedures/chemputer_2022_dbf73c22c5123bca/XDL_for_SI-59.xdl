@@ -1,0 +1,88 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="pd(ch3cn)2cl2"
+      role="reagent" />
+    <Reagent
+      name="xantphos"
+      role="reagent" />
+    <Reagent
+      name="benzene"
+      role="reagent" />
+    <Reagent
+      name="et2o"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="filter"
+      reagent="pd(ch3cn)2cl2"
+      mass="1.0 g" />
+    <AddSolid
+      vessel="filter"
+      reagent="xantphos"
+      mass="2.46 g" />
+
+    <EvacuateAndRefill
+      vessel='filter'
+      repeats='3'
+    />
+
+    <Add
+      vessel='filter'
+      reagent='benzene'
+      volume='80 mL'
+      stir='True'
+    />
+
+    <HeatChill
+      vessel='filter'
+      temp='110'
+      time='48 h'
+      stir='True'
+    />
+
+    <HeatChillToTemp
+      vessel='filter'
+      temp='20'
+      continue_heatchill='False'
+    />
+
+    <Filter
+      vessel='filter'
+    />
+
+    <WashSolid
+      vessel='filter'
+      solvent='benzene'
+      volume='30 mL'
+      stir_speed='100'
+      repeats='3'
+    />
+
+    <WashSolid
+      vessel='filter'
+      solvent='et2o'
+      volume='30 mL'
+      stir_speed='100'
+      repeats='3'
+    />
+
+    <Dry
+      vessel='filter'
+      time='5 h'
+    />
+
+  </Procedure>
+
+</Synthesis>

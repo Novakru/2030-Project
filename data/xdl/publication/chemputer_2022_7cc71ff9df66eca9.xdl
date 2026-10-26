@@ -1,0 +1,143 @@
+<?xdl version="1.0.0" ?>
+<XDL>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="buffer_flask1"
+      type="buffer_flask" />
+    <Component
+      id="buffer_flask2"
+      type="buffer_flask" />
+    <Component
+      id="cartridge_MgSO4"
+      type="cartridge"
+      chemical="MgSO4" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="1-octyne"
+      role="reagent" />
+    <Reagent
+      name="N-Bromosuccinimide"
+      role="reagent" />
+    <Reagent
+      name="a saturated sodium thiosulfate solution"
+      role="reagent" />
+    <Reagent
+      name="acetone"
+      role="reagent" />
+    <Reagent
+      name="pentanes"
+      role="reagent" />
+    <Reagent
+      name="saturated NaCl solution"
+      role="reagent" />
+    <Reagent
+      name="silver nitrate"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="1-octyne"
+      mass="5 g" />
+    <Add
+      vessel="reactor"
+      reagent="acetone"
+      volume="107 mL" />
+    <AddSolid
+      vessel="reactor"
+      reagent="N-Bromosuccinimide"
+      mass="8.8 g"
+      stir="True" />
+    <AddSolid
+      vessel="reactor"
+      reagent="silver nitrate"
+      mass="0.77 g"
+      stir="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="25 °C"
+      time="22 h"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="all" />
+    <Add
+      vessel="reactor"
+      reagent="pentanes"
+      volume="25 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="all" />
+    <Add
+      vessel="reactor"
+      reagent="pentanes"
+      volume="25 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="all" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="buffer_flask1"
+      product_phase="top"
+      solvent="a saturated sodium thiosulfate solution"
+      solvent_volume="50 mL"
+      repeats="2"
+      waste_phase_to_vessel="buffer_flask2" />
+    <Transfer
+      from_vessel="buffer_flask2"
+      to_vessel="separator"
+      volume="all" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="buffer_flask1"
+      product_phase="top"
+      solvent="pentanes"
+      solvent_volume="50 mL"
+      repeats="2" />
+    <Transfer
+      from_vessel="buffer_flask1"
+      to_vessel="separator"
+      volume="all" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      solvent="saturated NaCl solution"
+      through="MgSO4"
+      solvent_volume="50 mL" />
+    <Evaporate
+      vessel="rotavap"
+      pressure="21.3315 mbar"
+      time="30 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>
+
+</XDL>

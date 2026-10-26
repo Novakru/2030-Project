@@ -1,0 +1,213 @@
+{
+  "id": "pos_b26c7059a55f4ed08e56318eb7eb563c",
+  "source": {
+    "dataset_id": "ord_dataset-99c23cf435dc42f1af884053bc8b11c7",
+    "dataset_name": "Borylation dataset from Roche",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+    "file_sha256": "59cd8c35e021be300944f8e556b8fd7ec30a6bc32ff36a54be133aad8e44c393",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": null,
+    "reaction_id": "ord-b26c7059a55f4ed08e56318eb7eb563c",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet"
+  },
+  "raw_id": "ord-b26c7059a55f4ed08e56318eb7eb563c",
+  "raw_sha256": "5aa15352d797fa62b0c5db7067c8c883deef5520d0dd06f99de6a2e7693c6d5d",
+  "reaction_smiles": "S(C=1C=CC=CC1)CC>>O1B(OC(C)(C)C1(C)C)C=2C=CC=CC2SCC",
+  "reaction_class": "borylation",
+  "yield_percent": 72.0,
+  "reagents": [
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.015
+      },
+      "id": "r1",
+      "input_key": "catalyst_1",
+      "name": "C[OH2+].C[OH2+].C1CC=CCCC=C1.C1CC=CCCC=C1.[Ir].[Ir]",
+      "role": "CATALYST",
+      "smiles": "C[OH2+].C[OH2+].C1CC=CCCC=C1.C1CC=CCCC=C1.[Ir].[Ir]",
+      "source_path": "/inputs/catalyst_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.25
+      },
+      "id": "r2",
+      "input_key": "reagent_1",
+      "name": "O1B(OC(C)(C)C1(C)C)B2OC(C)(C)C(O2)(C)C",
+      "role": "REAGENT",
+      "smiles": "O1B(OC(C)(C)C1(C)C)B2OC(C)(C)C(O2)(C)C",
+      "source_path": "/inputs/reagent_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.03
+      },
+      "id": "r3",
+      "input_key": "reagent_2",
+      "name": "FC(F)(F)C1OB(OC1)C=2C=CC=CC2C=3C=NC(=CC3)C4=NC=CC=C4",
+      "role": "REAGENT",
+      "smiles": "FC(F)(F)C1OB(OC1)C=2C=CC=CC2C=3C=NC(=CC3)C4=NC=CC=C4",
+      "source_path": "/inputs/reagent_2/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 1.5000015
+      },
+      "id": "r4",
+      "input_key": "solvent_1",
+      "name": "C=1C=C(C=CC1C)C",
+      "role": "SOLVENT",
+      "smiles": "C=1C=C(C=CC1C)C",
+      "source_path": "/inputs/solvent_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.5
+      },
+      "id": "r5",
+      "input_key": "startingmat_1",
+      "name": "S(C=1C=CC=CC1)CC",
+      "role": "REACTANT",
+      "smiles": "S(C=1C=CC=CC1)CC",
+      "source_path": "/inputs/startingmat_1/components/0"
+    }
+  ],
+  "steps": [
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "id": "s001",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The mixture of product",
+        "stage": "reaction",
+        "amount_source": "/inputs/catalyst_1/components/0/amount",
+        "source_alias": "mixture of product"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.015
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "id": "s002",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The mixture of product",
+        "stage": "reaction",
+        "amount_source": "/inputs/reagent_1/components/0/amount",
+        "source_alias": "mixture of product"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.25
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "id": "s003",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The mixture of product",
+        "stage": "reaction",
+        "amount_source": "/inputs/reagent_2/components/0/amount",
+        "source_alias": "mixture of product"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.03
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "id": "s004",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The mixture of product",
+        "stage": "reaction",
+        "amount_source": "/inputs/solvent_1/components/0/amount",
+        "source_alias": "mixture of product"
+      },
+      "amount": {
+        "unit": "mL",
+        "value": 1.5000015
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "id": "s005",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The mixture of product",
+        "stage": "reaction",
+        "amount_source": "/inputs/startingmat_1/components/0/amount",
+        "source_alias": "mixture of product"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.5
+      }
+    },
+    {
+      "op": "Purify",
+      "method": "GPC",
+      "id": "s006",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "further purification of the crude mixture by GPC",
+        "stage": "purification"
+      }
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "pressure_control": "SEALED",
+    "source_setup": {}
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "model": "gpt-5.6-terra",
+    "usage": {
+      "completion_tokens": 601,
+      "prompt_tokens": 1081,
+      "total_tokens": 1682,
+      "prompt_tokens_details": {
+        "cache_write_tokens": 1078,
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 225
+      }
+    },
+    "cache_key": "50b1a3a99df1e76b2e1c011b2c762684bfbb8fa280223cb5f94e616c24c2f95a",
+    "unresolved": [
+      "The procedure contains no explicit reaction setup, addition order, solvent, conditions, or literal names/identifiers linking the supplied components r1–r5 to the reported mixture. The initial component additions are included only to represent every supplied component once, but their individual aliases cannot be justified from the procedure text.",
+      "The phrase \"Ligand 3f\" and the product descriptions do not unambiguously identify which supplied component corresponds to the crude mixture or product."
+    ],
+    "unmapped_actions": [
+      "Reported isolated masses, yields, product-regioisomer ratio, physical form, and melting point were not represented as operations: \"product (95 mg, 72% yield, ortho/meta + para = >30); ortho-borylated product 4b was obtained by further purification of the crude mixture by GPC (89 mg, 67% yield), white solid (mp. 48-50 oC)\"."
+    ],
+    "alias_provenance": "original API response; literal source substring verified; numeric crosscheck performed separately"
+  }
+}

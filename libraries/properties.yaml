@@ -1,0 +1,219 @@
+version: 1
+policy: Reference values at normal atmospheric pressure, no automatic mixture extrapolation.
+  Cached source responses supplement these curated values.
+solvents:
+  water:
+    aliases:
+    - water
+    - Water
+    - O
+    smiles: O
+    cid: 962
+    bp_C: 100.0
+    mp_C: 0.0
+    flash_C: null
+    ait_C: null
+    family: polar_protic
+    source_url: https://webbook.nist.gov/cgi/cbook.cgi?ID=C7732185&Mask=4
+    verification: normal_pressure_reference
+  methanol:
+    aliases:
+    - methanol
+    - MeOH
+    - CO
+    smiles: CO
+    cid: 887
+    bp_C: 63.8889
+    mp_C: -97.7778
+    flash_C: 11.1111
+    ait_C: null
+    family: polar_protic
+    source_url: https://www.cdc.gov/niosh/npg/npgd0397.html
+    verification: primary_source_reviewed_by_agent
+    source_values_F:
+      bp: 147
+      mp: -144
+      flash: 52
+  ethanol:
+    aliases:
+    - ethanol
+    - EtOH
+    - CCO
+    smiles: CCO
+    cid: 702
+    bp_C: 78.3333
+    mp_C: -113.8889
+    flash_C: 12.7778
+    ait_C: null
+    family: polar_protic
+    source_url: https://www.cdc.gov/niosh/npg/npgd0262.html
+    verification: primary_source_reviewed_by_agent
+    source_values_F:
+      bp: 173
+      mp: -173
+      flash: 55
+  tetrahydrofuran:
+    aliases:
+    - THF
+    - tetrahydrofuran
+    - C1CCOC1
+    - C1COCC1
+    - O1CCCC1
+    smiles: C1CCOC1
+    cid: 8028
+    bp_C: 66.1111
+    mp_C: -108.3333
+    flash_C: -14.4444
+    ait_C: null
+    family: ether
+    source_url: https://www.cdc.gov/niosh/npg/npgd0602.html
+    verification: primary_source_reviewed_by_agent
+    source_values_F:
+      bp: 151
+      mp: -163
+      flash: 6
+  dioxane:
+    aliases:
+    - dioxane
+    - 1,4-dioxane
+    - C1COCCO1
+    - O1CCOCC1
+    smiles: C1COCCO1
+    cid: 31275
+    bp_C: 101.1111
+    mp_C: 11.6667
+    flash_C: 12.7778
+    ait_C: null
+    family: ether
+    source_url: https://www.cdc.gov/niosh/npg/npgd0237.html
+    verification: primary_source_reviewed_by_agent
+    source_values_F:
+      bp: 214
+      mp: 53
+      flash: 55
+  toluene:
+    aliases:
+    - toluene
+    - Toluene
+    - Cc1ccccc1
+    - CC1=CC=CC=C1
+    smiles: Cc1ccccc1
+    cid: 1140
+    bp_C: 111.1111
+    mp_C: -95.0
+    flash_C: 4.4444
+    ait_C: null
+    family: nonpolar_aromatic
+    source_url: https://www.cdc.gov/niosh/npg/npgd0619.html
+    verification: primary_source_reviewed_by_agent
+    source_values_F:
+      bp: 232
+      mp: -139
+      flash: 40
+  acetonitrile:
+    aliases:
+    - acetonitrile
+    - Acetonitrile
+    - MeCN
+    - CC#N
+    smiles: CC#N
+    cid: 6344
+    bp_C: 81.6667
+    mp_C: -45.0
+    flash_C: 5.5556
+    ait_C: null
+    family: polar_aprotic
+    source_url: https://www.cdc.gov/niosh/npg/npgd0006.html
+    verification: primary_source_reviewed_by_agent
+    source_values_F:
+      bp: 179
+      mp: -49
+      flash: 42
+  dimethylsulfoxide:
+    aliases:
+    - DMSO
+    - dimethylsulfoxide
+    - dimethyl_sulfoxide
+    - CS(C)=O
+    - CS(=O)C
+    smiles: CS(C)=O
+    cid: 679
+    bp_C: 189
+    mp_C: 18.55
+    flash_C: 89
+    ait_C: null
+    family: polar_aprotic
+    source_url: https://www.gaylordchemical.com/products/literature/physical-properties/
+    verification: primary_source_reviewed_by_agent
+    flash_method: closed_cup
+    ait_note: Manufacturer sources differ (215 vs 300?302 C); not used for hard rules.
+  ethyl_acetate:
+    aliases:
+    - ethyl acetate
+    - ethylacetate
+    - EtOAc
+    - CCOC(C)=O
+    - CCOC(=O)C
+    smiles: CCOC(C)=O
+    cid: 8857
+    bp_C: 77.2222
+    mp_C: -82.7778
+    flash_C: -4.4444
+    ait_C: null
+    family: ester
+    source_url: https://www.cdc.gov/niosh/npg/npgd0260.html
+    verification: primary_source_reviewed_by_agent
+    source_values_F:
+      bp: 171
+      mp: -117
+      flash: 24
+  dimethylformamide:
+    aliases:
+    - DMF
+    - N,N-dimethylformamide
+    - CN(C)C=O
+    - O=CN(C)C
+    smiles: CN(C)C=O
+    cid: 6228
+    bp_C: 152.7778
+    mp_C: -61.1111
+    flash_C: 57.7778
+    ait_C: null
+    family: polar_aprotic
+    source_url: https://www.cdc.gov/niosh/npg/npgd0226.html
+    verification: primary_source_reviewed_by_agent
+    source_values_F:
+      bp: 307
+      mp: -78
+      flash: 136
+compatibility:
+- id: hf_unspecified_glass
+  chemical: hydrofluoric_acid
+  material: glass_unspecified
+  source_url: https://www.cdc.gov/niosh/npg/npgd0334.html
+  scope: "Source explicitly reports glass, but not its subtype; NIOSH states HF attacks glass. No borosilicate grade inferred."
+- id: hf_glass
+  chemical: hydrofluoric_acid
+  material: borosilicate_glass
+  source_url: https://m.cameochemicals.noaa.gov/chris/HFA.pdf
+- id: hf_glass33
+  chemical: hydrofluoric_acid
+  material: borosilicate_3_3
+  source_url: https://m.cameochemicals.noaa.gov/chris/HFA.pdf
+incompatible_pairs:
+- id: acid_cyanide
+  chemicals:
+  - acid
+  - cyanide
+  source_url: https://cameochemicals.noaa.gov/chemical/4477
+  context: unintentional_contact
+  verification: primary_source_reviewed_by_agent
+air_sensitive:
+- chemical: n_butyllithium
+  source_url: null
+  verified: false
+- chemical: source_declared_oxygen_sensitive
+  source_url: null
+  verified: true
+  note: Requires reaction-specific ORD notes.is_sensitive_to_oxygen=true, not a universal
+    catalyst assumption.

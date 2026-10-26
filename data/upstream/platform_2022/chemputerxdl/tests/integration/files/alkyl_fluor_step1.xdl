@@ -1,0 +1,51 @@
+<?xdl version="0.2.0" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="2,6-diisopropylaniline and HOAc MeOH solution" />
+    <Reagent
+      name="MeOH" />
+    <Reagent
+      name="glyoxal MeOH solution" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="2,6-diisopropylaniline and HOAc MeOH solution"
+      vessel="filter"
+      volume="251 mL"
+      stir="False" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="50°C" />
+    <Add
+      reagent="glyoxal MeOH solution"
+      vessel="filter"
+      volume="250 mL"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="15 mins" />
+    <HeatChill
+      vessel="filter"
+      temp="23°C"
+      time="10 hrs" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="MeOH"
+      volume="100 mL"
+      repeats="3" />
+    <Dry
+      vessel="filter" />
+  </Procedure>
+
+</Synthesis>

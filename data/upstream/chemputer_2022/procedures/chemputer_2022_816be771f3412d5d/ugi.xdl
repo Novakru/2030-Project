@@ -1,0 +1,201 @@
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor1.1"
+      type="reactor"
+    />
+    <Component
+      id="reactor1.2"
+      type="reactor"
+    />
+    <Component
+      id="reactor4.1"
+      type="reactor"
+    />
+    <Component
+      id="reactor4.2"
+      type="reactor"
+    />
+    <Component
+      id="reactor4.3"
+      type="reactor"
+    />
+    <Component
+      id="reactor4.4"
+      type="reactor"
+    />
+    <Component
+      id="flask_methanol"
+      type="flask"
+      chemical="methanol"
+    />
+    <Component
+      id="flask_acid"
+      type="flask"
+      chemical="2-iodobenzoic acid methanol solution (1 M)"
+    />
+    <Component
+      id="flask_amine"
+      type="flask"
+      chemical="allylamine methanol solution (1 M)"
+    />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="2-iodobenzoic acid methanol solution (1 M)"
+    />
+    <Reagent
+      name="4-chlorobenzaldehyde"
+      solid="true"
+    />
+    <Reagent
+      name="4-nitrobenzaldehyde"
+      solid="true"
+    />
+    <Reagent
+      name="allylamine methanol solution (1 M)"
+    />
+    <Reagent
+      name="tert-butyl isocyanide"
+    />
+    <Reagent
+      name="cyclohexyl isocyanide"
+    />
+    <Reagent
+      name="methanol"
+      role="solvent"
+      use_for_cleaning="true"
+    />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor1.1"
+      reagent="4-nitrobenzaldehyde"
+      mass="3.62 g"
+      stir="True"
+    />
+    <AddSolid
+      vessel="reactor1.2"
+      reagent="4-chlorobenzaldehyde"
+      mass="3.89 g"
+      stir="True"
+    />
+    <Add
+      vessel="reactor1.1"
+      reagent="allylamine methanol solution (1 M)"
+      volume="24 mL"
+    />
+    <Add
+      vessel="reactor1.2"
+      reagent="allylamine methanol solution (1 M)"
+      volume="24 mL"
+    />
+    <StartStir
+      vessel="reactor1.1"
+    />
+    <StartStir
+      vessel="reactor1.2"
+    />
+    <Wait
+      time="10 mins"
+    />
+    <Add
+      vessel="reactor1.1"
+      reagent="2-iodobenzoic acid methanol solution (1 M)"
+      volume="24 mL"
+    />
+    <Add
+      vessel="reactor1.2"
+      reagent="2-iodobenzoic acid methanol solution (1 M)"
+      volume="24 mL"
+    />
+    <Wait
+      time="10 mins"
+    />
+    <StopStir
+      vessel="reactor1.1"
+    />
+    <StopStir
+      vessel="reactor1.2"
+    />
+    <AddSolid
+      vessel="reactor4.1"
+      reagent="tert-butyl isocyanide"
+      mass="997 mg"
+    />
+    <AddSolid
+      vessel="reactor4.2"
+      reagent="cyclohexyl isocyanide"
+      mass="1.31 mg"
+    />
+    <AddSolid
+      vessel="reactor4.3"
+      reagent="tert-butyl isocyanide"
+      mass="997 mg"
+    />
+    <AddSolid
+      vessel="reactor4.4"
+      reagent="cyclohexyl isocyanide"
+      mass="1.31 mg"
+    />
+    <StartStir
+      vessel="reactor4.1"
+    />
+    <StartStir
+      vessel="reactor4.2"
+    />
+    <StartStir
+      vessel="reactor4.3"
+    />
+    <StartStir
+      vessel="reactor4.4"
+    />
+    <Transfer
+      from_vessel="reactor1.1"
+      to_vessel="reactor4.1"
+      volume="24 mL"
+      flush_tubing="true"
+    />
+    <Transfer
+      from_vessel="reactor1.1"
+      to_vessel="reactor4.2"
+      volume="24 mL"
+      flush_tubing="true"
+    />
+    <Transfer
+      from_vessel="reactor1.2"
+      to_vessel="reactor4.3"
+      volume="24 mL"
+      flush_tubing="true"
+    />
+    <Transfer
+      from_vessel="reactor1.2"
+      to_vessel="reactor4.4"
+      volume="24 mL"
+      flush_tubing="true"
+    />
+    <Wait
+      time="24 h"
+    />
+    <Filter
+      vessel="reactor4.1"
+      aspiration_speed="10"
+    />
+    <Filter
+      vessel="reactor4.2"
+      aspiration_speed="10"
+    />
+    <Filter
+      vessel="reactor4.3"
+      aspiration_speed="10"
+    />
+    <Filter
+      vessel="reactor4.4"
+      aspiration_speed="10"
+    />
+  </Procedure>
+
+</Synthesis>

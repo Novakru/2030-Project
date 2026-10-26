@@ -1,0 +1,122 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_mgso4"
+      type="cartridge"
+      chemical="mgso4" />
+    <Component
+      id="filter"
+      type="filter" />
+    </Hardware>
+
+  <Reagents>
+  <Reagent
+      name="mcpba"
+      role="reagent" />
+   <Reagent
+      name="2-iodotoluene"
+      role="reagent" />
+  <Reagent
+      name="4-tertbutylbenzene"
+      role="reagent" />
+    <Reagent
+      name="tfoh"
+      role="reagent" />
+    <Reagent
+      name="ch2cl2"
+      role="reagent" />
+    <Reagent
+      name="et2o"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+
+    <!--1.1 eq. MW 172.5 77% wt.  -->
+    <AddSolid
+      vessel="filter"
+      reagent="mcpba"
+      mass="2.46 g" />
+
+    <Add
+      vessel='filter'
+      reagent='ch2cl2'
+      volume='50 mL'
+      stir='True'
+    />
+
+    <!-- MW 218  d=1.71 -->
+    <Add
+      vessel='filter'
+      reagent='2-iodotoluene'
+      volume='1.27 mL'
+      stir='True'
+    />
+    <!-- 1.1 eq MW 134.2 d=0.867  -->
+    <Add
+      vessel='filter'
+      reagent='4-tertbutylbenzene'
+      volume='1.70 mL'
+      stir='True'
+    />
+
+    <!-- 2.0 eq. MW 150 d=1.696 -->
+    <Add
+      vessel='filter'
+      reagent='tfoh'
+      volume='1.77 mL'
+      stir='True'
+      dropwise='True'
+  />
+
+  <Stir
+    vessel='filter'
+    time='1 h'
+  />
+
+  <Evaporate
+    vessel='filter'
+    temp='25'
+    pressure='100'
+    time='30 min'
+    mode='auto'
+  />
+
+  <Add
+    vessel='filter'
+    reagent='et2o'
+    volume='50 mL'
+    stir='True'
+  />
+
+  <Stir
+    vessel='filter'
+    time='10 min'
+  />
+
+  <HeatChill
+    vessel='filter'
+    temp='-10'
+    time='30 min'
+    stir='False'
+  />
+
+  <Filter
+    vessel='filter'
+  />
+
+  <WashSolid
+    vessel='filter'
+    solvent='et2o'
+    temp='0'
+    volume='25 mL'
+    repeats='1'
+    stir_speed='100'
+  />
+
+</Procedure>
+
+</Synthesis>

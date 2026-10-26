@@ -1,0 +1,103 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_silica"
+      type="cartridge"
+      chemical="silica" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="pd2dba3-chcl3"
+      role="reagent" />
+    <Reagent
+      name="agco3"
+      role="reagent" />
+    <Reagent
+      name="1-iodo-4-fluorobenzene"
+      role="reagent" />
+    <Reagent
+      name="benzothiophene"
+      role="reagent" />
+    <Reagent
+      name="hfip"
+      role="reagent" />
+    <Reagent
+      name="etoac"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <!-- 2.5 mol% MW = 1035-->
+    <AddSolid
+      vessel="reactor"
+      reagent="pd2dba3-chcl3"
+      mass="194 mg" />
+
+    <!-- 75 mol% MW = 275.7  -->
+    <AddSolid
+      vessel="reactor"
+      reagent="agco3"
+      mass="1.55 g" />
+
+    <!-- 7.5 mmol-->
+    <AddSolid
+      vessel="reactor"
+      reagent="benzothiophene"
+      mass="1.01 g" />
+
+    <!-- 1.5 eq. -->
+    <Add
+      vessel='reactor'
+      reagent='1-iodo-4-fluorobenzene'
+      volume='1.3 mL'
+      stir='True'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='hfip'
+      volume='15 mL'
+      stir='True'
+    />
+
+    <Stir
+      vessel='reactor'
+      time='16 h'
+    />
+
+    <Repeat repeats='3'>
+      <Add
+        vessel='reactor'
+        reagent='etoac'
+        volume='20 mL'
+        prime_n_times='0'
+        stir='True'
+      />
+      <StopStir
+        vessel='reactor'/>
+      <Transfer
+        from_vessel='reactor'
+        to_vessel='rotavap'
+        through='silica'
+        volume='all'
+      />
+    </Repeat>
+
+    <Evaporate
+      vessel='rotavap'
+      temp='40'
+      mode='auto'
+    />
+  </Procedure>
+
+</Synthesis>

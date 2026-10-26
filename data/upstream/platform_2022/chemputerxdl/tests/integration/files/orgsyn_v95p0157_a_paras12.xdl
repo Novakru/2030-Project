@@ -1,0 +1,169 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="cartridge_Na2SO4"
+      type="cartridge"
+      chemical="Na2SO4" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="CH2Cl2" />
+    <Reagent
+      name="EtOAc" />
+    <Reagent
+      name="H2O" />
+    <Reagent
+      name="MeOH" />
+    <Reagent
+      name="a mixture of ice-water ( 170 mL )" />
+    <Reagent
+      name="ethyl acetate" />
+    <Reagent
+      name="saturated aqueous NH4Cl" />
+    <Reagent
+      name="saturated aqueous NaCl" />
+    <Reagent
+      name="sodium borohydride" />
+    <Reagent
+      name="the aldehyde 1" />
+  </Reagents>
+
+  <Procedure>
+    <Confirm
+      msg="Is The aldehyde 1 in the correct vessel?" />
+    <Dissolve
+      vessel="reactor"
+      solvent="MeOH"
+      volume="200 mL" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="-20°C"
+      stir="True" />
+    <Repeat
+      repeats="10">
+      <Add
+        reagent="sodium borohydride"
+        vessel="reactor"
+        mass="0.3 g" />
+      <Wait
+        time="3 mins" />
+    </Repeat>
+    <Stir
+      vessel="reactor"
+      time="45 mins" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="0°C"
+      active="False"
+      stir="True" />
+    <Stir
+      vessel="reactor"
+      time="35 mins" />
+    <Add
+      reagent="a mixture of ice-water ( 170 mL )"
+      vessel="reactor"
+      volume="170 mL"
+      stir="True"
+      stir_speed="600 RPM" />
+    <Stir
+      vessel="reactor"
+      time="10 mins" />
+    <Add
+      reagent="EtOAc"
+      vessel="reactor"
+      volume="900 mL"
+      stir="True" />
+    <Add
+      reagent="H2O"
+      vessel="reactor"
+      volume="50 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="all" />
+    <Add
+      reagent="ethyl acetate"
+      vessel="reactor"
+      volume="50 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="50 mL" />
+    <Add
+      reagent="H2O"
+      vessel="reactor"
+      volume="50 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="50 mL" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="EtOAc"
+      solvent_volume="150 mL"
+      repeats="3" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="saturated aqueous NH4Cl"
+      solvent_volume="100 mL" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      solvent="saturated aqueous NaCl"
+      through="Na2SO4"
+      solvent_volume="100 mL" />
+    <Add
+      reagent="EtOAc"
+      vessel="rotavap"
+      volume="50 mL"
+      through="Na2SO4" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40°C"
+      pressure="113.3237 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Add
+      reagent="CH2Cl2"
+      vessel="rotavap"
+      volume="0" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40°C"
+      pressure="313.3067 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Dry
+      vessel="rotavap"
+      time="5 hrs"
+      temp="24°C"
+      pressure="0.2 mbar" />
+  </Procedure>
+
+</Synthesis>

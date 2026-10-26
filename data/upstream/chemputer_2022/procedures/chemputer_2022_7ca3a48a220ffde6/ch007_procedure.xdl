@@ -1,0 +1,175 @@
+<?xdl version="1.0.0" ?>
+<XDL>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="flask_holding"
+      type="flask" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="argon"
+      type="flask" />
+    <Component
+      id="waste_7"
+      type="flask" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="THF"
+      role="reagent" />
+    <Reagent
+      name="XPhos Pd Gen2"
+      role="reagent" />
+    <Reagent
+      name="bifunctional MIDA boronate"
+      role="reagent" />
+    <Reagent
+      name="boronic acid"
+      role="reagent" />
+    <Reagent
+      name="potassium phosphate"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="potassium phosphate"
+      mass="0 mg" />
+    <AddSolid
+      vessel="reactor"
+      reagent="bifunctional MIDA boronate"
+      mass="0 mg" />
+    <AddSolid
+      vessel="reactor"
+      reagent="XPhos Pd Gen2"
+      mass="0 mg" />
+    <SwitchVacuum
+      vessel="flask_holding" />
+    <SwitchArgon
+      vessel="flask_holding" />
+    <SwitchVacuum
+      vessel="flask_holding" />
+    <SwitchArgon
+      vessel="flask_holding" />
+    <SwitchVacuum
+      vessel="flask_holding" />
+    <SwitchArgon
+      vessel="flask_holding" />
+    <AddSolid
+      vessel="flask_holding"
+      reagent="boronic acid"
+      mass="0 mg" />
+    <Transfer
+      from_vessel="argon"
+      to_vessel="waste_7"
+      volume="125 mL" />
+    <Dissolve
+      vessel="flask_holding"
+      solvent="THF"
+      volume="20 mL" />
+    <SwitchVacuum
+      vessel="flask_holding" />
+    <SwitchArgon
+      vessel="flask_holding" />
+    <SwitchVacuum
+      vessel="flask_holding" />
+    <SwitchArgon
+      vessel="flask_holding" />
+    <SwitchVacuum
+      vessel="flask_holding" />
+    <SwitchArgon
+      vessel="flask_holding" />
+    <SwitchVacuum
+      vessel="reactor" />
+    <SwitchArgon
+      vessel="reactor" />
+    <SwitchVacuum
+      vessel="reactor" />
+    <SwitchArgon
+      vessel="reactor" />
+    <SwitchVacuum
+      vessel="reactor" />
+    <SwitchArgon
+      vessel="reactor" />
+    <Add
+      vessel="reactor"
+      reagent="THF"
+      volume="28 mL"
+      stir="True" />
+    <SwitchVacuum
+      vessel="reactor" />
+    <SwitchArgon
+      vessel="reactor" />
+    <SwitchVacuum
+      vessel="reactor" />
+    <SwitchArgon
+      vessel="reactor" />
+    <SwitchVacuum
+      vessel="reactor" />
+    <SwitchArgon
+      vessel="reactor" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="55 °C"
+      stir="True" />
+    <Transfer
+      from_vessel="flask_holding"
+      to_vessel="reactor"
+      volume="all"
+      time="4 h" />
+    <Repeat
+      repeats="2">
+      <Add
+        vessel="flask_holding"
+        reagent="THF"
+        volume="5 mL"
+        stir="True" />
+      <Transfer
+        from_vessel="flask_holding"
+        to_vessel="reactor"
+        volume="5 mL" />
+    </Repeat>
+    <Stir
+      vessel="reactor"
+      time="12 h" />
+    <StartStir
+      vessel="reactor"
+      stir_speed="50 RPM" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="100 mL"
+      aspiration_speed="5.0" />
+    <Repeat
+      repeats="2">
+      <Add
+        vessel="reactor"
+        reagent="THF"
+        volume="10 mL"
+        stir="True" />
+      <Transfer
+        from_vessel="reactor"
+        to_vessel="rotavap"
+        volume="100 mL"
+        aspiration_speed="5.0" />
+    </Repeat>
+    <Evaporate
+      vessel="rotavap"
+      temp="50 °C"
+      pressure="249 mbar"
+      time="30 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>
+
+</XDL>

@@ -1,0 +1,159 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_magnesium sulfate"
+      type="cartridge"
+      chemical="magnesium sulfate" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="reactor2"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="Boc-L-leucine hydrate"
+      role="reagent" />
+    <Reagent
+      name="N,O-dimethylhydroxylamine hydrochloride"
+      role="reagent" />
+    <Reagent
+      name="N-Methylpiperidine"
+      role="reagent" />
+    <Reagent
+      name="aqueous 0.2 N hydrochloric acid"
+      role="reagent" />
+    <Reagent
+      name="aqueous 0.5 N sodium hydroxide"
+      role="reagent" />
+    <Reagent
+      name="methyl chloroformate"
+      role="reagent" />
+    <Reagent
+      name="methylene chloride"
+      role="reagent" />
+    <Reagent
+      name="saturated aqueous sodium chloride"
+      role="reagent" />
+    <Reagent
+      name="tetrahydrofuran"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="N,O-dimethylhydroxylamine hydrochloride"
+      mass="39.1 g" />
+    <Add
+      vessel="reactor"
+      reagent="methylene chloride"
+      volume="236 mL" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="2 °C"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="N-Methylpiperidine"
+      volume="48.8 mL"
+      stir="True" />
+    <AddSolid
+      vessel="reactor2"
+      reagent="Boc-L-leucine hydrate"
+      mass="100 g" />
+    <Add
+      vessel="reactor2"
+      reagent="tetrahydrofuran"
+      volume="458 mL" />
+    <Add
+      vessel="reactor2"
+      reagent="methylene chloride"
+      volume="1.8 l"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor2"
+      temp="-20 °C"
+      stir="True" />
+    <Add
+      vessel="reactor2"
+      reagent="N-Methylpiperidine"
+      volume="48.8 mL"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor2"
+      temp="-12 °C"
+      stir="True" />
+    <Add
+      vessel="reactor2"
+      reagent="methyl chloroformate"
+      volume="31 mL"
+      stir="True"
+      stir_speed="600 RPM" />
+    <Stir
+      vessel="reactor2"
+      time="2 min" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="reactor2"
+      volume="all" />
+    <StopHeatChill
+      vessel="reactor" />
+    <StopHeatChill
+      vessel="reactor2" />
+    <Stir
+      vessel="reactor2"
+      time="4 h" />
+    <HeatChillToTemp
+      vessel="reactor2"
+      temp="5 °C"
+      stir="True" />
+    <Separate
+      purpose="wash"
+      from_vessel="reactor2"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom"
+      solvent="aqueous 0.2 N hydrochloric acid"
+      solvent_volume="500 mL"
+      repeats="2" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom"
+      solvent="aqueous 0.5 N sodium hydroxide"
+      solvent_volume="500 mL"
+      repeats="2" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="bottom"
+      solvent="saturated aqueous sodium chloride"
+      through="magnesium sulfate"
+      solvent_volume="500 mL" />
+    <Evaporate
+      vessel="rotavap"
+      temp="32.5 °C"
+      pressure="350 mbar"
+      time="30 min"
+      mode="auto" />
+    <Dry
+      vessel="rotavap" />
+  </Procedure>
+
+</Synthesis>

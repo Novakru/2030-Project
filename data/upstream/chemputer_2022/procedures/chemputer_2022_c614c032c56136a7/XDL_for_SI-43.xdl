@@ -1,0 +1,88 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="pd(xanthos)cl2"
+      role="reagent" />
+    <Reagent
+      name="(E)-3-phenylprop-2-en-1-ol"
+      role="reagent" />
+    <Reagent
+      name="i-proh"
+      role="reagent" />
+    <Reagent
+      name="dibenzylamine"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="pd(xanthos)cl2"
+      mass="945 mg"
+    />
+
+    <EvacuateAndRefill
+      vessel='reactor'
+      repeats='3'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='i-proh'
+      volume='30 mL'
+      stir='True'
+    />
+
+    <Stir
+      vessel='reactor'
+      time='1 min'
+    />
+
+    <AddSolid
+      vessel='reactor'
+      reagent='(E)-3-phenylprop-2-en-1-ol'
+      mass='3.35 g'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='dibenzylamine'
+      volume='4.8 mL'
+      stir='True'
+    />
+
+    <Stir
+      vessel='reactor'
+      time='19 h'
+    />
+
+    <Transfer
+      from_vessel='reactor'
+      to_vessel='rotavap'
+      volume='all'
+      rinsing_solvent='i-proh'
+      rinsing_volume='20 mL'
+      rinsing_repeats='1'
+    />
+
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="30 mbar"
+      time="60 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

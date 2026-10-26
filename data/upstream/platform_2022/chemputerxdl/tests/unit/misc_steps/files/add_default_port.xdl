@@ -1,0 +1,91 @@
+<Synthesis>
+  <Hardware>
+    <Component
+      id="rotavap"
+      type="rotavap"
+    />
+    <Component
+      id="separator"
+      type="separator"
+    />
+    <Component
+      id="filter"
+      type="filter"
+    />
+    <Component
+      id="reactor"
+      type="reactor"
+    />
+  </Hardware>
+
+  <Reagents>
+    <Reagent name="ether" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      vessel="filter"
+      reagent="ether"
+      volume="15 mL" />
+    <Add
+      vessel="reactor"
+      reagent="ether"
+      volume="15 mL" />
+    <Add
+      vessel="rotavap"
+      reagent="ether"
+      volume="15 mL" />
+    <Add
+      vessel="separator"
+      reagent="ether"
+      volume="15 mL" />
+    <!-- Test supplied port doesn't get overridden by default port. -->
+    <Add
+      vessel="separator"
+      reagent="ether"
+      volume="15 mL"
+      port="top" />
+
+    <Dissolve
+      vessel="filter"
+      solvent="ether"
+      volume="10 mL"
+    />
+    <Dissolve
+      vessel="reactor"
+      solvent="ether"
+      volume="10 mL"
+    />
+    <Dissolve
+      vessel="rotavap"
+      solvent="ether"
+      volume="10 mL"
+    />
+
+
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="10 mL"
+    />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="filter"
+      volume="10 mL"
+    />
+
+    <Separate
+      purpose="extract"
+      product_phase="bottom"
+      separation_vessel="separator"
+      solvent="ether"
+      solvent_volume="50 mL"
+      from_vessel="reactor"
+      to_vessel="reactor"
+      waste_phase_to_vessel="separator"
+    />
+
+
+  </Procedure>
+
+</Synthesis>

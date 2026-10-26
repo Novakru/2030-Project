@@ -1,0 +1,437 @@
+{
+  "id": "pos_619d0fe2a4c84781a991f3b254737c7e",
+  "source": {
+    "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+    "dataset_name": "750 AstraZeneca ELN dataset",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+    "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+    "reaction_id": "ord-619d0fe2a4c84781a991f3b254737c7e",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+  },
+  "raw_id": "ord-619d0fe2a4c84781a991f3b254737c7e",
+  "raw_sha256": "28a43ae5887b5aedfb4ba3aaa2554c15d7258dcbb96a6f72fdaf03434da7e6c9",
+  "reaction_smiles": "C1CC1NC2=CC(=NC3=C(C=NN23)C#N)Cl.CC(=O)NC1=C(C=CC(=C1)N)N(C)CCO>>CC(=O)NC1=C(C=CC(=C1)NC2=NC3=C(C=NN3C(=C2)NC4CC4)C#N)N(C)CCO",
+  "reaction_class": "1.3.2 [N-arylation with Ar-X] Chloro Buchwald-Hartwig amination",
+  "yield_percent": 50.94,
+  "reagents": [
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 1.03
+      },
+      "id": "r1",
+      "input_key": "Base",
+      "name": "C(=O)([O-])[O-].[Cs+].[Cs+]",
+      "role": "REAGENT",
+      "smiles": "C(=O)([O-])[O-].[Cs+].[Cs+]",
+      "source_path": "/inputs/Base/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 3.0
+      },
+      "id": "r2",
+      "input_key": "Solvent",
+      "name": "CC(=O)N(C)C",
+      "role": "SOLVENT",
+      "smiles": "CC(=O)N(C)C",
+      "source_path": "/inputs/Solvent/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.514
+      },
+      "id": "r3",
+      "input_key": "amine",
+      "name": "CC(=O)NC1=C(C=CC(=C1)N)N(C)CCO",
+      "role": "REACTANT",
+      "smiles": "CC(=O)NC1=C(C=CC(=C1)N)N(C)CCO",
+      "source_path": "/inputs/amine/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.514
+      },
+      "id": "r4",
+      "input_key": "aryl halide",
+      "name": "C1CC1NC2=CC(=NC3=C(C=NN23)C#N)Cl",
+      "role": "REACTANT",
+      "smiles": "C1CC1NC2=CC(=NC3=C(C=NN23)C#N)Cl",
+      "source_path": "/inputs/aryl halide/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.0514
+      },
+      "id": "r5",
+      "input_key": "metal and ligand",
+      "name": "CC1(C2=C(C(=CC=C2)P(C3=CC=CC=C3)C4=CC=CC=C4)OC5=C1C=CC=C5P(C6=CC=CC=C6)C7=CC=CC=C7)C",
+      "role": "CATALYST",
+      "smiles": "CC1(C2=C(C(=CC=C2)P(C3=CC=CC=C3)C4=CC=CC=C4)OC5=C1C=CC=C5P(C6=CC=CC=C6)C7=CC=CC=C7)C",
+      "source_path": "/inputs/metal and ligand/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.0257
+      },
+      "id": "r6",
+      "input_key": "metal and ligand",
+      "name": "C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]",
+      "role": "CATALYST",
+      "smiles": "C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]",
+      "source_path": "/inputs/metal and ligand/components/1"
+    },
+    {
+      "id": "w1",
+      "name": "MeOH",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": {
+        "value": 2,
+        "unit": "mL"
+      },
+      "source_path": null
+    },
+    {
+      "id": "w2",
+      "name": "EtOAc",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": {
+        "value": 1,
+        "unit": "mL"
+      },
+      "source_path": null
+    },
+    {
+      "id": "w3",
+      "name": "EtOAc",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": {
+        "value": 2,
+        "unit": "mL"
+      },
+      "source_path": null
+    }
+  ],
+  "steps": [
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "id": "s001",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "was 5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile (120mg, 0.51 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/aryl halide/components/0/amount",
+        "source_alias": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.514
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "id": "s002",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "N-(5-amino-2-((2-hydroxyethyl)(methyl)amino)phenyl)acetamide (115 mg, 0.51 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/amine/components/0/amount",
+        "source_alias": "N-(5-amino-2-((2-hydroxyethyl)(methyl)amino)phenyl)acetamide"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.514
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "id": "s003",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "cesium carbonate (335 mg, 1.03 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/Base/components/0/amount",
+        "source_alias": "cesium carbonate"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 1.03
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "id": "s004",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "in DMA (3.0 mL)",
+        "stage": "reaction",
+        "amount_source": "/inputs/Solvent/components/0/amount",
+        "source_alias": "DMA"
+      },
+      "amount": {
+        "unit": "mL",
+        "value": 3.0
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r6",
+      "id": "s005",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Pd2(dba)3 (23.51 mg, 0.03 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/metal and ligand/components/1/amount",
+        "source_alias": "Pd2(dba)3"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.0257
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "id": "s006",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine) (29.7 mg, 0.05 mmol) were added.",
+        "stage": "reaction",
+        "amount_source": "/inputs/metal and ligand/components/0/amount",
+        "source_alias": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.0514
+      }
+    },
+    {
+      "op": "Atmosphere",
+      "gas": "nitrogen",
+      "mode": "environment",
+      "id": "s007",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The vial was filled with N2",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Irradiate",
+      "temp_C": 150,
+      "duration_s": 1800,
+      "id": "s008",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "150C microwave for 30 min.",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Irradiate",
+      "temp_C": 150,
+      "duration_s": 7200,
+      "id": "s009",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "under microwave 150C for another 2h.",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w1",
+      "amount": {
+        "value": 2,
+        "unit": "mL"
+      },
+      "id": "s010",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "MeOH (2 mL) was added to the reaction mixture.",
+        "stage": "workup",
+        "source_alias": "MeOH"
+      }
+    },
+    {
+      "op": "Filter",
+      "keep": "filtrate",
+      "id": "s011",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "filtered. The mother liquid solvent was removed",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Evaporate",
+      "id": "s012",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The mother liquid solvent was removed by ratovapor",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Purify",
+      "method": "chromatography",
+      "id": "s013",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The crude product was loaded on ISCO (Hex to Hex:EtOAc To EtOAc to EtOAc:MeOH=10:1)",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w2",
+      "amount": {
+        "value": 1,
+        "unit": "mL"
+      },
+      "id": "s014",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "added 1 mL of EtOAc",
+        "stage": "purification",
+        "source_alias": "EtOAc"
+      }
+    },
+    {
+      "op": "HeatChill",
+      "id": "s015",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The resulting suspension was heated to reflux.",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Filter",
+      "keep": "solid",
+      "id": "s016",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the mixture was filtered to give offwhite solid.",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w3",
+      "amount": {
+        "value": 2,
+        "unit": "mL"
+      },
+      "id": "s017",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "This solid was washed with EtOAc ( 2 mL)",
+        "stage": "purification",
+        "source_alias": "EtOAc"
+      }
+    },
+    {
+      "op": "Filter",
+      "keep": "solid",
+      "id": "s018",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "This solid was washed with EtOAc ( 2 mL) and dried",
+        "stage": "purification"
+      }
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "atmosphere": {},
+    "pressure_control": "UNKNOWN",
+    "source_setup": {}
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "model": "gpt-5.6-terra",
+    "usage": {
+      "completion_tokens": 1620,
+      "prompt_tokens": 1663,
+      "total_tokens": 3283,
+      "prompt_tokens_details": {
+        "cache_write_tokens": 1660,
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    },
+    "cache_key": "de4e192247f29c2f628a23a3b7bcc3bb33cd405510981e1277caa566eea0c8cc",
+    "unresolved": [
+      "The reflux temperature is not numerically specified.",
+      "The duration of heating at reflux is not specified.",
+      "The filtration following MeOH addition is assigned to retention of the filtrate based on the subsequent reference to 'The mother liquid'; this is not explicitly stated at the filtration instruction.",
+      "The phase or material retained during the EtOAc wash is inferred as the previously obtained solid.",
+      "s015: temperature unspecified"
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "to give a brown suspension.",
+        "reason": "Observation; no physical operation is specified."
+      },
+      {
+        "evidence": "LCMS showed SM and product.",
+        "reason": "Analytical monitoring is not represented as a physical operation."
+      },
+      {
+        "evidence": "15% SM remained.",
+        "reason": "Analytical result; no physical operation is specified."
+      },
+      {
+        "evidence": "The product was not pure.",
+        "reason": "Observation; no physical operation is specified."
+      },
+      {
+        "evidence": "the solid was promoted to form by scratching the flask wall.",
+        "reason": "Scratching to induce crystallization is not an allowed operation."
+      },
+      {
+        "evidence": "When it was warm",
+        "reason": "Condition observation without a specified operation or numeric temperature."
+      },
+      {
+        "evidence": "dried at 80C under reduced press oven",
+        "reason": "Drying is not among the allowed operations."
+      },
+      {
+        "evidence": "NMR and LCMS showed desired product, see attachment",
+        "reason": "Analytical characterization is not represented as a physical operation."
+      }
+    ],
+    "alias_provenance": "original API response; literal source substring verified; numeric crosscheck performed separately"
+  }
+}

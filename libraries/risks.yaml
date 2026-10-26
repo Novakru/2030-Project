@@ -1,0 +1,27 @@
+version: 1
+precedence: "A/B/D hard rules override C soft hypotheses. D4 excludes A1 and C4."
+label_policy:
+  hard: "Violation of an explicit, evidenced constraint; evaluate all rules, exactly one class must fire."
+  soft: "Uncalibrated condition perturbation, experimental outcome unknown; feasible and p_infeasible are null until calibrated."
+  real: "Observed measured yield <5%; association does not establish a specific causal risk category."
+risks:
+  A1: {name: 容量或装填率越界, family: A, label_type: hard, mutation: reduce_capacity, precondition: known_capacity, rule: cumulative_volume_or_fill_fraction, evidence: equipment_capacity}
+  A2: {name: 温控越界, family: A, label_type: hard, mutation: change_temperature, precondition: verified_temperature_range, rule: outside_device_range, evidence: manufacturer}
+  A3: {name: 转速或流速越界, family: A, label_type: hard, mutation: change_rpm, precondition: verified_speed_range, rule: outside_speed_range, evidence: manufacturer}
+  A4: {name: 材质不兼容, family: A, label_type: hard, mutation: change_wetted_material, precondition: known_material_and_compatibility, rule: material_pair_incompatible, evidence: compatibility_source}
+  A5: {name: 硬件拓扑缺件, family: A, label_type: hard, mutation: disconnect_component, precondition: declared_hardware_graph, rule: required_component_or_path_missing, evidence: graph}
+  B1: {name: 开放体系超沸点, family: B, label_type: hard, mutation: remove_reflux_or_raise_temperature, precondition: known_bp_and_open_system, rule: open_above_normal_bp_without_reflux, evidence: physical_properties}
+  B2: {name: 低于凝固点, family: B, label_type: hard, mutation: lower_temperature, precondition: pure_solvent_and_known_mp, rule: pure_solvent_below_mp, evidence: physical_properties, limitation: "Mixed-solvent freezing is not max(component mp); mixtures require a phase diagram."}
+  B3: {name: 点火或自燃边界, family: B, label_type: hard, mutation: introduce_ignition_source, precondition: known_flashpoint_and_explicit_ignition_exposure, rule: ignition_exposure_above_flashpoint_or_above_ait, evidence: physical_properties, limitation: "A solution above flash point alone does not establish an ignition event."}
+  B4: {name: 不相容试剂对, family: B, label_type: hard, mutation: substitute_incompatible_reagent, precondition: sourced_specific_pair_and_contact, rule: incompatible_pair_contact, evidence: cameo_or_sds}
+  B5: {name: 加料顺序放热, family: B, label_type: hard, mutation: swap_ordered_additions, precondition: concentrated_acid_and_dilution_context, rule: water_into_concentrated_acid, evidence: sourced_order_rule}
+  C1: {name: 溶剂条件扰动, family: C, label_type: soft, mutation: replace_solvent, precondition: unseen_in_class_and_different_solvent_family, rule: condition_hypothesis, evidence: corpus_frequency}
+  C2: {name: 温度条件扰动, family: C, label_type: soft, mutation: shift_temperature, precondition: outside_class_percentiles_and_no_hard_violation, rule: condition_hypothesis, evidence: corpus_quantiles}
+  C3: {name: 试剂或催化剂扰动, family: C, label_type: soft, mutation: remove_catalyst, precondition: catalyst_present_and_no_observed_success_match, rule: condition_hypothesis, evidence: corpus_or_hte}
+  C4: {name: 计量条件扰动, family: C, label_type: soft, mutation: scale_molar_amount, precondition: quantified_component_and_no_hard_violation, rule: condition_hypothesis, evidence: original_amount}
+  C5: {name: 敏感体系气氛缺失, family: C, label_type: hard, mutation: remove_atmosphere, precondition: sourced_air_sensitive_material, rule: air_sensitive_material_without_inert_context, evidence: sds_or_source_notes}
+  C6: {name: 时间条件扰动, family: C, label_type: soft, mutation: shorten_duration, precondition: outside_class_duration_percentiles, rule: condition_hypothesis, evidence: corpus_quantiles}
+  D1: {name: 步骤依赖顺序错误, family: D, label_type: hard, mutation: reverse_dependency, precondition: material_or_explicit_step_dependency, rule: dependency_not_yet_satisfied, evidence: dataflow}
+  D2: {name: 关键步骤缺失, family: D, label_type: hard, mutation: remove_required_step, precondition: explicit_sourced_required_step, rule: required_step_missing, evidence: required_steps}
+  D3: {name: 引用未声明, family: D, label_type: hard, mutation: rename_reference, precondition: declared_reagent_or_vessel, rule: undeclared_reference, evidence: static_symbol_table}
+  D4: {name: 单位维度错误, family: D, label_type: hard, mutation: change_unit_dimension, precondition: quantity_with_known_dimension, rule: incompatible_dimension, evidence: dimensional_analysis, limitation: "Numerical mL↔L mistakes route to A1/C4; D4 here covers residual dimensional contradictions only."}

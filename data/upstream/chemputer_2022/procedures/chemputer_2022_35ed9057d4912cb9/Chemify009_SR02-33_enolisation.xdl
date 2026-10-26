@@ -1,0 +1,206 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_anhydrous potassium carbonate"
+      type="cartridge"
+      chemical="anhydrous potassium carbonate" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+    <Component
+      id="waste_X"
+      type="ChemputerWaste" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="2 N hydrochloric acid"
+      role="reagent" />
+    <Reagent
+      name="dry dichloromethane solution of pyridine base"
+      role="reagent" />
+    <Reagent
+      name="dry dichloromethane solution of cholest-4-en-3-one"
+      role="reagent" />
+    <Reagent
+      name="dry dichloromethane"
+      role="reagent" />
+    <Reagent
+      name="brine"
+      role="reagent" />
+    <Reagent
+      name="trifluoromethanesulfonic anhydride"
+      role="reagent" />
+    <Reagent
+      name="diethyl ether"
+      role="reagent" />
+    <Reagent
+      name="methanol"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <Dry
+      vessel="reactor"
+      time="30 min"
+      temp="120 °C" />
+    <EvacuateAndRefill
+      vessel="reactor" />
+    <HeatChill
+      vessel="reactor"
+      temp="25 °C"
+      time="2 min"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="dry dichloromethane solution of pyridine base"
+      volume="40 mL" />
+    <Add
+      vessel="reactor"
+      reagent="trifluoromethanesulfonic anhydride"
+      volume="3.32 mL"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="dry dichloromethane"
+      volume="3.3 mL"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="dry dichloromethane solution of cholest-4-en-3-one"
+      volume="40 mL"
+      time="17.5 min"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="dry dichloromethane"
+      volume="3.3 mL"
+      stir="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="25 °C"
+      time="60 min"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="all" />
+    <Add
+      vessel="reactor"
+      reagent="dry dichloromethane"
+      volume="50 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="all" />
+    <Evaporate
+      vessel="rotavap"
+      temp="50 °C"
+      pressure="699 mbar"
+      time="30 min"
+      mode="auto" />
+    <Add
+      vessel="rotavap"
+      reagent="diethyl ether"
+      volume="40 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="separator"
+      volume="100 mL" />
+    <Add
+      vessel="rotavap"
+      reagent="diethyl ether"
+      volume="40 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="separator"
+      volume="100 mL" />
+    <Add
+      vessel="rotavap"
+      reagent="diethyl ether"
+      volume="40 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="separator"
+      volume="100 mL" />
+    <Add
+      vessel="rotavap"
+      reagent="diethyl ether"
+      volume="40 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="separator"
+      volume="100 mL" />
+    <Add
+      vessel="rotavap"
+      reagent="methanol"
+      volume="100 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="waste_X"
+      volume="125 mL" />
+    <Add
+      vessel="rotavap"
+      reagent="methanol"
+      volume="100 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="waste_X"
+      volume="125 mL" />
+    <Add
+      vessel="rotavap"
+      reagent="methanol"
+      volume="100 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="waste_X"
+      volume="125 mL" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="2 N hydrochloric acid"
+      solvent_volume="100 mL"
+      repeats="2" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      solvent="brine"
+      through="anhydrous potassium carbonate"
+      solvent_volume="100 mL"
+      repeats="3" />
+    <Evaporate
+      vessel="rotavap"
+      temp="50 °C"
+      pressure="699 mbar"
+      time="30 min"
+      mode="auto" />
+    <Dry
+      vessel="rotavap"
+      time="30 min"
+      temp="50 °C" />
+  </Procedure>
+
+</Synthesis>

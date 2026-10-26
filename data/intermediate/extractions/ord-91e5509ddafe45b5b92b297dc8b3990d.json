@@ -1,0 +1,214 @@
+{
+  "id": "pos_91e5509ddafe45b5b92b297dc8b3990d",
+  "source": {
+    "dataset_id": "ord_dataset-99c23cf435dc42f1af884053bc8b11c7",
+    "dataset_name": "Borylation dataset from Roche",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+    "file_sha256": "59cd8c35e021be300944f8e556b8fd7ec30a6bc32ff36a54be133aad8e44c393",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": null,
+    "reaction_id": "ord-91e5509ddafe45b5b92b297dc8b3990d",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet"
+  },
+  "raw_id": "ord-91e5509ddafe45b5b92b297dc8b3990d",
+  "raw_sha256": "fa774f5292a350d3f0fa40973f1b842a6bc3cb2c9cdd850ebd2e8e938f2d1b27",
+  "reaction_smiles": "C=1C=CC(=C(C1)N(C)C)C>>O1B(OC(C)(C)C1(C)C)C2=CC=C(C(=C2)C)N(C)C",
+  "reaction_class": "borylation",
+  "yield_percent": 55.0,
+  "reagents": [
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.005
+      },
+      "id": "r1",
+      "input_key": "catalyst_1",
+      "name": "FC=1C(F)=C(F)C(B(C=2C(F)=C(F)C(F)=C(F)C2F)C=3C(F)=C(F)C(F)=C(F)C3F)=C(F)C1F",
+      "role": "CATALYST",
+      "smiles": "FC=1C(F)=C(F)C(B(C=2C(F)=C(F)C(F)=C(F)C2F)C=3C(F)=C(F)C(F)=C(F)C3F)=C(F)C1F",
+      "source_path": "/inputs/catalyst_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.5
+      },
+      "id": "r2",
+      "input_key": "reagent_1",
+      "name": "O1BOC=2C=CC=CC12",
+      "role": "REAGENT",
+      "smiles": "O1BOC=2C=CC=CC12",
+      "source_path": "/inputs/reagent_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.3
+      },
+      "id": "r3",
+      "input_key": "reagent_2",
+      "name": "OC(C)(C)C(O)(C)C",
+      "role": "REAGENT",
+      "smiles": "OC(C)(C)C(O)(C)C",
+      "source_path": "/inputs/reagent_2/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 3.5
+      },
+      "id": "r4",
+      "input_key": "reagent_3",
+      "name": "N(CC)(CC)CC",
+      "role": "REAGENT",
+      "smiles": "N(CC)(CC)CC",
+      "source_path": "/inputs/reagent_3/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.1
+      },
+      "id": "r5",
+      "input_key": "startingmat_1",
+      "name": "C=1C=CC(=C(C1)N(C)C)C",
+      "role": "REACTANT",
+      "smiles": "C=1C=CC(=C(C1)N(C)C)C",
+      "source_path": "/inputs/startingmat_1/components/0"
+    }
+  ],
+  "steps": [
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "id": "s001",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "according to GP 1",
+        "stage": "reaction",
+        "amount_source": "/inputs/catalyst_1/components/0/amount",
+        "source_alias": "GP 1"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.005
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "id": "s002",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "and catBH (60.0 mg, 0.500 mmol, 5.00 equiv)",
+        "stage": "reaction",
+        "amount_source": "/inputs/reagent_1/components/0/amount",
+        "source_alias": "catBH"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.5
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "id": "s003",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "according to GP 1",
+        "stage": "reaction",
+        "amount_source": "/inputs/reagent_2/components/0/amount",
+        "source_alias": "GP 1"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.3
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "id": "s004",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "according to GP 1",
+        "stage": "reaction",
+        "amount_source": "/inputs/reagent_3/components/0/amount",
+        "source_alias": "GP 1"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 3.5
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "id": "s005",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Prepared from N,N,2-trimethylaniline (1d, 13.5 mg, 0.100 mmol, 1.00 equiv)",
+        "stage": "reaction",
+        "amount_source": "/inputs/startingmat_1/components/0/amount",
+        "source_alias": "N,N,2-trimethylaniline"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.1
+      }
+    },
+    {
+      "op": "Purify",
+      "method": "chromatography",
+      "id": "s006",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "purified by flash column chromatography using cyclohexane/EtOAc/Et3N (30/1/1) as eluent",
+        "stage": "purification"
+      }
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "pressure_control": "SEALED",
+    "source_setup": {}
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "model": "gpt-5.6-terra",
+    "usage": {
+      "completion_tokens": 624,
+      "prompt_tokens": 1090,
+      "total_tokens": 1714,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 1087
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 262
+      }
+    },
+    "cache_key": "9ab39f60a54f09116883577ffb836359319a917586e08f5093e16d330ed71966",
+    "unresolved": [
+      "The procedure refers to GP 1 but does not provide its operational details, conditions, or an explicit mapping of components r1, r3, and r4 to named materials.",
+      "The order of addition and reaction conditions under GP 1 are not specified in the provided procedure.",
+      "The procedure specifies neat conditions but does not state a discrete solvent-removal or workup operation."
+    ],
+    "unmapped_actions": [
+      "The statement that the chromatography afforded 3d as a colorless liquid is an outcome, not an explicit operation."
+    ],
+    "alias_provenance": "original API response; literal source substring verified; numeric crosscheck performed separately"
+  }
+}

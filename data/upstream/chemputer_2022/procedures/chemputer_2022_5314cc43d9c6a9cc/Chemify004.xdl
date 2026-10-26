@@ -1,0 +1,110 @@
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_anhydrous MgSO4"
+      type="cartridge"
+      chemical="anhydrous MgSO4"
+    />
+    <Component
+      id="reactor"
+      type="reactor"
+    />
+    <Component
+      id="rotavap"
+      type="rotavap"
+    />
+    <Component
+      id="separator"
+      type="separator"
+    />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="brine"
+    />
+    <Reagent
+      name="dichloromethane"
+    />
+    <Reagent
+      name="pyridine"
+    />
+    <Reagent
+      name="water"
+    />
+    <Reagent
+      name="sat. NH4Cl(aq)"
+    />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      vessel="reactor"
+      reagent="dichloromethane"
+      volume="23 mL"
+    />
+    <Add
+      vessel="reactor"
+      reagent="pyridine"
+      volume="1.56 mL"
+      stir="True"
+      speed="5"
+    />
+    <Stir
+      vessel="reactor"
+      time="16 hours"
+    />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="all"
+    />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom"
+      solvent="sat. NH4Cl(aq)"
+      through="undefined"
+      solvent_volume="80 mL"
+    />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom"
+      solvent="dichloromethane"
+      solvent_volume="20 mL"
+      repeats="2"
+    />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom"
+      solvent="water"
+      solvent_volume="40 mL"
+    />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="bottom"
+      solvent="brine"
+      through="cartridge_anhydrous MgSO4"
+      solvent_volume="40 mL"
+    />
+    <Evaporate
+      vessel="rotavap"
+      temp="30.0 °C"
+      pressure="98.65828 mbar"
+      time="30 mins"
+    />
+  </Procedure>
+
+</Synthesis>

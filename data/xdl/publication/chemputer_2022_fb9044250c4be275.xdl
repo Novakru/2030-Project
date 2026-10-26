@@ -1,0 +1,162 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+    <Component
+      id="cartridge_MgSO4"
+      type="cartridge"
+      chemical="MgSO4" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="tropine"
+      role="reagent" />
+    <Reagent
+      name="hcl in et2o"
+      role="reagent" />
+    <Reagent
+      name="phenylacetylchloride"
+      role="reagent" />
+    <Reagent
+      name="dmf"
+      role="reagent" />
+    <Reagent
+      name="nahco3"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="reagent" />
+    <Reagent
+      name="ch2cl2"
+      role="reagent" />
+    <Reagent
+      name="nacl"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="tropine"
+      mass="2.82 g" />
+    <Add
+      vessel="reactor"
+      reagent="hcl in et2o"
+      volume="10 mL"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="dmf"
+      volume="50 mL"
+      stir="True" />
+    <Stir
+      vessel="reactor"
+      time="5 min"
+      stir_speed="400 RPM" />
+    <Add
+      vessel="reactor"
+      reagent="phenylacetylchloride"
+      volume="2.8 mL"
+      stir="True"
+      priming_volume="1.5 mL" />
+    <Add
+      vessel="reactor"
+      reagent="dmf"
+      volume="10 mL"
+      stir="True"
+      prime_n_times="0" />
+    <HeatChill
+      vessel="reactor"
+      temp="100 °C"
+      time="3 h"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="30 °C"
+      active="False"
+      continue_heatchill="False"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="all" />
+    <Repeat
+      repeats="2">
+      <Add
+        vessel="reactor"
+        reagent="ch2cl2"
+        volume="30 mL"
+        stir="True"
+        prime_n_times="0" />
+      <StopStir
+        vessel="reactor" />
+      <Transfer
+        from_vessel="reactor"
+        to_vessel="separator"
+        volume="all" />
+    </Repeat>
+    <Add
+      vessel="separator"
+      reagent="nahco3"
+      volume="60 mL" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom"
+      solvent="ch2cl2"
+      solvent_volume="40 mL"
+      repeats="3"
+      remove_dead_volume="False"
+      stir_time="2 min"
+      settling_time="2 min" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom"
+      solvent="water"
+      solvent_volume="50 mL"
+      repeats="4"
+      remove_dead_volume="False"
+      stir_time="2 min"
+      settling_time="2 min" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom"
+      solvent="nacl"
+      solvent_volume="50 mL"
+      repeats="2"
+      remove_dead_volume="False" />
+    <Transfer
+      from_vessel="separator"
+      to_vessel="rotavap"
+      volume="all"
+      through="mgso4"
+      move_speed="10.0"
+      flush_tubing="True" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="20 mbar"
+      time="60 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

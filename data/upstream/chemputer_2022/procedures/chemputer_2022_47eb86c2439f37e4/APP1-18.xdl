@@ -1,0 +1,165 @@
+<?xdl version="1.0.0" ?>
+<XDL>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_sodium sulfate"
+      type="cartridge"
+      chemical="sodium sulfate" />
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="3,5-di-tert-butylsalicylaldehyde ethanol solution"
+      role="reagent" />
+    <Reagent
+      name="ethanol"
+      role="reagent" />
+    <Reagent
+      name="(R,R)-1,2-diammoniumcyclohexane mono-(+)-tartrate salt"
+      role="reagent" />
+    <Reagent
+      name="methylene chloride"
+      role="reagent" />
+    <Reagent
+      name="potassium carbonate"
+      role="reagent" />
+    <Reagent
+      name="saturated aqueous sodium chloride"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="filter"
+      reagent="(R,R)-1,2-diammoniumcyclohexane mono-(+)-tartrate salt"
+      mass="29.7 g" />
+    <AddSolid
+      vessel="filter"
+      reagent="potassium carbonate"
+      mass="31.2 g" />
+    <Add
+      vessel="filter"
+      reagent="water"
+      volume="15 mL" />
+    <Stir
+      vessel="filter"
+      time="20 min"
+      continue_stirring="True" />
+    <Add
+      vessel="filter"
+      reagent="ethanol"
+      volume="60 mL"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="78.5 °C"
+      stir="True" />
+    <Add
+      vessel="filter"
+      reagent="3,5-di-tert-butylsalicylaldehyde ethanol solution"
+      volume="25 mL"
+      time="30 min"
+      stir="True" />
+    <Add
+      vessel="filter"
+      reagent="ethanol"
+      volume="5 mL"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="2 h" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="60 °C"
+      stir="True" />
+    <Wait
+      time="20 min" />
+    <Add
+      vessel="filter"
+      reagent="water"
+      volume="15 mL" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="50 °C"
+      stir="True" />
+    <Wait
+      time="20 min" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="40 °C"
+      stir="True" />
+    <Wait
+      time="20 min" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="20 °C"
+      stir="True" />
+    <Wait
+      time="20 min" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="0 °C"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="60 min" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="ethanol"
+      volume="10 mL" />
+    <Dry
+      vessel="filter" />
+    <Dissolve
+      vessel="filter"
+      solvent="methylene chloride"
+      volume="50 mL" />
+    <Transfer
+      from_vessel="filter"
+      to_vessel="separator"
+      volume="100 mL" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom"
+      solvent="water"
+      solvent_volume="300 mL"
+      repeats="2" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="bottom"
+      solvent="saturated aqueous sodium chloride"
+      through="sodium sulfate"
+      solvent_volume="300 mL" />
+    <Evaporate
+      vessel="rotavap"
+      temp="45 °C"
+      pressure="699 mbar"
+      time="30 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>
+
+</XDL>

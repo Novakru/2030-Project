@@ -1,0 +1,177 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_silica"
+      type="cartridge"
+      chemical="silica" />
+    <Component
+      id="reactor1"
+      type="reactor" />
+    <Component
+      id="reactor2"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="ni(oac)2-4h2o"
+      role="reagent" />
+    <Reagent
+      name="bphen"
+      role="reagent" />
+    <Reagent
+      name="pyridinium salt"
+      role="reagent" />
+    <Reagent
+      name="4-acetylphenyl boronic acid"
+      role="reagent" />
+    <Reagent
+      name="kot-bu"
+      role="reagent" />
+    <Reagent
+      name="dioxane"
+      role="reagent" />
+    <Reagent
+      name="ethanol"
+      role="solvent" />
+    <Reagent
+      name="etoac"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+    <!-- 10 mol% -->
+    <AddSolid
+      vessel='reactor1'
+      reagent='ni(oac)2-4h2o'
+      mass='250 mg'
+    />
+
+    <!-- 24 mol% -->
+    <AddSolid
+      vessel='reactor1'
+      reagent='bphen'
+      mass='800 mg'
+    />
+
+    <EvacuateAndRefill
+      vessel='reactor1'
+      repeats='3'
+    />
+
+    <!-- 1.0 eq. 10 mmol -->
+    <AddSolid
+      vessel='reactor2'
+      reagent='pyridinium salt'
+      mass='4.77 g'
+    />
+
+    <!-- 3.0 eq. 30 mmol MW = 164  -->
+    <AddSolid
+      vessel='reactor2'
+      reagent='4-acetylphenyl boronic acid'
+      mass='4.92 g'
+    />
+
+    <!-- 3.4 eq. 34 mmol  -->
+    <AddSolid
+      vessel='reactor2'
+      reagent='kot-bu'
+      mass='3.82 g'
+    />
+
+    <EvacuateAndRefill
+      vessel='reactor2'
+      repeats='3'
+    />
+
+    <Add
+      vessel='reactor1'
+      reagent='dioxane'
+      volume='25 mL'
+      stir='True'
+    />
+
+    <Add
+      vessel='reactor2'
+      reagent='dioxane'
+      volume='25 mL'
+      stir='True'
+    />
+
+    <Add
+      vessel='reactor2'
+      reagent='ethanol'
+      volume='2.9 mL'
+      stir='True'
+    />
+
+    <ASync>
+      <Stir
+        vessel='reactor1'
+        time='1 h'
+        speed='600'
+      />
+    </Async>
+
+    <Stir
+      vessel='reactor2'
+      time='1 h'
+      speed='600'
+    />
+
+    <Transfer
+      from_vessel='reactor1'
+      to_vessel='reactor2'
+      volume='all'
+      rinsing_solvent='dioxane'
+      rinsing_volume='25'
+      rinsing_repeats='2'
+    />
+
+    <HeatChill
+      vessel='reactor2'
+      temp='60'
+      time='24 h'
+      stir='True'
+    />
+
+    <HeatChillToTemp
+      vessel='reactor2'
+      temp='25'
+      active='False'
+      continue_heatchill='False'
+    />
+
+    <Repeat repeats='4'>
+      <Add
+        vessel='reactor2'
+        reagent='etoac'
+        volume='50 mL'
+        stir='True'
+      />
+      <StopStir
+        vessel='reactor2'
+      />
+      <Transfer
+        from_vessel='reactor2'
+        to_vessel='rotavap'
+        through='silica'
+        volume='all'
+      />
+    </Repeat>
+
+    <Evaporate
+      vessel='rotavap'
+      temp='40'
+      mode='auto'
+    />
+  </Procedure>
+
+</Synthesis>

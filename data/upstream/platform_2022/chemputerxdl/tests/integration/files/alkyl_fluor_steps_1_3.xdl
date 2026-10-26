@@ -1,0 +1,189 @@
+<?xdl version="0.2.0" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="cartridge_celite"
+      type="cartridge"
+      chemical="celite" />
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="1M 1,1,1,2,2,2 hexachloroethane solution" />
+    <Reagent
+      name="2,6-diisopropylaniline and HOAc MeOH solution" />
+    <Reagent
+      name="CH2Cl2" />
+    <Reagent
+      name="EtOAc" />
+    <Reagent
+      name="KOtBu THF solution" />
+    <Reagent
+      name="MeOH" />
+    <Reagent
+      name="N,N'-1,3-bis(2,6-diisopropylphenyl)imidazolium chloride(S2)" />
+    <Reagent
+      name="N,N'-1,4-bis(2,6-diisopropylphenyl)-1,4-diaza-butadiene(S1)" />
+    <Reagent
+      name="THF" />
+    <Reagent
+      name="TMSCl EtOAc solution" />
+    <Reagent
+      name="glyoxal MeOH solution" />
+    <Reagent
+      name="paraformaldehyde" />
+    <Reagent
+      name="toluene" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="2,6-diisopropylaniline and HOAc MeOH solution"
+      vessel="filter"
+      volume="251 mL"
+      stir="False" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="50°C" />
+    <Add
+      reagent="glyoxal MeOH solution"
+      vessel="filter"
+      volume="250 mL"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="15 mins" />
+    <HeatChill
+      vessel="filter"
+      temp="23°C"
+      time="10 hrs" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="MeOH"
+      volume="100 mL"
+      repeats="3" />
+    <Dry
+      vessel="filter" />
+    <Add
+      reagent="paraformaldehyde"
+      vessel="filter"
+      mass="18.1 g"
+      stir="False" />
+    <Add
+      reagent="N,N'-1,4-bis(2,6-diisopropylphenyl)-1,4-diaza-butadiene(S1)"
+      vessel="filter"
+      mass="226 g"
+      stir="False" />
+    <Add
+      reagent="EtOAc"
+      vessel="filter"
+      volume="5.4 l"
+      stir="False" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="70°C" />
+    <Add
+      reagent="TMSCl EtOAc solution"
+      vessel="filter"
+      volume="156.5 mL"
+      time="45 mins"
+      stir="True"
+      stir_speed="600 RPM" />
+    <Stir
+      vessel="filter"
+      time="2 hrs" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="10°C" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="EtOAc"
+      volume="500 mL"
+      repeats="3" />
+    <Dry
+      vessel="filter" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="23°C" />
+    <Add
+      reagent="N,N'-1,3-bis(2,6-diisopropylphenyl)imidazolium chloride(S2)"
+      vessel="filter"
+      mass="150 g"
+      stir="False" />
+    <Add
+      reagent="THF"
+      vessel="filter"
+      volume="700 mL"
+      stir="False" />
+    <Add
+      reagent="KOtBu THF solution"
+      vessel="filter"
+      volume="423 mL"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="4 hrs" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="-40°C" />
+    <Add
+      reagent="1M 1,1,1,2,2,2 hexachloroethane solution"
+      vessel="filter"
+      volume="423 mL"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="23°C" />
+    <Stir
+      vessel="filter"
+      time="24 hrs" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="-40°C" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="THF"
+      volume="100 mL"
+      temp="-40°C"
+      repeats="3" />
+    <WashSolid
+      vessel="filter"
+      solvent="toluene"
+      volume="100 mL"
+      temp="-40°C"
+      repeats="6" />
+    <Dry
+      vessel="filter" />
+    <Dissolve
+      vessel="filter"
+      solvent="CH2Cl2"
+      volume="500 mL" />
+    <FilterThrough
+      from_vessel="filter"
+      to_vessel="rotavap"
+      through="celite"
+      eluting_solvent="CH2Cl2"
+      eluting_volume="50 mL"
+      eluting_repeats="3" />
+    <Evaporate
+      vessel="rotavap"
+      temp="50°C"
+      pressure="699 mbar"
+      time="30 mins"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

@@ -1,0 +1,96 @@
+<?xdl version="1.0.0" ?>
+<XDL>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="L-(+)-Tartaric acid"
+      role="reagent" />
+    <Reagent
+      name="deionized water"
+      role="reagent" />
+    <Reagent
+      name="glacial acetic acid"
+      role="reagent" />
+    <Reagent
+      name="methanol"
+      role="reagent" />
+    <Reagent
+      name="racemic trans-1,2-diaminocyclohexane"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      vessel="filter"
+      reagent="deionized water"
+      volume="50 mL" />
+    <Add
+      vessel="filter"
+      reagent="racemic trans-1,2-diaminocyclohexane"
+      volume="24 mL"
+      stir="True" />
+    <Add
+      vessel="filter"
+      reagent="glacial acetic acid"
+      volume="10 mL"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="20 °C"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="4 h" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="5 °C"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="60 min" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="water"
+      volume="20 mL"
+      temp="5 °C"
+      vacuum_time="30 s"
+      repeats="4" />
+    <WashSolid
+      vessel="filter"
+      solvent="methanol"
+      volume="20 mL"
+      vacuum_time="30 s"
+      repeats="4" />
+    <WashSolid
+      vessel="filter"
+      solvent="methanol"
+      volume="20 mL"
+      vacuum_time="30 s"
+      repeats="4" />
+    <WashSolid
+      vessel="filter"
+      solvent="methanol"
+      volume="20 mL"
+      vacuum_time="30 s"
+      repeats="4" />
+    <Dry
+      vessel="filter"
+      temp="42.5 °C" />
+  </Procedure>
+
+</Synthesis>
+
+</XDL>

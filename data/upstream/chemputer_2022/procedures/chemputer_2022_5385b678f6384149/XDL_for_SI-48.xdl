@@ -1,0 +1,116 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="Celite"
+      type="cartridge"
+      chemical="Celite" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="AIBN"
+      role="reagent" />
+    <Reagent
+      name="(Z)-3-Tributylstannylmethylene-4-isopropyl-1,1-cyclopentanedicarboxylic acid, dimethyl ester"
+      role="reagent" />
+    <Reagent
+      name="tributyltin hydride"
+      role="reagent" />
+    <Reagent
+      name="silica"
+      role="reagent" />
+    <Reagent
+      name="DCM"
+      role="reagent" />
+    <Reagent
+      name="ethyl acetate"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="AIBN"
+      mass="40 mg" />
+    <AddSolid
+      vessel="reactor"
+      reagent="(Z)-3-Tributylstannylmethylene-4-isopropyl-1,1-cyclopentanedicarboxylic acid, dimethyl ester"
+      mass="23.8 g" />
+
+    <EvacuateAndRefill
+      vessel="reactor" />
+    <Add
+      vessel="reactor"
+      reagent="tributyltin hydride"
+      volume="27.9 mL"
+      stir="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="80 °C"
+      time="60 min"
+      stir="True" />
+
+    <Dissolve
+      vessel="reactor"
+      solvent="DCM"
+      volume="1000 mL"
+      time="5 min" />
+    <AddSolid
+      vessel="filter"
+      reagent="silica"
+      mass="350 g" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="filter"
+      volume="all"
+      flush_tubing="True" />
+    <HeatChill
+      vessel="filter"
+      temp="25 °C"
+      time="48 h"
+      stir="True" />
+    <Transfer
+      from_vessel="filter"
+      to_vessel="rotavap"
+      volume="all"
+      from_port="bottom"
+      through="Celite" />
+    <Repeat
+      repeats="8">
+      <Add
+        vessel="filter"
+        reagent="ethyl acetate"
+        volume="200 mL"
+        stir="True" />
+      <Stir
+        vessel="filter"
+        time="5 min" />
+      <Transfer
+        from_vessel="filter"
+        to_vessel="rotavap"
+        volume="all"
+        through="Celite"/>
+    </Repeat>
+    <Evaporate
+      vessel="rotavap"
+      time="30 min"
+      mode="auto" />
+    <Dry
+      vessel="rotavap"
+      time="30 min"
+      temp="50 °C" />
+  </Procedure>
+
+</Synthesis>

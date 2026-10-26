@@ -1,0 +1,22 @@
+<Synthesis>
+  <Metadata description="Intentionally perturbed source-derived procedure; experimental outcome not observed." publication="https://19january2021snapshot.epa.gov/sites/static/files/2017-12/documents/appendix_b-epa_hydrogen_sulfide_monitoring_qapp.pdf" reaction_class="laboratory_reagent_handling"/>
+  <Hardware>
+    <!--Analysis binding: {"component": "heater", "params": {}, "verified": false, "wetted_materials": null}-->
+    <Component id="heater" type="heater"/>
+    <!--Analysis binding: {"component": "reactor", "params": {}, "verified": false, "wetted_materials": null}-->
+    <Component id="reactor" type="reactor"/>
+  </Hardware>
+  <Reagents>
+    <!--water: water-->
+    <Reagent name="water" role="solvent"/>
+    <!--acid: concentrated sulfuric acid-->
+    <Reagent name="acid" role="reagent"/>
+  </Reagents>
+  <Procedure>
+    <!--Representation scope: SOP fragment or stated scenario only; consult JSON sidecar and original instructions; no hardware execution certificate.-->
+    <!--Unresolved source instruction: Add slowly and carefully; allow cooling before making up to the 1 L mark.-->
+    <!--Analysis context: {"purpose": "acid_dilution"}-->
+    <Add vessel="reactor" reagent="acid" amount="40 mL"/>
+    <Add vessel="reactor" reagent="water" amount="900 mL"/>
+  </Procedure>
+</Synthesis>

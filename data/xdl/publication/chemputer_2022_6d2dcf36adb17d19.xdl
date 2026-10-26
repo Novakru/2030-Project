@@ -1,0 +1,79 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_celite"
+      type="cartridge"
+      chemical="celite" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="4-hydroxy-2-butanone"
+      role="reagent" />
+    <Reagent
+      name="benzyl bromide"
+      role="reagent" />
+    <Reagent
+      name="dry toluene"
+      role="solvent" />
+    <Reagent
+      name="silver oxide"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      vessel="reactor"
+      reagent="4-hydroxy-2-butanone"
+      volume="4.3 mL" />
+    <Add
+      vessel="reactor"
+      reagent="dry toluene"
+      volume="50 mL"
+      stir="True"/>
+    <AddSolid
+      vessel="reactor"
+      reagent="silver oxide"
+      mass="13.9 g"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="0 °C"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="benzyl bromide"
+      volume="8.34 mL"
+      time="5 min"
+      stir="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="25 °C"
+      time="18 h"
+      stir="True" />
+    <FilterThrough
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      through="celite"
+      eluting_solvent="dry toluene"
+      eluting_volume="50 mL"
+      eluting_repeats="2" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="48 mbar"
+      time="30 min"
+      mode="auto" />
+
+  </Procedure>
+
+</Synthesis>

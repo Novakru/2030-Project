@@ -1,0 +1,154 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_magnesium_sulfate"
+      type="cartridge"
+      chemical="magnesium sulfate" />
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="separator"
+      type="separator" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="reactor"
+      type="reactor" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="1 N hydrochloric acid"
+      role="reagent" />
+    <Reagent
+      name="3-butyl-4,4-dichlorocyclobutenone"
+      role="reagent" />
+    <Reagent
+      name="diethyl ether/pentane (1:1)"
+      role="reagent" />
+    <Reagent
+      name="ethanol"
+      role="reagent" />
+    <Reagent
+      name="glacial acetic acid"
+      role="reagent" />
+    <Reagent
+      name="saturated aqueous sodium bicarbonate"
+      role="reagent" />
+    <Reagent
+      name="saturated aqueous sodium chloride"
+      role="reagent" />
+    <Reagent
+      name="tetramethylethylenediamine"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="reagent" />
+    <Reagent
+      name="zinc dust"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="filter"
+      reagent="zinc dust"
+      mass="52.6 g" />
+    <Add
+      vessel="filter"
+      reagent="tetramethylethylenediamine"
+      volume="121 mL" />
+    <Add
+      vessel="filter"
+      reagent="ethanol"
+      volume="270 mL"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="0 °C"
+      stir="True" />
+    <Add
+      vessel="filter"
+      reagent="glacial acetic acid"
+      volume="46 mL"
+      time="5 min"
+      stir="True" />
+    <AddSolid
+      vessel="reactor"
+      reagent="3-butyl-4,4-dichlorocyclobutenone"
+      mass="26.59 g" />
+    <Add
+      vessel="reactor"
+      reagent="ethanol"
+      volume="27 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="filter"
+      volume="50 mL"
+      stir_to_vessel="True"
+      time="10 min" />
+    <Stir
+      vessel="filter"
+      time="15 min" />
+    <StopHeatChill
+      vessel="filter" />
+    <Stir
+      vessel="filter"
+      time="2.5 h" />
+    <StopHeatChill
+      vessel="filter" />
+    <Filter
+      vessel="filter"
+      filtrate_vessel="separator" />
+    <WashSolid
+      vessel="filter"
+      solvent="diethyl ether/pentane (1:1)"
+      volume="1.5 l"
+      filtrate_vessel="separator" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="1 N hydrochloric acid"
+      solvent_volume="500 mL" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="water"
+      solvent_volume="500 mL" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="saturated aqueous sodium bicarbonate"
+      solvent_volume="800 mL" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      solvent="saturated aqueous sodium chloride"
+      through="magnesium sulfate"
+      solvent_volume="500 mL" />
+    <Evaporate
+      vessel="rotavap"
+      pressure="200 mbar"
+      time="30 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

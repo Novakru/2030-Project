@@ -1,0 +1,151 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_mgso4"
+      type="cartridge"
+      chemical="mgso4" />
+    <Component
+      id="filter"
+      type="filter" />
+
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="celecoxib"
+      role="reagent" />
+    <Reagent
+      name="k2co3"
+      role="reagent" />
+    <Reagent
+      name="bode catalyst 3"
+      role="reagent" />
+    <Reagent
+      name="benzaldehyde"
+      role="reagent" />
+    <Reagent
+      name="ethanol"
+      role="solvent" />
+    <Reagent
+      name="benzylbromide"
+      role="reagent" />
+    <Reagent
+      name="dmf"
+      role="solvent" />
+    <Reagent
+      name="water"
+      role="solvent" />
+    <Reagent
+      name="heptane"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="filter"
+      reagent="celecoxib"
+      mass="2.33 g" />
+
+    <AddSolid
+      vessel='filter'
+      reagent='k2co3'
+      mass='1.69 g'
+    />
+
+    <AddSolid
+      vessel='filter'
+      reagent='bode catalyst 3'
+      mass='32.3 mg'
+    />
+
+    <Add
+      vessel='filter'
+      reagent='ethanol'
+      volume='25 mL'
+      stir='True'
+    />
+
+    <EvacuateAndRefill
+      vessel='filter'
+      repeats='3'
+    />
+
+    <Add
+      vessel='filter'
+      reagent='benzaldehyde'
+      volume='0.75 mL'
+      stir='True'
+    />
+
+    <HeatChill
+      vessel='filter'
+      temp='70'
+      time='16 h'
+      stir='True'
+    />
+
+    <HeatChillToTemp
+      vessel='filter'
+      temp='25'
+      active='True'
+      continue_heatchill='False'
+    />
+
+    <Add
+      vessel='filter'
+      reagent='dmf'
+      volume='25 mL'
+      stir='True'
+    />
+
+    <Add
+      vessel='filter'
+      reagent='benzylbromide'
+      volume='1.09 mL'
+      stir='True'
+    />
+
+    <Stir
+      vessel='filter'
+      time='3 h'
+    />
+
+    <Add
+      vessel='filter'
+      reagent='water'
+      volume='100 mL'
+      stir='True'
+      time='30 min'
+    />
+
+    <Stir
+      vessel='filter'
+      time='1 h'
+    />
+
+    <Filter
+      vessel='filter'
+    />
+
+    <WashSolid
+      vessel='filter'
+      solvent='water'
+      volume='20 mL'
+      stir_speed='100'
+      repeats='2'
+    />
+
+    <WashSolid
+      vessel='filter'
+      solvent='heptane'
+      volume='20 mL'
+      stir_speed='100'
+      repeats='2'
+    />
+
+  </Procedure>
+
+</Synthesis>

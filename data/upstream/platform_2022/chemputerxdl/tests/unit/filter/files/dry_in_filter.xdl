@@ -1,0 +1,33 @@
+<Synthesis>
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter"
+    />
+  </Hardware>
+
+  <Reagents>
+    <Reagent name="ether" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      vessel="filter"
+      reagent="ether"
+      volume="15 mL"
+      port="top"
+    />
+    <Filter vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="ether"
+    />
+    <Dry
+      vessel="filter"
+      pressure="600"
+      time="2 hrs"
+    />
+
+  </Procedure>
+
+</Synthesis>

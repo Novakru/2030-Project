@@ -1,0 +1,202 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="DIAD_vial"
+      type="flask"
+      chemical="DIAD" />
+    <Component
+      id="column_1"
+      type="cartridge" />
+    <Component
+      id="C815"
+      type="chromatography_system" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="Z-Hyp-OH"
+      role="reagent" />
+    <Reagent
+      name="PPh3"
+      role="reagent" />
+    <Reagent
+      name="methanol"
+      role="solvent" />
+    <Reagent
+      name="THF"
+      role="solvent" />
+    <Reagent
+      name="DIAD"
+      role="reagent" />
+    <Reagent
+      name="diethyl ether"
+      role="solvent" />
+    <Reagent
+      name="toluene"
+      role="solvent" />
+    <Reagent
+      name="methanol"
+      role="solvent" />
+    <Reagent
+      name="petroleum ether"
+      role="solvent" />
+    <Reagent
+      name="ethyl acetate"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="Z-Hyp-OH"
+      mass="796 mg" />
+    <AddSolid
+      vessel="reactor"
+      reagent="PPh3"
+      mass="942 mg" />
+    <ResetHandling
+      solvent="diethyl ether" />
+    <ResetHandling
+      solvent="THF" />
+    <EvacuateAndRefill
+      vessel="reactor" />
+    <Dissolve
+      vessel="reactor"
+      solvent="THF"
+      volume="9.61 mL"
+      time="60 s" />
+    <Add
+      vessel="DIAD_vial"
+      reagent="THF"
+      volume="5.14 mL" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="0 °C"
+      stir="True" />
+    <Transfer
+      from_vessel="DIAD_vial"
+      to_vessel="reactor"
+      volume="8 mL"
+      time="15 min"
+      rinsing_volume="1.7 mL"
+      rinsing_repeats="2"
+      rinse_withdrawal_excess="0.0" />
+    <ResetHandling
+      solvent="THF" />
+    <ResetHandling
+      solvent="diethyl ether" />
+    <HeatChill
+      vessel="reactor"
+      temp="35 °C"
+      time="8 h"
+      stir="True" />
+    <Evaporate
+      vessel="reactor"
+      temp="45 °C"
+      time="1 h"
+      pressure="50 mbar"
+      mode="auto" />
+    <Dissolve
+      vessel="reactor"
+      solvent="diethyl ether"
+      volume="20 mL"
+      time="5 min" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="all"
+      rinsing_volume="20 mL"
+      rinsing_repeats="3"
+      rinse_withdrawal_excess="0.0" />
+    <ResetHandling
+      solvent="diethyl ether" />
+    <Evaporate
+      vessel="rotavap"
+      time="30 min" />
+    <Dry
+      vessel="rotavap"
+      time="30 min" />
+    <ResetHandling
+      solvent="methanol" />
+<ResetHandling
+      solvent="ethyl acetate"
+      repeats="3"
+      volume="3 mL" />
+    <ResetHandling
+      solvent="toluene"
+      repeats="3"
+      volume="3 mL" />
+    <Add
+      reagent="toluene"
+      vessel="rotavap"
+      volume="10.3 mL" />
+    <ResetHandling
+      solvent="ethyl acetate"
+      repeats="3"
+      volume="3 mL" />
+    <Dissolve
+      solvent="ethyl acetate"
+      vessel="rotavap"
+      time="5 min"
+      volume="2.57 mL"
+      temp="30 °C" />
+    <PreparativeChromatography
+      chromatography_system="C815"
+      crude_material_vessel="rotavap"
+      crude_material_volume="20 mL"
+      washing_solvent="toluene"
+      washing_volume="6 mL"
+      additional_washing_solvent_1="ethyl acetate"
+      additional_washing_volume_1="1 mL"
+      washing_repeats="2"
+      cleaning_solvent_1="methanol"
+      clean_product_vessel="True"
+      cleaning_repeats="2"
+      product_vessel="rotavap"
+      column="column_1"
+      baseline_correction="False"
+      equilibration_gradient_coordinates="[[0, [90, 10, 0, 0]],
+                                           [5, [90, 10, 0, 0]]]"
+      gradient_coordinates="[[0, [90, 10, 0, 0]],
+                             [6, [60, 40, 0, 0]],
+                             [8, [60, 40, 0, 0]],
+                             [12, [40, 60, 0, 0]],
+                             [17, [40, 60, 0, 0]]]"
+      use_detectors="['ELSD']"
+      detector_thresholds="[45]"
+      start_collection_after_cv="7"
+      stop_collection_after_cv="13" />
+    <Evaporate
+      vessel="rotavap"
+      mode="auto"
+      temp="45 °C"
+      time="30 min" />
+    <Evaporate
+      vessel="rotavap"
+      mode="auto"
+      temp="45 °C"
+      time="30 min" />
+    <Dry
+      vessel="rotavap"
+      temp="45 °C"
+      time="30 min" />
+    <ResetHandling
+      solvent="ethyl acetate"
+      repeats="3"
+      volume="3 mL" />
+    <ResetHandling
+      solvent="methanol"
+      repeats="3"
+      volume="3 mL" />
+  </Procedure>
+
+</Synthesis>

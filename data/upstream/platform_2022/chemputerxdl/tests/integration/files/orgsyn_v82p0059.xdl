@@ -1,0 +1,70 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="1,3-dimethylurea THF solution" />
+    <Reagent
+      name="THF" />
+    <Reagent
+      name="acetyl chloride" />
+    <Reagent
+      name="tert-butyl isocyanide" />
+    <Reagent
+      name="tetrahydrofuran(THF)" />
+  </Reagents>
+
+  <Procedure>
+    <Dry
+      vessel="filter" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="25°C"
+      stir="True" />
+    <Add
+      reagent="tetrahydrofuran(THF)"
+      vessel="filter"
+      volume="250 mL" />
+    <Add
+      reagent="tert-butyl isocyanide"
+      vessel="filter"
+      volume="12.4 mL"
+      stir="True" />
+    <Add
+      reagent="acetyl chloride"
+      vessel="filter"
+      volume="8.6 mL"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="15 mins"
+      stir_speed="600 RPM" />
+    <Add
+      reagent="1,3-dimethylurea THF solution"
+      vessel="filter"
+      volume="150 mL"
+      dispense_speed="10"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="14 hrs" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="THF"
+      volume="20 mL"
+      temp="10°C" />
+    <Dry
+      vessel="filter"
+      time="20 hrs"
+      temp="50°C" />
+  </Procedure>
+
+</Synthesis>

@@ -1,0 +1,101 @@
+{
+  "verified_at": "2026-10-26T08:41:52.145099+00:00",
+  "scope": "Standalone human review tool; official platform compilation deferred",
+  "runtime": {
+    "python": "3.10.16",
+    "streamlit": "1.65.0",
+    "pandas": "2.3.3",
+    "syntax_python_3_9": "passed; execution tested on Python 3.10"
+  },
+  "database": "audit/data/reviews.sqlite3",
+  "stats": {
+    "pending": 377,
+    "accepted": 0,
+    "rejected": 0,
+    "total": 377
+  },
+  "record_types": {
+    "negative": 237,
+    "positive": 140
+  },
+  "source_tiers": {
+    "perturbed": 225,
+    "unrated": 12,
+    "silver": 140
+  },
+  "risk_categories": 20,
+  "review_events": 0,
+  "sqlite_integrity_check": "ok",
+  "foreign_key_check": "passed",
+  "source_files_sha256": {
+    "data/positives.jsonl": "efb49868dde29b73a1c56010d34673b20edc3b2371fc30c2402adb4ee1aa0cad",
+    "data/negatives.jsonl": "026ee47803f23ecd1071160c8ce5c96b51764fb83a84f746b0afe9ace5d220bb",
+    "data/native_negatives.jsonl": "ccbfe9226c477c8a9f710fc3342ea08a51ebddf883018557d5d2d1211cc3807e",
+    "data/sop/negatives.jsonl": "7d81448aaa502b9095ea122b7ac96ccae0c4102def5a46760b1f90b933b65e6f"
+  },
+  "source_files_unchanged": true,
+  "all_pending_export_objects_equal_sources": true,
+  "idempotent_reimport": {
+    "inserted": 0,
+    "skipped": 377,
+    "changed_duplicates": 0
+  },
+  "audit_tests": {
+    "passed": 38,
+    "failed": 0,
+    "log": "audit/test-results.log"
+  },
+  "existing_pipeline_tests": {
+    "passed": 229,
+    "failed": 0
+  },
+  "interface": {
+    "version": "grading-v2",
+    "records_per_page": 1,
+    "next_after_decision": true,
+    "back_preserves_reviewed_records": true,
+    "default_details": "collapsed",
+    "focus_adapters_checked": 377,
+    "focus_sources": [
+      "semantic JSON patch",
+      "quantity checks",
+      "conflicts/missing",
+      "unknown constraints",
+      "native XDL contract"
+    ]
+  },
+  "risk_explanations": {
+    "records": 237,
+    "risk_classes": 20,
+    "label_types": {
+      "hard": 177,
+      "soft": 60
+    },
+    "origins": {
+      "结构化证据解释": 225,
+      "原生物料依赖约束解释": 12
+    },
+    "new_risk_judgments": false,
+    "llm_calls": 0,
+    "persisted_to_data": false
+  },
+  "browser": {
+    "desktop": "1440x1000",
+    "narrow": "390x844",
+    "page_errors": [],
+    "negative_filter_count": 237,
+    "horizontal_body_overflow": false,
+    "read_only_paging": true,
+    "A1_focus": "55 mL charge versus 50 mL capacity, parent comparison visible",
+    "native_D2_focus": "consumer Evaporate localized by contract XPath",
+    "risk_reason_visible": true,
+    "inspection": "Read-only browser checks; screenshots inspected after loading and sidebar transitions"
+  },
+  "boundaries": [
+    "No source JSON writes",
+    "No synchronization",
+    "No fabricated human decisions",
+    "No changes to risk labels or hardware verification",
+    "No automatic strict-gold dataset admission"
+  ]
+}

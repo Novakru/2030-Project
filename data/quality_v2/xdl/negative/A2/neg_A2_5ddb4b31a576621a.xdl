@@ -1,0 +1,26 @@
+<Synthesis>
+  <Metadata description="Intentionally perturbed source-derived procedure; experimental outcome not observed." publication="https://pubs.rsc.org/en/content/articlelanding/2019/re/c9re00086k" reaction_class="Development of an automated kinetic profiling system with online HPLC for reaction optimization"/>
+  <Hardware>
+    <!--Analysis binding: {"component": "heater", "params": {"T_max_C": 310, "T_min_C": null, "rpm_max": 1500, "rpm_min": 50}, "verified": false, "wetted_materials": []}-->
+    <Component id="heater" type="heater"/>
+    <!--Analysis binding: {"component": "reactor", "params": {"capacity_mL": 500.0}, "verified": false, "wetted_materials": null}-->
+    <Component id="reactor" type="reactor"/>
+  </Hardware>
+  <Reagents>
+    <!--r1: O=C(CC(OC)=O)C1CC1-->
+    <Reagent name="r1" role="substrate"/>
+    <!--r2: CI-->
+    <Reagent name="r2" role="substrate"/>
+    <!--r3: C(=O)([O-])[O-].[K+].[K+]-->
+    <Reagent name="r3" role="reagent"/>
+  </Reagents>
+  <Procedure>
+    <!--Analysis context: {"pressure_control": "UNKNOWN", "reflux": false}-->
+    <!--Atmosphere context (no purge operation inferred): nitrogen; environment-->
+    <Add vessel="reactor" reagent="r1" amount="276 mmol"/>
+    <Add vessel="reactor" reagent="r2" amount="276 mmol"/>
+    <Add vessel="reactor" reagent="r3" amount="414 mmol"/>
+    <!--Analysis controller setpoint: 320 °C-->
+    <HeatChill vessel="reactor" temp="25 °C" time="57600 s" stir="true"/>
+  </Procedure>
+</Synthesis>

@@ -1,0 +1,150 @@
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor1"
+      type="reactor"
+    />
+    <Component
+      id="reactor2"
+      type="reactor"
+    />
+    <Component
+      id="reactor3"
+      type="reactor"
+    />
+    <Component
+      id="rotavap"
+      type="rotavap"
+    />
+    <Component
+      id="reactor4"
+      type="reactor"
+    />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="2-iodobenzoic acid"
+    />
+    <Reagent
+      name="4-chlorobenzaldehyde"
+    />
+    <Reagent
+      name="allylamine"
+    />
+    <Reagent
+      name="tert-butyl isocyanide"
+    />
+    <Reagent
+      name="methanol"
+      role="solvent"
+      use_for_cleaning="true"
+    />
+    <Reagent
+      name="acetone"
+      role="solvent"
+      use_for_cleaning="true"
+    />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor1"
+      reagent="allylamine"
+      mass="685 mg"
+    />
+    <Add
+      vessel="reactor1"
+      reagent="methanol"
+      volume="6 mL"
+    />
+    <AddSolid
+      vessel="reactor2"
+      reagent="4-chlorobenzaldehyde"
+      mass="1.69 g"
+      stir="True"
+    />
+    <Transfer
+      from_vessel="reactor1"
+      to_vessel="reactor2"
+      volume="all"
+      rinsing_solvent="methanol"
+      rinsing_volume="3 mL"
+    />
+    <Stir
+      vessel="reactor2"
+      time="10 mins"
+    />
+    <AddSolid
+      vessel="reactor3"
+      reagent="2-iodobenzoic acid"
+      mass="2.98 g"
+      stir="True"
+    />
+    <Transfer
+      from_vessel="reactor2"
+      to_vessel="reactor3"
+      volume="all"
+      rinsing_solvent="methanol"
+      rinsing_volume="3 mL"
+    />
+    <Stir
+      vessel="reactor3"
+      time="5 mins"
+    />
+    <AddSolid
+      vessel="reactor4"
+      reagent="tert-butyl isocyanide"
+      mass="997 mg"
+      stir="True"
+    />
+    <Transfer
+      from_vessel="reactor3"
+      to_vessel="reactor4"
+      volume="all"
+      rinsing_solvent="methanol"
+      rinsing_volume="3 mL"
+    />
+    <Stir
+      vessel="reactor4"
+      time="16 hrs"
+    />
+    <Filter
+      vessel="reactor4"
+      aspiration_speed="10"
+    />
+    <WashSolid
+      vessel="reactor4"
+      solvent="methanol"
+      volume="10 mL"
+      stir_speed="250 RPM"
+    />
+    <Add
+      vessel="reactor4"
+      reagent="acetone"
+      volume="24 mL"
+      stir="true"
+    />
+    <Stir
+      vessel="reactor4"
+      time="10 mins"
+    />
+    <Transfer
+      from_vessel="reactor4"
+      to_vessel="rotavap"
+      volume="all"
+      rinsing_solvent="acetone"
+      rinsing_volume="3 mL"
+      rinsing_repeats="2"
+    />
+    <Evaporate
+      vessel="rotavap"
+      temp="40.0 °C"
+      pressure="0.320 atm"
+      time="30 mins"
+      mode="auto"
+    />
+  </Procedure>
+
+</Synthesis>

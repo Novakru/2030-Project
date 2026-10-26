@@ -1,0 +1,158 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_mgso4"
+      type="cartridge"
+      chemical="mgso4" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="4-phenyl-1-butene"
+      role="reagent" />
+    <!-- MW 234 -->
+    <Reagent
+      name="p-iodoanisole"
+      role="reagent" />
+    <Reagent
+      name="t-butyliodide"
+      role="reagent" />
+    <Reagent
+      name="dioxane"
+      role="reagent" />
+    <Reagent
+      name="nibr2-glyme"
+      role="reagent" />
+    <Reagent
+      name="dtbbpy"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="reagent" />
+    <Reagent
+      name="aq. nh4cl"
+      role="reagent" />
+    <Reagent
+      name="aq. nacl"
+      role="reagent" />
+    <Reagent
+      name="etoac"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+
+    <!-- 5 mol% MW 308.6 -->
+    <AddSolid
+      vessel="reactor"
+      reagent="nibr2-glyme"
+      mass="154 mg" />
+
+    <!-- 6 mol% MW 268.4-->
+    <AddSolid
+      vessel="reactor"
+      reagent="dtbbpy"
+      mass="161 mg" />
+
+    <!-- 2.0 eq. MW 234  -->
+    <AddSolid
+      vessel="reactor"
+      reagent="p-iodoanisole"
+      mass="4.68 g" />
+
+    <EvacuateAndRefill
+      vessel='reactor'
+      repeats='3'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='dioxane'
+      volume='100 mL'
+      stir='True'
+    />
+
+    <Stir
+      vessel='reactor'
+      time='5 min'
+    />
+
+    <!--3.0 eq. MW 184 d=1.54 -->
+    <Add
+      vessel='reactor'
+      reagent='t-butyliodide'
+      volume='3.58 mL'
+      stir='True'
+    />
+
+  <!-- 10 mmol MW 132.2 d=0.88 -->
+    <Add
+      vessel='reactor'
+      reagent='4-phenyl-1-butene'
+      volume='1.50 mL'
+      stir='True'
+    />
+
+    <Stir
+      vessel='reactor'
+      time='16 h'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='water'
+      volume='30 mL'
+      stir='True'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='etoac'
+      volume='250 mL'
+      stir='True'
+    />
+
+    <Separate
+      purpose='wash'
+      from_vessel='reactor'
+      separation_vessel='separator'
+      to_vessel='separator'
+      product_phase='top'
+      solvent='aq. nh4cl'
+      solvent_volume='40'
+      repeats='3'
+    />
+
+    <Separate
+      purpose='wash'
+      from_vessel='separator'
+      separation_vessel='separator'
+      to_vessel='rotavap'
+      through='mgso4'
+      product_phase='top'
+      solvent='aq. nacl'
+      solvent_volume='40'
+      repeats='1'
+    />
+
+  <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="50 mbar"
+      time="60 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

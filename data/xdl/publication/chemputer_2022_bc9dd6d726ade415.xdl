@@ -1,0 +1,146 @@
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor"
+    />
+    <Component
+      id="rotavap"
+      type="rotavap"
+    />
+    <Component
+      id="Silica"
+      type="cartridge"
+      chemical="Silica"
+    />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="pd2(dba)3-CHCl3"
+    />
+    <Reagent
+      name="tri-2-furylphosphine"
+    />
+    <Reagent
+      name="THF"
+    />
+    <Reagent
+      name="iodobenzene solution in THF"
+    />
+    <Reagent
+      name="2-pyridyldimethyl(vinyl)silane solution in THF"
+    />
+    <Reagent
+      name="triethylamine solution in THF"
+    />
+    <Reagent
+      name="MS3A"
+    />
+    <Reagent
+      name="3-iodothiophene solution in THF"
+    />
+    <Reagent
+      name="ethyl acetate"
+    />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      reagent="MS3A"
+      vessel="reactor"
+      mass="100 mg"
+    />
+    <AddSolid
+      reagent="pd2(dba)3-CHCl3"
+      vessel="reactor"
+      mass="78.4 mg"
+    />
+    <AddSolid
+      reagent="tri-2-furylphosphine"
+      vessel="reactor"
+      mass="35.2 mg"
+    />
+    <EvacuateAndRefill
+      vessel="reactor"
+      vacuum_pressure="10 mbar"
+    />
+    <Add
+      reagent="iodobenzene solution in THF"
+      vessel="reactor"
+      volume="3 mL"
+      priming_volume="1 mL"
+      aspiration_speed="2"
+      stir="True"
+    />
+    <Add
+      reagent="2-pyridyldimethyl(vinyl)silane solution in THF"
+      vessel="reactor"
+      volume="4 mL"
+      priming_volume="0.5 mL"
+      aspiration_speed="2"
+      stir="True"
+    />
+    <Add
+      reagent="triethylamine solution in THF"
+      vessel="reactor"
+      volume="3 mL"
+      priming_volume="2 mL"
+      aspiration_speed="2"
+      stir="True"
+    />
+    <HeatChill
+      vessel="reactor"
+      temp="67.0 °C"
+      time="9 hrs"
+      stir="True"
+    />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="25 °C"
+      stir="True"
+      continue_heatchill="False"
+    />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="all"
+      through="Silica"
+      move_speed="5"
+    />
+    <Repeat repeats="3">
+      <Add
+        reagent="ethyl acetate"
+        vessel="reactor"
+        volume="60 mL"
+        priming_volume="0 mL"
+        prime_n_times="0"
+        stir="True"
+      />
+      <Stir
+        vessel="reactor"
+        time="60 secs"
+      />
+      <Transfer
+        from_vessel="reactor"
+        to_vessel="rotavap"
+        volume="all"
+        through="Silica"
+        move_speed="5"
+      />
+    </Repeat>
+    <Evaporate
+      vessel="rotavap"
+      temp="50 °C"
+      time="30 mins"
+      mode="auto"
+    />
+    <Dry
+      vessel="rotavap"
+      temp="50 °C"
+      pressure="10 mbar"
+    />
+  </Procedure>
+
+</Synthesis>

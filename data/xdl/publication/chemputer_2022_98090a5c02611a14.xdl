@@ -1,0 +1,177 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="reactor2"
+      type="reactor" />
+    <Component
+      id="reactor3"
+      type="reactor" />
+    <Component
+      id="cartridge_MgSO4"
+      type="cartridge"
+      chemical="MgSO4" />
+    <Component
+      id="glass wool"
+      type="cartridge"
+      chemical="glass wool" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="water"
+      role="reagent" />
+    <Reagent
+      name="anhydrous AlCl3"
+      role="reagent" />
+    <Reagent
+      name="p-TsCl"
+      role="reagent" />
+    <Reagent
+      name="DCM"
+      role="reagent" />
+    <Reagent
+      name="bis(trimethylsilyl)acetylene"
+      role="reagent" />
+    <Reagent
+      name="20 % HCl"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <Async
+      pid="dry_reactor">
+      <Dry
+        vessel="reactor"
+        time="30 min"
+        temp="120 °C"
+        pressure="10 mbar" />
+      <EvacuateAndRefill
+        vessel="reactor" />
+      <HeatChillToTemp
+        vessel="reactor"
+        temp="25 °C"
+        stir="True" />
+    </Async>
+    <Dry
+      vessel="reactor2"
+      time="30 min"
+      temp="120 °C"
+      pressure="10 mbar" />
+    <EvacuateAndRefill
+      vessel="reactor2" />
+    <HeatChillToTemp
+      vessel="reactor2"
+      temp="25 °C"
+      stir="True" />
+
+
+    <AddSolid
+      vessel="reactor2"
+      reagent="anhydrous AlCl3"
+      mass="29.4 g" />
+    <Add
+      vessel="reactor2"
+      reagent="DCM"
+      volume="200 mL"
+      stir="True" />
+    <AddSolid
+      vessel="reactor2"
+      reagent="p-TsCl"
+      mass="41.9 g" />
+    <HeatChill
+      vessel="reactor2"
+      temp="25 °C"
+      time="20 min"
+      stir="True" />
+    <Await
+      pid="dry_reactor" />
+    <AddSolid
+      vessel="reactor"
+      reagent="bis(trimethylsilyl)acetylene"
+      mass="34 g" />
+    <Add
+      vessel="reactor"
+      reagent="DCM"
+      volume="200 mL"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="0 °C"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor2"
+      to_vessel="reactor"
+      volume="250 mL"
+      through="glass wool"
+      time="60 min"
+      rinsing_solvent="DCM"
+      rinsing_volume="50 mL" />
+    <HeatChill
+      vessel="reactor"
+      temp="25 °C"
+      time="12 h"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor2"
+      temp="-2 °C"
+      stir="True" />
+    <Add
+      vessel="reactor3"
+      reagent="water"
+      volume="200 mL" />
+    <Add
+      vessel="reactor3"
+      reagent="20 % HCl"
+      volume="200 mL" />
+    <HeatChill
+      vessel="reactor3"
+      temp="-2 °C"
+      time="15 min"
+      stir="True"
+      stir_speed="600 RPM" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="reactor3"
+      volume="450 mL"
+      time="30 min"
+      stir_to_vessel="True"/>
+    <Separate
+      purpose="extract"
+      from_vessel="reactor3"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="bottom"
+      solvent="water"
+      through="MgSO4"
+      solvent_volume="150 mL"
+      repeats="2" />
+    <Evaporate
+      vessel="rotavap"
+      time="30 min"
+      mode="auto" />
+    <Dry
+      vessel="reactor"
+      time="30 min"
+      temp="50 °C"
+      pressure="10 mbar" />
+  </Procedure>
+
+</Synthesis>

@@ -1,0 +1,130 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="separator"
+      type="separator" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="(R,R)-N,N'-bis(3,5-di-tert-butylsalicylidene)-1,2-cyclohexanediamine toluene solution"
+      role="reagent" />
+    <Reagent
+      name="heptane"
+      role="reagent" />
+    <Reagent
+      name="methylene chloride"
+      role="reagent" />
+    <Reagent
+      name="saturated aqueous sodium chloride"
+      role="reagent" />
+    <Reagent
+      name="toluene"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="reagent" />
+    <Reagent
+      name="brine"
+      role="reagent" />
+    <Reagent
+      name="ethanol"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <Dissolve
+      vessel="reactor"
+      solvent="ethanol"
+      volume="50 mL"
+      time="10 min" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="77.5 °C"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="(R,R)-N,N'-bis(3,5-di-tert-butylsalicylidene)-1,2-cyclohexanediamine toluene solution"
+      volume="25 mL"
+      time="45 min" />
+    <Add
+      vessel="reactor"
+      reagent="toluene"
+      volume="5 mL"
+      stir="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="110.6 °C"
+      time="2 h"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="saturated aqueous sodium chloride"
+      volume="10 mL"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="25 °C"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="toluene"
+      volume="30 mL"
+      stir="True" />
+    <Stir
+      vessel="reactor"
+      time="5 min" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="300 mL"
+      flush_tubing="True" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="water"
+      solvent_volume="60 mL"
+      repeats="3" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      solvent="saturated aqueous sodium chloride"
+      through="anhydrous sodium sulfate"
+      solvent_volume="50 mL" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="190 mbar"
+      time="35 min" />
+    <Dissolve
+      vessel="rotavap"
+      solvent="methylene chloride"
+      volume="30 mL" />
+    <Add
+      vessel="rotavap"
+      reagent="heptane"
+      volume="30 mL"
+      stir="True" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      time="35 min"
+      pressure = "100 mbar" />
+  </Procedure>
+
+</Synthesis>

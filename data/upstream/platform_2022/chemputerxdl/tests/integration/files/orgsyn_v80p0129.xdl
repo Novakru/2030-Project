@@ -1,0 +1,65 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="copper(I)iodide" />
+    <Reagent
+      name="distilled water" />
+    <Reagent
+      name="hydriodic acid" />
+    <Reagent
+      name="propiolic acid" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="copper(I)iodide"
+      vessel="filter"
+      mass="0.2 g" />
+    <Add
+      reagent="hydriodic acid"
+      vessel="filter"
+      volume="40 mL" />
+    <Add
+      reagent="propiolic acid"
+      vessel="filter"
+      volume="10 mL"
+      time="60 secs"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="130°C"
+      stir="True" />
+    <HeatChill
+      vessel="filter"
+      temp="100°C"
+      time="30 mins"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="28°C"
+      stir="True" />
+    <HeatChill
+      vessel="filter"
+      temp="25°C"
+      time="15 mins"
+      stir="True" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="distilled water"
+      volume="70 mL"
+      repeats="3" />
+    <Dry
+      vessel="filter" />
+  </Procedure>
+
+</Synthesis>

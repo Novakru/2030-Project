@@ -1,0 +1,84 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="1,4-dioxane"
+      role="reagent" />
+    <Reagent
+      name="2,2,2-trifluoro-1 methoxyethanol"
+      role="reagent" />
+    <Reagent
+      name="acetamide"
+      role="reagent" />
+    <Reagent
+      name="hexanes/ethyl acetate"
+      role="reagent" />
+    <Reagent
+      name="silica gel"
+      role="reagent" />
+    <Reagent
+      name="tert-butyl methyl ether"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="2,2,2-trifluoro-1 methoxyethanol"
+      mass="14.75 g" />
+    <AddSolid
+      vessel="reactor"
+      reagent="acetamide"
+      mass="6 g" />
+    <Add
+      vessel="reactor"
+      reagent="1,4-dioxane"
+      volume="100 mL" />
+    <HeatChill
+      vessel="reactor"
+      temp="101.1 °C"
+      time="2 h"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="25 °C"
+      stir="True"
+      continue_heatchill="False" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="all" />
+    <Evaporate
+      vessel="rotavap"
+      time="30 min"
+      temp="40"
+      mode="auto" />
+    <!-- <Dissolve
+      vessel="rotavap"
+      solvent="tert-butyl methyl ether"
+      volume="20 mL" />
+    <AddSolid
+      vessel="rotavap"
+      reagent="silica gel"
+      mass="10 g"
+      stir="True" />
+    <Evaporate
+      vessel="rotavap"
+      temp="50 °C"
+      pressure="838 mbar"
+      time="30 min"
+      mode="auto" /> -->
+  </Procedure>
+
+</Synthesis>

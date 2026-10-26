@@ -1,0 +1,164 @@
+<?xdl version="0.4.0" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="cartridge_anhydrous magnesium sulfate(MgSO4)"
+      type="cartridge"
+      chemical="anhydrous magnesium sulfate(MgSO4)" />
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="waste_X"
+      type="ChemputerWaste" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="1,2-dibromoethane and diethyl malonate" />
+    <Reagent
+      name="50 % aqueous NaOH solution" />
+    <Reagent
+      name="brine" />
+    <Reagent
+      name="concentrated hydrochloric acid" />
+    <Reagent
+      name="ether" />
+    <Reagent
+      name="toluene" />
+    <Reagent
+      name="water" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="50 % aqueous NaOH solution"
+      vessel="filter"
+      volume="50 mL"
+      stir="True"
+      stir_speed="600 RPM" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="60 °C" />
+    <Add
+      reagent="1,2-dibromoethane and diethyl malonate"
+      vessel="filter"
+      volume="7.13 mL"
+      stir="True" 
+      stir_speed="600 RPM" />
+    <HeatChill
+      vessel="filter"
+      temp="65°C"
+      time="10 min"
+      stir_speed="600 RPM" />
+    <HeatChill
+      vessel="filter"
+      temp="40°C"
+      time="20 min"
+      stir_speed="600 RPM" />    
+    <HeatChill
+      vessel="filter"
+      temp="30°C"
+      time="40 min"
+      stir_speed="600 RPM" />
+    <HeatChill
+      vessel="filter"
+      temp="25°C"
+      time="1 hrs"
+      stir_speed="600 RPM" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="15°C" />
+    <Add
+      reagent="concentrated hydrochloric acid"
+      vessel="filter"
+      volume="65 mL"
+      dispense_speed="3"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="25°C" />
+    <Add
+      reagent="brine"
+      vessel="filter"
+      volume="80 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="filter"
+      to_vessel="separator"
+      volume="500" />
+    <Add
+      reagent="water"
+      vessel="filter"
+      volume="15 mL"
+      stir="True" />
+    <HeatChill
+      vessel="filter"
+      temp="25°C"
+      time="10 min"
+      stir_speed="600 RPM" />
+    <Transfer
+      from_vessel="filter"
+      to_vessel="separator"
+      volume="50 mL" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="ether"
+      solvent_volume="30 mL"
+      repeats="8" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      solvent="brine"
+      through="anhydrous magnesium sulfate(MgSO4)"
+      solvent_volume="20 mL"
+      repeats="1" />
+    <Evaporate
+      vessel="rotavap"
+      temp="50°C"
+      pressure="440 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Dry
+      vessel="rotavap"
+      time="10 mins"
+      temp="50°C" />
+    <Add
+      reagent="toluene"
+      vessel="rotavap"
+      volume="10 mL"
+      stir="False" />
+    <Stir
+      vessel="rotavap"
+      time="5 mins" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="waste_X"
+      volume="50 mL" />
+    <Evaporate
+      vessel="rotavap"
+      temp="50°C"
+      pressure="48 mbar"
+      time="10 mins"
+      mode="auto" />
+    <Dry
+      vessel="rotavap"
+      time="30 mins"
+      temp="50°C" />
+  </Procedure>
+
+</Synthesis>

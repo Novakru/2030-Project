@@ -1,0 +1,176 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="cartridge_MgSO4"
+      type="cartridge"
+      chemical="MgSO4" />
+    <Component
+      id="separator"
+      type="separator" />
+    <Component
+      id="buffer_flask"
+      type="flask" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="sodium hydride"
+      role="reagent" />
+    <Reagent
+      name="petroleum ether"
+      role="solvent" />
+    <Reagent
+      name="THF"
+      role="solvent" />
+    <Reagent
+      name="methanol"
+      role="solvent" />
+    <Reagent
+      name="(3-Methyl-2-butenyl)propanedioic acid dimethyl ester"
+      role="reagent" />
+    <Reagent
+      name="propargyl bromide 80% in toluene"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="solvent" />
+    <Reagent
+      name="acetone"
+      role="solvent" />
+    <Reagent
+      name="ether"
+      role="solvent" />
+    <Reagent
+      name="brine"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="sodium hydride"
+      mass="9 g" />
+    <EvacuateAndRefill
+      vessel="reactor" />
+    <WashSolid
+      vessel="reactor"
+      solvent="petroleum ether"
+      volume="20 mL"
+      repeats="3"
+      dry_under_vacuum="False" />
+    <Add
+      vessel="reactor"
+      reagent="THF"
+      volume="500 mL"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="0 °C"
+      stir="True"
+      continue_heatchill="True" />
+    <Add
+      vessel="reactor"
+      reagent="(3-Methyl-2-butenyl)propanedioic acid dimethyl ester"
+      amount="36.4 g"
+      time="30 min"
+      stir="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="25 °C"
+      time="60 min"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="0 °C"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="propargyl bromide 80% in toluene"
+      volume="22 mL"
+      time="10 min"
+      stir="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="25 °C"
+      time="16 h"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="water"
+      volume="50 mL"
+      time="10 min"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="all" />
+    <Evaporate
+      vessel="rotavap"
+      time="30 min"
+      mode="auto" />
+    <Dissolve
+      vessel="rotavap"
+      solvent="ether"
+      volume="500 mL"
+      time="5 min"
+      stir_speed="150 RPM" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="separator"
+      volume="all" />
+    <CleanVessel
+      vessel="rotavap"
+      solvent="water" />
+    <CleanVessel
+      vessel="rotavap"
+      solvent="acetone" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="water"
+      solvent_volume="300 mL"
+      repeats="3"
+      waste_phase_to_vessel="buffer_flask" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      solvent="brine"
+      through="MgSO4"
+      solvent_volume="100 mL"
+      waste_phase_to_vessel="buffer_flask" />
+    <Separate
+      purpose="extract"
+      from_vessel="buffer_flask"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      solvent="ether"
+      through="MgSO4"
+      solvent_volume="150 mL"
+      repeats="2" />
+    <Evaporate
+      vessel="rotavap"
+      time="30 min"
+      mode="auto" />
+    <Dry
+      vessel="rotavap"
+      time="30 min"
+      temp="50 °C" />
+  </Procedure>
+
+</Synthesis>

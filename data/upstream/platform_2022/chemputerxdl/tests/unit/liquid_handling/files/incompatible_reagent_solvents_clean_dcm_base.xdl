@@ -1,0 +1,79 @@
+<?xdl version="0.1.13" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="valve_rotavap"
+      type="valve" />
+    <Component 
+      id="pump_reactor"
+      type="pump" />
+    <Component 
+      id="pump_rotavap"
+      type="pump"/>
+    <Component
+      id="waste_rotavap"
+      type="waste" />
+    <Component
+      id="waste_reactor"
+      type="waste"/>
+    <Component
+      id="valve_reactor"
+      type="valve" /> 
+    <Component
+      id="stirrer_reactor"
+      type="stirrer"/>
+    <Component
+      id="reactor_heater"
+      type="heater"/>
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="pip"
+      clean_with="ether" />
+    <Reagent 
+      name="substrateS3"
+      clean_with="ether"
+      role="base"/>
+    <Reagent 
+      name="ala"
+      incompatible_reagents="ether"
+      role="base"/>
+    <Reagent
+      name="dcm" />
+    <Reagent 
+      name="ether" />
+    <Reagent
+      name="toluene" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="pip"
+      vessel="reactor"
+      volume="5 mL"/>
+    <Add
+      reagent="ala"
+      vessel="reactor"
+      volume="10 mL" />
+    <Add
+      reagent="dcm"
+      vessel="reactor"
+      volume="5 mL"/>
+    <Add 
+      reagent="substrateS3"
+      vessel="reactor"
+      volume="10 mL"/>
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="45°C" />
+    <Stir
+      vessel="reactor"
+      time="10 mins" />
+  </Procedure>
+
+</Synthesis>

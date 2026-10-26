@@ -1,0 +1,246 @@
+{
+  "id": "pos_c948ea22cf6a42f39e7904366cf4bc1a",
+  "source": {
+    "dataset_id": "ord_dataset-99c23cf435dc42f1af884053bc8b11c7",
+    "dataset_name": "Borylation dataset from Roche",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+    "file_sha256": "59cd8c35e021be300944f8e556b8fd7ec30a6bc32ff36a54be133aad8e44c393",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": null,
+    "reaction_id": "ord-c948ea22cf6a42f39e7904366cf4bc1a",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet"
+  },
+  "raw_id": "ord-c948ea22cf6a42f39e7904366cf4bc1a",
+  "raw_sha256": "f9b99f00b71ed2a0b4ca4b88b16386df28cb1ab41050187ba4c13796fbe01f23",
+  "reaction_smiles": "O=C(NCCC=1C=CC=CC1Br)C(F)(F)F>>O=C(NCCC1=CC(=CC=C1Br)B2OC(C)(C)C(O2)(C)C)C(F)(F)F.O=C(NCCC1=CC=C(C=C1Br)B2OC(C)(C)C(O2)(C)C)C(F)(F)F",
+  "reaction_class": "borylation",
+  "yield_percent": 60.0,
+  "reagents": [
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.00375
+      },
+      "id": "r1",
+      "input_key": "catalyst_1",
+      "name": "C[OH2+].C[OH2+].C1CC=CCCC=C1.C1CC=CCCC=C1.[Ir].[Ir]",
+      "role": "CATALYST",
+      "smiles": "C[OH2+].C[OH2+].C1CC=CCCC=C1.C1CC=CCCC=C1.[Ir].[Ir]",
+      "source_path": "/inputs/catalyst_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.0075
+      },
+      "id": "r2",
+      "input_key": "reagent_1",
+      "name": "N=1C=CC(=CC1C=2N=CC=C(C2)C(C)(C)C)C(C)(C)C",
+      "role": "REAGENT",
+      "smiles": "N=1C=CC(=CC1C=2N=CC=C(C2)C(C)(C)C)C(C)(C)C",
+      "source_path": "/inputs/reagent_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.5
+      },
+      "id": "r3",
+      "input_key": "reagent_2",
+      "name": "O1B(OC(C)(C)C1(C)C)B2OC(C)(C)C(O2)(C)C",
+      "role": "REAGENT",
+      "smiles": "O1B(OC(C)(C)C1(C)C)B2OC(C)(C)C(O2)(C)C",
+      "source_path": "/inputs/reagent_2/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 1.25
+      },
+      "id": "r4",
+      "input_key": "solvent_1",
+      "name": "O1CCCC1",
+      "role": "SOLVENT",
+      "smiles": "O1CCCC1",
+      "source_path": "/inputs/solvent_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.25
+      },
+      "id": "r5",
+      "input_key": "startingmat_1",
+      "name": "O=C(NCCC=1C=CC=CC1Br)C(F)(F)F",
+      "role": "REACTANT",
+      "smiles": "O=C(NCCC=1C=CC=CC1Br)C(F)(F)F",
+      "source_path": "/inputs/startingmat_1/components/0"
+    }
+  ],
+  "steps": [
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "id": "s001",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "using 4f (74 mg, 0.25 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/startingmat_1/components/0/amount",
+        "source_alias": "4f"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.25
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "id": "s002",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "B2pin2 (127 mg, 0.50 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/reagent_2/components/0/amount",
+        "source_alias": "B2pin2"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.5
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "id": "s003",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "[Ir(COD)OMe]2 (2.5 mg, 0.00375 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/catalyst_1/components/0/amount",
+        "source_alias": "[Ir(COD)OMe]2"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.00375
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "id": "s004",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "dtbpy (2.0 mg, 0.0075 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/reagent_1/components/0/amount",
+        "source_alias": "dtbpy"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.0075
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "id": "s005",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "in THF (1.25 mL)",
+        "stage": "reaction",
+        "amount_source": "/inputs/solvent_1/components/0/amount",
+        "source_alias": "THF"
+      },
+      "amount": {
+        "unit": "mL",
+        "value": 1.25
+      }
+    },
+    {
+      "op": "HeatChill",
+      "temp_C": 50,
+      "duration_s": 72000,
+      "stir": true,
+      "id": "s006",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Stirred in vial at 50 °C for 20 hours.",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Purify",
+      "method": "chromatography",
+      "id": "s007",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The crude product was purified by silica gel chromatography (15% EtOAc in Petroleum Ether 40‐60 o C)",
+        "stage": "purification"
+      }
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "pressure_control": "SEALED",
+    "source_setup": {}
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "model": "gpt-5.6-terra",
+    "usage": {
+      "completion_tokens": 864,
+      "prompt_tokens": 1233,
+      "total_tokens": 2097,
+      "prompt_tokens_details": {
+        "cache_write_tokens": 1230,
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 214
+      }
+    },
+    "cache_key": "9873c2ea83c0fe8ee53dfdbec6d1e3028e48be92d98e367af64d1d09c7c7b7b9",
+    "unresolved": [
+      "The procedure refers to \"general procedure F\", but its contents are not supplied and therefore cannot be represented.",
+      "The explicit addition order among 4f, B2pin2, [Ir(COD)OMe]2, dtbpy, and THF is not specified; their order is reported in the order listed in the procedure.",
+      "The chromatography eluent is stated, but no chromatography loading, column details, or fraction collection details are specified.",
+      "The phrase \"in vial\" identifies the reaction vessel, but no vial size or closure/atmosphere is specified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane showed 1:1.7 meta:para borylation in 92% yield.",
+        "reason": "Analytical monitoring/result; not a physical operation."
+      },
+      {
+        "evidence": "gave the title compound (as a 1:1.8 mixture of meta:para ratio, as determined by 1 H NMR) as a colourless oil (103 mg).",
+        "reason": "Product outcome and characterization statement; not an operation."
+      },
+      {
+        "evidence": "A small amount of B2Pin2 impurity was found to be inseparable from the final product on silica.",
+        "reason": "Impurity observation; not an operation."
+      },
+      {
+        "evidence": "Corrected yield - 100 mg, 0.23 mmol, 94%.",
+        "reason": "Yield statement; not an operation."
+      },
+      {
+        "evidence": "By subtracting the resonances for the meta isomer, the NMR data of the para isomer can be assigned as follows:",
+        "reason": "Spectral-data processing statement; not a physical operation."
+      }
+    ],
+    "alias_provenance": "original API response; literal source substring verified; numeric crosscheck performed separately"
+  }
+}

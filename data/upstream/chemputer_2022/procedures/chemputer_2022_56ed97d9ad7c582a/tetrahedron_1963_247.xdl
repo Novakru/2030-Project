@@ -1,0 +1,173 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+    <Component
+      id="cartridge_MgSO4"
+      type="cartridge"
+      chemical="MgSO4" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="phenylhydrazine"
+      role="reagent" />
+    <Reagent
+      name="acetoveratrone"
+      role="reagent" />
+    <Reagent
+      name="eatons reagent"
+      role="reagent" />
+    <Reagent
+      name="ethanol"
+      role="reagent" />
+    <Reagent
+      name="acetic acid"
+      role="reagent" />
+    <Reagent
+      name="na2co3"
+      role="reagent" />
+    <Reagent
+      name="ch2cl2"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="acetoveratrone"
+      mass="2.7 g" />
+    <Add
+      vessel="reactor"
+      reagent="phenylhydrazine"
+      volume="1.8 mL"
+      viscous="True"
+      stir="True"
+      priming_volume="2 mL" />
+    <Add
+      vessel="reactor"
+      reagent="ethanol"
+      volume="10 mL"
+      stir="True"
+      priming_volume="0" />
+    <Add
+      vessel="reactor"
+      reagent="acetic acid"
+      volume="0.3 mL"
+      stir="True"
+      priming_volume="2 mL" />
+    <Add
+      vessel="reactor"
+      reagent="ethanol"
+      volume="20 mL"
+      stir="True"
+      stir_speed="600 RPM"
+      priming_volume="0" />
+    <HeatChill
+      vessel="reactor"
+      temp="70 °C"
+      time="3 h"
+      stir="True"
+      stir_speed="600 RPM" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="55 °C"
+      active="False"
+      continue_heatchill="False"
+      stir="True" />
+    <Evaporate
+      vessel="reactor"
+      temp="60 °C"
+      pressure="20 mbar" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="30 °C"
+      active="False"
+      continue_heatchill="False"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="eatons reagent"
+      volume="15 mL"
+      stir="True"
+      stir_speed="600 RPM"
+      priming_volume="2 mL" />
+    <HeatChill
+      vessel="reactor"
+      temp="60 °C"
+      time="48 h"
+      stir="True"
+      stir_speed="600 RPM" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="30 °C"
+      active="False"
+      continue_heatchill="False"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="na2co3"
+      volume="20 mL"
+      stir="True"
+      priming_volume="0" />
+    <Repeat
+      repeats="2">
+      <Add
+        vessel="reactor"
+        reagent="ch2cl2"
+        volume="20 mL"
+        stir="True"
+        priming_volume="0" />
+      <Add
+        vessel="reactor"
+        reagent="na2co3"
+        volume="20 mL"
+        stir="True"
+        priming_volume="0" />
+      <StopStir
+        vessel="reactor" />
+      <Transfer
+        from_vessel="reactor"
+        to_vessel="separator"
+        volume="all" />
+    </Repeat>
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom"
+      solvent="ch2cl2"
+      solvent_volume="40 mL"
+      repeats="3"
+      remove_dead_volume="False" />
+    <Transfer
+      from_vessel="separator"
+      to_vessel="rotavap"
+      volume="all"
+      through="mgso4"
+      move_speed="10.0" />
+    <Transfer
+      from_vessel="separator"
+      to_vessel="rotavap"
+      volume="30 mL"
+      through="mgso4" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="50 mbar"
+      time="60 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

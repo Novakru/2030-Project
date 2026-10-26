@@ -1,0 +1,161 @@
+<?xdl version="1.0.0" ?>
+
+<Synthesis>
+
+  <Metadata
+    description="Calix[8]arene de-ter-butylation reaction"
+    product_vessel="filter"
+    publication="Chem. Commun., 2019, 55, 7199-7202" />
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="flask_nitrogen"
+      type="flask" />
+    <Component
+      id="buffer_flask"
+      type="flask" />
+    <Component
+      id="flask_toluene"
+      type="flask"
+      chemical="toluene" />
+    <Component
+      id="flask_acid"
+      type="flask"
+      chemical="HCl" />
+    <Component
+      id="flask_methanol"
+      type="flask" />
+
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="calixarene"
+      role="reagent"
+      solid="True" />
+    <Reagent
+      name="AlCl3"
+      role="reagent"
+      solid="True" />
+    <Reagent
+      name="phenol"
+      role="reagent"
+      solid="True" />
+    <Reagent
+      name="methanol"
+      role="reagent" />
+    <Reagent
+      name="toluene"
+      role="reagent"
+      use_for_cleaning="True" />
+    <Reagent
+      name="HCl"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <Prep>
+      <ResetHandling
+        solvent="toluene" />
+      <Add
+        vessel="reactor"
+        reagent="calixarene"
+        amount="1 g" />
+      <Add
+        vessel="reactor"
+        reagent="phenol"
+        amount="0.65 g" />
+      <Add
+        vessel="reactor"
+        reagent="toluene"
+        amount="40 mL"
+        stir="True"
+        stir_speed="220 RPM" />
+      <Stir
+        vessel="reactor"
+        time="5 min"
+        stir_speed="320 RPM" />
+      <Add
+        vessel="reactor"
+        reagent="AlCl3"
+        amount="1.23 g" />
+    </Prep>
+    <Reaction>
+      <HeatChill
+        vessel="reactor"
+        temp="60 °C"
+        time="5 h"
+        stir="True"
+        stir_speed="450 RPM" />
+      <HeatChillToTemp
+        vessel="reactor"
+        temp="30 °C"
+        stir="True"
+        stir_speed="350 RPM" />
+    </Reaction>
+    <Workup>
+      <Add
+        vessel="reactor"
+        reagent="HCl"
+        amount="35 mL"
+        stir="True"
+        stir_speed="420 RPM" />
+      <Stir
+        vessel="reactor"
+        time="45 min"
+        stir_speed="500 RPM" />
+      <Transfer
+        from_vessel="reactor"
+        to_vessel="rotavap"
+        volume="90 mL"
+        stir_from_vessel="True"
+        flush_tubing="True"
+        rinsing_solvent="toluene"
+        rinsing_volume="4 mL"
+        rinsing_repeats="2"/>
+      <Evaporate
+        vessel="rotavap"
+        temp="55 °C"
+        pressure="63 mbar" 
+        time="30 mins"/>
+      <Add
+        vessel="rotavap"
+        reagent="methanol"
+        amount="50 mL"/>
+      <Evaporate
+        vessel="rotavap"
+        temp="66 °C"
+        pressure="1000 mbar" 
+        time="1 hour"
+        stir_speed="200 RPM"/>
+      <Transfer
+        from_vessel="rotavap"
+        to_vessel="filter"
+        volume="80 mL"
+        to_port="top"
+        stir_from_vessel="True"
+        flush_tubing="True"
+        rinsing_solvent="methanol"
+        rinsing_volume="7 mL"
+        rinsing_repeats="2" />
+      <Filter
+        vessel="filter"
+        wait_time="5 min"
+        stir="False"
+        filtrate_vessel="buffer_flask" />
+      <Dry
+        vessel="filter"
+        time="10 min" />
+    </Workup>
+  </Procedure>
+
+</Synthesis>

@@ -1,0 +1,113 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="(S)-(-)-α,α-diphenyl-2-pyrrolidinemethanol trimethylsilyl ether 2 chloroform solution" />
+    <Reagent
+      name="chloroform" />
+    <Reagent
+      name="ethyl(2E)-4-oxo-2-butenoate" />
+    <Reagent
+      name="tert-Butyl(tert-butyldimethylsilyl)oxycarbamate 1" />
+    <Reagent
+      name="the enoate" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="(S)-(-)-α,α-diphenyl-2-pyrrolidinemethanol trimethylsilyl ether 2 chloroform solution"
+      vessel="reactor"
+      volume="120 mL" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="4°C"
+      stir="True" />
+    <Add
+      reagent="ethyl(2E)-4-oxo-2-butenoate"
+      vessel="reactor"
+      volume="14.1 mL"
+      time="15 mins"
+      stir="True" />
+    <Add
+      reagent="chloroform"
+      vessel="reactor"
+      volume="10 mL"
+      stir="True" />
+    <Confirm
+      msg="Is tert-Butyl ( tert-butyldimethylsilyl ) oxycarbamate 1 ( 34.8 g , 141 mmol , 1.20 equiv ) in the correct vessel?" />
+    <Dissolve
+      vessel="filter"
+      solvent="chloroform"
+      volume="60 mL" />
+    <Transfer
+      from_vessel="filter"
+      to_vessel="reactor"
+      volume="all"
+      time="60 mins" />
+    <Add
+      reagent="chloroform"
+      vessel="filter"
+      volume="10 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="filter"
+      to_vessel="reactor"
+      volume="all" />
+    <HeatChill
+      vessel="reactor"
+      temp="23°C"
+      time="12 hrs"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="all" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40°C"
+      pressure="236.6466 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Dry
+      vessel="rotavap"
+      time="5 hrs"
+      vacuum_pressure="0.6666 mbar" />
+    <RunColumn
+      from_vessel="rotavap"
+      to_vessel="rotavap"
+      column="column" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40°C"
+      pressure="236.6466 mbar"
+      time="30 mins"
+      mode="auto" />
+    <RunColumn
+      from_vessel="rotavap"
+      to_vessel="rotavap"
+      column="column" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40°C"
+      pressure="236.6466 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Dry
+      vessel="rotavap"
+      time="5 hrs" />
+  </Procedure>
+
+</Synthesis>

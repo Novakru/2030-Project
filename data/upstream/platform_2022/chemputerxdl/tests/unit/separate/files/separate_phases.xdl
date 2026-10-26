@@ -1,0 +1,32 @@
+<Synthesis>
+  <Hardware>
+    <Component
+      id="separator"
+      type="separator"
+    />
+    <Component
+      id="reactor"
+      type="reactor"
+    />
+    <Component
+      id="waste_separator"
+      type="flask"
+    />
+  </Hardware>
+
+  <Reagents>
+  </Reagents>
+
+  <Procedure>
+    <SeparatePhases
+      separation_vessel="separator"
+      lower_phase_vessel="waste_separator"
+      upper_phase_vessel="reactor" />
+    <SeparatePhases
+      separation_vessel="separator"
+      lower_phase_vessel="waste_separator"
+      upper_phase_vessel="reactor"
+      lower_phase_through='mgso4' />
+  </Procedure>
+
+</Synthesis>

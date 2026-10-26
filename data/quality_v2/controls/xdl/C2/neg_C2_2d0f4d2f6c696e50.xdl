@@ -1,0 +1,29 @@
+<Synthesis>
+  <Metadata description="Authored symbolic control; not an observed experiment." publication="" reaction_class="authored_rule_fixture"/>
+  <Hardware>
+    <!--Analysis binding: {"component": "filter", "params": {}, "verified": true, "wetted_materials": null}-->
+    <Component id="filter" type="filter"/>
+    <!--Analysis binding: {"component": "heater", "params": {"T_max_C": 200, "T_min_C": -100, "rpm_max": 1500, "rpm_min": 50}, "verified": true, "wetted_materials": null}-->
+    <Component id="heater" type="heater"/>
+    <!--Analysis binding: {"component": "product", "params": {"capacity_mL": 103}, "verified": true, "wetted_materials": null}-->
+    <Component id="product" type="reactor"/>
+    <!--Analysis binding: {"component": "reactor", "params": {"capacity_mL": 103}, "verified": true, "wetted_materials": ["PTFE"]}-->
+    <Component id="reactor" type="reactor"/>
+  </Hardware>
+  <Reagents>
+    <!--r1: water-->
+    <Reagent name="r1" role="solvent"/>
+    <!--r2: reference substrate-->
+    <Reagent name="r2" role="substrate"/>
+    <!--r3: reference catalyst-->
+    <Reagent name="r3" role="catalyst"/>
+  </Reagents>
+  <Procedure>
+    <!--Analysis context: {"pressure_control": "OPEN", "purpose": "rule_fixture", "reflux": false}-->
+    <!--Pressure-control context: OPEN-->
+    <Add vessel="reactor" reagent="r1" amount="13 mL"/>
+    <Add vessel="reactor" reagent="r2" amount="0.13 mmol"/>
+    <Add vessel="reactor" reagent="r3" amount="0.01 mmol"/>
+    <HeatChill vessel="reactor" temp="4.8 °C" time="603 s" stir_speed="303"/>
+  </Procedure>
+</Synthesis>

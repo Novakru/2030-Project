@@ -1,0 +1,121 @@
+<?xdl version="1.0.0" ?>
+<XDL>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="filter"
+      type="filter" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="bi-2-naphthol"
+      role="reagent" />
+    <Reagent
+      name="phosphorus oxychloride"
+      role="reagent" />
+    <Reagent
+      name="pyridine"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="reagent" />
+    <Reagent
+      name="6 N hydrochloric acid"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="bi-2-naphthol"
+      mass="10 g" />
+    <Add
+      vessel="reactor"
+      reagent="pyridine"
+      volume="45 mL" />
+    <Add
+      vessel="reactor"
+      reagent="phosphorus oxychloride"
+      volume="4.9 mL"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="90 °C"
+      stir="True"
+      stir_speed="600 RPM" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="55 °C"
+      active="False"
+      continue_heatchill="False"
+      stir="True"
+      stir_speed="600 RPM" />
+    <Add
+      vessel="reactor"
+      reagent="water"
+      volume="4 mL"
+      stir="True" />
+    <StartStir
+      vessel="filter"
+      stir_speed="600 RPM" />
+    <Add
+      vessel="filter"
+      reagent="6 N hydrochloric acid"
+      volume="90 mL"
+      stir="True"
+      stir_speed="600 RPM" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="filter"
+      volume="all"
+      dispense_speed="3.0" />
+    <Repeat
+      repeats="2">
+      <Add
+        vessel="reactor"
+        reagent="pyridine"
+        volume="2 mL"
+        stir="True" />
+      <Transfer
+        from_vessel="reactor"
+        to_vessel="filter"
+        volume="10 mL" />
+    </Repeat>
+    <Filter
+      vessel="filter" />
+    <Add
+      vessel="filter"
+      reagent="6 N hydrochloric acid"
+      volume="30 mL"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="5 min" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="108 °C"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="25 °C"
+      stir="True" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="water"
+      volume="20 mL"
+      repeats="2" />
+    <Dry
+      vessel="filter" />
+  </Procedure>
+
+</Synthesis>
+
+</XDL>

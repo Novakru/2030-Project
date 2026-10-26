@@ -1,0 +1,367 @@
+{
+  "id": "pos_896bdfe32c1c4e8fa00d8939433055b3",
+  "source": {
+    "dataset_id": "ord_dataset-5e8318f0dda04b398c14f4c3adfeb32c",
+    "dataset_name": "Ligand screening for Aza-Heck cyclization in total synthesis of Impatien A",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-5e8318f0dda04b398c14f4c3adfeb32c.parquet",
+    "file_sha256": "87406e77054f114abbabd97c2ca502a9ca2c8ffd8b8b45bac163548aa588703a",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": "https://pubs.acs.org/doi/10.1021/acs.orglett.1c02767",
+    "reaction_id": "ord-896bdfe32c1c4e8fa00d8939433055b3",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/5e/ord_dataset-5e8318f0dda04b398c14f4c3adfeb32c.parquet"
+  },
+  "raw_id": "ord-896bdfe32c1c4e8fa00d8939433055b3",
+  "raw_sha256": "59a0c4515ebc4d8d311c9a4c2a7b5eccebc529ee51b4b900b828773df2563954",
+  "reaction_smiles": "COc1cc(C(=O)NOc2ccccc2)c(C2=C(C)c3ccc4c(c3C2)OCO4)cc1OC>>C=C1c2ccc3c(c2CC12NC(=O)c1cc(OC)c(OC)cc12)OCO3",
+  "reaction_class": "Ligand screening for Aza-Heck cyclization in total synthesis of Impatien A",
+  "yield_percent": 40.0,
+  "reagents": [
+    {
+      "addition_order": 2,
+      "addition_time": null,
+      "amount": {
+        "unit": "mg",
+        "value": 0.13
+      },
+      "id": "r1",
+      "input_key": "Catalysts",
+      "name": "(1,5-Cyclooctadiene)bis[(trimethylsilyl)methyl]palladium",
+      "role": "CATALYST",
+      "smiles": "C[Si](C)(C)C[Pd]345(C1=C3CCC4=C5CC1)C[Si](C)(C)C",
+      "source_path": "/inputs/Catalysts/components/0"
+    },
+    {
+      "addition_order": 2,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 0.0041
+      },
+      "id": "r2",
+      "input_key": "Catalysts",
+      "name": "tributylamine",
+      "role": "REAGENT",
+      "smiles": "CCCCN(CCCC)CCCC",
+      "source_path": "/inputs/Catalysts/components/1"
+    },
+    {
+      "addition_order": 2,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 0.15
+      },
+      "id": "r3",
+      "input_key": "Catalysts",
+      "name": "acetonitrile",
+      "role": "SOLVENT",
+      "smiles": "CC#N",
+      "source_path": "/inputs/Catalysts/components/2"
+    },
+    {
+      "addition_order": 1,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.001
+      },
+      "id": "r4",
+      "input_key": "Ligand",
+      "name": "(R)-1,1’-binaphthyl-2,2’-diyl ethyl phosphite",
+      "role": "REAGENT",
+      "smiles": "CCOP1OC2=C(C3=C(C=CC4=CC=CC=C43)O1)C5=CC=CC=C5C=C2",
+      "source_path": "/inputs/Ligand/components/0"
+    },
+    {
+      "addition_order": 3,
+      "addition_time": null,
+      "amount": {
+        "unit": "mg",
+        "value": 1.49
+      },
+      "id": "r5",
+      "input_key": "Reactant",
+      "name": "COc1cc(C(=O)NOc2ccccc2)c(C2=C(C)c3ccc4c(c3C2)OCO4)cc1OC",
+      "role": "REACTANT",
+      "smiles": "COc1cc(C(=O)NOc2ccccc2)c(C2=C(C)c3ccc4c(c3C2)OCO4)cc1OC",
+      "source_path": "/inputs/Reactant/components/0"
+    },
+    {
+      "addition_order": 3,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 0.15
+      },
+      "id": "r6",
+      "input_key": "Reactant",
+      "name": "acetonitrile",
+      "role": "SOLVENT",
+      "smiles": "CC#N",
+      "source_path": "/inputs/Reactant/components/1"
+    },
+    {
+      "id": "w1",
+      "name": "trimethoxybenzene",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": {
+        "value": 0.19,
+        "unit": "mg"
+      },
+      "source_path": null
+    },
+    {
+      "id": "w2",
+      "name": "MeCN",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": {
+        "value": 0.4,
+        "unit": "mL"
+      },
+      "source_path": null
+    }
+  ],
+  "steps": [
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "id": "s001",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Vials containing pre-plated ligand were added to a 96-well reaction block",
+        "stage": "reaction",
+        "amount_source": "/inputs/Ligand/components/0/amount",
+        "source_alias": "pre-plated ligand"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.001
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "id": "s002",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "(cod)Pd(CH2TMS)2 (0.13 mg, 0.33 umol, 0.10 equiv) and nBu3N (4.10 uL, 16.7 umol, 5.00 equiv) were added as a solution in MeCN (150 uL) via micropipettor to each of the 24 wells.",
+        "stage": "reaction",
+        "amount_source": "/inputs/Catalysts/components/0/amount",
+        "source_alias": "(cod)Pd(CH2TMS)2"
+      },
+      "amount": {
+        "unit": "mg",
+        "value": 0.13
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "id": "s003",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "(cod)Pd(CH2TMS)2 (0.13 mg, 0.33 umol, 0.10 equiv) and nBu3N (4.10 uL, 16.7 umol, 5.00 equiv) were added as a solution in MeCN (150 uL) via micropipettor to each of the 24 wells.",
+        "stage": "reaction",
+        "amount_source": "/inputs/Catalysts/components/1/amount",
+        "source_alias": "nBu3N"
+      },
+      "amount": {
+        "unit": "mL",
+        "value": 0.0041
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "id": "s004",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "(cod)Pd(CH2TMS)2 (0.13 mg, 0.33 umol, 0.10 equiv) and nBu3N (4.10 uL, 16.7 umol, 5.00 equiv) were added as a solution in MeCN (150 uL) via micropipettor to each of the 24 wells.",
+        "stage": "reaction",
+        "amount_source": "/inputs/Catalysts/components/2/amount",
+        "source_alias": "MeCN"
+      },
+      "amount": {
+        "unit": "mL",
+        "value": 0.15
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "id": "s005",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Then hydroxamic ether 3 (1.49 mg, 3.34 umol, 1.00 equiv) was added as a solution in MeCN (150 uL) via micropipettor.",
+        "stage": "reaction",
+        "amount_source": "/inputs/Reactant/components/0/amount",
+        "source_alias": "hydroxamic ether 3"
+      },
+      "amount": {
+        "unit": "mg",
+        "value": 1.49
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r6",
+      "id": "s006",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Then hydroxamic ether 3 (1.49 mg, 3.34 umol, 1.00 equiv) was added as a solution in MeCN (150 uL) via micropipettor.",
+        "stage": "reaction",
+        "amount_source": "/inputs/Reactant/components/1/amount",
+        "source_alias": "MeCN"
+      },
+      "amount": {
+        "unit": "mL",
+        "value": 0.15
+      }
+    },
+    {
+      "op": "HeatChill",
+      "temp_C": 80,
+      "duration_s": 86400,
+      "stir": true,
+      "id": "s007",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The plate was placed in a pre-heated temperature-controlled metal block on a stir plate in the glovebox and stirred at 80C for 24 h.",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "HeatChill",
+      "id": "s008",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The reaction block was then removed from the glovebox, cooled to rt",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Atmosphere",
+      "gas": "air",
+      "mode": "environment",
+      "id": "s009",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "opened to air",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w1",
+      "amount": {
+        "value": 0.19,
+        "unit": "mg"
+      },
+      "id": "s010",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "A solution of trimethoxybenzene (0.19 mg, 1.11 umol, 0.33 equiv) in MeCN (400 uL) was added as an internal standard to each vial of the 24 vials via micropipettor.",
+        "stage": "workup",
+        "source_alias": "trimethoxybenzene"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w2",
+      "amount": {
+        "value": 0.4,
+        "unit": "mL"
+      },
+      "id": "s011",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "A solution of trimethoxybenzene (0.19 mg, 1.11 umol, 0.33 equiv) in MeCN (400 uL) was added as an internal standard to each vial of the 24 vials via micropipettor.",
+        "stage": "workup",
+        "source_alias": "MeCN"
+      }
+    },
+    {
+      "op": "Transfer",
+      "to_vessel": "analysis collection plate",
+      "id": "s012",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "a 300 uL aliquot of each crude reaction was transferred to an analysis collection plate via micropipettor.",
+        "stage": "workup"
+      }
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "atmosphere": {},
+    "pressure_control": "UNKNOWN",
+    "source_setup": {
+      "environment": {
+        "details": "moisture- and oxygen-free",
+        "type": "GLOVE_BOX"
+      },
+      "is_automated": false,
+      "vessel": {
+        "attachments": [
+          {
+            "details": "covered in a Teflon sheet, rubber mats, and aluminium top cover affixed to bottom plate via 9 tightly tightened screws",
+            "type": "MAT"
+          }
+        ],
+        "details": "Paradox Standard 96-Position Parallel Synthesis block",
+        "material": {
+          "type": "GLASS"
+        },
+        "preparations": [
+          {
+            "details": "150 degrees Celcius for 2 hours",
+            "type": "OVEN_DRIED"
+          }
+        ],
+        "type": "WELL_PLATE",
+        "volume": {
+          "units": "MILLILITER",
+          "value": 1.0
+        }
+      }
+    }
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "model": "gpt-5.6-terra",
+    "usage": {
+      "prompt_tokens": 1457,
+      "completion_tokens": 1595,
+      "total_tokens": 3052,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 1454
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    },
+    "cache_key": "e577ff9faef55904f178039a009bd1f4cca5af8f83e4176646f82592e6a15574",
+    "unresolved": [
+      "The moisture- and oxygen-free glovebox atmosphere is specified, but the identity of the inert gas is not stated.",
+      "The literal procedure applies additions to 24 wells; the component-level representation records each supplied component once rather than duplicating it for each well.",
+      "The pre-plated ligand is aligned to r4 because r4 is the supplied ligand component, but the procedure does not provide its chemical name in the text.",
+      "The 400 uL MeCN workup addition is represented as 0.4 mL to conform to the allowed amount unit.",
+      "s008: temperature unspecified"
+    ],
+    "unmapped_actions": [
+      "Equipping the wells with magnetic stirbars.",
+      "Filling remaining plate positions with empty vials.",
+      "Covering and sealing the reaction block with a Teflon sheet, rubber mats, aluminum top cover, and screws.",
+      "Removing the reaction block from the glovebox.",
+      "Centrifugation after internal-standard addition.",
+      "Sealing the analysis collection plate with aluminum sealing tape.",
+      "Centrifugation of the sealed analysis plate for 15 min.",
+      "LC-MS analysis, quantification, and 1H NMR validation."
+    ],
+    "alias_provenance": "original API response; literal source substring verified; numeric crosscheck performed separately"
+  }
+}

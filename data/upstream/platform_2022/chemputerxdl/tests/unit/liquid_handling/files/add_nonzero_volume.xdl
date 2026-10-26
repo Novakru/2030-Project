@@ -1,0 +1,34 @@
+<Synthesis>
+  <Hardware>
+    <Component
+      id="rotavap"
+      type="rotavap"
+    />
+    <Component
+      id="reactor"
+      type="reactor"
+    />
+
+  </Hardware>
+
+  <Reagents>
+    <Reagent name="water" />
+  </Reagents>
+
+  <Procedure>
+    <CleanBackbone
+      solvent="water"/>
+    <Add
+      vessel="rotavap"
+      cleaning="True"
+      cleaning_solvent="water"
+      reagent="water"
+      volume="100 mL" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="reactor"
+      volume="all"
+    />
+  </Procedure>
+
+</Synthesis>

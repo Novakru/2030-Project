@@ -1,0 +1,80 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="cartridge_celite"
+      type="cartridge"
+      chemical="celite" />
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="THF" />
+    <Reagent
+      name="a mixture of NbCl5 ( 50 g , Aldrich ) and coarse aluminium powder ( 8 g )" />
+    <Reagent
+      name="dry acetonitrile" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="a mixture of NbCl5 ( 50 g , Aldrich ) and coarse aluminium powder ( 8 g )"
+      vessel="reactor"
+      volume="0" />
+    <Add
+      reagent="dry acetonitrile"
+      vessel="reactor"
+      volume="700 mL" />
+    <Stir
+      vessel="reactor"
+      time="5 mins"
+      stir_speed="600 RPM" />
+    <HeatChill
+      vessel="reactor"
+      temp="25°C"
+      time="5 mins"
+      stir="True" />
+    <Wait
+      time="3 hrs" />
+    <FilterThrough
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      through="celite" />
+    <Evaporate
+      vessel="rotavap"
+      temp="50°C"
+      pressure="153 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Add
+      reagent="THF"
+      vessel="rotavap"
+      volume="750 mL" />
+    <Stir
+      vessel="rotavap"
+      time="16 hrs" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="filter"
+      volume="all" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="THF"
+      volume="20 mL" />
+    <Dry
+      vessel="filter" />
+  </Procedure>
+
+</Synthesis>

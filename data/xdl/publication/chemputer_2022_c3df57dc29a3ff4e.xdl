@@ -1,0 +1,242 @@
+
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_silica"
+      type="cartridge"
+      chemical="silica" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="filter"
+      type="filter" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="O-benzyl hydroxylamine hydrochloride"
+      role="reagent" />
+    <Reagent
+      name="na2co3"
+      role="reagent" />
+    <Reagent
+      name="ch2cl2"
+      role="solvent" />
+    <Reagent
+      name="water"
+      role="solvent" />
+    <Reagent
+      name="p-trifluoromethyl benzoyl chloride"
+      role="reagent" />
+    <Reagent
+      name="et2o"
+      role="solvent" />
+    <Reagent
+      name="tbuocl"
+      role="reagent" />
+    <Reagent
+      name="hexane"
+      role="solvent" />
+    <Reagent
+      name="naopiv"
+      role="reagent" />
+    <Reagent
+      name="mecn"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+    <!-- Formation of hydroxamate O-Benzyl ester -->
+    <AddSolid
+      vessel="filter"
+      reagent="O-benzyl hydroxylamine hydrochloride"
+      mass="5.59 g"
+    />
+
+    <AddSolid
+      vessel="filter"
+      reagent="na2co3"
+      mass="7.42 g"
+    />
+
+    <Add
+      vessel='filter'
+      reagent='ch2cl2'
+      volume='110 mL'
+      stir='True'
+    />
+
+    <Add
+      vessel='filter'
+      reagent='water'
+      volume='30 mL'
+      stir='True'
+    />
+
+    <HeatChill
+      vessel='filter'
+      temp='0'
+      time='20 min'
+      stir='True'
+    />
+
+    <Add
+      vessel='filter'
+      reagent='p-trifluoromethyl benzoyl chloride'
+      volume='5.2 mL'
+      dropwise='True'
+    />
+
+    <Stir
+      vessel='filter'
+      time='5 h'
+    />
+
+    <Evaporate
+      vessel='filter'
+      time='30 min'
+      temp='40'
+      mode='auto'
+    />
+
+    <Add
+      vessel='filter'
+      reagent='et2o'
+      volume='60 mL'
+      stir='True'
+    />
+
+    <Filter
+      vessel='filter'
+    />
+
+    <WashSolid
+      vessel='filter'
+      solvent='water'
+      volume='20 mL'
+    />
+
+    <WashSolid
+      vessel='filter'
+      solvent='et2o'
+      volume='20 mL'
+      vacuum_time='30 min'
+    />
+
+    <!-- Formation of N-chloro amide -->
+
+    <Add
+      vessel='filter'
+      reagent='ch2cl2'
+      volume='70 mL'
+      stir='True'
+    />
+
+    <Add
+      vessel='filter'
+      reagent='tbuocl'
+      volume='4.17 mL'
+      stir='True'
+    />
+
+    <Stir
+      vessel='filter'
+      time='2 h'
+    />
+
+    <Transfer
+      from_vessel='filter'
+      to_vessel='rotavap'
+      volume='all'
+    />
+
+    <Evaporate
+      vessel='rotavap'
+      temp='40'
+      time='30 min'
+      mode='auto'
+    />
+
+    <Add
+      vessel='rotavap'
+      reagent='hexane'
+      volume='35 mL'
+      stir='True'
+    />
+
+    <Evaporate
+      vessel='rotavap'
+      temp='40'
+      time='30 min'
+      mode='auto'
+    />
+
+    <!-- Formation of anomeric amide -->
+
+    <AddSolid
+      vessel='reactor'
+      reagent='naopiv'
+      mass='4.95'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='mecn'
+      volume='25 mL'
+      stir='True'
+    />
+
+    <Repeat repeats='2'>
+      <Add
+        vessel='rotavap'
+        reagent='mecn'
+        volume='25'
+        stir='True'
+      />
+      <StopStir
+        vessel='rotavap'
+      />
+      <Transfer
+        from_vessel='rotavap'
+        to_vessel='reactor'
+        volume='all'
+      />
+    </Repeat>
+
+    <Stir
+      vessel='reactor'
+      time='2 h'
+      stir_speed='600'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='et2o'
+      volume='75 mL'
+    />
+
+    <Transfer
+      from_vessel='reactor'
+      to_vessel='rotavap'
+      volume='all'
+      through='silica'
+      rinsing_solvent='et2o'
+      rinsing_repeats='1'
+      rinsing_volume='25 mL'
+    />
+
+    <Evaporate
+      vessel='rotavap'
+      temp='40'
+      mode='auto'
+    />
+  </Procedure>
+
+</Synthesis>

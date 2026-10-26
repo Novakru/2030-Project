@@ -1,0 +1,9 @@
+rules:
+  - id: sulfuric_acid_dilution
+    before: water
+    after: sulfuric_acid_concentrated
+    context: dilution
+    min_acid_mass_fraction: 0.8
+    alternative_evidence: explicit_concentrated_qualifier_with_source_and_checksum
+    source_url: https://cameochemicals.noaa.gov/chemical/5193
+    note: "Add concentrated acid slowly into water with cooling; rule does not classify all acid/water contact as B4."

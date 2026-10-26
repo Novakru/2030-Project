@@ -1,0 +1,75 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="CCl4" />
+    <Reagent
+      name="TsNa" />
+    <Reagent
+      name="bromine" />
+    <Reagent
+      name="water" />
+  </Reagents>
+
+  <Procedure>
+    <Confirm
+      msg="Is TsNa in the correct vessel?" />
+    <Dissolve
+      vessel="filter"
+      solvent="water"
+      volume="0" />
+    <Filter
+      vessel="filter" />
+    <Add
+      reagent="bromine"
+      vessel="filter"
+      volume="0"
+      time="30 mins"
+      stir="True"
+      stir_speed="600 RPM" />
+    <Stir
+      vessel="filter"
+      time="30 mins" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="water"
+      volume="20 mL" />
+    <Dry
+      vessel="filter"
+      time="16 hrs" />
+    <Recrystallize
+      vessel="filter" />
+    <Dissolve
+      vessel="filter"
+      solvent="CCl4"
+      volume="10 mL"
+      temp="80°C" />
+    <Filter
+      vessel="filter" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="25°C"
+      active="False"
+      continue_heatchill="False"
+      stir="True" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="CCl4"
+      volume="20 mL"
+      temp="-20°C" />
+    <Dry
+      vessel="filter" />
+  </Procedure>
+
+</Synthesis>

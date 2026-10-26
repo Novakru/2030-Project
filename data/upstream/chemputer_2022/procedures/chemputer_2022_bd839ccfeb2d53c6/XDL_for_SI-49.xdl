@@ -1,0 +1,140 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_mgso4"
+      type="cartridge"
+      chemical="mgso4" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="mgcl2"
+      role="reagent" />
+    <Reagent
+      name="paraformaldehyde"
+      role="reagent" />
+    <Reagent
+      name="thf"
+      role="solvent" />
+    <Reagent
+      name="et3n"
+      role="reagent" />
+    <Reagent
+      name="2-bromophenol"
+      role="reagent" />
+    <Reagent
+      name="et2o"
+      role="solvent" />
+    <Reagent
+      name="water"
+      role="solvent" />
+    <Reagent
+      name="1m hcl"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+    <!-- 2.0 eq. -->
+    <AddSolid
+      vessel="reactor"
+      reagent="mgcl2"
+      mass="4.76 g" />
+
+    <!-- 3.0 eq. -->
+    <AddSolid
+      vessel='reactor'
+      reagent='paraformaldehyde'
+      mass='2.25 g' />
+
+    <EvacuateAndRefill
+      vessel='reactor'
+      repeats='3'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='thf'
+      volume='125 mL'
+      stir='True'
+    />
+
+    <!-- 2.0 eq., MW 101, d = 0.726 -->
+    <Add
+      vessel='reactor'
+      reagent='et3n'
+      volume='6.96 mL'
+      stir='True'
+      time='10 min'
+    />
+
+    <!-- 25 mmol, d = 1.63 -->
+    <Add
+      vessel='reactor'
+      reagent='2-bromophenol'
+      volume='2.65 mL'
+      time='10 min'
+      stir='True'
+    />
+
+    <HeatChill
+      vessel='reactor'
+      temp='75'
+      time='4 h'
+      stir='True'
+    />
+
+    <HeatChillToTemp
+      vessel='reactor'
+      temp='25'
+      active='False'
+      continue_heatchill='False'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='et2o'
+      volume='50 mL'
+      stir='True'
+    />
+
+    <Separate
+      purpose='wash'
+      from_vessel='reactor'
+      separation_vessel='separator'
+      to_vessel='separator'
+      product_phase='top'
+      solvent='1m hcl'
+      solvent_volume='50'
+      repeats='3'
+    />
+    <Separate
+      purpose='wash'
+      from_vessel='separator'
+      separation_vessel='separator'
+      to_vessel='rotavap'
+      through='mgso4'
+      product_phase='top'
+      solvent='water'
+      solvent_volume='50'
+      repeats='3'
+    />
+
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

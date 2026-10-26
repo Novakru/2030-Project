@@ -1,0 +1,79 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="cartridge_MgSO4"
+      type="cartridge"
+      chemical="MgSO4" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="EtOAc" />
+    <Reagent
+      name="PEPPSI-IPr" />
+    <Reagent
+      name="aqueous NH4Cl" />
+    <Reagent
+      name="dry THF" />
+    <Reagent
+      name="ethyl 4-bromobenzoate" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="dry THF"
+      vessel="reactor"
+      volume="65 mL" />
+    <Add
+      reagent="ethyl 4-bromobenzoate"
+      vessel="reactor"
+      volume="4.6 mL"
+      dispense_speed="10"
+      stir="True" />
+    <Add
+      reagent="PEPPSI-IPr"
+      vessel="reactor"
+      mass="0.193 g"
+      stir="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="25°C"
+      time="2 hrs"
+      stir="True" />
+    <Add
+      reagent="aqueous NH4Cl"
+      vessel="reactor"
+      volume="50 mL"
+      stir="True" />
+    <Separate
+      purpose="extract"
+      from_vessel="reactor"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      solvent="EtOAc"
+      through="MgSO4"
+      solvent_volume="70 mL"
+      repeats="3" />
+    <Evaporate
+      vessel="rotavap"
+      time="30 mins"
+      mode="auto" />
+    <RunColumn
+      from_vessel="rotavap"
+      to_vessel="reactor"
+      column="column" />
+  </Procedure>
+
+</Synthesis>

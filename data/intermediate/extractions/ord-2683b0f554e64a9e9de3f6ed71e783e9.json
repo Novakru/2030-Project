@@ -1,0 +1,367 @@
+{
+  "id": "pos_2683b0f554e64a9e9de3f6ed71e783e9",
+  "source": {
+    "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+    "dataset_name": "750 AstraZeneca ELN dataset",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+    "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+    "reaction_id": "ord-2683b0f554e64a9e9de3f6ed71e783e9",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+  },
+  "raw_id": "ord-2683b0f554e64a9e9de3f6ed71e783e9",
+  "raw_sha256": "cc121bb3a12fe3cc08bd53148556aad97530bce032f6fce7cb7c2421bd75dbe3",
+  "reaction_smiles": "C1COCCN1.CC1=CC(=CC(=C1NC(=O)CC(C)(C)C)C)Br>>CC1=CC(=CC(=C1NC(=O)CC(C)(C)C)C)N2CCOCC2",
+  "reaction_class": "1.3.1 [N-arylation with Ar-X] Bromo Buchwald-Hartwig amination",
+  "yield_percent": 63.67,
+  "reagents": [
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.94
+      },
+      "id": "r1",
+      "input_key": "Base",
+      "name": "CC(C)(C)[O-].[K+]",
+      "role": "REAGENT",
+      "smiles": "CC(C)(C)[O-].[K+]",
+      "source_path": "/inputs/Base/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 3.0
+      },
+      "id": "r2",
+      "input_key": "Solvent",
+      "name": "CC1=CC=CC=C1",
+      "role": "SOLVENT",
+      "smiles": "CC1=CC=CC=C1",
+      "source_path": "/inputs/Solvent/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.805
+      },
+      "id": "r3",
+      "input_key": "amine",
+      "name": "C1COCCN1",
+      "role": "REACTANT",
+      "smiles": "C1COCCN1",
+      "source_path": "/inputs/amine/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.671
+      },
+      "id": "r4",
+      "input_key": "aryl halide",
+      "name": "CC1=CC(=CC(=C1NC(=O)CC(C)(C)C)C)Br",
+      "role": "REACTANT",
+      "smiles": "CC1=CC(=CC(=C1NC(=O)CC(C)(C)C)C)Br",
+      "source_path": "/inputs/aryl halide/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.0686
+      },
+      "id": "r5",
+      "input_key": "metal and ligand",
+      "name": "CN(C)C1=CC=CC=C1C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4",
+      "role": "CATALYST",
+      "smiles": "CN(C)C1=CC=CC=C1C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4",
+      "source_path": "/inputs/metal and ligand/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.0339
+      },
+      "id": "r6",
+      "input_key": "metal and ligand",
+      "name": "C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]",
+      "role": "CATALYST",
+      "smiles": "C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]",
+      "source_path": "/inputs/metal and ligand/components/1"
+    },
+    {
+      "id": "w1",
+      "name": "decolorizing carbon (Norit neutral)",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    }
+  ],
+  "steps": [
+    {
+      "op": "Add",
+      "reagent": "r6",
+      "id": "s001",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Tris(dibenzylidenacetone)dipalladium(0) (31 mg, 0.03 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/metal and ligand/components/1/amount",
+        "source_alias": "Tris(dibenzylidenacetone)dipalladium(0)"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.0339
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "id": "s002",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "2'-(dicyclohexylphosphino)-N,N-dimethylbiphenyl-2-amine (27 mg, 0.07 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/metal and ligand/components/0/amount",
+        "source_alias": "2'-(dicyclohexylphosphino)-N,N-dimethylbiphenyl-2-amine"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.0686
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "id": "s003",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "anhydrous toluene (3 mL)",
+        "stage": "reaction",
+        "amount_source": "/inputs/Solvent/components/0/amount",
+        "source_alias": "anhydrous toluene"
+      },
+      "amount": {
+        "unit": "mL",
+        "value": 3.0
+      }
+    },
+    {
+      "op": "Atmosphere",
+      "gas": "argon",
+      "mode": "purge",
+      "id": "s004",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "under an argon (g) sparge",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Stir",
+      "duration_s": 900,
+      "id": "s005",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "were stirred in anhydrous toluene (3 mL) for 15 minutes under an argon (g) sparge",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "id": "s006",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "was added the N-(4-bromo-2,6-dimethylphenyl)-3,3-dimethylbutanamide (200 mg, 0.67 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/aryl halide/components/0/amount",
+        "source_alias": "N-(4-bromo-2,6-dimethylphenyl)-3,3-dimethylbutanamide"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.671
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "id": "s007",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "and morpholine (0.070 mL, 0.80 mmol) neat",
+        "stage": "reaction",
+        "amount_source": "/inputs/amine/components/0/amount",
+        "source_alias": "morpholine"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.805
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "id": "s008",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "followed by the potassium tert-butoxide (1M in THF) (0.94 mL, 0.94 mmol) via syringe",
+        "stage": "reaction",
+        "amount_source": "/inputs/Base/components/0/amount",
+        "source_alias": "potassium tert-butoxide (1M in THF)"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.94
+      }
+    },
+    {
+      "op": "HeatChill",
+      "temp_C": 80,
+      "duration_s": 64800,
+      "stir": true,
+      "id": "s009",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The mixture was then heated in a sealed vessel to 80 °C for 18hrs",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "HeatChill",
+      "id": "s010",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "before cooling to ambint temperature",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Filter",
+      "keep": "filtrate",
+      "filter_medium": "0.7uM GMF",
+      "id": "s011",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The mixture was filtered thru a 0.7uM GMF",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Purify",
+      "method": "chromatography",
+      "stationary_phase": "SiO2",
+      "elution": "100% hexanes for 1 minute then 0% - 80% EtOAc/Hexane over 13 minutes at 30 mL/min",
+      "id": "s012",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The resultant crude solution was subject to flash chromatorgraphy (SiO2 \\- 12 g; gradient elution: 100% hexanes for 1 minute then 0% - 80% EtOAc/Hexane over 13 minutes at 30 mL/min)",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w1",
+      "id": "s013",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The appropriate fractions were then stirred over decolorizing carbon (Norit neutral)",
+        "stage": "workup",
+        "source_alias": "decolorizing carbon (Norit neutral)"
+      }
+    },
+    {
+      "op": "Stir",
+      "id": "s014",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The appropriate fractions were then stirred over decolorizing carbon (Norit neutral)",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Filter",
+      "keep": "filtrate",
+      "filter_medium": "Celite",
+      "id": "s015",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "filtered thru Celite",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Evaporate",
+      "id": "s016",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "and concentrated to afford the N-(2,6-dimethyl-4-morpholinophenyl)-3,3-dimethylbutanamide",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Purify",
+      "method": "chromatography",
+      "stationary_phase": "basic alumina",
+      "elution": "5% EtOAc/Hexane for 1.5 minutes then 5% - 100% EtOAc/Hexane over 11 minutes at 30 mL/min",
+      "id": "s017",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The resultant solid was subject to flash chromatorgraphy (basic alumina - 24 g; gradient elution: 5% EtOAc/Hexane for 1.5 minutes then 5% - 100% EtOAc/Hexane over 11 minutes at 30 mL/min)",
+        "stage": "purification"
+      }
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "atmosphere": {},
+    "pressure_control": "UNKNOWN",
+    "source_setup": {}
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "model": "gpt-5.6-terra",
+    "usage": {
+      "completion_tokens": 1561,
+      "prompt_tokens": 1715,
+      "total_tokens": 3276,
+      "prompt_tokens_details": {
+        "cache_write_tokens": 1712,
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 386
+      }
+    },
+    "cache_key": "e6a80b976d7e50e9f8cdaefd85f3ddd058ca971a4f578214d585ec3c9f89ffdb",
+    "unresolved": [
+      "The text does not explicitly state a duration for stirring over decolorizing carbon.",
+      "The cooling endpoint is described only as \"ambint temperature\" and is not numerically specified.",
+      "The phase or material retained after the Celite filtration is not explicitly stated, though subsequent concentration implies the filtrate was used.",
+      "No explicit concentration operation is stated after the final basic-alumina chromatography.",
+      "s010: temperature unspecified",
+      "s013: addition amount unspecified",
+      "s014: duration unspecified"
+    ],
+    "unmapped_actions": [
+      "\"via detection with UV light at 254nm\" was not represented because UV detection is analytical monitoring rather than an allowed physical operation.",
+      "\"though TLC and LCMS reveal one peak\" was not represented because TLC and LCMS are analytical monitoring.",
+      "\"Aliqout was provided to for SFC analysis\" was not represented because SFC analysis is not an allowed operation.",
+      "\"1H NMR analysis in DMSO reveals one clean cmpd\" and the statements concerning rotamers were not represented because they are analytical observations."
+    ],
+    "alias_provenance": "original API response; literal source substring verified; numeric crosscheck performed separately"
+  }
+}

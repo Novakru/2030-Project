@@ -1,0 +1,171 @@
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor"
+    />
+    <Component
+      id="separator"
+      type="separator"
+    />
+    <Component
+      id="cartridge_MgSO4"
+      type="cartridge"
+      chemical="MgSO4"
+    />
+    <Component
+      id="rotavap"
+      type="rotavap"
+    />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="methoxypyridine in THF"
+    />
+    <Reagent
+      name="piperidine in THF"
+    />
+    <Reagent
+      name="LiI"
+    />
+    <Reagent
+      name="NaH"
+    />
+    <Reagent
+      name="THF"
+    />
+    <Reagent
+      name="water"
+    />
+    <Reagent
+      name="DCM"
+    />
+  </Reagents>
+
+  <Procedure>
+    <Dry
+      vessel="reactor"
+      temp="140.0 °C"
+      time="1 h"
+      pressure="10 mbar"
+    />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="25.0 °C"
+      stir="True"
+    />
+    <AddSolid
+      reagent="LiI"
+      vessel="reactor"
+      mass="2.704 g"
+    />
+    <AddSolid
+      reagent="NaH"
+      vessel="reactor"
+      mass="2.000 g"
+    />
+    <EvacuateAndRefill
+      vessel="reactor"
+      vacuum_pressure="10.0 mbar"
+    />
+    <Add
+      reagent="THF"
+      vessel="reactor"
+      volume="3.7 mL"
+      stir="true"
+    />
+    <Add
+      reagent="methoxypyridine in THF"
+      vessel="reactor"
+      volume="5.0 mL"
+      stir="true"
+    />
+    <Add
+      reagent="piperidine in THF"
+      vessel="reactor"
+      volume="5.0 mL"
+      stir="true"
+    />
+    <HeatChill
+      vessel="reactor"
+      temp="75.0 °C"
+      time="8 hrs"
+      stir="True"
+    />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="0.0 °C"
+      stir="True"
+    />
+    <Add
+      reagent="water"
+      vessel="reactor"
+      volume="50 mL"
+      time="10 mins"
+      stir="true"
+    />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="25 °C"
+      stir="True"
+    />
+    <Add
+      reagent="DCM"
+      vessel="reactor"
+      volume="20 mL"
+    />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="all"
+    />
+    <Add
+      reagent="DCM"
+      vessel="reactor"
+      volume="30 mL"
+    />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="all"
+    />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="bottom"
+      solvent="DCM"
+      through="MgSO4"
+      solvent_volume="50"
+      waste_phase_to_vessel="separator"
+    />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="bottom"
+      solvent="DCM"
+      through="MgSO4"
+      solvent_volume="100 mL"
+      repeats="3"
+    />
+    <Evaporate
+      vessel="rotavap"
+      temp="50.0 °C"
+      pressure="699.0 mbar"
+      time="30 mins"
+      mode="auto"
+    />
+    <Dry
+      vessel="rotavap"
+      time="30 mins"
+      temp="50.0 °C"
+      pressure="10.0 mbar"
+    />
+  </Procedure>
+
+</Synthesis>

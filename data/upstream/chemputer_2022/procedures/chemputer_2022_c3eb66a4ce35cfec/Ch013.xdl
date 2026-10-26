@@ -1,0 +1,116 @@
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_magnesium_sulfate"
+      type="cartridge"
+      chemical="magnesium sulfate"
+    />
+    <Component
+      id="reactor"
+      type="reactor"
+    />
+    <Component
+      id="rotavap"
+      type="rotavap"
+    />
+    <Component
+      id="separator"
+      type="separator"
+    />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="1 M potassium hydrogen sulfate"
+    />
+    <Reagent
+      name="ethyl acetate"
+    />
+    <Reagent
+      name="t-butoxycarbonyl anhydride"
+    />
+    <Reagent
+      name="triethylamine methanol solution"
+    />
+    <Reagent
+      name="water"
+    />
+    <Reagent
+      name="magnesium sulfate"
+    />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      vessel="reactor"
+      reagent="triethylamine methanol solution"
+      volume="30 mL"
+    />
+    <Add
+      vessel="reactor"
+      reagent="t-butoxycarbonyl anhydride"
+      volume="30 mL"
+      stir="True"
+      stir_speed="600.0 RPM"
+      speed="10.0"
+    />
+    <HeatChill
+      vessel="reactor"
+      temp="25.0 °C"
+      time="24 hrs"
+      stir="True"
+    />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="all"
+    />
+    <Evaporate
+      vessel="rotavap"
+      temp="50.0 °C"
+      pressure="218.0 mbar"
+      time="30 mins"
+    />
+    <Add
+      vessel="rotavap"
+      reagent="ethyl acetate"
+      volume="50 mL"
+    />
+    <Dissolve
+      vessel="rotavap"
+      solvent="1 M potassium hydrogen sulfate"
+      volume="50 mL"
+    />
+    <Separate
+      purpose="extract"
+      from_vessel="rotavap"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+    />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="reactor"
+      product_phase="top"
+      solvent="water"
+      through="ethyl acetate"
+      solvent_volume="25 mL"
+    />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="200 mL"
+      through="magnesium sulfate"
+    />
+    <Evaporate
+      vessel="rotavap"
+      temp="40°C"
+      pressure="150 mbar"
+      time="30 mins"
+    />
+  </Procedure>
+
+</Synthesis>

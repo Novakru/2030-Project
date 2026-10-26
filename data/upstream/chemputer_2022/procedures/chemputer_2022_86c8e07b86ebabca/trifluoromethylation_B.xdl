@@ -1,0 +1,80 @@
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor"
+    />
+    <Component
+      id="rotavap"
+      type="rotavap"
+    />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="TBAF (0.1 M in THF)"
+    />
+    <Reagent
+      name="TBAF (1 M in THF)"
+    />
+    <Reagent
+      name="acetophenone (0.4M in THF)"
+    />
+    <Reagent
+      name="trifluoromethylsilane (0.48M in THF)"
+    />
+    <Reagent
+      name="THF"
+      use_for_cleaning="true"
+    />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      vessel="reactor"
+      reagent="acetophenone (0.4M in THF)"
+      volume="10 mL"
+      speed="3.0"
+    />
+    <Add
+      vessel="reactor"
+      reagent="trifluoromethylsilane (0.48M in THF)"
+      volume="10 mL"
+      speed="3.0"
+      stir="True"
+    />
+    <Add
+      vessel="reactor"
+      reagent="TBAF (0.1 M in THF)"
+      volume="0.4 mL"
+      speed="3.0"
+      stir="True"
+    />
+    <Stir
+      vessel="reactor"
+      time="5 mins"
+    />
+    <Add
+      vessel="reactor"
+      reagent="TBAF (1 M in THF)"
+      volume="4 mL"
+    />
+    <Stir
+      vessel="reactor"
+      time="5 mins"
+    />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="all"
+    />
+    <Evaporate
+      vessel="rotavap"
+      time="30 mins"
+      pressure="100 mbar"
+      mode="auto"
+    />
+  </Procedure>
+
+</Synthesis>

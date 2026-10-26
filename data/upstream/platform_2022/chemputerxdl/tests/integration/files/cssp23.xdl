@@ -1,0 +1,76 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="DMSO" />
+    <Reagent
+      name="absolute ethanol" />
+    <Reagent
+      name="dry ether" />
+    <Reagent
+      name="hydrazine hydrate" />
+    <Reagent
+      name="palladium chloride" />
+    <Reagent
+      name="triphenylphosphine" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="palladium chloride"
+      vessel="reactor"
+      volume="0" />
+    <Add
+      reagent="DMSO"
+      vessel="reactor"
+      volume="0" />
+    <Add
+      reagent="triphenylphosphine"
+      vessel="reactor"
+      volume="0" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="140°C"
+      stir="True" />
+    <StopHeatChill
+      vessel="reactor" />
+    <Stir
+      vessel="reactor"
+      time="15 mins" />
+    <Add
+      reagent="hydrazine hydrate"
+      vessel="reactor"
+      volume="0" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="125°C"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="25°C"
+      active="False"
+      continue_heatchill="False"
+      stir="True" />
+    <WashSolid
+      vessel="reactor"
+      solvent="absolute ethanol"
+      volume="10 mL"
+      repeats="2" />
+    <WashSolid
+      vessel="reactor"
+      solvent="dry ether"
+      volume="10 mL"
+      repeats="2" />
+    <Dry
+      vessel="reactor"
+      time="3.5 hrs" />
+  </Procedure>
+
+</Synthesis>

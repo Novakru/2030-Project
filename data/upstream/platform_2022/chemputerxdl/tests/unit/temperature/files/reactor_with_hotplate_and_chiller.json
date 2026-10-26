@@ -1,0 +1,165 @@
+{
+  "nodes": [
+    {
+      "id": "pump",
+      "type": "pump",
+      "x": 400,
+      "y": 280,
+      "internalId": 0,
+      "label": "pump",
+      "class": "ChemputerPump",
+      "name": "pump",
+      "address": "192.168.1.11",
+      "max_volume": 25,
+      "current_volume": 0
+    },
+    {
+      "id": "valve",
+      "type": "valve",
+      "x": 400,
+      "y": 400,
+      "internalId": 7,
+      "label": "valve",
+      "class": "ChemputerValve",
+      "name": "valve",
+      "address": "192.168.1.21"
+    },
+    {
+      "id": "waste",
+      "type": "waste",
+      "x": 320,
+      "y": 320,
+      "internalId": 34,
+      "label": "waste",
+      "class": "ChemputerWaste",
+      "name": "waste",
+      "current_volume": 0,
+      "max_volume": 2000,
+      "necks": 1
+    },
+    {
+      "id": "hotplate",
+      "type": "heater",
+      "x": 360,
+      "y": 600,
+      "internalId": 60,
+      "label": "hotplate",
+      "class": "RETControlViscHotplate",
+      "name": "hotplate",
+      "port": 5000,
+      "address": "192.168.1.32",
+      "temp_sensor": "external",
+      "connection_mode": "tcpip"
+    },
+    {
+      "id": "flask_water",
+      "type": "flask",
+      "x": 280,
+      "y": 440,
+      "internalId": 49,
+      "label": "flask_water",
+      "class": "ChemputerFlask",
+      "name": "flask_water",
+      "chemical": "water",
+      "current_volume": 100,
+      "max_volume": 100,
+      "can_filter": false
+    },
+    {
+      "id": "reactor",
+      "type": "reactor",
+      "x": 400,
+      "y": 520,
+      "internalId": 101,
+      "label": "reactor",
+      "class": "ChemputerReactor",
+      "name": "reactor",
+      "current_volume": 0,
+      "max_volume": 100,
+      "necks": 3,
+      "can_filter": false
+    },
+    {
+      "id": "chiller",
+      "type": "chiller",
+      "x": 440,
+      "y": 600,
+      "class": "CF41Chiller",
+      "name": "chiller",
+      "min_temp": null,
+      "max_temp": null,
+      "port": "",
+      "address": "",
+      "connection_mode": "tcpip",
+      "internalId": 1,
+      "temp_sensor": "external",
+      "label": "chiller"
+    }
+  ],
+  "links": [
+    {
+      "id": 14,
+      "sourceInternal": 0,
+      "targetInternal": 7,
+      "source": "pump",
+      "target": "valve",
+      "port": "(0,-1)"
+    },
+    {
+      "id": 15,
+      "sourceInternal": 7,
+      "targetInternal": 0,
+      "source": "valve",
+      "target": "pump",
+      "port": "(-1,0)"
+    },
+    {
+      "id": 67,
+      "sourceInternal": 7,
+      "targetInternal": 34,
+      "source": "valve",
+      "target": "waste",
+      "port": "(0,0)"
+    },
+    {
+      "id": 81,
+      "sourceInternal": 49,
+      "targetInternal": 7,
+      "source": "flask_water",
+      "target": "valve",
+      "port": "(0,4)"
+    },
+    {
+      "id": 135,
+      "sourceInternal": 60,
+      "targetInternal": 101,
+      "source": "hotplate",
+      "target": "reactor",
+      "port": "(,)"
+    },
+    {
+      "id": 3,
+      "sourceInternal": 7,
+      "targetInternal": 101,
+      "source": "valve",
+      "target": "reactor",
+      "port": "(3,0)"
+    },
+    {
+      "id": 4,
+      "sourceInternal": 101,
+      "targetInternal": 7,
+      "source": "reactor",
+      "target": "valve",
+      "port": "(0,3)"
+    },
+    {
+      "id": 2,
+      "sourceInternal": 1,
+      "targetInternal": 101,
+      "source": "chiller",
+      "target": "reactor",
+      "port": "(,)"
+    }
+  ]
+}

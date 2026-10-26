@@ -1,0 +1,268 @@
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor_1"
+      type="reactor"
+    />
+    <Component
+      id="reactor_2"
+      type="reactor"
+    />
+    <Component
+      id="separator"
+      type="separator"
+    />
+    <Component
+      id="rotavap"
+      type="rotavap"
+    />
+    <Component
+      id="column_1"
+      type="cartridge" />
+    <Component
+      id="C815"
+      type="chromatography_system" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="2-picolylamine" />
+    <Reagent
+      name="methanol"
+      role="reagent" />
+    <Reagent
+      name="2-thiophenecarboxaldehyde"
+      role="reagent" />
+    <Reagent
+      name="sodium borohydride"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="solvent" />
+    <Reagent
+      name="dichloromethane"
+      role="solvent" />
+    <Reagent
+      name="methanol"
+      role="solvent" />
+    <Reagent
+      name="acetone"
+      role="solvent" />
+    <Reagent
+      name="petroleum ether"
+      role="solvent" />
+    <Reagent
+      name="Etyl acetate"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor_2"
+      reagent="sodium borohydride"
+      mass="1.158 g"
+    />
+    <Add
+      vessel="reactor_1"
+      reagent="methanol"
+      volume="6 mL"
+      stir="true"
+      aspiration_speed="2"
+      priming_volume="1 mL"
+    />
+    <Add
+      vessel="reactor_1"
+      reagent="2-thiophenecarboxaldehyde"
+      volume="1.907 mL"
+      stir="true"
+      aspiration_speed="2"
+      priming_volume="1 mL"
+    />
+    <Add
+      vessel="reactor_1"
+      reagent="2-picolylamine"
+      volume="2.083 mL"
+      stir="true"
+      aspiration_speed="2"
+      priming_volume="1 mL"
+    />
+    <HeatChill
+      vessel="reactor_1"
+      temp="25.0 °C"
+      time="1 h"
+      stir="True"
+    />
+    <Stir
+      vessel="reactor_1"
+      time="1 min"
+      continue_stirring="true"
+      comment="The reactors should be stirred during the transfer in the next step. "
+    />
+    <Transfer
+      from_vessel="reactor_1"
+      to_vessel="reactor_2"
+      volume="all"
+      rinsing_solvent="methanol"
+      rinsing_volume="3 mL"
+      rinsing_repeats="2"
+      rinse_withdrawal_excess="1"
+    />
+    <HeatChill
+      vessel="reactor_2"
+      temp="25.0 °C"
+      time="3 hrs"
+      stir="True"
+    />
+    <Evaporate
+      vessel="reactor_2"
+      temp="45.0 °C"
+      mode="auto"
+    />
+    <Dissolve
+      vessel="reactor_2"
+      solvent="dichloromethane"
+      volume="50 mL"
+      time="5 minutes"
+      stir_speed="250 RPM"
+    />
+    <Transfer
+      from_vessel="reactor_2"
+      to_vessel="separator"
+      volume="all"
+      rinsing_solvent="dichloromethane"
+      rinsing_volume="10 mL"
+      rinsing_repeats="3"
+      rinse_withdrawal_excess="1"
+    />
+    <Dissolve
+      vessel="reactor_2"
+      solvent="water"
+      volume="50 mL"
+      time="5 minutes"
+      stir_speed="250 RPM"
+    />
+    <Transfer
+      from_vessel="reactor_2"
+      to_vessel="separator"
+      volume="all"
+      rinsing_solvent="water"
+      rinsing_volume="10 mL"
+      rinsing_repeats="3"
+      rinse_withdrawal_excess="1"
+    />
+    <Dissolve
+      vessel="reactor_2"
+      solvent="dichloromethane"
+      volume="50 mL"
+      time="5 minutes"
+      stir_speed="250 RPM"
+    />
+    <Transfer
+      from_vessel="reactor_2"
+      to_vessel="separator"
+      volume="all"
+      rinsing_solvent="dichloromethane"
+      rinsing_volume="5 mL"
+      rinsing_repeats="3"
+      rinse_withdrawal_excess="1"
+    />
+    <SeparatePhases
+      separation_vessel="separator"
+      lower_phase_vessel="rotavap"
+      upper_phase_vessel="separator"
+      lower_phase_through="MgSO4"
+      high_conductivity_phase="top"
+    />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="bottom"
+      solvent="dichloromethane"
+      through="MgSO4"
+      solvent_volume="50 mL"
+      repeats="2"
+      high_conductivity_phase="top"
+    />
+    <Evaporate
+      vessel="rotavap"
+      temp="50.0 °C"
+      time="30 mins"
+      mode="auto"
+    />
+    <Dry
+      vessel="rotavap"
+      time="30 min"
+      temp="50 °C"
+      pressure="50 mbar"
+    />
+    <ResetHandling
+      solvent="methanol"
+      repeats="3"
+      volume="3 mL" />
+    <ResetHandling
+      solvent="dichloromethane"
+      repeats="3"
+      volume="3 mL" />
+    <Add
+      reagent="dichloromethane"
+      vessel="rotavap"
+      volume="1 mL" />
+    <ResetHandling
+      solvent="petroleum ether"
+      repeats="3"
+      volume="3 mL" />
+    <Add
+      reagent="petroleum ether"
+      vessel="rotavap"
+      volume="1 mL" />
+    <PreparativeChromatography
+      chromatography_system="C815"
+      crude_material_vessel="rotavap"
+      crude_material_volume="15 mL"
+      washing_solvent="dichloromethane"
+      washing_volume="1 mL"
+      additional_washing_solvent_1="petroleum ether"
+      additional_washing_volume_1="1 mL"
+      washing_repeats="3"
+      cleaning_solvent_1="methanol"
+      cleaning_solvent_2="acetone"
+      clean_product_vessel="True"
+      cleaning_repeats="1"
+      product_vessel="rotavap"
+      column="column_1"
+      baseline_correction="False"
+      equilibration_gradient_coordinates="[[0, [50, 0, 0, 50]],
+                                           [5, [50, 0, 0, 50]]]"
+      gradient_coordinates="[[0, [50, 0, 0, 50]],
+                             [5, [0, 0, 0, 100]],
+                             [15, [0, 0, 15, 85]],
+                             [20, [0, 0, 15, 85]]]"
+      use_detectors="['ELSD']" />
+    <Evaporate
+      vessel="rotavap"
+      mode="auto"
+      temp="45 °C"
+      time="30 min" />
+    <Evaporate
+      vessel="rotavap"
+      mode="auto"
+      temp="45 °C"
+      time="30 min" />
+    <Dry
+      vessel="rotavap"
+      temp="45 °C"
+      time="30 min" />
+    <ResetHandling
+      solvent="methanol"
+      repeats="3"
+      volume="3 mL" />
+    <ResetHandling
+      solvent="acetone"
+      repeats="3"
+      volume="3 mL" />
+  </Procedure>
+
+</Synthesis>

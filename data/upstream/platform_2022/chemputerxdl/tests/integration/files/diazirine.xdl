@@ -1,0 +1,70 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="anhydrous MgSO4" />
+    <Reagent
+      name="methanolic ammonia solution" />
+    <Reagent
+      name="methanolic levulinic acid" />
+    <Reagent
+      name="the HOSA solution" />
+  </Reagents>
+
+  <Procedure>
+    <HeatChillToTemp
+      vessel="filter"
+      temp="-10°C"
+      stir="True" />
+    <Add
+      reagent="anhydrous MgSO4"
+      vessel="filter"
+      mass="2 g" />
+    <Add
+      reagent="methanolic ammonia solution"
+      vessel="filter"
+      volume="80 mL" />
+    <Add
+      reagent="methanolic levulinic acid"
+      vessel="filter"
+      volume="9.3 mL"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="3 hrs" />
+    <Add
+      reagent="the HOSA solution"
+      vessel="filter"
+      volume="60 mL"
+      dispense_speed="3"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="20°C"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="15 hrs" />
+    <Filter
+      vessel="filter" />
+    <Transfer
+      from_vessel="filter"
+      to_vessel="rotavap"
+      volume="all" />
+    <Evaporate
+      vessel="rotavap"
+      time="30 mins"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

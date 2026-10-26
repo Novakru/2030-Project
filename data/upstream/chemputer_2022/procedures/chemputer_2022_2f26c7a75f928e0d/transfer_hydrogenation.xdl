@@ -1,0 +1,149 @@
+<?xdl version="0.2.1" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      chemical="anhydrous magnesium sulfate"
+      type="cartridge"
+      id="cartridge_anhydrous magnesium sulfate" />
+    <Component
+      type="reactor"
+      id="reactor" />
+    <Component
+      type="rotavap"
+      id="rotavap" />
+    <Component
+      type="separator"
+      id="separator" />
+    <Component
+      type="flask"
+      id="flask_argon_2" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="2 N hydrochloric acid" />
+    <Reagent
+      name="DMF" />
+    <Reagent
+      name="brine" />
+    <Reagent
+      name="diethyl ether" />
+    <Reagent
+      name="formic acid DMF solution" />
+    <Reagent
+      name="saturated sodium bicarbonate solution" />
+    <Reagent
+      name="tributylamine" />
+  </Reagents>
+
+  <Procedure>
+    <EvacuateAndRefill
+      vessel="reactor" 
+      repeats="3" />
+    <Add
+      stir="False"
+      volume="3.61 mL"
+      vessel="reactor"
+      reagent="tributylamine" />
+    <Add
+      stir="True"
+      volume="7.75 mL"
+      vessel="reactor"
+      reagent="DMF" />
+    <Transfer
+      volume="400 mL"
+      to_vessel="reactor"
+      from_vessel="flask_argon_2" />  
+    <Add
+      stir="True"
+      time="2.5 mins"
+      volume="2.58 mL"
+      vessel="reactor"
+      reagent="formic acid DMF solution" />
+    <HeatChill
+      time="60 mins"
+      temp="60°C"
+      vessel="reactor" />
+    <Add
+      stir="False"
+      volume="50 mL"
+      vessel="separator"
+      reagent="2 N hydrochloric acid" />
+    <Add
+      stir="True"
+      volume="25 mL"
+      vessel="reactor"
+      reagent="diethyl ether" />
+    <Transfer
+      volume="50"
+      to_vessel="separator"
+      from_vessel="reactor" />
+    <Add
+      stir="True"
+      volume="25 mL"
+      vessel="reactor"
+      reagent="diethyl ether" />
+    <Transfer
+      volume="50 mL"
+      to_vessel="separator"
+      from_vessel="reactor" />
+    <Add
+      stir="True"
+      volume="25 mL"
+      vessel="reactor"
+      reagent="diethyl ether" />
+    <Transfer
+      volume="50 mL"
+      to_vessel="separator"
+      from_vessel="reactor" />
+    <Separate
+      repeats="2"
+      solvent_volume="75 mL"
+      solvent="diethyl ether"
+      product_phase="top"
+      to_vessel="separator"
+      separation_vessel="separator"
+      from_vessel="separator"
+      purpose="extract" />
+    <Separate
+      repeats="1"
+      solvent_volume="62 mL"
+      solvent="2 N hydrochloric acid"
+      product_phase="top"
+      to_vessel="separator"
+      separation_vessel="separator"
+      from_vessel="separator"
+      purpose="wash" />
+    <Separate
+      repeats="1"
+      solvent_volume="62 mL"
+      solvent="saturated sodium bicarbonate solution"
+      product_phase="top"
+      to_vessel="separator"
+      separation_vessel="separator"
+      from_vessel="separator"
+      purpose="wash" />
+    <Separate
+      repeats="2"
+      solvent_volume="100 mL"
+      through="anhydrous magnesium sulfate"
+      solvent="brine"
+      product_phase="top"
+      to_vessel="rotavap"
+      separation_vessel="separator"
+      from_vessel="separator"
+      purpose="wash" />
+    <Evaporate
+      mode="auto"
+      time="30 mins"
+      pressure="422 mbar"
+      temp="50°C"
+      vessel="rotavap" />
+    <Dry
+      time="30 min"
+      temp="50°C"  
+      vessel="rotavap" />
+  </Procedure>
+
+</Synthesis>

@@ -1,0 +1,162 @@
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor"
+    />
+    <Component
+      id="rotavap"
+      type="rotavap"
+    />
+    <Component
+      id="MgSO4"
+      type="cartridge"
+      chemical="MgSO4"
+    />
+    <Component
+      id="separator"
+      type="separator"
+    />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="pd2(dba)3-CHCl3"
+    />
+    <Reagent
+      name="tri-2-furylphosphine"
+    />
+    <Reagent
+      name="THF"
+    />
+    <Reagent
+      name="iodobenzene solution in THF"
+    />
+    <Reagent
+      name="2-pyridyldimethyl(vinyl)silane solution in THF"
+    />
+    <Reagent
+      name="triethylamine solution in THF"
+    />
+    <Reagent
+      name="ethyl acetate"
+    />
+    <Reagent
+      name="toluene"
+    />
+    <Reagent
+      name="1 M aqueous HCl"
+    />
+    <Reagent
+      name="sat. aq. NaHCO3"
+    />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      reagent="pd2(dba)3-CHCl3"
+      vessel="reactor"
+      mass="15.7 mg"
+    />
+    <AddSolid
+      reagent="tri-2-furylphosphine"
+      vessel="reactor"
+      mass="14.1 mg"
+    />
+    <EvacuateAndRefill
+      vessel="reactor"
+      vacuum_pressure="10 mbar"
+    />
+    <Add
+      reagent="iodobenzene solution in THF"
+      vessel="reactor"
+      volume="2.5 mL"
+      aspiration_speed="2"
+      stir="true"
+      priming_volume="1 mL"
+    />
+    <Add
+      reagent="2-pyridyldimethyl(vinyl)silane solution in THF"
+      vessel="reactor"
+      volume="4 mL"
+      aspiration_speed="2"
+      stir="true"
+      priming_volume="0.5 mL"
+    />
+    <Add
+      reagent="triethylamine solution in THF"
+      vessel="reactor"
+      volume="2.5 mL"
+      aspiration_speed="2"
+      stir="true"
+      priming_volume="1 mL"
+    />
+    <HeatChill
+      vessel="reactor"
+      temp="57.0 °C"
+      time="24 hrs"
+      stir="True"
+    />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="all"
+      move_speed="5"
+    />
+    <Repeat repeats="3">
+      <Dissolve
+        vessel="reactor"
+        solvent="toluene"
+        volume="10 mL"
+        time="1 min"
+      />
+      <Transfer
+        from_vessel="reactor"
+        to_vessel="separator"
+        volume="all"
+        move_speed="5"
+      />
+    </Repeat>
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom"
+      solvent="1 M aqueous HCl"
+      solvent_volume="20 mL"
+      repeats="4"
+    />
+    <Add
+      reagent="sat. aq. NaHCO3"
+      vessel="separator"
+      volume="120 mL"
+      time="10 mins"
+      stir="true"
+    />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="bottom"
+      solvent="ethyl acetate"
+      through="MgSO4"
+      solvent_volume="60 mL"
+      repeats="3"
+    />
+    <Evaporate
+      vessel="rotavap"
+      temp="50 °C"
+      time="30 mins"
+      mode="auto"
+    />
+    <Dry
+      vessel="rotavap"
+      temp="50.0 °C"
+      pressure="10 mbar"
+    />
+  </Procedure>
+
+</Synthesis>

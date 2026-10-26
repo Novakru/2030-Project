@@ -1,0 +1,4390 @@
+<?xdl version="0.4.6" ?>
+
+<Synthesis
+  graph_sha256="717ec13ee51791bd5dc254fe39f1b928a682e559bda13c75d737ff751f07dfc1"
+>
+  <Hardware>
+    <Component
+      id="filter1"
+      type="filter" />
+    <Component
+      id="flask_separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      id="glacial acetic acid" />
+    <Reagent
+      id="2,6-Dimethylaniline" />
+    <Reagent
+      id="chloroacetyl chloride" />
+    <Reagent
+      id="half-saturated aqueous sodium acetate" />
+    <Reagent
+      id="diethylamine" />
+    <Reagent
+      id="toluene" />
+    <Reagent
+      id="water" />
+    <Reagent
+      id="3 M hydrochloric acid" />
+    <Reagent
+      id="3 M sodium hydroxide" />
+  </Reagents>
+
+  <Procedure>
+    <CleanBackbone
+      solvent="glacial acetic acid"
+      near_waste="waste_filter"
+      far_waste="waste_base"
+      solvent_waste="waste_dry"
+      solvent_vessel="flask_acetic_acid"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_base"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_filter"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <AddFilterDeadVolume
+      filter_vessel="filter1"
+      solvent="glacial acetic acid"
+      volume="10 mL"
+      waste_vessel="waste_filter"
+      solvent_vessel="flask_acetic_acid"
+      vacuum="vacuum_filter"
+      inert_gas="None"
+      vacuum_valve="valve_vacuum"
+      valve_unused_port="2">
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="filter1"
+        volume="10 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="bottom"
+        through=""
+        use_backbone="True"
+        repeats="1" />
+      <CValveMoveToPosition
+        valve_name="valve_vacuum"
+        position="2" />
+    </AddFilterDeadVolume>
+    <Add
+      vessel="filter1"
+      reagent="glacial acetic acid"
+      volume="15 mL"
+      viscous="False"
+      dropwise="False"
+      time="None"
+      stir="False"
+      stir_speed="250.0"
+      purpose="None"
+      speed="40.0"
+      port="top"
+      through="None"
+      move_speed="40.0"
+      aspiration_speed="10.0"
+      dispense_speed="40.0"
+      anticlogging="False"
+      anticlogging_solvent="None"
+      anticlogging_solvent_volume="2 mL"
+      anticlogging_reagent_volume="10 mL"
+      through_cartridge="None"
+      reagent_vessel="flask_acetic_acid"
+      waste_vessel="waste_filter"
+      vessel_type="filter"
+      anticlogging_solvent_vessel="None"
+      prime_n_times="1"
+      priming_volume="3 mL">
+      <StopStir
+        vessel="filter1"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerStop
+          stirring_controller="stirrer_filter" />
+      </StopStir>
+      <PrimePumpForAdd
+        reagent="glacial acetic acid"
+        volume="3 mL"
+        reagent_vessel="flask_acetic_acid"
+        waste_vessel="waste_filter"
+        prime_n_times="1"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0">
+        <Repeat
+          repeats="1">
+          <Children>
+            <CMove
+              from_vessel="flask_acetic_acid"
+              to_vessel="waste_filter"
+              volume="3 mL"
+              move_speed="40.0"
+              aspiration_speed="10.0"
+              dispense_speed="40.0"
+              from_port="0"
+              to_port="0"
+              through=""
+              use_backbone="True"
+              repeats="1" />
+          </Children>
+          <Steps>
+            <CMove
+              from_vessel="flask_acetic_acid"
+              to_vessel="waste_filter"
+              volume="3 mL"
+              move_speed="40.0"
+              aspiration_speed="10.0"
+              dispense_speed="40.0"
+              from_port="0"
+              to_port="0"
+              through=""
+              use_backbone="True"
+              repeats="1" />
+          </Steps>
+        </Repeat>
+      </PrimePumpForAdd>
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="filter1"
+        volume="15 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="top"
+        through="None"
+        use_backbone="True"
+        repeats="1" />
+      <Wait
+        time="10 secs"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="10 secs" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <FlushTubing
+        to_vessel="filter1"
+        to_port="top"
+        volume="5 mL"
+        dispense_speed="40.0"
+        through_cartridge="None"
+        flush_tube_vessel="flask_argon">
+        <CMove
+          from_vessel="flask_argon"
+          to_vessel="filter1"
+          volume="5 mL"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0"
+          from_port="0"
+          to_port="top"
+          through="None"
+          use_backbone="True"
+          repeats="1" />
+      </FlushTubing>
+    </Add>
+    <Add
+      vessel="filter1"
+      reagent="2,6-Dimethylaniline"
+      volume="3 mL"
+      viscous="False"
+      dropwise="False"
+      time="None"
+      stir="True"
+      stir_speed="250.0"
+      purpose="None"
+      speed="40.0"
+      port="top"
+      through="None"
+      move_speed="40.0"
+      aspiration_speed="10.0"
+      dispense_speed="40.0"
+      anticlogging="False"
+      anticlogging_solvent="None"
+      anticlogging_solvent_volume="2 mL"
+      anticlogging_reagent_volume="10 mL"
+      through_cartridge="None"
+      reagent_vessel="flask_dimethylaniline"
+      waste_vessel="waste_filter"
+      vessel_type="filter"
+      anticlogging_solvent_vessel="None"
+      prime_n_times="1"
+      priming_volume="3 mL">
+      <StartStir
+        vessel="filter1"
+        stir_speed="250.0"
+        purpose="None"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerSetSpeed
+          stirring_controller="stirrer_filter"
+          stir_speed="250.0" />
+        <CStirringControllerStart
+          stirring_controller="stirrer_filter" />
+      </StartStir>
+      <PrimePumpForAdd
+        reagent="2,6-Dimethylaniline"
+        volume="3 mL"
+        reagent_vessel="flask_dimethylaniline"
+        waste_vessel="waste_filter"
+        prime_n_times="1"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0">
+        <Repeat
+          repeats="1">
+          <Children>
+            <CMove
+              from_vessel="flask_dimethylaniline"
+              to_vessel="waste_filter"
+              volume="3 mL"
+              move_speed="40.0"
+              aspiration_speed="10.0"
+              dispense_speed="40.0"
+              from_port="0"
+              to_port="0"
+              through=""
+              use_backbone="True"
+              repeats="1" />
+          </Children>
+          <Steps>
+            <CMove
+              from_vessel="flask_dimethylaniline"
+              to_vessel="waste_filter"
+              volume="3 mL"
+              move_speed="40.0"
+              aspiration_speed="10.0"
+              dispense_speed="40.0"
+              from_port="0"
+              to_port="0"
+              through=""
+              use_backbone="True"
+              repeats="1" />
+          </Steps>
+        </Repeat>
+      </PrimePumpForAdd>
+      <CMove
+        from_vessel="flask_dimethylaniline"
+        to_vessel="filter1"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="top"
+        through="None"
+        use_backbone="True"
+        repeats="1" />
+      <Wait
+        time="10 secs"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="10 secs" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <FlushTubing
+        to_vessel="filter1"
+        to_port="top"
+        volume="5 mL"
+        dispense_speed="40.0"
+        through_cartridge="None"
+        flush_tube_vessel="flask_argon">
+        <CMove
+          from_vessel="flask_argon"
+          to_vessel="filter1"
+          volume="5 mL"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0"
+          from_port="0"
+          to_port="top"
+          through="None"
+          use_backbone="True"
+          repeats="1" />
+      </FlushTubing>
+    </Add>
+    <CleanBackbone
+      solvent="glacial acetic acid"
+      near_waste="waste_filter"
+      far_waste="waste_dry"
+      solvent_waste="waste_dry"
+      solvent_vessel="flask_acetic_acid"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_filter"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="None"
+        to_port="None"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <Add
+      vessel="filter1"
+      reagent="chloroacetyl chloride"
+      volume="2 mL"
+      viscous="False"
+      dropwise="False"
+      time="None"
+      stir="True"
+      stir_speed="250.0"
+      purpose="None"
+      speed="40.0"
+      port="top"
+      through="None"
+      move_speed="40.0"
+      aspiration_speed="10.0"
+      dispense_speed="40.0"
+      anticlogging="False"
+      anticlogging_solvent="None"
+      anticlogging_solvent_volume="2 mL"
+      anticlogging_reagent_volume="10 mL"
+      through_cartridge="None"
+      reagent_vessel="flask_chloroacetyl_chloride"
+      waste_vessel="waste_filter"
+      vessel_type="filter"
+      anticlogging_solvent_vessel="None"
+      prime_n_times="1"
+      priming_volume="3 mL">
+      <StartStir
+        vessel="filter1"
+        stir_speed="250.0"
+        purpose="None"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerSetSpeed
+          stirring_controller="stirrer_filter"
+          stir_speed="250.0" />
+        <CStirringControllerStart
+          stirring_controller="stirrer_filter" />
+      </StartStir>
+      <PrimePumpForAdd
+        reagent="chloroacetyl chloride"
+        volume="3 mL"
+        reagent_vessel="flask_chloroacetyl_chloride"
+        waste_vessel="waste_filter"
+        prime_n_times="1"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0">
+        <Repeat
+          repeats="1">
+          <Children>
+            <CMove
+              from_vessel="flask_chloroacetyl_chloride"
+              to_vessel="waste_filter"
+              volume="3 mL"
+              move_speed="40.0"
+              aspiration_speed="10.0"
+              dispense_speed="40.0"
+              from_port="0"
+              to_port="0"
+              through=""
+              use_backbone="True"
+              repeats="1" />
+          </Children>
+          <Steps>
+            <CMove
+              from_vessel="flask_chloroacetyl_chloride"
+              to_vessel="waste_filter"
+              volume="3 mL"
+              move_speed="40.0"
+              aspiration_speed="10.0"
+              dispense_speed="40.0"
+              from_port="0"
+              to_port="0"
+              through=""
+              use_backbone="True"
+              repeats="1" />
+          </Steps>
+        </Repeat>
+      </PrimePumpForAdd>
+      <CMove
+        from_vessel="flask_chloroacetyl_chloride"
+        to_vessel="filter1"
+        volume="2 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="top"
+        through="None"
+        use_backbone="True"
+        repeats="1" />
+      <Wait
+        time="10 secs"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="10 secs" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <FlushTubing
+        to_vessel="filter1"
+        to_port="top"
+        volume="5 mL"
+        dispense_speed="40.0"
+        through_cartridge="None"
+        flush_tube_vessel="flask_argon">
+        <CMove
+          from_vessel="flask_argon"
+          to_vessel="filter1"
+          volume="5 mL"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0"
+          from_port="0"
+          to_port="top"
+          through="None"
+          use_backbone="True"
+          repeats="1" />
+      </FlushTubing>
+    </Add>
+    <CleanBackbone
+      solvent="glacial acetic acid"
+      near_waste="waste_filter"
+      far_waste="waste_dry"
+      solvent_waste="waste_dry"
+      solvent_vessel="flask_acetic_acid"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_filter"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="None"
+        to_port="None"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <CleanBackbone
+      solvent="water"
+      near_waste="waste_filter"
+      far_waste="waste_base"
+      solvent_waste="waste_filter"
+      solvent_vessel="flask_water"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_water"
+        to_vessel="waste_base"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <Add
+      vessel="filter1"
+      reagent="half-saturated aqueous sodium acetate"
+      volume="25 mL"
+      viscous="False"
+      dropwise="False"
+      time="None"
+      stir="True"
+      stir_speed="250.0"
+      purpose="None"
+      speed="40.0"
+      port="top"
+      through="None"
+      move_speed="40.0"
+      aspiration_speed="10.0"
+      dispense_speed="40.0"
+      anticlogging="False"
+      anticlogging_solvent="None"
+      anticlogging_solvent_volume="2 mL"
+      anticlogging_reagent_volume="10 mL"
+      through_cartridge="None"
+      reagent_vessel="flask_sodium_acetate"
+      waste_vessel="waste_filter"
+      vessel_type="filter"
+      anticlogging_solvent_vessel="None"
+      prime_n_times="1"
+      priming_volume="3 mL">
+      <StartStir
+        vessel="filter1"
+        stir_speed="250.0"
+        purpose="None"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerSetSpeed
+          stirring_controller="stirrer_filter"
+          stir_speed="250.0" />
+        <CStirringControllerStart
+          stirring_controller="stirrer_filter" />
+      </StartStir>
+      <PrimePumpForAdd
+        reagent="half-saturated aqueous sodium acetate"
+        volume="3 mL"
+        reagent_vessel="flask_sodium_acetate"
+        waste_vessel="waste_filter"
+        prime_n_times="1"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0">
+        <Repeat
+          repeats="1">
+          <Children>
+            <CMove
+              from_vessel="flask_sodium_acetate"
+              to_vessel="waste_filter"
+              volume="3 mL"
+              move_speed="40.0"
+              aspiration_speed="10.0"
+              dispense_speed="40.0"
+              from_port="0"
+              to_port="0"
+              through=""
+              use_backbone="True"
+              repeats="1" />
+          </Children>
+          <Steps>
+            <CMove
+              from_vessel="flask_sodium_acetate"
+              to_vessel="waste_filter"
+              volume="3 mL"
+              move_speed="40.0"
+              aspiration_speed="10.0"
+              dispense_speed="40.0"
+              from_port="0"
+              to_port="0"
+              through=""
+              use_backbone="True"
+              repeats="1" />
+          </Steps>
+        </Repeat>
+      </PrimePumpForAdd>
+      <CMove
+        from_vessel="flask_sodium_acetate"
+        to_vessel="filter1"
+        volume="25 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="top"
+        through="None"
+        use_backbone="True"
+        repeats="1" />
+      <Wait
+        time="10 secs"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="10 secs" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <FlushTubing
+        to_vessel="filter1"
+        to_port="top"
+        volume="5 mL"
+        dispense_speed="40.0"
+        through_cartridge="None"
+        flush_tube_vessel="flask_argon">
+        <CMove
+          from_vessel="flask_argon"
+          to_vessel="filter1"
+          volume="5 mL"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0"
+          from_port="0"
+          to_port="top"
+          through="None"
+          use_backbone="True"
+          repeats="1" />
+      </FlushTubing>
+    </Add>
+    <CleanBackbone
+      solvent="water"
+      near_waste="waste_filter"
+      far_waste="waste_base"
+      solvent_waste="waste_filter"
+      solvent_vessel="flask_water"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_water"
+        to_vessel="waste_base"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <HeatChillToTemp
+      vessel="filter1"
+      temp="10.0"
+      active="True"
+      continue_heatchill="True"
+      stir="True"
+      stir_speed="250.0"
+      purpose="None"
+      wait_recording_speed="2000.0"
+      after_recording_speed="14.0"
+      temperature_controller="chiller_filter">
+      <StartStir
+        vessel="filter1"
+        stir_speed="250.0"
+        purpose="None"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerSetSpeed
+          stirring_controller="stirrer_filter"
+          stir_speed="250.0" />
+        <CStirringControllerStart
+          stirring_controller="stirrer_filter" />
+      </StartStir>
+      <StartHeatChill
+        vessel="filter1"
+        temp="10.0"
+        purpose="None"
+        temperature_controller="chiller_filter">
+        <CTemperatureControllerSetTemp
+          temperature_controller="chiller_filter"
+          temp="10.0" />
+        <CTemperatureControllerStart
+          temperature_controller="chiller_filter" />
+      </StartHeatChill>
+      <CSetRecordingSpeed
+        recording_speed="2000.0" />
+      <WaitForTemp
+        vessel="chiller_filter"
+        temperature_controller="chiller_filter"
+        relaxed_rt_threshold="5.0"
+        relaxed_rt_threshold_timeout="600.0" />
+      <CSetRecordingSpeed
+        recording_speed="14.0" />
+    </HeatChillToTemp>
+    <Add
+      vessel="filter1"
+      reagent="water"
+      volume="60 mL"
+      viscous="False"
+      dropwise="False"
+      time="None"
+      stir="True"
+      stir_speed="250.0"
+      purpose="None"
+      speed="40.0"
+      port="top"
+      through="None"
+      move_speed="40.0"
+      aspiration_speed="10.0"
+      dispense_speed="40.0"
+      anticlogging="False"
+      anticlogging_solvent="None"
+      anticlogging_solvent_volume="2 mL"
+      anticlogging_reagent_volume="10 mL"
+      through_cartridge="None"
+      reagent_vessel="flask_water"
+      waste_vessel="waste_filter"
+      vessel_type="filter"
+      anticlogging_solvent_vessel="None"
+      prime_n_times="1"
+      priming_volume="3 mL">
+      <StartStir
+        vessel="filter1"
+        stir_speed="250.0"
+        purpose="None"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerSetSpeed
+          stirring_controller="stirrer_filter"
+          stir_speed="250.0" />
+        <CStirringControllerStart
+          stirring_controller="stirrer_filter" />
+      </StartStir>
+      <PrimePumpForAdd
+        reagent="water"
+        volume="3 mL"
+        reagent_vessel="flask_water"
+        waste_vessel="waste_filter"
+        prime_n_times="1"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0">
+        <Repeat
+          repeats="1">
+          <Children>
+            <CMove
+              from_vessel="flask_water"
+              to_vessel="waste_filter"
+              volume="3 mL"
+              move_speed="40.0"
+              aspiration_speed="10.0"
+              dispense_speed="40.0"
+              from_port="0"
+              to_port="0"
+              through=""
+              use_backbone="True"
+              repeats="1" />
+          </Children>
+          <Steps>
+            <CMove
+              from_vessel="flask_water"
+              to_vessel="waste_filter"
+              volume="3 mL"
+              move_speed="40.0"
+              aspiration_speed="10.0"
+              dispense_speed="40.0"
+              from_port="0"
+              to_port="0"
+              through=""
+              use_backbone="True"
+              repeats="1" />
+          </Steps>
+        </Repeat>
+      </PrimePumpForAdd>
+      <CMove
+        from_vessel="flask_water"
+        to_vessel="filter1"
+        volume="60 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="top"
+        through="None"
+        use_backbone="True"
+        repeats="1" />
+      <Wait
+        time="10 secs"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="10 secs" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <FlushTubing
+        to_vessel="filter1"
+        to_port="top"
+        volume="5 mL"
+        dispense_speed="40.0"
+        through_cartridge="None"
+        flush_tube_vessel="flask_argon">
+        <CMove
+          from_vessel="flask_argon"
+          to_vessel="filter1"
+          volume="5 mL"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0"
+          from_port="0"
+          to_port="top"
+          through="None"
+          use_backbone="True"
+          repeats="1" />
+      </FlushTubing>
+    </Add>
+    <Stir
+      vessel="filter1"
+      time="60 mins"
+      continue_stirring="False"
+      stir_speed="250.0"
+      purpose="None">
+      <StartStir
+        vessel="filter1"
+        stir_speed="250.0"
+        purpose="None"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerSetSpeed
+          stirring_controller="stirrer_filter"
+          stir_speed="250.0" />
+        <CStirringControllerStart
+          stirring_controller="stirrer_filter" />
+      </StartStir>
+      <Wait
+        time="60 mins"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="60 mins" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <StopStir
+        vessel="filter1"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerStop
+          stirring_controller="stirrer_filter" />
+      </StopStir>
+    </Stir>
+    <StopHeatChill
+      vessel="filter1"
+      temperature_controller="chiller_filter">
+      <CTemperatureControllerStop
+        temperature_controller="chiller_filter" />
+    </StopHeatChill>
+    <RemoveFilterDeadVolume
+      filter_vessel="filter1"
+      dead_volume="10 mL"
+      waste_vessel="waste_filter"
+      vacuum="vacuum_filter"
+      vacuum_valve="valve_vacuum"
+      valve_unused_port="2">
+      <CMove
+        from_vessel="filter1"
+        to_vessel="waste_filter"
+        volume="10 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="bottom"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="1" />
+      <CValveMoveToPosition
+        valve_name="valve_vacuum"
+        position="2" />
+    </RemoveFilterDeadVolume>
+    <CleanBackbone
+      solvent="water"
+      near_waste="waste_filter"
+      far_waste="waste_filter"
+      solvent_waste="waste_filter"
+      solvent_vessel="flask_water"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_water"
+        to_vessel="waste_filter"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="None"
+        to_port="None"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <CleanBackbone
+      solvent="glacial acetic acid"
+      near_waste="waste_filter"
+      far_waste="waste_base"
+      solvent_waste="waste_dry"
+      solvent_vessel="flask_acetic_acid"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_base"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_filter"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <Filter
+      vessel="filter1"
+      wait_time="2 mins"
+      aspiration_speed="5.0"
+      stir="True"
+      stir_speed="500.0"
+      filtrate_vessel="None"
+      anticlogging="False"
+      waste_vessel="waste_filter"
+      filter_top_volume="105 mL"
+      inline_filter="False"
+      vacuum_attached="True"
+      temp="None"
+      volume="None"
+      continue_heatchill="False">
+      <StartStir
+        vessel="filter1"
+        stir_speed="500.0"
+        purpose="None"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerSetSpeed
+          stirring_controller="stirrer_filter"
+          stir_speed="500.0" />
+        <CStirringControllerStart
+          stirring_controller="stirrer_filter" />
+      </StartStir>
+      <CMove
+        from_vessel="filter1"
+        to_vessel="waste_filter"
+        volume="157.5 mL"
+        move_speed="40.0"
+        aspiration_speed="5.0"
+        dispense_speed="40.0"
+        from_port="bottom"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="1" />
+      <StopStir
+        vessel="filter1"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerStop
+          stirring_controller="stirrer_filter" />
+      </StopStir>
+      <ApplyVacuum
+        vessel="filter1"
+        time="2 mins"
+        pressure="400.0"
+        port="bottom"
+        vessel_type="filter"
+        vacuum_valve="valve_vacuum"
+        vacuum_source="vacuum_filter"
+        vacuum_device="None"
+        vacuum_valve_inert_gas="None"
+        vacuum_valve_unused_port="2"
+        pneumatic_controller="None">
+        <CConnect
+          from_vessel="filter1"
+          to_vessel="vacuum_filter"
+          from_port="bottom"
+          to_port="None" />
+        <Wait
+          time="2 mins"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="2 mins" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <CValveMoveToPosition
+          valve_name="valve_vacuum"
+          position="2" />
+      </ApplyVacuum>
+    </Filter>
+    <Dry
+      vessel="filter1"
+      time="60 mins"
+      temp="None"
+      waste_vessel="waste_filter"
+      aspiration_speed="5.0"
+      continue_heatchill="False"
+      vacuum="vacuum_filter"
+      vacuum_device="False"
+      pressure="None"
+      inert_gas="None"
+      vacuum_valve="valve_vacuum"
+      valve_unused_port="2"
+      vessel_type="filter"
+      vessel_has_stirrer="True"
+      collection_flask_volume="None">
+      <StopStir
+        vessel="filter1"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerStop
+          stirring_controller="stirrer_filter" />
+      </StopStir>
+      <CMove
+        from_vessel="filter1"
+        to_vessel="waste_filter"
+        volume="5 mL"
+        move_speed="40.0"
+        aspiration_speed="5.0"
+        dispense_speed="40.0"
+        from_port="bottom"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="1" />
+      <ApplyVacuum
+        vessel="filter1"
+        time="60 mins"
+        pressure="400.0"
+        port="bottom"
+        vessel_type="filter"
+        vacuum_valve="valve_vacuum"
+        vacuum_source="vacuum_filter"
+        vacuum_device="None"
+        vacuum_valve_inert_gas="None"
+        vacuum_valve_unused_port="2"
+        pneumatic_controller="None">
+        <CConnect
+          from_vessel="filter1"
+          to_vessel="vacuum_filter"
+          from_port="bottom"
+          to_port="None" />
+        <Wait
+          time="60 mins"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="60 mins" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <CValveMoveToPosition
+          valve_name="valve_vacuum"
+          position="2" />
+      </ApplyVacuum>
+    </Dry>
+    <CleanBackbone
+      solvent="glacial acetic acid"
+      near_waste="waste_filter"
+      far_waste="waste_filter"
+      solvent_waste="waste_dry"
+      solvent_vessel="flask_acetic_acid"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_filter"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="None"
+        to_port="None"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <AddFilterDeadVolume
+      filter_vessel="filter1"
+      solvent="glacial acetic acid"
+      volume="10 mL"
+      waste_vessel="waste_filter"
+      solvent_vessel="flask_acetic_acid"
+      vacuum="vacuum_filter"
+      inert_gas="None"
+      vacuum_valve="valve_vacuum"
+      valve_unused_port="2">
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="filter1"
+        volume="10 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="bottom"
+        through=""
+        use_backbone="True"
+        repeats="1" />
+      <CValveMoveToPosition
+        valve_name="valve_vacuum"
+        position="2" />
+    </AddFilterDeadVolume>
+    <Add
+      vessel="filter1"
+      reagent="diethylamine"
+      volume="7.5 mL"
+      viscous="False"
+      dropwise="False"
+      time="None"
+      stir="False"
+      stir_speed="250.0"
+      purpose="None"
+      speed="40.0"
+      port="top"
+      through="None"
+      move_speed="40.0"
+      aspiration_speed="10.0"
+      dispense_speed="40.0"
+      anticlogging="False"
+      anticlogging_solvent="None"
+      anticlogging_solvent_volume="2 mL"
+      anticlogging_reagent_volume="10 mL"
+      through_cartridge="None"
+      reagent_vessel="flask_diethylamine"
+      waste_vessel="waste_filter"
+      vessel_type="filter"
+      anticlogging_solvent_vessel="None"
+      prime_n_times="1"
+      priming_volume="3 mL">
+      <StopStir
+        vessel="filter1"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerStop
+          stirring_controller="stirrer_filter" />
+      </StopStir>
+      <PrimePumpForAdd
+        reagent="diethylamine"
+        volume="3 mL"
+        reagent_vessel="flask_diethylamine"
+        waste_vessel="waste_filter"
+        prime_n_times="1"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0">
+        <Repeat
+          repeats="1">
+          <Children>
+            <CMove
+              from_vessel="flask_diethylamine"
+              to_vessel="waste_filter"
+              volume="3 mL"
+              move_speed="40.0"
+              aspiration_speed="10.0"
+              dispense_speed="40.0"
+              from_port="0"
+              to_port="0"
+              through=""
+              use_backbone="True"
+              repeats="1" />
+          </Children>
+          <Steps>
+            <CMove
+              from_vessel="flask_diethylamine"
+              to_vessel="waste_filter"
+              volume="3 mL"
+              move_speed="40.0"
+              aspiration_speed="10.0"
+              dispense_speed="40.0"
+              from_port="0"
+              to_port="0"
+              through=""
+              use_backbone="True"
+              repeats="1" />
+          </Steps>
+        </Repeat>
+      </PrimePumpForAdd>
+      <CMove
+        from_vessel="flask_diethylamine"
+        to_vessel="filter1"
+        volume="7.5 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="top"
+        through="None"
+        use_backbone="True"
+        repeats="1" />
+      <Wait
+        time="10 secs"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="10 secs" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <FlushTubing
+        to_vessel="filter1"
+        to_port="top"
+        volume="5 mL"
+        dispense_speed="40.0"
+        through_cartridge="None"
+        flush_tube_vessel="flask_argon">
+        <CMove
+          from_vessel="flask_argon"
+          to_vessel="filter1"
+          volume="5 mL"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0"
+          from_port="0"
+          to_port="top"
+          through="None"
+          use_backbone="True"
+          repeats="1" />
+      </FlushTubing>
+    </Add>
+    <CleanBackbone
+      solvent="glacial acetic acid"
+      near_waste="waste_filter"
+      far_waste="waste_organic"
+      solvent_waste="waste_dry"
+      solvent_vessel="flask_acetic_acid"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_organic"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="None"
+        to_port="None"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_filter"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="None"
+        to_port="None"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <Add
+      vessel="filter1"
+      reagent="toluene"
+      volume="25 mL"
+      viscous="False"
+      dropwise="False"
+      time="None"
+      stir="True"
+      stir_speed="250.0"
+      purpose="None"
+      speed="40.0"
+      port="top"
+      through="None"
+      move_speed="40.0"
+      aspiration_speed="10.0"
+      dispense_speed="40.0"
+      anticlogging="False"
+      anticlogging_solvent="None"
+      anticlogging_solvent_volume="2 mL"
+      anticlogging_reagent_volume="10 mL"
+      through_cartridge="None"
+      reagent_vessel="flask_toluene"
+      waste_vessel="waste_filter"
+      vessel_type="filter"
+      anticlogging_solvent_vessel="None"
+      prime_n_times="1"
+      priming_volume="3 mL">
+      <StartStir
+        vessel="filter1"
+        stir_speed="250.0"
+        purpose="None"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerSetSpeed
+          stirring_controller="stirrer_filter"
+          stir_speed="250.0" />
+        <CStirringControllerStart
+          stirring_controller="stirrer_filter" />
+      </StartStir>
+      <PrimePumpForAdd
+        reagent="toluene"
+        volume="3 mL"
+        reagent_vessel="flask_toluene"
+        waste_vessel="waste_filter"
+        prime_n_times="1"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0">
+        <Repeat
+          repeats="1">
+          <Children>
+            <CMove
+              from_vessel="flask_toluene"
+              to_vessel="waste_filter"
+              volume="3 mL"
+              move_speed="40.0"
+              aspiration_speed="10.0"
+              dispense_speed="40.0"
+              from_port="0"
+              to_port="0"
+              through=""
+              use_backbone="True"
+              repeats="1" />
+          </Children>
+          <Steps>
+            <CMove
+              from_vessel="flask_toluene"
+              to_vessel="waste_filter"
+              volume="3 mL"
+              move_speed="40.0"
+              aspiration_speed="10.0"
+              dispense_speed="40.0"
+              from_port="0"
+              to_port="0"
+              through=""
+              use_backbone="True"
+              repeats="1" />
+          </Steps>
+        </Repeat>
+      </PrimePumpForAdd>
+      <CMove
+        from_vessel="flask_toluene"
+        to_vessel="filter1"
+        volume="25 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="top"
+        through="None"
+        use_backbone="True"
+        repeats="1" />
+      <Wait
+        time="10 secs"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="10 secs" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <FlushTubing
+        to_vessel="filter1"
+        to_port="top"
+        volume="5 mL"
+        dispense_speed="40.0"
+        through_cartridge="None"
+        flush_tube_vessel="flask_argon">
+        <CMove
+          from_vessel="flask_argon"
+          to_vessel="filter1"
+          volume="5 mL"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0"
+          from_port="0"
+          to_port="top"
+          through="None"
+          use_backbone="True"
+          repeats="1" />
+      </FlushTubing>
+    </Add>
+    <CleanBackbone
+      solvent="glacial acetic acid"
+      near_waste="waste_filter"
+      far_waste="waste_organic"
+      solvent_waste="waste_dry"
+      solvent_vessel="flask_acetic_acid"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_organic"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="None"
+        to_port="None"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_filter"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="None"
+        to_port="None"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <CleanBackbone
+      solvent="water"
+      near_waste="waste_filter"
+      far_waste="waste_base"
+      solvent_waste="waste_filter"
+      solvent_vessel="flask_water"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_water"
+        to_vessel="waste_base"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <HeatChill
+      vessel="filter1"
+      temp="110.6"
+      time="60 mins"
+      stir="True"
+      stir_speed="250.0"
+      purpose="None"
+      vessel_type="filter">
+      <StartStir
+        vessel="filter1"
+        stir_speed="250.0"
+        purpose="None"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerSetSpeed
+          stirring_controller="stirrer_filter"
+          stir_speed="250.0" />
+        <CStirringControllerStart
+          stirring_controller="stirrer_filter" />
+      </StartStir>
+      <HeatChillToTemp
+        vessel="filter1"
+        temp="110.6"
+        active="True"
+        continue_heatchill="True"
+        stir="True"
+        stir_speed="250.0"
+        purpose="None"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0"
+        temperature_controller="chiller_filter">
+        <StartStir
+          vessel="filter1"
+          stir_speed="250.0"
+          purpose="None"
+          stirring_controller="stirrer_filter">
+          <CStirringControllerSetSpeed
+            stirring_controller="stirrer_filter"
+            stir_speed="250.0" />
+          <CStirringControllerStart
+            stirring_controller="stirrer_filter" />
+        </StartStir>
+        <StartHeatChill
+          vessel="filter1"
+          temp="110.6"
+          purpose="None"
+          temperature_controller="chiller_filter">
+          <CTemperatureControllerSetTemp
+            temperature_controller="chiller_filter"
+            temp="110.6" />
+          <CTemperatureControllerStart
+            temperature_controller="chiller_filter" />
+        </StartHeatChill>
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <WaitForTemp
+          vessel="chiller_filter"
+          temperature_controller="chiller_filter"
+          relaxed_rt_threshold="5.0"
+          relaxed_rt_threshold_timeout="600.0" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </HeatChillToTemp>
+      <Wait
+        time="60 mins"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="60 mins" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <StopHeatChill
+        vessel="filter1"
+        temperature_controller="chiller_filter">
+        <CTemperatureControllerStop
+          temperature_controller="chiller_filter" />
+      </StopHeatChill>
+    </HeatChill>
+    <HeatChillToTemp
+      vessel="filter1"
+      temp="25.0"
+      active="True"
+      continue_heatchill="True"
+      stir="True"
+      stir_speed="250.0"
+      purpose="None"
+      wait_recording_speed="2000.0"
+      after_recording_speed="14.0"
+      temperature_controller="chiller_filter">
+      <StartStir
+        vessel="filter1"
+        stir_speed="250.0"
+        purpose="None"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerSetSpeed
+          stirring_controller="stirrer_filter"
+          stir_speed="250.0" />
+        <CStirringControllerStart
+          stirring_controller="stirrer_filter" />
+      </StartStir>
+      <StartHeatChill
+        vessel="filter1"
+        temp="25.0"
+        purpose="None"
+        temperature_controller="chiller_filter">
+        <CTemperatureControllerSetTemp
+          temperature_controller="chiller_filter"
+          temp="25.0" />
+        <CTemperatureControllerStart
+          temperature_controller="chiller_filter" />
+      </StartHeatChill>
+      <CSetRecordingSpeed
+        recording_speed="2000.0" />
+      <WaitForTemp
+        vessel="chiller_filter"
+        temperature_controller="chiller_filter"
+        relaxed_rt_threshold="5.0"
+        relaxed_rt_threshold_timeout="600.0" />
+      <CSetRecordingSpeed
+        recording_speed="14.0" />
+    </HeatChillToTemp>
+    <Separate
+      purpose="wash"
+      from_vessel="filter1"
+      separation_vessel="flask_separator"
+      to_vessel="flask_separator"
+      product_phase="top"
+      solvent="water"
+      through="None"
+      from_port="bottom"
+      to_port="top"
+      solvent_volume="50 mL"
+      repeats="4"
+      waste_phase_to_vessel="None"
+      waste_phase_to_port="None"
+      remove_dead_volume="False"
+      waste_vessel="waste_separator"
+      buffer_flasks="None None"
+      through_cartridge="None"
+      stir_speed="600.0"
+      stir_time="5 mins"
+      settling_time="5 mins"
+      waste_phase_to_vessel_to_use="waste_separator">
+      <Transfer
+        from_vessel="filter1"
+        to_vessel="flask_separator"
+        volume="160 mL"
+        from_port="bottom"
+        to_port="bottom"
+        through="None"
+        time="None"
+        aspiration_speed="10.0"
+        move_speed="40.0"
+        dispense_speed="40.0"
+        viscous="False"
+        through_cartridge="None"
+        transfer_all="True"
+        from_vessel_has_stirrer="True"
+        from_vessel_has_heater="False"
+        from_vessel_has_chiller="True"
+        flush_tubing="False"
+        rinsing_solvent="None"
+        rinsing_volume="None"
+        rinsing_repeats="1"
+        rinsing_solvent_vessel="None"
+        rinse_withdrawal_excess="0.2">
+        <StopStir
+          vessel="filter1"
+          stirring_controller="stirrer_filter">
+          <CStirringControllerStop
+            stirring_controller="stirrer_filter" />
+        </StopStir>
+        <CMove
+          from_vessel="filter1"
+          to_vessel="flask_separator"
+          volume="160 mL"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0"
+          from_port="bottom"
+          to_port="bottom"
+          through="None"
+          use_backbone="True"
+          repeats="1" />
+        <StopHeatChill
+          vessel="filter1"
+          temperature_controller="chiller_filter">
+          <CTemperatureControllerStop
+            temperature_controller="chiller_filter" />
+        </StopHeatChill>
+      </Transfer>
+      <Add
+        vessel="flask_separator"
+        reagent="water"
+        volume="50 mL"
+        viscous="False"
+        dropwise="False"
+        time="None"
+        stir="False"
+        stir_speed="250.0"
+        purpose="None"
+        speed="40.0"
+        port="bottom"
+        through="None"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        anticlogging="False"
+        anticlogging_solvent="None"
+        anticlogging_solvent_volume="2 mL"
+        anticlogging_reagent_volume="10 mL"
+        through_cartridge="None"
+        reagent_vessel="flask_water"
+        waste_vessel="waste_separator"
+        vessel_type="separator"
+        anticlogging_solvent_vessel="None"
+        prime_n_times="1"
+        priming_volume="3 mL">
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+        <PrimePumpForAdd
+          reagent="water"
+          volume="3 mL"
+          reagent_vessel="flask_water"
+          waste_vessel="waste_separator"
+          prime_n_times="1"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0">
+          <Repeat
+            repeats="1">
+            <Children>
+              <CMove
+                from_vessel="flask_water"
+                to_vessel="waste_separator"
+                volume="3 mL"
+                move_speed="40.0"
+                aspiration_speed="10.0"
+                dispense_speed="40.0"
+                from_port="0"
+                to_port="0"
+                through=""
+                use_backbone="True"
+                repeats="1" />
+            </Children>
+            <Steps>
+              <CMove
+                from_vessel="flask_water"
+                to_vessel="waste_separator"
+                volume="3 mL"
+                move_speed="40.0"
+                aspiration_speed="10.0"
+                dispense_speed="40.0"
+                from_port="0"
+                to_port="0"
+                through=""
+                use_backbone="True"
+                repeats="1" />
+            </Steps>
+          </Repeat>
+        </PrimePumpForAdd>
+        <CMove
+          from_vessel="flask_water"
+          to_vessel="flask_separator"
+          volume="50 mL"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0"
+          from_port="0"
+          to_port="bottom"
+          through="None"
+          use_backbone="True"
+          repeats="1" />
+        <Wait
+          time="10 secs"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="10 secs" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <FlushTubing
+          to_vessel="flask_separator"
+          to_port="bottom"
+          volume="5 mL"
+          dispense_speed="40.0"
+          through_cartridge="None"
+          flush_tube_vessel="flask_argon">
+          <CMove
+            from_vessel="flask_argon"
+            to_vessel="flask_separator"
+            volume="5 mL"
+            move_speed="40.0"
+            aspiration_speed="10.0"
+            dispense_speed="40.0"
+            from_port="0"
+            to_port="bottom"
+            through="None"
+            use_backbone="True"
+            repeats="1" />
+        </FlushTubing>
+      </Add>
+      <Stir
+        vessel="flask_separator"
+        time="5 mins"
+        continue_stirring="False"
+        stir_speed="600.0"
+        purpose="None">
+        <StartStir
+          vessel="flask_separator"
+          stir_speed="600.0"
+          purpose="None"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerSetSpeed
+            stirring_controller="stirrer_separator"
+            stir_speed="600.0" />
+          <CStirringControllerStart
+            stirring_controller="stirrer_separator" />
+        </StartStir>
+        <Wait
+          time="5 mins"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="5 mins" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+      </Stir>
+      <Stir
+        vessel="flask_separator"
+        time="2 mins"
+        continue_stirring="False"
+        stir_speed="30.0"
+        purpose="None">
+        <StartStir
+          vessel="flask_separator"
+          stir_speed="30.0"
+          purpose="None"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerSetSpeed
+            stirring_controller="stirrer_separator"
+            stir_speed="30.0" />
+          <CStirringControllerStart
+            stirring_controller="stirrer_separator" />
+        </StartStir>
+        <Wait
+          time="2 mins"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="2 mins" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+      </Stir>
+      <Wait
+        time="5 mins"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="5 mins" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <SeparatePhases
+        separation_vessel="flask_separator"
+        lower_phase_vessel="waste_separator"
+        upper_phase_vessel="flask_separator"
+        dead_volume_vessel="None"
+        step_volume="1 mL"
+        lower_phase_port="0"
+        upper_phase_port="bottom"
+        dead_volume_port="None"
+        lower_phase_through="None"
+        upper_phase_through="None"
+        dead_volume_through="None"
+        failure_vessel="flask_separator"
+        max_retries="2"
+        lower_phase_through_cartridge="None"
+        can_retry="False"
+        separation_vessel_max_volume="250.0"
+        separation_vessel_pump="pump_separator"
+        pump_max_volume="25.0"
+        conductivity_sensor="sensor_conductivity" />
+      <Add
+        vessel="flask_separator"
+        reagent="water"
+        volume="50 mL"
+        viscous="False"
+        dropwise="False"
+        time="None"
+        stir="False"
+        stir_speed="250.0"
+        purpose="None"
+        speed="40.0"
+        port="bottom"
+        through="None"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        anticlogging="False"
+        anticlogging_solvent="None"
+        anticlogging_solvent_volume="2 mL"
+        anticlogging_reagent_volume="10 mL"
+        through_cartridge="None"
+        reagent_vessel="flask_water"
+        waste_vessel="waste_separator"
+        vessel_type="separator"
+        anticlogging_solvent_vessel="None"
+        prime_n_times="1"
+        priming_volume="3 mL">
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+        <PrimePumpForAdd
+          reagent="water"
+          volume="3 mL"
+          reagent_vessel="flask_water"
+          waste_vessel="waste_separator"
+          prime_n_times="1"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0">
+          <Repeat
+            repeats="1">
+            <Children>
+              <CMove
+                from_vessel="flask_water"
+                to_vessel="waste_separator"
+                volume="3 mL"
+                move_speed="40.0"
+                aspiration_speed="10.0"
+                dispense_speed="40.0"
+                from_port="0"
+                to_port="0"
+                through=""
+                use_backbone="True"
+                repeats="1" />
+            </Children>
+            <Steps>
+              <CMove
+                from_vessel="flask_water"
+                to_vessel="waste_separator"
+                volume="3 mL"
+                move_speed="40.0"
+                aspiration_speed="10.0"
+                dispense_speed="40.0"
+                from_port="0"
+                to_port="0"
+                through=""
+                use_backbone="True"
+                repeats="1" />
+            </Steps>
+          </Repeat>
+        </PrimePumpForAdd>
+        <CMove
+          from_vessel="flask_water"
+          to_vessel="flask_separator"
+          volume="50 mL"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0"
+          from_port="0"
+          to_port="bottom"
+          through="None"
+          use_backbone="True"
+          repeats="1" />
+        <Wait
+          time="10 secs"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="10 secs" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <FlushTubing
+          to_vessel="flask_separator"
+          to_port="bottom"
+          volume="5 mL"
+          dispense_speed="40.0"
+          through_cartridge="None"
+          flush_tube_vessel="flask_argon">
+          <CMove
+            from_vessel="flask_argon"
+            to_vessel="flask_separator"
+            volume="5 mL"
+            move_speed="40.0"
+            aspiration_speed="10.0"
+            dispense_speed="40.0"
+            from_port="0"
+            to_port="bottom"
+            through="None"
+            use_backbone="True"
+            repeats="1" />
+        </FlushTubing>
+      </Add>
+      <Stir
+        vessel="flask_separator"
+        time="5 mins"
+        continue_stirring="False"
+        stir_speed="600.0"
+        purpose="None">
+        <StartStir
+          vessel="flask_separator"
+          stir_speed="600.0"
+          purpose="None"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerSetSpeed
+            stirring_controller="stirrer_separator"
+            stir_speed="600.0" />
+          <CStirringControllerStart
+            stirring_controller="stirrer_separator" />
+        </StartStir>
+        <Wait
+          time="5 mins"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="5 mins" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+      </Stir>
+      <Stir
+        vessel="flask_separator"
+        time="2 mins"
+        continue_stirring="False"
+        stir_speed="30.0"
+        purpose="None">
+        <StartStir
+          vessel="flask_separator"
+          stir_speed="30.0"
+          purpose="None"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerSetSpeed
+            stirring_controller="stirrer_separator"
+            stir_speed="30.0" />
+          <CStirringControllerStart
+            stirring_controller="stirrer_separator" />
+        </StartStir>
+        <Wait
+          time="2 mins"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="2 mins" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+      </Stir>
+      <Wait
+        time="5 mins"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="5 mins" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <SeparatePhases
+        separation_vessel="flask_separator"
+        lower_phase_vessel="waste_separator"
+        upper_phase_vessel="flask_separator"
+        dead_volume_vessel="None"
+        step_volume="1 mL"
+        lower_phase_port="0"
+        upper_phase_port="bottom"
+        dead_volume_port="None"
+        lower_phase_through="None"
+        upper_phase_through="None"
+        dead_volume_through="None"
+        failure_vessel="flask_separator"
+        max_retries="2"
+        lower_phase_through_cartridge="None"
+        can_retry="False"
+        separation_vessel_max_volume="250.0"
+        separation_vessel_pump="pump_separator"
+        pump_max_volume="25.0"
+        conductivity_sensor="sensor_conductivity" />
+      <Add
+        vessel="flask_separator"
+        reagent="water"
+        volume="50 mL"
+        viscous="False"
+        dropwise="False"
+        time="None"
+        stir="False"
+        stir_speed="250.0"
+        purpose="None"
+        speed="40.0"
+        port="bottom"
+        through="None"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        anticlogging="False"
+        anticlogging_solvent="None"
+        anticlogging_solvent_volume="2 mL"
+        anticlogging_reagent_volume="10 mL"
+        through_cartridge="None"
+        reagent_vessel="flask_water"
+        waste_vessel="waste_separator"
+        vessel_type="separator"
+        anticlogging_solvent_vessel="None"
+        prime_n_times="1"
+        priming_volume="3 mL">
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+        <PrimePumpForAdd
+          reagent="water"
+          volume="3 mL"
+          reagent_vessel="flask_water"
+          waste_vessel="waste_separator"
+          prime_n_times="1"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0">
+          <Repeat
+            repeats="1">
+            <Children>
+              <CMove
+                from_vessel="flask_water"
+                to_vessel="waste_separator"
+                volume="3 mL"
+                move_speed="40.0"
+                aspiration_speed="10.0"
+                dispense_speed="40.0"
+                from_port="0"
+                to_port="0"
+                through=""
+                use_backbone="True"
+                repeats="1" />
+            </Children>
+            <Steps>
+              <CMove
+                from_vessel="flask_water"
+                to_vessel="waste_separator"
+                volume="3 mL"
+                move_speed="40.0"
+                aspiration_speed="10.0"
+                dispense_speed="40.0"
+                from_port="0"
+                to_port="0"
+                through=""
+                use_backbone="True"
+                repeats="1" />
+            </Steps>
+          </Repeat>
+        </PrimePumpForAdd>
+        <CMove
+          from_vessel="flask_water"
+          to_vessel="flask_separator"
+          volume="50 mL"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0"
+          from_port="0"
+          to_port="bottom"
+          through="None"
+          use_backbone="True"
+          repeats="1" />
+        <Wait
+          time="10 secs"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="10 secs" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <FlushTubing
+          to_vessel="flask_separator"
+          to_port="bottom"
+          volume="5 mL"
+          dispense_speed="40.0"
+          through_cartridge="None"
+          flush_tube_vessel="flask_argon">
+          <CMove
+            from_vessel="flask_argon"
+            to_vessel="flask_separator"
+            volume="5 mL"
+            move_speed="40.0"
+            aspiration_speed="10.0"
+            dispense_speed="40.0"
+            from_port="0"
+            to_port="bottom"
+            through="None"
+            use_backbone="True"
+            repeats="1" />
+        </FlushTubing>
+      </Add>
+      <Stir
+        vessel="flask_separator"
+        time="5 mins"
+        continue_stirring="False"
+        stir_speed="600.0"
+        purpose="None">
+        <StartStir
+          vessel="flask_separator"
+          stir_speed="600.0"
+          purpose="None"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerSetSpeed
+            stirring_controller="stirrer_separator"
+            stir_speed="600.0" />
+          <CStirringControllerStart
+            stirring_controller="stirrer_separator" />
+        </StartStir>
+        <Wait
+          time="5 mins"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="5 mins" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+      </Stir>
+      <Stir
+        vessel="flask_separator"
+        time="2 mins"
+        continue_stirring="False"
+        stir_speed="30.0"
+        purpose="None">
+        <StartStir
+          vessel="flask_separator"
+          stir_speed="30.0"
+          purpose="None"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerSetSpeed
+            stirring_controller="stirrer_separator"
+            stir_speed="30.0" />
+          <CStirringControllerStart
+            stirring_controller="stirrer_separator" />
+        </StartStir>
+        <Wait
+          time="2 mins"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="2 mins" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+      </Stir>
+      <Wait
+        time="5 mins"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="5 mins" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <SeparatePhases
+        separation_vessel="flask_separator"
+        lower_phase_vessel="waste_separator"
+        upper_phase_vessel="flask_separator"
+        dead_volume_vessel="None"
+        step_volume="1 mL"
+        lower_phase_port="0"
+        upper_phase_port="bottom"
+        dead_volume_port="None"
+        lower_phase_through="None"
+        upper_phase_through="None"
+        dead_volume_through="None"
+        failure_vessel="flask_separator"
+        max_retries="2"
+        lower_phase_through_cartridge="None"
+        can_retry="False"
+        separation_vessel_max_volume="250.0"
+        separation_vessel_pump="pump_separator"
+        pump_max_volume="25.0"
+        conductivity_sensor="sensor_conductivity" />
+      <Add
+        vessel="flask_separator"
+        reagent="water"
+        volume="50 mL"
+        viscous="False"
+        dropwise="False"
+        time="None"
+        stir="False"
+        stir_speed="250.0"
+        purpose="None"
+        speed="40.0"
+        port="bottom"
+        through="None"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        anticlogging="False"
+        anticlogging_solvent="None"
+        anticlogging_solvent_volume="2 mL"
+        anticlogging_reagent_volume="10 mL"
+        through_cartridge="None"
+        reagent_vessel="flask_water"
+        waste_vessel="waste_separator"
+        vessel_type="separator"
+        anticlogging_solvent_vessel="None"
+        prime_n_times="1"
+        priming_volume="3 mL">
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+        <PrimePumpForAdd
+          reagent="water"
+          volume="3 mL"
+          reagent_vessel="flask_water"
+          waste_vessel="waste_separator"
+          prime_n_times="1"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0">
+          <Repeat
+            repeats="1">
+            <Children>
+              <CMove
+                from_vessel="flask_water"
+                to_vessel="waste_separator"
+                volume="3 mL"
+                move_speed="40.0"
+                aspiration_speed="10.0"
+                dispense_speed="40.0"
+                from_port="0"
+                to_port="0"
+                through=""
+                use_backbone="True"
+                repeats="1" />
+            </Children>
+            <Steps>
+              <CMove
+                from_vessel="flask_water"
+                to_vessel="waste_separator"
+                volume="3 mL"
+                move_speed="40.0"
+                aspiration_speed="10.0"
+                dispense_speed="40.0"
+                from_port="0"
+                to_port="0"
+                through=""
+                use_backbone="True"
+                repeats="1" />
+            </Steps>
+          </Repeat>
+        </PrimePumpForAdd>
+        <CMove
+          from_vessel="flask_water"
+          to_vessel="flask_separator"
+          volume="50 mL"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0"
+          from_port="0"
+          to_port="bottom"
+          through="None"
+          use_backbone="True"
+          repeats="1" />
+        <Wait
+          time="10 secs"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="10 secs" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <FlushTubing
+          to_vessel="flask_separator"
+          to_port="bottom"
+          volume="5 mL"
+          dispense_speed="40.0"
+          through_cartridge="None"
+          flush_tube_vessel="flask_argon">
+          <CMove
+            from_vessel="flask_argon"
+            to_vessel="flask_separator"
+            volume="5 mL"
+            move_speed="40.0"
+            aspiration_speed="10.0"
+            dispense_speed="40.0"
+            from_port="0"
+            to_port="bottom"
+            through="None"
+            use_backbone="True"
+            repeats="1" />
+        </FlushTubing>
+      </Add>
+      <Stir
+        vessel="flask_separator"
+        time="5 mins"
+        continue_stirring="False"
+        stir_speed="600.0"
+        purpose="None">
+        <StartStir
+          vessel="flask_separator"
+          stir_speed="600.0"
+          purpose="None"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerSetSpeed
+            stirring_controller="stirrer_separator"
+            stir_speed="600.0" />
+          <CStirringControllerStart
+            stirring_controller="stirrer_separator" />
+        </StartStir>
+        <Wait
+          time="5 mins"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="5 mins" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+      </Stir>
+      <Stir
+        vessel="flask_separator"
+        time="2 mins"
+        continue_stirring="False"
+        stir_speed="30.0"
+        purpose="None">
+        <StartStir
+          vessel="flask_separator"
+          stir_speed="30.0"
+          purpose="None"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerSetSpeed
+            stirring_controller="stirrer_separator"
+            stir_speed="30.0" />
+          <CStirringControllerStart
+            stirring_controller="stirrer_separator" />
+        </StartStir>
+        <Wait
+          time="2 mins"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="2 mins" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+      </Stir>
+      <Wait
+        time="5 mins"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="5 mins" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <SeparatePhases
+        separation_vessel="flask_separator"
+        lower_phase_vessel="waste_separator"
+        upper_phase_vessel="flask_separator"
+        dead_volume_vessel="None"
+        step_volume="1 mL"
+        lower_phase_port="0"
+        upper_phase_port="top"
+        dead_volume_port="None"
+        lower_phase_through="None"
+        upper_phase_through="None"
+        dead_volume_through="None"
+        failure_vessel="flask_separator"
+        max_retries="2"
+        lower_phase_through_cartridge="None"
+        can_retry="False"
+        separation_vessel_max_volume="250.0"
+        separation_vessel_pump="pump_separator"
+        pump_max_volume="25.0"
+        conductivity_sensor="sensor_conductivity" />
+    </Separate>
+    <CleanBackbone
+      solvent="water"
+      near_waste="waste_filter"
+      far_waste="waste_separator"
+      solvent_waste="waste_filter"
+      solvent_vessel="flask_water"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_water"
+        to_vessel="waste_separator"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="None"
+        to_port="None"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <CleanBackbone
+      solvent="glacial acetic acid"
+      near_waste="waste_filter"
+      far_waste="waste_base"
+      solvent_waste="waste_dry"
+      solvent_vessel="flask_acetic_acid"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_base"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_filter"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <CleanVessel
+      vessel="filter1"
+      solvent="glacial acetic acid"
+      stir_time="60 secs"
+      stir_speed="500.0"
+      temp="30.0"
+      dry="True"
+      volume="80 mL"
+      repeats="2"
+      solvent_vessel="flask_acetic_acid"
+      waste_vessel="waste_filter"
+      vacuum="vacuum_filter"
+      vessel_type="filter"
+      heater="None"
+      chiller="chiller_filter"
+      has_stirrer="True">
+      <StartStir
+        vessel="filter1"
+        stir_speed="250.0"
+        purpose="None"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerSetSpeed
+          stirring_controller="stirrer_filter"
+          stir_speed="250.0" />
+        <CStirringControllerStart
+          stirring_controller="stirrer_filter" />
+      </StartStir>
+      <HeatChillToTemp
+        vessel="filter1"
+        temp="30.0"
+        active="True"
+        continue_heatchill="True"
+        stir="True"
+        stir_speed="250.0"
+        purpose="None"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0"
+        temperature_controller="chiller_filter">
+        <StartStir
+          vessel="filter1"
+          stir_speed="250.0"
+          purpose="None"
+          stirring_controller="stirrer_filter">
+          <CStirringControllerSetSpeed
+            stirring_controller="stirrer_filter"
+            stir_speed="250.0" />
+          <CStirringControllerStart
+            stirring_controller="stirrer_filter" />
+        </StartStir>
+        <StartHeatChill
+          vessel="filter1"
+          temp="30.0"
+          purpose="None"
+          temperature_controller="chiller_filter">
+          <CTemperatureControllerSetTemp
+            temperature_controller="chiller_filter"
+            temp="30.0" />
+          <CTemperatureControllerStart
+            temperature_controller="chiller_filter" />
+        </StartHeatChill>
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <WaitForTemp
+          vessel="chiller_filter"
+          temperature_controller="chiller_filter"
+          relaxed_rt_threshold="5.0"
+          relaxed_rt_threshold_timeout="600.0" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </HeatChillToTemp>
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="filter1"
+        volume="80 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="top"
+        through=""
+        use_backbone="True"
+        repeats="1" />
+      <Wait
+        time="60 secs"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="60 secs" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <CMove
+        from_vessel="filter1"
+        to_vessel="waste_filter"
+        volume="80 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="bottom"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="1" />
+      <StopStir
+        vessel="filter1"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerStop
+          stirring_controller="stirrer_filter" />
+      </StopStir>
+      <StartStir
+        vessel="filter1"
+        stir_speed="250.0"
+        purpose="None"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerSetSpeed
+          stirring_controller="stirrer_filter"
+          stir_speed="250.0" />
+        <CStirringControllerStart
+          stirring_controller="stirrer_filter" />
+      </StartStir>
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="filter1"
+        volume="80 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="top"
+        through=""
+        use_backbone="True"
+        repeats="1" />
+      <Wait
+        time="60 secs"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="60 secs" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <CMove
+        from_vessel="filter1"
+        to_vessel="waste_filter"
+        volume="80 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="bottom"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="1" />
+      <StopStir
+        vessel="filter1"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerStop
+          stirring_controller="stirrer_filter" />
+      </StopStir>
+      <Dry
+        vessel="filter1"
+        time="60 mins"
+        temp="None"
+        waste_vessel="waste_filter"
+        aspiration_speed="5.0"
+        continue_heatchill="False"
+        vacuum="vacuum_filter"
+        vacuum_device="False"
+        pressure="None"
+        inert_gas="None"
+        vacuum_valve="valve_vacuum"
+        valve_unused_port="2"
+        vessel_type="filter"
+        vessel_has_stirrer="True"
+        collection_flask_volume="None">
+        <StopStir
+          vessel="filter1"
+          stirring_controller="stirrer_filter">
+          <CStirringControllerStop
+            stirring_controller="stirrer_filter" />
+        </StopStir>
+        <CMove
+          from_vessel="filter1"
+          to_vessel="waste_filter"
+          volume="5 mL"
+          move_speed="40.0"
+          aspiration_speed="5.0"
+          dispense_speed="40.0"
+          from_port="bottom"
+          to_port="0"
+          through=""
+          use_backbone="True"
+          repeats="1" />
+        <ApplyVacuum
+          vessel="filter1"
+          time="60 mins"
+          pressure="400.0"
+          port="bottom"
+          vessel_type="filter"
+          vacuum_valve="valve_vacuum"
+          vacuum_source="vacuum_filter"
+          vacuum_device="None"
+          vacuum_valve_inert_gas="None"
+          vacuum_valve_unused_port="2"
+          pneumatic_controller="None">
+          <CConnect
+            from_vessel="filter1"
+            to_vessel="vacuum_filter"
+            from_port="bottom"
+            to_port="None" />
+          <Wait
+            time="60 mins"
+            wait_recording_speed="2000.0"
+            after_recording_speed="14.0">
+            <CSetRecordingSpeed
+              recording_speed="2000.0" />
+            <CWait
+              time="60 mins" />
+            <CSetRecordingSpeed
+              recording_speed="14.0" />
+          </Wait>
+          <CValveMoveToPosition
+            valve_name="valve_vacuum"
+            position="2" />
+        </ApplyVacuum>
+      </Dry>
+      <HeatChillReturnToRT
+        vessel="filter1"
+        stir="False"
+        stir_speed="250.0"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <HeatChillToTemp
+          vessel="filter1"
+          temp="25.0"
+          active="False"
+          continue_heatchill="False"
+          stir="False"
+          stir_speed="250.0"
+          purpose="None"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0"
+          temperature_controller="chiller_filter">
+          <StopStir
+            vessel="filter1"
+            stirring_controller="stirrer_filter">
+            <CStirringControllerStop
+              stirring_controller="stirrer_filter" />
+          </StopStir>
+          <HeatChillSetTemp
+            vessel="filter1"
+            temp="25.0"
+            temperature_controller="chiller_filter">
+            <CTemperatureControllerSetTemp
+              temperature_controller="chiller_filter"
+              temp="25.0" />
+          </HeatChillSetTemp>
+          <StopHeatChill
+            vessel="filter1"
+            temperature_controller="chiller_filter">
+            <CTemperatureControllerStop
+              temperature_controller="chiller_filter" />
+          </StopHeatChill>
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <WaitForTemp
+            vessel="chiller_filter"
+            temperature_controller="chiller_filter"
+            relaxed_rt_threshold="5.0"
+            relaxed_rt_threshold_timeout="600.0" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </HeatChillToTemp>
+      </HeatChillReturnToRT>
+    </CleanVessel>
+    <CleanBackbone
+      solvent="glacial acetic acid"
+      near_waste="waste_filter"
+      far_waste="waste_dry"
+      solvent_waste="waste_dry"
+      solvent_vessel="flask_acetic_acid"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_filter"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="None"
+        to_port="None"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <CleanBackbone
+      solvent="water"
+      near_waste="waste_filter"
+      far_waste="waste_base"
+      solvent_waste="waste_filter"
+      solvent_vessel="flask_water"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_water"
+        to_vessel="waste_base"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <AddFilterDeadVolume
+      filter_vessel="filter1"
+      solvent="water"
+      volume="10 mL"
+      waste_vessel="waste_filter"
+      solvent_vessel="flask_water"
+      vacuum="vacuum_filter"
+      inert_gas="None"
+      vacuum_valve="valve_vacuum"
+      valve_unused_port="2">
+      <CMove
+        from_vessel="flask_water"
+        to_vessel="filter1"
+        volume="10 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="bottom"
+        through=""
+        use_backbone="True"
+        repeats="1" />
+      <CValveMoveToPosition
+        valve_name="valve_vacuum"
+        position="2" />
+    </AddFilterDeadVolume>
+    <Separate
+      purpose="extract"
+      from_vessel="flask_separator"
+      separation_vessel="flask_separator"
+      to_vessel="filter1"
+      product_phase="bottom"
+      solvent="3 M hydrochloric acid"
+      through="None"
+      from_port="bottom"
+      to_port="top"
+      solvent_volume="20 mL"
+      repeats="1"
+      waste_phase_to_vessel="flask_separator"
+      waste_phase_to_port="bottom"
+      remove_dead_volume="False"
+      waste_vessel="waste_separator"
+      buffer_flasks="None None"
+      through_cartridge="None"
+      stir_speed="600.0"
+      stir_time="5 mins"
+      settling_time="5 mins"
+      waste_phase_to_vessel_to_use="flask_separator">
+      <Add
+        vessel="flask_separator"
+        reagent="3 M hydrochloric acid"
+        volume="20 mL"
+        viscous="False"
+        dropwise="False"
+        time="None"
+        stir="False"
+        stir_speed="250.0"
+        purpose="None"
+        speed="40.0"
+        port="bottom"
+        through="None"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        anticlogging="False"
+        anticlogging_solvent="None"
+        anticlogging_solvent_volume="2 mL"
+        anticlogging_reagent_volume="10 mL"
+        through_cartridge="None"
+        reagent_vessel="flask_hcl"
+        waste_vessel="waste_separator"
+        vessel_type="separator"
+        anticlogging_solvent_vessel="None"
+        prime_n_times="1"
+        priming_volume="3 mL">
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+        <PrimePumpForAdd
+          reagent="3 M hydrochloric acid"
+          volume="3 mL"
+          reagent_vessel="flask_hcl"
+          waste_vessel="waste_separator"
+          prime_n_times="1"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0">
+          <Repeat
+            repeats="1">
+            <Children>
+              <CMove
+                from_vessel="flask_hcl"
+                to_vessel="waste_separator"
+                volume="3 mL"
+                move_speed="40.0"
+                aspiration_speed="10.0"
+                dispense_speed="40.0"
+                from_port="0"
+                to_port="0"
+                through=""
+                use_backbone="True"
+                repeats="1" />
+            </Children>
+            <Steps>
+              <CMove
+                from_vessel="flask_hcl"
+                to_vessel="waste_separator"
+                volume="3 mL"
+                move_speed="40.0"
+                aspiration_speed="10.0"
+                dispense_speed="40.0"
+                from_port="0"
+                to_port="0"
+                through=""
+                use_backbone="True"
+                repeats="1" />
+            </Steps>
+          </Repeat>
+        </PrimePumpForAdd>
+        <CMove
+          from_vessel="flask_hcl"
+          to_vessel="flask_separator"
+          volume="20 mL"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0"
+          from_port="0"
+          to_port="bottom"
+          through="None"
+          use_backbone="True"
+          repeats="1" />
+        <Wait
+          time="10 secs"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="10 secs" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <FlushTubing
+          to_vessel="flask_separator"
+          to_port="bottom"
+          volume="5 mL"
+          dispense_speed="40.0"
+          through_cartridge="None"
+          flush_tube_vessel="flask_argon">
+          <CMove
+            from_vessel="flask_argon"
+            to_vessel="flask_separator"
+            volume="5 mL"
+            move_speed="40.0"
+            aspiration_speed="10.0"
+            dispense_speed="40.0"
+            from_port="0"
+            to_port="bottom"
+            through="None"
+            use_backbone="True"
+            repeats="1" />
+        </FlushTubing>
+      </Add>
+      <Stir
+        vessel="flask_separator"
+        time="5 mins"
+        continue_stirring="False"
+        stir_speed="600.0"
+        purpose="None">
+        <StartStir
+          vessel="flask_separator"
+          stir_speed="600.0"
+          purpose="None"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerSetSpeed
+            stirring_controller="stirrer_separator"
+            stir_speed="600.0" />
+          <CStirringControllerStart
+            stirring_controller="stirrer_separator" />
+        </StartStir>
+        <Wait
+          time="5 mins"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="5 mins" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+      </Stir>
+      <Stir
+        vessel="flask_separator"
+        time="2 mins"
+        continue_stirring="False"
+        stir_speed="30.0"
+        purpose="None">
+        <StartStir
+          vessel="flask_separator"
+          stir_speed="30.0"
+          purpose="None"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerSetSpeed
+            stirring_controller="stirrer_separator"
+            stir_speed="30.0" />
+          <CStirringControllerStart
+            stirring_controller="stirrer_separator" />
+        </StartStir>
+        <Wait
+          time="2 mins"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="2 mins" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+      </Stir>
+      <Wait
+        time="5 mins"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="5 mins" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <SeparatePhases
+        separation_vessel="flask_separator"
+        lower_phase_vessel="filter1"
+        upper_phase_vessel="flask_separator"
+        dead_volume_vessel="None"
+        step_volume="1 mL"
+        lower_phase_port="top"
+        upper_phase_port="bottom"
+        dead_volume_port="None"
+        lower_phase_through="None"
+        upper_phase_through="None"
+        dead_volume_through="None"
+        failure_vessel="filter1"
+        max_retries="2"
+        lower_phase_through_cartridge="None"
+        can_retry="True"
+        separation_vessel_max_volume="250.0"
+        separation_vessel_pump="pump_separator"
+        pump_max_volume="25.0"
+        conductivity_sensor="sensor_conductivity" />
+    </Separate>
+    <CleanBackbone
+      solvent="water"
+      near_waste="waste_filter"
+      far_waste="waste_separator"
+      solvent_waste="waste_filter"
+      solvent_vessel="flask_water"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_water"
+        to_vessel="waste_separator"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="None"
+        to_port="None"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <Separate
+      purpose="extract"
+      from_vessel="flask_separator"
+      separation_vessel="flask_separator"
+      to_vessel="filter1"
+      product_phase="bottom"
+      solvent="water"
+      through="None"
+      from_port="bottom"
+      to_port="top"
+      solvent_volume="20 mL"
+      repeats="1"
+      waste_phase_to_vessel="None"
+      waste_phase_to_port="None"
+      remove_dead_volume="True"
+      waste_vessel="waste_separator"
+      buffer_flasks="None None"
+      through_cartridge="None"
+      stir_speed="600.0"
+      stir_time="5 mins"
+      settling_time="5 mins"
+      waste_phase_to_vessel_to_use="waste_separator">
+      <Add
+        vessel="flask_separator"
+        reagent="water"
+        volume="20 mL"
+        viscous="False"
+        dropwise="False"
+        time="None"
+        stir="False"
+        stir_speed="250.0"
+        purpose="None"
+        speed="40.0"
+        port="bottom"
+        through="None"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        anticlogging="False"
+        anticlogging_solvent="None"
+        anticlogging_solvent_volume="2 mL"
+        anticlogging_reagent_volume="10 mL"
+        through_cartridge="None"
+        reagent_vessel="flask_water"
+        waste_vessel="waste_separator"
+        vessel_type="separator"
+        anticlogging_solvent_vessel="None"
+        prime_n_times="1"
+        priming_volume="3 mL">
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+        <PrimePumpForAdd
+          reagent="water"
+          volume="3 mL"
+          reagent_vessel="flask_water"
+          waste_vessel="waste_separator"
+          prime_n_times="1"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0">
+          <Repeat
+            repeats="1">
+            <Children>
+              <CMove
+                from_vessel="flask_water"
+                to_vessel="waste_separator"
+                volume="3 mL"
+                move_speed="40.0"
+                aspiration_speed="10.0"
+                dispense_speed="40.0"
+                from_port="0"
+                to_port="0"
+                through=""
+                use_backbone="True"
+                repeats="1" />
+            </Children>
+            <Steps>
+              <CMove
+                from_vessel="flask_water"
+                to_vessel="waste_separator"
+                volume="3 mL"
+                move_speed="40.0"
+                aspiration_speed="10.0"
+                dispense_speed="40.0"
+                from_port="0"
+                to_port="0"
+                through=""
+                use_backbone="True"
+                repeats="1" />
+            </Steps>
+          </Repeat>
+        </PrimePumpForAdd>
+        <CMove
+          from_vessel="flask_water"
+          to_vessel="flask_separator"
+          volume="20 mL"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0"
+          from_port="0"
+          to_port="bottom"
+          through="None"
+          use_backbone="True"
+          repeats="1" />
+        <Wait
+          time="10 secs"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="10 secs" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <FlushTubing
+          to_vessel="flask_separator"
+          to_port="bottom"
+          volume="5 mL"
+          dispense_speed="40.0"
+          through_cartridge="None"
+          flush_tube_vessel="flask_argon">
+          <CMove
+            from_vessel="flask_argon"
+            to_vessel="flask_separator"
+            volume="5 mL"
+            move_speed="40.0"
+            aspiration_speed="10.0"
+            dispense_speed="40.0"
+            from_port="0"
+            to_port="bottom"
+            through="None"
+            use_backbone="True"
+            repeats="1" />
+        </FlushTubing>
+      </Add>
+      <Stir
+        vessel="flask_separator"
+        time="5 mins"
+        continue_stirring="False"
+        stir_speed="600.0"
+        purpose="None">
+        <StartStir
+          vessel="flask_separator"
+          stir_speed="600.0"
+          purpose="None"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerSetSpeed
+            stirring_controller="stirrer_separator"
+            stir_speed="600.0" />
+          <CStirringControllerStart
+            stirring_controller="stirrer_separator" />
+        </StartStir>
+        <Wait
+          time="5 mins"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="5 mins" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+      </Stir>
+      <Stir
+        vessel="flask_separator"
+        time="2 mins"
+        continue_stirring="False"
+        stir_speed="30.0"
+        purpose="None">
+        <StartStir
+          vessel="flask_separator"
+          stir_speed="30.0"
+          purpose="None"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerSetSpeed
+            stirring_controller="stirrer_separator"
+            stir_speed="30.0" />
+          <CStirringControllerStart
+            stirring_controller="stirrer_separator" />
+        </StartStir>
+        <Wait
+          time="2 mins"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="2 mins" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <StopStir
+          vessel="flask_separator"
+          stirring_controller="stirrer_separator">
+          <CStirringControllerStop
+            stirring_controller="stirrer_separator" />
+        </StopStir>
+      </Stir>
+      <Wait
+        time="5 mins"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="5 mins" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <SeparatePhases
+        separation_vessel="flask_separator"
+        lower_phase_vessel="filter1"
+        upper_phase_vessel="waste_separator"
+        dead_volume_vessel="waste_separator"
+        step_volume="1 mL"
+        lower_phase_port="top"
+        upper_phase_port="0"
+        dead_volume_port="0"
+        lower_phase_through="None"
+        upper_phase_through="None"
+        dead_volume_through="None"
+        failure_vessel="filter1"
+        max_retries="2"
+        lower_phase_through_cartridge="None"
+        can_retry="True"
+        separation_vessel_max_volume="250.0"
+        separation_vessel_pump="pump_separator"
+        pump_max_volume="25.0"
+        conductivity_sensor="sensor_conductivity" />
+    </Separate>
+    <CleanBackbone
+      solvent="water"
+      near_waste="waste_filter"
+      far_waste="waste_separator"
+      solvent_waste="waste_filter"
+      solvent_vessel="flask_water"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_water"
+        to_vessel="waste_separator"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="None"
+        to_port="None"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <HeatChillToTemp
+      vessel="filter1"
+      temp="10.0"
+      active="True"
+      continue_heatchill="True"
+      stir="True"
+      stir_speed="250.0"
+      purpose="None"
+      wait_recording_speed="2000.0"
+      after_recording_speed="14.0"
+      temperature_controller="chiller_filter">
+      <StartStir
+        vessel="filter1"
+        stir_speed="250.0"
+        purpose="None"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerSetSpeed
+          stirring_controller="stirrer_filter"
+          stir_speed="250.0" />
+        <CStirringControllerStart
+          stirring_controller="stirrer_filter" />
+      </StartStir>
+      <StartHeatChill
+        vessel="filter1"
+        temp="10.0"
+        purpose="None"
+        temperature_controller="chiller_filter">
+        <CTemperatureControllerSetTemp
+          temperature_controller="chiller_filter"
+          temp="10.0" />
+        <CTemperatureControllerStart
+          temperature_controller="chiller_filter" />
+      </StartHeatChill>
+      <CSetRecordingSpeed
+        recording_speed="2000.0" />
+      <WaitForTemp
+        vessel="chiller_filter"
+        temperature_controller="chiller_filter"
+        relaxed_rt_threshold="5.0"
+        relaxed_rt_threshold_timeout="600.0" />
+      <CSetRecordingSpeed
+        recording_speed="14.0" />
+    </HeatChillToTemp>
+    <Add
+      vessel="filter1"
+      reagent="3 M sodium hydroxide"
+      volume="20 mL"
+      viscous="False"
+      dropwise="False"
+      time="None"
+      stir="True"
+      stir_speed="250.0"
+      purpose="None"
+      speed="40.0"
+      port="top"
+      through="None"
+      move_speed="40.0"
+      aspiration_speed="10.0"
+      dispense_speed="40.0"
+      anticlogging="False"
+      anticlogging_solvent="None"
+      anticlogging_solvent_volume="2 mL"
+      anticlogging_reagent_volume="10 mL"
+      through_cartridge="None"
+      reagent_vessel="flask_naoh"
+      waste_vessel="waste_filter"
+      vessel_type="filter"
+      anticlogging_solvent_vessel="None"
+      prime_n_times="1"
+      priming_volume="3 mL">
+      <StartStir
+        vessel="filter1"
+        stir_speed="250.0"
+        purpose="None"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerSetSpeed
+          stirring_controller="stirrer_filter"
+          stir_speed="250.0" />
+        <CStirringControllerStart
+          stirring_controller="stirrer_filter" />
+      </StartStir>
+      <PrimePumpForAdd
+        reagent="3 M sodium hydroxide"
+        volume="3 mL"
+        reagent_vessel="flask_naoh"
+        waste_vessel="waste_filter"
+        prime_n_times="1"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0">
+        <Repeat
+          repeats="1">
+          <Children>
+            <CMove
+              from_vessel="flask_naoh"
+              to_vessel="waste_filter"
+              volume="3 mL"
+              move_speed="40.0"
+              aspiration_speed="10.0"
+              dispense_speed="40.0"
+              from_port="0"
+              to_port="0"
+              through=""
+              use_backbone="True"
+              repeats="1" />
+          </Children>
+          <Steps>
+            <CMove
+              from_vessel="flask_naoh"
+              to_vessel="waste_filter"
+              volume="3 mL"
+              move_speed="40.0"
+              aspiration_speed="10.0"
+              dispense_speed="40.0"
+              from_port="0"
+              to_port="0"
+              through=""
+              use_backbone="True"
+              repeats="1" />
+          </Steps>
+        </Repeat>
+      </PrimePumpForAdd>
+      <CMove
+        from_vessel="flask_naoh"
+        to_vessel="filter1"
+        volume="20 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="top"
+        through="None"
+        use_backbone="True"
+        repeats="1" />
+      <Wait
+        time="10 secs"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="10 secs" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <FlushTubing
+        to_vessel="filter1"
+        to_port="top"
+        volume="5 mL"
+        dispense_speed="40.0"
+        through_cartridge="None"
+        flush_tube_vessel="flask_argon">
+        <CMove
+          from_vessel="flask_argon"
+          to_vessel="filter1"
+          volume="5 mL"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0"
+          from_port="0"
+          to_port="top"
+          through="None"
+          use_backbone="True"
+          repeats="1" />
+      </FlushTubing>
+    </Add>
+    <CleanBackbone
+      solvent="water"
+      near_waste="waste_filter"
+      far_waste="waste_base"
+      solvent_waste="waste_filter"
+      solvent_vessel="flask_water"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_water"
+        to_vessel="waste_base"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <RemoveFilterDeadVolume
+      filter_vessel="filter1"
+      dead_volume="10 mL"
+      waste_vessel="waste_filter"
+      vacuum="vacuum_filter"
+      vacuum_valve="valve_vacuum"
+      valve_unused_port="2">
+      <CMove
+        from_vessel="filter1"
+        to_vessel="waste_filter"
+        volume="10 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="bottom"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="1" />
+      <CValveMoveToPosition
+        valve_name="valve_vacuum"
+        position="2" />
+    </RemoveFilterDeadVolume>
+    <CleanBackbone
+      solvent="water"
+      near_waste="waste_filter"
+      far_waste="waste_filter"
+      solvent_waste="waste_filter"
+      solvent_vessel="flask_water"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_water"
+        to_vessel="waste_filter"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="None"
+        to_port="None"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <CleanBackbone
+      solvent="glacial acetic acid"
+      near_waste="waste_filter"
+      far_waste="waste_base"
+      solvent_waste="waste_dry"
+      solvent_vessel="flask_acetic_acid"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_base"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_filter"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <Filter
+      vessel="filter1"
+      wait_time="2 mins"
+      aspiration_speed="5.0"
+      stir="True"
+      stir_speed="500.0"
+      filtrate_vessel="None"
+      anticlogging="False"
+      waste_vessel="waste_filter"
+      filter_top_volume="60 mL"
+      inline_filter="False"
+      vacuum_attached="True"
+      temp="None"
+      volume="None"
+      continue_heatchill="False">
+      <StartStir
+        vessel="filter1"
+        stir_speed="500.0"
+        purpose="None"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerSetSpeed
+          stirring_controller="stirrer_filter"
+          stir_speed="500.0" />
+        <CStirringControllerStart
+          stirring_controller="stirrer_filter" />
+      </StartStir>
+      <CMove
+        from_vessel="filter1"
+        to_vessel="waste_filter"
+        volume="90 mL"
+        move_speed="40.0"
+        aspiration_speed="5.0"
+        dispense_speed="40.0"
+        from_port="bottom"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="1" />
+      <StopStir
+        vessel="filter1"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerStop
+          stirring_controller="stirrer_filter" />
+      </StopStir>
+      <ApplyVacuum
+        vessel="filter1"
+        time="2 mins"
+        pressure="400.0"
+        port="bottom"
+        vessel_type="filter"
+        vacuum_valve="valve_vacuum"
+        vacuum_source="vacuum_filter"
+        vacuum_device="None"
+        vacuum_valve_inert_gas="None"
+        vacuum_valve_unused_port="2"
+        pneumatic_controller="None">
+        <CConnect
+          from_vessel="filter1"
+          to_vessel="vacuum_filter"
+          from_port="bottom"
+          to_port="None" />
+        <Wait
+          time="2 mins"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="2 mins" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <CValveMoveToPosition
+          valve_name="valve_vacuum"
+          position="2" />
+      </ApplyVacuum>
+    </Filter>
+    <CleanBackbone
+      solvent="glacial acetic acid"
+      near_waste="waste_filter"
+      far_waste="waste_filter"
+      solvent_waste="waste_dry"
+      solvent_vessel="flask_acetic_acid"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_filter"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="None"
+        to_port="None"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <CleanBackbone
+      solvent="water"
+      near_waste="waste_filter"
+      far_waste="waste_base"
+      solvent_waste="waste_filter"
+      solvent_vessel="flask_water"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_water"
+        to_vessel="waste_base"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <WashSolid
+      vessel="filter1"
+      solvent="water"
+      volume="20 mL"
+      temp="10.0"
+      vacuum_time="10 secs"
+      stir="solvent"
+      time="30 secs"
+      stir_speed="500.0"
+      aspiration_speed="5.0"
+      filtrate_vessel="None"
+      anticlogging="False"
+      waste_vessel="waste_filter"
+      vacuum_attached="True"
+      vessel_type="filter"
+      filter_dead_volume="10 mL"
+      repeats="1">
+      <HeatChillToTemp
+        vessel="filter1"
+        temp="10.0"
+        active="True"
+        continue_heatchill="True"
+        stir="True"
+        stir_speed="250.0"
+        purpose="None"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0"
+        temperature_controller="chiller_filter">
+        <StartStir
+          vessel="filter1"
+          stir_speed="250.0"
+          purpose="None"
+          stirring_controller="stirrer_filter">
+          <CStirringControllerSetSpeed
+            stirring_controller="stirrer_filter"
+            stir_speed="250.0" />
+          <CStirringControllerStart
+            stirring_controller="stirrer_filter" />
+        </StartStir>
+        <StartHeatChill
+          vessel="filter1"
+          temp="10.0"
+          purpose="None"
+          temperature_controller="chiller_filter">
+          <CTemperatureControllerSetTemp
+            temperature_controller="chiller_filter"
+            temp="10.0" />
+          <CTemperatureControllerStart
+            temperature_controller="chiller_filter" />
+        </StartHeatChill>
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <WaitForTemp
+          vessel="chiller_filter"
+          temperature_controller="chiller_filter"
+          relaxed_rt_threshold="5.0"
+          relaxed_rt_threshold_timeout="600.0" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </HeatChillToTemp>
+      <Add
+        vessel="filter1"
+        reagent="water"
+        volume="20 mL"
+        viscous="False"
+        dropwise="False"
+        time="None"
+        stir="False"
+        stir_speed="500.0"
+        purpose="None"
+        speed="40.0"
+        port="top"
+        through="None"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        anticlogging="False"
+        anticlogging_solvent="None"
+        anticlogging_solvent_volume="2 mL"
+        anticlogging_reagent_volume="10 mL"
+        through_cartridge="None"
+        reagent_vessel="flask_water"
+        waste_vessel="waste_filter"
+        vessel_type="filter"
+        anticlogging_solvent_vessel="None"
+        prime_n_times="1"
+        priming_volume="3 mL">
+        <StopStir
+          vessel="filter1"
+          stirring_controller="stirrer_filter">
+          <CStirringControllerStop
+            stirring_controller="stirrer_filter" />
+        </StopStir>
+        <PrimePumpForAdd
+          reagent="water"
+          volume="3 mL"
+          reagent_vessel="flask_water"
+          waste_vessel="waste_filter"
+          prime_n_times="1"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0">
+          <Repeat
+            repeats="1">
+            <Children>
+              <CMove
+                from_vessel="flask_water"
+                to_vessel="waste_filter"
+                volume="3 mL"
+                move_speed="40.0"
+                aspiration_speed="10.0"
+                dispense_speed="40.0"
+                from_port="0"
+                to_port="0"
+                through=""
+                use_backbone="True"
+                repeats="1" />
+            </Children>
+            <Steps>
+              <CMove
+                from_vessel="flask_water"
+                to_vessel="waste_filter"
+                volume="3 mL"
+                move_speed="40.0"
+                aspiration_speed="10.0"
+                dispense_speed="40.0"
+                from_port="0"
+                to_port="0"
+                through=""
+                use_backbone="True"
+                repeats="1" />
+            </Steps>
+          </Repeat>
+        </PrimePumpForAdd>
+        <CMove
+          from_vessel="flask_water"
+          to_vessel="filter1"
+          volume="20 mL"
+          move_speed="40.0"
+          aspiration_speed="10.0"
+          dispense_speed="40.0"
+          from_port="0"
+          to_port="top"
+          through="None"
+          use_backbone="True"
+          repeats="1" />
+        <Wait
+          time="10 secs"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="10 secs" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <FlushTubing
+          to_vessel="filter1"
+          to_port="top"
+          volume="5 mL"
+          dispense_speed="40.0"
+          through_cartridge="None"
+          flush_tube_vessel="flask_argon">
+          <CMove
+            from_vessel="flask_argon"
+            to_vessel="filter1"
+            volume="5 mL"
+            move_speed="40.0"
+            aspiration_speed="10.0"
+            dispense_speed="40.0"
+            from_port="0"
+            to_port="top"
+            through="None"
+            use_backbone="True"
+            repeats="1" />
+        </FlushTubing>
+      </Add>
+      <StartStir
+        vessel="filter1"
+        stir_speed="500.0"
+        purpose="None"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerSetSpeed
+          stirring_controller="stirrer_filter"
+          stir_speed="500.0" />
+        <CStirringControllerStart
+          stirring_controller="stirrer_filter" />
+      </StartStir>
+      <Wait
+        time="30 secs"
+        wait_recording_speed="2000.0"
+        after_recording_speed="14.0">
+        <CSetRecordingSpeed
+          recording_speed="2000.0" />
+        <CWait
+          time="30 secs" />
+        <CSetRecordingSpeed
+          recording_speed="14.0" />
+      </Wait>
+      <StopStir
+        vessel="filter1"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerStop
+          stirring_controller="stirrer_filter" />
+      </StopStir>
+      <CMove
+        from_vessel="filter1"
+        to_vessel="waste_filter"
+        volume="40 mL"
+        move_speed="40.0"
+        aspiration_speed="5.0"
+        dispense_speed="40.0"
+        from_port="bottom"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="1" />
+      <ApplyVacuum
+        vessel="filter1"
+        time="10 secs"
+        pressure="400.0"
+        port="bottom"
+        vessel_type="filter"
+        vacuum_valve="valve_vacuum"
+        vacuum_source="vacuum_filter"
+        vacuum_device="None"
+        vacuum_valve_inert_gas="None"
+        vacuum_valve_unused_port="2"
+        pneumatic_controller="None">
+        <CConnect
+          from_vessel="filter1"
+          to_vessel="vacuum_filter"
+          from_port="bottom"
+          to_port="None" />
+        <Wait
+          time="10 secs"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="10 secs" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <CValveMoveToPosition
+          valve_name="valve_vacuum"
+          position="2" />
+      </ApplyVacuum>
+      <StopHeatChill
+        vessel="filter1"
+        temperature_controller="chiller_filter">
+        <CTemperatureControllerStop
+          temperature_controller="chiller_filter" />
+      </StopHeatChill>
+    </WashSolid>
+    <CleanBackbone
+      solvent="water"
+      near_waste="waste_filter"
+      far_waste="waste_filter"
+      solvent_waste="waste_filter"
+      solvent_vessel="flask_water"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_water"
+        to_vessel="waste_filter"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="None"
+        to_port="None"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <CleanBackbone
+      solvent="glacial acetic acid"
+      near_waste="waste_filter"
+      far_waste="waste_base"
+      solvent_waste="waste_dry"
+      solvent_vessel="flask_acetic_acid"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_base"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_filter"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <Dry
+      vessel="filter1"
+      time="60 mins"
+      temp="None"
+      waste_vessel="waste_filter"
+      aspiration_speed="5.0"
+      continue_heatchill="False"
+      vacuum="vacuum_filter"
+      vacuum_device="False"
+      pressure="None"
+      inert_gas="None"
+      vacuum_valve="valve_vacuum"
+      valve_unused_port="2"
+      vessel_type="filter"
+      vessel_has_stirrer="True"
+      collection_flask_volume="None">
+      <StopStir
+        vessel="filter1"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerStop
+          stirring_controller="stirrer_filter" />
+      </StopStir>
+      <CMove
+        from_vessel="filter1"
+        to_vessel="waste_filter"
+        volume="5 mL"
+        move_speed="40.0"
+        aspiration_speed="5.0"
+        dispense_speed="40.0"
+        from_port="bottom"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="1" />
+      <ApplyVacuum
+        vessel="filter1"
+        time="60 mins"
+        pressure="400.0"
+        port="bottom"
+        vessel_type="filter"
+        vacuum_valve="valve_vacuum"
+        vacuum_source="vacuum_filter"
+        vacuum_device="None"
+        vacuum_valve_inert_gas="None"
+        vacuum_valve_unused_port="2"
+        pneumatic_controller="None">
+        <CConnect
+          from_vessel="filter1"
+          to_vessel="vacuum_filter"
+          from_port="bottom"
+          to_port="None" />
+        <Wait
+          time="60 mins"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="60 mins" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <CValveMoveToPosition
+          valve_name="valve_vacuum"
+          position="2" />
+      </ApplyVacuum>
+    </Dry>
+    <CleanBackbone
+      solvent="glacial acetic acid"
+      near_waste="waste_filter"
+      far_waste="waste_filter"
+      solvent_waste="waste_dry"
+      solvent_vessel="flask_acetic_acid"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_filter"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="None"
+        to_port="None"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <Dry
+      vessel="filter1"
+      time="3 hrs"
+      temp="None"
+      waste_vessel="waste_filter"
+      aspiration_speed="5.0"
+      continue_heatchill="False"
+      vacuum="vacuum_filter"
+      vacuum_device="False"
+      pressure="None"
+      inert_gas="None"
+      vacuum_valve="valve_vacuum"
+      valve_unused_port="2"
+      vessel_type="filter"
+      vessel_has_stirrer="True"
+      collection_flask_volume="None">
+      <StopStir
+        vessel="filter1"
+        stirring_controller="stirrer_filter">
+        <CStirringControllerStop
+          stirring_controller="stirrer_filter" />
+      </StopStir>
+      <CMove
+        from_vessel="filter1"
+        to_vessel="waste_filter"
+        volume="5 mL"
+        move_speed="40.0"
+        aspiration_speed="5.0"
+        dispense_speed="40.0"
+        from_port="bottom"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="1" />
+      <ApplyVacuum
+        vessel="filter1"
+        time="3 hrs"
+        pressure="400.0"
+        port="bottom"
+        vessel_type="filter"
+        vacuum_valve="valve_vacuum"
+        vacuum_source="vacuum_filter"
+        vacuum_device="None"
+        vacuum_valve_inert_gas="None"
+        vacuum_valve_unused_port="2"
+        pneumatic_controller="None">
+        <CConnect
+          from_vessel="filter1"
+          to_vessel="vacuum_filter"
+          from_port="bottom"
+          to_port="None" />
+        <Wait
+          time="3 hrs"
+          wait_recording_speed="2000.0"
+          after_recording_speed="14.0">
+          <CSetRecordingSpeed
+            recording_speed="2000.0" />
+          <CWait
+            time="3 hrs" />
+          <CSetRecordingSpeed
+            recording_speed="14.0" />
+        </Wait>
+        <CValveMoveToPosition
+          valve_name="valve_vacuum"
+          position="2" />
+      </ApplyVacuum>
+    </Dry>
+    <CleanBackbone
+      solvent="glacial acetic acid"
+      near_waste="waste_filter"
+      far_waste="waste_base"
+      solvent_waste="waste_dry"
+      solvent_vessel="flask_acetic_acid"
+      solvent_valve="None"
+      n_cleans="3"
+      volume="3 mL">
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_base"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+      <CMove
+        from_vessel="flask_acetic_acid"
+        to_vessel="waste_filter"
+        volume="3 mL"
+        move_speed="40.0"
+        aspiration_speed="10.0"
+        dispense_speed="40.0"
+        from_port="0"
+        to_port="0"
+        through=""
+        use_backbone="True"
+        repeats="3" />
+    </CleanBackbone>
+    <Shutdown
+      vacuums=""
+      heaters=""
+      stirrers="stirrer_filter stirrer_separator"
+      rotavaps=""
+      chillers="chiller_filter">
+      <CStirringControllerStop
+        stirring_controller="stirrer_filter" />
+      <CStirringControllerStop
+        stirring_controller="stirrer_separator" />
+      <CTemperatureControllerStop
+        temperature_controller="chiller_filter" />
+    </Shutdown>
+  </Procedure>
+
+</Synthesis>

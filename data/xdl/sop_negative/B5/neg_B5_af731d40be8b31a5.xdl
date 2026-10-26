@@ -1,0 +1,22 @@
+<Synthesis>
+  <Metadata description="Intentionally perturbed source-derived procedure; experimental outcome not observed." publication="https://www.jodc.go.jp/info/ioc_doc120810/Manual/m029.pdf" reaction_class="laboratory_reagent_handling"/>
+  <Hardware>
+    <!--Analysis binding: {"component": "heater", "params": {}, "verified": false, "wetted_materials": null}-->
+    <Component id="heater" type="heater"/>
+    <!--Analysis binding: {"component": "reactor", "params": {}, "verified": false, "wetted_materials": null}-->
+    <Component id="reactor" type="reactor"/>
+  </Hardware>
+  <Reagents>
+    <!--water: water-->
+    <Reagent name="water" role="solvent"/>
+    <!--acid: concentrated sulfuric acid-->
+    <Reagent name="acid" role="reagent"/>
+  </Reagents>
+  <Procedure>
+    <!--Representation scope: SOP fragment or stated scenario only; consult JSON sidecar and original instructions; no hardware execution certificate.-->
+    <!--Unresolved source instruction: Cool the mixture and store in a glass bottle; no final solution volume is inferred from additive volumes.-->
+    <!--Analysis context: {"purpose": "acid_dilution"}-->
+    <Add vessel="reactor" reagent="acid" amount="140 mL"/>
+    <Add vessel="reactor" reagent="water" amount="900 mL"/>
+  </Procedure>
+</Synthesis>

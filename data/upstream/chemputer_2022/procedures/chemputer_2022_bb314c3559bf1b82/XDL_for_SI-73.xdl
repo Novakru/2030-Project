@@ -1,0 +1,162 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="reactor2"
+      type="reactor" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="1H-indol-4-yl acetate"
+      role="reagent" />
+    <Reagent
+      name="oxalyl chloride"
+      role="reagent" />
+    <Reagent
+      name="heptane"
+      role="solvent" />
+    <Reagent
+      name="THF"
+      role="solvent" />
+    <Reagent
+      name="2.0M dimethylamine in THF"
+      role="reagent" />
+    <Reagent
+      name="pyridine"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="solvent" />
+    <Reagent
+      name="EtOAc"
+      role="solvent" />
+    <Reagent
+      name="Et2O"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="filter"
+      reagent="1H-indol-4-yl acetate"
+      mass="50.1 g" />
+    <Add
+      vessel="filter"
+      reagent="Et2O"
+      volume="700 mL"
+      aspiration_speed="10.0" />
+    <Stir
+      vessel="filter"
+      time="10 min" />
+    <HeatChill
+      vessel="filter"
+      temp="0 °C"
+      time="30 min"
+      stir="True" />
+
+    <Add
+      vessel="reactor"
+      reagent="oxalyl chloride"
+      volume="37.1 mL" />
+    <Add
+      vessel="reactor"
+      reagent="Et2O"
+      volume="60 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="filter"
+      volume="all"
+      time="30 min" />
+    <Stir
+      vessel="filter"
+      time="4 h" />
+    <Add
+      vessel="filter"
+      reagent="heptane"
+      volume="400 mL"
+      stir="True" />
+    <HeatChill
+      vessel="filter"
+      temp="0 °C"
+      time="30 min"
+      stir="True" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="heptane"
+      volume="300 mL"
+      repeats="2" />
+    <Dissolve
+      vessel="filter"
+      solvent="THF"
+      volume="500 mL"
+      time="2 min" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="0 °C"
+      stir="True" />
+    <Add
+      vessel="filter"
+      reagent="2.0M dimethylamine in THF"
+      volume="175 mL"
+      time="30 min" />
+    <Add
+      vessel="reactor2"
+      reagent="pyridine"
+      volume="46 mL" />
+    <Add
+      vessel="reactor2"
+      reagent="THF"
+      volume="100 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor2"
+      to_vessel="filter"
+      volume="all"
+      time="30 min" />
+    <Stir
+      vessel="filter"
+      time="60 min" />
+    <Add
+      vessel="filter"
+      reagent="heptane"
+      volume="600 mL" />
+    <Filter
+      vessel="filter" />
+    <Add
+      vessel="filter"
+      reagent="water"
+      volume="1000 mL"/>
+    <Stir
+      vessel="filter"
+      time="30 min" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="EtOAc"
+      volume="600 mL"
+      time="40 min" />
+    <WashSolid
+      vessel="filter"
+      solvent="heptane"
+      volume="400 mL"
+      time="40 min" />
+    <Dry
+      vessel="filter"
+      time="16 h"
+      temp="40 °C" />
+  </Procedure>
+
+</Synthesis>

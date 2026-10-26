@@ -1,0 +1,161 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_silica"
+      type="cartridge"
+      chemical="silica" />
+    <Component
+      id="reactor1"
+      type='reactor1' />
+    <Component
+      id="reactor2"
+      type='reactor1' />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="benzyl azide"
+      role="reagent" />
+    <Reagent
+      name="dce"
+      role="solvent" />
+    <Reagent
+      name="phenylacetylene"
+      role="reagent" />
+    <Reagent
+      name="cp*rucl(cod)"
+      role="reagent" />
+    <Reagent
+      name="etoac"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel='reactor2'
+      reagent='cp*rucl(cod)'
+      mass='285 mg'
+    />
+
+    <AddSolid
+      vessel='reactor1'
+      reagent="benzyl azide"
+      mass="1.71 g" />
+
+    <EvacuateAndRefill
+      vessel='reactor2'
+      repeats='3'
+    />
+
+    <EvacuateAndRefill
+      vessel='reactor1'
+      repeats='3'
+    />
+
+    <Add
+      vessel='reactor1'
+      reagent='dce'
+      volume='150 mL'
+      stir='True'
+    />
+
+    <Add
+      vessel='reactor1'
+      reagent='phenylacetylene'
+      volume='8.66 mL'
+      stir='True'
+    />
+
+    <HeatChillToTemp
+      vessel='reactor1'
+      temp='45'
+      continue_heatchill='True'
+      stir='True'
+    />
+
+    <Wait
+      time='5 min'
+    />
+
+    <Add
+      vessel='reactor2'
+      reagent='dce'
+      volume='5 mL'
+    />
+
+    <Transfer
+      from_vessel='reactor2'
+      to_vessel='reactor1'
+      volume='all'
+      flush_tubing='True'
+    />
+
+    <HeatChill
+      vessel='reactor1'
+      temp='45'
+      time='30 min'
+      stir='True'
+    />
+
+    <HeatChillToTemp
+      vessel='reactor1'
+      temp='25'
+      active='False'
+      continue_heatchill='False'
+    />
+
+    <Transfer
+      from_vessel='reactor1'
+      to_vessel='rotavap'
+      volume='all'
+    />
+
+    <Evaporate
+      vessel='rotavap'
+      temp='35'
+      pressure='40'
+      mode='auto'
+    />
+
+    <Repeat repeats='2'>
+      <Add
+        vessel='rotavap'
+        reagent='etoac'
+        volume='40 mL'
+        stir='True'
+      />
+      <StopStir
+        vessel='rotavap'
+      />
+      <Transfer
+        from_vessel='rotavap'
+        to_vessel='reactor1'
+        volume='all'
+      />
+    </Repeat>
+
+    <Transfer
+      from_vessel='reactor1'
+      to_vessel='rotavap'
+      through='silica'
+      volume='all'
+      rinsing_solvent='etoac'
+      rinsing_volume='50 mL'
+      rinsing_repeats='3'
+    />
+
+    <Evaporate
+      vessel='rotavap'
+      temp='35'
+      pressure='40'
+      mode='auto'
+    />
+  </Procedure>
+
+</Synthesis>

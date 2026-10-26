@@ -1,0 +1,148 @@
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor"
+    />
+    <Component
+      id="separator"
+      type="separator"
+    />
+    <Component
+      id="cartridge"
+      type="cartridge"
+      chemical="magnesium sulfate"
+    />
+    <Component
+      id="rotavap"
+      type="rotavap"
+    />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="2 methyl-3-butyn-2-ol"
+    />
+    <Reagent
+      name="2M HCl"
+    />
+    <Reagent
+      name="CuI"
+    />
+    <Reagent
+      name="EtOAc"
+    />
+    <Reagent
+      name="Pd(PPh3)2Cl2"
+    />
+    <Reagent
+      name="aryl iodide A"
+    />
+    <Reagent
+      name="water"
+    />
+    <Reagent
+      name="brine"
+    />
+    <Reagent
+      name="aq. sodium thiosulfate"
+    />
+    <Reagent
+      name="magnesium sulfate"
+    />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      vessel="reactor"
+      reagent="2 methyl-3-butyn-2-ol"
+      volume="0.6 mL"
+    />
+    <AddSolid
+      vessel="reactor"
+      reagent="aryl iodide A"
+      mass="1g"
+      stir="True"
+    />
+    <AddSolid
+      vessel="reactor"
+      reagent="CuI"
+      mass="37 mg"
+      stir="True"
+    />
+    <AddSolid
+      vessel="reactor"
+      reagent="Pd(PPh3)2Cl2"
+      mass="34 mg"
+      stir="True"
+    />
+    <Stir
+      vessel="reactor"
+      time="3 hours"
+    />
+    <Add
+      vessel="reactor"
+      reagent="2M HCl"
+      volume="50 mL"
+      stir="True"
+    />
+    <Add
+      vessel="reactor"
+      reagent="EtOAc"
+      volume="15 mL"
+      stir="True"
+    />
+    <Separate
+      purpose="extract"
+      from_vessel="reactor"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+    />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="2M HCl"
+      solvent_volume="20 mL"
+    />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="aq. sodium thiosulfate"
+      solvent_volume="20 mL"
+    />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="water"
+      solvent_volume="20 mL"
+    />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      solvent="brine"
+      through="cartridge"
+      solvent_volume="20 mL"
+    />
+    <Evaporate
+      vessel="rotavap"
+      temp="40°C"
+      pressure="100 mbar"
+      time="1 hour"
+    />
+  </Procedure>
+
+</Synthesis>

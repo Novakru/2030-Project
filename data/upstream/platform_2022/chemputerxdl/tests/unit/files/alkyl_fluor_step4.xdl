@@ -1,0 +1,110 @@
+<Synthesis filter_dead_volume_method="solvent">
+  <Hardware>
+    <Component
+      id="filter2"
+      type="filter" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="buffer_flask"
+      type="flask" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="acetonitrile" />
+    <Reagent
+      name="substrateS3" />
+    <Reagent
+      name="KF" />
+    <Reagent
+      name="KBF4" />
+    <Reagent
+      name="ether" />
+    <Reagent
+      name="DCM" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      reagent="KF"
+      mass="5 g"
+      vessel="filter2"
+    />
+    <Dry
+      vessel="filter2"
+      temp="40"
+      time="2h" />
+  	<Add
+  	  reagent="acetonitrile"
+  	  volume="100mL"
+  	  vessel="filter2"
+  	  stir="True"
+      stir_speed="250"
+      port="top" />
+    <Dissolve
+      vessel="rotavap"
+      solvent="acetonitrile"
+      volume="200ml"
+      stir_speed="250"
+      time="10min" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="filter2"
+      volume="all"
+      from_port="evaporate" />
+    <HeatChill
+      vessel="filter2"
+      temp="80"
+      time="16h"
+      stir="True"
+      stir_speed="500" />
+    <HeatChillReturnToRT
+      vessel="filter2"
+      stir="True" />
+    <FilterThrough
+      from_vessel="filter2"
+      to_vessel="rotavap"
+      through_cartridge="cartridge_celite"
+      eluting_solvent="DCM"
+      eluting_volume="25ml"
+      eluting_repeats="3" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40"
+      pressure="750"
+      time="1h" />
+    <Dissolve
+      vessel="rotavap"
+      solvent="DCM"
+      volume="200ml"
+      stir_speed="250"
+      time="10min" />
+    <FilterThrough
+      from_vessel="rotavap"
+      to_vessel="buffer_flask"
+      through_cartridge="cartridge_celite"
+      eluting_solvent="DCM"
+      eluting_volume="25ml"
+      eluting_repeats="3" />
+    <Transfer
+      from_vessel="buffer_flask"
+      to_vessel="rotavap"
+      volume="all" />
+    <WashSolid
+      vessel="rotavap"
+      stir_speed="250"
+      time="10min"
+      solvent="ether"
+      volume="15ml"
+      repeats="3" />
+    <Dry
+      vessel="rotavap"
+      temp="23"
+      time="1h" />
+      <!-- pressure="100mbar"
+      stir="True"
+      stir_speed="50" /> -->
+  </Procedure>
+</Synthesis>

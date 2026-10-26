@@ -1,0 +1,86 @@
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_celite"
+      type="cartridge"
+      chemical="celite"
+    />
+    <Component
+      id="reactor"
+      type="reactor"
+    />
+    <Component
+      id="rotavap"
+      type="rotavap"
+    />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="3,4-dimethoxyphenol"
+    />
+    <Reagent
+      name="MeCN"
+    />
+    <Reagent
+      name="benzyl bromide"
+    />
+    <Reagent
+      name="potassium carbonate"
+    />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      vessel="reactor"
+      reagent="MeCN"
+      volume="50 mL"
+    />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="25.0 °C"
+      stir="True"
+    />
+    <Add
+      vessel="reactor"
+      reagent="benzyl bromide"
+      volume="3.27 mL"
+      stir="True"
+    />
+    <Stir
+      vessel="reactor"
+      time="20 mins"
+    />
+    <HeatChill
+      vessel="reactor"
+      temp="81.65 °C"
+      time="2 hrs"
+      stir="True"
+    />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="25.0 °C"
+      stir="True"
+    />
+    <FilterThrough
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      through="celite"
+      eluting_solvent="MeCN"
+      eluting_volume="20 mL"
+    />
+    <Evaporate
+      vessel="rotavap"
+      temp="30.0 °C"
+      pressure="110.66576 mbar"
+      time="30 mins"
+    />
+    <Dry
+      vessel="rotavap"
+      temp="40°C"
+      pressure="303.33305 mbar"
+    />
+  </Procedure>
+
+</Synthesis>

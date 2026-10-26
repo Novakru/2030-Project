@@ -1,0 +1,638 @@
+{
+  "id": "pos_f81a599dec2242abb77d43e5f1e1fdd1",
+  "source": {
+    "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+    "dataset_name": "750 AstraZeneca ELN dataset",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+    "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+    "reaction_id": "ord-f81a599dec2242abb77d43e5f1e1fdd1",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+  },
+  "raw_id": "ord-f81a599dec2242abb77d43e5f1e1fdd1",
+  "raw_sha256": "939e8791d785deafe1acadf64a1820e9ec89c66e0f27d5662e7c497e6576a8df",
+  "reaction_smiles": "C1=CC(=CC(=C1)OC(F)(F)F)C2=CN=C3N2N=C(C=C3)Cl.CN1CCC(CC1)CN>>CN1CCC(CC1)CNC2=NN3C(=NC=C3C4=CC(=CC=C4)OC(F)(F)F)C=C2",
+  "reaction_class": "1.3.2 [N-arylation with Ar-X] Chloro Buchwald-Hartwig amination",
+  "yield_percent": 62.89,
+  "reagents": [
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 83.5
+      },
+      "id": "r1",
+      "input_key": "Base",
+      "name": "CC(C)(C)[O-].[Na+]",
+      "role": "REAGENT",
+      "smiles": "CC(C)(C)[O-].[Na+]",
+      "source_path": "/inputs/Base/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 200.0
+      },
+      "id": "r2",
+      "input_key": "Solvent",
+      "name": "CC1=CC=CC=C1",
+      "role": "SOLVENT",
+      "smiles": "CC1=CC=CC=C1",
+      "source_path": "/inputs/Solvent/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 35.5
+      },
+      "id": "r3",
+      "input_key": "amine",
+      "name": "CN1CCC(CC1)CN",
+      "role": "REACTANT",
+      "smiles": "CN1CCC(CC1)CN",
+      "source_path": "/inputs/amine/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 20.9
+      },
+      "id": "r4",
+      "input_key": "aryl halide",
+      "name": "C1=CC(=CC(=C1)OC(F)(F)F)C2=CN=C3N2N=C(C=C3)Cl",
+      "role": "REACTANT",
+      "smiles": "C1=CC(=CC(=C1)OC(F)(F)F)C2=CN=C3N2N=C(C=C3)Cl",
+      "source_path": "/inputs/aryl halide/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 6.26
+      },
+      "id": "r5",
+      "input_key": "metal and ligand",
+      "name": "CN(C)C1=CC=CC=C1C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4",
+      "role": "CATALYST",
+      "smiles": "CN(C)C1=CC=CC=C1C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4",
+      "source_path": "/inputs/metal and ligand/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 2.09
+      },
+      "id": "r6",
+      "input_key": "metal and ligand",
+      "name": "C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]",
+      "role": "CATALYST",
+      "smiles": "C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]",
+      "source_path": "/inputs/metal and ligand/components/1"
+    },
+    {
+      "id": "w1",
+      "name": "methanol/DCM (3/1)",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w2",
+      "name": "water",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w3",
+      "name": "DCM/Isopropanol (5/1)",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w4",
+      "name": "DCM/isopropanol (5/1)",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w5",
+      "name": "DCM/isopropanol (5/1)",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w6",
+      "name": "MgSO4",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w7",
+      "name": "silca gel",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w8",
+      "name": "hexane",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w9",
+      "name": "hexane",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w10",
+      "name": "methanol",
+      "role": "REAGENT",
+      "smiles": null,
+      "amount": {
+        "value": 2,
+        "unit": "mL"
+      },
+      "source_path": null
+    },
+    {
+      "id": "w11",
+      "name": "1M H2SO4 in methanol",
+      "role": "REAGENT",
+      "smiles": null,
+      "amount": {
+        "value": 1,
+        "unit": "mL"
+      },
+      "source_path": null
+    },
+    {
+      "id": "w12",
+      "name": "ethyl ether",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    }
+  ],
+  "steps": [
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "id": "s001",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "toluene (200 ml)",
+        "stage": "reaction",
+        "amount_source": "/inputs/Solvent/components/0/amount",
+        "source_alias": "toluene"
+      },
+      "amount": {
+        "unit": "mL",
+        "value": 200.0
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "id": "s002",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "6-chloro-3-(3-(trifluoromethoxy)phenyl)imidazo[1,2-b]pyridazine (6.55 g, 20.88 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/aryl halide/components/0/amount",
+        "source_alias": "6-chloro-3-(3-(trifluoromethoxy)phenyl)imidazo[1,2-b]pyridazine"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 20.9
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r6",
+      "id": "s003",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Pd2dba3 (1.912 g, 2.09 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/metal and ligand/components/1/amount",
+        "source_alias": "Pd2dba3"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 2.09
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "id": "s004",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "fresh bottle of 2'-(dicyclohexylphosphino)-N,N-dimethylbiphenyl-2-amine (2.465 g, 6.26 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/metal and ligand/components/0/amount",
+        "source_alias": "fresh bottle of 2'-(dicyclohexylphosphino)-N,N-dimethylbiphenyl-2-amine"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 6.26
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "id": "s005",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "SODIUM TERT-BUTOXIDE (8.03 g, 83.53 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/Base/components/0/amount",
+        "source_alias": "SODIUM TERT-BUTOXIDE"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 83.5
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "id": "s006",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "(1-methylpiperidin-4-yl)methanamine (4.55 g, 35.50 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/amine/components/0/amount",
+        "source_alias": "(1-methylpiperidin-4-yl)methanamine"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 35.5
+      }
+    },
+    {
+      "op": "Atmosphere",
+      "gas": "nitrogen",
+      "mode": "environment",
+      "id": "s007",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The mixture was degassed with N2",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "HeatChill",
+      "temp_C": 120,
+      "duration_s": 57600,
+      "id": "s008",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "placed in an oil bath heated to 120 °C for 16hrs",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Filter",
+      "keep": "filtrate",
+      "id": "s009",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The mixture was filtered throught a bed of celite",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w1",
+      "id": "s010",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "washed with methanol/DCM (3/1)",
+        "stage": "workup",
+        "source_alias": "methanol/DCM (3/1)"
+      }
+    },
+    {
+      "op": "Evaporate",
+      "id": "s011",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the filtrate was concentrated",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w2",
+      "id": "s012",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the residue was taken into a mixture of water and DCM/Isopropanol (5/1)",
+        "stage": "workup",
+        "source_alias": "water"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w3",
+      "id": "s013",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the residue was taken into a mixture of water and DCM/Isopropanol (5/1)",
+        "stage": "workup",
+        "source_alias": "DCM/Isopropanol (5/1)"
+      }
+    },
+    {
+      "op": "Separate",
+      "keep_phase": "unknown",
+      "id": "s014",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "separated, the water layer was extrated twice with DCM/isopropanol (5/1)",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w4",
+      "id": "s015",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the water layer was extrated twice with DCM/isopropanol (5/1)",
+        "stage": "workup",
+        "source_alias": "DCM/isopropanol (5/1)"
+      }
+    },
+    {
+      "op": "Separate",
+      "keep_phase": "unknown",
+      "id": "s016",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the water layer was extrated twice with DCM/isopropanol (5/1)",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w5",
+      "id": "s017",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the water layer was extrated twice with DCM/isopropanol (5/1)",
+        "stage": "workup",
+        "source_alias": "DCM/isopropanol (5/1)"
+      }
+    },
+    {
+      "op": "Separate",
+      "keep_phase": "unknown",
+      "id": "s018",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the water layer was extrated twice with DCM/isopropanol (5/1)",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w6",
+      "id": "s019",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the combined organics were dried (MgSO4)",
+        "stage": "workup",
+        "source_alias": "MgSO4"
+      }
+    },
+    {
+      "op": "Evaporate",
+      "id": "s020",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the combined organics were dried (MgSO4), concentrated",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w7",
+      "id": "s021",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the residue was pre- absorbed onto silca gel (~80g)",
+        "stage": "purification",
+        "source_alias": "silca gel"
+      }
+    },
+    {
+      "op": "Purify",
+      "method": "chromatography",
+      "id": "s022",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "purified with ISCO (eluent methanol/DCM (1/3)",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w8",
+      "id": "s023",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "which was taken into hexane",
+        "stage": "purification",
+        "source_alias": "hexane"
+      }
+    },
+    {
+      "op": "Filter",
+      "keep": "solid",
+      "id": "s024",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the solid was collected by filtration",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w9",
+      "id": "s025",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "washed with hexane",
+        "stage": "purification",
+        "source_alias": "hexane"
+      }
+    },
+    {
+      "op": "HeatChill",
+      "temp_C": 60,
+      "id": "s026",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "dried in vacum at 60°C",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w10",
+      "amount": {
+        "value": 2,
+        "unit": "mL"
+      },
+      "id": "s027",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "dissolved into 2ml of methanol",
+        "stage": "reaction",
+        "source_alias": "methanol"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w11",
+      "amount": {
+        "value": 1,
+        "unit": "mL"
+      },
+      "id": "s028",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "treated with 1M H2SO4 in methanol (1ml conc. H2SO4 + 17ml of methanol)",
+        "stage": "reaction",
+        "source_alias": "1M H2SO4 in methanol"
+      }
+    },
+    {
+      "op": "Stir",
+      "duration_s": 120,
+      "id": "s029",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The solution was stirred for 2min",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Stir",
+      "id": "s030",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the suspension was continually stirred at r.t for overnight",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w12",
+      "id": "s031",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "before being diluted with ethyl ether",
+        "stage": "workup",
+        "source_alias": "ethyl ether"
+      }
+    },
+    {
+      "op": "Filter",
+      "keep": "solid",
+      "id": "s032",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the solid was collected by filtration",
+        "stage": "workup"
+      }
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "atmosphere": {},
+    "pressure_control": "UNKNOWN",
+    "source_setup": {}
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "model": "gpt-5.6-terra",
+    "usage": {
+      "prompt_tokens": 1653,
+      "completion_tokens": 3205,
+      "total_tokens": 4858,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 1650
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1552
+      }
+    },
+    "cache_key": "93d30a93d19d6732087d6bd7970d3ed6521de795221ae7bb1ced0ea9215d22b6",
+    "unresolved": [
+      "The nitrogen degassing method is not specified as bubbling or evacuation/refill; it is represented as a nitrogen environment.",
+      "The retained phase after the initial water/DCM-isopropanol separation is not explicitly stated as top or bottom.",
+      "No explicit phase-separation wording is given after either of the two stated aqueous extractions; Separate operations are included to represent the stated extractions, but retained phases are unknown.",
+      "The duration represented by \"overnight\" is not numerically specified.",
+      "The 405 mg free-base product used for the sulfuric-acid treatment has no supplied component ID. It is an intermediate from the preceding procedure rather than a mapped initial component.",
+      "The stated amount for the 1M H2SO4 in methanol addition is interpreted as the 1 mL solution volume; the parenthetical stock-solution preparation does not unambiguously establish an amount of sulfuric acid added.",
+      "s010: addition amount unspecified",
+      "s012: addition amount unspecified",
+      "s013: addition amount unspecified",
+      "s014: product phase unspecified",
+      "s015: addition amount unspecified",
+      "s016: product phase unspecified",
+      "s017: addition amount unspecified",
+      "s018: product phase unspecified",
+      "s019: addition amount unspecified",
+      "s021: addition amount unspecified",
+      "s023: addition amount unspecified",
+      "s025: addition amount unspecified",
+      "s030: duration unspecified",
+      "s031: addition amount unspecified"
+    ],
+    "unmapped_actions": [
+      "Charging the 500 ml round-bottom flask with a magnetic stir bar.",
+      "Fitting the vessel with a reflux condenser.",
+      "Drying the combined organic phase over MgSO4; MgSO4 addition is represented, but no allowed Dry operation exists.",
+      "Pre-absorption onto silica gel.",
+      "Crushing out solid after the 2-minute stir.",
+      "Drying the final filtered solid; no drying duration or vacuum pressure is specified."
+    ],
+    "alias_provenance": "original API response; literal source substring verified; numeric crosscheck performed separately"
+  }
+}

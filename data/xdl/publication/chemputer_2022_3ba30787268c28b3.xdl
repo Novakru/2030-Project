@@ -1,0 +1,108 @@
+<?xdl version="1.0.0" ?>
+<XDL>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="pd2dba3"
+      role="reagent" />
+    <Reagent
+      name="phosphine ligand 1"
+      role="reagent" />
+    <Reagent
+      name="XPhos"
+      role="reagent" />
+    <Reagent
+      name="5-bromopyrimidine"
+      role="reagent" />
+    <Reagent
+      name="4-aminobenzotrifluoride"
+      role="reagent" />
+    <Reagent
+      name="K3PO4"
+      role="reagent" />
+    <Reagent
+      name="toluene"
+      role="reagent" />
+    <Reagent
+      name="ethyl acetate"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="pd2dba3"
+      mass="93 mg" />
+    <AddSolid
+      vessel="reactor"
+      reagent="XPhos"
+      mass="0.193 g" />
+    <AddSolid
+      vessel="reactor"
+      reagent="K3PO4"
+      mass="1.501 g" />
+    <AddSolid
+      vessel="reactor"
+      reagent="5-bromopyrimidine"
+      mass="0.803 g" />
+    <AddSolid
+      vessel="reactor"
+      reagent="4-aminobenzotrifluoride"
+      mass="0.987 g" />
+    <EvacuateAndRefill
+      vessel="reactor"
+      vacuum_pressure="10 mbar" />
+    <Add
+      vessel="reactor"
+      reagent="toluene"
+      volume="10 mL"
+      aspiration_speed="10.0" />
+    <HeatChill
+      vessel="reactor"
+      temp="110 °C"
+      time="15 h"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="50 mL"
+      through="Celite" />
+    <Repeat
+      repeats="3">
+      <Add
+        vessel="reactor"
+        reagent="ethyl acetate"
+        volume="50 mL"
+        aspiration_speed="10.0" />
+      <Transfer
+        from_vessel="reactor"
+        to_vessel="rotavap"
+        volume="150 mL"
+        through="Celite" />
+    </Repeat>
+    <Evaporate
+      vessel="rotavap"
+      temp="50 °C"
+      time="30 min"
+      mode="auto" />
+    <Dry
+      vessel="rotavap"
+      time="30 min"
+      temp="50 °C"
+      pressure="10 mbar" />
+  </Procedure>
+
+</Synthesis>
+
+</XDL>

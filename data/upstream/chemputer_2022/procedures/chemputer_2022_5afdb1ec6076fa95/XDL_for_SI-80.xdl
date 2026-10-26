@@ -1,0 +1,128 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_mgso4"
+      type="cartridge"
+      chemical="mgso4" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="1,2-diphenylethanone o-acetyloxime"
+      role="reagent" />
+    <Reagent
+      name="dmf"
+      role="reagent" />
+    <Reagent
+      name="cs2co3"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="reagent" />
+    <Reagent
+      name="10% etoac/hexane"
+      role="reagent" />
+    <Reagent
+      name="aq. nacl"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="1,2-diphenylethanone o-acetyloxime "
+      mass="4.22 g"
+    />
+
+    <AddSolid
+      vessel='reactor'
+      reagent='cs2co3'
+      mass='7.82 g'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='dmf'
+      volume='50 mL'
+    />
+
+    <EvacuateAndRefill
+      vessel='reactor'
+      repeats='3'
+    />
+
+    <HeatChill
+      vessel='reactor'
+      temp='80'
+      time='1 h'
+      stir='True'
+    />
+
+    <HeatChillToTemp
+      vessel='reactor'
+      temp='25'
+      active='False'
+      continue_heatchill='False'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='water'
+      volume='100 mL'
+    />
+
+    <Separate
+      purpose='extract'
+      from_vessel='reactor'
+      separation_vessel='separator'
+      to_vessel='separator'
+      product_phase='top'
+      solvent='10% etoac/hexane'
+      solvent_volume='50 mL'
+      repeats='3'
+    />
+
+    <Separate
+      purpose='wash'
+      from_vessel='separator'
+      separation_vessel='separator'
+      to_vessel='separator'
+      product_phase='top'
+      solvent='water'
+      solvent_volume='50 mL'
+      repeats='2'
+    />
+
+    <Separate
+      purpose='wash'
+      from_vessel='separator'
+      separation_vessel='separator'
+      to_vessel='rotavap'
+      through='mgso4'
+      product_phase='top'
+      solvent='aq. nacl'
+      solvent_volume='50 mL'
+      repeats='2'
+    />
+
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="50 mbar"
+      time="60 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

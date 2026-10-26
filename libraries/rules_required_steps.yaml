@@ -1,0 +1,15 @@
+rules:
+  - id: lah_quench_before_aqueous_workup
+    material: lithium_aluminum_hydride
+    required_purpose: quench
+    before_purpose: aqueous_workup
+    source_url: null
+    enabled: false
+    note: "Keep disabled until exact reagent identity and quench protocol have been verified; staged quench is not an arbitrary water addition."
+  - id: remove_drying_agent_before_evaporation
+    after_purpose: drying_agent
+    required_operation: Filter
+    before_operation: Evaporate
+    source_url: null
+    enabled: false
+    note: "Literature URL was unavailable. Disabled globally; reaction-specific explicit source dependencies may still be checked."

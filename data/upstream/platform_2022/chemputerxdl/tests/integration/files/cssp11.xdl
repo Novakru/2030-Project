@@ -1,0 +1,52 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="TBTH and AIBN toluene solution" />
+    <Reagent
+      name="unknown_reagent toluene solution" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="unknown_reagent toluene solution"
+      vessel="reactor"
+      volume="0" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="110.6°C"
+      stir="True" />
+    <Add
+      reagent="TBTH and AIBN toluene solution"
+      vessel="reactor"
+      volume="2 mL" />
+    <Stir
+      vessel="reactor"
+      time="60 mins" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="all" />
+    <Evaporate
+      vessel="rotavap"
+      temp="50°C"
+      pressure="48 mbar"
+      time="30 mins"
+      mode="auto" />
+    <RunColumn
+      from_vessel="rotavap"
+      to_vessel="reactor"
+      column="column" />
+  </Procedure>
+
+</Synthesis>

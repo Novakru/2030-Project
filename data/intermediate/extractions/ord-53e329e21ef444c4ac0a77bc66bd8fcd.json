@@ -1,0 +1,243 @@
+{
+  "id": "pos_53e329e21ef444c4ac0a77bc66bd8fcd",
+  "source": {
+    "dataset_id": "ord_dataset-99c23cf435dc42f1af884053bc8b11c7",
+    "dataset_name": "Borylation dataset from Roche",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+    "file_sha256": "59cd8c35e021be300944f8e556b8fd7ec30a6bc32ff36a54be133aad8e44c393",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": null,
+    "reaction_id": "ord-53e329e21ef444c4ac0a77bc66bd8fcd",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet"
+  },
+  "raw_id": "ord-53e329e21ef444c4ac0a77bc66bd8fcd",
+  "raw_sha256": "07279c4f9b8f91f5816f943304ee2bbefcfd8a724a2c9c296ba3f83ed0feeaa1",
+  "reaction_smiles": "ClC=1C=CC2=C(C=CN2[Si](C(C)C)(C(C)C)C(C)C)C1>>ClC=1C=CC2=C(C1)C(=CN2[Si](C(C)C)(C(C)C)C(C)C)B3OC(C)(C)C(O3)(C)C",
+  "reaction_class": "borylation",
+  "yield_percent": 59.0,
+  "reagents": [
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.01
+      },
+      "id": "r1",
+      "input_key": "catalyst_1",
+      "name": "FC=1C(F)=C(F)C(B(C=2C(F)=C(F)C(F)=C(F)C2F)C=3C(F)=C(F)C(F)=C(F)C3F)=C(F)C1F",
+      "role": "CATALYST",
+      "smiles": "FC=1C(F)=C(F)C(B(C=2C(F)=C(F)C(F)=C(F)C2F)C=3C(F)=C(F)C(F)=C(F)C3F)=C(F)C1F",
+      "source_path": "/inputs/catalyst_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.3
+      },
+      "id": "r2",
+      "input_key": "reagent_1",
+      "name": "OC(C)(C)C(O)(C)C",
+      "role": "REAGENT",
+      "smiles": "OC(C)(C)C(O)(C)C",
+      "source_path": "/inputs/reagent_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.4
+      },
+      "id": "r3",
+      "input_key": "reagent_2",
+      "name": "O1BOC=2C=CC=CC12",
+      "role": "REAGENT",
+      "smiles": "O1BOC=2C=CC=CC12",
+      "source_path": "/inputs/reagent_2/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 3.5
+      },
+      "id": "r4",
+      "input_key": "reagent_3",
+      "name": "N(CC)(CC)CC",
+      "role": "REAGENT",
+      "smiles": "N(CC)(CC)CC",
+      "source_path": "/inputs/reagent_3/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 0.1
+      },
+      "id": "r5",
+      "input_key": "solvent_1",
+      "name": "ClC=1C=CC=CC1",
+      "role": "SOLVENT",
+      "smiles": "ClC=1C=CC=CC1",
+      "source_path": "/inputs/solvent_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.1
+      },
+      "id": "r6",
+      "input_key": "startingmat_1",
+      "name": "ClC=1C=CC2=C(C=CN2[Si](C(C)C)(C(C)C)C(C)C)C1",
+      "role": "REACTANT",
+      "smiles": "ClC=1C=CC2=C(C=CN2[Si](C(C)C)(C(C)C)C(C)C)C1",
+      "source_path": "/inputs/startingmat_1/components/0"
+    }
+  ],
+  "steps": [
+    {
+      "op": "Add",
+      "reagent": "r6",
+      "id": "s001",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Prepared from 5-chloro-N-(triisopropylsilyl)-1H-indole (4e, 30.7 mg, 0.100 mmol, 1.00 equiv)",
+        "stage": "reaction",
+        "amount_source": "/inputs/startingmat_1/components/0/amount",
+        "source_alias": "5-chloro-N-(triisopropylsilyl)-1H-indole"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.1
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "id": "s002",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "and catBH (48.0 mg, 0.400 mmol, 4.00 equiv)",
+        "stage": "reaction",
+        "amount_source": "/inputs/reagent_2/components/0/amount",
+        "source_alias": "catBH"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.4
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "id": "s003",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "in chlorobenzene according to GP 2",
+        "stage": "reaction",
+        "amount_source": "/inputs/solvent_1/components/0/amount",
+        "source_alias": "chlorobenzene"
+      },
+      "amount": {
+        "unit": "mL",
+        "value": 0.1
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "id": "s004",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "according to GP 2",
+        "stage": "reaction",
+        "amount_source": "/inputs/catalyst_1/components/0/amount",
+        "source_alias": "GP 2"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.01
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "id": "s005",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "according to GP 2",
+        "stage": "reaction",
+        "amount_source": "/inputs/reagent_1/components/0/amount",
+        "source_alias": "GP 2"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.3
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "id": "s006",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "according to GP 2",
+        "stage": "reaction",
+        "amount_source": "/inputs/reagent_3/components/0/amount",
+        "source_alias": "GP 2"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 3.5
+      }
+    },
+    {
+      "op": "Purify",
+      "method": "chromatography",
+      "id": "s007",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The title compound was purified by flash column chromatography using cyclohexane/EtOAc/Et3N (30/1/1) as eluent",
+        "stage": "purification"
+      }
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "pressure_control": "SEALED",
+    "source_setup": {}
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "model": "gpt-5.6-terra",
+    "usage": {
+      "prompt_tokens": 1198,
+      "completion_tokens": 878,
+      "total_tokens": 2076,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 1195
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 422
+      }
+    },
+    "cache_key": "4f549df205fd2f512baabf576197977690197b3b19ae3531ca5c7758ee9526ef",
+    "unresolved": [
+      "The procedure refers to GP 2 but does not provide its contents, order of addition, conditions, or workup. Components r1, r2, and r4 are therefore linked only to the literal reference to GP 2; their individual use and addition order are not explicitly specified in this excerpt.",
+      "The use of cyclohexane, EtOAc, and Et3N is explicitly specified as chromatography eluent, but their individual component identities/amounts are not supplied as structured initial components in the procedure excerpt."
+    ],
+    "unmapped_actions": [
+      "Product isolation outcome: \"to afford 6e[S4] (25.5 mg, 59%) as a white foam.\""
+    ],
+    "alias_provenance": "original API response; literal source substring verified; numeric crosscheck performed separately"
+  }
+}

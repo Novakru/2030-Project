@@ -1,0 +1,91 @@
+<?xdl version="0.4.0" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="waste_4"
+      type="ChemputerWaste" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="anhydrous tert-butyl alcohol" />
+    <Reagent
+      name="ether" />
+    <Reagent
+      name="pivaloyl chloride" />
+    <Reagent
+      name="trifluoromethanesulfonic acid" />
+  </Reagents>
+
+  <Procedure>
+    <Dry
+      time="30 min"
+      temp="120"
+      vessel="filter" />
+    <Add
+      reagent="pivaloyl chloride"
+      vessel="filter"
+      volume="20.25 mL"
+      stir="True" />
+    <Add
+      reagent="anhydrous tert-butyl alcohol"
+      vessel="filter"
+      volume="3.864 mL"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="85°C"
+      stir="True"/>
+    <Add
+      reagent="trifluoromethanesulfonic acid"
+      vessel="filter"
+      volume="7.208 mL"
+      stir="True"
+      time="3 mins"/>
+    <HeatChill
+      vessel="filter"
+      temp="100°C"
+      time="10 mins" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="-10°C" />
+    <Add
+      reagent="ether"
+      vessel="filter"
+      volume="65 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="filter"
+      to_vessel="waste_4"
+      volume="500 mL" />
+    <Dry
+      vessel="filter" 
+      time="2 min" />
+    <Repeat repeats="3">
+      <Add
+        reagent="ether"
+        vessel="filter"
+        volume="20 mL"
+        stir="True" />
+      <HeatChill
+        vessel="filter"
+        temp="-10°C"
+        time="5 min"
+        stir_speed="600 rpm" />
+      <Transfer
+        from_vessel="filter"
+        to_vessel="waste_4"
+        volume="100 mL" />
+      <Dry
+        vessel="filter" 
+        time="2 min" />
+    </Repeat>
+    <Dry
+      vessel="filter" />
+  </Procedure>
+
+</Synthesis>

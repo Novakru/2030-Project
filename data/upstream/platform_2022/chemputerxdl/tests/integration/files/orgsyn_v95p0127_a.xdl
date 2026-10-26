@@ -1,0 +1,74 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="pivalic acid" />
+    <Reagent
+      name="toluene" />
+    <Reagent
+      name="zinc oxide" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="toluene"
+      vessel="reactor"
+      volume="250 mL" />
+    <Add
+      reagent="pivalic acid"
+      vessel="reactor"
+      volume="12.5 mL"
+      stir="True" />
+    <Add
+      reagent="zinc oxide"
+      vessel="reactor"
+      mass="4.07 g"
+      stir="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="110.6°C"
+      time="16 hrs"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="25°C"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="all" />
+    <Evaporate
+      vessel="rotavap"
+      temp="50°C"
+      pressure="48 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Evaporate
+      vessel="rotavap"
+      pressure="0.1333 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="reactor"
+      volume="all" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="100°C"
+      stir="True" />
+    <Dry
+      vessel="reactor"
+      time="6 hrs" />
+  </Procedure>
+
+</Synthesis>

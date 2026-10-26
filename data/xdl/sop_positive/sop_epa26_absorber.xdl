@@ -1,0 +1,23 @@
+<Synthesis>
+  <Metadata description="Source-grounded protocol representation; hardware execution requires compilation and review." publication="https://19january2017snapshot.epa.gov/sites/production/files/2016-06/documents/m-26.pdf" reaction_class="laboratory_reagent_handling"/>
+  <Hardware>
+    <!--Analysis binding: {"component": "heater", "params": {}, "verified": false, "wetted_materials": null}-->
+    <Component id="heater" type="heater"/>
+    <!--Analysis binding: {"component": "reactor", "params": {}, "verified": false, "wetted_materials": null}-->
+    <Component id="reactor" type="reactor"/>
+  </Hardware>
+  <Reagents>
+    <!--water: water-->
+    <Reagent name="water" role="solvent"/>
+    <!--acid: concentrated sulfuric acid-->
+    <Reagent name="acid" role="reagent"/>
+  </Reagents>
+  <Procedure>
+    <!--Representation scope: SOP fragment or stated scenario only; consult JSON sidecar and original instructions; no hardware execution certificate.-->
+    <!--Unresolved source instruction: Add acid slowly while stirring; numerical addition rate is unspecified.-->
+    <!--Unresolved source instruction: Adjust final solution volume to 100 mL with additional water and mix; make-up volume is not 9.72 mL by arithmetic.-->
+    <!--Analysis context: {"purpose": "acid_dilution"}-->
+    <Add vessel="reactor" reagent="water" amount="90 mL"/>
+    <Add vessel="reactor" reagent="acid" amount="0.28 mL"/>
+  </Procedure>
+</Synthesis>

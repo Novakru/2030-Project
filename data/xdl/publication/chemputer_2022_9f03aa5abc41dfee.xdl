@@ -1,0 +1,150 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="magnesium_sulfate"
+      type="cartridge"
+      chemical="magnesium sulfate" />
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="aqueous_sodium_hydroxide"
+      type="flask" />
+    <Component
+      id="aqueous_hydrochloric_acid"
+      type="flask" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="1-hexyne"
+      role="reagent" />
+    <Reagent
+      name="5% aqueous sodium hydroxide"
+      role="reagent" />
+    <Reagent
+      name="diethyl ether"
+      role="reagent" />
+    <Reagent
+      name="hexane"
+      role="reagent" />
+    <Reagent
+      name="0.5M aqueous hydrochloric acid"
+      role="reagent" />
+    <Reagent
+      name="saturated aqueous sodium chloride"
+      role="reagent" />
+    <Reagent
+      name="trichloroacetyl chloride"
+      role="reagent" />
+    <Reagent
+      name="dimethoxyethane"
+      role="solvent" />
+    <Reagent
+      name="zinc-copper"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="filter"
+      reagent="zinc-copper"
+      mass="39.23 g" />
+    <Add
+      vessel="filter"
+      reagent="diethyl ether"
+      volume="400 mL" />
+    <Add
+      vessel="filter"
+      reagent="1-hexyne"
+      volume="23 mL"
+      stir="True" />
+
+    <Add
+      vessel="reactor"
+      reagent="trichloroacetyl chloride"
+      volume="44.6 mL"
+    />
+    <Add
+      vessel="reactor"
+      reagent="dimethoxyethane"
+      volume="125 mL"
+      stir="True"
+    />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="filter"
+      volume="all"
+      time="60 min"
+      stir_to_vessel="True"/>
+    <Stir
+      vessel="filter"
+      time="18 h" />
+    <FilterTo
+      from_vessel="filter"
+      to_vessel="separator" />
+    <WashSolid
+      vessel="filter"
+      solvent="hexane"
+      volume="200 mL"
+      filtrate_vessel="separator" />
+
+    <HeatChillToTemp
+      vessel="aqueous_hydrochloric_acid"
+      temp="5"
+    />
+    <HeatChillToTemp
+      vessel="aqueous_sodium_hydroxide"
+      temp="5"
+    />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="0.5M aqueous hydrochloric acid"
+      solvent_volume="200 mL" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="5% aqueous sodium hydroxide"
+      solvent_volume="200 mL" />
+    <StopHeatChill
+      vessel="aqueous_hydrochloric_acid"
+    />
+    <StopHeatChill
+      vessel="aqueous_sodium_hydroxide"
+    />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      solvent="saturated aqueous sodium chloride"
+      through="magnesium sulfate"
+      solvent_volume="200 mL" />
+    <Evaporate
+      vessel="rotavap"
+      pressure="200 mbar"
+      time="30 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

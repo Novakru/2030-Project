@@ -1,0 +1,85 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="Ph3PO"
+      role="reagent" />
+    <Reagent
+      name="nicotinamide"
+      role="reagent" />
+    <Reagent
+      name="anhydrous acetonitrile"
+      role="reagent" />
+    <Reagent
+      name="triethylamine"
+      role="reagent" />
+    <Reagent
+      name="oxalyl chloride"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="Ph3PO"
+      mass="56.8 mg" />
+    <AddSolid
+      vessel="reactor"
+      reagent="nicotinamide"
+      mass="2.493 g" />
+    <Dissolve
+      vessel="reactor"
+      solvent="anhydrous acetonitrile"
+      volume="80 mL"
+      time="10 min"
+      stir_speed="250 RPM" />
+    <Add
+      vessel="reactor"
+      reagent="triethylamine"
+      volume="8.448 mL"
+      stir="True"
+      aspiration_speed="2.0" />
+    <Add
+      vessel="reactor"
+      reagent="oxalyl chloride"
+      volume="3.504 mL"
+      time="30 min"
+      stir="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="25 °C"
+      time="2 h"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="all"
+      to_port="evaporate"
+      rinsing_solvent="anhydrous acetonitrile"
+      rinsing_volume="20 mL"
+      rinsing_repeats="3"
+      rinse_withdrawal_excess="5.0" />
+    <Evaporate
+      vessel="rotavap"
+      temp="50 °C"
+      time="30 min"
+      mode="auto" />
+    <Dry
+      vessel="rotavap"
+      time="30 min"
+      temp="50 °C"
+      pressure="50 mbar" />
+  </Procedure>
+
+</Synthesis>

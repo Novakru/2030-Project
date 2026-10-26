@@ -1,0 +1,135 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_mgso4"
+      type="cartridge"
+      chemical="mgso4" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="pyrollidine"
+      role="reagent" />
+    <Reagent
+      name="4-phenylbutyric acid"
+      role="reagent" />
+    <Reagent
+      name="et3n"
+      role="reagent" />
+    <Reagent
+      name="hobt"
+      role="reagent" />
+    <Reagent
+      name="edci-hcl"
+      role="reagent" />
+    <Reagent
+      name="ch2cl2"
+      role="solvent" />
+    <Reagent
+      name="0.5m hcl"
+      role="solvent" />
+    <Reagent
+      name="aq. nahco3"
+      role="solvent" />
+    <Reagent
+      name="brine"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+    <!-- 1.0 eq. MW = 135 -->
+    <AddSolid
+      vessel='reactor'
+      reagent='hobt'
+      mass='4.05 g'
+    />
+    <!-- 1.0 eq. MW = 191.7 -->
+    <AddSolid
+      vessel='reactor'
+      reagent='edci-hcl'
+      mass='5.75 g'
+    />
+
+    <!-- 1.0 eq. 30 mmol, MW = 101, d = 0.726 -->
+    <Add
+      vessel='reactor'
+      reagent='et3n'
+      volume='4.17 mL'
+      />
+
+    <!-- 30 mmol -->
+    <Add
+      vessel='reactor'
+      reagent='pyrollidine'
+      volume='2.48 mL'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='ch2cl2'
+      volume='30 mL'
+      stir='True'
+    />
+
+    <!-- 30 mmol -->
+    <AddSolid
+      vessel='reactor'
+      reagent='4-phenylbutyric acid'
+      mass='4.92 g'
+    />
+
+    <Stir
+      vessel='reactor'
+      time='14 h'
+    />
+
+    <Separate
+      purpose='wash'
+      from_vessel='reactor'
+      separation_vessel='separator'
+      to_vessel='separator'
+      product_phase='bottom'
+      solvent='0.5m hcl'
+      repeats='1'
+    />
+
+    <Separate
+      purpose='wash'
+      from_vessel='separator'
+      separation_vessel='separator'
+      to_vessel='separator'
+      product_phase='bottom'
+      solvent='aq. nahco3'
+      repeats='1'
+    />
+
+    <Separate
+      purpose='wash'
+      from_vessel='separator'
+      separation_vessel='separator'
+      to_vessel='rotavap'
+      through='mgso4'
+      product_phase='bottom'
+      solvent='brine'
+      repeats='1'
+    />
+
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

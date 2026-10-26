@@ -1,0 +1,61 @@
+<?xdl version="0.2.0" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="acetic anhydride" />
+    <Reagent
+      name="anhydrous ether" />
+    <Reagent
+      name="glacial acetic acid" />
+    <Reagent
+      name="the moist solid iodinane oxide" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="the moist solid iodinane oxide"
+      vessel="filter"
+      mass="56 g"
+      stir="False" />
+    <Add
+      reagent="glacial acetic acid"
+      vessel="filter"
+      volume="96 mL"
+      stir="False" />
+    <Add
+      reagent="acetic anhydride"
+      vessel="filter"
+      volume="192 mL"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="85°C" />
+    <Stir
+      vessel="filter"
+      time="20 mins" />
+    <StopStir
+      vessel="filter" />
+    <StopHeatChill
+      vessel="filter" />
+    <Wait
+      time="24 hrs" />
+    <Filter
+      filter_vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="anhydrous ether"
+      volume="80 mL"
+      anticlogging="False"
+      repeats="3" />
+    <Dry
+      vessel="filter" />
+  </Procedure>
+
+</Synthesis>

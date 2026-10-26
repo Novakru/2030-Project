@@ -1,0 +1,107 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_mgso4"
+      type="cartridge"
+      chemical="mgso4" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="filter"
+      type="filter" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="methanol"
+      role="solvent" />
+    <Reagent
+      name="2,6-diisopropylaniline"
+      role="reagent" />
+    <Reagent
+      name="acoh"
+      role="reagent" />
+    <Reagent
+      name="glyoxal"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      vessel='filter'
+      reagent='2,6-diisopropylaniline'
+      volume='21 mL'
+    />
+
+    <Add
+      vessel='filter'
+      reagent='acoh'
+      volume='0.1 mL'
+    />
+
+    <Add
+      vessel='filter'
+      reagent='methanol'
+      volume='25 mL'
+      stir='True'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='glyoxal'
+      volume='6 mL'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='methanol'
+      volume='25 mL'
+      stir='True'
+    />
+
+    <Transfer
+      from_vessel='reactor'
+      to_vessel='filter'
+      volume='all'
+      time='2 min'
+      flush_tubing='True'
+    />
+
+    <HeatChill
+      vessel='filter'
+      temp='50'
+      time='15 min'
+      stir='True'
+    />
+
+    <HeatChillToTemp
+      vessel='filter'
+      temp='25'
+      active='False'
+      continue_heatchill='False'
+    />
+
+    <Stir
+      vessel='filter'
+      time='10 h'
+    />
+
+    <Filter
+      vessel='filter'
+    />
+
+    <WashSolid
+      vessel='filter'
+      solvent='methanol'
+      volume='20 mL'
+      repeats='3'
+      stir_speed='100'
+    />
+
+  </Procedure>
+
+</Synthesis>

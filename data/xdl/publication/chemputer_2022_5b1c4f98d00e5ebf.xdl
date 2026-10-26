@@ -1,0 +1,85 @@
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor"
+    />
+    <Component
+      id="rotavap"
+      type="rotavap"
+    />
+    <Component
+      id="separator"
+      type="separator"
+    />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="5 Methylisoxazole"
+    />
+    <Reagent
+      name="CH2Cl2"
+    />
+    <Reagent
+      name="NaOMe"
+    />
+    <Reagent
+      name="anhyd Et2O (99 %)"
+    />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="5 Methylisoxazole"
+      vessel="reactor"
+      volume="1 mL"
+    />
+    <Dissolve
+      vessel="reactor"
+      solvent="CH2Cl2"
+      volume="14 mL"
+    />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="0.0 °C"
+      stir="True"
+    />
+    <Add
+      reagent="NaOMe"
+      vessel="reactor"
+      volume="2.2 mL"
+      stir="True"
+    />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="18.0 °C"
+      active="False"
+      continue_heatchill="False"
+      stir="True"
+    />
+    <Stir
+      vessel="reactor"
+      time="16 hrs"
+    />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="all"
+    />
+    <Evaporate
+      vessel="rotavap"
+      temp="50.0 °C"
+      pressure="699.0 mbar"
+      time="30 mins"
+      mode="auto"
+    />
+    <WashSolid
+      vessel="rotavap"
+      solvent="anhyd Et2O (99 %)"
+      volume="20 mL"
+    />
+  </Procedure>
+
+</Synthesis>

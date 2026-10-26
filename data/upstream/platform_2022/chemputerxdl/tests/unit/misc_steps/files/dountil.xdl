@@ -1,0 +1,36 @@
+<Synthesis>
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="water" />
+    <Reagent
+      name="ethanol" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      vessel="reactor"
+      reagent="water"
+      volume="5 mL" />
+    <TakeBackgroundReading
+      sensor="rgbc"
+      reading="clear" />
+    <Add
+      vessel="reactor"
+      reagent="ethanol"
+      volume="5 mL" />
+    <ReadSensor
+      sensor="rgbc"
+      reading="clear" />
+    <DoUntil sensor="rgbc" threshold="-3000" reading="clear">
+      <Stir
+        vessel="reactor"
+        time="30 mins" />
+    </DoUntil>
+  </Procedure>
+</Synthesis>

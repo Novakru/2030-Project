@@ -1,0 +1,118 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_mgso4"
+      type="cartridge"
+      chemical="mgso4" />
+    <Component
+      id="reactor1"
+      type="reactor" />
+    <Component
+      id="reactor2"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="(diacetoxyiodo)benzene"
+      role="reagent" />
+    <Reagent
+      name="mecn"
+      role="solvent" />
+    <Reagent
+      name="trifluoroacetic acid"
+      role="reagent" />
+    <Reagent
+      name="methyl 4-hydroxyphenylacetate"
+      role="reagent" />
+    <Reagent
+      name="toluene"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+    <!-- 1.35 eq.  -->
+    <AddSolid
+      vessel="reactor1"
+      reagent="(diacetoxyiodo)benzene"
+      mass="8.72 g" />
+
+    <AddSolid
+      vessel='reactor2'
+      reagent='methyl 4-hydroxyphenylacetate'
+      mass='3.32 g'
+    />
+
+    <Add
+      vessel='reactor1'
+      reagent='mecn'
+      volume='150 mL'
+      stir='True'
+    />
+
+    <Purge
+      vessel='reactor1'
+      time='5 min'
+    />
+
+    <!-- 1.5 eq. -->
+    <Add
+      vessel='reactor1'
+      reagent='trifluoroacetic acid'
+      volume='2.34 mL'
+      stir='True'
+      stir_speed='560'
+      time='3 min'
+    />
+
+    <Add
+      vessel='reactor2'
+      reagent='mecn'
+      volume='10 mL'
+      stir='True'
+    />
+
+    <Transfer
+      from_vessel='reactor2'
+      to_vessel='reactor1'
+      volume='all'
+      time='3 h'
+      flush_tubing='True'
+    />
+
+    <Transfer
+      from_vessel='reactor1'
+      to_vessel='rotavap'
+      volume='all'
+      flush_tubing='True'
+    />
+
+    <Evaporate
+      vessel='rotavap'
+      temp='32'
+      pressure='175'
+      mode='auto'
+    />
+
+    <Repeat repeats='3'>
+      <Add
+        vessel='rotavap'
+        reagent='toluene'
+        volume='10 mL'
+      />
+      <Evaporate
+        vessel='rotavap'
+        temp='40'
+        mode='auto'
+      />
+    </Repeat>
+
+  </Procedure>
+
+</Synthesis>

@@ -1,0 +1,48 @@
+stages:
+  - 'lint'
+  - 'test'
+
+.test:
+  before_script:
+    # Initialise virtualenv
+    - python -V
+    - pip -V
+    - python -m venv venv
+    - . venv/bin/activate
+    - pip install wheel
+    # Needed for opencv to work
+    - apt-get update
+    - apt-get install ffmpeg libsm6 libxext6  -y
+
+    # Install requirements
+    - pip install pytest
+    - pip install git+https://github.com/croningp/commanduino.git
+    - pip install git+https://$CHEMPUTERAPI_USER:$CHEMPUTERAPI_PW@gitlab.com/croningroup/chemputer/chemputerapi.git@master
+    - pip install git+https://chempiler-ci:$COMMANDUINOLABWARE_PW@gitlab.com/croningroup/chemputer/commanduinolabware.git@master
+    - pip install git+https://$SERIALLABWARE_USER:$SERIALLABWARE_PW@gitlab.com/croningroup/chemputer/seriallabware.git@SerialLabware2
+
+    # Install chempiler
+    - pip install .
+    - pip freeze
+
+  script:
+    - pytest tests -rf -x
+
+test-python:3.7:
+  extends: '.test'
+  stage: 'test'
+  image: 'python:3.7'
+
+test-python:3.9:
+  extends: '.test'
+  stage: 'test'
+  image: 'python:3.9'
+
+lint:
+  stage: 'lint'
+  image: 'python:3.7'
+  before_script:
+    - pip install flake8
+
+  script:
+    - flake8 .

@@ -1,0 +1,185 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="intermediate"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+    <Component
+      id="cartridge_MgSO4"
+      type="cartridge"
+      chemical="MgSO4" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="dmthf"
+      role="reagent" />
+    <Reagent
+      name="hcl"
+      role="reagent" />
+    <Reagent
+      name="acetonedicarboxylicacid"
+      role="reagent" />
+    <Reagent
+      name="methylamine hydrochloride"
+      role="reagent" />
+    <Reagent
+      name="naoac"
+      role="reagent" />
+    <Reagent
+      name="nacl"
+      role="reagent" />
+    <Reagent
+      name="naoh"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="reagent" />
+    <Reagent
+      name="ch2cl2"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      vessel="intermediate"
+      reagent="dmthf"
+      volume="2.6 mL"
+      priming_volume="1.5 mL" />
+    <Add
+      vessel="intermediate"
+      reagent="hcl"
+      volume="6.5 mL"
+      stir="True" />
+    <HeatChill
+      vessel="intermediate"
+      temp="80 °C"
+      time="40 min"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="intermediate"
+      temp="10 °C"
+      stir="True" />
+    <AddSolid
+      vessel="reactor"
+      reagent="acetonedicarboxylicacid"
+      mass="3.21 g" />
+    <AddSolid
+      vessel="reactor"
+      reagent="naoac"
+      mass="6.56 g" />
+    <AddSolid
+      vessel="reactor"
+      reagent="methylamine hydrochloride"
+      mass="1.49 g" />
+    <Add
+      vessel="reactor"
+      reagent="water"
+      volume="25 mL"
+      stir="True"
+      prime_n_times="0" />
+    <HeatChill
+      vessel="reactor"
+      temp="5 °C"
+      time="15 min"
+      stir="True" />
+    <Transfer
+      from_vessel="intermediate"
+      to_vessel="reactor"
+      volume="15 mL"
+      time="10 min"
+      flush_tubing="True" />
+    <Add
+      vessel="intermediate"
+      reagent="water"
+      volume="5 mL"
+      stir="True"
+      prime_n_times="0" />
+    <Transfer
+      from_vessel="intermediate"
+      to_vessel="reactor"
+      volume="10 mL"
+      flush_tubing="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="45 °C"
+      time="60 min"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="20 °C"
+      continue_heatchill="False"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="naoh"
+      volume="3 mL"
+      stir="True"
+      aspiration_speed="2.0" />
+    <Add
+      vessel="reactor"
+      reagent="nacl"
+      volume="15 mL"
+      stir="True"
+      prime_n_times="0" />
+    <Stir
+      vessel="reactor"
+      time="10 min" />
+    <Repeat
+      repeats="2">
+      <Add
+        vessel="reactor"
+        reagent="water"
+        volume="10 mL"
+        stir="True"
+        prime_n_times="0" />
+      <Add
+        vessel="reactor"
+        reagent="ch2cl2"
+        volume="20 mL"
+        stir="True"
+        prime_n_times="0" />
+      <StopStir
+        vessel="reactor" />
+      <Transfer
+        from_vessel="reactor"
+        to_vessel="separator"
+        volume="all" />
+    </Repeat>
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom"
+      solvent="ch2cl2"
+      repeats="3"
+      remove_dead_volume="False"
+      stir_time="60 s"
+      settling_time="2 min" />
+    <Transfer
+      from_vessel="separator"
+      to_vessel="rotavap"
+      volume="all"
+      through="mgso4"
+      move_speed="10.0" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="20 mbar"
+      time="60 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

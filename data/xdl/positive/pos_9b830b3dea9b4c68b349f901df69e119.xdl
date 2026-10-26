@@ -1,0 +1,49 @@
+<Synthesis>
+  <Metadata description="Source-grounded protocol representation; hardware execution requires compilation and review." publication="https://science.sciencemag.org/content/366/6470/1255" reaction_class="Synthesis of (R)-2-ethynylglyceraldehyde (7) using immobilized galactose oxidase"/>
+  <Hardware>
+    <!--Analysis binding: {"component": "heater", "params": {"T_max_C": 310, "T_min_C": null, "rpm_max": 1500, "rpm_min": 50}, "verified": false, "wetted_materials": []}-->
+    <Component id="heater" type="heater"/>
+    <!--Analysis binding: {"component": "reactor", "params": {"T_max_C": null, "T_min_C": null, "capacity_mL": null, "pressure_max_bar": null}, "verified": false, "wetted_materials": null}-->
+    <Component id="reactor" type="reactor"/>
+  </Hardware>
+  <Reagents>
+    <!--r1: 2-ethynylglycerol-->
+    <Reagent name="r1" role="substrate"/>
+    <!--r2: water-->
+    <Reagent name="r2" role="solvent"/>
+    <!--r3: Antifoam 204-->
+    <Reagent name="r3" role="reagent"/>
+    <!--r4: evolved galactose oxidase GOase-Rd13BB-->
+    <Reagent name="r4" role="catalyst"/>
+    <!--r5: potassium PIPES-->
+    <Reagent name="r5" role="reagent"/>
+    <!--r6: water-->
+    <Reagent name="r6" role="solvent"/>
+    <!--r7: bovine catalase-->
+    <Reagent name="r7" role="catalyst"/>
+    <!--r8: copper(II) sulfate pentahydrate-->
+    <Reagent name="r8" role="reagent"/>
+    <!--r9: water-->
+    <Reagent name="r9" role="solvent"/>
+    <!--r10: horseradish peroxidase-->
+    <Reagent name="r10" role="catalyst"/>
+    <!--r11: water-->
+    <Reagent name="r11" role="solvent"/>
+  </Reagents>
+  <Procedure>
+    <!--Analysis context: {"pressure_control": "SLIGHT_POSITIVE", "reflux": false}-->
+    <!--Pressure-control context: SLIGHT_POSITIVE-->
+    <Add vessel="reactor" reagent="r11" amount="82 mL"/>
+    <Add vessel="reactor" reagent="r5" amount="5 mmol"/>
+    <Add vessel="reactor" reagent="r6" amount="5 mL"/>
+    <Add vessel="reactor" reagent="r3" amount="0.2 mL"/>
+    <Add vessel="reactor" reagent="r4" amount="2000 mg"/>
+    <Add vessel="reactor" reagent="r8" amount="0.01 mmol"/>
+    <Add vessel="reactor" reagent="r9" amount="0.1 mL"/>
+    <Add vessel="reactor" reagent="r7" amount="210 mg"/>
+    <Add vessel="reactor" reagent="r10" amount="100 mg"/>
+    <Add vessel="reactor" reagent="r1" amount="29.4 mmol"/>
+    <Add vessel="reactor" reagent="r2" amount="13 mL"/>
+    <HeatChill vessel="reactor" temp="25 °C" time="79200 s"/>
+  </Procedure>
+</Synthesis>

@@ -1,0 +1,115 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="filtrate_flask"
+      type="ChemputerFlask" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="2.3 M LiAlH4 in 2-Me-THF"
+      role="reagent" />
+    <Reagent
+      name="THF"
+      role="solvent" />
+    <Reagent
+      name="3-[2-(dimethylamino)-2-oxoacetyl]-1H-indol-4-yl acetate"
+      role="reagent" />
+    <Reagent
+      name="2-Me-THF"
+      role="solvent" />
+    <Reagent
+      name="H2O"
+      role="solvent"/>
+    <Reagent
+      name="1M aqueous NaOH"
+      role="reagent" />
+    <Reagent
+      name="NH3:MeOH:CH2Cl2 (0.7:9.3:90)"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="filter"
+      reagent="3-[2-(dimethylamino)-2-oxoacetyl]-1H-indol-4-yl acetate"
+      mass="31.5 g" />
+    <Add
+      vessel="filter"
+      reagent="2-Me-THF"
+      volume="1000 mL" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="0 °C"
+      stir="True" />
+    <Add
+      vessel="filter"
+      reagent="2.3 M LiAlH4 in 2-Me-THF"
+      volume="140 mL" />
+    <StopHeatChill
+      vessel="filter" />
+    <Stir
+      vessel="filter"
+      time="30 min" />
+    <HeatChill
+      vessel="filter"
+      temp="80 °C"
+      time="3 h"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="20 °C"
+      continue_heatchill="False"
+      stir="True" />
+    <Add
+      vessel="filter"
+      reagent="1M aqueous NaOH"
+      volume="150 uL"
+      stir="True" />
+    <Add
+      vessel="filter"
+      reagent="H2O"
+      volume="150 uL"
+      stir="True" />
+    <Add
+      vessel="filter"
+      reagent="THF"
+      volume="500 mL"/>
+    <Stir
+      vessel="filter"
+      time="20 min" />
+    <Filter
+      vessel="filter"
+      filtrate_vessel="filtrate_flask" />
+    <Add
+      vessel="filter"
+      reagent="NH3:MeOH:CH2Cl2 (0.7:9.3:90)"
+      volume="200 mL" />
+    <Add
+      vessel="filter"
+      reagent="THF"
+      volume="500 mL" />
+    <Filter
+      vessel="filter"
+      filtrate_vessel="filtrate_flask" />
+    <Transfer
+      from_vessel="filtrate_flask"
+      to_vessel="rotavap"
+      volume="all" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      time="30 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

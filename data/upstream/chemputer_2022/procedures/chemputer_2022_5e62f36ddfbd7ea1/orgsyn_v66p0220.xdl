@@ -1,0 +1,121 @@
+<?xdl version="0.2.0" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      chemical="magnesium sulfate"
+      type="cartridge"
+      id="cartridge_magnesium sulfate" />
+    <Component
+      type="reactor"
+      id="reactor" />
+    <Component
+      type="rotavap"
+      id="rotavap" />
+    <Component
+      type="separator"
+      id="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="1 N phosphoric acid" />
+    <Reagent
+      name="brine" />
+    <Reagent
+      name="diethyl ether" />
+    <Reagent
+      name="paraformaldehyde" />
+    <Reagent
+      name="potassium carbonate water solution" />
+    <Reagent
+      name="triethyl phosphonoacetate" />
+    <Reagent
+      name="water" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      stir="False"
+      mass="48 g"
+      vessel="reactor"
+      reagent="paraformaldehyde" />
+    <Add
+      stir="False"
+      volume="110 mL"
+      vessel="reactor"
+      reagent="water" />
+    <Add
+      stir="True"
+      volume="4 mL"
+      vessel="reactor"
+      reagent="1 N phosphoric acid" />
+    <HeatChill
+      time="1.5 hrs"
+      temp="90°C"
+      vessel="reactor" />
+    <HeatChillToTemp
+      temp="25°C"
+      vessel="reactor" />
+    <Add
+      stir="True"
+      volume="80 mL"
+      vessel="reactor"
+      reagent="triethyl phosphonoacetate" />
+    <Stir
+      time="5 mins"
+      vessel="reactor" />
+    <HeatChillToTemp
+      temp="35°C"
+      vessel="reactor" />
+    <Add
+      stir="True"
+      time="60 mins"
+      volume="60 mL"
+      vessel="reactor"
+      reagent="potassium carbonate water solution"
+      stir_speed="500" />
+    <Stir
+      time="5 mins"
+      vessel="reactor" />
+    <HeatChillToTemp
+      temp="20°C"
+      vessel="reactor" />
+    <Add
+      stir="True"
+      volume="200 mL"
+      vessel="reactor"
+      reagent="diethyl ether" />
+    <Add
+      stir="True"
+      volume="150 mL"
+      vessel="reactor"
+      reagent="brine" />
+    <Separate
+      repeats="3"
+      solvent_volume="100 mL"
+      solvent="diethyl ether"
+      product_phase="top"
+      to_vessel="separator"
+      separation_vessel="separator"
+      from_vessel="reactor"
+      purpose="extract" />
+    <Separate
+      repeats="2"
+      solvent_volume="100 mL"
+      through="magnesium sulfate"
+      solvent="brine"
+      product_phase="top"
+      to_vessel="rotavap"
+      separation_vessel="separator"
+      from_vessel="separator"
+      purpose="wash" />
+    <Evaporate
+      mode="auto"
+      time="30 mins"
+      pressure="440 mbar"
+      temp="50°C"
+      vessel="rotavap" />
+  </Procedure>
+
+</Synthesis>

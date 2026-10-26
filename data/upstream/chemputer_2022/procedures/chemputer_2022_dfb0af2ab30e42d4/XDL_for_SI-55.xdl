@@ -1,0 +1,90 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="cartridge_cotton"
+      type="cartridge"
+      chemical="cotton" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="diethyl 2-(ethoxymethylene)malonate"
+      role="reagent" />
+    <Reagent
+      name="pyridine"
+      role="reagent" />
+    <Reagent
+      name="K2CO3"
+      role="reagent" />
+    <Reagent
+      name="aniline"
+      role="reagent" />
+    <Reagent
+      name="EtOAc"
+      role="reagent" />
+    <Reagent
+      name="methylhydroxylamine hydrochloride"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="methylhydroxylamine hydrochloride"
+      mass="51.2 mg" />
+    <Add
+      vessel="reactor"
+      reagent="diethyl 2-(ethoxymethylene)malonate"
+      volume="125 ul" />
+    <Add
+      vessel="reactor"
+      reagent="pyridine"
+      volume="8.2 ul" />
+    <HeatChill
+      vessel="reactor"
+      temp="85 °C"
+      time="4 h"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="25 °C"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="aniline"
+      volume="46.5 ul"
+      stir="True" />
+    <AddSolid
+      vessel="reactor"
+      reagent="K2CO3"
+      mass="69.1 mg"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="EtOAc"
+      volume="3 mL" />
+    <Stir
+      vessel="reactor"
+      time="6 hours" />
+    <FilterThrough
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      through="cotton"
+      eluting_solvent="EtOAc"
+      eluting_volume="10 mL" />
+    <Evaporate
+      vessel="rotavap"
+      time="30 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

@@ -1,0 +1,21 @@
+version: 1
+policy: "Structure-derived groups are explicit inferences, not claims that NOAA assigned a specific substance. Restrict to unambiguous neutral, single-component inputs."
+groups:
+  carboxylic_acid:
+    smarts: '[CX3]([#6])(=O)[OX2H1]'
+    roles: [REACTANT, REAGENT]
+    require_single_component: true
+    require_neutral: true
+    source_url: https://cameochemicals.noaa.gov/react/3
+    pattern_reference: https://www.rdkit.org/docs/RDKit_Book.html
+    excludes: [carboxylate, bicarbonate, disconnected_metal_salt, zwitterion]
+  cyanide:
+    exact_smiles: ['[C-]#N.[Na+]']
+    source_url: https://cameochemicals.noaa.gov/chemical/4477
+    note: "Only the specific sodium cyanide structure is recognized; nitriles and metal cyanide complexes are excluded."
+pairs:
+  - id: carboxylic_acid_cyanide
+    groups: [carboxylic_acid, cyanide]
+    require_liquid_inventory: true
+    source_url: https://cameochemicals.noaa.gov/reactivity/documentation/RG3-RG11
+    hazards: [toxic_gas, flammable_gas, heat, pressurization]

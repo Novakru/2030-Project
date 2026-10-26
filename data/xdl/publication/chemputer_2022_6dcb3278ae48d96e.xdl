@@ -1,0 +1,89 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="cartridge_celite"
+      type="cartridge"
+      chemical="celite" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="solution"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="anhydrous benzene"
+      role="reagent" />
+    <Reagent
+      name="methyl dibromoisobutyrate"
+      role="reagent" />
+    <Reagent
+      name="triethylamine"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="methyl dibromoisobutyrate"
+      mass="20 g" />
+    <Add
+      vessel="reactor"
+      reagent="anhydrous benzene"
+      volume="50 mL" />
+    <Add
+      vessel="solution"
+      reagent="triethylamine"
+      volume="10.6 mL"
+    />
+    <Add
+      vessel="solution"
+      reagent="anhydrous benzene"
+      volume="50 mL"
+      stir="True"
+    />
+    <Transfer
+      from_vessel="solution"
+      to_vessel="reactor"
+      volume="all"
+      time="90 min"
+      stir_to_vessel="True"
+      stir_speed="600 RPM"
+    />
+    <HeatChill
+      vessel="reactor"
+      temp="25 °C"
+      time="60 min"
+      stir="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="80.1 °C"
+      time="60 min"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="20 °C"
+      stir="True" />
+    <FilterThrough
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      through="celite"
+      eluting_solvent="anhydrous benzene"
+      eluting_volume="20 mL"
+      eluting_repeats="2" />
+    <Evaporate
+      vessel="rotavap"
+      temp="32.5 °C"
+      pressure="162 mbar"
+      time="30 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

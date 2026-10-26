@@ -1,0 +1,115 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="separator"
+      type="separator" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="cartridge_Na2SO4_silica"
+      type="cartridge"
+      chemical="Na2SO4/silica" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="acetophenone"
+      role="reagent" />
+    <Reagent
+      name="urea"
+      role="reagent" />
+    <Reagent
+      name="sulfur"
+      role="reagent" />
+    <Reagent
+      name="DMSO"
+      role="solvent" />
+    <Reagent
+      name="pyridine"
+      role="reagent" />
+    <Reagent
+      name="ethyl acetate"
+      role="solvent" />
+    <Reagent
+      name="5% aqueous NaHCO3"
+      role="solvent" />
+    <Reagent
+      name="brine"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="acetophenone"
+      mass="1.2 g" />
+    <AddSolid
+      vessel="reactor"
+      reagent="urea"
+      mass="1.8 g" />
+    <AddSolid
+      vessel="reactor"
+      reagent="sulfur"
+      mass="0.5 g" />
+    <Add
+      vessel="reactor"
+      reagent="DMSO"
+      volume="10 mL" />
+    <HeatChill
+      vessel="reactor"
+      temp="120 °C"
+      stir="True"
+      time="5 min" />
+    <Add
+      vessel="reactor"
+      reagent="pyridine"
+      volume="2.5 mL"
+      stir="True"/>
+    <HeatChill
+      vessel="reactor"
+      temp="120 °C"
+      stir="True"
+      time="2.5 h" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="25 °C"
+      active="False"
+      continue_heatchill="False"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="ethyl acetate"
+      volume="50 mL" />
+    <Separate
+      purpose="wash"
+      from_vessel="reactor"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="5% aqueous NaHCO3"
+      solvent_volume="10 mL"
+      repeats="3" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      through="Na2SO4/silica"
+      product_phase="top"
+      solvent="brine"
+      solvent_volume="10 mL"
+      repeats="3" />
+    <Evaporate
+      vessel="rotavap"
+      time="60 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

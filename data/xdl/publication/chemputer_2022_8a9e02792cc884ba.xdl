@@ -1,0 +1,129 @@
+<?xdl version="1.0.0" ?>
+<XDL>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_MgSO4"
+      type="cartridge"
+      chemical="MgSO4" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="allylamine"
+      role="reagent" />
+    <Reagent
+      name="aqueous 1M HCl solution"
+      role="reagent" />
+    <Reagent
+      name="dichloromethane"
+      role="reagent" />
+    <Reagent
+      name="methyl chloroformate dichloromethane solution"
+      role="reagent" />
+    <Reagent
+      name="saturated aqueous NaCl solution"
+      role="reagent" />
+    <Reagent
+      name="saturated aqueous NaHCO3 solution"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      vessel="reactor"
+      reagent="allylamine"
+      volume="14 mL" />
+    <Add
+      vessel="reactor"
+      reagent="dichloromethane"
+      volume="100 mL"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="0 °C"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="methyl chloroformate dichloromethane solution"
+      volume="37 mL"
+      time="10 min"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="18 °C"
+      active="False"
+      continue_heatchill="False"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="all" />
+    <Add
+      vessel="reactor"
+      reagent="dichloromethane"
+      volume="20 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="all" />
+    <Add
+      vessel="reactor"
+      reagent="dichloromethane"
+      volume="20 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="all" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom"
+      solvent="aqueous 1M HCl solution"
+      solvent_volume="50 mL" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom"
+      solvent="saturated aqueous NaHCO3 solution"
+      solvent_volume="50 mL" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="bottom"
+      solvent="saturated aqueous NaCl solution"
+      through="MgSO4"
+      solvent_volume="50 mL" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="21.3315 mbar"
+      time="30 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>
+
+</XDL>

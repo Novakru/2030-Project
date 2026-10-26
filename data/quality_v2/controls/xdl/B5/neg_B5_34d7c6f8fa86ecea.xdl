@@ -1,0 +1,25 @@
+<Synthesis>
+  <Metadata description="Authored symbolic control; not an observed experiment." publication="" reaction_class="authored_rule_fixture"/>
+  <Hardware>
+    <!--Analysis binding: {"component": "filter", "params": {}, "verified": true, "wetted_materials": null}-->
+    <Component id="filter" type="filter"/>
+    <!--Analysis binding: {"component": "heater", "params": {"T_max_C": 200, "T_min_C": -100, "rpm_max": 1500, "rpm_min": 50}, "verified": true, "wetted_materials": null}-->
+    <Component id="heater" type="heater"/>
+    <!--Analysis binding: {"component": "product", "params": {"capacity_mL": 110}, "verified": true, "wetted_materials": null}-->
+    <Component id="product" type="reactor"/>
+    <!--Analysis binding: {"component": "reactor", "params": {"capacity_mL": 110}, "verified": true, "wetted_materials": ["PTFE"]}-->
+    <Component id="reactor" type="reactor"/>
+  </Hardware>
+  <Reagents>
+    <!--r1: water-->
+    <Reagent name="r1" role="solvent"/>
+    <!--r2: concentrated sulfuric acid-->
+    <Reagent name="r2" role="reagent"/>
+  </Reagents>
+  <Procedure>
+    <!--Analysis context: {"pressure_control": "OPEN", "purpose": "acid_dilution", "reflux": false}-->
+    <!--Pressure-control context: OPEN-->
+    <Add vessel="reactor" reagent="r2" amount="2 mL"/>
+    <Add vessel="reactor" reagent="r1" amount="20 mL"/>
+  </Procedure>
+</Synthesis>

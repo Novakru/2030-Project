@@ -1,0 +1,65 @@
+{
+  "goal": "active",
+  "internal_integrity_passed": true,
+  "full_specification_accepted": false,
+  "completed": [
+    "API authentication and invalid-key control",
+    "pinned raw corpus",
+    "reusable extraction and offline rebuild",
+    "XDL subset exports",
+    "independent libraries",
+    "single-fault replay checks",
+    "HTE baseline with calibration"
+  ],
+  "focus": "pos/neg human review tool delivered; actual decisions pending, official platform compilation deferred",
+  "basic_dataset_coverage_complete": true,
+  "native_platform_compiled": 64,
+  "remaining": [
+    "Improve independent source-parent diversity for B2, B3",
+    "Outstanding: independent review and hardware verification to promote 100+ strict gold procedures",
+    "10+ genuinely eligible source-derived examples for every risk; controls cannot fill this quota",
+    "100 actual human negative reviews and measured hard-label error rate",
+    "Per-C-subclass causal calibration data and judge admission; current model not admitted"
+  ],
+  "acceptance": {
+    "raw_100_plus": true,
+    "xdl_exports_100_plus": true,
+    "strict_gold_100_plus": false,
+    "every_observed_risk_10_plus": false,
+    "every_constructed_risk_10_plus": true,
+    "every_benchmark_eligible_risk_10_plus": false,
+    "every_control_risk_10_plus": true,
+    "hardware_20_human_verified": false,
+    "manual_negative_review_100": false,
+    "manual_hard_gold_error_rate_below_2_percent": false,
+    "per_C_subclass_judge_admitted": false
+  },
+  "human_review_tool": {
+    "path": "audit/README.md",
+    "database": "audit/data/reviews.sqlite3",
+    "stats": {
+      "pending": 377,
+      "accepted": 0,
+      "rejected": 0,
+      "total": 377
+    },
+    "tool_tests_passed": 38,
+    "interface": "grading-v2",
+    "risk_explanations": {
+      "records": 237,
+      "risk_classes": 20,
+      "label_types": {
+        "hard": 177,
+        "soft": 60
+      },
+      "origins": {
+        "结构化证据解释": 225,
+        "原生物料依赖约束解释": 12
+      },
+      "new_risk_judgments": false,
+      "llm_calls": 0,
+      "persisted_to_data": false
+    },
+    "verification": "audit/verification.json"
+  }
+}

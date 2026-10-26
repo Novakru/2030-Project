@@ -1,0 +1,189 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="cartridge_cotton wool"
+      type="cartridge"
+      chemical="cotton wool" />
+    <Component
+      id="cartridge_silica"
+      type="cartridge"
+      chemical="silica" />
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="((tert-butoxycarbonyl)glycyl)(pyridin-1-ium-1-yl)amide" />
+    <Reagent
+      name="dichloro(2-pyridinecarboxylato)gold" />
+    <Reagent
+      name="dichloromethane" />
+    <Reagent
+      name="ethanol" />
+    <Reagent
+      name="ethyl acetate" />
+    <Reagent
+      name="hexane" />
+    <Reagent
+      name="n-benzyl-4 methyl-N-(phenylethynyl)benzene-sulfonamide" />
+    <Reagent
+      name="toluene" />
+  </Reagents>
+
+  <Procedure>
+    <Dry
+      vessel="reactor"
+      time="60 secs"
+      pressure="0.16 mbar" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="25°C"
+      active="False"
+      continue_heatchill="False"
+      stir="True" />
+    <Add
+      reagent="n-benzyl-4 methyl-N-(phenylethynyl)benzene-sulfonamide"
+      vessel="reactor"
+      mass="4.69 g" />
+    <Add
+      reagent="dichloro(2-pyridinecarboxylato)gold"
+      vessel="reactor"
+      mass="51.02 mg" />
+    <Add
+      reagent="((tert-butoxycarbonyl)glycyl)(pyridin-1-ium-1-yl)amide"
+      vessel="reactor"
+      mass="3.6 g" />
+    <Add
+      reagent="toluene"
+      vessel="reactor"
+      volume="130 mL" />
+    <HeatChill
+      vessel="reactor"
+      temp="90°C"
+      time="5.5 hrs"
+      stir="True" />
+    <Wait
+      time="60 mins" />
+    <FilterThrough
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      through="silica"
+      eluting_solvent="ethyl acetate"
+      eluting_volume="50 mL"
+      eluting_repeats="2" />
+    <FilterThrough
+      from_vessel="rotavap"
+      to_vessel="rotavap"
+      through="silica" />
+    <FilterThrough
+      from_vessel="rotavap"
+      to_vessel="rotavap"
+      through="silica"
+      eluting_solvent="ethyl acetate"
+      eluting_volume="320 mL" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40°C"
+      pressure="149.9873 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Add
+      reagent="ethyl acetate"
+      vessel="rotavap"
+      volume="10 mL"
+      repeats="2" />
+    <Evaporate
+      vessel="rotavap"
+      pressure="126.6559 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="filter"
+      volume="all" />
+    <Add
+      reagent="ethanol"
+      vessel="filter"
+      volume="150 mL"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="78.5°C"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="25 mins" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="25°C"
+      active="False"
+      continue_heatchill="False"
+      stir="True" />
+    <HeatChill
+      vessel="filter"
+      temp="-22°C"
+      time="19 hrs"
+      stir="True" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="hexane"
+      volume="25 mL"
+      repeats="3" />
+    <Dry
+      vessel="filter" />
+    <Transfer
+      from_vessel="filter"
+      to_vessel="rotavap"
+      volume="all" />
+    <Add
+      reagent="toluene"
+      vessel="rotavap"
+      volume="30 mL" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40°C"
+      pressure="73.3271 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Dry
+      vessel="rotavap"
+      pressure="0.1867 mbar" />
+    <Add
+      reagent="dichloromethane"
+      vessel="rotavap"
+      volume="80 mL" />
+    <Stir
+      vessel="rotavap"
+      time="10 mins" />
+    <FilterThrough
+      from_vessel="rotavap"
+      to_vessel="rotavap"
+      through="cotton wool"
+      eluting_solvent="dichloromethane"
+      eluting_repeats="4" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40°C"
+      pressure="46.6627 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Dry
+      vessel="rotavap"
+      time="96 hrs"
+      temp="60°C"
+      pressure="0.16 mbar" />
+  </Procedure>
+
+</Synthesis>

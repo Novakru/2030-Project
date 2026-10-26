@@ -1,0 +1,242 @@
+{
+  "id": "pos_48ecdbcd37ca46938b19f539f4fc4ebe",
+  "source": {
+    "dataset_id": "ord_dataset-99c23cf435dc42f1af884053bc8b11c7",
+    "dataset_name": "Borylation dataset from Roche",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+    "file_sha256": "59cd8c35e021be300944f8e556b8fd7ec30a6bc32ff36a54be133aad8e44c393",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": null,
+    "reaction_id": "ord-48ecdbcd37ca46938b19f539f4fc4ebe",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet"
+  },
+  "raw_id": "ord-48ecdbcd37ca46938b19f539f4fc4ebe",
+  "raw_sha256": "b1205e61a6e2a0a0fa58d62fefb8ae02d3f8e31df21715666c13b6b78957eb26",
+  "reaction_smiles": "N=1C=2C=C(C=CC2C=CC1C)C>>N=1C=2C=C(C=CC2C(=CC1C)B3OC(C)(C)C(O3)(C)C)C",
+  "reaction_class": "borylation",
+  "yield_percent": 80.0,
+  "reagents": [
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.015
+      },
+      "id": "r1",
+      "input_key": "catalyst_1",
+      "name": "C[OH2+].C[OH2+].C1CC=CCCC=C1.C1CC=CCCC=C1.[Ir].[Ir]",
+      "role": "CATALYST",
+      "smiles": "C[OH2+].C[OH2+].C1CC=CCCC=C1.C1CC=CCCC=C1.[Ir].[Ir]",
+      "source_path": "/inputs/catalyst_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 1.0
+      },
+      "id": "r2",
+      "input_key": "reagent_1",
+      "name": "O1B(OC(C)(C)C1(C)C)B2OC(C)(C)C(O2)(C)C",
+      "role": "REAGENT",
+      "smiles": "O1B(OC(C)(C)C1(C)C)B2OC(C)(C)C(O2)(C)C",
+      "source_path": "/inputs/reagent_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.03
+      },
+      "id": "r3",
+      "input_key": "reagent_2",
+      "name": "N=1C=CC(=CC1C=2N=CC=C(C2)C(C)(C)C)C(C)(C)C",
+      "role": "REAGENT",
+      "smiles": "N=1C=CC(=CC1C=2N=CC=C(C2)C(C)(C)C)C(C)(C)C",
+      "source_path": "/inputs/reagent_2/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 2.3999982
+      },
+      "id": "r4",
+      "input_key": "solvent_1",
+      "name": "O(C)C(C)(C)C",
+      "role": "SOLVENT",
+      "smiles": "O(C)C(C)(C)C",
+      "source_path": "/inputs/solvent_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 1.0
+      },
+      "id": "r5",
+      "input_key": "startingmat_1",
+      "name": "N=1C=2C=C(C=CC2C=CC1C)C",
+      "role": "REACTANT",
+      "smiles": "N=1C=2C=C(C=CC2C=CC1C)C",
+      "source_path": "/inputs/startingmat_1/components/0"
+    }
+  ],
+  "steps": [
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "id": "s001",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "General procedure B was applied to 2,7-dimethylquinoline (157 mg, 1.00mmol).",
+        "stage": "reaction",
+        "amount_source": "/inputs/catalyst_1/components/0/amount",
+        "source_alias": "General procedure B"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.015
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "id": "s002",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "General procedure B was applied to 2,7-dimethylquinoline (157 mg, 1.00mmol).",
+        "stage": "reaction",
+        "amount_source": "/inputs/reagent_1/components/0/amount",
+        "source_alias": "General procedure B"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 1.0
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "id": "s003",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "General procedure B was applied to 2,7-dimethylquinoline (157 mg, 1.00mmol).",
+        "stage": "reaction",
+        "amount_source": "/inputs/reagent_2/components/0/amount",
+        "source_alias": "General procedure B"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.03
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "id": "s004",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "General procedure B was applied to 2,7-dimethylquinoline (157 mg, 1.00mmol).",
+        "stage": "reaction",
+        "amount_source": "/inputs/solvent_1/components/0/amount",
+        "source_alias": "General procedure B"
+      },
+      "amount": {
+        "unit": "mL",
+        "value": 2.3999982
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "id": "s005",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "General procedure B was applied to 2,7-dimethylquinoline (157 mg, 1.00mmol).",
+        "stage": "reaction",
+        "amount_source": "/inputs/startingmat_1/components/0/amount",
+        "source_alias": "2,7-dimethylquinoline"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 1.0
+      }
+    },
+    {
+      "op": "HeatChill",
+      "temp_C": 25,
+      "duration_s": 259200,
+      "stir": true,
+      "id": "s006",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The reaction was stirred at room  temperature  (25  °C)  for  72  hours.",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Evaporate",
+      "id": "s007",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Volatiles were removed from the reaction under reduced pressure",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Purify",
+      "method": "chromatography",
+      "id": "s008",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the remaining residue was purified  by  silica  gel  flash-column  chromatography  with  gradient  elution  of  MeOH/DCM  from  0.5 -12.5% over 25 column volumes",
+        "stage": "purification"
+      }
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "pressure_control": "SEALED",
+    "source_setup": {}
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "model": "gpt-5.6-terra",
+    "usage": {
+      "completion_tokens": 1079,
+      "prompt_tokens": 1211,
+      "total_tokens": 2290,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 1208
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 433
+      }
+    },
+    "cache_key": "2263d2f51b3242bf5474727360d3db1742ed69bf2e2e6c520baef3908de83034",
+    "unresolved": [
+      "The identities, individual aliases, addition order, and conditions for r1, r2, r3, and r4 are not explicitly stated in this excerpt; they are only implicitly encompassed by the literal reference to \"General procedure B\".",
+      "The source states removal under reduced pressure but does not specify pressure, temperature, or duration.",
+      "The source specifies the chromatography eluent gradient but does not explicitly state which chromatographic fraction(s) were retained."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "Analysis  by  GC-MS  showed  a  95:5  mixture  of  2  monoborylated products.",
+        "reason": "GC-MS analysis is monitoring/characterization, not a physical operation."
+      },
+      {
+        "evidence": "affording     the major isomer, 2,7-dimethyl-4-(4,4,5,5-tetramethyl-[1,3,2]dioxaborolan-2-yl)quinoline, as an off-white solid (226 mg, 80%); m.p.108 -109 °C",
+        "reason": "Product characterization and reported outcome are not physical operations."
+      }
+    ],
+    "alias_provenance": "original API response; literal source substring verified; numeric crosscheck performed separately"
+  }
+}

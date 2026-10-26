@@ -1,0 +1,688 @@
+{
+  "id": "pos_4399ad74c4a84693a726596b8c6dc9ab",
+  "source": {
+    "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+    "dataset_name": "750 AstraZeneca ELN dataset",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+    "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+    "reaction_id": "ord-4399ad74c4a84693a726596b8c6dc9ab",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+  },
+  "raw_id": "ord-4399ad74c4a84693a726596b8c6dc9ab",
+  "raw_sha256": "7647b3bc5dcf5a631b7154cde7f891d058c615db03e3094729e3ebedcf594f75",
+  "reaction_smiles": "CC1=NN(C=C1NC2=NC=C(C(=C2)I)C(F)(F)F)C.CONC(=O)C1=CC=CC=C1N>>CC1=NN(C=C1NC2=NC=C(C(=C2)NC3=CC=CC=C3C(=O)NOC)C(F)(F)F)C",
+  "reaction_class": "1.3.4 [N-arylation with Ar-X] Iodo Buchwald-Hartwig amination",
+  "yield_percent": 48.99,
+  "reagents": [
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.523
+      },
+      "id": "r1",
+      "input_key": "Base",
+      "name": "C(=O)([O-])[O-].[Cs+].[Cs+]",
+      "role": "REAGENT",
+      "smiles": "C(=O)([O-])[O-].[Cs+].[Cs+]",
+      "source_path": "/inputs/Base/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 60.0
+      },
+      "id": "r2",
+      "input_key": "Solvent",
+      "name": "C1COCCO1",
+      "role": "SOLVENT",
+      "smiles": "C1COCCO1",
+      "source_path": "/inputs/Solvent/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 8.9
+      },
+      "id": "r3",
+      "input_key": "amine",
+      "name": "CONC(=O)C1=CC=CC=C1N",
+      "role": "REACTANT",
+      "smiles": "CONC(=O)C1=CC=CC=C1N",
+      "source_path": "/inputs/amine/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 5.23
+      },
+      "id": "r4",
+      "input_key": "aryl halide",
+      "name": "CC1=NN(C=C1NC2=NC=C(C(=C2)I)C(F)(F)F)C",
+      "role": "REACTANT",
+      "smiles": "CC1=NN(C=C1NC2=NC=C(C(=C2)I)C(F)(F)F)C",
+      "source_path": "/inputs/aryl halide/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.523
+      },
+      "id": "r5",
+      "input_key": "metal and ligand",
+      "name": "CC1(C2=C(C(=CC=C2)P(C3=CC=CC=C3)C4=CC=CC=C4)OC5=C1C=CC=C5P(C6=CC=CC=C6)C7=CC=CC=C7)C",
+      "role": "CATALYST",
+      "smiles": "CC1(C2=C(C(=CC=C2)P(C3=CC=CC=C3)C4=CC=CC=C4)OC5=C1C=CC=C5P(C6=CC=CC=C6)C7=CC=CC=C7)C",
+      "source_path": "/inputs/metal and ligand/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.262
+      },
+      "id": "r6",
+      "input_key": "metal and ligand",
+      "name": "CC(=O)O.CC(=O)O.[Pd]",
+      "role": "CATALYST",
+      "smiles": "CC(=O)O.CC(=O)O.[Pd]",
+      "source_path": "/inputs/metal and ligand/components/1"
+    },
+    {
+      "id": "w1",
+      "name": "dichloromethane",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w2",
+      "name": "methanol",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w3",
+      "name": "silicagel",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w4",
+      "name": "tBuOMe",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": {
+        "value": 35,
+        "unit": "mL"
+      },
+      "source_path": null
+    },
+    {
+      "id": "w5",
+      "name": "MeCN",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w6",
+      "name": "MeCN",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w7",
+      "name": "MeCN",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w8",
+      "name": "EN02430-89-02",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w9",
+      "name": "EN02430-89-03",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w10",
+      "name": "EN02430-89-04",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    },
+    {
+      "id": "w11",
+      "name": "water",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": {
+        "value": 100,
+        "unit": "mL"
+      },
+      "source_path": null
+    },
+    {
+      "id": "w12",
+      "name": "P2O5",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    }
+  ],
+  "steps": [
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "id": "s001",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)",
+        "stage": "reaction",
+        "amount_source": "/inputs/metal and ligand/components/0/amount",
+        "source_alias": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.523
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r6",
+      "id": "s002",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "diacetoxypalladium",
+        "stage": "reaction",
+        "amount_source": "/inputs/metal and ligand/components/1/amount",
+        "source_alias": "diacetoxypalladium"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.262
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "id": "s003",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "2-amino-N-methoxybenzamide",
+        "stage": "reaction",
+        "amount_source": "/inputs/amine/components/0/amount",
+        "source_alias": "2-amino-N-methoxybenzamide"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 8.9
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "id": "s004",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "N-(1,3-dimethyl-1H-pyrazol-4-yl)-4-iodo-5-(trifluoromethyl)pyridin-2-amine",
+        "stage": "reaction",
+        "amount_source": "/inputs/aryl halide/components/0/amount",
+        "source_alias": "N-(1,3-dimethyl-1H-pyrazol-4-yl)-4-iodo-5-(trifluoromethyl)pyridin-2-amine"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 5.23
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "id": "s005",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "cesium carbonate",
+        "stage": "reaction",
+        "amount_source": "/inputs/Base/components/0/amount",
+        "source_alias": "cesium carbonate"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.523
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "id": "s006",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "dioxane (60 mL) was added",
+        "stage": "reaction",
+        "amount_source": "/inputs/Solvent/components/0/amount",
+        "source_alias": "dioxane"
+      },
+      "amount": {
+        "unit": "mL",
+        "value": 60.0
+      }
+    },
+    {
+      "op": "Atmosphere",
+      "gas": "argon",
+      "mode": "purge",
+      "duration_s": 600,
+      "id": "s007",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "argon was let to bubble in the mixture for 10 minutes",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "HeatChill",
+      "temp_C": 100,
+      "stir": true,
+      "id": "s008",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The suspension was stirred at 100 °C overnight.",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "HeatChill",
+      "stir": true,
+      "id": "s009",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The reaction mixture was allowed to cool to room temperature under stirring",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w1",
+      "id": "s010",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "diluted with dichloromethane",
+        "stage": "workup",
+        "source_alias": "dichloromethane"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w2",
+      "id": "s011",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "and methanol",
+        "stage": "workup",
+        "source_alias": "methanol"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w3",
+      "id": "s012",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "silicagel was added",
+        "stage": "workup",
+        "source_alias": "silicagel"
+      }
+    },
+    {
+      "op": "Evaporate",
+      "id": "s013",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the mixture was concentrated",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Purify",
+      "method": "chromatography",
+      "id": "s014",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The crude product was purified by flash chromatography on silica gel (150g) eluting with 0 to 5% methanol in ethyl acetate/DCM (1/1).",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Evaporate",
+      "id": "s015",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The solvent was evaporated to dryness",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w4",
+      "amount": {
+        "value": 35,
+        "unit": "mL"
+      },
+      "id": "s016",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "35 mL of tBuOMe was added",
+        "stage": "purification",
+        "source_alias": "tBuOMe"
+      }
+    },
+    {
+      "op": "Stir",
+      "duration_s": 10800,
+      "id": "s017",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the resulting solution was stirred at rt for 3 hours",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Filter",
+      "keep": "solid",
+      "id": "s018",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The resulting precipitate was collected by filtration",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w5",
+      "id": "s019",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "It was taken up into a minimum of MeCN",
+        "stage": "purification",
+        "source_alias": "MeCN"
+      }
+    },
+    {
+      "op": "HeatChill",
+      "temp_C": 100,
+      "id": "s020",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "heated to 100°C",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w6",
+      "id": "s021",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "MeCN was added until complete solubilisation",
+        "stage": "purification",
+        "source_alias": "MeCN"
+      }
+    },
+    {
+      "op": "Filter",
+      "keep": "filtrate",
+      "id": "s022",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The solution was filtered",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "HeatChill",
+      "id": "s023",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "left to cool to rt overnight",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Filter",
+      "keep": "solid",
+      "id": "s024",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The crystallized product was collected by filtration",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Evaporate",
+      "temp_C": 50,
+      "pressure_mbar": 0.071,
+      "duration_s": 3600,
+      "id": "s025",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "dried to constant weight under high vacuum (7.10-2mbar) at 50°C for 1h",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Evaporate",
+      "id": "s026",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The filtrate was concentrated",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w7",
+      "id": "s027",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "triturated in MeCN",
+        "stage": "purification",
+        "source_alias": "MeCN"
+      }
+    },
+    {
+      "op": "Filter",
+      "keep": "solid",
+      "id": "s028",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the resulting solid was collected by filtration",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w8",
+      "id": "s029",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "1g of EN02430-89-02",
+        "stage": "purification",
+        "source_alias": "EN02430-89-02"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w9",
+      "id": "s030",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "EN02430-89-03",
+        "stage": "purification",
+        "source_alias": "EN02430-89-03"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w10",
+      "id": "s031",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "EN02430-89-04",
+        "stage": "purification",
+        "source_alias": "EN02430-89-04"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w11",
+      "amount": {
+        "value": 100,
+        "unit": "mL"
+      },
+      "id": "s032",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "stirred in boiling water (100 mL)",
+        "stage": "purification",
+        "source_alias": "water"
+      }
+    },
+    {
+      "op": "HeatChill",
+      "temp_C": 100,
+      "duration_s": 600,
+      "stir": true,
+      "id": "s033",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "stirred in boiling water (100 mL) for 10 minutes",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "HeatChill",
+      "id": "s034",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "cooled down",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Filter",
+      "keep": "solid",
+      "id": "s035",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "collected by filtration",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w12",
+      "id": "s036",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "in presence of P2O5",
+        "stage": "purification",
+        "source_alias": "P2O5"
+      }
+    },
+    {
+      "op": "Evaporate",
+      "temp_C": 50,
+      "pressure_mbar": 0.071,
+      "id": "s037",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "dried under vacuum (7.10-2mbar) at 50°C in presence of P2O5",
+        "stage": "purification"
+      }
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "atmosphere": {},
+    "pressure_control": "UNKNOWN",
+    "source_setup": {}
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "model": "gpt-5.6-terra",
+    "usage": {
+      "completion_tokens": 2662,
+      "prompt_tokens": 1735,
+      "total_tokens": 4397,
+      "prompt_tokens_details": {
+        "cache_write_tokens": 1732,
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1034
+      }
+    },
+    "cache_key": "2aeb34d57ef931ad8ddb55a66fa5e2f9cc2becb1fa69cf37103b45736950a59b",
+    "unresolved": [
+      "The textual cesium carbonate amount differs from the supplied structured amount; the supplied component amount was treated as authoritative.",
+      "The stated amount for EN02430-89-02 in the final combination ('1g') conflicts with its previously stated isolated amount; no amount was recorded for this addition.",
+      "EN02430-89-04 is combined in the final operation but is not otherwise described as being produced in the procedure.",
+      "'Overnight', 'room temperature', 'rt', 'cooled down', and 'minimum of MeCN' do not provide numeric duration, temperature, or solvent volume values.",
+      "The identities and quantities of dichloromethane, methanol used for dilution, silicagel, MeCN additions, and tBuOMe wash are not fully specified.",
+      "s009: temperature unspecified",
+      "s010: addition amount unspecified",
+      "s011: addition amount unspecified",
+      "s012: addition amount unspecified",
+      "s019: addition amount unspecified",
+      "s021: addition amount unspecified",
+      "s023: temperature unspecified",
+      "s027: addition amount unspecified",
+      "s029: addition amount unspecified",
+      "s030: addition amount unspecified",
+      "s031: addition amount unspecified",
+      "s034: temperature unspecified",
+      "s036: addition amount unspecified"
+    ],
+    "unmapped_actions": [
+      "\"were weighed out in a round bottom flask\" was not represented because weighing is not an allowed operation.",
+      "\"washed with tBuOMe\" was not represented because washing is not an allowed operation.",
+      "\"dried to a constant weight\" after the first precipitate filtration was not separately represented because no drying conditions are specified.",
+      "\"triturated in MeCN\" is represented as MeCN addition, but the trituration manipulation itself is not an allowed operation."
+    ],
+    "alias_provenance": "original API response; literal source substring verified; numeric crosscheck performed separately"
+  }
+}

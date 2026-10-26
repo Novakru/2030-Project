@@ -1,0 +1,305 @@
+{
+  "id": "pos_aa73410c5a02434eb1b5ae84c5fb49f3",
+  "source": {
+    "dataset_id": "ord_dataset-99c23cf435dc42f1af884053bc8b11c7",
+    "dataset_name": "Borylation dataset from Roche",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+    "file_sha256": "59cd8c35e021be300944f8e556b8fd7ec30a6bc32ff36a54be133aad8e44c393",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": null,
+    "reaction_id": "ord-aa73410c5a02434eb1b5ae84c5fb49f3",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet"
+  },
+  "raw_id": "ord-aa73410c5a02434eb1b5ae84c5fb49f3",
+  "raw_sha256": "80693a252457bcfef08665677c34cd3bd39b7c37edd2aad4dc65bb8bad70ee59",
+  "reaction_smiles": "O=C(OC)C=1C=CC=CC1C(=O)N(CC)CC>>O=C(OC)C1=CC=C(C=C1C(=O)N(CC)CC)B2OC(C)(C)C(O2)(C)C",
+  "reaction_class": "borylation",
+  "yield_percent": 86.0,
+  "reagents": [
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.003
+      },
+      "id": "r1",
+      "input_key": "catalyst_1",
+      "name": "C[OH2+].C[OH2+].C1CC=CCCC=C1.C1CC=CCCC=C1.[Ir].[Ir]",
+      "role": "CATALYST",
+      "smiles": "C[OH2+].C[OH2+].C1CC=CCCC=C1.C1CC=CCCC=C1.[Ir].[Ir]",
+      "source_path": "/inputs/catalyst_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.009
+      },
+      "id": "r2",
+      "input_key": "catalyst_2",
+      "name": "[K].OC(C)(C)C",
+      "role": "CATALYST",
+      "smiles": "[K].OC(C)(C)C",
+      "source_path": "/inputs/catalyst_2/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.2
+      },
+      "id": "r3",
+      "input_key": "reagent_1",
+      "name": "O1B(OC(C)(C)C1(C)C)B2OC(C)(C)C(O2)(C)C",
+      "role": "REAGENT",
+      "smiles": "O1B(OC(C)(C)C1(C)C)B2OC(C)(C)C(O2)(C)C",
+      "source_path": "/inputs/reagent_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.007
+      },
+      "id": "r4",
+      "input_key": "reagent_2",
+      "name": "O=C1C=CC=2C=CC=C(C3=CN=C(C=C3)C=4N=CC=CC4)C2N1",
+      "role": "REAGENT",
+      "smiles": "O=C1C=CC=2C=CC=C(C3=CN=C(C=C3)C=4N=CC=CC4)C2N1",
+      "source_path": "/inputs/reagent_2/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 1.0
+      },
+      "id": "r5",
+      "input_key": "solvent_1",
+      "name": "O1CCCC1",
+      "role": "SOLVENT",
+      "smiles": "O1CCCC1",
+      "source_path": "/inputs/solvent_1/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.2
+      },
+      "id": "r6",
+      "input_key": "startingmat_1",
+      "name": "O=C(OC)C=1C=CC=CC1C(=O)N(CC)CC",
+      "role": "REACTANT",
+      "smiles": "O=C(OC)C=1C=CC=CC1C(=O)N(CC)CC",
+      "source_path": "/inputs/startingmat_1/components/0"
+    }
+  ],
+  "steps": [
+    {
+      "op": "Atmosphere",
+      "gas": "argon",
+      "mode": "environment",
+      "id": "s001",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "In an argon filled glove box",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "id": "s002",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "charged with [Ir(cod)(OMe)]2",
+        "stage": "reaction",
+        "amount_source": "/inputs/catalyst_1/components/0/amount",
+        "source_alias": "[Ir(cod)(OMe)]2"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.003
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "id": "s003",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "L1 ligand",
+        "stage": "reaction",
+        "amount_source": "/inputs/reagent_2/components/0/amount",
+        "source_alias": "L1 ligand"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.007
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "id": "s004",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "B2pin2",
+        "stage": "reaction",
+        "amount_source": "/inputs/reagent_1/components/0/amount",
+        "source_alias": "B2pin2"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.2
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "id": "s005",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "KOtBu",
+        "stage": "reaction",
+        "amount_source": "/inputs/catalyst_2/components/0/amount",
+        "source_alias": "KOtBu"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.009
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "id": "s006",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "dry THF",
+        "stage": "reaction",
+        "amount_source": "/inputs/solvent_1/components/0/amount",
+        "source_alias": "dry THF"
+      },
+      "amount": {
+        "unit": "mL",
+        "value": 1.0
+      }
+    },
+    {
+      "op": "Stir",
+      "duration_s": 120,
+      "id": "s007",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The reaction mixture was stirred for 2 minutes at room temperature.",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r6",
+      "id": "s008",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "methyl 2-(diethylcarbamoyl)benzoate (47.1 mg, 0.2 mmol) was added",
+        "stage": "reaction",
+        "amount_source": "/inputs/startingmat_1/components/0/amount",
+        "source_alias": "methyl 2-(diethylcarbamoyl)benzoate"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.2
+      }
+    },
+    {
+      "op": "HeatChill",
+      "temp_C": 80,
+      "duration_s": 43200,
+      "stir": true,
+      "id": "s009",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The microreactor was capped with a teflon pressure cap and placed into pre-heated aluminum block at 80 oC. The reaction mixture was stirred for 12 h.",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Evaporate",
+      "id": "s010",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "THF was removed under reduced pressure",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Purify",
+      "method": "chromatography",
+      "id": "s011",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "chromatographic separation with silica gel (12% ethyl acetate in hexane as eluent)",
+        "stage": "purification"
+      }
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "pressure_control": "SEALED",
+    "source_setup": {}
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "model": "gpt-5.6-terra",
+    "usage": {
+      "completion_tokens": 851,
+      "prompt_tokens": 1288,
+      "total_tokens": 2139,
+      "prompt_tokens_details": {
+        "cache_write_tokens": 1285,
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 229
+      }
+    },
+    "cache_key": "a80c9fcf4f22e593dae16134713aa2a1a4bfbac41e0d9237f9649cd014f012b3",
+    "unresolved": [
+      "The room-temperature pre-stirring temperature is not given numerically.",
+      "No numerical pressure is specified for removal under reduced pressure.",
+      "The chromatography eluent composition is stated, but no purification operating parameters are specified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "a 5.0 mL wheaton microreactor was charged",
+        "reason": "Reactor size/type is not represented by an allowed operation field."
+      },
+      {
+        "evidence": "The microreactor was capped with a teflon pressure cap",
+        "reason": "Capping the reactor is not an allowed operation."
+      },
+      {
+        "evidence": "After completion (judged by GC/MS)",
+        "reason": "GC/MS completion assessment is monitoring, not a physical operation."
+      },
+      {
+        "evidence": "gave the meta-borylated product 6g (62.1 mg, 86%) as oil",
+        "reason": "Product isolation outcome/yield is not an allowed operation."
+      },
+      {
+        "evidence": "Spectral data are in accordance with the reported data.",
+        "reason": "Analytical statement is not a physical operation."
+      }
+    ],
+    "alias_provenance": "original API response; literal source substring verified; numeric crosscheck performed separately"
+  }
+}

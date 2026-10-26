@@ -1,0 +1,245 @@
+{
+  "nodes": [
+    {
+      "id": "pump_1",
+      "type": "pump",
+      "x": 400,
+      "y": 280,
+      "internalId": 0,
+      "label": "pump_1",
+      "class": "ChemputerPump",
+      "name": "pump_1",
+      "address": "192.168.1.11",
+      "max_volume": 25,
+      "current_volume": 0
+    },
+    {
+      "id": "valve_1",
+      "type": "valve",
+      "x": 400,
+      "y": 400,
+      "internalId": 7,
+      "label": "valve_1",
+      "class": "ChemputerValve",
+      "name": "valve_1",
+      "address": "192.168.1.21"
+    },
+    {
+      "id": "waste_1",
+      "type": "waste",
+      "x": 320,
+      "y": 320,
+      "internalId": 34,
+      "label": "waste_1",
+      "class": "ChemputerWaste",
+      "name": "waste_1",
+      "current_volume": 0,
+      "max_volume": 2000,
+      "necks": 1
+    },
+    {
+      "id": "hotplate_0",
+      "type": "heater",
+      "x": 400,
+      "y": 600,
+      "internalId": 60,
+      "label": "hotplate_0",
+      "class": "RETControlViscHotplate",
+      "name": "hotplate_0",
+      "mode": "ethernet",
+      "port": 5000,
+      "temp_sensor": "external",
+      "address": "192.168.1.32"
+    },
+    {
+      "id": "hotplate_1",
+      "type": "heater",
+      "x": 520,
+      "y": 600,
+      "internalId": 61,
+      "label": "hotplate_1",
+      "class": "RETControlViscHotplate",
+      "name": "hotplate_1",
+      "mode": "ethernet",
+      "port": 5000,
+      "temp_sensor": "external",
+      "address": "192.168.1.31"
+    },
+    {
+      "id": "reactor1",
+      "type": "reactor",
+      "x": 520,
+      "y": 520,
+      "internalId": 75,
+      "label": "reactor1",
+      "class": "ChemputerReactor",
+      "name": "reactor1",
+      "current_volume": 0,
+      "max_volume": 100,
+      "necks": 3,
+      "can_filter": false
+    },
+    {
+      "id": "flask_water",
+      "type": "flask",
+      "x": 280,
+      "y": 440,
+      "internalId": 49,
+      "label": "flask_water",
+      "class": "ChemputerFlask",
+      "name": "flask_water",
+      "chemical": "water",
+      "current_volume": 100,
+      "max_volume": 100,
+      "can_filter": false
+    },
+    {
+      "id": "reactor0",
+      "type": "reactor",
+      "x": 400,
+      "y": 520,
+      "internalId": 101,
+      "label": "reactor0",
+      "class": "ChemputerReactor",
+      "name": "reactor0",
+      "current_volume": 0,
+      "max_volume": 100,
+      "necks": 3,
+      "can_filter": false
+    },
+    {
+      "id": "reactor2",
+      "type": "reactor",
+      "x": 640,
+      "y": 520,
+      "class": "ChemputerReactor",
+      "name": "reactor2",
+      "current_volume": 0,
+      "max_volume": 100,
+      "necks": 3,
+      "can_filter": false,
+      "internalId": 5,
+      "label": "reactor2"
+    },
+    {
+      "id": "hotplate_2",
+      "type": "heater",
+      "x": 640,
+      "y": 600,
+      "class": "RCTDigitalHotplate",
+      "name": "hotplate_2",
+      "port": 5000,
+      "address": "192.168.1.31",
+      "mode": "ethernet",
+      "internalId": 9,
+      "temp_sensor": "external",
+      "label": "hotplate_2"
+    }
+  ],
+  "links": [
+    {
+      "id": 14,
+      "sourceInternal": 0,
+      "targetInternal": 7,
+      "source": "pump_1",
+      "target": "valve_1",
+      "port": "(0,-1)"
+    },
+    {
+      "id": 15,
+      "sourceInternal": 7,
+      "targetInternal": 0,
+      "source": "valve_1",
+      "target": "pump_1",
+      "port": "(-1,0)"
+    },
+    {
+      "id": 67,
+      "sourceInternal": 7,
+      "targetInternal": 34,
+      "source": "valve_1",
+      "target": "waste_1",
+      "port": "(0,0)"
+    },
+    {
+      "id": 114,
+      "sourceInternal": 61,
+      "targetInternal": 75,
+      "source": "hotplate_1",
+      "target": "reactor1",
+      "port": "(,)"
+    },
+    {
+      "id": 81,
+      "sourceInternal": 49,
+      "targetInternal": 7,
+      "source": "flask_water",
+      "target": "valve_1",
+      "port": "(0,1)"
+    },
+    {
+      "id": 135,
+      "sourceInternal": 60,
+      "targetInternal": 101,
+      "source": "hotplate_0",
+      "target": "reactor0",
+      "port": "(,)"
+    },
+    {
+      "id": 1,
+      "sourceInternal": 7,
+      "targetInternal": 75,
+      "source": "valve_1",
+      "target": "reactor1",
+      "port": "(3,0)"
+    },
+    {
+      "id": 2,
+      "sourceInternal": 75,
+      "targetInternal": 7,
+      "source": "reactor1",
+      "target": "valve_1",
+      "port": "(0,3)"
+    },
+    {
+      "id": 3,
+      "sourceInternal": 7,
+      "targetInternal": 101,
+      "source": "valve_1",
+      "target": "reactor0",
+      "port": "(2,0)"
+    },
+    {
+      "id": 4,
+      "sourceInternal": 101,
+      "targetInternal": 7,
+      "source": "reactor0",
+      "target": "valve_1",
+      "port": "(0,2)"
+    },
+    {
+      "id": 6,
+      "sourceInternal": 7,
+      "targetInternal": 5,
+      "source": "valve_1",
+      "target": "reactor2",
+      "port": "(4,0)"
+    },
+    {
+      "id": 8,
+      "sourceInternal": 5,
+      "targetInternal": 7,
+      "source": "reactor2",
+      "target": "valve_1",
+      "port": "(0,4)"
+    },
+    {
+      "id": 10,
+      "sourceInternal": 9,
+      "targetInternal": 5,
+      "source": "hotplate_2",
+      "target": "reactor2",
+      "port": "(,)"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_mgso4"
+      type="cartridge"
+      chemical="mgso4" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="filter"
+      type="filter" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="N,N'-1,4-bis(2,6-diisopropylphenyl)-1,4-diazabutadiene"
+      role="solvent" />
+    <Reagent
+      name="paraformaldehyde"
+      role="reagent" />
+    <Reagent
+      name="etoac"
+      role="solvent" />
+    <Reagent
+      name="tmscl"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel='filter'
+      reagent="N,N'-1,4-bis(2,6-diisopropylphenyl)-1,4-diazabutadiene"
+      mass='4.3 g'
+    />
+
+    <AddSolid
+      vessel='filter'
+      reagent='paraformaldehyde'
+      mass='340 mg'
+    />
+
+    <Add
+      vessel='filter'
+      reagent='etoac'
+      volume='100 mL'
+      stir='True'
+    />
+
+    <HeatChillToTemp
+      vessel='filter'
+      temp='75'
+      continue_heatchill='True'
+    />
+
+    <Wait
+      time='10 min'
+    />
+
+    <Add
+      vessel='filter'
+      reagent='tmscl'
+      volume='1.5 mL'
+      stir='True'
+    />
+
+    <HeatChill
+      vessel='filter'
+      temp='70'
+      time='2 h'
+      stir='True'
+    />
+
+    <HeatChill
+      vessel='filter'
+      temp='10'
+      time='10 min'
+    />
+
+    <Filter
+      vessel='filter'
+    />
+
+    <WashSolid
+      vessel='filter'
+      solvent='etoac'
+      volume='15 mL'
+      repeats='3'
+      stir_speed='100'
+    />
+
+  </Procedure>
+
+</Synthesis>

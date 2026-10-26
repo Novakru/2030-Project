@@ -1,0 +1,504 @@
+{
+  "id": "pos_353dd54a566b4ccf82816af5583ab659",
+  "source": {
+    "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+    "dataset_name": "750 AstraZeneca ELN dataset",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+    "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+    "reaction_id": "ord-353dd54a566b4ccf82816af5583ab659",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+  },
+  "raw_id": "ord-353dd54a566b4ccf82816af5583ab659",
+  "raw_sha256": "d5c954bfbf90cc5783e5e08b1d890a5fa7f3e51d5caf4764220abd7f9b7e5a86",
+  "reaction_smiles": "CC(C)(C)OC(=O)N1CCNCC1.CS(=O)(=O)C1=CC=C(C=C1)COC2=NC=C(C=N2)Br>>CC(C)(C)OC(=O)N1CCN(CC1)C2=CN=C(N=C2)OCC3=CC=C(C=C3)S(=O)(=O)C",
+  "reaction_class": "1.3.1 [N-arylation with Ar-X] Bromo Buchwald-Hartwig amination",
+  "yield_percent": 55.01,
+  "reagents": [
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 3.27
+      },
+      "id": "r1",
+      "input_key": "Base",
+      "name": "CC(C)(C)[O-].[Na+]",
+      "role": "REAGENT",
+      "smiles": "CC(C)(C)[O-].[Na+]",
+      "source_path": "/inputs/Base/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 20.0
+      },
+      "id": "r2",
+      "input_key": "Solvent",
+      "name": "CC1=CC=CC=C1",
+      "role": "SOLVENT",
+      "smiles": "CC1=CC=CC=C1",
+      "source_path": "/inputs/Solvent/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 2.4
+      },
+      "id": "r3",
+      "input_key": "amine",
+      "name": "CC(C)(C)OC(=O)N1CCNCC1",
+      "role": "REACTANT",
+      "smiles": "CC(C)(C)OC(=O)N1CCNCC1",
+      "source_path": "/inputs/amine/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 2.18
+      },
+      "id": "r4",
+      "input_key": "aryl halide",
+      "name": "CS(=O)(=O)C1=CC=C(C=C1)COC2=NC=C(C=N2)Br",
+      "role": "REACTANT",
+      "smiles": "CS(=O)(=O)C1=CC=C(C=C1)COC2=NC=C(C=N2)Br",
+      "source_path": "/inputs/aryl halide/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.109
+      },
+      "id": "r5",
+      "input_key": "metal and ligand",
+      "name": "C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=C(C4=CC=CC=C4C=C3)C5=C(C=CC6=CC=CC=C65)P(C7=CC=CC=C7)C8=CC=CC=C8",
+      "role": "CATALYST",
+      "smiles": "C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=C(C4=CC=CC=C4C=C3)C5=C(C=CC6=CC=CC=C65)P(C7=CC=CC=C7)C8=CC=CC=C8",
+      "source_path": "/inputs/metal and ligand/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.109
+      },
+      "id": "r6",
+      "input_key": "metal and ligand",
+      "name": "C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]",
+      "role": "CATALYST",
+      "smiles": "C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]",
+      "source_path": "/inputs/metal and ligand/components/1"
+    },
+    {
+      "id": "w1",
+      "name": "EtOAc",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": {
+        "value": 75,
+        "unit": "mL"
+      },
+      "source_path": null
+    },
+    {
+      "id": "w2",
+      "name": "water",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": {
+        "value": 75,
+        "unit": "mL"
+      },
+      "source_path": null
+    },
+    {
+      "id": "w3",
+      "name": "water",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": {
+        "value": 75,
+        "unit": "mL"
+      },
+      "source_path": null
+    },
+    {
+      "id": "w4",
+      "name": "saturated brine",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": {
+        "value": 100,
+        "unit": "mL"
+      },
+      "source_path": null
+    },
+    {
+      "id": "w5",
+      "name": "MgSO4",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": null,
+      "source_path": null
+    }
+  ],
+  "steps": [
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "id": "s001",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "5-bromo-2-(4-(methylsulfonyl)benzyloxy)pyrimidine (748.8 mg, 2.18 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/aryl halide/components/0/amount",
+        "source_alias": "5-bromo-2-(4-(methylsulfonyl)benzyloxy)pyrimidine"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 2.18
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "id": "s002",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "tert- butyl piperazine-1-carboxylate (447 mg, 2.40 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/amine/components/0/amount",
+        "source_alias": "tert- butyl piperazine-1-carboxylate"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 2.4
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r6",
+      "id": "s003",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "TRIS(DIBENZYLIDENEACETONE)DIPALLADIUM(0) (100 mg, 0.11 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/metal and ligand/components/1/amount",
+        "source_alias": "TRIS(DIBENZYLIDENEACETONE)DIPALLADIUM(0)"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.109
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "id": "s004",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "2,2'-bis(diphenylphosphino)-1,1'-binaphthyl (67.9 mg, 0.11 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/metal and ligand/components/0/amount",
+        "source_alias": "2,2'-bis(diphenylphosphino)-1,1'-binaphthyl"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.109
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "id": "s005",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "sodium 2-methylpropan-2-olate (315 mg, 3.27 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/Base/components/0/amount",
+        "source_alias": "sodium 2-methylpropan-2-olate"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 3.27
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "id": "s006",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "were mixed with toluene (20 mL)",
+        "stage": "reaction",
+        "amount_source": "/inputs/Solvent/components/0/amount",
+        "source_alias": "toluene"
+      },
+      "amount": {
+        "unit": "mL",
+        "value": 20.0
+      }
+    },
+    {
+      "op": "Atmosphere",
+      "gas": "nitrogen",
+      "mode": "purge",
+      "duration_s": 900,
+      "id": "s007",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "N2 was bubbled through the solvent for 15 minutes.",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Atmosphere",
+      "gas": "nitrogen",
+      "mode": "environment",
+      "id": "s008",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "under N2",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "HeatChill",
+      "temp_C": 80,
+      "stir": true,
+      "id": "s009",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The resulting mixture was stirred at 80 °C for over night under N2.",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Filter",
+      "keep": "filtrate",
+      "id": "s010",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The reaction mixture was filtered through celite.",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Evaporate",
+      "id": "s011",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The reaction mixture was evaporated to dryness",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w1",
+      "amount": {
+        "value": 75,
+        "unit": "mL"
+      },
+      "id": "s012",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "redissolved in EtOAc (75 mL)",
+        "stage": "workup",
+        "source_alias": "EtOAc"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w2",
+      "amount": {
+        "value": 75,
+        "unit": "mL"
+      },
+      "id": "s013",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "washed sequentially with water (2x75 mL)",
+        "stage": "workup",
+        "source_alias": "water"
+      }
+    },
+    {
+      "op": "Separate",
+      "keep_phase": "unknown",
+      "id": "s014",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "washed sequentially with water (2x75 mL)",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w3",
+      "amount": {
+        "value": 75,
+        "unit": "mL"
+      },
+      "id": "s015",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "washed sequentially with water (2x75 mL)",
+        "stage": "workup",
+        "source_alias": "water"
+      }
+    },
+    {
+      "op": "Separate",
+      "keep_phase": "unknown",
+      "id": "s016",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "washed sequentially with water (2x75 mL)",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w4",
+      "amount": {
+        "value": 100,
+        "unit": "mL"
+      },
+      "id": "s017",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "and saturated brine (100 mL)",
+        "stage": "workup",
+        "source_alias": "saturated brine"
+      }
+    },
+    {
+      "op": "Separate",
+      "keep_phase": "unknown",
+      "id": "s018",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "and saturated brine (100 mL). The organic layer was dried over MgSO4",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w5",
+      "id": "s019",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The organic layer was dried over MgSO4",
+        "stage": "workup",
+        "source_alias": "MgSO4"
+      }
+    },
+    {
+      "op": "Filter",
+      "keep": "filtrate",
+      "id": "s020",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "filtered and evaporated to afford crude product",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Evaporate",
+      "id": "s021",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "filtered and evaporated to afford crude product",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Purify",
+      "method": "chromatography",
+      "id": "s022",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The crude product was purified by flash silica chromatography, elution gradient 0 to 100% EtOAc in isohexane.",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Evaporate",
+      "id": "s023",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Pure fractions were evaporated to dryness",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Purify",
+      "method": "preparative HPLC",
+      "id": "s024",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The crude product was purified by preparative HPLC (Phenomenex Gemini C18 110A (axia) column, 5µ silica, 21 mm diameter, 150 mm length), using decreasingly polar mixtures of water (containing 0.5% NH3 and MeCN as eluents.",
+        "stage": "purification"
+      }
+    },
+    {
+      "op": "Evaporate",
+      "id": "s025",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Fractions containing the desired compound were evaporated to dryness",
+        "stage": "purification"
+      }
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "atmosphere": {},
+    "pressure_control": "UNKNOWN",
+    "source_setup": {}
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "model": "gpt-5.6-terra",
+    "usage": {
+      "completion_tokens": 2124,
+      "prompt_tokens": 1672,
+      "total_tokens": 3796,
+      "prompt_tokens_details": {
+        "cache_write_tokens": 1669,
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 811
+      }
+    },
+    "cache_key": "ee6b361d3401334963d2e6a1ac9bf59864e2069ea877407c200c269e6dba7f95",
+    "unresolved": [
+      "\"over night\" does not specify an exact duration.",
+      "The text identifies retention of an \"organic layer\" but does not state whether it was the top or bottom phase.",
+      "The procedure describes flash chromatography followed by a statement that \"The crude product was purified by preparative HPLC\"; it is unclear whether preparative HPLC was performed sequentially on material from the flash chromatography or describes a separate purification attempt.",
+      "The preparative-HPLC eluent description is syntactically incomplete: \"water (containing 0.5% NH3 and MeCN as eluents.\"",
+      "s014: product phase unspecified",
+      "s016: product phase unspecified",
+      "s018: product phase unspecified",
+      "s019: addition amount unspecified"
+    ],
+    "unmapped_actions": [
+      "Drying the organic layer over MgSO4 is not directly representable by an allowed operation; MgSO4 addition was recorded.",
+      "Outcome and quality statements were not mapped to physical operations: \"Was not pure and tailed on the coloumn.\", \"The product crashed out on the HPLC coloumn and blocked the system, which gave bad recovery.\", \"Turns out the product is not stable.\", and \"2D TLC shows tailing of product..\""
+    ],
+    "alias_provenance": "original API response; literal source substring verified; numeric crosscheck performed separately"
+  }
+}

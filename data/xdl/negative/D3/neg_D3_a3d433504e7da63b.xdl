@@ -1,0 +1,45 @@
+<Synthesis>
+  <Metadata description="Intentionally perturbed source-derived procedure; experimental outcome not observed." publication="https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet" reaction_class="borylation"/>
+  <Hardware>
+    <!--Analysis binding: {"component": "column", "params": {}, "verified": false, "wetted_materials": null}-->
+    <Component id="column" type="column"/>
+    <!--Analysis binding: {"component": "heater", "params": {"T_max_C": 310, "T_min_C": null, "rpm_max": 1500, "rpm_min": 50}, "verified": false, "wetted_materials": []}-->
+    <Component id="heater" type="heater"/>
+    <!--Analysis binding: {"component": "product", "params": {}, "verified": false, "wetted_materials": null}-->
+    <Component id="product" type="reactor"/>
+    <!--Analysis binding: {"component": "reactor", "params": {"T_max_C": null, "T_min_C": null, "capacity_mL": 50, "pressure_max_bar": null}, "verified": false, "wetted_materials": ["borosilicate_glass"]}-->
+    <Component id="reactor" type="reactor"/>
+  </Hardware>
+  <Reagents>
+    <!--r1: C[OH2+].C[OH2+].C1CC=CCCC=C1.C1CC=CCCC=C1.[Ir].[Ir]-->
+    <Reagent name="r1" role="catalyst"/>
+    <!--r2: O1B(OC(C)(C)C1(C)C)B2OC(C)(C)C(O2)(C)C-->
+    <Reagent name="r2" role="reagent"/>
+    <!--r3: N=1C=CC(=CC1C=2N=CC=C(C2)C(C)(C)C)C(C)(C)C-->
+    <Reagent name="r3" role="reagent"/>
+    <!--r4: O(C)C(C)(C)C-->
+    <Reagent name="r4" role="solvent"/>
+    <!--r5: N=1C=2C=C(C=CC2C=CC1C)C-->
+    <Reagent name="r5" role="substrate"/>
+  </Reagents>
+  <Procedure>
+    <!--Analysis context: {"pressure_control": "SEALED", "reflux": false}-->
+    <!--Pressure-control context: SEALED-->
+    <!--General procedure B was applied to 2,7-dimethylquinoline (157 mg, 1.00mmol).-->
+    <Add vessel="reactor" reagent="undeclared_reagent" amount="0.015 mmol"/>
+    <!--General procedure B was applied to 2,7-dimethylquinoline (157 mg, 1.00mmol).-->
+    <Add vessel="reactor" reagent="r2" amount="1 mmol"/>
+    <!--General procedure B was applied to 2,7-dimethylquinoline (157 mg, 1.00mmol).-->
+    <Add vessel="reactor" reagent="r3" amount="0.03 mmol"/>
+    <!--General procedure B was applied to 2,7-dimethylquinoline (157 mg, 1.00mmol).-->
+    <Add vessel="reactor" reagent="r4" amount="2.3999982 mL"/>
+    <!--General procedure B was applied to 2,7-dimethylquinoline (157 mg, 1.00mmol).-->
+    <Add vessel="reactor" reagent="r5" amount="1 mmol"/>
+    <!--The reaction was stirred at room  temperature  (25  °C)  for  72  hours.-->
+    <HeatChill vessel="reactor" temp="25 °C" time="259200 s" stir="true"/>
+    <!--Volatiles were removed from the reaction under reduced pressure-->
+    <Evaporate vessel="reactor"/>
+    <!--the remaining residue was purified  by  silica  gel  flash-column  chromatography  with  gradient  elution  of  MeOH/DCM  from  0.5 -12.5% over 25 column volumes-->
+    <RunColumn from_vessel="reactor" to_vessel="product" column="column"/>
+  </Procedure>
+</Synthesis>

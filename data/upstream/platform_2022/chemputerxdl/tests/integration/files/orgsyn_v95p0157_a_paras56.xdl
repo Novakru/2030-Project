@@ -1,0 +1,172 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="buffer_flask"
+      type="buffer_flask" />
+    <Component
+      id="cartridge_Na2SO4"
+      type="cartridge"
+      chemical="Na2SO4" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="CH2Cl2" />
+    <Reagent
+      name="Et2O" />
+    <Reagent
+      name="THF" />
+    <Reagent
+      name="compound 3" />
+    <Reagent
+      name="diethyl ether" />
+    <Reagent
+      name="saturated aqueous NaCl" />
+    <Reagent
+      name="saturated aqueous NaHCO3" />
+    <Reagent
+      name="tetrabutylammonium fluoride" />
+    <Reagent
+      name="tetrahydrofuran" />
+  </Reagents>
+
+  <Procedure>
+    <Evaporate
+      vessel="rotavap"
+      temp="40°C"
+      pressure="313.3067 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Add
+      reagent="compound 3"
+      vessel="reactor"
+      mass="17.7 g" />
+    <Add
+      reagent="THF"
+      vessel="reactor"
+      volume="750 mL" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="reactor"
+      volume="all" />
+    <Add
+      reagent="THF"
+      vessel="rotavap"
+      volume="15 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="reactor"
+      volume="15 mL" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="4°C"
+      stir="True" />
+    <Add
+      reagent="tetrabutylammonium fluoride"
+      vessel="reactor"
+      volume="58 mL"
+      time="1.5 hrs"
+      stir="True" />
+    <Add
+      reagent="tetrahydrofuran"
+      vessel="reactor"
+      volume="10 mL"
+      stir="True" />
+    <Stir
+      vessel="reactor"
+      time="60 mins" />
+    <Add
+      reagent="saturated aqueous NaHCO3"
+      vessel="reactor"
+      volume="120 mL"
+      stir="True" />
+    <Stir
+      vessel="reactor"
+      time="10 mins" />
+    <Add
+      reagent="Et2O"
+      vessel="reactor"
+      volume="300 mL"
+      stir="True" />
+    <Separate
+      purpose="extract"
+      from_vessel="reactor"
+      separation_vessel="separator"
+      to_vessel="buffer_flask"
+      product_phase="top"
+      solvent=""
+      waste_phase_to_vessel="separator" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="Et2O"
+      solvent_volume="150 mL"
+      repeats="3" />
+    <Transfer
+      from_vessel="buffer_flask"
+      to_vessel="separator"
+      volume="all" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="saturated aqueous NaHCO3"
+      solvent_volume="150 mL" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      solvent="saturated aqueous NaCl"
+      through="Na2SO4"
+      solvent_volume="150 mL" />
+    <Add
+      reagent="diethyl ether"
+      vessel="rotavap"
+      volume="200 mL"
+      through="Na2SO4" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40°C"
+      pressure="353.3033 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Add
+      reagent="CH2Cl2"
+      vessel="rotavap"
+      volume="0" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40°C"
+      pressure="286.6423 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Dry
+      vessel="rotavap"
+      time="10 hrs"
+      temp="24°C"
+      pressure="0.2 mbar" />
+    <RunColumn
+      from_vessel="rotavap"
+      to_vessel="reactor" />
+  </Procedure>
+
+</Synthesis>

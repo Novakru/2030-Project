@@ -1,0 +1,50 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="the pyranone DMF solution" />
+    <Reagent
+      name="triethylamine" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="the pyranone DMF solution"
+      vessel="reactor"
+      volume="0" />
+    <Add
+      reagent="triethylamine"
+      vessel="reactor"
+      volume="0" />
+    <HeatChill
+      vessel="reactor"
+      temp="80°C"
+      time="24 hrs"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="all" />
+    <Evaporate
+      vessel="rotavap"
+      temp="50°C"
+      pressure="6 mbar"
+      time="30 mins"
+      mode="auto" />
+    <RunColumn
+      from_vessel="rotavap"
+      to_vessel="reactor"
+      column="column" />
+  </Procedure>
+
+</Synthesis>

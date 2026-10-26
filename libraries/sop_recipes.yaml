@@ -1,0 +1,100 @@
+version: 1
+scope: "Two-addition source fragments only. Cooling, addition rate, approximate quantities and final-volume endpoints remain explicit unresolved instructions."
+acid_dilutions:
+  - id: epa26_absorber
+    source: epa_method26
+    lines: [180, 183]
+    section: "7.1.3"
+    acid_mL: 0.28
+    water_mL: 90
+    water_approximate: true
+    concentration: concentrated
+    unresolved: ["Add acid slowly while stirring; numerical addition rate is unspecified.", "Adjust final solution volume to 100 mL with additional water and mix; make-up volume is not 9.72 mL by arithmetic."]
+  - id: crossett_diluent
+    source: epa_crossett
+    lines: [1578, 1580]
+    section: "IH-007 7.6"
+    acid_mL: 40
+    water_mL: 900
+    concentration: concentrated
+    unresolved: ["Add slowly and carefully; allow cooling before making up to the 1 L mark."]
+  - id: epa_qc_5N
+    source: epa_qc2018
+    lines: [625, 630]
+    section: "EPA-126-A 7.6"
+    acid_mL: 70
+    water_mL: 400
+    water_approximate: true
+    concentration: concentrated
+    unresolved: ["Add acid slowly; the vessel becomes warm. Cool to room temperature, then make up to 500 mL."]
+  - id: usgs_5N
+    source: usgs_water1965
+    lines: [2781, 2783]
+    section: "Iodide reagents; sulfuric acid 5 N"
+    acid_mL: 138.8
+    water_mL: 500
+    water_approximate: true
+    acid_mass_fraction: 0.96
+    concentration: concentrated
+    unresolved: ["Add acid slowly, mix, then dilute to a final volume of 1 L; make-up volume remains unspecified."]
+  - id: jgofs_oxygen_50pct
+    source: jodc_jgofs
+    lines: [966, 967]
+    section: "Dissolved oxygen 5.3"
+    acid_mL: 500
+    water_mL: 500
+    concentration: concentrated
+    unresolved: ["Add acid slowly and cool during addition; no numerical cooling setpoint or addition rate is supplied."]
+  - id: jgofs_phosphate_acid
+    source: jodc_jgofs
+    lines: [4023, 4024]
+    section: "Phosphate 5.2"
+    acid_mL: 140
+    water_mL: 900
+    concentration: concentrated
+    unresolved: ["Cool the mixture and store in a glass bottle; no final solution volume is inferred from additive volumes."]
+  - id: epa607_1plus1
+    source: epa_40cfr136
+    lines: [7489, 7493]
+    section: "Method 607 6.4"
+    acid_mL: 50
+    water_mL: 50
+    concentration: specific_gravity_1.84
+    unresolved: ["Add acid slowly. The source gives specific gravity 1.84 rather than an exact mass fraction."]
+  - id: baaqmd_lab8_1N
+    source: epa_baaqmd
+    lines: [2781, 2783]
+    section: "LAB 8 3.2"
+    acid_mL: 28
+    water_mL: 500
+    water_approximate: true
+    concentration: concentrated
+    unresolved: ["Add acid slowly, then dilute to a final solution volume of 1 L."]
+  - id: baaqmd_lab9_85pct
+    source: epa_baaqmd
+    lines: [2953, 2954]
+    section: "LAB 9 3.10"
+    acid_mL: 88
+    water_mL: 12
+    concentration: concentrated
+    unresolved: ["Add acid slowly. The name of the resulting reagent is retained in the source; no final mass fraction is recalculated from volumes."]
+  - id: epa4204_1plus9
+    source: epa_4204
+    lines: [238, 239]
+    section: "7.10"
+    acid_mL: 10
+    water_mL: 70
+    concentration: concentrated
+    unresolved: ["Add acid slowly, cool, then make up to 100 mL; do not infer a 20 mL make-up addition."]
+instantiation:
+  dmso:
+    source: avantor_dmso
+    parent_temp_C: 30
+    bad_temperatures_C: [-20, -15, -10, -5, 0, 2, 4, 6, 8, 10, 12, 14]
+    assumptions: ["The bottle contains neat DMSO; no solvent-mixture freezing point is inferred.", "30 C is a constructed point inside the manufacturer's permitted thawing region, not a reported experiment.", "The requested endpoint is bulk liquid at thermal equilibrium; transient supercooling is not excluded.", "Bottle contents are preloaded; volume and heating duration are unspecified."]
+  flammables:
+    source: nus_heating_web
+    parent_temp_C: 30
+    solvents: [methanol, ethanol, tetrahydrofuran, toluene, acetonitrile, ethyl_acetate]
+    ignition_sources: [bunsen_burner, hot_air_gun]
+    assumptions: ["Constructed open container of the named neat solvent in air at 30 C, with vapor exposure at the liquid surface.", "The positive scenario excludes ignition sources; one mutation introduces a source at the exposed vapor interface.", "30 C and solvent choices instantiate the general university instruction; they are not copied experimental conditions.", "Volume and heating duration are unspecified. Ignition risk does not assert that a fire occurred."]

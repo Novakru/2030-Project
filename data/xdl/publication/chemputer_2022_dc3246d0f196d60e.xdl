@@ -1,0 +1,81 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="1,2-dichloroethane"
+      role="reagent" />
+    <Reagent
+      name="lauroyl peroxide"
+      role="reagent" />
+    <Reagent
+      name="vinyl acetate"
+      role="reagent" />
+    <Reagent
+      name="S-(1-Acetylamino-2,2,2-trifluoroethyl) O-ethyl dithiocarbonate"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="S-(1-Acetylamino-2,2,2-trifluoroethyl) O-ethyl dithiocarbonate"
+      mass="12.4 g" />
+    <Add
+      vessel="reactor"
+      reagent="vinyl acetate"
+      volume="5.1 mL" />
+    <Add
+      vessel="reactor"
+      reagent="1,2-dichloroethane"
+      volume="50 mL"
+      stir="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="83.5 °C"
+      time="15 min"
+      stir="True" />
+    <Repeat repeats="4">
+      <AddSolid
+        vessel="reactor"
+        reagent="lauroyl peroxide"
+        mass="473 mg"
+        stir="True"
+      />
+      <HeatChill
+        vessel="reactor"
+        temp="83.5 °C"
+        time="1.5 h"
+        stir="True" />
+    </Repeat>
+    <HeatChill
+      vessel="reactor"
+      temp="83.5 °C"
+      time="45 min"
+      stir="True"/>
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="25 °C"
+      active="False"
+      continue_heatchill="False" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="all" />
+    <Evaporate
+      vessel="rotavap"
+      time="30 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

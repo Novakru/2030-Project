@@ -1,0 +1,133 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="SM"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="silica_plug"
+      type="cartridge"
+      chemical="silica" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="(S)-tert-ButylPHOX"
+      role="reagent" />
+    <Reagent
+      name="1 methyl-2-oxo-cyclohexanecarboxylic acid 2-propenyl ester"
+      role="reagent" />
+    <Reagent
+      name="PdOAc2"
+      role="reagent" />
+    <Reagent
+      name="diethylether"
+      role="reagent" />
+    <Reagent
+      name="tbme"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <EvacuateAndRefill
+      vessel="reactor"
+      gas="argon"
+      vacuum_pressure="1 mbar" />
+    <AddSolid
+      vessel="reactor"
+      reagent="PdOAc2"
+      mass="11.2 mg" />
+    <AddSolid
+      vessel="reactor"
+      reagent="(S)-tert-ButylPHOX"
+      mass="77.4 mg" />
+    <EvacuateAndRefill
+      vessel="reactor"
+      gas="argon"
+      repeats="1"
+      after_vacuum_wait_time="15 min"
+      vacuum_pressure="1 mbar" />
+    <Add
+      vessel="reactor"
+      reagent="tbme"
+      volume="10 mL"
+      stir="True"
+      aspiration_speed="20.0"
+      prime_n_times="0" />
+    <Async>
+      <EvacuateAndRefill
+        vessel="SM"
+        gas="argon"
+        repeats="1"
+        after_vacuum_wait_time="30 min"
+        vacuum_pressure="1 mbar" />
+    </Async>
+    <HeatChill
+      vessel="reactor"
+      temp="30 °C"
+      time="30 min"
+      stir="True" />
+    <Repeat
+      repeats="2">
+      <Add
+        vessel="SM"
+        reagent="tbme"
+        volume="3 mL"
+        aspiration_speed="20.0"
+        prime_n_times="0" />
+      <Transfer
+        from_vessel="SM"
+        to_vessel="reactor"
+        volume="all"
+        aspiration_speed="20.0"
+        flush_tubing="True" />
+    </Repeat>
+    <HeatChill
+      vessel="reactor"
+      temp="60 °C"
+      time="16 h"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="30 °C"
+      active="False"
+      continue_heatchill="False"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="all"
+      through="silica"
+      move_speed="10.0" />
+    <Repeat
+      repeats="3">
+      <Add
+        vessel="reactor"
+        reagent="diethylether"
+        volume="40 mL"
+        stir="True"
+        prime_n_times="0" />
+      <Transfer
+        from_vessel="reactor"
+        to_vessel="rotavap"
+        volume="all"
+        through="silica"
+        move_speed="10.0" />
+    </Repeat>
+    <Evaporate
+      vessel="rotavap"
+      temp="35 °C"
+      pressure="350 mbar"
+      time="60 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

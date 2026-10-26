@@ -1,0 +1,165 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="buffer_flask"
+      type="buffer_flask" />
+    <Component
+      id="cartridge_MgSO4"
+      type="cartridge"
+      chemical="MgSO4" />
+    <Component
+      id="cartridge_celite"
+      type="cartridge"
+      chemical="celite" />
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="1 M HCl solution" />
+    <Reagent
+      name="2-phenylpyridine" />
+    <Reagent
+      name="DCM" />
+    <Reagent
+      name="DI water" />
+    <Reagent
+      name="dichloromethane" />
+    <Reagent
+      name="distilled hexanes" />
+    <Reagent
+      name="iridium(III)chloride anhydrous" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="iridium(III)chloride anhydrous"
+      vessel="reactor"
+      mass="0.65 g" />
+    <Add
+      reagent="2-phenylpyridine"
+      vessel="reactor"
+      volume="3.74 mL" />
+    <Add
+      reagent="DI water"
+      vessel="reactor"
+      volume="650 mL"
+      stir="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="205°C"
+      time="48 hrs"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="20°C"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="all" />
+    <Add
+      reagent="DCM"
+      vessel="separator"
+      volume="25 mL"
+      stir="True" />
+    <Add
+      reagent="DCM"
+      vessel="separator"
+      volume="2.5 l"
+      stir="True" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="buffer_flask"
+      product_phase="bottom"
+      solvent=""
+      waste_phase_to_vessel="separator" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom"
+      solvent="DCM"
+      solvent_volume="10 mL"
+      repeats="3" />
+    <Transfer
+      from_vessel="buffer_flask"
+      to_vessel="separator"
+      volume="all" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="filter"
+      product_phase="bottom"
+      solvent="1 M HCl solution"
+      through="celite"
+      solvent_volume="900 mL"
+      repeats="3"
+      waste_phase_to_vessel="separator" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="filter"
+      product_phase="bottom"
+      solvent="DCM"
+      through="celite"
+      solvent_volume="10 mL"
+      repeats="3" />
+    <FilterThrough
+      from_vessel="filter"
+      to_vessel="filter"
+      through="MgSO4" />
+    <Filter
+      vessel="filter" />
+    <Transfer
+      from_vessel="filter"
+      to_vessel="rotavap"
+      volume="all" />
+    <Evaporate
+      vessel="rotavap"
+      temp="35°C"
+      pressure="39.9966 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Add
+      reagent="distilled hexanes"
+      vessel="rotavap"
+      volume="600 mL" />
+    <Sonicate />
+    <Add
+      reagent="dichloromethane"
+      vessel="rotavap"
+      volume="5 mL"
+      stir="True" />
+    <Stir
+      vessel="rotavap"
+      time="5 mins" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="filter"
+      volume="all" />
+    <Filter
+      vessel="filter" />
+    <Dry
+      vessel="filter" />
+  </Procedure>
+
+</Synthesis>

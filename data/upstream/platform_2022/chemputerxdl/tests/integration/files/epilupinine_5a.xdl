@@ -1,0 +1,71 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="cartridge_anhydrous MgSO4"
+      type="cartridge"
+      chemical="anhydrous MgSO4" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="A mixture of proline methyl ester ( 1.04 g , 8.0 mmol ) , Et3N ( 0.28 mL , 2.0 mmol ) and 5-bromo-l-diazo-2-pentanone ( 0.382 g , 2.0 mmol ) in EtOAc ( 8.0 mL )" />
+    <Reagent
+      name="EtOAc" />
+    <Reagent
+      name="saturated NaHCO 3 solution" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="A mixture of proline methyl ester ( 1.04 g , 8.0 mmol ) , Et3N ( 0.28 mL , 2.0 mmol ) and 5-bromo-l-diazo-2-pentanone ( 0.382 g , 2.0 mmol ) in EtOAc ( 8.0 mL )"
+      vessel="reactor"
+      volume="8.28 mL"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="60°C"
+      stir="True" />
+    <Stir
+      vessel="reactor"
+      time="16 hrs" />
+    <StopHeatChill
+      vessel="reactor" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="all" />
+    <Add
+      reagent="EtOAc"
+      vessel="separator"
+      volume="100 mL"
+      stir="True" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      solvent="saturated NaHCO 3 solution"
+      through="anhydrous MgSO4"
+      solvent_volume="25 mL" />
+    <Evaporate
+      vessel="rotavap"
+      time="30 mins"
+      mode="auto" />
+    <RunColumn
+      from_vessel="rotavap"
+      to_vessel="reactor" />
+  </Procedure>
+
+</Synthesis>

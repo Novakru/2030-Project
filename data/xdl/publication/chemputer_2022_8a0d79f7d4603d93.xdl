@@ -1,0 +1,213 @@
+<?xdl version="1.0.0" ?>
+<XDL>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="buffer_flask"
+      type="flask" />
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="2-furanylboronic acid"
+      role="reagent" />
+    <Reagent
+      name="CH2Cl2"
+      role="reagent" />
+    <Reagent
+      name="DIPEA"
+      role="reagent" />
+    <Reagent
+      name="H2O"
+      role="reagent" />
+    <Reagent
+      name="N-Allylbenzylamine"
+      role="reagent" />
+    <Reagent
+      name="TBTU"
+      role="reagent" />
+    <Reagent
+      name="aqueous NaHCO3"
+      role="reagent" />
+    <Reagent
+      name="cyclohexylamine"
+      role="reagent" />
+    <Reagent
+      name="glyoxylic acid monohydrate"
+      role="reagent" />
+    <Reagent
+      name="THF"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <HeatChillToTemp
+      vessel="filter"
+      temp="0 °C"
+      stir="True" />
+    <Add
+      vessel="filter"
+      reagent="2-furanylboronic acid"
+      volume="30 mL"
+      time="25 min"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="10 min" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="25 °C"
+      continue_heatchill="False"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="50 min" />
+    <Add
+      vessel="filter"
+      reagent="CH2Cl2"
+      volume="50 mL"
+      stir="True" />
+    <Add
+      vessel="filter"
+      reagent="H2O"
+      volume="75 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="filter"
+      to_vessel="separator"
+      volume="all"
+      flush_tubing="True" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="buffer_flask"
+      product_phase="bottom"
+      waste_phase_to_vessel="separator" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom"
+      solvent="CH2Cl2"
+      solvent_volume="50 mL"
+      repeats="2" />
+    <Transfer
+      from_vessel="buffer_flask"
+      to_vessel="separator"
+      volume="all"
+      flush_tubing="True" />
+    <Transfer
+      from_vessel="separator"
+      to_vessel="rotavap"
+      volume="200 mL"
+      flush_tubing="True" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="450 mbar"
+      time="20 min"
+      stir_speed="200 RPM"
+      mode="auto" />
+    <Dissolve
+      vessel="rotavap"
+      solvent="CH2Cl2"
+      volume="30 mL"
+      stir_speed="200 RPM" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="filter"
+      volume="100 mL"
+      flush_tubing="True" />
+    <Add
+      vessel="filter"
+      reagent="DIPEA"
+      volume="16.55 mL"
+      stir="True" />
+    <Add
+      vessel="filter"
+      reagent="TBTU"
+      volume="50 mL"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="0 °C"
+      stir="True" />
+    <Add
+      vessel="filter"
+      reagent="cyclohexylamine"
+      volume="10 mL"
+      time="20 min"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="10 min"
+      continue_stirring="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="25 °C"
+      continue_heatchill="False"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="10 min"
+      continue_stirring="True" />
+    <Add
+      vessel="filter"
+      reagent="aqueous NaHCO3"
+      volume="50 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="filter"
+      to_vessel="separator"
+      volume="all"
+      flush_tubing="True" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="buffer_flask"
+      product_phase="bottom"
+      waste_phase_to_vessel="separator" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="bottom"
+      solvent="CH2Cl2"
+      solvent_volume="50 mL"
+      repeats="2" />
+    <Transfer
+      from_vessel="buffer_flask"
+      to_vessel="separator"
+      volume="all"
+      flush_tubing="True" />
+    <Transfer
+      from_vessel="separator"
+      to_vessel="rotavap"
+      volume="200 mL"
+      flush_tubing="True" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="699 mbar"
+      time="30 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>
+
+</XDL>

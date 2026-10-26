@@ -1,0 +1,33 @@
+<Synthesis>
+  <Metadata description="Source-grounded protocol representation; hardware execution requires compilation and review." publication="https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/c7/ord_dataset-c703268ea43a4c7e802c6048b6166b34.parquet" reaction_class="Bayesian optimization of 5 decarboxylative olefination reactions"/>
+  <Hardware>
+    <!--Analysis binding: {"component": "heater", "params": {"T_max_C": 310, "T_min_C": null, "rpm_max": 1500, "rpm_min": 50}, "verified": false, "wetted_materials": []}-->
+    <Component id="heater" type="heater"/>
+    <!--Analysis binding: {"component": "reactor", "params": {"T_max_C": null, "T_min_C": null, "capacity_mL": 50, "pressure_max_bar": null}, "verified": false, "wetted_materials": ["borosilicate_glass"]}-->
+    <Component id="reactor" type="reactor"/>
+  </Hardware>
+  <Reagents>
+    <!--r1: [H]C(C1=CC=C([N+]([O-])=O)C=C1)=O-->
+    <Reagent name="r1" role="substrate"/>
+    <!--r2: CC#N-->
+    <Reagent name="r2" role="solvent"/>
+    <!--r3: CN(C)c1ccncc1-->
+    <Reagent name="r3" role="reagent"/>
+    <!--r4: C1CNCC1-->
+    <Reagent name="r4" role="catalyst"/>
+    <!--r5: O=C(SCC)C(C(O)=O)OCC1=CC=CC=C1-->
+    <Reagent name="r5" role="substrate"/>
+    <!--r6: 4Å Molecular Sieve-->
+    <Reagent name="r6" role="reagent"/>
+  </Reagents>
+  <Procedure>
+    <!--Analysis context: {"pressure_control": "UNKNOWN", "reflux": false}-->
+    <Add vessel="reactor" reagent="r1" amount="0.1 mmol"/>
+    <Add vessel="reactor" reagent="r2" amount="0.5 mL"/>
+    <Add vessel="reactor" reagent="r3" amount="0.01 mmol"/>
+    <Add vessel="reactor" reagent="r4" amount="0.01 mmol"/>
+    <Add vessel="reactor" reagent="r5" amount="0.2 mmol"/>
+    <Add vessel="reactor" reagent="r6" amount="25 mg"/>
+    <HeatChill vessel="reactor" temp="25 °C" time="86400 s"/>
+  </Procedure>
+</Synthesis>

@@ -1,0 +1,123 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="separator"
+      type="separator" />
+    <Component
+      id="cartridge_anhydrous Na2SO4"
+      type="cartridge"
+      chemical="anhydrous Na2SO4" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="CCl4"
+      role="solvent" />
+    <Reagent
+      name="DMF"
+      role="solvent" />
+    <Reagent
+      name="PPh3"
+      role="reagent" />
+    <Reagent
+      name="benzyl alcohol"
+      role="reagent" />
+    <Reagent
+      name="ether"
+      role="solvent" />
+    <Reagent
+      name="sodium azide"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+
+    <Add
+      vessel="reactor"
+      reagent="benzyl alcohol"
+      volume="2.08 mL"
+      stir="True" />
+    <AddSolid
+      vessel="reactor"
+      reagent="sodium azide"
+      mass="1.56 g"
+      stir="True" />
+    <AddSolid
+      vessel="reactor"
+      reagent="PPh3"
+      mass="11.0 g"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="CCl4"
+      volume="2.0 mL" />
+    <Add
+      vessel="reactor"
+      reagent="DMF"
+      volume="8.0 mL" />
+    <HeatChill
+      vessel="reactor"
+      temp="90 °C"
+      stir="True"
+      time="60 min" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="25 °C"
+      active="False"
+      continue_heatchill="False" />
+    <Add
+      vessel="reactor"
+      reagent="water"
+      volume="5 mL"
+      stir="True" />
+    <Stir
+      vessel="reactor"
+      time="10 min" />
+    <Add
+      vessel="reactor"
+      reagent="ether"
+      volume="25 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="all" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="filter"
+      product_phase="top"
+      solvent="water"
+      solvent_volume="25 mL"
+      repeats="3" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="0 °C"
+      stir="True" />
+    <FilterThrough
+      from_vessel="filter"
+      to_vessel="rotavap"
+      through="anhydrous Na2SO4" />
+    <Evaporate
+      vessel="rotavap"
+      time="30 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

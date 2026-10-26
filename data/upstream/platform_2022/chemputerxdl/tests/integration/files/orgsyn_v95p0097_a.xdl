@@ -1,0 +1,155 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="buffer_flask"
+      type="buffer_flask" />
+    <Component
+      id="cartridge_Na2SO4"
+      type="cartridge"
+      chemical="Na2SO4" />
+    <Component
+      id="cartridge_cotton wool"
+      type="cartridge"
+      chemical="cotton wool" />
+    <Component
+      id="cartridge_silica"
+      type="cartridge"
+      chemical="silica" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="1 M NaOH solution" />
+    <Reagent
+      name="acetonitrile" />
+    <Reagent
+      name="biphenyl-2-carboxylic acid 1" />
+    <Reagent
+      name="dichloromethane" />
+    <Reagent
+      name="ethyl acetate" />
+    <Reagent
+      name="potassium peroxydisulfate" />
+    <Reagent
+      name="saturated NaCl solution" />
+    <Reagent
+      name="silver nitrate" />
+    <Reagent
+      name="water" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="biphenyl-2-carboxylic acid 1"
+      vessel="reactor"
+      mass="7.93 g" />
+    <Add
+      reagent="potassium peroxydisulfate"
+      vessel="reactor"
+      mass="21.6 g" />
+    <Add
+      reagent="silver nitrate"
+      vessel="reactor"
+      mass="68 mg" />
+    <Add
+      reagent="water"
+      vessel="reactor"
+      volume="200 mL" />
+    <Add
+      reagent="acetonitrile"
+      vessel="reactor"
+      volume="200 mL"
+      stir="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="50°C"
+      time="27 hrs"
+      stir="True"
+      stir_speed="600 RPM" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="23°C"
+      stir="True" />
+    <Separate
+      purpose="extract"
+      from_vessel="reactor"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="bottom"
+      solvent="dichloromethane"
+      solvent_volume="200 mL"
+      repeats="3" />
+    <Evaporate
+      vessel="rotavap"
+      temp="50°C"
+      pressure="298 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Dissolve
+      vessel="rotavap"
+      solvent="ethyl acetate"
+      volume="50 mL" />
+    <FilterThrough
+      from_vessel="rotavap"
+      to_vessel="separator"
+      through="silica"
+      eluting_solvent="ethyl acetate"
+      eluting_volume="100 mL" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="1 M NaOH solution"
+      solvent_volume="75 mL"
+      repeats="2"
+      waste_phase_to_vessel="buffer_flask" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      solvent="saturated NaCl solution"
+      solvent_volume="75 mL"
+      waste_phase_to_vessel="separator" />
+    <Transfer
+      from_vessel="buffer_flask"
+      to_vessel="separator"
+      volume="all" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      solvent="ethyl acetate"
+      through="Na2SO4"
+      solvent_volume="100 mL" />
+    <FilterThrough
+      from_vessel="rotavap"
+      to_vessel="rotavap"
+      through="cotton wool" />
+    <Evaporate
+      vessel="rotavap"
+      time="30 mins"
+      mode="auto" />
+    <Dry
+      vessel="rotavap"
+      time="12 hrs"
+      temp="23°C" />
+  </Procedure>
+
+</Synthesis>

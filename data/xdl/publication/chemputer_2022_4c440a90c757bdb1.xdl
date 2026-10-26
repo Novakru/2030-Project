@@ -1,0 +1,211 @@
+<?xdl version="0.4.0" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      chemical="Celite_and_silica"
+      type="cartridge"
+      id="Celite_and_silica" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="alkyne_vial"
+      type="flask" />
+    <Component
+      id="flask_argon_2"
+      type="flask" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="column_1"
+      type="cartridge" />
+    <Component
+      id="C815"
+      type="chromatography_system" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="1-bromo-2-triisopropylsilylacetylene"
+      role="reagent"/>
+    <Reagent
+      name="R-Phenyloxazolidinone"
+      role="reagent" />
+    <Reagent
+      name="1,10-Phenanthroline"
+      role="reagent" />
+    <Reagent
+      name="CuSO4-5H2O"
+      role="catalyst" />
+    <Reagent
+      name="K2CO3"
+      role="base" />
+    <Reagent
+      name="ethyl acetate"
+      role="solvent" />
+    <Reagent
+      name="toluene"
+      role="solvent" />
+    <Reagent
+      name="petroleum ether"
+      role="solvent" />
+    <Reagent
+      name="methanol"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+    <ResetHandling
+      solvent="toluene" />
+    <AddSolid
+      reagent="1,10-Phenanthroline"
+      mass="364 mg"
+      vessel="reactor" />
+    <AddSolid
+      reagent="R-Phenyloxazolidinone"
+      mass="1.65 g"
+      vessel="reactor" />
+    <AddSolid
+      reagent="CuSO4-5H2O"
+      mass="252 mg"
+      vessel="reactor" />
+    <AddSolid
+      reagent="K2CO3"
+      mass="2.79 g"
+      vessel="reactor" />
+    <EvacuateAndRefill
+      vessel="reactor" 
+      repeats="3" />
+    <Add
+      reagent="toluene"
+      vessel="alkyne_vial"
+      volume="7.27 mL"
+      stir="True" />
+    <Transfer
+      volume="400 mL"
+      to_vessel="alkyne_vial"
+      from_vessel="flask_argon_2" />  
+    <Transfer
+      from_vessel="alkyne_vial"
+      to_vessel="reactor"
+      volume="10 mL"
+      rinsing_solvent="toluene"
+      rinsing_volume="1 mL"
+      rinsing_repeats="2" /> 
+    <ResetHandling
+      solvent="toluene" />
+    <HeatChill
+      time="54 h"
+      vessel="reactor"
+      temp="85°C" />
+    <Repeat repeats="5">
+      <Add
+        reagent="ethyl acetate"
+        vessel="reactor"
+        volume="13 mL"
+        stir="True" />
+      <Add
+        reagent="petroleum ether"
+        vessel="reactor"
+        volume="13 mL"
+        stir="True" />
+      <Transfer
+        from_vessel="reactor"
+        through="Celite_and_silica"
+        to_vessel="rotavap"
+        volume="all" />
+    </Repeat>
+    <Transfer
+      from_vessel="flask_argon_2"
+      through="Celite_and_silica"
+      to_vessel="rotavap"
+      volume="200" />
+    <ResetHandling
+      solvent="ethyl acetate" />
+    <Evaporate
+      vessel="rotavap"
+      temp="45 °C"
+      pressure="218 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Evaporate
+      vessel="rotavap"
+      temp="45 °C"
+      pressure="153 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Evaporate
+      vessel="rotavap"
+      temp="45 °C"
+      pressure="48 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Dry
+      time="60 min"
+      temp="70 °C" 
+      pressure="2 mbar" 
+      vessel="rotavap" />
+    <ResetHandling
+      solvent="ethyl acetate"
+      repeats="3"
+      volume="3 mL" />
+    <ResetHandling
+      solvent="petroleum ether"
+      repeats="3"
+      volume="3 mL" />
+    <Dissolve
+      solvent="petroleum ether"
+      vessel="rotavap"
+      time="5 min"
+      volume="7.5 mL"
+      temp="30 °C" />
+    <PreparativeChromatography
+      chromatography_system="C815"
+      crude_material_vessel="rotavap"
+      crude_material_volume="12 mL"
+      washing_solvent="petroleum ether"
+      washing_volume="7.5 mL"
+      washing_repeats="1"
+      cleaning_solvent_1="methanol"
+      clean_product_vessel="True"
+      cleaning_repeats="2"
+      product_vessel="rotavap"
+      column="column_1"
+      baseline_correction="False"
+      equilibration_gradient_coordinates="[[0, [0, 100, 0, 0]],
+                                           [5, [0, 100, 0, 0]],
+                                           [5, [100, 0, 0, 0]],
+                                           [12, [100, 0, 0, 0]]]"
+      gradient_coordinates="[[0, [100, 0, 0, 0]],
+                             [4, [97, 3, 0, 0]],
+                             [8, [80, 20, 0, 0]],
+                             [12, [80, 20, 0, 0]]]"
+      use_detectors="['ELSD']"
+      detector_thresholds="[50]" />
+    <Evaporate
+      vessel="rotavap"
+      mode="auto"
+      temp="45 °C"
+      time="30 min" />
+    <Evaporate
+      vessel="rotavap"
+      mode="auto"
+      temp="45 °C"
+      time="30 min" />
+    <Dry
+      vessel="rotavap"
+      temp="45 °C"
+      time="30 min" />
+    <ResetHandling
+      solvent="ethyl acetate"
+      repeats="3"
+      volume="3 mL" />
+    <ResetHandling
+      solvent="methanol"
+      repeats="3"
+      volume="3 mL" />
+  </Procedure>
+
+</Synthesis>

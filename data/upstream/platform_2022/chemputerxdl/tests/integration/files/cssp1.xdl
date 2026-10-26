@@ -1,0 +1,83 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="C6H5CH2MgCl (1M in diethyl ether)" />
+    <Reagent
+      name="ZrCl4 diethyl ether solution" />
+    <Reagent
+      name="toluene" />
+  </Reagents>
+
+  <Procedure>
+    <HeatChillToTemp
+      vessel="filter"
+      temp="-78°C"
+      stir="True" />
+    <Add
+      reagent="ZrCl4 diethyl ether solution"
+      vessel="filter"
+      volume="50 mL"
+      time="60 mins" />
+    <Add
+      reagent="C6H5CH2MgCl (1M in diethyl ether)"
+      vessel="filter"
+      volume="100 mL"
+      time="60 mins"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="18°C"
+      active="False"
+      continue_heatchill="False"
+      stir="True" />
+    <HeatChill
+      vessel="filter"
+      temp="25°C"
+      time="16 hrs"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="0°C"
+      stir="True" />
+    <Filter
+      vessel="filter" />
+    <Transfer
+      from_vessel="filter"
+      to_vessel="rotavap"
+      volume="all" />
+    <Evaporate
+      vessel="rotavap"
+      time="30 mins"
+      mode="auto" />
+    <Dissolve
+      vessel="rotavap"
+      solvent="toluene"
+      volume="30 mL" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="filter"
+      volume="all" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="toluene"
+      volume="10 mL"
+      temp="10°C"
+      repeats="2" />
+    <Dry
+      vessel="filter" />
+  </Procedure>
+
+</Synthesis>

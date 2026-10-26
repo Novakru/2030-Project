@@ -1,0 +1,529 @@
+{
+  "atmosphere": {
+    "derived_from": "/setup/environment/details",
+    "type": "NITROGEN"
+  },
+  "components": [
+    {
+      "addition_order": 2,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.00375
+      },
+      "id": "r1",
+      "input_key": "Amine",
+      "name": "C1CCNCC1",
+      "role": "REACTANT",
+      "smiles": "C1CCNCC1",
+      "source_path": "/inputs/Amine/components/0"
+    },
+    {
+      "addition_order": 2,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.0075
+      },
+      "id": "r2",
+      "input_key": "Amine",
+      "name": "[O-]P(=O)([O-])[O-].[K+].[K+].[K+]",
+      "role": "REAGENT",
+      "smiles": "[O-]P(=O)([O-])[O-].[K+].[K+].[K+]",
+      "source_path": "/inputs/Amine/components/1"
+    },
+    {
+      "addition_order": 2,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.00025
+      },
+      "id": "r3",
+      "input_key": "Amine",
+      "name": "[Cu]I",
+      "role": "CATALYST",
+      "smiles": "[Cu]I",
+      "source_path": "/inputs/Amine/components/2"
+    },
+    {
+      "addition_order": 2,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 0.0125
+      },
+      "id": "r4",
+      "input_key": "Amine",
+      "name": "CS(=O)C",
+      "role": "SOLVENT",
+      "smiles": "CS(=O)C",
+      "source_path": "/inputs/Amine/components/3"
+    },
+    {
+      "addition_order": 1,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.0025
+      },
+      "id": "r5",
+      "input_key": "Aryl Halide",
+      "name": "COC(=O)[C@@H]1C[C@H](CN1C(=O)OCc2ccccc2)OC(=O)N3Cc4cccc(c4C3)Br",
+      "role": "REACTANT",
+      "smiles": "COC(=O)[C@@H]1C[C@H](CN1C(=O)OCc2ccccc2)OC(=O)N3Cc4cccc(c4C3)Br",
+      "source_path": "/inputs/Aryl Halide/components/0"
+    },
+    {
+      "addition_order": 3,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.0005
+      },
+      "id": "r6",
+      "input_key": "Catalyst",
+      "name": "c1cc(c(c(c1)F)NC(=O)C(=O)O)F",
+      "role": "CATALYST",
+      "smiles": "c1cc(c(c(c1)F)NC(=O)C(=O)O)F",
+      "source_path": "/inputs/Catalyst/components/0"
+    },
+    {
+      "addition_order": 3,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 0.0125
+      },
+      "id": "r7",
+      "input_key": "Catalyst",
+      "name": "CS(=O)C",
+      "role": "SOLVENT",
+      "smiles": "CS(=O)C",
+      "source_path": "/inputs/Catalyst/components/1"
+    }
+  ],
+  "conditions": {
+    "stirring": {
+      "details": "Magnetic Stir Bar",
+      "type": "STIR_BAR"
+    },
+    "temperature": {
+      "control": {
+        "type": "DRY_ALUMINUM_PLATE"
+      },
+      "setpoint": {
+        "units": "CELSIUS",
+        "value": 80.0
+      }
+    }
+  },
+  "duration": {
+    "unit": "s",
+    "value": 64800.0
+  },
+  "id": "ord-8f1c477cdd4042f996c6bcfc0cdb2760",
+  "procedure": "",
+  "raw": {
+    "conditions": {
+      "stirring": {
+        "details": "Magnetic Stir Bar",
+        "type": "STIR_BAR"
+      },
+      "temperature": {
+        "control": {
+          "type": "DRY_ALUMINUM_PLATE"
+        },
+        "setpoint": {
+          "units": "CELSIUS",
+          "value": 80.0
+        }
+      }
+    },
+    "inputs": {
+      "Amine": {
+        "addition_order": 2,
+        "components": [
+          {
+            "amount": {
+              "moles": {
+                "units": "MICROMOLE",
+                "value": 3.75
+              }
+            },
+            "identifiers": [
+              {
+                "type": "SMILES",
+                "value": "C1CCNCC1"
+              }
+            ],
+            "is_limiting": false,
+            "reaction_role": "REACTANT"
+          },
+          {
+            "amount": {
+              "moles": {
+                "units": "MICROMOLE",
+                "value": 7.5
+              }
+            },
+            "identifiers": [
+              {
+                "type": "SMILES",
+                "value": "[O-]P(=O)([O-])[O-].[K+].[K+].[K+]"
+              }
+            ],
+            "reaction_role": "REAGENT"
+          },
+          {
+            "amount": {
+              "moles": {
+                "units": "MICROMOLE",
+                "value": 0.25
+              }
+            },
+            "identifiers": [
+              {
+                "type": "SMILES",
+                "value": "[Cu]I"
+              }
+            ],
+            "reaction_role": "CATALYST"
+          },
+          {
+            "amount": {
+              "volume": {
+                "units": "MICROLITER",
+                "value": 12.5
+              },
+              "volume_includes_solutes": true
+            },
+            "identifiers": [
+              {
+                "type": "SMILES",
+                "value": "CS(=O)C"
+              }
+            ],
+            "reaction_role": "SOLVENT"
+          }
+        ]
+      },
+      "Aryl Halide": {
+        "addition_order": 1,
+        "components": [
+          {
+            "amount": {
+              "moles": {
+                "units": "MICROMOLE",
+                "value": 2.5
+              }
+            },
+            "identifiers": [
+              {
+                "type": "SMILES",
+                "value": "COC(=O)[C@@H]1C[C@H](CN1C(=O)OCc2ccccc2)OC(=O)N3Cc4cccc(c4C3)Br"
+              }
+            ],
+            "is_limiting": true,
+            "reaction_role": "REACTANT"
+          }
+        ]
+      },
+      "Catalyst": {
+        "addition_order": 3,
+        "components": [
+          {
+            "amount": {
+              "moles": {
+                "units": "MICROMOLE",
+                "value": 0.5
+              }
+            },
+            "identifiers": [
+              {
+                "type": "SMILES",
+                "value": "c1cc(c(c(c1)F)NC(=O)C(=O)O)F"
+              }
+            ],
+            "reaction_role": "CATALYST"
+          },
+          {
+            "amount": {
+              "volume": {
+                "units": "MICROLITER",
+                "value": 12.5
+              }
+            },
+            "identifiers": [
+              {
+                "type": "SMILES",
+                "value": "CS(=O)C"
+              }
+            ],
+            "reaction_role": "SOLVENT"
+          }
+        ]
+      }
+    },
+    "outcomes": [
+      {
+        "analyses": {
+          "UPLC-MS": {
+            "details": "Quantitative analysis was accomplished by reverse phase UPLC (Waters\nX-BridgeTM BEH 2.5 micron, RP C-18, 2.1 x 50 mm column, eluents: MeCN-H2O containing 0.05%\nTFA) using an internal standard (either 4,4-di-tert-butyl biphenyl, or 1,3,5-trimethoxybenzene as noted\nin the experiment)",
+            "instrument_manufacturer": "Waters",
+            "type": "LCMS"
+          }
+        },
+        "products": [
+          {
+            "identifiers": [
+              {
+                "type": "SMILES",
+                "value": "COC(=O)[C@@H]1C[C@H](CN1C(=O)OCc2ccccc2)OC(=O)N3Cc4cccc(c4C3)N5CCCCC5"
+              }
+            ],
+            "is_desired_product": true,
+            "measurements": [
+              {
+                "analysis_key": "UPLC-MS",
+                "is_normalized": true,
+                "percentage": {
+                  "value": 43.36
+                },
+                "type": "YIELD",
+                "uses_authentic_standard": false,
+                "uses_internal_standard": true
+              }
+            ],
+            "reaction_role": "PRODUCT"
+          }
+        ],
+        "reaction_time": {
+          "units": "HOUR",
+          "value": 18.0
+        }
+      }
+    ],
+    "provenance": {
+      "city": "Rahway, NJ",
+      "doi": "10.1039/C5SC04751J",
+      "experimenter": {
+        "email": "spencer_dreher@merck.com",
+        "name": "Spencer Dreher",
+        "orcid": "0000-0002-5094-1218",
+        "organization": "Merck"
+      },
+      "publication_url": "https://pubs.rsc.org/en/content/articlelanding/2016/SC/C5SC04751J#!divAbstract",
+      "record_created": {
+        "person": {
+          "email": "michael.wleklinski@merck.com",
+          "name": "Michael Wleklinski",
+          "orcid": "0000-0001-6735-4696",
+          "organization": "Merck"
+        },
+        "time": {
+          "value": "2021-06-02T08:10:58"
+        }
+      },
+      "record_modified": [
+        {
+          "details": "Automatic updates from the submission pipeline.",
+          "person": {
+            "email": "github-actions@github.com",
+            "username": "github-actions"
+          },
+          "time": {
+            "value": "2021-07-07T21:27:17"
+          }
+        },
+        {
+          "details": "Rewrote ambiguous dates as ISO 8601; see https://github.com/open-reaction-database/ord-data/pull/303\nprovenance.record_created.time: 6/2/2021, 8:10:58 AM -> 2021-06-02T08:10:58",
+          "person": {
+            "email": "skearnes@gmail.com",
+            "name": "Steven Kearnes",
+            "username": "skearnes"
+          },
+          "time": {
+            "value": "2026-10-20T02:00:59+00:00"
+          }
+        },
+        {
+          "details": "Rewrote dates in ISO 8601; see https://github.com/open-reaction-database/ord-data/pull/303\nprovenance.record_modified[0].time: Wed Jul  7 21:27:17 2021 -> 2021-07-07T21:27:17",
+          "person": {
+            "email": "skearnes@gmail.com",
+            "name": "Steven Kearnes",
+            "username": "skearnes"
+          },
+          "time": {
+            "value": "2026-10-20T02:33:38+00:00"
+          }
+        }
+      ]
+    },
+    "reaction_id": "ord-8f1c477cdd4042f996c6bcfc0cdb2760",
+    "setup": {
+      "environment": {
+        "details": "Nitrogen Filled",
+        "type": "GLOVE_BOX"
+      },
+      "vessel": {
+        "details": "96 Glass Vials",
+        "material": {
+          "type": "GLASS"
+        },
+        "type": "WELL_PLATE",
+        "volume": {
+          "units": "MICROLITER",
+          "value": 250.0
+        }
+      }
+    },
+    "workups": [
+      {
+        "details": "The reaction vials were then cooled to r.t.\nand diluted with 100 μL of 5% AcOH in DMSO, containing 1,3,5-trimethoxybenzene (0.005M) and were\nshaken vigorously.",
+        "input": {
+          "components": [
+            {
+              "amount": {
+                "volume": {
+                  "units": "MICROLITER",
+                  "value": 95.0
+                }
+              },
+              "identifiers": [
+                {
+                  "details": "NAME resolved by the PubChem API",
+                  "type": "SMILES",
+                  "value": "CS(C)=O"
+                }
+              ],
+              "reaction_role": "WORKUP"
+            },
+            {
+              "amount": {
+                "volume": {
+                  "units": "MICROLITER",
+                  "value": 5.0
+                }
+              },
+              "identifiers": [
+                {
+                  "details": "NAME resolved by the PubChem API",
+                  "type": "SMILES",
+                  "value": "CC(=O)O"
+                }
+              ],
+              "reaction_role": "WORKUP"
+            },
+            {
+              "amount": {
+                "moles": {
+                  "units": "MICROMOLE",
+                  "value": 0.5
+                }
+              },
+              "identifiers": [
+                {
+                  "type": "NAME",
+                  "value": "1,3,5-trimethoxybenzene"
+                },
+                {
+                  "details": "NAME resolved by the PubChem API",
+                  "type": "SMILES",
+                  "value": "COc1cc(OC)cc(OC)c1"
+                }
+              ],
+              "reaction_role": "INTERNAL_STANDARD"
+            }
+          ]
+        },
+        "type": "ADDITION"
+      },
+      {
+        "amount": {
+          "volume": {
+            "units": "MICROLITER",
+            "value": 25.0
+          }
+        },
+        "details": "25 microliter of resulting solution is taken",
+        "type": "ALIQUOT"
+      },
+      {
+        "details": "To the 25 microliter aliquot 700 microliter of MeCN was added prior to UPLC-MS Analysis",
+        "input": {
+          "components": [
+            {
+              "amount": {
+                "volume": {
+                  "units": "MICROLITER",
+                  "value": 700.0
+                }
+              },
+              "identifiers": [
+                {
+                  "details": "NAME resolved by the PubChem API",
+                  "type": "SMILES",
+                  "value": "CC#N"
+                }
+              ],
+              "reaction_role": "WORKUP"
+            }
+          ]
+        },
+        "type": "ADDITION"
+      }
+    ]
+  },
+  "raw_sha256": "a65c8c13829581939c34e353a3a4a8556bdf4495937e52c0c040edadef8d62a3",
+  "reaction_class": "Figure 4 from Chemistry informer libraries",
+  "reaction_smiles": "C1CCNCC1.COC(=O)[C@@H]1C[C@H](CN1C(=O)OCc2ccccc2)OC(=O)N3Cc4cccc(c4C3)Br>>COC(=O)[C@@H]1C[C@H](CN1C(=O)OCc2ccccc2)OC(=O)N3Cc4cccc(c4C3)N5CCCCC5",
+  "setup": {
+    "environment": {
+      "details": "Nitrogen Filled",
+      "type": "GLOVE_BOX"
+    },
+    "vessel": {
+      "details": "96 Glass Vials",
+      "material": {
+        "type": "GLASS"
+      },
+      "type": "WELL_PLATE",
+      "volume": {
+        "units": "MICROLITER",
+        "value": 250.0
+      }
+    }
+  },
+  "source": {
+    "dataset_id": "ord_dataset-4d431564f3ef4e9c91d8da5836f4eae6",
+    "dataset_name": "Figure 4 from Chemistry informer libraries",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-4d431564f3ef4e9c91d8da5836f4eae6.parquet",
+    "file_sha256": "7795ec36ff17faee8a8664401eaf317a67f2912db30cedc629ef3b77f7aa77ff",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": "https://pubs.rsc.org/en/content/articlelanding/2016/SC/C5SC04751J#!divAbstract",
+    "reaction_id": "ord-8f1c477cdd4042f996c6bcfc0cdb2760",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/4d/ord_dataset-4d431564f3ef4e9c91d8da5836f4eae6.parquet"
+  },
+  "temperature": {
+    "unit": "°C",
+    "value": 80.0
+  },
+  "yield_evidence": {
+    "measurements": [
+      {
+        "analysis_key": "UPLC-MS",
+        "percentage": 43.36,
+        "source_path": "/outcomes/0/products/0/measurements/0",
+        "valid": true
+      }
+    ],
+    "policy": "unique_target_unique_percentage_v1",
+    "selection": "explicit_desired_product",
+    "status": "selected",
+    "target_count": 1,
+    "target_source_path": "/outcomes/0/products/0"
+  },
+  "yield_percent": 43.36
+}

@@ -1,0 +1,156 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_celite"
+      type="cartridge"
+      chemical="celite" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="pd(oac)2"
+      role="reagent" />
+    <Reagent
+      name="p(tbu)2me-hbf4"
+      role="reagent" />
+    <Reagent
+      name="2-(allylsulfonyl)-5-(trifluoromethyl)pyridine"
+      role="reagent" />
+    <Reagent
+      name="cs2co3"
+      role="reagent" />
+    <Reagent
+      name="1-bromo-4-methylbenzene"
+      role="reagent" />
+    <Reagent
+      name="dmf"
+      role="reagent" />
+    <Reagent
+      name="etoac"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="reagent" />
+    <Reagent
+      name="aq. nacl"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="2-(allylsulfonyl)-5-(trifluoromethyl)pyridine"
+      mass="753 mg" />
+
+    <AddSolid
+      vessel="reactor"
+      reagent="cs2co3"
+      mass="1.30 g" />
+
+    <AddSolid
+      vessel="reactor"
+      reagent="1-bromo-4-methylbenzene"
+      mass="342 mg" />
+
+    <AddSolid
+      vessel="reactor"
+      reagent="pd(oac)2"
+      mass="22.5 mg" />
+
+    <AddSolid
+      vessel="reactor"
+      reagent="p(tbu)2me-hbf4"
+      mass="49.5 mg" />
+
+    <Add
+      vessel='reactor'
+      reagent='dmf'
+      volume='10 mL'
+      stir='True'
+    />
+
+    <HeatChill
+      vessel='reactor'
+      temp='130'
+      time='18 h'
+      stir='True'
+    />
+
+    <HeatChillToTemp
+      vessel='reactor'
+      temp='25'
+      active='False'
+      continue_heatchill='False'
+    />
+
+    <Transfer
+      from_vessel='reactor'
+      to_vessel='separator'
+      through='celite'
+      volume='all'
+      rinsing_solvent='etoac'
+      rinsing_volume='25 mL'
+      rinsing_repeats='2'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='water'
+      volume='25 mL'
+      stir='True'
+    />
+
+    <Transfer
+      from_vessel='reactor'
+      to_vessel='separator'
+      through='celite'
+      volume='all'
+      rinsing_solvent='water'
+      rinsing_volume='25 mL'
+      rinsing_repeats='1'
+    />
+
+    <Separate
+      purpose='extract'
+      from_vessel='separator'
+      separation_vessel='separator'
+      to_vessel='separator'
+      product_phase='top'
+      solvent='etoac'
+      solvent_volume='50 mL'
+      repeats='1'
+    />
+
+    <Separate
+      purpose='wash'
+      from_vessel='separator'
+      separation_vessel='separator'
+      to_vessel='rotavap'
+      through='mgso4'
+      product_phase='top'
+      solvent='aq. nacl'
+      solvent_volume='50 mL'
+      repeats='1'
+    />
+
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="50 mbar"
+      time="60 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

@@ -1,0 +1,162 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_celite"
+      type="cartridge"
+      chemical="celite" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="solution"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+    <Component
+      id="Boc-L-leucine N-methyl-O-methycarboxamide"
+      type="reactor" />
+    <Component
+      id="cartridge_magnesium_sulfate"
+      type="cartridge"
+      chemical="magnesium sulfate" />
+    <Component
+      id="hydrochloric_acid"
+      type="flask" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="1 M hydrochloric acid"
+      role="reagent" />
+    <Reagent
+      name="ethyl ether"
+      role="reagent" />
+    <Reagent
+      name="lithium aluminum hydride"
+      role="reagent" />
+    <Reagent
+      name="aqueous potassium bisulfate"
+      role="reagent" />
+    <Reagent
+      name="saturated aqueous sodium bicarbonate"
+      role="reagent" />
+    <Reagent
+      name="saturated sodium chloride solution"
+      role="reagent" />
+    <Reagent
+      name=" Boc-L-leucine N-methyl-O-methycarboxamide"
+      role="reagent" />
+    <Reagent
+      name="the lithium aluminum hydride suspension"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="lithium aluminum hydride"
+      mass="17.7 g" />
+    <Add
+      vessel="reactor"
+      reagent="ethyl ether"
+      volume="1.5 l"
+      stir="True"/>
+    <HeatChill
+      vessel="reactor"
+      temp="25 °C"
+      time="60 min"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="-45 °C"
+      stir="True"
+      continue_heatchill="True"/>
+    <Add
+      vessel="Boc-L-leucine N-methyl-O-methycarboxamide"
+      reagent="ethyl ether"
+      volume="300 mL"
+      stir="True"
+    />
+    <Transfer
+      from_vessel="Boc-L-leucine N-methyl-O-methycarboxamide"
+      to_vessel="reactor"
+      volume="400 mL"
+      time="1 h"
+      stir_to_vessel="True"
+    />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="5 °C"
+      active="False"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="-35 °C"
+      stir="True"
+      continue_heatchill="False"/>
+    <Add
+      vessel="reactor"
+      reagent="aqueous potassium bisulfate"
+      volume="265 mL"
+      stir="True" />
+    <Stir
+      vessel="reactor"
+      time="60 min" />
+    <FilterThrough
+      from_vessel="reactor"
+      to_vessel="separator"
+      through="celite"
+      eluting_solvent="ethyl ether"
+      eluting_volume="500 mL"
+      eluting_repeats="2" />
+    <HeatChillToTemp
+      vessel="hydrochloric_acid"
+      temp="5" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="1 M hydrochloric acid"
+      solvent_volume="350 mL"
+      repeats="3" />
+    <StopHeatChill
+      vessel="hydrochloric_acid" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="saturated aqueous sodium bicarbonate"
+      solvent_volume="350 mL"
+      repeats="2" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      solvent="saturated sodium chloride solution"
+      through="magnesium sulfate"
+      solvent_volume="350 mL" />
+    <Evaporate
+      vessel="rotavap"
+      temp="30 °C"
+      pressure="440 mbar"
+      time="30 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

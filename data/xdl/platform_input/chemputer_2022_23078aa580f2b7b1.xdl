@@ -1,0 +1,87 @@
+<Synthesis>
+
+  <Hardware>
+    <Component id="reactor" type="reactor"/>
+    <Component id="Jones_reagent" type="flask" chemical="Jones_reagent"/>
+    <Component id="rotavap" type="rotavap"/>
+    <Component id="separator" type="separator"/>
+    <Component id="buffer_flask1" type="flask"/>
+    <Component id="buffer_flask2" type="flask"/>
+  </Hardware>
+
+  <Reagents>
+    <Reagent name="CrO3" role="reagent"/>
+    <Reagent name="Jones_reagent" role="reagent"/>
+    <Reagent name="water" role="reagent"/>
+    <Reagent name="H2SO4" role="reagent"/>
+    <Reagent name="acetone" role="reagent"/>
+    <Reagent name="methanol" role="reagent"/>
+    <Reagent name="diethyl ether" role="reagent"/>
+    <Reagent name="brine" role="reagent"/>
+    <Reagent name="HCl" role="solvent"/>
+    <Reagent name="lithocholic acid" role="reagent"/>
+  </Reagents>
+
+  <Procedure>
+    <AddSolid vessel="Jones_reagent" reagent="CrO3" mass="3.03 g"/>
+    <AddSolid vessel="reactor" reagent="lithocholic acid" mass="0.535 g"/>
+    <ResetHandling solvent="acetone"/>
+    <ResetHandling solvent="water"/>
+    <Dissolve vessel="Jones_reagent" solvent="water" volume="9 mL" time="5 min"/>
+    <Add vessel="Jones_reagent" reagent="H2SO4" volume="2.967 mL" viscous="True" dropwise="True" stir="True"/>
+    <ResetHandling solvent="acetone"/>
+    <Dissolve vessel="reactor" solvent="acetone" volume="50 mL" time="5 min"/>
+    <HeatChillToTemp vessel="reactor" temp="4 °C" stir="True"/>
+    <Add vessel="reactor" reagent="Jones_reagent" volume="5 mL" dropwise="True" stir="True"/>
+    <ResetHandling solvent="acetone"/>
+    <HeatChill vessel="reactor" temp="4 °C" time="4 h" stir="True" purpose="reaction"/>
+    <HeatChillToTemp vessel="reactor" temp="25 °C" stir="True"/>
+    <Transfer from_vessel="reactor" to_vessel="rotavap" volume="all"/>
+    <Repeat repeats="5">
+      <Add vessel="reactor" reagent="acetone" volume="30 mL" stir="True" prime_n_times="0" priming_volume="0"/>
+      <HeatChill vessel="reactor" temp="25 °C" time="5 min" stir="True"/>
+      <Transfer from_vessel="reactor" to_vessel="rotavap" volume="all"/>
+    </Repeat>
+    <Evaporate vessel="rotavap" temp="45 °C" time="30 min" mode="auto"/>
+    <Dry vessel="rotavap" time="30 min" temp="45 °C" pressure="50 mbar"/>
+    <Repeat repeats="3">
+      <Add vessel="rotavap" reagent="diethyl ether" volume="30 mL" stir="True" prime_n_times="0" priming_volume="0"/>
+      <Stir vessel="rotavap" time="2 min"/>
+      <Transfer from_vessel="rotavap" to_vessel="separator" volume="all"/>
+    </Repeat>
+    <Repeat repeats="3">
+      <Add vessel="rotavap" reagent="water" volume="15 mL" stir="True" prime_n_times="0" priming_volume="0"/>
+      <Stir vessel="rotavap" time="2 min"/>
+      <Transfer from_vessel="rotavap" to_vessel="separator" volume="all"/>
+    </Repeat>
+    <Repeat repeats="3">
+      <Add vessel="reactor" reagent="water" volume="15 mL" stir="True" prime_n_times="0" priming_volume="0"/>
+      <Stir vessel="reactor" time="2 min"/>
+      <Transfer from_vessel="reactor" to_vessel="separator" volume="all"/>
+    </Repeat>
+    <Repeat repeats="3">
+      <Add vessel="reactor" reagent="diethyl ether" volume="15 mL" stir="True" prime_n_times="0" priming_volume="0"/>
+      <Stir vessel="reactor" time="2 min"/>
+      <Transfer from_vessel="reactor" to_vessel="rotavap" volume="all"/>
+    </Repeat>
+    <CleanVessel vessel="rotavap" solvent="water" temp="24 °C" dry="False" volume="50 mL"/>
+    <CleanVessel vessel="rotavap" solvent="acetone" temp="24 °C" volume="50 mL"/>
+    <Add vessel="separator" reagent="HCl" volume="5 mL"/>
+    <SeparatePhases separation_vessel="separator" lower_phase_vessel="buffer_flask1" upper_phase_vessel="buffer_flask2"/>
+    <Transfer from_vessel="buffer_flask1" to_vessel="separator" volume="250 mL"/>
+    <Separate purpose="extract" from_vessel="separator" separation_vessel="separator" to_vessel="buffer_flask2" product_phase="top" solvent="diethyl ether" solvent_volume="25 mL" repeats="2"/>
+    <Transfer from_vessel="buffer_flask2" to_vessel="separator" volume="300 mL"/>
+    <Separate purpose="wash" from_vessel="separator" separation_vessel="separator" to_vessel="rotavap" product_phase="top" solvent="brine" through="MgSO4" solvent_volume="20 mL"/>
+    <Evaporate vessel="rotavap" temp="45 °C" time="30 min" mode="auto"/>
+    <Dry vessel="rotavap" time="1.5 h" temp="75 °C" pressure="5 mbar"/>
+    <CleanVessel vessel="Jones_reagent" solvent="water" temp="24 °C" volume="100 mL"/>
+    <CleanVessel vessel="Jones_reagent" solvent="acetone" temp="24 °C" volume="100 mL"/>
+    <CleanVessel vessel="Jones_reagent" solvent="water" temp="24 °C" volume="100 mL" repeats="1"/>
+    <CleanVessel vessel="reactor" solvent="water" temp="24 °C" volume="100 mL" repeats="1"/>
+    <CleanVessel vessel="reactor" solvent="acetone" temp="24 °C" volume="100 mL"/>
+    <ResetHandling solvent="acetone"/>
+    <ResetHandling solvent="methanol"/>
+  </Procedure>
+
+</Synthesis>
+

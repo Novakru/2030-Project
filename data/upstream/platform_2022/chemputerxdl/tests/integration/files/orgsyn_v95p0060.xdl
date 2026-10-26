@@ -1,0 +1,144 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="dichloromethane" />
+    <Reagent
+      name="dodecylamine" />
+    <Reagent
+      name="dry pyridine" />
+    <Reagent
+      name="oxone" />
+    <Reagent
+      name="pyridinium bromide" />
+    <Reagent
+      name="the 4-acetamidoTEMPO catalyst" />
+  </Reagents>
+
+  <Procedure>
+    <Dry
+      vessel="filter" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="25°C"
+      active="False"
+      continue_heatchill="False"
+      stir="True" />
+    <Add
+      reagent="dichloromethane"
+      vessel="filter"
+      volume="200 mL" />
+    <Add
+      reagent="oxone"
+      vessel="filter"
+      mass="80 g"
+      stir="True" />
+    <Add
+      reagent="pyridinium bromide"
+      vessel="filter"
+      mass="0.365 g"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="15 mins" />
+    <Add
+      reagent="dry pyridine"
+      vessel="filter"
+      volume="20 mL"
+      dispense_speed="10"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="1.5 mins" />
+    <Add
+      reagent="the 4-acetamidoTEMPO catalyst"
+      vessel="filter"
+      mass="0.533 g"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="22.5 mins" />
+    <Add
+      reagent="dodecylamine"
+      vessel="filter"
+      mass="9.24 g"
+      stir="True" />
+    <Add
+      reagent="dichloromethane"
+      vessel="filter"
+      volume="100 mL"
+      stir="True" />
+    <Stir
+      vessel="filter"
+      time="5 mins" />
+    <Add
+      reagent="dichloromethane"
+      vessel="filter"
+      volume="10 mL"
+      stir="True" />
+    <Add
+      reagent="dichloromethane"
+      vessel="filter"
+      volume="20 mL"
+      dispense_speed="10"
+      stir="True" />
+    <HeatChill
+      vessel="filter"
+      temp="23°C"
+      time="12 hrs"
+      stir="True" />
+    <Filter
+      vessel="filter" />
+    <Add
+      reagent="dichloromethane"
+      vessel="filter"
+      volume="300 mL" />
+    <Filter
+      vessel="filter" />
+    <Transfer
+      from_vessel="filter"
+      to_vessel="rotavap"
+      volume="all" />
+    <Evaporate
+      vessel="rotavap"
+      temp="35°C"
+      pressure="666.61 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Evaporate
+      vessel="rotavap"
+      temp="35°C"
+      pressure="19.9983 mbar"
+      time="22.5 mins"
+      mode="auto" />
+    <Add
+      reagent="dichloromethane"
+      vessel="rotavap"
+      volume="5 mL"
+      repeats="2" />
+    <Evaporate
+      vessel="rotavap"
+      temp="35°C"
+      pressure="666.61 mbar"
+      time="30 mins"
+      mode="auto" />
+    <Evaporate
+      vessel="rotavap"
+      temp="35°C"
+      pressure="19.9983 mbar"
+      time="22.5 mins"
+      mode="auto" />
+    <Distill />
+  </Procedure>
+
+</Synthesis>

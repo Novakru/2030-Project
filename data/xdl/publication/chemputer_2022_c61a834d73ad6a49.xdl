@@ -1,0 +1,118 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_silica"
+      type="cartridge"
+      chemical="silica" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="6-bromobenzothiophene"
+      role="reagent" />
+    <Reagent
+      name="csf"
+      role="reagent" />
+    <Reagent
+      name="pd(pph3)4"
+      role="reagent" />
+    <Reagent
+      name="acetyltrimethylsilane"
+      role="reagent" />
+    <Reagent
+      name="dce"
+      role="solvent" />
+    <Reagent
+      name="heptane"
+      role="solvent" />
+    <Reagent
+      name="etoac"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+
+    <AddSolid
+      vessel="reactor"
+      reagent="6-bromobenzothiophene"
+      mass="2.00 g" />
+
+    <AddSolid
+      vessel="reactor"
+      reagent="csf"
+      mass="5.7 g" />
+
+    <AddSolid
+      vessel="reactor"
+      reagent="pd(pph3)4"
+      mass="543 mg" />
+
+    <EvacuateAndRefill
+      vessel='reactor'
+      repeats='3'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='acetyltrimethylsilane'
+      volume='2.7 mL'
+      stir='True'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='dce'
+      volume='10 mL'
+      stir='True'
+    />
+
+    <HeatChill
+      vessel='reactor'
+      temp='75'
+      time='24 h'
+      stir='True'
+      stir_speed='800'
+    />
+
+    <HeatChillToTemp
+      vessel='reactor'
+      temp='25'
+      active='False'
+      continue_heatchill='False'
+    />
+
+    <Add
+      vessel='reactor'
+      reagent='heptane'
+      volume='20 mL'
+      stir='True'
+    />
+
+    <Transfer
+      from_vessel='reactor'
+      to_vessel='rotavap'
+      through='silica'
+      volume='all'
+      rinsing_solvent='etoac'
+      rinsing_volume='60 mL'
+      rinsing_repeats='2'
+      flush_tubing='True'
+    />
+
+    <Evaporate
+      vessel='rotavap'
+      temp='31'
+      mode='auto'
+    />
+  </Procedure>
+
+</Synthesis>

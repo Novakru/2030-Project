@@ -1,0 +1,131 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_MgSO4"
+      type="cartridge"
+      chemical="MgSO4" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="3M (S,S)-1,2,3,4-diepoxybutane THF solution"
+      role="reagent" />
+    <Reagent
+      name="DCM"
+      role="reagent" />
+    <Reagent
+      name="copper iodide"
+      role="reagent" />
+    <Reagent
+      name="1M phenylmagnesium bromide THF solution"
+      role="reagent" />
+    <Reagent
+      name="saturated aqueous ammonium chloride"
+      role="reagent" />
+    <Reagent
+      name="THF"
+      role="reagent" />
+    <Reagent
+      name="ether"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="copper iodide"
+      mass="1.89 g" />
+    <EvacuateAndRefill
+      vessel="reactor"
+      after_vacuum_wait_time="10 min"
+      repeats="1"/>
+    <Add
+      vessel="reactor"
+      reagent="THF"
+      volume="30 mL"
+      stir="True"/>
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="-30 °C"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="1M phenylmagnesium bromide THF solution"
+      volume="99 mL"
+      time="10 min"
+      stir="True" />
+    <Stir
+      vessel="reactor"
+      time="10 min" />
+    <Add
+      vessel="reactor"
+      reagent="3M (S,S)-1,2,3,4-diepoxybutane THF solution"
+      volume="11 mL"
+      time="10 min"
+      stir="True" />
+    <Stir
+      vessel="reactor"
+      time="10 min" />
+    <HeatChill
+      vessel="reactor"
+      temp="0 °C"
+      time="2.5 h"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="saturated aqueous ammonium chloride"
+      volume="200 mL"
+      stir="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="25 °C"
+      time="15 min"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="all" />
+
+    <Separate
+      purpose="extract"
+      from_vessel="reactor"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      through="MgSO4"
+      waste_phase_to_vessel="separator" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="bottom"
+      solvent="DCM"
+      through="MgSO4"
+      solvent_volume="50 mL"
+      repeats="4" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="350 mbar"
+      time="30 min"
+      mode="auto" />
+    <Dry
+      vessel="rotavap"
+      time="30 min"
+      temp="50 °C" />
+  </Procedure>
+
+</Synthesis>

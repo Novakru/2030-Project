@@ -1,0 +1,167 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="buffer_flask"
+      type="buffer_flask" />
+    <Component
+      id="cartridge_MgSO4"
+      type="cartridge"
+      chemical="MgSO4" />
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="2,3-O-isopropylidene-L-threitol"
+      role="reagent" />
+    <Reagent
+      name="DCM"
+      role="reagent" />
+    <Reagent
+      name="diethyl ether"
+      role="reagent" />
+    <Reagent
+      name="ethanol"
+      role="reagent" />
+    <Reagent
+      name="methanesulfonic acid"
+      role="reagent" />
+    <Reagent
+      name="methanesulfonyl chloride"
+      role="reagent" />
+    <Reagent
+      name="pyridine"
+      role="reagent" />
+    <Reagent
+      name="sodium bicarbonate solution"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="2,3-O-isopropylidene-L-threitol"
+      mass="25 g" />
+    <EvacuateAndRefill
+      vessel="reactor" />
+    <Add
+      vessel="reactor"
+      reagent="DCM"
+      volume="308 mL" />
+    <Add
+      vessel="reactor"
+      reagent="pyridine"
+      volume="37.4 mL"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="0 °C"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="methanesulfonyl chloride"
+      volume="29.8 mL"
+      time="10 min"
+      stir="True" />
+    <Wait
+      time="30 min" />
+    <HeatChill
+      vessel="reactor"
+      temp="25 °C"
+      time="6 h"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="sodium bicarbonate solution"
+      volume="300 mL"
+      stir="True" />
+    <Stir
+      vessel="reactor"
+      time="30 min" />
+    <Separate
+      purpose="extract"
+      from_vessel="reactor"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="bottom"
+      through="MgSO4"
+      waste_phase_to_vessel="separator" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="bottom"
+      solvent="DCM"
+      through="MgSO4"
+      solvent_volume="100 mL"
+      repeats="3" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="699 mbar"
+      time="30 min"
+      mode="auto" />
+    <Dry
+      vessel="rotavap"
+      time="30 min"
+      temp="50 °C" />
+    <Dissolve
+      vessel="rotavap"
+      solvent="ethanol"
+      volume="230 mL" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="filter"
+      volume="all"
+      rinsing_solvent="ethanol"
+      rinsing_volume="20 mL"/>
+    <Add
+      vessel="filter"
+      reagent="methanesulfonic acid"
+      volume="0.204 mL"
+      stir="True" />
+    <HeatChill
+      vessel="filter"
+      temp="78.5 °C"
+      time="10 h"
+      stir="True" />
+    <HeatChill
+      vessel="filter"
+      temp="0 °C"
+      time="60 min"
+      stir="True" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="ethanol"
+      volume="50 mL"
+      temp="5 °C"
+      repeats="2" />
+    <WashSolid
+      vessel="filter"
+      solvent="diethyl ether"
+      volume="50 mL"
+      temp="5 °C"
+      repeats="2" />
+    <Dry
+      vessel="filter"
+      time="4 h" />
+  </Procedure>
+
+</Synthesis>

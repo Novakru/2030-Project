@@ -1,0 +1,224 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_anhydrous sodium sulfate"
+      type="cartridge"
+      chemical="anhydrous sodium sulfate" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="reactor2"
+      type="reactor" />
+    <Component
+      id="reactor3"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+    <Component
+      id="buffer_flask"
+      type="flask" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="18 % hydrochloric acid"
+      role="reagent" />
+    <Reagent
+      name="2.34 M butyllithium in hexane"
+      role="reagent" />
+    <Reagent
+      name="4 % sodium hydroxide"
+      role="reagent" />
+    <Reagent
+      name="4-benzyloxy-2-butanone"
+      role="reagent" />
+    <Reagent
+      name="acetic acid-2-13C"
+      role="reagent" />
+    <Reagent
+      name="alkaline extracts"
+      role="reagent" />
+    <Reagent
+      name="tetrahydrofuran"
+      role="solvent" />
+    <Reagent
+      name="acetone"
+      role="solvent" />
+    <Reagent
+      name="ether"
+      role="solvent" />
+    <Reagent
+      name="diisopropylamine"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+
+    <EvacuateAndRefill
+      vessel="reactor" />
+    <Add
+      vessel="reactor"
+      reagent="diisopropylamine"
+      volume="2.4 mL" />
+    <Add
+      vessel="reactor"
+      reagent="tetrahydrofuran"
+      volume="6.5 mL"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="0 °C"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="2.34 M butyllithium in hexane"
+      volume="7.22 mL"
+      stir="True"
+      time="30 min" />
+    <HeatChill
+      vessel="reactor"
+      temp="0 °C"
+      time="30 min" />
+
+    <Add
+      vessel="reactor2"
+      reagent="acetic acid-2-13C"
+      volume="412 uL" />
+    <Add
+      vessel="reactor2"
+      reagent="tetrahydrofuran"
+      volume="3 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor2"
+      to_vessel="reactor"
+      volume="all"
+      time="10 min"
+      stir_to_vessel="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="0 °C"
+      time="3.5 h" />
+
+    <Add
+      vessel="reactor3"
+      reagent="4-benzyloxy-2-butanone"
+      mass="1.3 g" />
+    <Add
+      vessel="reactor3"
+      reagent="tetrahydrofuran"
+      volume="4 mL"
+      stir="True" />
+    <Transfer
+      from_vessel="reactor3"
+      to_vessel="reactor"
+      volume="7 mL"
+      stir_to_vessel="True"
+      time="15 min" />
+
+    <HeatChill
+      vessel="reactor"
+      temp="0 °C"
+      time="2 h"
+      stir="True"/>
+    <HeatChill
+      vessel="reactor"
+      temp="25 °C"
+      time="18 h"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="0 °C"
+      stir="True"
+      continue_heatchill="False"/>
+    <Add
+      vessel="reactor"
+      reagent="water"
+      volume="4.5 mL"
+      stir="True" />
+
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      volume="all" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="185 mbar"
+      time="30 min"
+      mode="auto" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="separator"
+      volume="all"
+      rinsing_solvent="water"
+      rinsing_volume="15 mL" />
+    <CleanVessel
+      vessel="rotavap"
+      solvent="acetone"
+      volume="50 mL"
+    />
+    <Add
+      vessel="separator"
+      reagent="4 % sodium hydroxide"
+      volume="6 mL"
+      stir="True" />
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="buffer_flask"
+      product_phase="bottom"
+      solvent="ether"
+      solvent_volume="30 mL"
+      waste_phase_to_vessel="separator" />
+
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="buffer_flask"
+      product_phase="bottom"
+      solvent="4 % sodium hydroxide"
+      solvent_volume="40 mL" />
+
+    <HeatChillToTemp
+      vessel="buffer_flask"
+      temp="0 °C"
+      continue_heatchill="False"
+      stir="True" />
+    <Add
+      vessel="buffer_flask"
+      reagent="18 % hydrochloric acid"
+      volume="10 mL"
+      stir="True" />
+    <Separate
+      purpose="extract"
+      from_vessel="buffer_flask"
+      separation_vessel="separator"
+      to_vessel="rotavap"
+      product_phase="top"
+      solvent="ether"
+      through="anhydrous sodium sulfate"
+      solvent_volume="25 mL"
+      repeats="3" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="185 mbar"
+      time="30 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

@@ -1,0 +1,240 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="benzophenone"
+      type="reactor" />
+    <Component
+      id="tmscn"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+    <Component
+      id="cartridge_mgso4"
+      type="cartridge"
+      chemical="mgso4" />
+    <Component
+      id="flask_blank"
+      type="flask" />
+    <Component
+      id="flask_argon"
+      type="flask" />
+    <Component
+      id="flask_argon_filter"
+      type="flask" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="zinc iodide"
+      role="reagent" />
+    <Reagent
+      name="benzophenone"
+      role="reagent" />
+    <Reagent
+      name="tmscn"
+      role="reagent" />
+    <Reagent
+      name="hcl"
+      role="reagent" />
+    <Reagent
+      name="diethylether"
+      role="reagent" />
+    <Reagent
+      name="ch2cl2"
+      role="reagent" />
+    <Reagent
+      name="tetrahydrofuran"
+      role="reagent" />
+    <Reagent
+      name="water"
+      role="reagent" />
+    <Reagent
+      name="nacl"
+      role="reagent" />
+    <Reagent
+      name="toluene"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor"
+      reagent="zinc iodide"
+      mass="95.7 mg" />
+    <Repeat
+      repeats="2">
+      <Add
+        vessel="tmscn"
+        reagent="ch2cl2"
+        volume="2 mL"
+        prime_n_times="0" />
+      <Transfer
+        from_vessel="tmscn"
+        to_vessel="reactor"
+        volume="all" />
+    </Repeat>
+    <Repeat
+      repeats="2">
+      <Add
+        vessel="benzophenone"
+        reagent="ch2cl2"
+        volume="3 mL"
+        prime_n_times="0" />
+      <Transfer
+        from_vessel="benzophenone"
+        to_vessel="reactor"
+        volume="all" />
+    </Repeat>
+    <Add
+      vessel="reactor"
+      reagent="ch2cl2"
+      volume="2 mL"
+      stir="True"
+      prime_n_times="0" />
+    <HeatChill
+      vessel="reactor"
+      temp="65 °C"
+      time="3 h"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="30 °C"
+      active="False"
+      continue_heatchill="False"
+      stir="True" />
+    <Evaporate
+      vessel="reactor"
+      temp="40 °C"
+      pressure="20 mbar"
+      time="60 min" />
+    <Add
+      vessel="reactor"
+      reagent="tetrahydrofuran"
+      volume="10 mL"
+      stir="True" />
+    <Add
+      vessel="reactor"
+      reagent="hcl"
+      volume="6 mL"
+      stir="True" />
+    <HeatChill
+      vessel="reactor"
+      temp="65 °C"
+      time="60 min"
+      stir="True" />
+    <HeatChillToTemp
+      vessel="reactor"
+      temp="30 °C"
+      active="False"
+      continue_heatchill="False"
+      stir="True" />
+    <Evaporate
+      vessel="reactor"
+      temp="40 °C"
+      pressure="20 mbar"
+      time="60 min" />
+    <Repeat
+      repeats="2">
+      <Add
+        vessel="reactor"
+        reagent="water"
+        volume="15 mL"
+        stir="True"
+        prime_n_times="0" />
+      <Add
+        vessel="reactor"
+        reagent="diethylether"
+        volume="15 mL"
+        stir="True"
+        prime_n_times="0" />
+      <Transfer
+        from_vessel="reactor"
+        to_vessel="separator"
+        volume="all" />
+    </Repeat>
+    <Separate
+      purpose="extract"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="diethylether"
+      repeats="3"
+      remove_dead_volume="False" />
+    <Separate
+      purpose="wash"
+      from_vessel="separator"
+      separation_vessel="separator"
+      to_vessel="separator"
+      product_phase="top"
+      solvent="nacl" />
+    <Transfer
+      from_vessel="separator"
+      to_vessel="rotavap"
+      volume="all"
+      through="mgso4"
+      move_speed="10.0" />
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="50 mbar"
+      time="60 min"
+      mode="auto" />
+    <CConnect
+      from_vessel="flask_argon_filter"
+      to_vessel="filter" />
+    <Repeat
+      repeats="2">
+      <Add
+        vessel="rotavap"
+        reagent="diethylether"
+        volume="20 mL"
+        stir="True"
+        prime_n_times="0" />
+      <StopStir
+        vessel="rotavap" />
+      <Transfer
+        from_vessel="rotavap"
+        to_vessel="filter"
+        volume="all" />
+    </Repeat>
+    <CConnect
+      from_vessel="flask_blank"
+      to_vessel="filter" />
+    <Evaporate
+      vessel="filter"
+      temp="30 °C"
+      pressure="50 mbar"
+      time="45 min" />
+    <CConnect
+      from_vessel="flask_argon_filter"
+      to_vessel="filter" />
+    <Recrystallize
+      vessel="filter"
+      time="3 h"
+      dissolve_temp="80 °C"
+      crystallize_temp="10 °C"
+      solvent="toluene"
+      solvent_volume="40 mL" />
+    <Filter
+      vessel="filter"
+      wait_time="1 "
+      aspiration_speed="200.0"
+      stir="False"
+      volume="150 mL" />
+  </Procedure>
+
+</Synthesis>

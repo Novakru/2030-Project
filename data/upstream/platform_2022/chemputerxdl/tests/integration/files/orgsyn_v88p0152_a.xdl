@@ -1,0 +1,53 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="anhydrous Et2O" />
+    <Reagent
+      name="benzyl carbamate" />
+    <Reagent
+      name="glyoxylic acid monohydrate" />
+    <Reagent
+      name="hexanes-Et2O" />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      reagent="benzyl carbamate"
+      vessel="filter"
+      mass="30.23 g" />
+    <Add
+      reagent="glyoxylic acid monohydrate"
+      vessel="filter"
+      mass="20.25 g" />
+    <EvacuateAndRefill
+      vessel="filter" />
+    <Add
+      reagent="anhydrous Et2O"
+      vessel="filter"
+      volume="200 mL" />
+    <HeatChill
+      vessel="filter"
+      temp="34.5°C"
+      time="12 hrs"
+      stir="True"
+      stir_speed="200 RPM" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="hexanes-Et2O"
+      volume="10 mL"
+      repeats="6" />
+    <Dry
+      vessel="filter" />
+  </Procedure>
+
+</Synthesis>

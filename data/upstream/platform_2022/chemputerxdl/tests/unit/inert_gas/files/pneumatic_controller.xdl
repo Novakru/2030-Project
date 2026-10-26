@@ -1,0 +1,57 @@
+<Synthesis filter_dead_volume_method="solvent">
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter"
+    />
+    <Component
+      id="flask"
+      type="flask"
+    />
+  </Hardware>
+
+  <Reagents />
+
+  <Procedure>
+    <SwitchVacuum
+      vessel="filter"
+      port="bottom"
+    />
+    <SwitchArgon
+      vessel="filter"
+      port="bottom"
+      pressure="high"
+    />
+    <SwitchArgon
+      vessel="filter"
+      port="bottom"
+      pressure="low"
+    />
+    <SwitchVacuum
+      vessel="flask"
+    />
+    <SwitchArgon
+      vessel="flask"
+      pressure="high"
+    />
+    <SwitchArgon
+      vessel="flask"
+      pressure="low"
+    />
+    <SwitchVacuum
+      vessel="filter"
+      port="top"
+    />
+    <SwitchArgon
+      vessel="filter"
+      port="top"
+      pressure="high"
+    />
+    <SwitchArgon
+      vessel="filter"
+      port="top"
+      pressure="low"
+    />
+  </Procedure>
+
+</Synthesis>

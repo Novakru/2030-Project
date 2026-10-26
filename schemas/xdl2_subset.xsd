@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Project subset derived from the published XDL 2 step tables; not an upstream universal XDL schema. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Synthesis"><xs:complexType><xs:sequence>
+    <xs:element name="Metadata" minOccurs="0"><xs:complexType>
+      <xs:attribute name="description" type="xs:string"/><xs:attribute name="publication" type="xs:string"/><xs:attribute name="reaction_class" type="xs:string"/>
+    </xs:complexType></xs:element>
+    <xs:element name="Hardware"><xs:complexType><xs:sequence><xs:element name="Component" maxOccurs="unbounded"><xs:complexType>
+      <xs:attribute name="id" type="xs:ID" use="required"/><xs:attribute name="type" type="xs:string" use="required"/>
+    </xs:complexType></xs:element></xs:sequence></xs:complexType></xs:element>
+    <xs:element name="Reagents"><xs:complexType><xs:sequence><xs:element name="Reagent" minOccurs="0" maxOccurs="unbounded"><xs:complexType>
+      <xs:attribute name="name" type="xs:string" use="required"/><xs:attribute name="role" type="xs:string"/>
+    </xs:complexType></xs:element></xs:sequence></xs:complexType></xs:element>
+    <xs:element name="Procedure"><xs:complexType><xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="Add" type="AddType"/>
+      <xs:element name="Transfer" type="TransferType"/>
+      <xs:element name="HeatChill" type="HeatChillType"/>
+      <xs:element name="HeatChillToTemp" type="HeatChillToTempType"/>
+      <xs:element name="Stir" type="StirType"/>
+      <xs:element name="Wait" type="WaitType"/>
+      <xs:element name="Purge" type="GasType"/>
+      <xs:element name="EvacuateAndRefill" type="GasType"/>
+      <xs:element name="Filter" type="FilterType"/>
+      <xs:element name="Separate" type="SeparateType"/>
+      <xs:element name="Evaporate" type="EvaporateType"/>
+      <xs:element name="RunColumn" type="ColumnType"/>
+      <xs:element name="Irradiate" type="IrradiateType"/>
+    </xs:choice></xs:complexType></xs:element>
+  </xs:sequence></xs:complexType></xs:element>
+  <xs:complexType name="AddType"><xs:attribute name="vessel" type="xs:string" use="required"/><xs:attribute name="reagent" type="xs:string" use="required"/><xs:attribute name="amount" type="xs:string" use="required"/><xs:attribute name="stir_speed" type="xs:double"/></xs:complexType>
+  <xs:complexType name="TransferType"><xs:attribute name="from_vessel" type="xs:string" use="required"/><xs:attribute name="to_vessel" type="xs:string" use="required"/><xs:attribute name="amount" type="xs:string" use="required"/></xs:complexType>
+  <xs:complexType name="HeatChillType"><xs:attribute name="vessel" type="xs:string" use="required"/><xs:attribute name="temp" type="xs:string" use="required"/><xs:attribute name="time" type="xs:string" use="required"/><xs:attribute name="stir" type="xs:boolean"/><xs:attribute name="stir_speed" type="xs:double"/></xs:complexType>
+  <xs:complexType name="HeatChillToTempType"><xs:attribute name="vessel" type="xs:string" use="required"/><xs:attribute name="temp" type="xs:string" use="required"/><xs:attribute name="stir" type="xs:boolean"/><xs:attribute name="stir_speed" type="xs:double"/></xs:complexType>
+  <xs:complexType name="StirType"><xs:attribute name="vessel" type="xs:string" use="required"/><xs:attribute name="time" type="xs:string" use="required"/><xs:attribute name="stir_speed" type="xs:double"/></xs:complexType>
+  <xs:complexType name="WaitType"><xs:attribute name="time" type="xs:string" use="required"/></xs:complexType>
+  <xs:complexType name="GasType"><xs:attribute name="vessel" type="xs:string" use="required"/><xs:attribute name="gas" type="xs:string" use="required"/><xs:attribute name="time" type="xs:string"/></xs:complexType>
+  <xs:complexType name="FilterType"><xs:attribute name="vessel" type="xs:string" use="required"/><xs:attribute name="filtrate_vessel" type="xs:string"/></xs:complexType>
+  <xs:complexType name="SeparateType"><xs:attribute name="purpose" type="xs:string" use="required"/><xs:attribute name="from_vessel" type="xs:string" use="required"/><xs:attribute name="separation_vessel" type="xs:string" use="required"/><xs:attribute name="to_vessel" type="xs:string" use="required"/><xs:attribute name="product_phase" type="xs:string" use="required"/></xs:complexType>
+  <xs:complexType name="EvaporateType"><xs:attribute name="vessel" type="xs:string" use="required"/><xs:attribute name="pressure" type="xs:string"/><xs:attribute name="temp" type="xs:string"/><xs:attribute name="time" type="xs:string"/><xs:attribute name="stir_speed" type="xs:double"/></xs:complexType>
+  <xs:complexType name="ColumnType"><xs:attribute name="from_vessel" type="xs:string" use="required"/><xs:attribute name="to_vessel" type="xs:string" use="required"/><xs:attribute name="column" type="xs:string" use="required"/></xs:complexType>
+  <xs:complexType name="IrradiateType"><xs:attribute name="vessel" type="xs:string" use="required"/><xs:attribute name="time" type="xs:string" use="required"/><xs:attribute name="wavelength" type="xs:string"/><xs:attribute name="color" type="xs:string"/><xs:attribute name="stir_speed" type="xs:double"/></xs:complexType>
+</xs:schema>

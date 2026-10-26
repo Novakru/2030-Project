@@ -1,0 +1,372 @@
+{
+  "id": "pos_002209b02bee4e928d2cb605db96cc87",
+  "source": {
+    "dataset_id": "ord_dataset-5c9a10329a8a48968d18879a48bb8ab2",
+    "dataset_name": "Chan-Lam coupling of primary sulfonamides with boronic acids",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-5c9a10329a8a48968d18879a48bb8ab2.parquet",
+    "file_sha256": "c710cdf3b1c4824282530d8067a130d0198b8ca3f52361206fe14a783b0825b1",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": "https://doi.org/10.26434/chemrxiv-2024-22jrq",
+    "reaction_id": "ord-002209b02bee4e928d2cb605db96cc87",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/5c/ord_dataset-5c9a10329a8a48968d18879a48bb8ab2.parquet"
+  },
+  "raw_id": "ord-002209b02bee4e928d2cb605db96cc87",
+  "raw_sha256": "a7e42989f7ba6267d0bd4a314f1ada2db0fbc4559fab885418436768d865f310",
+  "reaction_smiles": "BrC1=CC(S(=O)(N)=O)=CC(C(OC)=O)=C1.OB(O)C1=CC=C(OC)C=C1>>BrC1=CC(S(=O)(N(C2=CC=C(OC)C=C2)C3=CC=C(C=C3)OC)=O)=CC(C(OC)=O)=C1.BrC1=CC(S(=O)(NC2=CC=C(OC)C=C2)=O)=CC(C(OC)=O)=C1",
+  "reaction_class": "Chan-Lam coupling of primary sulfonamides with boronic acids",
+  "yield_percent": 38.503635,
+  "reagents": [
+    {
+      "addition_order": 2,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.02
+      },
+      "id": "r1",
+      "input_key": "Base_Solid",
+      "name": "[O-]P([O-])([O-])=O.[K+].[K+].[K+]",
+      "role": "REAGENT",
+      "smiles": "[O-]P([O-])([O-])=O.[K+].[K+].[K+]",
+      "source_path": "/inputs/Base_Solid/components/0"
+    },
+    {
+      "addition_order": 4,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.015
+      },
+      "id": "r2",
+      "input_key": "Boronic Acid",
+      "name": "OB(O)C1=CC=C(OC)C=C1",
+      "role": "REACTANT",
+      "smiles": "OB(O)C1=CC=C(OC)C=C1",
+      "source_path": "/inputs/Boronic Acid/components/0"
+    },
+    {
+      "addition_order": 4,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 0.1
+      },
+      "id": "r3",
+      "input_key": "Boronic Acid",
+      "name": "CCOC(C)=O",
+      "role": "SOLVENT",
+      "smiles": "CCOC(C)=O",
+      "source_path": "/inputs/Boronic Acid/components/1"
+    },
+    {
+      "addition_order": 1,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.002
+      },
+      "id": "r4",
+      "input_key": "Catalyst",
+      "name": "CC#N.CC#N.CC#N.CC#N.F[P-](F)(F)(F)(F)F.[Cu+]",
+      "role": "CATALYST",
+      "smiles": "CC#N.CC#N.CC#N.CC#N.F[P-](F)(F)(F)(F)F.[Cu+]",
+      "source_path": "/inputs/Catalyst/components/0"
+    },
+    {
+      "addition_order": 3,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.01
+      },
+      "id": "r5",
+      "input_key": "Sulfonamide",
+      "name": "BrC1=CC(S(=O)(N)=O)=CC(C(OC)=O)=C1",
+      "role": "REACTANT",
+      "smiles": "BrC1=CC(S(=O)(N)=O)=CC(C(OC)=O)=C1",
+      "source_path": "/inputs/Sulfonamide/components/0"
+    },
+    {
+      "addition_order": 3,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 0.1
+      },
+      "id": "r6",
+      "input_key": "Sulfonamide",
+      "name": "CCOC(C)=O",
+      "role": "SOLVENT",
+      "smiles": "CCOC(C)=O",
+      "source_path": "/inputs/Sulfonamide/components/1"
+    },
+    {
+      "id": "w1",
+      "name": "biphenyl stock solution",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": {
+        "value": 500,
+        "unit": "mL"
+      },
+      "source_path": null
+    },
+    {
+      "id": "w2",
+      "name": "MeCN",
+      "role": "WORKUP",
+      "smiles": null,
+      "amount": {
+        "value": 750,
+        "unit": "mL"
+      },
+      "source_path": null
+    }
+  ],
+  "steps": [
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "id": "s001",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "First, the catalysts (2 umol per vial) and solid bases (20 umol per vial) were added by dosing 50 uL each of a stock solution",
+        "stage": "reaction",
+        "amount_source": "/inputs/Catalyst/components/0/amount",
+        "source_alias": "catalysts"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.002
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "id": "s002",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "First, the catalysts (2 umol per vial) and solid bases (20 umol per vial) were added by dosing 50 uL each of a stock solution",
+        "stage": "reaction",
+        "amount_source": "/inputs/Base_Solid/components/0/amount",
+        "source_alias": "solid bases"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.02
+      }
+    },
+    {
+      "op": "Evaporate",
+      "temp_C": 30,
+      "id": "s003",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The 1,2-dichloroethane was then removed via centrifugal evaporation using a Genevac EZ-2 evaporator (Scientific Products)(method: low boiling point, maximum temperature of 30 C, 10-30 minutes).",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "id": "s004",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Stock solutions of sulfonamide and boronic acid (0.1 M in sulfonamide, 0.15 M in boronic acid) were prepared in the respective reaction solvent (MeCN, MeOH, DCE, or EtOAc) and 100 uL were dosed into the reaction plate according to the design.",
+        "stage": "reaction",
+        "amount_source": "/inputs/Sulfonamide/components/0/amount",
+        "source_alias": "sulfonamide"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.01
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "id": "s005",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Stock solutions of sulfonamide and boronic acid (0.1 M in sulfonamide, 0.15 M in boronic acid) were prepared in the respective reaction solvent (MeCN, MeOH, DCE, or EtOAc) and 100 uL were dosed into the reaction plate according to the design.",
+        "stage": "reaction",
+        "amount_source": "/inputs/Boronic Acid/components/0/amount",
+        "source_alias": "boronic acid"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.015
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "id": "s006",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Stock solutions of sulfonamide and boronic acid (0.1 M in sulfonamide, 0.15 M in boronic acid) were prepared in the respective reaction solvent (MeCN, MeOH, DCE, or EtOAc) and 100 uL were dosed into the reaction plate according to the design.",
+        "stage": "reaction",
+        "amount_source": "/inputs/Boronic Acid/components/1/amount",
+        "source_alias": "EtOAc"
+      },
+      "amount": {
+        "unit": "mL",
+        "value": 0.1
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r6",
+      "id": "s007",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Stock solutions of sulfonamide and boronic acid (0.1 M in sulfonamide, 0.15 M in boronic acid) were prepared in the respective reaction solvent (MeCN, MeOH, DCE, or EtOAc) and 100 uL were dosed into the reaction plate according to the design.",
+        "stage": "reaction",
+        "amount_source": "/inputs/Sulfonamide/components/1/amount",
+        "source_alias": "EtOAc"
+      },
+      "amount": {
+        "unit": "mL",
+        "value": 0.1
+      }
+    },
+    {
+      "op": "HeatChill",
+      "temp_C": 60,
+      "duration_s": 64800,
+      "stir": true,
+      "rpm": 600,
+      "id": "s008",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The reaction block was sealed and the contents were tumble-stirred at ~600 rpm (3-Position Magnetic Tumble Stirrer, U.S. Series, V&P Scientific, Inc.) for 18 hours at 60 C.",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "HeatChill",
+      "id": "s009",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "After the reaction time had elapsed, the plate was removed from the heat. Upon cooling, 500 uL of biphenyl stock solution",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w1",
+      "amount": {
+        "value": 500,
+        "unit": "mL"
+      },
+      "id": "s010",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Upon cooling, 500 uL of biphenyl stock solution (0.05 M in MeCN, 0.25 equiv) was added to each well as external standard.",
+        "stage": "workup",
+        "source_alias": "biphenyl stock solution"
+      }
+    },
+    {
+      "op": "Transfer",
+      "to_vessel": "Thermo Scientific(TM) 96-well 1 mL polypropylene plate (SKU 278743)",
+      "id": "s011",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Taking care not to agitate the solution, 25 uL from each well was sampled via multi-channel pipettor and dispensed into a Thermo Scientific(TM) 96-well 1 mL polypropylene plate (SKU 278743) for analysis.",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "w2",
+      "amount": {
+        "value": 750,
+        "unit": "mL"
+      },
+      "id": "s012",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Each well was diluted with 750 uL MeCN",
+        "stage": "workup",
+        "source_alias": "MeCN"
+      }
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "atmosphere": {
+      "type": "AIR"
+    },
+    "pressure_control": "AMBIENT",
+    "source_setup": {
+      "environment": {
+        "details": "HTE",
+        "type": "FUME_HOOD"
+      },
+      "is_automated": false,
+      "vessel": {
+        "attachments": [
+          {
+            "details": "Para-dox plate sealed",
+            "type": "MAT"
+          }
+        ],
+        "details": "96-well Para-dox Aluminium Reaction Block",
+        "material": {
+          "details": "8 x 30 mm glass vial inserts",
+          "type": "GLASS"
+        },
+        "type": "WELL_PLATE",
+        "volume": {
+          "units": "MILLILITER",
+          "value": 1.0
+        }
+      }
+    }
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "model": "gpt-5.6-terra",
+    "usage": {
+      "completion_tokens": 2261,
+      "prompt_tokens": 1481,
+      "total_tokens": 3742,
+      "prompt_tokens_details": {
+        "cache_write_tokens": 1478,
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1034
+      }
+    },
+    "cache_key": "471b6765081bbdf3271b9709fccc26472e427f4811515ed0e1448872951f3594",
+    "unresolved": [
+      "The procedure refers to Figure S2 and Figure S3 for the reaction design, but these figures are not supplied; the exact assignment of the two EtOAc component entries (r3 and r6) to the sulfonamide and boronic-acid stock solutions is therefore not explicit.",
+      "The procedure does not identify which liquid base was dispensed, and no supplied component is explicitly identified as a liquid base.",
+      "The stated 10-30 minute centrifugal-evaporation duration is a range rather than one explicit duration, so no duration_s was assigned.",
+      "The 25 uL aliquot amount is not represented because no amount field is specified for Transfer operations.",
+      "s009: temperature unspecified"
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "Parylene-coated stir bars (1.98 x 4.80 mm) were loaded into each pre-dosed vial using a stir bar dispenser",
+        "reason": "Stir-bar loading is equipment handling and is not an allowed operation."
+      },
+      {
+        "evidence": "Lastly, liquid bases were dispensed manually via single-channel pipette.",
+        "reason": "The liquid-base identity and corresponding supplied component are not specified."
+      },
+      {
+        "evidence": "The plate was sealed, inverted 3x, and centrifuged for 5 minutes to partition all solids to the bottom of the wells.",
+        "reason": "Sealing, inversion, and centrifugation are not among the allowed operations."
+      },
+      {
+        "evidence": "sealed using a PlateLoc Thermal Microplate Sealer, then subjected to UPLC-MS analysis.",
+        "reason": "Sealing is not an allowed operation, and UPLC-MS is analytical monitoring rather than a physical procedure operation."
+      }
+    ],
+    "alias_provenance": "original API response; literal source substring verified; numeric crosscheck performed separately"
+  }
+}

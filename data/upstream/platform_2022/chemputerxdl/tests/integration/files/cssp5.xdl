@@ -1,0 +1,57 @@
+<?xdl version="0.4.2" ?>
+
+<Synthesis>
+  <Hardware>
+    <Component
+      id="cartridge_celite"
+      type="cartridge"
+      chemical="celite" />
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="2,2'-dinitro-6,6'-dimethylbiphenyl" />
+    <Reagent
+      name="H2" />
+    <Reagent
+      name="ethyl acetate" />
+    <Reagent
+      name="palladium on Carbon (10 %)" />
+  </Reagents>
+
+  <Procedure>
+    <Confirm
+      msg="Is 2,2'-dinitro-6,6'-dimethylbiphenyl ( 39 g , 0.14 mol ) in the correct vessel?" />
+    <Dissolve
+      vessel="reactor"
+      solvent="ethyl acetate"
+      volume="100 mL" />
+    <Add
+      reagent="palladium on Carbon (10 %)"
+      vessel="reactor"
+      mass="5.5 g"
+      stir="True" />
+    <EvacuateAndRefill
+      vessel="reactor" />
+    <Add
+      reagent="H2"
+      vessel="reactor"
+      volume="0"
+      stir="True" />
+    <FilterThrough
+      from_vessel="reactor"
+      to_vessel="rotavap"
+      through="celite" />
+    <Evaporate
+      vessel="rotavap"
+      time="30 mins"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

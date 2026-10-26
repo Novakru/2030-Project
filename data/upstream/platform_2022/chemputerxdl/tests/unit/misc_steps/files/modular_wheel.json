@@ -1,0 +1,308 @@
+{
+  "nodes": [
+    {
+      "id": "valve_4",
+      "type": "valve",
+      "x": 280,
+      "y": 40,
+      "internalId": 1,
+      "label": "valve_4",
+      "class": "ChemputerValve",
+      "name": "valve_4",
+      "address": "",
+      "current_volume": 0
+    },
+    {
+      "id": "pump_4",
+      "type": "pump",
+      "x": 280,
+      "y": -80,
+      "internalId": 3,
+      "label": "pump_4",
+      "class": "ChemputerPump",
+      "name": "pump_4",
+      "address": "",
+      "max_volume": 100,
+      "current_volume": 0
+    },
+    {
+      "id": "valve_3",
+      "type": "valve",
+      "x": 160,
+      "y": 40,
+      "internalId": 6,
+      "label": "valve_3",
+      "class": "ChemputerValve",
+      "name": "valve_3",
+      "address": "",
+      "current_volume": 0
+    },
+    {
+      "id": "pump_3",
+      "type": "pump",
+      "x": 160,
+      "y": -80,
+      "internalId": 7,
+      "label": "pump_3",
+      "class": "ChemputerPump",
+      "name": "pump_3",
+      "address": "",
+      "max_volume": 100,
+      "current_volume": 0
+    },
+    {
+      "id": "waste_2",
+      "type": "waste",
+      "x": 360,
+      "y": -40,
+      "internalId": 11,
+      "label": "waste_2",
+      "class": "ChemputerWaste",
+      "name": "waste_2",
+      "current_volume": 0,
+      "max_volume": 100,
+      "necks": 1,
+      "can_filter": false
+    },
+    {
+      "id": "waste_1",
+      "type": "waste",
+      "x": 80,
+      "y": -40,
+      "internalId": 13,
+      "label": "waste_1",
+      "class": "ChemputerWaste",
+      "name": "waste_1",
+      "current_volume": 0,
+      "max_volume": 100,
+      "necks": 1,
+      "can_filter": false
+    },
+    {
+      "id": "reactor",
+      "type": "reactor",
+      "x": 80,
+      "y": 120,
+      "internalId": 15,
+      "label": "reactor",
+      "class": "ChemputerReactor",
+      "name": "reactor",
+      "current_volume": 0,
+      "max_volume": 100,
+      "necks": 1,
+      "can_filter": false
+    },
+    {
+      "id": "modular_wheel",
+      "type": "custom",
+      "x": 360,
+      "y": 120,
+      "customProperties": {
+        "port": {
+          "name": "Port",
+          "id": "port",
+          "units": "",
+          "type": "str"
+        },
+        "name": {
+          "name": "Name",
+          "id": "name",
+          "units": "",
+          "type": "str"
+        },
+        "current_volume": {
+          "name": "Current Volume",
+          "id": "current_volume",
+          "units": "",
+          "type": "number"
+        },
+        "motor_name": {
+          "name": "motor_name",
+          "id": "motor_name",
+          "units": "",
+          "type": "str"
+        },
+        "n_positions": {
+          "name": "n_positions",
+          "id": "n_positions",
+          "units": "",
+          "type": "number"
+        },
+        "increments": {
+          "name": "increments",
+          "id": "increments",
+          "units": "",
+          "type": "number"
+        }
+      },
+      "internalId": 0,
+      "label": "modular_wheel",
+      "connection_mode": "serial",
+      "class": "CommanduinoLabware",
+      "port": "/dev/ttyACM0",
+      "name": "modular_wheel",
+      "current_volume": 0,
+      "motor_name": "modular_wheel",
+      "n_positions": 6,
+      "increments": 3200
+    },
+    {
+      "id": "flask_water",
+      "type": "flask",
+      "x": 40,
+      "y": 40,
+      "internalId": 18,
+      "label": "flask_water",
+      "class": "ChemputerFlask",
+      "name": "flask_water",
+      "chemical": "water",
+      "current_volume": 100,
+      "max_volume": 100,
+      "can_filter": false
+    },
+    {
+      "id": "modular_syringe",
+      "type": "custom",
+      "x": 240,
+      "y": 120,
+      "customProperties": {
+        "name": {
+          "name": "Name",
+          "id": "name",
+          "units": "",
+          "type": "str"
+        },
+        "xy_motor": {
+          "name": "xy_motor",
+          "id": "xy_motor",
+          "units": "",
+          "type": "str"
+        },
+        "z_motor": {
+          "name": "z_motor",
+          "id": "z_motor",
+          "units": "",
+          "type": "str"
+        },
+        "xy_step_distance": {
+          "name": "xy_step_distance",
+          "id": "xy_step_distance",
+          "units": "",
+          "type": "str"
+        },
+        "z_step_distance": {
+          "name": "z_step_distance",
+          "id": "z_step_distance",
+          "units": "",
+          "type": "str"
+        }
+      },
+      "internalId": 20,
+      "label": "modular_syringe",
+      "class": "CommanduinoLabware",
+      "name": "modular_syringe",
+      "xy_motor": "modular_xy",
+      "z_motor": "modular_z",
+      "xy_step_distance": "50",
+      "z_step_distance": "50"
+    }
+  ],
+  "links": [
+    {
+      "id": 4,
+      "sourceInternal": 3,
+      "targetInternal": 1,
+      "source": "pump_4",
+      "target": "valve_4",
+      "port": "(0,-1)"
+    },
+    {
+      "id": 5,
+      "sourceInternal": 1,
+      "targetInternal": 3,
+      "source": "valve_4",
+      "target": "pump_4",
+      "port": "(-1,0)"
+    },
+    {
+      "id": 8,
+      "sourceInternal": 7,
+      "targetInternal": 6,
+      "source": "pump_3",
+      "target": "valve_3",
+      "port": "(0,-1)"
+    },
+    {
+      "id": 9,
+      "sourceInternal": 6,
+      "targetInternal": 7,
+      "source": "valve_3",
+      "target": "pump_3",
+      "port": "(-1,0)"
+    },
+    {
+      "id": 12,
+      "sourceInternal": 1,
+      "targetInternal": 11,
+      "source": "valve_4",
+      "target": "waste_2",
+      "port": "(0,0)"
+    },
+    {
+      "id": 14,
+      "sourceInternal": 6,
+      "targetInternal": 13,
+      "source": "valve_3",
+      "target": "waste_1",
+      "port": "(0,0)"
+    },
+    {
+      "id": 16,
+      "sourceInternal": 15,
+      "targetInternal": 6,
+      "source": "reactor",
+      "target": "valve_3",
+      "port": "(0,2)"
+    },
+    {
+      "id": 10,
+      "sourceInternal": 6,
+      "targetInternal": 1,
+      "source": "valve_3",
+      "target": "valve_4",
+      "port": "(1,1)"
+    },
+    {
+      "id": 17,
+      "sourceInternal": 1,
+      "targetInternal": 6,
+      "source": "valve_4",
+      "target": "valve_3",
+      "port": "(1,1)"
+    },
+    {
+      "id": 2,
+      "sourceInternal": 1,
+      "targetInternal": 0,
+      "source": "valve_4",
+      "target": "modular_wheel",
+      "port": "(2,0)"
+    },
+    {
+      "id": 19,
+      "sourceInternal": 18,
+      "targetInternal": 6,
+      "source": "flask_water",
+      "target": "valve_3",
+      "port": "(0,1)"
+    },
+    {
+      "id": 21,
+      "sourceInternal": 20,
+      "targetInternal": 1,
+      "source": "modular_syringe",
+      "target": "valve_4",
+      "port": "(0,3)"
+    }
+  ]
+}

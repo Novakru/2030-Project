@@ -1,0 +1,84 @@
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="separator"
+      type="separator" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="buffer_flask"
+      type="flask" />
+    <Component
+      id="buffer_flask2"
+      type="flask" />
+
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="water"
+    />
+    <Reagent
+      name="ether"
+    />
+  </Reagents>
+
+  <Procedure>
+    <Add
+      vessel="reactor"
+      reagent="water"
+      volume="10 mL"
+    />
+    <Add
+      vessel="reactor"
+      reagent="ether"
+      volume="10 mL"
+    />
+    <HeatChill
+      vessel="reactor"
+      temp="50"
+      time="6 hr"
+    />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="buffer_flask"
+      volume="5 mL" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="filter"
+      volume="5 mL" />
+    <Unlock
+      nodes="all"
+      pid="__main" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="buffer_flask2"
+      volume="5 mL" />
+    <Transfer
+      from_vessel="reactor"
+      to_vessel="separator"
+      volume="5 mL" />
+    <Transfer
+      from_vessel="separator"
+      to_vessel="rotavap"
+      volume="all"
+      unlock_after="True" />
+    <CleanVessel
+      vessel="reactor"
+      solvent="ether"
+      temp="22 °C"
+      volume="15 mL"
+      repeats="3" />
+    <Unlock
+      nodes="['buffer_flask', 'buffer_flask2']"/>
+  </Procedure>
+
+</Synthesis>

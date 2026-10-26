@@ -1,0 +1,30 @@
+<Synthesis>
+  <Hardware>
+    <Component
+      id="reactor"
+      type="reactor" />
+    <Component
+        id="modular_wheel"
+        type="modular_wheel" />
+    <Component
+        id="waste_1"
+        type="waste" />
+  </Hardware>
+  <Reagents>
+    <Reagent name="water"/> 
+  </Reagents>
+  <Procedure>
+    <RepeatCleanMW
+        repeats="8"
+        waste_vial="1"
+        cleaning_solvent="water">
+        <MWAddAndTurn
+            from_vessel="reactor"
+            to_vessel="modular_wheel"
+            volume="10 mL"
+            wait_turn="3 seconds"
+            wait_reverse="1 second"/>
+    </RepeatCleanMW>
+  </Procedure>
+
+</Synthesis>

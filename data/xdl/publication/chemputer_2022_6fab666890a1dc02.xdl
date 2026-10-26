@@ -1,0 +1,152 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="cartridge_mgso4"
+      type="cartridge"
+      chemical="mgso4" />
+    <Component
+      id="cartridge_filter"
+      type="cartridge" />
+    <Component
+      id="reactor1"
+      type="reactor" />
+    <Component
+      id="reactor2"
+      type="reactor" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+    <Component
+      id="separator"
+      type="separator" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="allyl bromide"
+      role="reagent" />
+    <Reagent
+      name="5-(trifluoromethyl)pyridine-2-thiol"
+      role="reagent" />
+    <Reagent
+      name="k2co3"
+      role="reagent" />
+    <Reagent
+      name="acetone"
+      role="reagent" />
+    <Reagent
+      name="ch2cl2"
+      role="reagent" />
+    <Reagent
+      name="mcpba"
+      role="reagent" />
+    <Reagent
+      name="aq. nahco3"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="reactor1"
+      reagent="k2co3"
+      mass="2.8 g" />
+
+    <AddSolid
+      vessel="reactor1"
+      reagent="5-(trifluoromethyl)pyridine-2-thiol"
+      mass="1.79 g" />
+
+    <Add
+      vessel='reactor1'
+      reagent='acetone'
+      volume='50 mL'
+      stir='True'
+    />
+
+    <Add
+      vessel='reactor1'
+      reagent='allyl bromide'
+      volume='1.0 mL'
+      stir='True'
+    />
+
+    <Stir
+      vessel='reactor1'
+      time='4 h'
+    />
+
+    <Transfer
+      from_vessel='reactor1'
+      to_vessel='rotavap'
+      volume='all'
+      through='cartridge_filter'
+      rinsing_solvent='acetone'
+      rinsing_volume='25 mL'
+      rinsing_repeats='1'
+    />
+
+    <Evaporate
+      vessel='rotavap'
+      temp='40'
+      pressure='100'
+      mode='auto'
+    />
+
+    <Add
+      vessel='rotavap'
+      reagent='ch2cl2'
+      volume='25 mL'
+      stir='True'
+    />
+
+    <Transfer
+      from_vessel='rotavap'
+      to_vessel='reactor2'
+      volume='all'
+      rinsing_solvent='ch2cl2'
+      rinsing_volume='25 mL'
+      rinsing_repeats='1'
+    />
+
+    <AddSolid
+      vessel='reactor2'
+      reagent='mcpba'
+      mass='6.2 g'
+    />
+
+    <Stir
+      vessel='reactor2'
+      time='3 h'
+    />
+
+    <Add
+      vessel='reactor2'
+      reagent='aq. nahco3'
+      volume='60 mL'
+      stir='True'
+    />
+
+    <Separate
+      purpose='extract'
+      from_vessel='reactor2'
+      separation_vessel='separator'
+      to_vessel='rotavap'
+      through='mgso4'
+      product_phase='bottom'
+      solvent='ch2cl2'
+      solvent_volume='50 mL'
+      repeats='2'
+    />
+
+    <Evaporate
+      vessel="rotavap"
+      temp="40 °C"
+      pressure="50 mbar"
+      time="60 min"
+      mode="auto" />
+  </Procedure>
+
+</Synthesis>

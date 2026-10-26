@@ -1,0 +1,102 @@
+{
+  "version": 2,
+  "positive_candidates": {
+    "path": "data/positives.jsonl",
+    "count": 140,
+    "tier": "silver unless supported by a recorded review"
+  },
+  "negative_partitions": [
+    {
+      "path": "data/negatives.jsonl",
+      "format": "protocol_risk_ir",
+      "count": 191
+    },
+    {
+      "path": "data/native_negatives.jsonl",
+      "format": "native_author_xdl",
+      "count": 12
+    },
+    {
+      "path": "data/sop/negatives.jsonl",
+      "format": "protocol_risk_ir_with_sop_context",
+      "count": 34,
+      "literal_source_fragments": 10,
+      "instantiated_scenarios": 24
+    }
+  ],
+  "control_partition": {
+    "path": "data/controls/negatives.jsonl",
+    "count": 240,
+    "counts_toward_source_quota": false
+  },
+  "source_derived_risk_counts": {
+    "A1": 12,
+    "A2": 12,
+    "A4": 12,
+    "A5": 12,
+    "B1": 12,
+    "D3": 12,
+    "D4": 12,
+    "D1": 12,
+    "C1": 12,
+    "C2": 12,
+    "C3": 12,
+    "C4": 12,
+    "C6": 12,
+    "B4": 12,
+    "A3": 12,
+    "C5": 11,
+    "D2": 12,
+    "B5": 10
+  },
+  "source_derived_total": 213,
+  "instantiated_sop_risk_counts": {
+    "B2": 12,
+    "B3": 12
+  },
+  "instantiated_sop_total": 24,
+  "risk_counts": {
+    "A1": 12,
+    "A2": 12,
+    "A4": 12,
+    "A5": 12,
+    "B1": 12,
+    "D3": 12,
+    "D4": 12,
+    "D1": 12,
+    "C1": 12,
+    "C2": 12,
+    "C3": 12,
+    "C4": 12,
+    "C6": 12,
+    "B4": 12,
+    "A3": 12,
+    "C5": 11,
+    "D2": 12,
+    "B5": 10,
+    "B2": 12,
+    "B3": 12
+  },
+  "negative_total": 237,
+  "source_only_risk_gaps": {
+    "B2": 10,
+    "B3": 10
+  },
+  "sop_parent_diversity": {
+    "B2": 1,
+    "B3": 6,
+    "B5": 10
+  },
+  "remaining_risk_gaps": {},
+  "human_review": "deferred; no fabricated approval",
+  "native_platform_reference": {
+    "path": "data/publications/platform_positives.jsonl",
+    "count": 64,
+    "validation_path": "data/publications/platform_validation.jsonl",
+    "source_partitions": {
+      "successful_reactions": 41,
+      "translated_XDLs": 23
+    },
+    "tier": "compiled_source_reference; human review deferred; no full chemical feasibility certificate"
+  }
+}

@@ -1,0 +1,66 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="N-(2,2,2-Trifluoro-1-hydroxyethyl)-acetamide"
+      role="reagent" />
+    <Reagent
+      name="heptane"
+      role="reagent" />
+    <Reagent
+      name="thionyl chloride"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <AddSolid
+      vessel="filter"
+      reagent="N-(2,2,2-Trifluoro-1-hydroxyethyl)-acetamide"
+      mass="8.98 g" />
+    <Add
+      vessel="filter"
+      reagent="thionyl chloride"
+      volume="4.33 mL"
+      stir="True"/>
+    <Add
+      vessel="filter"
+      reagent="heptane"
+      volume="65 mL" />
+    <HeatChill
+      vessel="filter"
+      temp="85 °C"
+      stir="True"
+      time="1.25 h" />
+    <HeatChillToTemp
+      vessel="filter"
+      temp="25 °C"
+      active="False"
+      continue_heatchill="False"
+      stir="True" />
+    <StopStir
+      vessel="filter" />
+    <Wait
+      time="30 min" />
+    <Filter
+      vessel="filter" />
+    <WashSolid
+      vessel="filter"
+      solvent="heptane"
+      volume="25 mL"
+      repeats="2" />
+    <Dry
+      vessel="filter"
+      time="30 min"
+      temp="25 °C"
+      pressure="1.3 mbar" />
+  </Procedure>
+
+</Synthesis>
