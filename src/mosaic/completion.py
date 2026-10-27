@@ -101,7 +101,7 @@ def _pending_actions(protocol):
     for action in (protocol or {}).get("extraction", {}).get("unmapped_actions", []):
         quote = action.get("evidence", "") if isinstance(action, dict) else str(action)
         physical = any(re.search(pattern, quote, re.I) for pattern in _ACTION_PATTERNS.values())
-        analytical = re.search(r"NMR|TLC|GC.?MS|\byield\b|\banalys\w*|\bisomer\b", quote, re.I)
+        analytical = re.search(r"NMR|TLC|GC.?MS|\byield\b|\banalys\w*|\bisomer\b|\breaction\s+(?:was\s+)?(?:abandoned|failed|unsuccessful)\b", quote, re.I)
         if analytical and not physical:
             continue
         if re.search(r"\b(?:capped|sealed)\b", quote, re.I) and (protocol or {}).get("context", {}).get("pressure_control") == "SEALED":
@@ -128,7 +128,9 @@ def _preserves_facts_in_extension(old, proposed):
         return False
     values = [value for value in proposed.get("parameters", {}).values() if "value" in value]
     for key, value in old.items():
-        if key in {"op", "evidence", "stage", "vessel", "role", "alias"} or value is None or value in ("unknown", "unspecified"):
+        if (key in {"op", "evidence", "stage", "vessel", "role", "alias"}
+                or key == "mode" and value in {"environment", "balloon"}
+                or value is None or value in ("unknown", "unspecified")):
             continue
         if key == "amount":
             scales = {"mL": ("volume", 1), "uL": ("volume", .001), "L": ("volume", 1000),
@@ -150,6 +152,11 @@ def _preserves_facts_in_extension(old, proposed):
                 return False
         elif key == "stir" and value is True:
             if not any(re.search(r"stirr|agitat", str(item["value"]), re.I) for item in values):
+                return False
+        elif key == "gas":
+            spellings = {"nitrogen": {"nitrogen", "N2"}, "argon": {"argon", "Ar"}, "air": {"air"}}
+            if not any(any(re.search(r"(?<!\w)" + re.escape(spelling) + r"(?!\w)", str(item["value"]))
+                           for spelling in spellings.get(value, {value})) for item in values):
                 return False
         elif not any(item["value"] == value for item in values):
             return False
@@ -196,12 +203,15 @@ def _check_coverage(source, plan, definitions, pending):
         quote, reason = omission["evidence"], omission["reason"]
         verb = reason.rsplit(": ", 1)[-1]
         roots = {root for root, pattern in _ACTION_PATTERNS.items() if re.fullmatch(pattern, verb, re.I)}
+        if roots == {"add"} and re.search(r"\bafter\s+adding\s+all\s+(?:the\s+)?(?:reaction\s+)?inputs\b", quote, re.I):
+            # This references earlier input steps; it is not another dose.
+            continue
         # "Vials were added to a reaction block" is apparatus placement, not
         # a chemical dose. Let a source-grounded placement operation cover it.
-        placement = bool(re.search(r"\b(?:vials?|tubes?|plates?|inserts?)\b.*\badded\s+to\b.*\b(?:block|rack|plate)\b", quote, re.I))
+        placement = bool(re.search(r"\b(?:vials?|tubes?|plates?|inserts?)\b.*\badded\s+to\b.*\b(?:block|rack|plate)\b", quote, re.I | re.S))
         covered = any((step["evidence"] in quote or quote in step["evidence"])
                       and (bool(roots & _extension_actions(step["op"], definitions[step["op"]]))
-                           or placement and re.search(r"place|position|insert|equip", step["op"], re.I))
+                           or placement and re.search(r"place|position|insert|equip|load|mount|arrange", step["op"], re.I))
                       for step in extensions)
         if not covered:
             raise ValueError("Source action remains unrepresented: " + quote[:200])
@@ -367,6 +377,8 @@ def _normalize(source, base, response, existing, pending):
     result.setdefault("context", {})["initial_material_state"] = "unknown_unless_reported"
     result.setdefault("extraction", {}).update(unmapped_actions=[], uncertainties=copy.deepcopy(response.get("uncertainties", [])),
                                                completion="source_grounded_extension")
+    result["extraction"]["source_observations"] = [copy.deepcopy(action)
+        for action in (base or {}).get("extraction", {}).get("unmapped_actions", []) if action not in pending]
     # Retain only contracts actually needed by this file; the registry retains
     # the wider vocabulary for reuse in subsequent conversions.
     result["operation_definitions"] = {name: definitions[name] for name in sorted({s["op"] for s in steps} - OPERATIONS)}
@@ -392,6 +404,8 @@ def complete(source_document, protocol, registry, runner):
         base["xdl_profile"] = "mosaic-xdl/1"
         base.setdefault("context", {})["initial_material_state"] = "unknown_unless_reported"
         base.setdefault("operation_definitions", {})
+        base.setdefault("extraction", {})["source_observations"] = copy.deepcopy(base["extraction"].get("unmapped_actions", []))
+        base["extraction"]["unmapped_actions"] = []
         annotate_missing(base)
         return {"protocol": base, "notes": {"agent_called": False, "attempts": 0, "extension_operations": sorted(base["operation_definitions"])}}
     names = {r["id"]: r["name"] for r in (base or {}).get("reagents", [])}

@@ -253,4 +253,27 @@ def test_analytical_observation_does_not_require_an_operation_expander_call():
     runner = Runner([])
     result = complete(document, protocol, {}, runner)
     assert result["notes"]["agent_called"] is False and not runner.calls
-    assert result["protocol"]["extraction"]["unmapped_actions"][0]["evidence"] == "TLC analysis showed completion."
+    assert not result["protocol"]["extraction"]["unmapped_actions"]
+    assert result["protocol"]["extraction"]["source_observations"][0]["evidence"] == "TLC analysis showed completion."
+
+
+def test_abandoned_reaction_note_is_preserved_as_observation_instead_of_missing_action():
+    document = source("Add water. Reaction abandoned.")
+    protocol = build_ir(document, {"steps": [{"op": "Add", "reagent": "water", "evidence": "Add water."}],
+        "unmapped_actions": [{"evidence": "Reaction abandoned.", "reason": "reported result"}]}, {})
+    result = complete(document, protocol, {}, Runner([]))["protocol"]
+    assert result["extraction"]["source_observations"][0]["evidence"] == "Reaction abandoned."
+    assert not result["extraction"]["unmapped_actions"]
+
+
+def test_inert_enclosure_operation_preserves_canonical_gas_via_literal_formula():
+    text = "under N2 atmosphere"
+    document = source(text)
+    protocol = build_ir(document, {"steps": [{"op": "Atmosphere", "gas": "nitrogen", "mode": "environment", "evidence": text}],
+                                  "unmapped_actions": [{"evidence": text}]}, {})
+    definition = {"description": "Handle materials in an explicitly reported inert enclosure",
+        "parameters": {"gas": {"type": "string", "required": True}}, "effects": ["atmosphere_established"]}
+    response = {"steps": [{"op": "HandleInert", "parameters": {"gas": {"value": "N2", "evidence": text}}, "evidence": text}],
+                "definitions": {"HandleInert": definition}}
+    result = complete(document, protocol, {}, Runner([response]))["protocol"]
+    assert result["steps"][0]["parameters"]["gas"]["value"] == "N2"
