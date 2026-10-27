@@ -6,6 +6,7 @@ import math
 from collections import Counter, defaultdict
 
 import jsonpatch
+from jsonpointer import JsonPointerException
 
 from protocol_risk.diversity import features
 from protocol_risk.io import canonical, digest, load_library
@@ -290,23 +291,27 @@ Soft risks are uncalibrated hypotheses, not failed reactions. A program independ
 
 
 def model_proposals(parent, runner):
-    payload = {k: v for k, v in parent.items() if k not in ("id", "xdl", "quality", "crosscheck", "mosaic", "split", "split_group")}
+    payload = {k: parent[k] for k in ("steps", "reagents", "hardware", "context") if k in parent}
     response = runner.model_call("perturber", PERTURB_PROMPT, payload)
     output = response["data"]
     if not isinstance(output, dict) or not isinstance(output.get("proposals"), list):
         raise ValueError("Invalid model perturbation proposals")
     for proposal in output["proposals"]:
+        if not isinstance(proposal, dict):
+            continue
         patch = proposal.get("patch", [])
         if not isinstance(patch, list) or len(patch) != 1:
             continue
         edit = patch[0]
+        if not isinstance(edit, dict):
+            continue
         if edit.get("op") not in ("add", "remove", "replace", "move"):
             continue
         if any(key in edit and not str(edit[key]).startswith(("/steps/", "/reagents/", "/hardware/", "/context/")) for key in ("path", "from")):
             continue
         try:
             child = jsonpatch.apply_patch(copy.deepcopy(parent), patch)
-        except (jsonpatch.JsonPatchException, KeyError, IndexError, TypeError):
+        except (jsonpatch.JsonPatchException, JsonPointerException, KeyError, IndexError, TypeError):
             continue
         yield proposal.get("risk"), child, {"precondition": "model_proposal_program_checked", "rationale": proposal.get("rationale"), "proposal_engine": "llm"}
 
@@ -328,7 +333,9 @@ def generate(parents, raw_records, *, per_risk=12, success_index=None, runner=No
                 continue
             try:
                 intervention = assess_intervention(parent, child)
-            except (ValueError, KeyError, IndexError, TypeError) as error:
+            except (ValueError, KeyError, IndexError, TypeError, AttributeError) as error:
+                if isinstance(error, AttributeError) and evidence.get("proposal_engine") != "llm":
+                    raise
                 rejected[str(error)] += 1
                 continue
             if risk in SOFT and not _soft_intent(risk, intervention, parent):
@@ -337,13 +344,25 @@ def generate(parents, raw_records, *, per_risk=12, success_index=None, runner=No
             if risk in SOFT and success_index is not None and success_index.match(child):
                 rejected["known_success"] += 1
                 continue
-            result = evaluate(child)
-            instances = fault_instances(child, result.violations)
+            try:
+                result = evaluate(child)
+                instances = fault_instances(child, result.violations)
+            except (ValueError, KeyError, IndexError, TypeError, AttributeError):
+                if evidence.get("proposal_engine") != "llm":
+                    raise
+                rejected["malformed_model_intervention"] += 1
+                continue
             if risk not in SOFT and len(instances) != 1:
                 rejected["multiple_or_missing_fault_instances"] += 1
                 continue
             origin = "authored_control" if parent.get("source", {}).get("db") == "AUTHORED_CONTROL" else "observed_parent"
-            sample = make_negative(parent, child, risk, evidence, origin=origin)
+            try:
+                sample = make_negative(parent, child, risk, evidence, origin=origin)
+            except (ValueError, KeyError, IndexError, TypeError, AttributeError):
+                if evidence.get("proposal_engine") != "llm":
+                    raise
+                rejected["malformed_model_intervention"] += 1
+                continue
             if sample is None:
                 rejected["parent_or_target_risk_mismatch"] += 1
                 continue

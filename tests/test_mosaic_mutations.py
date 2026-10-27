@@ -62,3 +62,30 @@ def test_negative_wrapper_carries_its_own_export_for_standalone_files():
     samples, _ = generate([parent], [], per_risk=2)
     for sample in samples:
         assert sample["xdl"] == sample["protocol"]["xdl"] == export_xdl(sample["protocol"])
+
+
+def test_bad_model_pointer_is_rejected_without_losing_following_valid_proposal():
+    from mosaic.mutations import model_proposals
+    parent = reference("A1", 0)
+    class Runner:
+        def model_call(self, role, system, payload):
+            assert set(payload) == {"steps", "reagents", "hardware", "context"}
+            return {"data": {"proposals": [None, {"patch": [None]},
+                {"risk": "C2", "patch": [{"op": "replace", "path": "/steps/0/params/temp_C", "value": 100}]},
+                {"risk": "A1", "patch": [{"op": "replace", "path": "/steps/0/amount/value", "value": 2000}]}]}}
+    results = list(model_proposals(parent, Runner()))
+    assert len(results) == 1 and results[0][0] == "A1"
+    assert results[0][1]["steps"][0]["amount"]["value"] == 2000
+
+
+def test_malformed_model_quantity_does_not_abort_programmatic_generation():
+    parent = reference("A1", 0)
+    class Runner:
+        def model_call(self, role, system, payload):
+            return {"data": {"proposals": [{"risk": "D4", "patch": [
+                {"op": "replace", "path": "/steps/0/amount/value", "value": {"invalid": "object"}}]}]}}
+    samples, report = generate([parent], [], runner=Runner(), llm_limit=1, per_risk=2)
+    assert samples
+    assert report["rejected"].get("Step intervention must change one supported operational field", 0) >= 1
+    assert all(not isinstance(step.get("amount", {}).get("value"), dict)
+               for sample in samples for step in sample["protocol"]["steps"])

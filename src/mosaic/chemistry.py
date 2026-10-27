@@ -5,6 +5,7 @@ import copy
 import re
 
 import jsonpatch
+from jsonpointer import JsonPointerException
 
 from protocol_risk.extract import build_ir, text_plan, text_source, validate_evidence
 from protocol_risk.io import digest
@@ -112,12 +113,16 @@ class ChemistryDomain:
                     if not isinstance(criticism, dict) or not isinstance(criticism.get("findings", []), list):
                         raise ValueError("Critic returned an invalid finding list")
                     for finding in criticism.get("findings", []):
+                        if not isinstance(finding, dict):
+                            raise ValueError("Critic finding must be an object")
                         span = SourceSpan.locate(raw["id"], source_text, finding.get("quote")).to_dict()
                         notes["findings"].append({**finding, "evidence": span, "status": "model_proposal"})
                     patch = criticism.get("patch", [])
                     if not isinstance(patch, list):
                         raise ValueError("Critic patch must be an array")
                     for edit in patch:
+                        if not isinstance(edit, dict):
+                            raise ValueError("Critic patch operation must be an object")
                         if edit.get("op") not in ("add", "remove", "replace", "move", "copy", "test"):
                             raise ValueError("Unsupported extraction repair operation")
                         for key in ("path", "from"):
@@ -132,7 +137,7 @@ class ChemistryDomain:
                     else:
                         notes["repair"] = {"accepted": bool(patch), "patch": patch}
                         plan = repaired
-                except (ValueError, RuntimeError, KeyError, TypeError, jsonpatch.JsonPatchException) as error:
+                except (ValueError, RuntimeError, KeyError, TypeError, jsonpatch.JsonPatchException, JsonPointerException) as error:
                     notes["critic_rejected"] = {"error_class": type(error).__name__, "reason": str(error)[:300]}
             protocol = build_ir(raw, plan, provenance)
             for step in protocol["steps"]:
@@ -146,6 +151,8 @@ class ChemistryDomain:
                     if not isinstance(proposal, dict) or not isinstance(proposal.get("mentions", []), list):
                         raise ValueError("Invalid apparatus proposal")
                     for mention in proposal.get("mentions", []):
+                        if not isinstance(mention, dict):
+                            raise ValueError("Apparatus mention must be an object")
                         span = SourceSpan.locate(raw["id"], source_text, mention.get("quote")).to_dict()
                         notes["apparatus_proposals"].append({**mention, "evidence": span, "status": "not_a_verified_binding"})
                     notes["apparatus_unknowns"] = proposal.get("unknowns", [])

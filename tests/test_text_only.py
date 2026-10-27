@@ -102,6 +102,18 @@ def test_short_heater_setup_quote_is_retained_as_context_not_false_omission():
     assert prepared["context"]["source_context_events"][0]["kind"] == "source_heater_setup"
 
 
+def test_bad_critic_pointer_keeps_valid_text_plan_and_records_rejection():
+    class BadPointerRunner(Runner):
+        def model_call(self, role, system, payload):
+            if role == "critic":
+                return {"data": {"findings": [], "patch": [
+                    {"op": "replace", "path": "/steps/0/params/temp_C", "value": 100}]}}
+            return super().model_call(role, system, payload)
+    extracted = ChemistryDomain().extract(record(), BadPointerRunner())
+    assert extracted["notes"]["critic_rejected"]["error_class"] == "JsonPointerException"
+    assert extracted["protocol"]["steps"][0]["amount"]["value"] == 1
+
+
 def test_every_extraction_role_sees_only_literal_text_and_proposed_plan():
     runner = Runner()
     result = ChemistryDomain().extract(record(), runner)

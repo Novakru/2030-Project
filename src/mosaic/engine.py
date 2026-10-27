@@ -341,7 +341,9 @@ def build(spec: BuildSpec, *, runtime=None):
     _write_records(store, folder + "/negatives.jsonl", negatives)
     _write_records(store, folder + "/quarantined.jsonl", failures)
     _write_records(store, folder + "/extraction_candidates.jsonl", candidates)
-    selected_ids = {p.get("raw_id") for p in parents}
+    # Failed conversions are part of the source corpus too. Retain their exact
+    # raw snapshots so an expert can reproduce every quarantine/library proposal.
+    selected_ids = {p.get("raw_id") for p in parents} | {f["raw_id"] for f in failures}
     _write_records(store, folder + "/raw.jsonl", [raw for raw in records if raw["id"] in selected_ids])
     for record in parents + negatives:
         if isinstance(record.get("xdl"), str):
@@ -366,6 +368,7 @@ def build(spec: BuildSpec, *, runtime=None):
               "new_model_calls": runner.calls - prior_model_calls,
               "mutation_report": mutation_report, "registry_revision": evolved.revision,
               "input_contract": "text-only/1", "text_primary_positives": primary_count,
+              "raw_source_records": sum(raw["id"] in selected_ids for raw in records),
               "extraction_candidates": len(candidates),
               "library_registry": folder + "/library_registry.json", "library_evolution": folder + "/library_evolution.json",
               "review_bundle": {"positives": folder + "/positives.jsonl", "negatives": folder + "/negatives.jsonl",
