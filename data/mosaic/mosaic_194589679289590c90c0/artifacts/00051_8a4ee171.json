@@ -1,0 +1,60 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "MISSING_VESSEL",
+        "quote": "were added to a 100ml rb flask",
+        "message": "The reaction vessel is mentioned in evidence but is not explicitly assigned in the operational plan: a 100 mL round-bottom flask.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_ANALYTICAL_CHECK",
+        "quote": "LCMS showed rxn done with desired product formed.",
+        "message": "The LCMS check between heating and filtration is omitted from the steps.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_PURIFICATION_CONDITIONS",
+        "quote": "CH3CN/Water 0-50% + 0.1%TFA",
+        "message": "The purification solvent specification appears only in evidence. Preserve it as an explicit condition without inferring the gradient direction or which solvent the percentage describes.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/steps/0/vessel",
+        "value": "100 mL round-bottom flask"
+      },
+      {
+        "op": "add",
+        "path": "/steps/9/solvent_specification",
+        "value": "CH3CN/Water 0-50% + 0.1%TFA"
+      },
+      {
+        "op": "add",
+        "path": "/steps/7",
+        "value": {
+          "op": "Analyze",
+          "method": "LCMS",
+          "evidence": "LCMS showed rxn done with desired product formed.",
+          "stage": "reaction"
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 649,
+    "prompt_tokens": 947,
+    "total_tokens": 1596,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 269
+    }
+  },
+  "cache_key": "1d392666edddf86113e7bc019d0fedfea47f7d25bf8b2c5623f8d40cf1a7fc26"
+}

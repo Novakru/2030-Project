@@ -17,11 +17,25 @@ from audit.import_json_to_db import import_documents, import_paths
 from audit.records import as_dict, field, quality, step_rows
 from audit.risk_reason import explain_risk
 from audit.review_view import (FIELD_NAMES, focus_indices, procedure, review_points,
-                               risk_name, step_summary, text)
+                               mechanism_name, risk_name, step_summary, text)
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_INPUTS = [ROOT / "data" / name for name in
-                  ("positives.jsonl", "negatives.jsonl", "native_negatives.jsonl", "sop/negatives.jsonl")]
+def latest_inputs():
+    pointer = ROOT / "data/mosaic/current.json"
+    if not pointer.is_file():
+        return []
+    try:
+        current = json.loads(pointer.read_text(encoding="utf-8"))
+        manifest_path = (pointer.parent / current["manifest"]).resolve()
+        if not manifest_path.is_relative_to(pointer.parent.resolve()):
+            return []
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        return [manifest_path.parent / value for value in manifest["result"]["review_bundle"].values()]
+    except (ValueError, OSError, KeyError, TypeError):
+        return []
+
+
+DEFAULT_INPUTS = latest_inputs()
 STATUS = {"pending": "待审核", "accepted": "已审核 · 通过", "rejected": "已审核 · 拒绝"}
 KINDS = {"positive": "正例 pos", "negative": "负例 neg", "other": "其他记录"}
 
@@ -223,9 +237,15 @@ def step_card(step, record, highlighted=False, tag_text="核对位置"):
     title, summary = step_summary(step, record)
     vessel = step.get("vessel", step.get("to_vessel", ""))
     nodes = as_dict(as_dict(field(record, "hardware")).get("nodes"))
-    params = as_dict(as_dict(nodes.get(str(vessel))).get("params"))
+    node = as_dict(nodes.get(str(vessel)))
+    params = as_dict(node.get("params"))
     capacity = params.get("capacity_mL")
     facts = (f"容器 {vessel}" if vessel else "") + (f" · 容量 {capacity} mL" if capacity is not None else "")
+    apparatus = {"microreactor": "微型反应器", "well_plate": "孔板", "vial": "反应瓶", "round_bottom_flask": "圆底烧瓶"}.get(node.get("apparatus_kind"))
+    if apparatus:
+        facts += " · " + apparatus
+    if node.get("capacity_scope") == "per_well":
+        facts += "（单孔容量）"
     evidence = as_dict(step.get("meta")).get("evidence")
     tag = f'<span class="focus-tag">{escape(tag_text)}</span>' if highlighted else ""
     st.markdown(f'<div class="flow-step {"focused" if highlighted else ""}">'
@@ -262,6 +282,9 @@ def focus_review(database, row, reviewer):
     st.markdown(f'<div class="record-heading"><strong>{escape(title)}</strong>'
                 f'<span>{escape(STATUS[row["status"]])}</span></div>'
                 f'<div class="record-id">{escape(row["record_id"])}</div>', unsafe_allow_html=True)
+    mechanism = as_dict(record.get("mutation")).get("mechanism_id")
+    if mechanism:
+        st.caption("扰动方式：" + mechanism_name(str(mechanism)))
     suffix = hashlib.sha256((database + row["record_id"]).encode()).hexdigest()[:12] + str(row["revision"])
     selected = st.selectbox("核对位置", list(range(len(points))),
                             format_func=lambda i: f"{i + 1} / {len(points)} · {points[i]['title']}", key="point_" + suffix)
@@ -319,9 +342,8 @@ def focus_review(database, row, reviewer):
             st.write(point["note"])
         show_comparison(point)
         evidence = point.get("evidence", [])
-        entry = next((e for e in evidence if isinstance(e, dict) and
-                      as_dict(e.get("values")).get("step_id") in point.get("step_ids", [])),
-                     evidence[0] if evidence else {})
+        entry = reason.get("selected_evidence", {}) if reason else next((e for e in evidence if isinstance(e, dict) and
+                    as_dict(e.get("values")).get("step_id") in point.get("step_ids", [])), evidence[0] if evidence else {})
         values = as_dict(as_dict(entry).get("values"))
         facts = [(FIELD_NAMES.get(k, k), text(v, 180)) for k, v in values.items()
                  if k not in ("step", "step_id", "group_evidence")][:6]

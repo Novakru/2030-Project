@@ -1,0 +1,52 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "MISSING_VESSEL_IDENTITY",
+        "quote": "a 5.0 mL weaton microreactor was charged",
+        "message": "The plan does not retain the reaction vessel identity or its 5.0 mL capacity. These should be distinguished from reagent or solvent quantities.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The plan omits the GC/MS completion check preceding THF removal. The specified 12-hour stirring period does not replace this analytical condition.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "action": "Use a 5.0 mL weaton microreactor for the reaction",
+          "evidence": "a 5.0 mL weaton microreactor was charged",
+          "reason": "The charging steps do not otherwise retain vessel identity and capacity."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "action": "Judge reaction completion by GC/MS before removing THF",
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "The completion check preceding solvent removal is not represented in the steps."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 549,
+    "prompt_tokens": 1096,
+    "total_tokens": 1645,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1093,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 213
+    }
+  },
+  "cache_key": "fbbfb07d380dde2b07be42dbdb753e9bd55c3d375f4660fa1bbd400df0d063fa"
+}

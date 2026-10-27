@@ -1,0 +1,60 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "General procedure B was applied to 2,7-dimethylquinoline (157 mg, 1.00mmol).",
+        "stage": "reaction",
+        "reagent": "r5",
+        "alias": "2,7-dimethylquinoline"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The reaction was stirred at room  temperature  (25  °C)  for  72  hours.",
+        "stage": "reaction",
+        "temp_C": 25,
+        "duration_s": 259200,
+        "stir": true
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "Volatiles were removed from the reaction under reduced pressure",
+        "stage": "workup"
+      },
+      {
+        "op": "Purify",
+        "evidence": "the remaining residue was purified  by  silica  gel  flash-column  chromatography  with  gradient  elution  of  MeOH/DCM  from  0.5 -12.5% over 25 column volumes",
+        "stage": "purification",
+        "method": "chromatography",
+        "stationary_phase": "silica gel",
+        "eluent": "MeOH/DCM",
+        "gradient": "0.5 -12.5% over 25 column volumes"
+      }
+    ],
+    "uncertainties": [
+      "General procedure B is referenced but not supplied; its operations and addition order cannot be extracted.",
+      "Components r1, r2, r3, and r4 have no literal reagent aliases in the supplied procedure. Their Add steps are omitted because assigning aliases or addition order would be unsupported.",
+      "Reduced pressure is specified without a numerical pressure."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "General procedure B was applied",
+        "reason": "The referenced procedure is unavailable, so its operations cannot be mapped."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 656,
+    "prompt_tokens": 1265,
+    "total_tokens": 1921,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1262,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 208
+    }
+  },
+  "cache_key": "099093d9c0fdcd767d5769a32bc7e852a4d50b4cfd30d35428768a36c594ee6c"
+}

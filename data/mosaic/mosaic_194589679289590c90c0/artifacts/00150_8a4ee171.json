@@ -1,0 +1,161 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "MISSING_VESSEL",
+        "quote": "a 5.0 mL wheaton microreactor was charged",
+        "message": "The plan does not retain the reaction vessel identity or its 5.0 mL capacity.",
+        "severity": "error"
+      },
+      {
+        "code": "UNSTRUCTURED_CHARGE_QUANTITIES",
+        "quote": "[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%), L1 ligand (2.1 mg, 3.5 mol%), B2pin2 (50.8 mg, 1.0 equiv.), KOtBu (1.0 mg, 4.5 mol%) and dry THF (1.0 mL)",
+        "message": "The charge quantities appear in evidence but are absent from the operational fields. The substrate quantities are likewise only in evidence.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_STIR_TEMPERATURE",
+        "quote": "The reaction mixture was stirred for 2 minutes at room temperature.",
+        "message": "The Stir step omits the stated room-temperature condition. A numeric temperature should not be invented.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_HEATING_SETUP",
+        "quote": "placed into pre-heated aluminum block at 80 oC",
+        "message": "The heating step retains temperature and duration but omits physical placement into a preheated aluminum block.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The plan omits the GC/MS completion check preceding solvent removal.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_EVAPORATION_CONDITION",
+        "quote": "THF was removed under reduced pressure",
+        "message": "Reduced pressure is retained only in evidence and uncertainty text, not as a condition of the evaporation operation.",
+        "severity": "error"
+      },
+      {
+        "code": "INCOMPLETE_DRYING_ACTION",
+        "quote": "dried on oil bath at 90 oC for 30 minutes",
+        "message": "The final HeatChill step retains temperature and time but does not explicitly retain drying or the oil-bath apparatus.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "a 5.0 mL wheaton microreactor was charged",
+          "reason": "Retain the vessel identity and capacity: initial charging occurs in a 5.0 mL Wheaton microreactor."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/steps/1/mass_mg",
+        "value": 1.98
+      },
+      {
+        "op": "add",
+        "path": "/steps/1/mol_percent",
+        "value": 1.5
+      },
+      {
+        "op": "add",
+        "path": "/steps/2/mass_mg",
+        "value": 2.1
+      },
+      {
+        "op": "add",
+        "path": "/steps/2/mol_percent",
+        "value": 3.5
+      },
+      {
+        "op": "add",
+        "path": "/steps/3/mass_mg",
+        "value": 50.8
+      },
+      {
+        "op": "add",
+        "path": "/steps/3/equiv",
+        "value": 1.0
+      },
+      {
+        "op": "add",
+        "path": "/steps/4/mass_mg",
+        "value": 1.0
+      },
+      {
+        "op": "add",
+        "path": "/steps/4/mol_percent",
+        "value": 4.5
+      },
+      {
+        "op": "add",
+        "path": "/steps/5/volume_mL",
+        "value": 1.0
+      },
+      {
+        "op": "add",
+        "path": "/steps/6/temperature",
+        "value": "room temperature"
+      },
+      {
+        "op": "add",
+        "path": "/steps/7/mass_mg",
+        "value": 48.1
+      },
+      {
+        "op": "add",
+        "path": "/steps/7/amount_mmol",
+        "value": 0.2
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "placed into pre-heated aluminum block at 80 oC",
+          "reason": "After capping and before the 12-hour stirring period, place the microreactor into a preheated aluminum block at 80 °C."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "Retain the GC/MS completion check before THF removal."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/steps/9/pressure",
+        "value": "reduced pressure"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "dried on oil bath at 90 oC for 30 minutes",
+          "reason": "The final heating step is specifically drying on an oil bath, following THF removal; pressure during drying is not stated."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1381,
+    "prompt_tokens": 1109,
+    "total_tokens": 2490,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1106,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 124
+    }
+  },
+  "cache_key": "fd8d9abf932e76509d5802a512b7b762f1a443bcb711cec6fd97ae9ea8060362"
+}

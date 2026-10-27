@@ -121,6 +121,16 @@ class RiskReasonTests(unittest.TestCase):
         self.assertIn("当前设备清单仍包含此节点", result["summary"])
         self.assertNotIn("该设备节点已不存在", result["summary"])
 
+    def test_extended_hold_explains_actual_parent_child_values(self):
+        parent = {"steps": [{"id": "hold", "op": "HeatChill", "duration_s": 60}]}
+        row = {"protocol": {"steps": [{"id": "hold", "op": "HeatChill", "duration_s": 6000}]},
+               "label": {"risk_l2": "C6", "label_type": "soft", "calibrated": False},
+               "mutation": {"intervention": {"kind": "step_parameter", "step_id": "hold", "field": "/duration_s"}}}
+        result = explain_risk(row, parent=parent)
+        self.assertIn("60 改为 6000", result["summary"])
+        self.assertIn("假设", result["summary"])
+        self.assertNotIn("下分位", result["summary"])
+
 
 if __name__ == "__main__":
     unittest.main()

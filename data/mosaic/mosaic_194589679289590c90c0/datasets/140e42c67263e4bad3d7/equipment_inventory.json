@@ -1,0 +1,54 @@
+{
+  "cover": {
+    "status": "incomplete",
+    "devices": [],
+    "uncovered": [
+      "operation:HeatChill:heater",
+      "operation:Irradiate:vessel",
+      "operation:Stir:heater"
+    ],
+    "optimal": false
+  },
+  "requirements": [
+    "operation:Add:vessel",
+    "operation:Atmosphere:vessel",
+    "operation:Evaporate:vessel",
+    "operation:Filter:vessel",
+    "operation:HeatChill:heater",
+    "operation:Irradiate:vessel",
+    "operation:Purify:vessel",
+    "operation:Stir:heater"
+  ],
+  "profiles": {
+    "round_bottom_flask": {
+      "category": "vessel",
+      "apparatus_kind": "round_bottom_flask"
+    },
+    "heater_stirrer": {
+      "category": "heater_stirrer",
+      "apparatus_kind": null
+    },
+    "vessel": {
+      "category": "vessel",
+      "apparatus_kind": null
+    },
+    "microreactor": {
+      "category": "vessel",
+      "apparatus_kind": "microreactor"
+    },
+    "heating_block": {
+      "category": "heater",
+      "apparatus_kind": "heating_block"
+    },
+    "vial": {
+      "category": "vessel",
+      "apparatus_kind": "vial"
+    },
+    "well_plate": {
+      "category": "vessel",
+      "apparatus_kind": "well_plate"
+    }
+  },
+  "unknown_witnesses": 196,
+  "policy": "Conservative type cover for stated batch demands only. Unknown controller ranges cannot cover heating; no physical instance or universal minimum claim."
+}

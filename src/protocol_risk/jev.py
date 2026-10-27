@@ -9,7 +9,7 @@ import numpy as np
 from .conditions import chemical_key
 from .ingest import read_raw
 from .io import ROOT, canonical, write_json
-from .pipeline import split_group
+from .validation import split_group
 from .yields import POLICY as YIELD_POLICY
 
 HTE_IDS = {

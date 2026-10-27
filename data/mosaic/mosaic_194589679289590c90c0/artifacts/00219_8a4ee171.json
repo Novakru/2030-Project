@@ -1,0 +1,50 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_DISSOLUTION",
+        "quote": "were dissolved in toluene (1.5 mL)",
+        "message": "The plan records adding toluene but does not represent the explicitly reported dissolution action.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_MONITORING",
+        "quote": "The reaction was monitorred by HPLC.",
+        "message": "HPLC monitoring is absent from both the steps and unmapped actions.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "were dissolved in toluene (1.5 mL)",
+          "reason": "Explicit dissolution is not represented by the reagent-addition steps. No dissolution technique or duration is specified."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The reaction was monitorred by HPLC.",
+          "reason": "HPLC monitoring is explicitly reported but is not represented in the steps; sampling times and analytical conditions are unspecified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 410,
+    "prompt_tokens": 1153,
+    "total_tokens": 1563,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1150
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 126
+    }
+  },
+  "cache_key": "c118ff408688e4ff4618a2955f528d2b17dc5ede17852efac2cc32595c85c3d9"
+}

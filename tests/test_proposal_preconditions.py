@@ -3,8 +3,8 @@ import copy
 
 import pytest
 
-from protocol_risk.controls import reference
-from protocol_risk.perturb import make_negative, proposals
+from tests.chemistry_fixtures import reference
+from protocol_risk.mutation_rules import make_negative, proposals
 from protocol_risk.symbolic import evaluate
 from protocol_risk.xdl import export_xdl
 

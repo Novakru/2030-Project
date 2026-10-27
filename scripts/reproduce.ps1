@@ -1,62 +1,51 @@
-param([switch]$Fetch, [switch]$RefreshExtraction, [switch]$Train, [int]$Limit = 140)
+param(
+    [string]$RunDir = '',
+    [switch]$Fetch,
+    [switch]$Offline,
+    [switch]$Publish,
+    [string]$Database = 'audit/data/mosaic.sqlite3',
+    [int]$Positives = 140,
+    [int]$PerRisk = 10,
+    [int]$TextLimit = 60
+)
 $ErrorActionPreference = 'Stop'
 $taskRoot = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $taskRoot
-if (-not (Test-Path -LiteralPath '.venv\Scripts\python.exe')) {
-    python -m venv .venv
-    if ($LASTEXITCODE -ne 0) { throw 'venv creation failed' }
-}
-$taskPython = Join-Path $taskRoot '.venv\Scripts\python.exe'
+$taskPython = Join-Path $taskRoot '.venv/Scripts/python.exe'
+if (-not (Test-Path -LiteralPath $taskPython)) { throw 'Create .venv and install requirements.lock.txt first.' }
 $env:PYTHONPATH = Join-Path $taskRoot 'src'
 $env:PYTHONIOENCODING = 'utf-8'
 function Invoke-Python([string[]]$Arguments) {
-    # Windows PowerShell treats native stderr as an ErrorRecord. The process exit
-    # code is authoritative; ordinary stderr diagnostics must not abort the script.
-    $taskSavedPreference = $ErrorActionPreference
+    $taskPreference = $ErrorActionPreference
     $ErrorActionPreference = 'Continue'
     try {
         & $taskPython @Arguments 2>&1 | ForEach-Object {
             if ($_ -is [System.Management.Automation.ErrorRecord]) { $_.ToString() } else { $_ }
         }
         $taskExitCode = $LASTEXITCODE
-    } finally {
-        $ErrorActionPreference = $taskSavedPreference
+    } finally { $ErrorActionPreference = $taskPreference }
+    if ($taskExitCode -ne 0) { throw "Python command failed: $($Arguments -join ' ')" }
+}
+if ($RunDir) {
+    $taskArguments = @('-m', 'mosaic', 'resume', $RunDir)
+    if ($Offline) { $taskArguments += '--offline' }
+    Invoke-Python -Arguments $taskArguments
+} else {
+    if ($Fetch) { Invoke-Python -Arguments @('-m', 'protocol_risk', 'fetch') }
+    if (-not (Test-Path -LiteralPath 'data/raw/reactions.parquet')) {
+        Invoke-Python -Arguments @('-m', 'protocol_risk', 'ingest')
     }
-    if ($taskExitCode -ne 0) { throw "Python command failed with exit code $taskExitCode" }
-}
-Invoke-Python -Arguments @('-m', 'pip', '--disable-pip-version-check', 'install', '-r', 'requirements.lock.txt')
-if (Test-Path -LiteralPath 'data\platform_sources.lock.json') {
-    Invoke-Python -Arguments @('-m', 'pip', '--disable-pip-version-check', 'install', '--no-index', '-r', 'requirements-platform.lock.txt')
-}
-function Invoke-Protocol([string[]]$Arguments) {
-    Invoke-Python -Arguments (@('-m', 'protocol_risk') + $Arguments)
-}
-if ($Fetch) { Invoke-Protocol -Arguments @('fetch') }
-if (-not (Test-Path -LiteralPath 'data\raw\reactions.parquet')) { Invoke-Protocol -Arguments @('ingest') }
-if ($RefreshExtraction) {
-    Invoke-Protocol -Arguments @('api-check')
-    Invoke-Protocol -Arguments @('extract', '--limit', '200', '--workers', '4')
-}
-Invoke-Protocol -Arguments @('build', '--limit', "$Limit", '--per-risk', '12')
-Invoke-Protocol -Arguments @('scan-amounts')
-if (Test-Path -LiteralPath 'data\publications\members.lock.json') {
-    Invoke-Protocol -Arguments @('prepare-publications')
-    Invoke-Protocol -Arguments @('audit-publications')
-    Invoke-Protocol -Arguments @('build-native-negatives')
-    Invoke-Protocol -Arguments @('audit-native-negatives')
-    if (Test-Path -LiteralPath 'data\platform_sources.lock.json') {
-        Invoke-Protocol -Arguments @('validate-native-platform')
-        Invoke-Protocol -Arguments @('audit-native-platform')
+    $taskArguments = @('-m','mosaic','run','--positives',"$Positives",'--per-risk',"$PerRisk")
+    if ($Offline) {
+        $taskArguments += @('--offline','--text-limit','0','--llm-perturbations','0','--max-calls','0')
+    } else {
+        Invoke-Python -Arguments @('-m','protocol_risk','api-check')
+        $taskArguments += @('--text-limit',"$TextLimit",'--llm-perturbations','6','--max-calls','200',
+                            '--model','extractor=gpt-6.1-sol','--model','critic=gpt-6.1-sol')
     }
+    Invoke-Python -Arguments $taskArguments
+    $taskCurrent = Get-Content -LiteralPath 'data/mosaic/current.json' -Raw -Encoding UTF8 | ConvertFrom-Json
+    $RunDir = Join-Path 'data/mosaic' $taskCurrent.run_id
 }
-if (Test-Path -LiteralPath 'data\sop_sources.lock.json') {
-    Invoke-Protocol -Arguments @('build-sop')
-}
-Invoke-Protocol -Arguments @('audit')
-if ($Train) { Invoke-Protocol -Arguments @('train') }
-if ($Train -or (Test-Path -LiteralPath 'data\hte\contrasts.jsonl')) {
-    Invoke-Protocol -Arguments @('hte-contrasts')
-    Invoke-Protocol -Arguments @('audit-contrasts')
-}
-Invoke-Protocol -Arguments @('report')
-Invoke-Python -Arguments @('-m', 'pytest', '-q')
+Invoke-Python -Arguments @('-m','mosaic','verify',$RunDir)
+if ($Publish) { Invoke-Python -Arguments @('-m','mosaic','publish',$RunDir,'--db',$Database) }

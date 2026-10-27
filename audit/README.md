@@ -14,7 +14,7 @@ python -m venv audit/.venv
 ./audit/start_review.ps1
 ```
 
-打开 <http://localhost:8501> 后，已有的默认数据库会自动连接，直接进入逐条批改。也可在侧边栏「数据库连接」中打开其他库或首次导入。本次交付的 `audit/data/reviews.sqlite3` 包含 140 条 pos 和 237 条 neg，全部为 `pending`。启动脚本默认监听本机。已有其他服务占用 8501 时，可指定 `./audit/start_review.ps1 -Port 8502`。
+打开 <http://localhost:8501> 后，已有默认数据库会自动连接，直接进入逐条批改。存在 `audit/data/mosaic.sqlite3` 时优先使用新批次库，否则使用 `reviews.sqlite3`。也可在侧边栏打开其他库或首次导入。当前批次数量以数据库进度和 `data/mosaic/current.json` 指向的清单为准。启动脚本默认监听本机；端口占用时可指定 `./audit/start_review.ps1 -Port 8502`。
 
 侧边栏「使用帮助」会在新标签页打开基本操作说明，也可直接访问 <http://localhost:8501/?help=1>。关闭帮助页即可回到原审核位置。
 
@@ -40,7 +40,7 @@ audit/
   start_review.ps1         # Windows 启动入口
   requirements.txt        # 仅 streamlit、pandas
   tests/                  # 后端与 Streamlit AppTest
-  data/reviews.sqlite3    # 本地数据库，含审核状态，不纳入版本控制
+  data/mosaic.sqlite3     # 新批次默认库，含审核状态，不纳入版本控制
   exports/review_<UTC>/   # 每次导出一个新目录，不纳入版本控制
   verification.json      # 本次实际数据与测试的交付验证记录
   README.md
@@ -56,7 +56,7 @@ audit/
 独立脚本的等效用法：
 
 ```powershell
-python audit/import_json_to_db.py data/positives.jsonl data/negatives.jsonl data/native_negatives.jsonl data/sop/negatives.jsonl --db audit/data/reviews.sqlite3
+python -m mosaic publish data/mosaic/mosaic_<批次哈希> --db audit/data/mosaic.sqlite3
 python audit/import_json_to_db.py "D:/records" --db "D:/reviews/new.sqlite3"
 ```
 
@@ -64,7 +64,7 @@ python audit/import_json_to_db.py "D:/records" --db "D:/reviews/new.sqlite3"
 
 `raw_json` 保存每条原始对象的全部内容，空白格式规范化；列表顺序、未知字段和嵌套对象都保留。已有 ID 永不覆盖原始快照、索引类型或审核状态。输入变化的同 ID 会列入 `changed_duplicates`，不是静默更新；审核新版本时另建数据库。文件名不会自动变成记录 ID。
 
-「数据管理」页可显式补充导入，包括缺失的父记录。当前 ORD 负例的父记录已随 pos 导入；SOP 父记录可以从 `data/sop/parents.jsonl` 补充，原生 D2 父记录可以从 `data/publications/chemputer_2022.jsonl` 补充。界面只在 SQLite 查找父记录，不会根据 `parent_id`、`xdl_path` 等字段读取磁盘文件。
+「数据管理」可显式补充导入。MOSAIC 批次的 ORD、SOP、原生 XDL 父记录统一包含在同一批次的 `positives.jsonl` 中，发布时一并导入。界面只在 SQLite 查找父记录，不根据 `parent_id`、`xdl_path` 等字段读取磁盘文件。首次导入框默认列出当前清单中的两个记录文件，不扫描整个批次目录。
 
 记录类型默认从明确的 `record_type` / `kind`、`pos_` / `neg_` ID、风险标签及 `parent_id` 推断；无法判定的标记为「其他记录」。对外部命名的数据可用网页「本批记录类型」或 CLI `--kind positive|negative|other` 显式指定，原始 JSON 的标签不被改写。
 

@@ -1,0 +1,254 @@
+{
+  "protocol": {
+    "id": "pos_0bbcbc3831fe4be08129e3339e1b69fe",
+    "source": {
+      "dataset_id": "ord_dataset-7acd6ad2bf4d4cff841cad008ab726d5",
+      "dataset_name": "Aniline amide coupling reaction",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-7acd6ad2bf4d4cff841cad008ab726d5.parquet",
+      "file_sha256": "98fe02c8fafa3a72f1cf2e97deeaf43a141b8308f6d325acfee224fc397ea71c",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/64c7e2e1658ec5f7e5808425",
+      "reaction_id": "ord-0bbcbc3831fe4be08129e3339e1b69fe",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/7a/ord_dataset-7acd6ad2bf4d4cff841cad008ab726d5.parquet"
+    },
+    "raw_id": "ord-0bbcbc3831fe4be08129e3339e1b69fe",
+    "raw_sha256": "c69943d08acde805901f97f835c8d1032232b1ea1208809cabc2b04aa5d4c025",
+    "reaction_smiles": "COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1.Cc1ccc2ncccc2c1N>>COc1ccc2c(c1)c(CC(=O)Nc1c(C)ccc3ncccc13)c(C)n2C(=O)c1ccc(Cl)cc1",
+    "reaction_class": "Aniline amide coupling reaction",
+    "yield_percent": 47.32,
+    "reagents": [
+      {
+        "addition_order": 1,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.026
+        },
+        "id": "r1",
+        "input_key": "activator",
+        "name": "HATU",
+        "role": "REAGENT",
+        "smiles": "CN(C)C(=[O+]n1nnc2cccnc21)N(C)C.F[P-](F)(F)(F)(F)F",
+        "source_path": "/inputs/activator/components/0"
+      },
+      {
+        "addition_order": 4,
+        "addition_time": {
+          "unit": "s",
+          "value": 1800.0
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.03
+        },
+        "id": "r2",
+        "input_key": "aniline stock solution",
+        "name": "Cc1ccc2ncccc2c1N",
+        "role": "REACTANT",
+        "smiles": "Cc1ccc2ncccc2c1N",
+        "source_path": "/inputs/aniline stock solution/components/0"
+      },
+      {
+        "addition_order": 4,
+        "addition_time": {
+          "unit": "s",
+          "value": 1800.0
+        },
+        "amount": {
+          "unit": "mL",
+          "value": 0.1
+        },
+        "id": "r3",
+        "input_key": "aniline stock solution",
+        "name": "DMF",
+        "role": "SOLVENT",
+        "smiles": "CN(C)C=O",
+        "source_path": "/inputs/aniline stock solution/components/1"
+      },
+      {
+        "addition_order": 3,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.06
+        },
+        "id": "r4",
+        "input_key": "base",
+        "name": "2,6-Lutidine",
+        "role": "REAGENT",
+        "smiles": "Cc1cccc(C)n1",
+        "source_path": "/inputs/base/components/0"
+      },
+      {
+        "addition_order": 2,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.02
+        },
+        "id": "r5",
+        "input_key": "carboxylic acid (indomethacin)\nstock solution",
+        "name": "indomethacin",
+        "role": "REACTANT",
+        "smiles": "COc1ccc2c(c1)c(CC(=O)O)c(C)n2C(=O)c1ccc(Cl)cc1",
+        "source_path": "/inputs/carboxylic acid (indomethacin)\nstock solution/components/0"
+      },
+      {
+        "addition_order": 2,
+        "addition_time": null,
+        "amount": {
+          "unit": "mL",
+          "value": 0.1
+        },
+        "id": "r6",
+        "input_key": "carboxylic acid (indomethacin)\nstock solution",
+        "name": "DMF",
+        "role": "SOLVENT",
+        "smiles": "CN(C)C=O",
+        "source_path": "/inputs/carboxylic acid (indomethacin)\nstock solution/components/1"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.026
+        },
+        "vessel": "reactor",
+        "id": "s001",
+        "meta": {
+          "source_path": "/inputs/activator/components/0",
+          "addition_group": "activator",
+          "addition_order": 1
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.02
+        },
+        "vessel": "reactor",
+        "id": "s002",
+        "meta": {
+          "source_path": "/inputs/carboxylic acid (indomethacin)\nstock solution/components/0",
+          "addition_group": "carboxylic acid (indomethacin)\nstock solution",
+          "addition_order": 2
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r6",
+        "amount": {
+          "unit": "mL",
+          "value": 0.1
+        },
+        "vessel": "reactor",
+        "id": "s003",
+        "meta": {
+          "source_path": "/inputs/carboxylic acid (indomethacin)\nstock solution/components/1",
+          "addition_group": "carboxylic acid (indomethacin)\nstock solution",
+          "addition_order": 2
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r4",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.06
+        },
+        "vessel": "reactor",
+        "id": "s004",
+        "meta": {
+          "source_path": "/inputs/base/components/0",
+          "addition_group": "base",
+          "addition_order": 3
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.03
+        },
+        "vessel": "reactor",
+        "id": "s005",
+        "meta": {
+          "source_path": "/inputs/aniline stock solution/components/0",
+          "addition_group": "aniline stock solution",
+          "addition_order": 4
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r3",
+        "amount": {
+          "unit": "mL",
+          "value": 0.1
+        },
+        "vessel": "reactor",
+        "id": "s006",
+        "meta": {
+          "source_path": "/inputs/aniline stock solution/components/1",
+          "addition_group": "aniline stock solution",
+          "addition_order": 4
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 25.0,
+        "duration_s": 86400.0,
+        "id": "s007",
+        "meta": {
+          "source_path": "/conditions/temperature/setpoint"
+        },
+        "stir": true
+      }
+    ],
+    "context": {
+      "reflux": false,
+      "pressure_control": "UNKNOWN",
+      "source_setup": {
+        "environment": {
+          "type": "BENCH_TOP"
+        },
+        "is_automated": false,
+        "vessel": {
+          "material": {
+            "type": "GLASS"
+          },
+          "type": "VIAL",
+          "volume": {
+            "units": "MILLILITER",
+            "value": 1.0
+          }
+        }
+      },
+      "atmosphere": {}
+    },
+    "extraction": {
+      "method": "ord_structured",
+      "scope": "ordered_inputs_and_reaction_hold",
+      "unresolved": [],
+      "unmapped_actions": [],
+      "limitations": [
+        "Components in one input are premixed; same-order inputs have no inferred relative order.",
+        "This export does not reconstruct workup or preparative stock handling."
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/1",
+    "findings": [],
+    "apparatus_proposals": [],
+    "evidence_spans": []
+  },
+  "raw_id": "ord-0bbcbc3831fe4be08129e3339e1b69fe"
+}

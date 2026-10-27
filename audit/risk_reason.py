@@ -3,7 +3,7 @@ from audit.records import as_dict, field, list_values
 from audit.review_view import hardware_node_summary, procedure, text
 
 # These are descriptions of the project's existing rules, not new safety decisions.
-# The conditions mirror symbolic.py, perturb.py and the native material-input contract.
+# Conditions mirror symbolic.py, mutation_rules.py and native material contracts.
 RULES = {
     "A1.capacity": (
         "规则记录的液体体积为 {volume_mL} mL，容器声明容量为 {capacity_mL} mL；原标注据此提出容量越界。",
@@ -35,6 +35,10 @@ RULES = {
     "A5.required_component_missing": (
         "原规则记录缺少操作所需组件 {component}。",
         "触发条件：所需组件未在器材图中声明。", "核对组件是否真实缺失，或仅名称不同。"),
+    "A5.controller_capability_mismatch": (
+        "步骤请求 {operation}，控制器却绑定到 {controller}；该节点的器材类型记录为 {category}。",
+        "触发条件：绑定对象属于已知的非控温/搅拌器材类型，无法按该角色承接操作。",
+        "核对绑定是否指错节点、器材类型是否准确，以及是否存在独立的加热或搅拌装置。"),
     "A5.disconnected_path": (
         "原规则未找到从 {from} 到 {to} 的声明连通路径。",
         "触发条件：转移所需路径在器材图中不可达。", "核对器材图、连接方向和转移绑定。"),
@@ -108,6 +112,29 @@ def _duration(seconds):
     return f"{text(seconds)} 秒"
 
 
+def soft_change_summary(record, parent=None):
+    intervention = as_dict(as_dict(record.get("mutation")).get("intervention"))
+    identifier = intervention.get("step_id")
+    if intervention.get("kind") == "step_parameter" and identifier:
+        current = next((s for s in procedure(record) if s["_id"] == identifier), {})
+        original = next((s for s in procedure(parent or {}) if s["_id"] == identifier), {})
+        path = str(intervention.get("field", "")).strip("/").split("/")
+        def value(step):
+            result = step
+            for key in path:
+                result = as_dict(result).get(key)
+            return "未提供" if result is None else text(result)
+        name = {"temp_C": "温度（°C）", "duration_s": "时长（秒）", "amount": "加料用量"}.get(path[0], path[0])
+        return f"步骤 {identifier} 的{name}由 {value(original)} 改为 {value(current)}；该条件变化仍是待核验的扰动假设。"
+    if intervention.get("kind") == "reagent_identity":
+        identifier = intervention.get("reagent_id")
+        def name(row):
+            entries = field(row, "reagents", [])
+            return next((str(r.get("name", identifier)) for r in entries if isinstance(r, dict) and r.get("id") == identifier), "未提供")
+        return f"试剂 {identifier} 由 {name(parent or {})} 替换为 {name(record)}；记录未观察到此替换后的实验结果。"
+    return None
+
+
 def controller_dependency(record, entry, entries, parent=None):
     controller = as_dict(entry.get("values")).get("controller")
     if not isinstance(controller, str):
@@ -175,7 +202,7 @@ def explain_risk(record, point=None, parent=None):
     result = {"risk": code, "rule_id": entry.get("rule_id"), "label_type": label.get("label_type"),
               "judge": label.get("judge"), "scope": label.get("scope"), "source_url": entry.get("source_url"),
               "origin": "结构化证据解释", "available": True,
-              "raw_evidence": evidence, "contract": record.get("contract")}
+              "raw_evidence": evidence, "selected_evidence": entry, "contract": record.get("contract")}
     original = next((v for v in (label.get("reason"), label.get("rationale"), entry.get("reason"), entry.get("rationale"))
                      if isinstance(v, str) and v.strip()), None)
     if original:
@@ -196,7 +223,7 @@ def explain_risk(record, point=None, parent=None):
                 result.update(details)
     elif label.get("label_type") == "soft" and code in SOFT:
         soft_values = EvidenceValues({k: text(v) if v is not None else "未提供" for k, v in as_dict(evidence).items()})
-        result.update(summary=SOFT[code].format_map(soft_values),
+        result.update(summary=soft_change_summary(record, parent) or SOFT[code].format_map(soft_values),
                       condition="条件扰动假设，不能据此当作已观察到的实验失败或确定因果。",
                       review_hint="核对扰动、参考分位或原值是否正确，以及该假设是否有独立证据。",
                       calibrated=label.get("calibrated"))

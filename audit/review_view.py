@@ -206,6 +206,20 @@ def review_points(record, parent=None):
         points.append({"key": f"unknown:{index}", "title": risk_name(str(item.get("rule", "约束"))),
                        "step_ids": _locators(item, steps), "changes": [], "evidence": [unknown],
                        "note": REASONS.get(item.get("reason"), text(unknown)), "priority": 1})
+    for index, finding in enumerate(list_values(as_dict(field(record, "mosaic")).get("findings"))):
+        if not isinstance(finding, dict):
+            continue
+        quote = finding.get("quote", "")
+        located = [s["_id"] for s in steps if quote and (quote in as_dict(s.get("meta")).get("evidence", "")
+                   or as_dict(s.get("meta")).get("evidence") and as_dict(s.get("meta"))["evidence"] in quote)]
+        represented = any(quote and quote == as_dict(event).get("evidence")
+                          for event in list_values(as_dict(field(record, "context")).get("source_context_events")))
+        note = ("程序已将此项原文映射为器材或上下文，请核对映射：" if represented else
+                "模型建议，尚未构成已证实风险：") + str(finding.get("message", ""))
+        points.append({"key": f"model-finding:{index}", "title": "模型核对建议 · " + str(finding.get("code", "来源一致性")),
+                       "step_ids": located, "changes": [{"field": "原文", "before": quote, "after": "待专家核对", "path": ""}],
+                       "evidence": [finding], "note": note,
+                       "priority": -1 if finding.get("severity") == "error" and not represented else 1})
     for category in ("conflicts", "missing"):
         for index, value in enumerate(list_values(cross.get(category))):
             points.insert(0, {"key": f"{category}:{index}", "title": "核对冲突" if category == "conflicts" else "缺失信息",
@@ -221,6 +235,27 @@ def review_points(record, parent=None):
                        "note": "核对关键输入步骤是否缺失，及后续步骤的物料来源。" if contract else
                                "核对流程、原始证据及记录标签。", "contract": contract})
     return sorted(points, key=lambda p: p.get("priority", -2))
+
+
+def mechanism_name(identifier):
+    names = {"A1.single_add_overfill": "单次加料超容", "A1.cumulative_overfill": "累计加料超容",
+             "A1.active_fill_fraction": "搅拌或控温时装填率过高",
+             "A5.missing_controller": "移除控温或搅拌设备", "A5.incompatible_bound_capability": "控制器绑定到不具备该功能的器材",
+             "A5.unresolved_binding": "控制器绑定引用不存在", "A5.disconnected_path": "切断物料转移路径",
+             "B1.overheat_open_liquid": "提高开放体系的温度至常压沸点以上",
+             "B1.open_hot_closed_vessel": "将高于常压沸点的封闭体系改为开放",
+             "C2.cooler_than_source": "降低反应温度", "C2.hotter_than_source": "提高反应温度",
+             "C3.catalyst_omission": "省略催化剂加料", "C3.catalyst_identity_substitution": "催化剂位置换成其他物料",
+             "D3.undefined_vessel": "引用未声明的容器", "D3.undefined_reagent": "引用未声明的试剂",
+             "D4.nonpositive_quantity": "将用量改为无效数值", "D4.incompatible_dimension": "将用量改成不相容的量纲",
+             "D2.omitted_transfer": "删除唯一物料转入步骤", "D2.omitted_filterthrough": "删除唯一滤过转入步骤"}
+    if identifier in names:
+        return names[identifier]
+    if identifier.startswith("C4."):
+        return "降低指定组分投料量" if ".depleted_" in identifier else "提高指定组分投料量"
+    if identifier.startswith("C6."):
+        return "延长原有操作时长" if ".extended_" in identifier else "缩短原有操作时长"
+    return identifier
 
 
 def focus_indices(steps, point):

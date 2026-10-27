@@ -79,7 +79,7 @@ class Client:
         cache_key = digest({"model": self.config["model"], "endpoint": self.endpoint, "messages": messages})
         path = ROOT / "data/cache/api" / (cache_key + ".json")
         if cache and path.exists():
-            return read_json(path)
+            return {**read_json(path), "cache_hit": True}
         response = self.request(messages)
         if response.status_code != 200:
             raise RuntimeError(f"API HTTP {response.status_code}; response body omitted to protect credentials")
@@ -91,7 +91,7 @@ class Client:
                   "usage": data.get("usage", {}), "cache_key": cache_key}
         if cache:
             write_json(path, result)
-        return result
+        return {**result, "cache_hit": False}
 
 
 def probe(env_file=None):

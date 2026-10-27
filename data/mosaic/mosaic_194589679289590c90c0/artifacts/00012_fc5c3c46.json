@@ -1,0 +1,429 @@
+{
+  "protocol": {
+    "id": "pos_8b0645e6b72740d2a995676b85386226",
+    "source": {
+      "dataset_id": "ord_dataset-35a5a513f1dd44a3a97c88da99f81a00",
+      "dataset_name": "Development of an automated kinetic profiling system with online HPLC for reaction optimization",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-35a5a513f1dd44a3a97c88da99f81a00.parquet",
+      "file_sha256": "c988a627ade03b5574429adaa49434702cdec457915b1a2ebf88b708753e42a2",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://pubs.rsc.org/en/content/articlelanding/2019/re/c9re00086k",
+      "reaction_id": "ord-8b0645e6b72740d2a995676b85386226",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/35/ord_dataset-35a5a513f1dd44a3a97c88da99f81a00.parquet"
+    },
+    "raw_id": "ord-8b0645e6b72740d2a995676b85386226",
+    "raw_sha256": "27d091edcf4f33fb8f61ce71e23af768eecd094f1c5f92b481cd4db1de7351fc",
+    "reaction_smiles": "CI.O=C(CC(OC)=O)C1CC1>>O=C(C(C)C(OC)=O)C1CC1",
+    "reaction_class": "Development of an automated kinetic profiling system with online HPLC for reaction optimization",
+    "yield_percent": 79.0,
+    "reagents": [
+      {
+        "addition_order": 1,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 276.0
+        },
+        "id": "r1",
+        "input_key": "1",
+        "name": "O=C(CC(OC)=O)C1CC1",
+        "role": "REACTANT",
+        "smiles": "O=C(CC(OC)=O)C1CC1",
+        "source_path": "/inputs/1/components/0"
+      },
+      {
+        "addition_order": 1,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 276.0
+        },
+        "id": "r2",
+        "input_key": "MeI",
+        "name": "CI",
+        "role": "REACTANT",
+        "smiles": "CI",
+        "source_path": "/inputs/MeI/components/0"
+      },
+      {
+        "addition_order": 1,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 414.0
+        },
+        "id": "r3",
+        "input_key": "base",
+        "name": "C(=O)([O-])[O-].[K+].[K+]",
+        "role": "REAGENT",
+        "smiles": "C(=O)([O-])[O-].[K+].[K+]",
+        "source_path": "/inputs/base/components/0"
+      },
+      {
+        "id": "w1",
+        "name": "Et2O",
+        "role": "WORKUP",
+        "smiles": null,
+        "amount": {
+          "value": 100,
+          "unit": "mL"
+        },
+        "source_path": null
+      },
+      {
+        "id": "w2",
+        "name": "Et2O",
+        "role": "WORKUP",
+        "smiles": null,
+        "amount": {
+          "value": 100,
+          "unit": "mL"
+        },
+        "source_path": null
+      }
+    ],
+    "steps": [
+      {
+        "op": "Atmosphere",
+        "gas": "nitrogen",
+        "mode": "environment",
+        "id": "s001",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "under N2 atmosphere",
+          "stage": "reaction"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "id": "s002",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "charged methyl 3-cyclopropyl-3-oxopropanoate 1 (39.2 g, 276 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/1/components/0/amount",
+          "source_alias": "methyl 3-cyclopropyl-3-oxopropanoate 1"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 276.0
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "id": "s003",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "MeI (17.2 ml, 276 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/MeI/components/0/amount",
+          "source_alias": "MeI"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 276.0
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r3",
+        "id": "s004",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "K2CO3 (57.2 g, 414 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/base/components/0/amount",
+          "source_alias": "K2CO3"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 414.0
+        }
+      },
+      {
+        "op": "HeatChill",
+        "temp_C": 25,
+        "duration_s": 57600,
+        "stir": true,
+        "id": "s005",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The mixture was agitated at 25 °C for 16 h.",
+          "stage": "reaction"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "w1",
+        "amount": {
+          "value": 100,
+          "unit": "mL"
+        },
+        "id": "s006",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The reaction mixture\nwas diluted with Et2O (100 ml)",
+          "stage": "workup",
+          "source_alias": "Et2O"
+        }
+      },
+      {
+        "op": "Filter",
+        "keep": "filtrate",
+        "id": "s007",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "and filtered.",
+          "stage": "workup"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "w2",
+        "amount": {
+          "value": 100,
+          "unit": "mL"
+        },
+        "id": "s008",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The solids were rinsed with Et2O (100 ml)",
+          "stage": "workup",
+          "source_alias": "Et2O"
+        }
+      },
+      {
+        "op": "Evaporate",
+        "id": "s009",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "the\nfiltrate was concentrated to a crude oil.",
+          "stage": "workup"
+        }
+      },
+      {
+        "op": "Purify",
+        "method": "chromatography",
+        "id": "s010",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The crude oil was purified by normal phase column\nchromatography",
+          "stage": "purification"
+        }
+      }
+    ],
+    "context": {
+      "reflux": false,
+      "atmosphere": {
+        "type": "NITROGEN"
+      },
+      "pressure_control": "UNKNOWN",
+      "source_setup": {
+        "vessel": {
+          "type": "ROUND_BOTTOM_FLASK",
+          "volume": {
+            "units": "MILLILITER",
+            "value": 500.0
+          }
+        }
+      }
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 791,
+        "prompt_tokens": 900,
+        "total_tokens": 1691,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 150
+        }
+      },
+      "cache_key": "0ae7d5e82774d3e189034e64d24209e3863d0315c1b2a23efb227d23dc96cc2a",
+      "unresolved": [
+        "The procedure does not explicitly state whether the Et2O rinse was combined with the filtrate."
+      ],
+      "unmapped_actions": []
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/1",
+    "findings": [
+      {
+        "code": "MISSING_VESSEL_AND_EQUIPMENT",
+        "quote": "a 500 ml round bottomed flask equipped with a magnetic stir bar",
+        "message": "The plan omits the reaction vessel's identity, capacity, and magnetic stir bar.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-8b0645e6b72740d2a995676b85386226",
+          "source_sha256": "d1dc4592fae6312ca1f07a2216dc132712bcf97aadddfdb4948cca51ff93ba4b",
+          "start": 3,
+          "end": 66,
+          "quote": "a 500 ml round bottomed flask equipped with a magnetic stir bar"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "OMITTED_REAGENT_QUANTITIES",
+        "quote": "methyl 3-cyclopropyl-3-oxopropanoate 1 (39.2 g, 276 mmol), MeI (17.2 ml, 276 mmol)\nand K2CO3 (57.2 g, 414 mmol)",
+        "message": "The three charge steps retain quantities only in evidence text, not as extracted quantities.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-8b0645e6b72740d2a995676b85386226",
+          "source_sha256": "d1dc4592fae6312ca1f07a2216dc132712bcf97aadddfdb4948cca51ff93ba4b",
+          "start": 99,
+          "end": 210,
+          "quote": "methyl 3-cyclopropyl-3-oxopropanoate 1 (39.2 g, 276 mmol), MeI (17.2 ml, 276 mmol)\nand K2CO3 (57.2 g, 414 mmol)"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "RINSE_TARGET_NOT_CAPTURED",
+        "quote": "The solids were rinsed with Et2O (100 ml)",
+        "message": "The generic addition step does not specify that the ether is used to rinse the filtered solids, rather than added to the filtrate.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-8b0645e6b72740d2a995676b85386226",
+          "source_sha256": "d1dc4592fae6312ca1f07a2216dc132712bcf97aadddfdb4948cca51ff93ba4b",
+          "start": 322,
+          "end": 363,
+          "quote": "The solids were rinsed with Et2O (100 ml)"
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "500 ml round bottomed flask",
+        "kind": "vessel",
+        "identity": null,
+        "scope": "reaction vessel; stated volume is 500 mL",
+        "evidence": {
+          "source_id": "ord-8b0645e6b72740d2a995676b85386226",
+          "source_sha256": "d1dc4592fae6312ca1f07a2216dc132712bcf97aadddfdb4948cca51ff93ba4b",
+          "start": 5,
+          "end": 32,
+          "quote": "500 ml round bottomed flask"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "magnetic stir bar",
+        "kind": "stirrer",
+        "identity": null,
+        "scope": "reaction agitation",
+        "evidence": {
+          "source_id": "ord-8b0645e6b72740d2a995676b85386226",
+          "source_sha256": "d1dc4592fae6312ca1f07a2216dc132712bcf97aadddfdb4948cca51ff93ba4b",
+          "start": 49,
+          "end": 66,
+          "quote": "magnetic stir bar"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "filtered",
+        "kind": "filtration apparatus",
+        "identity": null,
+        "scope": "workup; apparatus not specified",
+        "evidence": {
+          "source_id": "ord-8b0645e6b72740d2a995676b85386226",
+          "source_sha256": "d1dc4592fae6312ca1f07a2216dc132712bcf97aadddfdb4948cca51ff93ba4b",
+          "start": 312,
+          "end": 320,
+          "quote": "filtered"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-8b0645e6b72740d2a995676b85386226",
+        "source_sha256": "d1dc4592fae6312ca1f07a2216dc132712bcf97aadddfdb4948cca51ff93ba4b",
+        "start": 67,
+        "end": 86,
+        "quote": "under N2 atmosphere"
+      },
+      {
+        "source_id": "ord-8b0645e6b72740d2a995676b85386226",
+        "source_sha256": "d1dc4592fae6312ca1f07a2216dc132712bcf97aadddfdb4948cca51ff93ba4b",
+        "start": 91,
+        "end": 156,
+        "quote": "charged methyl 3-cyclopropyl-3-oxopropanoate 1 (39.2 g, 276 mmol)"
+      },
+      {
+        "source_id": "ord-8b0645e6b72740d2a995676b85386226",
+        "source_sha256": "d1dc4592fae6312ca1f07a2216dc132712bcf97aadddfdb4948cca51ff93ba4b",
+        "start": 158,
+        "end": 181,
+        "quote": "MeI (17.2 ml, 276 mmol)"
+      },
+      {
+        "source_id": "ord-8b0645e6b72740d2a995676b85386226",
+        "source_sha256": "d1dc4592fae6312ca1f07a2216dc132712bcf97aadddfdb4948cca51ff93ba4b",
+        "start": 186,
+        "end": 210,
+        "quote": "K2CO3 (57.2 g, 414 mmol)"
+      },
+      {
+        "source_id": "ord-8b0645e6b72740d2a995676b85386226",
+        "source_sha256": "d1dc4592fae6312ca1f07a2216dc132712bcf97aadddfdb4948cca51ff93ba4b",
+        "start": 212,
+        "end": 255,
+        "quote": "The mixture was agitated at 25 °C for 16 h."
+      },
+      {
+        "source_id": "ord-8b0645e6b72740d2a995676b85386226",
+        "source_sha256": "d1dc4592fae6312ca1f07a2216dc132712bcf97aadddfdb4948cca51ff93ba4b",
+        "start": 256,
+        "end": 307,
+        "quote": "The reaction mixture\nwas diluted with Et2O (100 ml)"
+      },
+      {
+        "source_id": "ord-8b0645e6b72740d2a995676b85386226",
+        "source_sha256": "d1dc4592fae6312ca1f07a2216dc132712bcf97aadddfdb4948cca51ff93ba4b",
+        "start": 308,
+        "end": 321,
+        "quote": "and filtered."
+      },
+      {
+        "source_id": "ord-8b0645e6b72740d2a995676b85386226",
+        "source_sha256": "d1dc4592fae6312ca1f07a2216dc132712bcf97aadddfdb4948cca51ff93ba4b",
+        "start": 322,
+        "end": 363,
+        "quote": "The solids were rinsed with Et2O (100 ml)"
+      },
+      {
+        "source_id": "ord-8b0645e6b72740d2a995676b85386226",
+        "source_sha256": "d1dc4592fae6312ca1f07a2216dc132712bcf97aadddfdb4948cca51ff93ba4b",
+        "start": 368,
+        "end": 413,
+        "quote": "the\nfiltrate was concentrated to a crude oil."
+      },
+      {
+        "source_id": "ord-8b0645e6b72740d2a995676b85386226",
+        "source_sha256": "d1dc4592fae6312ca1f07a2216dc132712bcf97aadddfdb4948cca51ff93ba4b",
+        "start": 414,
+        "end": 478,
+        "quote": "The crude oil was purified by normal phase column\nchromatography"
+      }
+    ],
+    "repair": {
+      "accepted": false,
+      "errors": [
+        "step 1: vessel must be a nonempty string identifier"
+      ]
+    },
+    "apparatus_unknowns": [
+      "Mapping specialist proposal rejected: ValueError"
+    ]
+  },
+  "raw_id": "ord-8b0645e6b72740d2a995676b85386226"
+}

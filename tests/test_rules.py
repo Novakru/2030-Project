@@ -5,9 +5,9 @@ import jsonpatch
 import pytest
 from hypothesis import given, strategies as st
 
-from protocol_risk.controls import generate_controls, mutate, reference
+from tests.chemistry_fixtures import generate_controls, mutate, reference
 from protocol_risk.io import load_library
-from protocol_risk.perturb import SOFT
+from protocol_risk.mutation_rules import SOFT
 from protocol_risk.symbolic import evaluate
 
 RISKS = list(load_library("risks.yaml")["risks"])
@@ -63,6 +63,18 @@ def test_hotplate_surface_limit_is_not_a_liquid_temperature_limit():
     protocol = mutate(reference("A2", 0), "A2", 0)
     protocol["hardware"]["nodes"]["heater"]["sample_temperature_validated"] = False
     assert "A2" not in evaluate(protocol).risks
+
+
+def test_known_and_unidentified_solvent_is_a_mixture_not_a_known_pure_solvent():
+    protocol = reference("B1", 0)
+    protocol["steps"][-1]["temp_C"] = 110
+    assert "B1" in evaluate(protocol).risks
+    protocol["reagents"].append({"id": "unknown_solvent", "name": "unidentified liquid", "role": "SOLVENT"})
+    protocol["steps"].insert(-1, {"id": "cosolvent", "op": "Add", "vessel": "reactor", "reagent": "unknown_solvent",
+                                   "amount": {"value": .1, "unit": "mL"}})
+    result = evaluate(protocol)
+    assert "B1" not in result.risks
+    assert any(q["reason"] == "unknown_or_mixed_solvent_properties" for q in result.unknowns)
 
 
 def test_freezing_check_abstains_for_solutions_and_mixtures():

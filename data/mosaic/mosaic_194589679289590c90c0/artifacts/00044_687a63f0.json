@@ -1,0 +1,76 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "alias": null,
+        "evidence": "The general procedure A was followed",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "alias": null,
+        "evidence": "The general procedure A was followed",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r4",
+        "alias": null,
+        "evidence": "The general procedure A was followed",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "alias": "1,4-dibromobenzene",
+        "evidence": "using 1,4-dibromobenzene (118.0 mg, 0.5 mmol)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r3",
+        "alias": "B2pin2",
+        "evidence": "and B2pin2 (126.9 mg, 0.5 mmol, 1.0 eq.) as starting material.",
+        "stage": "reaction"
+      },
+      {
+        "op": "HeatChill",
+        "temp_C": 100,
+        "duration_s": 57600,
+        "stir": true,
+        "evidence": "The resulting mixture was allowed to stir 16 hours at 100 oC.",
+        "stage": "reaction"
+      },
+      {
+        "op": "Purify",
+        "method": "chromatography",
+        "evidence": "purification by silica gel flash chromatography (EtOAc/PE=1:100 v/v)",
+        "stage": "purification"
+      }
+    ],
+    "uncertainties": [
+      "General procedure A is referenced but not supplied; its operations and conditions cannot be reconstructed.",
+      "The supplied components r1, r2, and r4 are included as required initial-component additions, but the literal procedure does not name them or provide aliases. Their aliases are therefore null, and their placement does not establish an experimentally specified addition order.",
+      "The text names 1,4-dibromobenzene and B2pin2 in that order but does not explicitly specify their addition sequence.",
+      "No workup operations before chromatography are specified."
+    ],
+    "unmapped_actions": []
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 762,
+    "prompt_tokens": 1217,
+    "total_tokens": 1979,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1214,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 217
+    }
+  },
+  "cache_key": "fa7ee6def83834cef2fafd0950595bb805680a63408fb087613ba44c17a35991"
+}

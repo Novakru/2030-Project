@@ -1,0 +1,36 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_REACTION_MONITORING",
+        "quote": "The reaction was monitorred by HPLC. After 16 h 88 % conversion was achieved.",
+        "message": "The plan represents the 16 h elapsed time but omits HPLC monitoring and its reported 88% conversion result. Preserve these as an unmapped action if no analytical-monitoring operation is available.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The reaction was monitorred by HPLC. After 16 h 88 % conversion was achieved.",
+          "reason": "HPLC monitoring is not represented in the steps; the source reports 88% conversion after 16 h."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 287,
+    "prompt_tokens": 1082,
+    "total_tokens": 1369,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1079,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 130
+    }
+  },
+  "cache_key": "0db39f756badda9592b85cfa61d1411e5f37036525154d3c1355ed79262e318e"
+}

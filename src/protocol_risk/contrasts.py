@@ -7,7 +7,7 @@ from collections import Counter, defaultdict
 from .conditions import chemical_key
 from .ingest import identifier, iter_ord, quantity, read_raw
 from .io import ROOT, canonical, digest, load_library, read_json, read_jsonl, write_json, write_jsonl
-from .pipeline import split_group
+from .validation import split_group
 
 
 def contrast_views(record):

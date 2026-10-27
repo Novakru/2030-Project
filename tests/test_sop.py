@@ -3,15 +3,18 @@ import copy
 
 import pytest
 
-from protocol_risk.controls import reference
+from tests.chemistry_fixtures import reference
 from protocol_risk.io import load_library
-from protocol_risk.sop import candidates, recipe_evidence, records, source_text
+from protocol_risk.sop import candidates, recipe_evidence, source_text
 from protocol_risk.symbolic import concentrated_sulfuric, evaluate
 from protocol_risk.xdl import canonical_hash, export_xdl, validate_xdl
 
 
 def test_remaining_categories_have_distinct_variants_with_honest_parent_diversity():
-    parents, negatives = records()
+    from mosaic.supplements import build_supplements
+    batch = build_supplements("test_sop", 12)
+    parents = [p for p in batch["parents"] if p.get("format") != "native_author_xdl"]
+    negatives = [n for n in batch["negatives"] if n.get("format") != "native_author_xdl"]
     assert len(parents) == 17 and len(negatives) == 34
     for risk, count, parent_count in (("B2", 12, 1), ("B3", 12, 6), ("B5", 10, 10)):
         group = [r for r in negatives if r["label"]["risk_l2"] == risk]

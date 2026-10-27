@@ -1,0 +1,439 @@
+{
+  "protocol": {
+    "id": "pos_2c710cb7fbbd4d70b492cf6ab2e6cbf5",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "dataset_name": "750 AstraZeneca ELN dataset",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "reaction_id": "ord-2c710cb7fbbd4d70b492cf6ab2e6cbf5",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-2c710cb7fbbd4d70b492cf6ab2e6cbf5",
+    "raw_sha256": "9ec61705eb9cccf31bfcd6da83d2d84b4f3b5b927dc1c2fe262e0dfa5641c750",
+    "reaction_smiles": "C1COCCN1CC2=CC(=C(C=C2)Br)F.CC1=NC=C(N1C2CCOCC2)C3=NC(=NC=C3F)N>>CC1=NC=C(N1C2CCOCC2)C3=NC(=NC=C3F)NC4=C(C=C(C=C4)CN5CCOCC5)F",
+    "reaction_class": "1.3.1 [N-arylation with Ar-X] Bromo Buchwald-Hartwig amination",
+    "yield_percent": 79.0,
+    "reagents": [
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.721
+        },
+        "id": "r1",
+        "input_key": "Base",
+        "name": "CCC(C)(C)[O-].[Na+]",
+        "role": "REAGENT",
+        "smiles": "CCC(C)(C)[O-].[Na+]",
+        "source_path": "/inputs/Base/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mL",
+          "value": 1.5
+        },
+        "id": "r2",
+        "input_key": "Solvent",
+        "name": "CC1=CC=CC=C1",
+        "role": "SOLVENT",
+        "smiles": "CC1=CC=CC=C1",
+        "source_path": "/inputs/Solvent/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.361
+        },
+        "id": "r3",
+        "input_key": "amine",
+        "name": "CC1=NC=C(N1C2CCOCC2)C3=NC(=NC=C3F)N",
+        "role": "REACTANT",
+        "smiles": "CC1=NC=C(N1C2CCOCC2)C3=NC(=NC=C3F)N",
+        "source_path": "/inputs/amine/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.397
+        },
+        "id": "r4",
+        "input_key": "aryl halide",
+        "name": "C1COCCN1CC2=CC(=C(C=C2)Br)F",
+        "role": "REACTANT",
+        "smiles": "C1COCCN1CC2=CC(=C(C=C2)Br)F",
+        "source_path": "/inputs/aryl halide/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.162
+        },
+        "id": "r5",
+        "input_key": "metal and ligand",
+        "name": "CC(C1CCCC1P(C2CCCCC2)C3CCCCC3)P(C(C)(C)C)C(C)(C)C.C1CCCC1.[Fe]",
+        "role": "CATALYST",
+        "smiles": "CC(C1CCCC1P(C2CCCCC2)C3CCCCC3)P(C(C)(C)C)C(C)(C)C.C1CCCC1.[Fe]",
+        "source_path": "/inputs/metal and ligand/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.162
+        },
+        "id": "r6",
+        "input_key": "metal and ligand",
+        "name": "[Pd]",
+        "role": "CATALYST",
+        "smiles": "[Pd]",
+        "source_path": "/inputs/metal and ligand/components/1"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r3",
+        "id": "s001",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "5-fluoro-4-(2-methyl-1-(tetrahydro-2H-pyran-4-yl)-1H-imidazol-5-yl)pyrimidin-2-amine (100 mg, 0.36 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/amine/components/0/amount",
+          "source_alias": "5-fluoro-4-(2-methyl-1-(tetrahydro-2H-pyran-4-yl)-1H-imidazol-5-yl)pyrimidin-2-amine"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.361
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r4",
+        "id": "s002",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "4-(4-bromo-3-fluorobenzyl)morpholine (109 mg, 0.40 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/aryl halide/components/0/amount",
+          "source_alias": "4-(4-bromo-3-fluorobenzyl)morpholine"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.397
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r6",
+        "id": "s003",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "Palladium, 10% On Charcoal (115 mg, 0.11 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/metal and ligand/components/1/amount",
+          "source_alias": "Palladium, 10% On Charcoal"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.162
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "id": "s004",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "(R)-(-)-1-[(S)-2-(Dicyclohexylphosphino)ferrocenyl]ethyldi-t-butylphosphine (91 mg, 0.16 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/metal and ligand/components/0/amount",
+          "source_alias": "(R)-(-)-1-[(S)-2-(Dicyclohexylphosphino)ferrocenyl]ethyldi-t-butylphosphine"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.162
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "id": "s005",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "Sodium tert-pentoxide (79 mg, 0.72 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/Base/components/0/amount",
+          "source_alias": "Sodium tert-pentoxide"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.721
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "id": "s006",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "were dissolved in toluene (1.5 mL)",
+          "stage": "reaction",
+          "amount_source": "/inputs/Solvent/components/0/amount",
+          "source_alias": "toluene"
+        },
+        "amount": {
+          "unit": "mL",
+          "value": 1.5
+        }
+      },
+      {
+        "op": "Atmosphere",
+        "gas": "argon",
+        "mode": "environment",
+        "id": "s007",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "under argon",
+          "stage": "reaction"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "temp_C": 110,
+        "id": "s008",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "heated to 110 °C under argon",
+          "stage": "reaction"
+        }
+      },
+      {
+        "op": "Wait",
+        "duration_s": 57600,
+        "id": "s009",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "After 16 h",
+          "stage": "reaction"
+        }
+      }
+    ],
+    "context": {
+      "reflux": false,
+      "atmosphere": {},
+      "pressure_control": "UNKNOWN",
+      "source_setup": {}
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 1122,
+        "prompt_tokens": 1239,
+        "total_tokens": 2361,
+        "prompt_tokens_details": {
+          "cache_write_tokens": 1236,
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 258
+        }
+      },
+      "cache_key": "2aacec5e10f48ebfa2a1d075a3e8f47e6861ab111a3850ba882f195d9e74b215",
+      "unresolved": [
+        "The procedure reports 16 h of elapsed reaction time but does not explicitly state that 110 °C was maintained throughout.",
+        "Component r6 is supplied as elemental palladium, whereas the procedure specifies Palladium, 10% On Charcoal. The supported formulation is preserved in the alias.",
+        "Component r5 is aligned to the explicitly named ferrocenyl phosphine ligand, but its supplied structure does not fully encode the named ligand's aromaticity and stereochemistry.",
+        "The method used to stop the reaction is not specified."
+      ],
+      "unmapped_actions": [
+        {
+          "evidence": "The reaction was stopped",
+          "reason": "Stopping is stated without a physical operation that can be mapped to the allowed operations."
+        },
+        {
+          "evidence": "the mixture was discarded",
+          "reason": "Disposal is not an allowed operation; no disposal method or destination is specified."
+        },
+        {
+          "evidence": "were dissolved in toluene (1.5 mL)",
+          "reason": "Explicit dissolution is not represented by the reagent-addition steps. No dissolution technique or duration is specified."
+        },
+        {
+          "evidence": "The reaction was monitorred by HPLC.",
+          "reason": "HPLC monitoring is explicitly reported but is not represented in the steps; sampling times and analytical conditions are unspecified."
+        }
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/1",
+    "findings": [
+      {
+        "code": "OMITTED_DISSOLUTION",
+        "quote": "were dissolved in toluene (1.5 mL)",
+        "message": "The plan records adding toluene but does not represent the explicitly reported dissolution action.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-2c710cb7fbbd4d70b492cf6ab2e6cbf5",
+          "source_sha256": "878a73194fdcbe2179246a15312b64a5c53f9f19edaee8e447a2b97da3f6c29f",
+          "start": 399,
+          "end": 433,
+          "quote": "were dissolved in toluene (1.5 mL)"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "OMITTED_MONITORING",
+        "quote": "The reaction was monitorred by HPLC.",
+        "message": "HPLC monitoring is absent from both the steps and unmapped actions.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-2c710cb7fbbd4d70b492cf6ab2e6cbf5",
+          "source_sha256": "878a73194fdcbe2179246a15312b64a5c53f9f19edaee8e447a2b97da3f6c29f",
+          "start": 469,
+          "end": 505,
+          "quote": "The reaction was monitorred by HPLC."
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "heated to 110 °C under argon",
+        "kind": "reaction setup",
+        "identity": null,
+        "scope": "Reaction heating under an argon atmosphere; vessel, heater, and inert-gas apparatus are not specified.",
+        "evidence": {
+          "source_id": "ord-2c710cb7fbbd4d70b492cf6ab2e6cbf5",
+          "source_sha256": "878a73194fdcbe2179246a15312b64a5c53f9f19edaee8e447a2b97da3f6c29f",
+          "start": 438,
+          "end": 466,
+          "quote": "heated to 110 °C under argon"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "HPLC",
+        "kind": "analytical chromatography apparatus",
+        "identity": null,
+        "scope": "Used to monitor reaction conversion; instrument configuration is not specified.",
+        "evidence": {
+          "source_id": "ord-2c710cb7fbbd4d70b492cf6ab2e6cbf5",
+          "source_sha256": "878a73194fdcbe2179246a15312b64a5c53f9f19edaee8e447a2b97da3f6c29f",
+          "start": 500,
+          "end": 504,
+          "quote": "HPLC"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-2c710cb7fbbd4d70b492cf6ab2e6cbf5",
+        "source_sha256": "878a73194fdcbe2179246a15312b64a5c53f9f19edaee8e447a2b97da3f6c29f",
+        "start": 47,
+        "end": 151,
+        "quote": "5-fluoro-4-(2-methyl-1-(tetrahydro-2H-pyran-4-yl)-1H-imidazol-5-yl)pyrimidin-2-amine (100 mg, 0.36 mmol)"
+      },
+      {
+        "source_id": "ord-2c710cb7fbbd4d70b492cf6ab2e6cbf5",
+        "source_sha256": "878a73194fdcbe2179246a15312b64a5c53f9f19edaee8e447a2b97da3f6c29f",
+        "start": 153,
+        "end": 209,
+        "quote": "4-(4-bromo-3-fluorobenzyl)morpholine (109 mg, 0.40 mmol)"
+      },
+      {
+        "source_id": "ord-2c710cb7fbbd4d70b492cf6ab2e6cbf5",
+        "source_sha256": "878a73194fdcbe2179246a15312b64a5c53f9f19edaee8e447a2b97da3f6c29f",
+        "start": 211,
+        "end": 257,
+        "quote": "Palladium, 10% On Charcoal (115 mg, 0.11 mmol)"
+      },
+      {
+        "source_id": "ord-2c710cb7fbbd4d70b492cf6ab2e6cbf5",
+        "source_sha256": "878a73194fdcbe2179246a15312b64a5c53f9f19edaee8e447a2b97da3f6c29f",
+        "start": 259,
+        "end": 353,
+        "quote": "(R)-(-)-1-[(S)-2-(Dicyclohexylphosphino)ferrocenyl]ethyldi-t-butylphosphine (91 mg, 0.16 mmol)"
+      },
+      {
+        "source_id": "ord-2c710cb7fbbd4d70b492cf6ab2e6cbf5",
+        "source_sha256": "878a73194fdcbe2179246a15312b64a5c53f9f19edaee8e447a2b97da3f6c29f",
+        "start": 358,
+        "end": 398,
+        "quote": "Sodium tert-pentoxide (79 mg, 0.72 mmol)"
+      },
+      {
+        "source_id": "ord-2c710cb7fbbd4d70b492cf6ab2e6cbf5",
+        "source_sha256": "878a73194fdcbe2179246a15312b64a5c53f9f19edaee8e447a2b97da3f6c29f",
+        "start": 399,
+        "end": 433,
+        "quote": "were dissolved in toluene (1.5 mL)"
+      },
+      {
+        "source_id": "ord-2c710cb7fbbd4d70b492cf6ab2e6cbf5",
+        "source_sha256": "878a73194fdcbe2179246a15312b64a5c53f9f19edaee8e447a2b97da3f6c29f",
+        "start": 455,
+        "end": 466,
+        "quote": "under argon"
+      },
+      {
+        "source_id": "ord-2c710cb7fbbd4d70b492cf6ab2e6cbf5",
+        "source_sha256": "878a73194fdcbe2179246a15312b64a5c53f9f19edaee8e447a2b97da3f6c29f",
+        "start": 438,
+        "end": 466,
+        "quote": "heated to 110 °C under argon"
+      },
+      {
+        "source_id": "ord-2c710cb7fbbd4d70b492cf6ab2e6cbf5",
+        "source_sha256": "878a73194fdcbe2179246a15312b64a5c53f9f19edaee8e447a2b97da3f6c29f",
+        "start": 506,
+        "end": 516,
+        "quote": "After 16 h"
+      }
+    ],
+    "repair": {
+      "accepted": true,
+      "patch": [
+        {
+          "op": "add",
+          "path": "/unmapped_actions/-",
+          "value": {
+            "evidence": "were dissolved in toluene (1.5 mL)",
+            "reason": "Explicit dissolution is not represented by the reagent-addition steps. No dissolution technique or duration is specified."
+          }
+        },
+        {
+          "op": "add",
+          "path": "/unmapped_actions/-",
+          "value": {
+            "evidence": "The reaction was monitorred by HPLC.",
+            "reason": "HPLC monitoring is explicitly reported but is not represented in the steps; sampling times and analytical conditions are unspecified."
+          }
+        }
+      ]
+    },
+    "apparatus_unknowns": [
+      "Reaction vessel type and capacity are not specified.",
+      "Heating apparatus and whether 110 °C is a setpoint or measured reaction temperature are not specified.",
+      "Argon supply, pressure control, and atmosphere-handling setup are not specified.",
+      "HPLC manufacturer, model, column, and method are not specified."
+    ]
+  },
+  "raw_id": "ord-2c710cb7fbbd4d70b492cf6ab2e6cbf5"
+}

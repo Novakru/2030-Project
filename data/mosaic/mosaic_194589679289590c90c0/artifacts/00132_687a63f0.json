@@ -1,0 +1,107 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Atmosphere",
+        "evidence": "In an argon filled glove box",
+        "stage": "reaction",
+        "gas": "argon",
+        "mode": "environment"
+      },
+      {
+        "op": "Add",
+        "evidence": "[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%)",
+        "stage": "reaction",
+        "reagent": "r1",
+        "alias": "[Ir(cod)(OMe)]2"
+      },
+      {
+        "op": "Add",
+        "evidence": "L1 ligand (2.1 mg, 3.5 mol%)",
+        "stage": "reaction",
+        "reagent": "r4",
+        "alias": "L1 ligand"
+      },
+      {
+        "op": "Add",
+        "evidence": "B2pin2 (50.8 mg, 1.0 equiv.)",
+        "stage": "reaction",
+        "reagent": "r3",
+        "alias": "B2pin2"
+      },
+      {
+        "op": "Add",
+        "evidence": "KOtBu (1.0 mg, 4.5 mol%)",
+        "stage": "reaction",
+        "reagent": "r2",
+        "alias": "KOtBu"
+      },
+      {
+        "op": "Add",
+        "evidence": "dry THF (1.0 mL)",
+        "stage": "reaction",
+        "reagent": "r5",
+        "alias": "dry THF"
+      },
+      {
+        "op": "Stir",
+        "evidence": "The reaction mixture was stirred for 2 minutes at room temperature.",
+        "stage": "reaction",
+        "duration_s": 120
+      },
+      {
+        "op": "Add",
+        "evidence": "To this mixture, N,N-diisopropyl-1H-indole-7-carboxamide (48.9 mg, 0.2 mmol) was added.",
+        "stage": "reaction",
+        "reagent": "r6",
+        "alias": "N,N-diisopropyl-1H-indole-7-carboxamide"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "placed into pre-heated aluminum block at 80 oC. The reaction mixture was stirred for 12 h.",
+        "stage": "reaction",
+        "temp_C": 80,
+        "duration_s": 43200,
+        "stir": true
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "THF was removed under reduced pressure",
+        "stage": "workup"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "dried on an oil bath at 90 oC for 90 minutes",
+        "stage": "workup",
+        "temp_C": 90,
+        "duration_s": 5400
+      }
+    ],
+    "uncertainties": [
+      "The procedure identifies the ligand only as 'L1 ligand'; its assignment to r4 is contextual, and its molecular structure cannot be verified from the procedure alone.",
+      "Room temperature is specified for the initial stirring, but no numeric temperature is provided.",
+      "The reduced pressure used for THF removal is not quantified, and the pressure during subsequent oil-bath drying is not specified."
+    ],
+    "unmapped_actions": [
+      {
+        "action": "Capping the microreactor",
+        "evidence": "The microreactor was capped with a teflon pressure cap",
+        "reason": "Capping is not represented by an allowed operation."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 989,
+    "prompt_tokens": 1302,
+    "total_tokens": 2291,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1299,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 177
+    }
+  },
+  "cache_key": "570f7a2aec48501a3ea78f3d4d60a177fdd5c1ad77c1842be7c7b26e06be6608"
+}

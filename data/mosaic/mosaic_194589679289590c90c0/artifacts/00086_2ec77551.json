@@ -1,0 +1,878 @@
+{
+  "id": "mosaic_pos_0ce3e3d5052accf6acc0",
+  "source": {
+    "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+    "dataset_name": "750 AstraZeneca ELN dataset",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+    "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+    "reaction_id": "ord-58bee23c6bfd4e46abec561eea6c720a",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+  },
+  "raw_id": "ord-58bee23c6bfd4e46abec561eea6c720a",
+  "raw_sha256": "51db5e9fe80769c3e0996bbcf1459758436892466c847c8a28570b5c708efbb3",
+  "reaction_smiles": "C1=CC(=C(C=C1Cl)Br)C#N.CN(C)[C@H]1CCNC1>>CN(C)[C@H]1CCN(C1)C2=C(C=CC(=C2)Cl)C#N",
+  "reaction_class": "1.3.1 [N-arylation with Ar-X] Bromo Buchwald-Hartwig amination",
+  "yield_percent": 69.34,
+  "reagents": [
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 4.62
+      },
+      "id": "r1",
+      "input_key": "Base",
+      "name": "C(=O)([O-])[O-].[Cs+].[Cs+]",
+      "role": "REAGENT",
+      "smiles": "C(=O)([O-])[O-].[Cs+].[Cs+]",
+      "source_path": "/inputs/Base/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 15.0
+      },
+      "id": "r2",
+      "input_key": "Solvent",
+      "name": "CC1=CC=CC=C1",
+      "role": "SOLVENT",
+      "smiles": "CC1=CC=CC=C1",
+      "source_path": "/inputs/Solvent/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 2.77
+      },
+      "id": "r3",
+      "input_key": "amine",
+      "name": "CN(C)[C@H]1CCNC1",
+      "role": "REACTANT",
+      "smiles": "CN(C)[C@H]1CCNC1",
+      "source_path": "/inputs/amine/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 2.31
+      },
+      "id": "r4",
+      "input_key": "aryl halide",
+      "name": "C1=CC(=C(C=C1Cl)Br)C#N",
+      "role": "REACTANT",
+      "smiles": "C1=CC(=C(C=C1Cl)Br)C#N",
+      "source_path": "/inputs/aryl halide/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.462
+      },
+      "id": "r5",
+      "input_key": "metal and ligand",
+      "name": "C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=C(C4=CC=CC=C4C=C3)C5=C(C=CC6=CC=CC=C65)P(C7=CC=CC=C7)C8=CC=CC=C8",
+      "role": "CATALYST",
+      "smiles": "C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=C(C4=CC=CC=C4C=C3)C5=C(C=CC6=CC=CC=C65)P(C7=CC=CC=C7)C8=CC=CC=C8",
+      "source_path": "/inputs/metal and ligand/components/0"
+    },
+    {
+      "addition_order": null,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.231
+      },
+      "id": "r6",
+      "input_key": "metal and ligand",
+      "name": "C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]",
+      "role": "CATALYST",
+      "smiles": "C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]",
+      "source_path": "/inputs/metal and ligand/components/1"
+    }
+  ],
+  "steps": [
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "id": "s001",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "2-bromo-4-chlorobenzonitrile (500 mg, 2.31 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/aryl halide/components/0/amount",
+        "source_alias": "2-bromo-4-chlorobenzonitrile"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 2.31
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "id": "s002",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "(S)-N,N-dimethylpyrrolidin-3-amine (317 mg, 2.77 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/amine/components/0/amount",
+        "source_alias": "(S)-N,N-dimethylpyrrolidin-3-amine"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 2.77
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "id": "s003",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "cesium carbonate (1505 mg, 4.62 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/Base/components/0/amount",
+        "source_alias": "cesium carbonate"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 4.62
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r6",
+      "id": "s004",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "tris(dibenzylideneacetone)dipalladium(0) (212 mg, 0.23 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/metal and ligand/components/1/amount",
+        "source_alias": "tris(dibenzylideneacetone)dipalladium(0)"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.231
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "id": "s005",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "BINAP (288 mg, 0.46 mmol)",
+        "stage": "reaction",
+        "amount_source": "/inputs/metal and ligand/components/0/amount",
+        "source_alias": "BINAP"
+      },
+      "amount": {
+        "unit": "mmol",
+        "value": 0.462
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "id": "s006",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "in toluene (15 mL)",
+        "stage": "reaction",
+        "amount_source": "/inputs/Solvent/components/0/amount",
+        "source_alias": "toluene"
+      },
+      "amount": {
+        "unit": "mL",
+        "value": 15.0
+      }
+    },
+    {
+      "op": "HeatChill",
+      "temp_C": 100,
+      "stir": true,
+      "duration": "overnight",
+      "id": "s007",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "was stirred at 100 °C for overnight",
+        "stage": "reaction"
+      }
+    },
+    {
+      "op": "Evaporate",
+      "vacuum": true,
+      "id": "s008",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "Conc. in vacuo",
+        "stage": "workup"
+      }
+    },
+    {
+      "op": "Purify",
+      "method": "chromatography",
+      "instrument": "ISCO",
+      "eluent_gradient": "100% ethyl acetate to 30% methanol in ethyl acetate",
+      "id": "s009",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "the residue was purified with ISCO (100% ethyl acetate to 30% methanol in ethyl acetate)",
+        "stage": "purification"
+      }
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "atmosphere": {},
+    "pressure_control": "UNKNOWN",
+    "source_setup": {},
+    "source_context_events": []
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "model": "gpt-6.1-sol",
+    "usage": {
+      "completion_tokens": 638,
+      "prompt_tokens": 1401,
+      "total_tokens": 2039,
+      "prompt_tokens_details": {
+        "cache_write_tokens": 1398,
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "cache_key": "ec41739e4cfea3e4635a038fd02cbe9813cbea3f0769b3c2e6e0c0237fb3764c",
+    "unresolved": [
+      "The initial components are described as a mixture; their individual addition order is not explicitly specified.",
+      "The duration 'overnight' is not specified numerically.",
+      "The purification specifies ISCO and an eluent gradient of 100% ethyl acetate to 30% methanol in ethyl acetate, but does not specify solvent volumes or stationary phase."
+    ],
+    "unmapped_actions": [],
+    "analytical_observations": []
+  },
+  "yield_evidence": {
+    "measurements": [
+      {
+        "analysis_key": null,
+        "percentage": 69.34,
+        "source_path": "/outcomes/0/products/0/measurements/0",
+        "valid": true
+      }
+    ],
+    "policy": "unique_target_unique_percentage_v1",
+    "selection": "explicit_desired_product",
+    "status": "selected",
+    "target_count": 1,
+    "target_source_path": "/outcomes/0/products/0"
+  },
+  "hardware": {
+    "config_id": "source_aware_provisional_v2",
+    "nodes": {
+      "reactor": {
+        "id": "chemputer_reactor_template",
+        "category": "vessel",
+        "params": {
+          "capacity_mL": null,
+          "T_min_C": null,
+          "T_max_C": null,
+          "pressure_max_bar": null
+        },
+        "wetted_materials": null,
+        "ports": [
+          "top",
+          "bottom",
+          "gas",
+          "jacket"
+        ],
+        "source_url": "https://croningroup.gitlab.io/chemputer/xdl/standard/full_steps_specification.html",
+        "verified": false,
+        "verification": {
+          "status": "template_only",
+          "human_verified": false
+        },
+        "binding_basis": "unresolved_source_apparatus"
+      },
+      "heater": {
+        "id": "ika_rct_basic_25008259",
+        "category": "heater_stirrer",
+        "params": {
+          "T_min_C": null,
+          "T_max_C": 310,
+          "rpm_min": 50,
+          "rpm_max": 1500
+        },
+        "parameter_scope": "Heating-plate setpoint maximum, not guaranteed liquid temperature; minimum depends on ambient/self-heating.",
+        "wetted_materials": [],
+        "ports": [],
+        "source_url": "https://www.ika.com/en/Products-LabEq/Magnetic-Stirrers-pg188/RCT-basic-25008259/Technical-Data-cptd.html",
+        "verified": false,
+        "verification": {
+          "status": "source_reviewed",
+          "human_verified": false
+        },
+        "binding_basis": "proposed_analysis_configuration",
+        "note": "Proposed analysis controller; source does not identify this model as the original equipment."
+      },
+      "product": {
+        "category": "vessel",
+        "params": {},
+        "verified": false
+      },
+      "column": {
+        "category": "column",
+        "params": {},
+        "verified": false
+      }
+    },
+    "edges": [
+      [
+        "reactor",
+        "heater"
+      ],
+      [
+        "reactor",
+        "product"
+      ],
+      [
+        "reactor",
+        "column"
+      ]
+    ],
+    "bindings": {
+      "heater": "heater"
+    },
+    "estimated_liquid_lower_bound_mL": 15.0,
+    "verification_status": "human_review_pending",
+    "source_issues": [],
+    "binding_scope": "Source-reported vessels; unspecified automation remains a proposed analysis configuration. Edges are provisional.",
+    "inventory_scope": "Sum of stated Add volumes, not peak vessel occupancy or inferred solvent volume."
+  },
+  "crosscheck": {
+    "checks": {
+      "structured_components_preserved": true,
+      "structured_amounts_preserved": true,
+      "amount_comparison_is_independent": true,
+      "solvent_set_preserved": true,
+      "temperature_match": true,
+      "reaction_duration_match": false,
+      "atmosphere_match": null
+    },
+    "quantity_checks": [
+      {
+        "reagent": "r4",
+        "alias": "2-bromo-4-chlorobenzonitrile",
+        "expected": {
+          "unit": "mmol",
+          "value": 2.31
+        },
+        "measurements": [
+          {
+            "value": 500.0,
+            "unit": "mg",
+            "quote": "500 mg",
+            "printed_rounding_half_unit": 0.5,
+            "source_segment": "500 mg, 2.31 mmol"
+          },
+          {
+            "value": 2.31,
+            "unit": "mmol",
+            "quote": "2.31 mmol",
+            "printed_rounding_half_unit": 0.005,
+            "source_segment": "500 mg, 2.31 mmol"
+          }
+        ],
+        "status": "matched",
+        "basis": "adjacent_literal_quantity",
+        "comparable_quantities": [
+          {
+            "value": 2.3098422377751597,
+            "unit": "mmol",
+            "basis": "source_quantity_with_structure_derived_molecular_weight",
+            "within_tolerance": true,
+            "compatible_with_printed_rounding": true,
+            "printed_rounding_half_unit": 0.00230984223777516
+          },
+          {
+            "value": 2.31,
+            "unit": "mmol",
+            "basis": "direct_source_quantity",
+            "within_tolerance": true,
+            "compatible_with_printed_rounding": true,
+            "printed_rounding_half_unit": 0.005
+          }
+        ],
+        "step_id": "s001"
+      },
+      {
+        "reagent": "r3",
+        "alias": "(S)-N,N-dimethylpyrrolidin-3-amine",
+        "expected": {
+          "unit": "mmol",
+          "value": 2.77
+        },
+        "measurements": [
+          {
+            "value": 317.0,
+            "unit": "mg",
+            "quote": "317 mg",
+            "printed_rounding_half_unit": 0.5,
+            "source_segment": "317 mg, 2.77 mmol"
+          },
+          {
+            "value": 2.77,
+            "unit": "mmol",
+            "quote": "2.77 mmol",
+            "printed_rounding_half_unit": 0.005,
+            "source_segment": "317 mg, 2.77 mmol"
+          }
+        ],
+        "status": "matched",
+        "basis": "adjacent_literal_quantity",
+        "comparable_quantities": [
+          {
+            "value": 2.776026341600112,
+            "unit": "mmol",
+            "basis": "source_quantity_with_structure_derived_molecular_weight",
+            "within_tolerance": true,
+            "compatible_with_printed_rounding": true,
+            "printed_rounding_half_unit": 0.004378590444164214
+          },
+          {
+            "value": 2.77,
+            "unit": "mmol",
+            "basis": "direct_source_quantity",
+            "within_tolerance": true,
+            "compatible_with_printed_rounding": true,
+            "printed_rounding_half_unit": 0.005
+          }
+        ],
+        "step_id": "s002"
+      },
+      {
+        "reagent": "r1",
+        "alias": "cesium carbonate",
+        "expected": {
+          "unit": "mmol",
+          "value": 4.62
+        },
+        "measurements": [
+          {
+            "value": 1505.0,
+            "unit": "mg",
+            "quote": "1505 mg",
+            "printed_rounding_half_unit": 0.5,
+            "source_segment": "1505 mg, 4.62 mmol"
+          },
+          {
+            "value": 4.62,
+            "unit": "mmol",
+            "quote": "4.62 mmol",
+            "printed_rounding_half_unit": 0.005,
+            "source_segment": "1505 mg, 4.62 mmol"
+          }
+        ],
+        "status": "matched",
+        "basis": "adjacent_literal_quantity",
+        "comparable_quantities": [
+          {
+            "value": 4.619143202646876,
+            "unit": "mmol",
+            "basis": "source_quantity_with_structure_derived_molecular_weight",
+            "within_tolerance": true,
+            "compatible_with_printed_rounding": true,
+            "printed_rounding_half_unit": 0.0015345990706468028
+          },
+          {
+            "value": 4.62,
+            "unit": "mmol",
+            "basis": "direct_source_quantity",
+            "within_tolerance": true,
+            "compatible_with_printed_rounding": true,
+            "printed_rounding_half_unit": 0.005
+          }
+        ],
+        "step_id": "s003"
+      },
+      {
+        "reagent": "r6",
+        "alias": "tris(dibenzylideneacetone)dipalladium(0)",
+        "expected": {
+          "unit": "mmol",
+          "value": 0.231
+        },
+        "measurements": [
+          {
+            "value": 212.0,
+            "unit": "mg",
+            "quote": "212 mg",
+            "printed_rounding_half_unit": 0.5,
+            "source_segment": "212 mg, 0.23 mmol"
+          },
+          {
+            "value": 0.23,
+            "unit": "mmol",
+            "quote": "0.23 mmol",
+            "printed_rounding_half_unit": 0.005,
+            "source_segment": "212 mg, 0.23 mmol"
+          }
+        ],
+        "status": "matched",
+        "basis": "adjacent_literal_quantity",
+        "comparable_quantities": [
+          {
+            "value": 0.231508276420882,
+            "unit": "mmol",
+            "basis": "source_quantity_with_structure_derived_molecular_weight",
+            "within_tolerance": true,
+            "compatible_with_printed_rounding": true,
+            "printed_rounding_half_unit": 0.0005460100858983066
+          },
+          {
+            "value": 0.23,
+            "unit": "mmol",
+            "basis": "direct_source_quantity",
+            "within_tolerance": true,
+            "compatible_with_printed_rounding": true,
+            "printed_rounding_half_unit": 0.005
+          }
+        ],
+        "step_id": "s004"
+      },
+      {
+        "reagent": "r5",
+        "alias": "BINAP",
+        "expected": {
+          "unit": "mmol",
+          "value": 0.462
+        },
+        "measurements": [
+          {
+            "value": 288.0,
+            "unit": "mg",
+            "quote": "288 mg",
+            "printed_rounding_half_unit": 0.5,
+            "source_segment": "288 mg, 0.46 mmol"
+          },
+          {
+            "value": 0.46,
+            "unit": "mmol",
+            "quote": "0.46 mmol",
+            "printed_rounding_half_unit": 0.005,
+            "source_segment": "288 mg, 0.46 mmol"
+          }
+        ],
+        "status": "matched",
+        "basis": "adjacent_literal_quantity",
+        "comparable_quantities": [
+          {
+            "value": 0.4625109203967314,
+            "unit": "mmol",
+            "basis": "source_quantity_with_structure_derived_molecular_weight",
+            "within_tolerance": true,
+            "compatible_with_printed_rounding": true,
+            "printed_rounding_half_unit": 0.0008029703479109921
+          },
+          {
+            "value": 0.46,
+            "unit": "mmol",
+            "basis": "direct_source_quantity",
+            "within_tolerance": true,
+            "compatible_with_printed_rounding": true,
+            "printed_rounding_half_unit": 0.005
+          }
+        ],
+        "step_id": "s005"
+      },
+      {
+        "reagent": "r2",
+        "alias": "toluene",
+        "expected": {
+          "unit": "mL",
+          "value": 15.0
+        },
+        "measurements": [
+          {
+            "value": 15.0,
+            "unit": "mL",
+            "quote": "15 mL",
+            "printed_rounding_half_unit": 0.5,
+            "source_segment": "15 mL"
+          }
+        ],
+        "status": "matched",
+        "basis": "adjacent_literal_quantity",
+        "comparable_quantities": [
+          {
+            "value": 15.0,
+            "unit": "mL",
+            "basis": "direct_source_quantity",
+            "within_tolerance": true,
+            "compatible_with_printed_rounding": true,
+            "printed_rounding_half_unit": 0.5
+          }
+        ],
+        "step_id": "s006"
+      }
+    ],
+    "conflicts": [],
+    "missing": [
+      "duration_independent_evidence_missing",
+      "The initial components are described as a mixture; their individual addition order is not explicitly specified.",
+      "The duration 'overnight' is not specified numerically.",
+      "The purification specifies ISCO and an eluent gradient of 100% ethyl acetate to 30% methanol in ethyl acetate, but does not specify solvent volumes or stationary phase."
+    ],
+    "tier": "silver",
+    "gold_blockers": [
+      "hardware_human_verification_pending",
+      "manual_protocol_review_pending"
+    ]
+  },
+  "xdl": "<Synthesis>\n  <Metadata description=\"Source-grounded protocol representation; hardware execution requires compilation and review.\" publication=\"https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471\" reaction_class=\"1.3.1 [N-arylation with Ar-X] Bromo Buchwald-Hartwig amination\"/>\n  <Hardware>\n    <!--Analysis binding: {\"component\": \"column\", \"params\": {}, \"verified\": false, \"wetted_materials\": null}-->\n    <Component id=\"column\" type=\"column\"/>\n    <!--Analysis binding: {\"component\": \"heater\", \"params\": {\"T_max_C\": 310, \"T_min_C\": null, \"rpm_max\": 1500, \"rpm_min\": 50}, \"verified\": false, \"wetted_materials\": []}-->\n    <Component id=\"heater\" type=\"heater\"/>\n    <!--Analysis binding: {\"component\": \"product\", \"params\": {}, \"verified\": false, \"wetted_materials\": null}-->\n    <Component id=\"product\" type=\"reactor\"/>\n    <!--Analysis binding: {\"component\": \"reactor\", \"params\": {\"T_max_C\": null, \"T_min_C\": null, \"capacity_mL\": null, \"pressure_max_bar\": null}, \"verified\": false, \"wetted_materials\": null}-->\n    <Component id=\"reactor\" type=\"reactor\"/>\n  </Hardware>\n  <Reagents>\n    <!--r1: C(=O)([O-])[O-].[Cs+].[Cs+]-->\n    <Reagent name=\"r1\" role=\"reagent\"/>\n    <!--r2: CC1=CC=CC=C1-->\n    <Reagent name=\"r2\" role=\"solvent\"/>\n    <!--r3: CN(C)[C@H]1CCNC1-->\n    <Reagent name=\"r3\" role=\"substrate\"/>\n    <!--r4: C1=CC(=C(C=C1Cl)Br)C#N-->\n    <Reagent name=\"r4\" role=\"substrate\"/>\n    <!--r5: C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=C(C4=CC=CC=C4C=C3)C5=C(C=CC6=CC=CC=C65)P(C7=CC=CC=C7)C8=CC=CC=C8-->\n    <Reagent name=\"r5\" role=\"catalyst\"/>\n    <!--r6: C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]-->\n    <Reagent name=\"r6\" role=\"catalyst\"/>\n  </Reagents>\n  <Procedure>\n    <!--Analysis context: {\"pressure_control\": \"UNKNOWN\", \"reflux\": false}-->\n    <!--2-bromo-4-chlorobenzonitrile (500 mg, 2.31 mmol)-->\n    <Add vessel=\"reactor\" reagent=\"r4\" amount=\"2.31 mmol\"/>\n    <!--(S)-N,N-dimethylpyrrolidin-3-amine (317 mg, 2.77 mmol)-->\n    <Add vessel=\"reactor\" reagent=\"r3\" amount=\"2.77 mmol\"/>\n    <!--cesium carbonate (1505 mg, 4.62 mmol)-->\n    <Add vessel=\"reactor\" reagent=\"r1\" amount=\"4.62 mmol\"/>\n    <!--tris(dibenzylideneacetone)dipalladium(0) (212 mg, 0.23 mmol)-->\n    <Add vessel=\"reactor\" reagent=\"r6\" amount=\"0.231 mmol\"/>\n    <!--BINAP (288 mg, 0.46 mmol)-->\n    <Add vessel=\"reactor\" reagent=\"r5\" amount=\"0.462 mmol\"/>\n    <!--in toluene (15 mL)-->\n    <Add vessel=\"reactor\" reagent=\"r2\" amount=\"15 mL\"/>\n    <!--was stirred at 100 °C for overnight-->\n    <HeatChillToTemp vessel=\"reactor\" temp=\"100 °C\" stir=\"true\"/>\n    <!--Conc. in vacuo-->\n    <Evaporate vessel=\"reactor\"/>\n    <!--the residue was purified with ISCO (100% ethyl acetate to 30% methanol in ethyl acetate)-->\n    <RunColumn from_vessel=\"reactor\" to_vessel=\"product\" column=\"column\"/>\n  </Procedure>\n</Synthesis>\n",
+  "canonical_sha1": "d244cb78facd2f96e68b808223e5013da48cf144",
+  "quality": {
+    "tier": "silver",
+    "source_grounded": true,
+    "observed_yield_above_30": true,
+    "xdl_profile": "protocol-risk-xdl2-subset-v1",
+    "xdl_profile_schema_passed": true,
+    "official_platform_compiled": false,
+    "symbolic_violations": [],
+    "unknown_constraints": [
+      {
+        "rule": "A1",
+        "step": 0,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 1,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 2,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 3,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 4,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 5,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 6,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A2",
+        "step": 6,
+        "reason": "sample_to_controller_temperature_mapping_unknown"
+      },
+      {
+        "rule": "B2",
+        "step": 6,
+        "reason": "solution_freezing_point_not_established"
+      },
+      {
+        "rule": "A1",
+        "step": 7,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 8,
+        "reason": "unverified_or_missing_capacity"
+      }
+    ],
+    "manual_review": "pending",
+    "hardware_verification": "pending",
+    "full_feasibility_certified": false
+  },
+  "mosaic": {
+    "schema": "mosaic.ir/1",
+    "run_id": "mosaic_194589679289590c90c0",
+    "domain": "chemistry.batch/1",
+    "findings": [
+      {
+        "code": "MISSING_DURATION_CONDITION",
+        "quote": "was stirred at 100 °C for overnight",
+        "message": "The reaction step captures temperature and stirring but does not encode the stated duration. Preserve 'overnight' without converting it to an invented number of hours.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-58bee23c6bfd4e46abec561eea6c720a",
+          "source_sha256": "e8370b6552fb36b78d9149e061e3c479ea49bb635b9e6d84ba5359d3eb082307",
+          "start": 268,
+          "end": 303,
+          "quote": "was stirred at 100 °C for overnight"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "MISSING_VACUUM_CONDITION",
+        "quote": "Conc. in vacuo",
+        "message": "The evaporation step does not encode the explicitly stated vacuum condition.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-58bee23c6bfd4e46abec561eea6c720a",
+          "source_sha256": "e8370b6552fb36b78d9149e061e3c479ea49bb635b9e6d84ba5359d3eb082307",
+          "start": 305,
+          "end": 319,
+          "quote": "Conc. in vacuo"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "MISSING_PURIFICATION_DETAILS",
+        "quote": "the residue was purified with ISCO (100% ethyl acetate to 30% methanol in ethyl acetate)",
+        "message": "The purification step records only generic chromatography outside its evidence text. Preserve the specified ISCO system and eluent gradient as operational details.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-58bee23c6bfd4e46abec561eea6c720a",
+          "source_sha256": "e8370b6552fb36b78d9149e061e3c479ea49bb635b9e6d84ba5359d3eb082307",
+          "start": 321,
+          "end": 409,
+          "quote": "the residue was purified with ISCO (100% ethyl acetate to 30% methanol in ethyl acetate)"
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "ISCO (100% ethyl acetate to 30% methanol in ethyl acetate)",
+        "kind": "separation apparatus",
+        "identity": "ISCO",
+        "scope": "Purification of the residue using an ethyl acetate/methanol in ethyl acetate gradient.",
+        "evidence": {
+          "source_id": "ord-58bee23c6bfd4e46abec561eea6c720a",
+          "source_sha256": "e8370b6552fb36b78d9149e061e3c479ea49bb635b9e6d84ba5359d3eb082307",
+          "start": 351,
+          "end": 409,
+          "quote": "ISCO (100% ethyl acetate to 30% methanol in ethyl acetate)"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-58bee23c6bfd4e46abec561eea6c720a",
+        "source_sha256": "e8370b6552fb36b78d9149e061e3c479ea49bb635b9e6d84ba5359d3eb082307",
+        "start": 13,
+        "end": 61,
+        "quote": "2-bromo-4-chlorobenzonitrile (500 mg, 2.31 mmol)"
+      },
+      {
+        "source_id": "ord-58bee23c6bfd4e46abec561eea6c720a",
+        "source_sha256": "e8370b6552fb36b78d9149e061e3c479ea49bb635b9e6d84ba5359d3eb082307",
+        "start": 63,
+        "end": 117,
+        "quote": "(S)-N,N-dimethylpyrrolidin-3-amine (317 mg, 2.77 mmol)"
+      },
+      {
+        "source_id": "ord-58bee23c6bfd4e46abec561eea6c720a",
+        "source_sha256": "e8370b6552fb36b78d9149e061e3c479ea49bb635b9e6d84ba5359d3eb082307",
+        "start": 119,
+        "end": 156,
+        "quote": "cesium carbonate (1505 mg, 4.62 mmol)"
+      },
+      {
+        "source_id": "ord-58bee23c6bfd4e46abec561eea6c720a",
+        "source_sha256": "e8370b6552fb36b78d9149e061e3c479ea49bb635b9e6d84ba5359d3eb082307",
+        "start": 158,
+        "end": 218,
+        "quote": "tris(dibenzylideneacetone)dipalladium(0) (212 mg, 0.23 mmol)"
+      },
+      {
+        "source_id": "ord-58bee23c6bfd4e46abec561eea6c720a",
+        "source_sha256": "e8370b6552fb36b78d9149e061e3c479ea49bb635b9e6d84ba5359d3eb082307",
+        "start": 223,
+        "end": 248,
+        "quote": "BINAP (288 mg, 0.46 mmol)"
+      },
+      {
+        "source_id": "ord-58bee23c6bfd4e46abec561eea6c720a",
+        "source_sha256": "e8370b6552fb36b78d9149e061e3c479ea49bb635b9e6d84ba5359d3eb082307",
+        "start": 249,
+        "end": 267,
+        "quote": "in toluene (15 mL)"
+      },
+      {
+        "source_id": "ord-58bee23c6bfd4e46abec561eea6c720a",
+        "source_sha256": "e8370b6552fb36b78d9149e061e3c479ea49bb635b9e6d84ba5359d3eb082307",
+        "start": 268,
+        "end": 303,
+        "quote": "was stirred at 100 °C for overnight"
+      },
+      {
+        "source_id": "ord-58bee23c6bfd4e46abec561eea6c720a",
+        "source_sha256": "e8370b6552fb36b78d9149e061e3c479ea49bb635b9e6d84ba5359d3eb082307",
+        "start": 305,
+        "end": 319,
+        "quote": "Conc. in vacuo"
+      },
+      {
+        "source_id": "ord-58bee23c6bfd4e46abec561eea6c720a",
+        "source_sha256": "e8370b6552fb36b78d9149e061e3c479ea49bb635b9e6d84ba5359d3eb082307",
+        "start": 321,
+        "end": 409,
+        "quote": "the residue was purified with ISCO (100% ethyl acetate to 30% methanol in ethyl acetate)"
+      }
+    ],
+    "repair": {
+      "accepted": true,
+      "patch": [
+        {
+          "op": "add",
+          "path": "/steps/6/duration",
+          "value": "overnight"
+        },
+        {
+          "op": "add",
+          "path": "/steps/7/vacuum",
+          "value": true
+        },
+        {
+          "op": "add",
+          "path": "/steps/8/instrument",
+          "value": "ISCO"
+        },
+        {
+          "op": "add",
+          "path": "/steps/8/eluent_gradient",
+          "value": "100% ethyl acetate to 30% methanol in ethyl acetate"
+        }
+      ]
+    },
+    "apparatus_unknowns": [
+      "Reaction vessel used for stirring at 100 °C is not specified.",
+      "Heating and stirring apparatus/controller is not specified.",
+      "Vacuum concentration apparatus used for \"Conc. in vacuo\" is not specified.",
+      "Specific ISCO purification system/model and separation medium are not specified."
+    ]
+  },
+  "split_group": "product_scaffold:c1ccc(N2CCCC2)cc1"
+}

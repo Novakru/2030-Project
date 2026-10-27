@@ -1,70 +1,64 @@
-"""Audit exported data, not just the code's individual helper functions."""
+"""Acceptance checks consume the same manifest as generation and publication."""
 import copy
+from pathlib import Path
 
 import jsonpatch
 import pytest
 
+from mosaic.verification import verify_dataset
 from protocol_risk.conditions import SuccessIndex
-from protocol_risk.io import ROOT, digest, read_jsonl
-from protocol_risk.perturb import negative_fingerprint
-from protocol_risk.symbolic import evaluate
-from protocol_risk.xdl import export_xdl, validate_xdl
+from protocol_risk.io import ROOT, read_json, read_jsonl
 
 
 @pytest.fixture(scope="module")
-def positives():
-    path = ROOT / "data/positives.jsonl"
-    if not path.exists():
-        pytest.skip("Build dataset first")
-    return list(read_jsonl(path))
+def batch():
+    pointer = ROOT / "data/mosaic/current.json"
+    if not pointer.exists():
+        pytest.skip("Generate a MOSAIC batch first")
+    manifest_path = pointer.parent / read_json(pointer)["manifest"]
+    manifest = read_json(manifest_path)
+    bundle = manifest["result"]["review_bundle"]
+    return manifest_path.parent, list(read_jsonl(manifest_path.parent / bundle["positives"])), list(read_jsonl(manifest_path.parent / bundle["negatives"])), bundle
 
 
-def test_one_hundred_real_raw_and_xdl_pairs(positives):
-    assert len(positives) >= 100
-    for p in positives:
-        assert p["source"]["db"] == "ORD"
-        assert p["yield_percent"] > 30
-        assert (ROOT / "data/raw/protocols" / (p["raw_id"] + ".json")).exists()
-        assert evaluate(p).risks == []
-        assert validate_xdl(p["xdl"])
-        assert export_xdl(p) == p["xdl"]
-        if p["quality"]["manual_review"] == "pending" or p["quality"]["hardware_verification"] == "pending":
-            assert p["quality"]["tier"] != "gold"
-            assert not p["quality"]["full_feasibility_certified"]
+def test_one_hundred_real_raw_and_xdl_pairs(batch):
+    root, parents, _, bundle = batch
+    raw_path = root / Path(bundle["positives"]).parent / "raw.jsonl"
+    raws = {r["id"]: r for r in read_jsonl(raw_path)}
+    observed = [p for p in parents if p["source"]["db"] == "ORD"]
+    assert len(observed) >= 100 and len(raws) >= 100
+    for parent in observed:
+        assert parent["raw_id"] in raws and parent["yield_percent"] > 30
+        assert parent["quality"]["tier"] == "silver"
+        assert (root / Path(bundle["positives"]).parent / "xdl" / (parent["id"] + ".xdl")).read_text(encoding="utf-8") == parent["xdl"]
 
 
-def test_every_source_derived_negative_replays_with_one_target_class(positives):
-    mapping = {p["id"]: p for p in positives}
-    seen, content_hashes = set(), set()
-    for n in read_jsonl(ROOT / "data/negatives.jsonl"):
-        parent = mapping[n["parent_id"]]
-        assert n["id"] not in seen
-        seen.add(n["id"])
-        fingerprint = negative_fingerprint(n)
-        assert fingerprint not in content_hashes
-        content_hashes.add(fingerprint)
-        child = jsonpatch.apply_patch(copy.deepcopy(parent), n["diff"])
-        assert child == n["protocol"]
-        assert n["split"] == parent["split"]
-        assert evaluate(child).risks == ([] if n["label"]["label_type"] == "soft" else [n["label"]["risk_l2"]])
-        assert n["xdl"] == export_xdl(child)
-        if n["benchmark_eligible"]:
-            assert parent["quality"]["tier"] == "gold"
-            if n["label"]["label_type"] == "soft":
-                assert n["label"]["calibrated"] and n["label"]["p_infeasible"] is not None
+def test_source_hashes_and_every_negative_intervention_replay(batch):
+    result = verify_dataset(batch[0])
+    assert result["passed"], result["issues"]
+    assert result["upstream_ord_records_checked"] >= 100
+    assert len(result["risk_counts"]) == 20
+    assert min(result["risk_counts"].values()) >= 10
 
 
-def test_soft_candidates_do_not_match_known_successes(positives):
-    index = SuccessIndex()
+def test_soft_candidates_do_not_match_known_successes(batch, tmp_path):
+    from protocol_risk.ingest import read_raw
+    index = SuccessIndex(tmp_path / "success.sqlite")
     try:
-        for n in read_jsonl(ROOT / "data/negatives.jsonl"):
-            if n["label"]["label_type"] == "soft":
-                assert index.match(n["protocol"]) is None
+        index.build(read_raw())
+        for sample in batch[2]:
+            if sample["label"]["label_type"] == "soft":
+                assert index.match(sample["protocol"]) is None
+                assert sample["label"]["calibrated"] is False
+                assert not sample["benchmark_eligible"]
     finally:
         index.close()
 
 
-def test_scaffold_groups_and_parents_never_cross_splits(positives):
+def test_scaffold_groups_and_parents_never_cross_splits(batch):
     groups = {}
-    for p in positives:
-        assert groups.setdefault(p["split_group"], p["split"]) == p["split"]
+    parents = {p["id"]: p for p in batch[1]}
+    for parent in parents.values():
+        assert groups.setdefault(parent["split_group"], parent["split"]) == parent["split"]
+    for sample in batch[2]:
+        assert sample["split"] == parents[sample["parent_id"]]["split"]

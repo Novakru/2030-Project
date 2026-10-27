@@ -1,0 +1,91 @@
+<?xdl version="1.0.0" ?>
+
+<Synthesis>
+
+  <Metadata
+    description="Heck reaction"
+    product_vessel="filter"
+    publication="Org. Lett., 2004, Vol. 6, No. 18, 3155-3158" />
+
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="buffer_flask"
+      type="flask" />
+    <Component
+      id="rotovap"
+      type="flask" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="ugi_product"
+      role="reagent"
+      solid="True" />
+    <Reagent
+      name="palladium catalyst"
+      role="reagent"
+      solid="True" />
+    <Reagent
+      name="dimethylacetamide"
+      role="reagent"
+      use_for_cleaning="True" />
+    <Reagent
+      name="N-methyldicyclohexylamine"
+      role="reagent" />
+  </Reagents>
+
+  <Procedure>
+    <Prep>
+      <ResetHandling
+        solvent="dimethylacetamide" />
+      <StartPurge
+        vessel="filter"
+        gas="nitrogen" />
+      <Add
+        vessel="filter"
+        reagent="ugi_product"
+        amount="1 g" />
+      <Add
+        vessel="filter"
+        reagent="dimethylacetamide"
+        amount="20 mL"
+        stir="True"
+        stir_speed="150 RPM" />
+      <AddSolid
+        vessel="filter"
+        reagent="palladium catalyst"
+        amount="70 mg" />
+      <Add
+        vessel="filter"
+        reagent="N-methyldicyclohexylamine"
+        amount="1.6 mL"
+        viscous="True"
+        stir="True"
+        stir_speed="150 RPM" />
+    </Prep>
+    <Reaction>
+      <HeatChill
+        vessel="filter"
+        temp="100 °C"
+        time="16 h"
+        stir="True"
+        stir_speed="150 RPM" />
+    </Reaction>
+    <Workup>
+      <Transfer
+        from_vessel="filter"
+        to_vessel="rotovap"
+        volume="all"
+        flush_tubing="True" />
+      <Evaporate
+        vessel="rotovap"
+        temp="55 °C"
+        pressure="10 mbar"
+        stir_speed="130 RPM" />
+    </Workup>
+  </Procedure>
+
+</Synthesis>

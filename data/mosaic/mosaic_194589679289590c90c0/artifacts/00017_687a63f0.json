@@ -1,0 +1,98 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r4",
+        "alias": "dimethyl 5-bromoisophthalate",
+        "evidence": "To a solution of dimethyl 5-bromoisophthalate (10 g, 36.62 mmol) in toluene (100 mL)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "alias": "toluene",
+        "evidence": "in toluene (100 mL)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "alias": "BINAP",
+        "evidence": "BINAP (2.5 g, 4.01 mmol)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r3",
+        "alias": "morpholine",
+        "evidence": "morpholine (4.4 g, 50.50 mmol)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "alias": "CESIUM CARBONATE",
+        "evidence": "CESIUM CARBONATE (18 g, 55.25 mmol)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r6",
+        "alias": "PALLADIUM(II) ACETATE",
+        "evidence": "PALLADIUM(II) ACETATE (0.9 g, 4.01 mmol) added.",
+        "stage": "reaction"
+      },
+      {
+        "op": "HeatChill",
+        "duration_s": 50400,
+        "evidence": "The solution was heated to reflux under inert atm for 14h.",
+        "stage": "reaction"
+      },
+      {
+        "op": "Filter",
+        "keep": "filtrate",
+        "evidence": "The silvent was filtered and the filtrate was concentrated.",
+        "stage": "workup"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "the filtrate was concentrated.",
+        "stage": "workup"
+      },
+      {
+        "op": "Purify",
+        "method": "chromatography",
+        "eluent": "Hep:EA",
+        "eluent_ratio": "1:1",
+        "evidence": "The residue was purified by column chropmatography (Hep:EA) 1:1",
+        "stage": "purification"
+      }
+    ],
+    "uncertainties": [
+      "Heating is specified at reflux, but no numeric temperature is given.",
+      "The inert atmosphere gas and method of establishing the atmosphere are not specified.",
+      "The chromatography eluent abbreviations Hep and EA are not expanded in the procedure."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "under inert atm",
+        "reason": "An inert atmosphere is specified, but its gas cannot be mapped to an allowed Atmosphere gas without inference."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 863,
+    "prompt_tokens": 1245,
+    "total_tokens": 2108,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1242,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 159
+    }
+  },
+  "cache_key": "867c567df15c2b018eda0991b9f91869a20bb24ca0b5d08a10027ffb552b634d"
+}

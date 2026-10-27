@@ -1,0 +1,464 @@
+{
+  "library_version": 2,
+  "candidate_operations": 12,
+  "selected_operations_used": 8,
+  "selected_steps": 1286,
+  "extraction_snapshots": 156,
+  "operations": {
+    "Add": {
+      "selected_steps": 1026,
+      "context_only_steps": 0,
+      "snapshot_steps": 1026,
+      "required": [
+        "vessel",
+        "reagent",
+        "amount"
+      ],
+      "optional": [
+        "rate",
+        "temp_C"
+      ],
+      "fields_unique_in_current_registry": [
+        "reagent"
+      ],
+      "risk_checks": [
+        "A1",
+        "A4",
+        "B4",
+        "B5",
+        "C3",
+        "C4"
+      ],
+      "state_distinction": "Introduces a quantified material into vessel state.",
+      "export_mapping": [
+        "Add"
+      ],
+      "reduction_status": "retain_pending_lossless_proof"
+    },
+    "Transfer": {
+      "selected_steps": 0,
+      "context_only_steps": 0,
+      "snapshot_steps": 0,
+      "required": [
+        "from_vessel",
+        "to_vessel",
+        "amount"
+      ],
+      "optional": [
+        "rate"
+      ],
+      "fields_unique_in_current_registry": [
+        "from_vessel"
+      ],
+      "risk_checks": [
+        "A1",
+        "A5"
+      ],
+      "state_distinction": "Changes material location and connectivity requirements.",
+      "export_mapping": [
+        "Transfer"
+      ],
+      "reduction_status": "defer_removal_broader_source_coverage_needed"
+    },
+    "HeatChill": {
+      "selected_steps": 147,
+      "context_only_steps": 0,
+      "snapshot_steps": 147,
+      "required": [
+        "vessel",
+        "temp_C"
+      ],
+      "optional": [
+        "duration_s",
+        "ramp"
+      ],
+      "fields_unique_in_current_registry": [
+        "ramp"
+      ],
+      "risk_checks": [
+        "A2",
+        "B1",
+        "B2",
+        "B3",
+        "C2"
+      ],
+      "state_distinction": "Carries the temperature constraint.",
+      "export_mapping": [
+        "HeatChill",
+        "HeatChillToTemp"
+      ],
+      "reduction_status": "retain_pending_lossless_proof"
+    },
+    "Stir": {
+      "selected_steps": 11,
+      "context_only_steps": 0,
+      "snapshot_steps": 11,
+      "required": [
+        "vessel",
+        "duration_s"
+      ],
+      "optional": [
+        "rpm"
+      ],
+      "fields_unique_in_current_registry": [
+        "rpm"
+      ],
+      "risk_checks": [
+        "A1",
+        "A3"
+      ],
+      "state_distinction": "Carries stirring rate.",
+      "export_mapping": [
+        "Stir"
+      ],
+      "reduction_status": "retain_pending_lossless_proof"
+    },
+    "Wait": {
+      "selected_steps": 0,
+      "context_only_steps": 0,
+      "snapshot_steps": 0,
+      "required": [
+        "duration_s"
+      ],
+      "optional": [],
+      "fields_unique_in_current_registry": [],
+      "risk_checks": [
+        "C6"
+      ],
+      "state_distinction": "Carries elapsed time without implying another operation.",
+      "export_mapping": [
+        "Wait"
+      ],
+      "reduction_status": "defer_removal_broader_source_coverage_needed"
+    },
+    "Atmosphere": {
+      "selected_steps": 69,
+      "context_only_steps": 69,
+      "snapshot_steps": 69,
+      "required": [
+        "vessel",
+        "gas",
+        "mode"
+      ],
+      "optional": [
+        "duration_s"
+      ],
+      "fields_unique_in_current_registry": [
+        "gas",
+        "mode"
+      ],
+      "risk_checks": [
+        "C5"
+      ],
+      "state_distinction": "Carries gas identity and actual establishment method; environment remains metadata.",
+      "export_mapping": [
+        "Purge",
+        "EvacuateAndRefill"
+      ],
+      "reduction_status": "retain_pending_lossless_proof"
+    },
+    "Separate": {
+      "selected_steps": 0,
+      "context_only_steps": 0,
+      "snapshot_steps": 0,
+      "required": [
+        "vessel",
+        "keep_phase"
+      ],
+      "optional": [
+        "to_vessel",
+        "solvent"
+      ],
+      "fields_unique_in_current_registry": [
+        "keep_phase",
+        "solvent"
+      ],
+      "risk_checks": [
+        "A5",
+        "D1",
+        "D2"
+      ],
+      "state_distinction": "Selects which phase contains product.",
+      "export_mapping": [
+        "Separate"
+      ],
+      "reduction_status": "defer_removal_broader_source_coverage_needed"
+    },
+    "Filter": {
+      "selected_steps": 3,
+      "context_only_steps": 0,
+      "snapshot_steps": 3,
+      "required": [
+        "vessel",
+        "keep"
+      ],
+      "optional": [
+        "to_vessel",
+        "through"
+      ],
+      "fields_unique_in_current_registry": [
+        "keep",
+        "through"
+      ],
+      "risk_checks": [
+        "A5",
+        "D1"
+      ],
+      "state_distinction": "Selects solid versus filtrate.",
+      "export_mapping": [
+        "Filter",
+        "FilterThrough"
+      ],
+      "reduction_status": "retain_pending_lossless_proof"
+    },
+    "Evaporate": {
+      "selected_steps": 19,
+      "context_only_steps": 0,
+      "snapshot_steps": 19,
+      "required": [
+        "vessel"
+      ],
+      "optional": [
+        "pressure_mbar",
+        "temp_C",
+        "duration_s"
+      ],
+      "fields_unique_in_current_registry": [
+        "pressure_mbar"
+      ],
+      "risk_checks": [
+        "A2",
+        "B1",
+        "D1"
+      ],
+      "state_distinction": "Removes volatile inventory; unspecified vacuum/temperature stays unknown.",
+      "export_mapping": [
+        "Evaporate"
+      ],
+      "reduction_status": "retain_pending_lossless_proof"
+    },
+    "Irradiate": {
+      "selected_steps": 1,
+      "context_only_steps": 0,
+      "snapshot_steps": 1,
+      "required": [
+        "vessel",
+        "duration_s"
+      ],
+      "optional": [
+        "wavelength_nm",
+        "power_W",
+        "color"
+      ],
+      "fields_unique_in_current_registry": [
+        "color",
+        "wavelength_nm"
+      ],
+      "risk_checks": [
+        "A2"
+      ],
+      "state_distinction": "Carries optical wavelength and power.",
+      "export_mapping": [
+        "Irradiate"
+      ],
+      "reduction_status": "retain_pending_lossless_proof"
+    },
+    "Sonicate": {
+      "selected_steps": 0,
+      "context_only_steps": 0,
+      "snapshot_steps": 0,
+      "required": [
+        "duration_s"
+      ],
+      "optional": [
+        "power_W"
+      ],
+      "fields_unique_in_current_registry": [],
+      "risk_checks": [],
+      "state_distinction": "Ultrasound-specific energy; no verified standard export, quarantine on export.",
+      "export_mapping": [],
+      "reduction_status": "defer_removal_broader_source_coverage_needed"
+    },
+    "Purify": {
+      "selected_steps": 10,
+      "context_only_steps": 0,
+      "snapshot_steps": 10,
+      "required": [
+        "vessel",
+        "method"
+      ],
+      "optional": [
+        "to_vessel"
+      ],
+      "fields_unique_in_current_registry": [
+        "method"
+      ],
+      "risk_checks": [
+        "D1"
+      ],
+      "state_distinction": "Opaque terminal purification; chromatography only has a verified export mapping.",
+      "export_mapping": [
+        "RunColumn"
+      ],
+      "reduction_status": "retain_pending_lossless_proof"
+    }
+  },
+  "macro_candidates": {
+    "Reflux": {
+      "expansion": [
+        "HeatChill"
+      ],
+      "requires": [
+        "solvent",
+        "reflux_apparatus"
+      ],
+      "parameters_without_primitive_field": [
+        "reflux_apparatus"
+      ],
+      "status": "draft_not_proven_lossless",
+      "gate": "Preserve source parameters, state effects, endpoints and apparatus context; replay risk checks before admission."
+    },
+    "Quench": {
+      "expansion": [
+        "Add"
+      ],
+      "requires": [
+        "quench_reagent",
+        "amount"
+      ],
+      "parameters_without_primitive_field": [],
+      "status": "draft_not_proven_lossless",
+      "gate": "Preserve source parameters, state effects, endpoints and apparatus context; replay risk checks before admission."
+    },
+    "Extract": {
+      "expansion": [
+        "Add",
+        "Separate"
+      ],
+      "requires": [
+        "solvent",
+        "amount",
+        "keep_phase"
+      ],
+      "parameters_without_primitive_field": [],
+      "status": "draft_not_proven_lossless",
+      "gate": "Preserve source parameters, state effects, endpoints and apparatus context; replay risk checks before admission."
+    },
+    "Wash": {
+      "expansion": [
+        "Add",
+        "Separate"
+      ],
+      "requires": [
+        "wash_reagent",
+        "amount",
+        "keep_phase"
+      ],
+      "parameters_without_primitive_field": [],
+      "status": "draft_not_proven_lossless",
+      "gate": "Preserve source parameters, state effects, endpoints and apparatus context; replay risk checks before admission."
+    },
+    "DrySolution": {
+      "expansion": [
+        "Add",
+        "Filter"
+      ],
+      "requires": [
+        "drying_agent",
+        "amount"
+      ],
+      "parameters_without_primitive_field": [],
+      "status": "draft_not_proven_lossless",
+      "gate": "Preserve source parameters, state effects, endpoints and apparatus context; replay risk checks before admission."
+    },
+    "Recrystallize": {
+      "expansion": [
+        "Add",
+        "HeatChill",
+        "Filter"
+      ],
+      "requires": [
+        "solvent",
+        "amount",
+        "temperatures"
+      ],
+      "parameters_without_primitive_field": [],
+      "status": "draft_not_proven_lossless",
+      "gate": "Preserve source parameters, state effects, endpoints and apparatus context; replay risk checks before admission."
+    },
+    "Dissolve": {
+      "expansion": [
+        "Add",
+        "Stir"
+      ],
+      "requires": [
+        "solvent",
+        "amount",
+        "duration_s"
+      ],
+      "parameters_without_primitive_field": [],
+      "status": "draft_not_proven_lossless",
+      "gate": "Preserve source parameters, state effects, endpoints and apparatus context; replay risk checks before admission."
+    },
+    "AdjustPH": {
+      "expansion": [
+        "Add"
+      ],
+      "requires": [
+        "reagent",
+        "amount",
+        "target_pH"
+      ],
+      "parameters_without_primitive_field": [
+        "target_pH"
+      ],
+      "status": "draft_not_proven_lossless",
+      "gate": "Preserve source parameters, state effects, endpoints and apparatus context; replay risk checks before admission."
+    },
+    "Concentrate": {
+      "expansion": [
+        "Evaporate"
+      ],
+      "requires": [],
+      "parameters_without_primitive_field": [],
+      "status": "draft_not_proven_lossless",
+      "gate": "Preserve source parameters, state effects, endpoints and apparatus context; replay risk checks before admission."
+    },
+    "Triturate": {
+      "expansion": [
+        "Add",
+        "Stir",
+        "Filter"
+      ],
+      "requires": [
+        "solvent",
+        "amount",
+        "duration_s"
+      ],
+      "parameters_without_primitive_field": [],
+      "status": "draft_not_proven_lossless",
+      "gate": "Preserve source parameters, state effects, endpoints and apparatus context; replay risk checks before admission."
+    },
+    "Precipitate": {
+      "expansion": [
+        "Add",
+        "HeatChill"
+      ],
+      "requires": [
+        "reagent",
+        "amount",
+        "temp_C"
+      ],
+      "parameters_without_primitive_field": [],
+      "status": "draft_not_proven_lossless",
+      "gate": "Preserve source parameters, state effects, endpoints and apparatus context; replay risk checks before admission."
+    }
+  },
+  "unmapped_snapshot_records": 0,
+  "unmapped_snapshot_actions": 0,
+  "unmapped_examples": [],
+  "source_action_coverage": null,
+  "source_action_coverage_status": "unproven: no independently annotated complete source-action denominator",
+  "minimality_proven": false,
+  "policy": "No new primitives or automatic removals. Shared fields alone do not prove equivalent state effects; selected IR coverage does not establish 98% source-action coverage."
+}

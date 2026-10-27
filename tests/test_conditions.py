@@ -1,5 +1,5 @@
 from protocol_risk.conditions import SuccessIndex, fingerprint, protocol_key, raw_key
-from protocol_risk.controls import reference
+from tests.chemistry_fixtures import reference
 from protocol_risk.extract import structured_plan
 
 

@@ -1,0 +1,481 @@
+{
+  "id": "mosaic_pos_e1b3b7a73e24bfcb1a3e",
+  "source": {
+    "dataset_id": "ord_dataset-5c9a10329a8a48968d18879a48bb8ab2",
+    "dataset_name": "Chan-Lam coupling of primary sulfonamides with boronic acids",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-5c9a10329a8a48968d18879a48bb8ab2.parquet",
+    "file_sha256": "c710cdf3b1c4824282530d8067a130d0198b8ca3f52361206fe14a783b0825b1",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": "https://doi.org/10.26434/chemrxiv-2024-22jrq",
+    "reaction_id": "ord-01a5a6097a2c46cdba9b53e8e03ec141",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/5c/ord_dataset-5c9a10329a8a48968d18879a48bb8ab2.parquet"
+  },
+  "raw_id": "ord-01a5a6097a2c46cdba9b53e8e03ec141",
+  "raw_sha256": "b72f562bcb2980b6b6b5854ba63cfe21a561f5d5e7cfe68b1fddd30cb56821e7",
+  "reaction_smiles": "FC1=NC(S(=O)(N)=O)=CC=C1.OB(O)C1=CC=C(OC)C=C1>>FC1=NC(S(=O)(N(C2=CC=C(OC)C=C2)C3=CC=C(C=C3)OC)=O)=CC=C1.FC1=NC(S(=O)(NC2=CC=C(OC)C=C2)=O)=CC=C1",
+  "reaction_class": "Chan-Lam coupling of primary sulfonamides with boronic acids",
+  "yield_percent": 61.8743,
+  "reagents": [
+    {
+      "addition_order": 2,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.02
+      },
+      "id": "r1",
+      "input_key": "Base_Solid",
+      "name": "O=C([O-])[O-].[K+].[K+]",
+      "role": "REAGENT",
+      "smiles": "O=C([O-])[O-].[K+].[K+]",
+      "source_path": "/inputs/Base_Solid/components/0"
+    },
+    {
+      "addition_order": 4,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.015
+      },
+      "id": "r2",
+      "input_key": "Boronic Acid",
+      "name": "OB(O)C1=CC=C(OC)C=C1",
+      "role": "REACTANT",
+      "smiles": "OB(O)C1=CC=C(OC)C=C1",
+      "source_path": "/inputs/Boronic Acid/components/0"
+    },
+    {
+      "addition_order": 4,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 0.1
+      },
+      "id": "r3",
+      "input_key": "Boronic Acid",
+      "name": "ClCCCl",
+      "role": "SOLVENT",
+      "smiles": "ClCCCl",
+      "source_path": "/inputs/Boronic Acid/components/1"
+    },
+    {
+      "addition_order": 1,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.002
+      },
+      "id": "r4",
+      "input_key": "Catalyst",
+      "name": "O=S(=O)([O-])C(F)(F)F.O=S(=O)([O-])C(F)(F)F.[Cu+2]",
+      "role": "CATALYST",
+      "smiles": "O=S(=O)([O-])C(F)(F)F.O=S(=O)([O-])C(F)(F)F.[Cu+2]",
+      "source_path": "/inputs/Catalyst/components/0"
+    },
+    {
+      "addition_order": 3,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.01
+      },
+      "id": "r5",
+      "input_key": "Sulfonamide",
+      "name": "FC1=NC(S(=O)(N)=O)=CC=C1",
+      "role": "REACTANT",
+      "smiles": "FC1=NC(S(=O)(N)=O)=CC=C1",
+      "source_path": "/inputs/Sulfonamide/components/0"
+    },
+    {
+      "addition_order": 3,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 0.1
+      },
+      "id": "r6",
+      "input_key": "Sulfonamide",
+      "name": "ClCCCl",
+      "role": "SOLVENT",
+      "smiles": "ClCCCl",
+      "source_path": "/inputs/Sulfonamide/components/1"
+    }
+  ],
+  "steps": [
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "amount": {
+        "unit": "mmol",
+        "value": 0.002
+      },
+      "vessel": "reactor",
+      "id": "s001",
+      "meta": {
+        "source_path": "/inputs/Catalyst/components/0",
+        "addition_group": "Catalyst",
+        "addition_order": 1
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "amount": {
+        "unit": "mmol",
+        "value": 0.02
+      },
+      "vessel": "reactor",
+      "id": "s002",
+      "meta": {
+        "source_path": "/inputs/Base_Solid/components/0",
+        "addition_group": "Base_Solid",
+        "addition_order": 2
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "amount": {
+        "unit": "mmol",
+        "value": 0.01
+      },
+      "vessel": "reactor",
+      "id": "s003",
+      "meta": {
+        "source_path": "/inputs/Sulfonamide/components/0",
+        "addition_group": "Sulfonamide",
+        "addition_order": 3
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r6",
+      "amount": {
+        "unit": "mL",
+        "value": 0.1
+      },
+      "vessel": "reactor",
+      "id": "s004",
+      "meta": {
+        "source_path": "/inputs/Sulfonamide/components/1",
+        "addition_group": "Sulfonamide",
+        "addition_order": 3
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "amount": {
+        "unit": "mmol",
+        "value": 0.015
+      },
+      "vessel": "reactor",
+      "id": "s005",
+      "meta": {
+        "source_path": "/inputs/Boronic Acid/components/0",
+        "addition_group": "Boronic Acid",
+        "addition_order": 4
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "amount": {
+        "unit": "mL",
+        "value": 0.1
+      },
+      "vessel": "reactor",
+      "id": "s006",
+      "meta": {
+        "source_path": "/inputs/Boronic Acid/components/1",
+        "addition_group": "Boronic Acid",
+        "addition_order": 4
+      }
+    },
+    {
+      "op": "HeatChill",
+      "vessel": "reactor",
+      "temp_C": 60.0,
+      "duration_s": 64800.0,
+      "id": "s007",
+      "meta": {
+        "source_path": "/conditions/temperature/setpoint"
+      },
+      "stir": true,
+      "rpm": 600,
+      "requires": [
+        "s003",
+        "s004",
+        "s005",
+        "s006"
+      ]
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "pressure_control": "AMBIENT",
+    "source_setup": {
+      "environment": {
+        "details": "HTE",
+        "type": "FUME_HOOD"
+      },
+      "is_automated": false,
+      "vessel": {
+        "attachments": [
+          {
+            "details": "Para-dox plate sealed",
+            "type": "MAT"
+          }
+        ],
+        "details": "96-well Para-dox Aluminium Reaction Block",
+        "material": {
+          "details": "8 x 30 mm glass vial inserts",
+          "type": "GLASS"
+        },
+        "type": "WELL_PLATE",
+        "volume": {
+          "units": "MILLILITER",
+          "value": 1.0
+        }
+      }
+    },
+    "atmosphere": {
+      "type": "AIR"
+    }
+  },
+  "extraction": {
+    "method": "ord_structured",
+    "scope": "ordered_inputs_and_reaction_hold",
+    "unresolved": [],
+    "unmapped_actions": [],
+    "limitations": [
+      "Components in one input are premixed; same-order inputs have no inferred relative order.",
+      "This export does not reconstruct workup or preparative stock handling."
+    ]
+  },
+  "yield_evidence": {
+    "measurements": [
+      {
+        "analysis_key": "UPLC-MS",
+        "percentage": 61.8743,
+        "source_path": "/outcomes/0/products/0/measurements/0",
+        "valid": true
+      }
+    ],
+    "policy": "unique_target_unique_percentage_v1",
+    "selection": "explicit_desired_product",
+    "status": "selected",
+    "target_count": 1,
+    "target_source_path": "/outcomes/0/products/0"
+  },
+  "hardware": {
+    "config_id": "source_aware_provisional_v2",
+    "nodes": {
+      "reactor": {
+        "category": "vessel",
+        "apparatus_kind": "well_plate",
+        "description": "96-well Para-dox Aluminium Reaction Block",
+        "params": {
+          "capacity_mL": null,
+          "reported_volume_mL": 1.0
+        },
+        "capacity_scope": "reported_vessel_volume_scope_unresolved",
+        "wetted_materials": [
+          "glass_unspecified"
+        ],
+        "ports": [],
+        "model": null,
+        "verified": false,
+        "binding_basis": "source_reported",
+        "source_url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/5c/ord_dataset-5c9a10329a8a48968d18879a48bb8ab2.parquet",
+        "source_parameters": [
+          "reported_volume_mL"
+        ],
+        "source_evidence": [
+          {
+            "source_url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/5c/ord_dataset-5c9a10329a8a48968d18879a48bb8ab2.parquet",
+            "raw_sha256": "b72f562bcb2980b6b6b5854ba63cfe21a561f5d5e7cfe68b1fddd30cb56821e7",
+            "locator": "/setup/vessel",
+            "value": {
+              "attachments": [
+                {
+                  "details": "Para-dox plate sealed",
+                  "type": "MAT"
+                }
+              ],
+              "details": "96-well Para-dox Aluminium Reaction Block",
+              "material": {
+                "details": "8 x 30 mm glass vial inserts",
+                "type": "GLASS"
+              },
+              "type": "WELL_PLATE",
+              "volume": {
+                "units": "MILLILITER",
+                "value": 1.0
+              }
+            }
+          }
+        ],
+        "verification": {
+          "status": "source_reported",
+          "human_verified": false
+        },
+        "note": "Procedure-reported facts; no manufacturer rating, flow capability or port topology inferred.",
+        "source_fact_sha256": "ca6738db77e29e387ed25b6fadf58642928a63d182a30b758b1320f5f0581e33",
+        "id": "source_apparatus_ca6738db77e29e38",
+        "source_setup_vessel": {
+          "attachments": [
+            {
+              "details": "Para-dox plate sealed",
+              "type": "MAT"
+            }
+          ],
+          "details": "96-well Para-dox Aluminium Reaction Block",
+          "material": {
+            "details": "8 x 30 mm glass vial inserts",
+            "type": "GLASS"
+          },
+          "type": "WELL_PLATE",
+          "volume": {
+            "units": "MILLILITER",
+            "value": 1.0
+          }
+        }
+      },
+      "heater": {
+        "id": "ika_rct_basic_25008259",
+        "category": "heater_stirrer",
+        "params": {
+          "T_min_C": null,
+          "T_max_C": 310,
+          "rpm_min": 50,
+          "rpm_max": 1500
+        },
+        "parameter_scope": "Heating-plate setpoint maximum, not guaranteed liquid temperature; minimum depends on ambient/self-heating.",
+        "wetted_materials": [],
+        "ports": [],
+        "source_url": "https://www.ika.com/en/Products-LabEq/Magnetic-Stirrers-pg188/RCT-basic-25008259/Technical-Data-cptd.html",
+        "verified": false,
+        "verification": {
+          "status": "source_reviewed",
+          "human_verified": false
+        },
+        "binding_basis": "proposed_analysis_configuration",
+        "note": "Proposed analysis controller; source does not identify this model as the original equipment."
+      }
+    },
+    "edges": [
+      [
+        "reactor",
+        "heater"
+      ]
+    ],
+    "bindings": {
+      "heater": "heater"
+    },
+    "estimated_liquid_lower_bound_mL": 0.2,
+    "verification_status": "human_review_pending",
+    "source_issues": [],
+    "binding_scope": "Source-reported vessels; unspecified automation remains a proposed analysis configuration. Edges are provisional.",
+    "inventory_scope": "Sum of stated Add volumes, not peak vessel occupancy or inferred solvent volume."
+  },
+  "crosscheck": {
+    "checks": {
+      "structured_components_preserved": true,
+      "structured_amounts_preserved": true,
+      "amount_comparison_is_independent": false,
+      "solvent_set_preserved": true,
+      "temperature_match": true,
+      "reaction_duration_match": true,
+      "atmosphere_match": null,
+      "independent_text_crosscheck": false
+    },
+    "quantity_checks": [],
+    "conflicts": [],
+    "missing": [
+      "structured_reconstruction_not_independent_text_extraction"
+    ],
+    "tier": "silver",
+    "gold_blockers": [
+      "independent_quantity_review_pending",
+      "hardware_human_verification_pending",
+      "manual_protocol_review_pending"
+    ]
+  },
+  "xdl": "<Synthesis>\n  <Metadata description=\"Source-grounded protocol representation; hardware execution requires compilation and review.\" publication=\"https://doi.org/10.26434/chemrxiv-2024-22jrq\" reaction_class=\"Chan-Lam coupling of primary sulfonamides with boronic acids\"/>\n  <Hardware>\n    <!--Analysis binding: {\"component\": \"heater\", \"params\": {\"T_max_C\": 310, \"T_min_C\": null, \"rpm_max\": 1500, \"rpm_min\": 50}, \"verified\": false, \"wetted_materials\": []}-->\n    <Component id=\"heater\" type=\"heater\"/>\n    <!--Analysis binding: {\"component\": \"reactor\", \"params\": {\"capacity_mL\": null, \"reported_volume_mL\": 1.0}, \"verified\": false, \"wetted_materials\": [\"glass_unspecified\"]}-->\n    <Component id=\"reactor\" type=\"reactor\"/>\n  </Hardware>\n  <Reagents>\n    <!--r1: O=C([O-])[O-].[K+].[K+]-->\n    <Reagent name=\"r1\" role=\"reagent\"/>\n    <!--r2: OB(O)C1=CC=C(OC)C=C1-->\n    <Reagent name=\"r2\" role=\"substrate\"/>\n    <!--r3: ClCCCl-->\n    <Reagent name=\"r3\" role=\"solvent\"/>\n    <!--r4: O=S(=O)([O-])C(F)(F)F.O=S(=O)([O-])C(F)(F)F.[Cu+2]-->\n    <Reagent name=\"r4\" role=\"catalyst\"/>\n    <!--r5: FC1=NC(S(=O)(N)=O)=CC=C1-->\n    <Reagent name=\"r5\" role=\"substrate\"/>\n    <!--r6: ClCCCl-->\n    <Reagent name=\"r6\" role=\"solvent\"/>\n  </Reagents>\n  <Procedure>\n    <!--Analysis context: {\"pressure_control\": \"AMBIENT\", \"reflux\": false}-->\n    <!--Pressure-control context: AMBIENT-->\n    <Add vessel=\"reactor\" reagent=\"r4\" amount=\"0.002 mmol\"/>\n    <Add vessel=\"reactor\" reagent=\"r1\" amount=\"0.02 mmol\"/>\n    <Add vessel=\"reactor\" reagent=\"r5\" amount=\"0.01 mmol\"/>\n    <Add vessel=\"reactor\" reagent=\"r6\" amount=\"0.1 mL\"/>\n    <Add vessel=\"reactor\" reagent=\"r2\" amount=\"0.015 mmol\"/>\n    <Add vessel=\"reactor\" reagent=\"r3\" amount=\"0.1 mL\"/>\n    <HeatChill vessel=\"reactor\" temp=\"60 °C\" time=\"64800 s\" stir=\"true\" stir_speed=\"600\"/>\n  </Procedure>\n</Synthesis>\n",
+  "canonical_sha1": "c2a958f3133a4ce58e1c7c8ed4a26899a9944c01",
+  "quality": {
+    "tier": "silver",
+    "source_grounded": true,
+    "observed_yield_above_30": true,
+    "xdl_profile": "protocol-risk-xdl2-subset-v1",
+    "xdl_profile_schema_passed": true,
+    "official_platform_compiled": false,
+    "symbolic_violations": [],
+    "unknown_constraints": [
+      {
+        "rule": "A1",
+        "step": 0,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 1,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 2,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 3,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 4,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 5,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 6,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A2",
+        "step": 6,
+        "reason": "sample_to_controller_temperature_mapping_unknown"
+      },
+      {
+        "rule": "B1/B2/B3",
+        "step": 6,
+        "reason": "unknown_or_mixed_solvent_properties"
+      },
+      {
+        "rule": "B2",
+        "step": 6,
+        "reason": "solution_freezing_point_not_established"
+      }
+    ],
+    "manual_review": "pending",
+    "hardware_verification": "pending",
+    "full_feasibility_certified": false
+  },
+  "mosaic": {
+    "schema": "mosaic.ir/1",
+    "run_id": "mosaic_194589679289590c90c0",
+    "domain": "chemistry.batch/1",
+    "findings": [],
+    "apparatus_proposals": [],
+    "evidence_spans": []
+  },
+  "split_group": "product_scaffold:O=S(=O)(Nc1ccccc1)c1ccccn1.O=S(=O)(c1ccccn1)N(c1ccccc1)c1ccccc1"
+}

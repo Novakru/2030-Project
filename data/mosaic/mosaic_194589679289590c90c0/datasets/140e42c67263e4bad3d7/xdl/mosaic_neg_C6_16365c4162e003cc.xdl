@@ -1,0 +1,49 @@
+<Synthesis>
+  <Metadata description="Intentionally perturbed source-derived procedure; experimental outcome not observed." publication="https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet" reaction_class="borylation"/>
+  <Hardware>
+    <!--Analysis binding: {"component": "heater", "params": {}, "verified": false, "wetted_materials": []}-->
+    <Component id="heater" type="heater"/>
+    <!--Analysis binding: {"component": "reactor", "params": {"capacity_mL": 5.0}, "verified": false, "wetted_materials": null}-->
+    <Component id="reactor" type="reactor"/>
+  </Hardware>
+  <Reagents>
+    <!--r1: [K].OC(C)(C)C-->
+    <Reagent name="r1" role="catalyst"/>
+    <!--r2: C[OH2+].C[OH2+].C1CC=CCCC=C1.C1CC=CCCC=C1.[Ir].[Ir]-->
+    <Reagent name="r2" role="catalyst"/>
+    <!--r3: O=C1C=CC=2C=CC=C(C3=CN=C(C=C3)C=4N=CC=CC4)C2N1-->
+    <Reagent name="r3" role="reagent"/>
+    <!--r4: O1B(OC(C)(C)C1(C)C)B2OC(C)(C)C(O2)(C)C-->
+    <Reagent name="r4" role="reagent"/>
+    <!--r5: O1CCCC1-->
+    <Reagent name="r5" role="solvent"/>
+    <!--r6: O=C(C=1N=C(C=CC1)C(=O)N(C(C)C)C(C)C)N(C(C)C)C(C)C-->
+    <Reagent name="r6" role="substrate"/>
+  </Reagents>
+  <Procedure>
+    <!--Analysis context: {"pressure_control": "SEALED", "reflux": false}-->
+    <!--Pressure-control context: SEALED-->
+    <!--In an argon filled glove box-->
+    <!--Atmosphere context (no purge operation inferred): argon; environment-->
+    <!--[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%)-->
+    <Add vessel="reactor" reagent="r2" amount="0.003 mmol"/>
+    <!--L1 ligand (2.1 mg, 3.5 mol%)-->
+    <Add vessel="reactor" reagent="r3" amount="0.007 mmol"/>
+    <!--B2pin2 (50.8 mg, 1.0 equiv.)-->
+    <Add vessel="reactor" reagent="r4" amount="0.2 mmol"/>
+    <!--KOtBu (1.0 mg, 4.5 mol%)-->
+    <Add vessel="reactor" reagent="r1" amount="0.009 mmol"/>
+    <!--dry THF (1.0 mL)-->
+    <Add vessel="reactor" reagent="r5" amount="1 mL"/>
+    <!--The reaction mixture was stirred for 2 minutes at room temperature.-->
+    <Stir vessel="reactor" time="12000 s"/>
+    <!--To this mixture, N2,N2,N6,N6-tetraisopropylpyridine-2,6-dicarboxamide (66.7 mg, 0.2 mmol) was added.-->
+    <Add vessel="reactor" reagent="r6" amount="0.2 mmol"/>
+    <!--The microreactor was capped with a teflon pressure cap and placed into pre-heated aluminum block at 80 oC. The reaction mixture was stirred for 12 h.-->
+    <HeatChill vessel="reactor" temp="80 °C" time="43200 s" stir="true"/>
+    <!--THF was removed under reduced pressure-->
+    <Evaporate vessel="reactor"/>
+    <!--dried on an oil bath at 90 oC for 30 minutes-->
+    <Evaporate vessel="reactor" temp="90 °C" time="1800 s"/>
+  </Procedure>
+</Synthesis>

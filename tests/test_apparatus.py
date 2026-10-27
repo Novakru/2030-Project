@@ -41,6 +41,17 @@ def test_workup_flask_does_not_replace_the_reaction_microreactor():
     assert source_apparatus(p)[0]["params"]["capacity_mL"] == 5
 
 
+def test_short_reagent_quotes_still_resolve_vessel_from_source_reaction_prefix():
+    p = subject("water (1 mL)")
+    p["steps"].append({"id": "workup", "op": "Evaporate", "meta": {"stage": "workup", "evidence": "Transfer to a 100 mL flask"}})
+    raw = {"raw_sha256": "fixture-hash", "source": p["source"], "setup": {},
+           "procedure": "A 5.0 mL wheaton microreactor was charged with water (1 mL). Transfer to a 100 mL flask"}
+    node, issues = source_apparatus(p, raw)
+    assert not issues and node["apparatus_kind"] == "microreactor"
+    assert _known(node, "capacity_mL") == 5
+    assert "100 mL" not in node["source_evidence"][0]["value"]
+
+
 def test_structured_vial_volume_and_material_are_not_a_default_flask():
     p = subject("Solvent was added")
     p["context"] = {"source_setup": {"vessel": {"type": "VIAL", "material": {"type": "GLASS"},

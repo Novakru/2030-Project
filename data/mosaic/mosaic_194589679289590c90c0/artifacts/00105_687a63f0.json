@@ -1,0 +1,106 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Atmosphere",
+        "evidence": "In an argon filled glove box",
+        "stage": "reaction",
+        "gas": "argon",
+        "mode": "environment"
+      },
+      {
+        "op": "Add",
+        "evidence": "[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%)",
+        "stage": "reaction",
+        "reagent": "r2",
+        "alias": "[Ir(cod)(OMe)]2"
+      },
+      {
+        "op": "Add",
+        "evidence": "L1 ligand (2.1 mg, 3.5 mol%)",
+        "stage": "reaction",
+        "reagent": "r3",
+        "alias": "L1 ligand"
+      },
+      {
+        "op": "Add",
+        "evidence": "B2pin2 (50.8 mg, 1.0 equiv.)",
+        "stage": "reaction",
+        "reagent": "r4",
+        "alias": "B2pin2"
+      },
+      {
+        "op": "Add",
+        "evidence": "KOtBu (1.0 mg, 4.5 mol%)",
+        "stage": "reaction",
+        "reagent": "r1",
+        "alias": "KOtBu"
+      },
+      {
+        "op": "Add",
+        "evidence": "dry THF (1.0 mL)",
+        "stage": "reaction",
+        "reagent": "r5",
+        "alias": "dry THF"
+      },
+      {
+        "op": "Stir",
+        "evidence": "The reaction mixture was stirred for 2 minutes at room temperature.",
+        "stage": "reaction",
+        "duration_s": 120
+      },
+      {
+        "op": "Add",
+        "evidence": "To this mixture, N,N-diisopropylnicotinamide (41.3 mg, 0.2 mmol) was added.",
+        "stage": "reaction",
+        "reagent": "r6",
+        "alias": "N,N-diisopropylnicotinamide"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "placed into pre-heated aluminum block at 80 oC. The reaction mixture was stirred for 12 h.",
+        "stage": "reaction",
+        "temp_C": 80,
+        "duration_s": 43200,
+        "stir": true
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "THF was removed under reduced pressure",
+        "stage": "workup"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "anddried on oil bath at 90 oC for 30 minutes",
+        "stage": "workup",
+        "temp_C": 90,
+        "duration_s": 1800
+      }
+    ],
+    "uncertainties": [
+      "The procedure names the ligand only as 'L1 ligand' and does not define its structure. Its alignment to r3 cannot be independently confirmed from the literal procedure.",
+      "The pre-stirring temperature is specified only as room temperature; no numeric temperature is given.",
+      "Reduced pressure is specified for THF removal without a numeric pressure. The pressure during subsequent oil-bath drying is not explicitly specified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "The microreactor was capped with a teflon pressure cap",
+        "reason": "Capping is not represented by an allowed operation."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 952,
+    "prompt_tokens": 1292,
+    "total_tokens": 2244,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1289,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 161
+    }
+  },
+  "cache_key": "b78d496be04ad0103896553cb38a0eee429ac35f00982d55b1767ee1335a1131"
+}

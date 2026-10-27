@@ -1,0 +1,127 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r3",
+        "alias": "3-methylazetidine",
+        "evidence": "3-methylazetidine (0.5 g, 4.69 mmol)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r6",
+        "alias": "diacetoxypalladium",
+        "evidence": "diacetoxypalladium (10.53 mg, 0.05 mmol)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "alias": "2,2'-bis(diphenylphosphino)-1,1'-binaphthyl",
+        "evidence": "2,2'-bis(diphenylphosphino)-1,1'-binaphthyl (0.058 g, 0.09 mmol)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "alias": "cesium carbonate",
+        "evidence": "cesium carbonate (3.67 g, 11.26 mmol)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "alias": "toluene",
+        "evidence": "degassed toluene (15 mL)",
+        "stage": "reaction"
+      },
+      {
+        "op": "HeatChill",
+        "temp_C": 100,
+        "evidence": "were heated at 100 °C over the weekend.",
+        "stage": "reaction"
+      },
+      {
+        "op": "Filter",
+        "keep": "filtrate",
+        "evidence": "The RM was filtered",
+        "stage": "workup"
+      },
+      {
+        "op": "Add",
+        "reagent": "EtOAc",
+        "alias": "EtOAc",
+        "evidence": "washed with EtOAc",
+        "stage": "workup"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "the filtrate was then concentrated",
+        "stage": "workup"
+      },
+      {
+        "op": "Purify",
+        "method": "chromatography",
+        "evidence": "the crude product purified by flash silica chromatography, elution gradient 20 to 30% EtOAc in heptane.",
+        "stage": "purification"
+      },
+      {
+        "op": "Add",
+        "reagent": "EN05604-93",
+        "alias": "EN05604-93",
+        "evidence": "Purest fractions were collected and combined with EN05604-93.",
+        "stage": "purification"
+      },
+      {
+        "op": "Add",
+        "reagent": "EtOAc",
+        "alias": "EtOAc",
+        "evidence": "The combined product was then recrystalised from EtOAc",
+        "stage": "purification"
+      },
+      {
+        "op": "Purify",
+        "method": "recrystalised",
+        "evidence": "The combined product was then recrystalised from EtOAc",
+        "stage": "purification"
+      }
+    ],
+    "uncertainties": [
+      "Component r4 is supplied as an initial reactant but is not mentioned anywhere in the literal procedure. Its addition, alias, and addition order cannot be extracted without invention; no supported Add step can be provided for r4.",
+      "The duration 'over the weekend' cannot be converted to an explicit number of seconds.",
+      "Toluene is described as degassed, but no degassing method or gas is specified.",
+      "The object washed with EtOAc is not explicitly identified.",
+      "EN05604-93 is an unidentified material or batch reference; its composition and amount are not specified.",
+      "Recrystallisation temperature, solvent amount, and subsequent product isolation are not specified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "degassed toluene",
+        "reason": "The solvent is described as previously degassed; no explicit degassing operation or supported Atmosphere parameters are provided."
+      },
+      {
+        "evidence": "washed with EtOAc",
+        "reason": "Solvent addition is represented, but washing itself has no dedicated allowed operation and its target is unspecified."
+      },
+      {
+        "evidence": "Purest fractions were collected",
+        "reason": "Fraction collection has no dedicated allowed operation, and no receiving vessel is specified."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1356,
+    "prompt_tokens": 1271,
+    "total_tokens": 2627,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1268
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 336
+    }
+  },
+  "cache_key": "d972a767eaf68ee3021ff712e75fd185534d2d4caf9510a99d4e51938b573ce0"
+}

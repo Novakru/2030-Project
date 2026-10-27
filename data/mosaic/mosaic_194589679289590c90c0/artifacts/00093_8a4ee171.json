@@ -1,0 +1,106 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "MISSING_VESSEL",
+        "quote": "In a 50 ml round bottomed flask",
+        "message": "The plan omits the reaction vessel type and capacity.",
+        "severity": "error"
+      },
+      {
+        "code": "UNSTRUCTURED_REAGENT_QUANTITIES",
+        "quote": "THF (1 mL) was added to a mixture of 4-bromopyridine (1 g, 6.33 mmol), pyrrolidin-3-ol (0.662 g, 7.60 mmol),2-(dimethylamino)-2'-(dicyclohexylphosphino)biphenyl (0.249 g, 0.63 mmol) and Pd2(dba)3 (0.580 g, 0.63 mmol)",
+        "message": "The initial reagent quantities appear in evidence but are absent from the structured addition steps.",
+        "severity": "error"
+      },
+      {
+        "code": "UNSTRUCTURED_REAGENT_QUANTITY",
+        "quote": "lithium bis(trimethylsilyl)amide (13.92 mL, 13.92 mmol)",
+        "message": "The base volume and amount appear in evidence but are absent from its structured addition step.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_PRODUCT_AMOUNT",
+        "quote": "to obtain 0.447 mg of product",
+        "message": "The reported isolated product amount is not retained in the plan. Preserve the source unit, mg, without silently correcting it.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/steps/0/vessel",
+        "value": {
+          "type": "round-bottomed flask",
+          "capacity_mL": 50
+        }
+      },
+      {
+        "op": "add",
+        "path": "/steps/0/quantity",
+        "value": {
+          "mass_g": 1,
+          "amount_mmol": 6.33
+        }
+      },
+      {
+        "op": "add",
+        "path": "/steps/1/quantity",
+        "value": {
+          "mass_g": 0.662,
+          "amount_mmol": 7.6
+        }
+      },
+      {
+        "op": "add",
+        "path": "/steps/2/quantity",
+        "value": {
+          "mass_g": 0.249,
+          "amount_mmol": 0.63
+        }
+      },
+      {
+        "op": "add",
+        "path": "/steps/3/quantity",
+        "value": {
+          "mass_g": 0.58,
+          "amount_mmol": 0.63
+        }
+      },
+      {
+        "op": "add",
+        "path": "/steps/4/quantity",
+        "value": {
+          "volume_mL": 1
+        }
+      },
+      {
+        "op": "add",
+        "path": "/steps/6/quantity",
+        "value": {
+          "volume_mL": 13.92,
+          "amount_mmol": 13.92
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": "After column purification, the source reports obtaining 0.447 mg of product."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 1137,
+    "completion_tokens": 888,
+    "total_tokens": 2025,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1134
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 138
+    }
+  },
+  "cache_key": "813b5a28c7a71d352fc620e6c4f0ef081c5b650b74c0dc899113802b2305b9a1"
+}

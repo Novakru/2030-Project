@@ -1,0 +1,129 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r4",
+        "alias": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile",
+        "evidence": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile (80 mg, 0.34 mmol)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r3",
+        "alias": "N-(3-aminophenyl)acetamide",
+        "evidence": "N-(3-aminophenyl)acetamide (51.4 mg, 0.34 mmol)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "alias": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)",
+        "evidence": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine) (19.81 mg, 0.03 mmol)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "alias": "DMA",
+        "evidence": "in DMA (0.5 mL)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r6",
+        "alias": "Pd2(dba)3",
+        "evidence": "Pd2(dba)3 (15.68 mg, 0.02 mmol)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "alias": "cesium carbonate",
+        "evidence": "cesium carbonate (123 mg, 0.38 mmol) were added.",
+        "stage": "reaction"
+      },
+      {
+        "op": "Atmosphere",
+        "gas": "nitrogen",
+        "mode": "environment",
+        "evidence": "filled with N2",
+        "stage": "reaction"
+      },
+      {
+        "op": "Irradiate",
+        "evidence": "microwave 150C for 30 min",
+        "stage": "reaction"
+      },
+      {
+        "op": "HeatChill",
+        "temp_C": 150,
+        "duration_s": 1800,
+        "evidence": "microwave 150C for 30 min",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "MeOH",
+        "alias": "MeOH",
+        "amount": {
+          "value": 2,
+          "unit": "mL"
+        },
+        "evidence": "added 2 mL of MeOH",
+        "stage": "workup"
+      },
+      {
+        "op": "Filter",
+        "keep": "filtrate",
+        "evidence": "filtered through celite",
+        "stage": "workup"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "concentrated.",
+        "stage": "workup"
+      },
+      {
+        "op": "Purify",
+        "method": "chromatography",
+        "evidence": "The residue was purified by ISCO (Hex to Hex:EtOAc=1:4 to 1:1 to EtOAc), collected prod fractions.",
+        "stage": "purification"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "concentrated to brown semi-solid",
+        "stage": "purification"
+      }
+    ],
+    "uncertainties": [
+      "The degassing method is unspecified; evacuation/refilling or gas bubbling cannot be established.",
+      "Microwave irradiation and heating describe the same treatment; the corresponding steps are concurrent, not sequential treatments.",
+      "The ISCO stationary phase and other chromatography parameters are not specified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "degassed",
+        "reason": "Degassing has no dedicated allowed operation, and its method is unspecified."
+      },
+      {
+        "evidence": "capped",
+        "reason": "Vessel capping is not represented by an allowed operation."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1200,
+    "prompt_tokens": 1449,
+    "total_tokens": 2649,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1446,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 207
+    }
+  },
+  "cache_key": "26e78778b4a0bf92bfdd9983aa52f5dd833d7482b3a6cb6d8375787f6b6a2d53"
+}

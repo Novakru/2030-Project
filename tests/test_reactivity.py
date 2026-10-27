@@ -2,7 +2,7 @@ import copy
 
 import pytest
 
-from protocol_risk.controls import reference
+from tests.chemistry_fixtures import reference
 from protocol_risk.reactivity import groups
 from protocol_risk.symbolic import evaluate
 

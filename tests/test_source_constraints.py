@@ -3,7 +3,7 @@ import copy
 import pytest
 from lxml import etree
 
-from protocol_risk.pipeline import _prepare
+from protocol_risk.validation import prepare_protocol
 from protocol_risk.yields import target_yield
 
 
@@ -28,7 +28,7 @@ def minimal_source_and_extraction(temperature=30):
 
 def test_upper_bound_does_not_become_invented_temperature_setpoint():
     raw, protocol = minimal_source_and_extraction()
-    result = _prepare(protocol, raw)
+    result = prepare_protocol(protocol, raw)
     assert result["steps"][-1]["meta"]["temp_upper_bound_C"] == 30
     assert "temp_C" not in result["steps"][-1]
     xml = etree.fromstring(result["xdl"].encode())
@@ -38,15 +38,31 @@ def test_upper_bound_does_not_become_invented_temperature_setpoint():
 def test_wrong_upper_bound_number_cannot_bypass_numeric_grounding():
     raw, protocol = minimal_source_and_extraction(temperature=99)
     with pytest.raises(ValueError, match="not_grounded"):
-        _prepare(protocol, raw)
+        prepare_protocol(protocol, raw)
 
 
 def test_cached_extraction_cannot_preserve_an_outdated_success_label():
     raw, protocol = minimal_source_and_extraction()
     protocol["yield_percent"] = 99
-    result = _prepare(protocol, raw)
+    result = prepare_protocol(protocol, raw)
     assert result["yield_percent"] == 80
     assert result["yield_evidence"] == raw["yield_evidence"]
     raw["yield_percent"] = None
     with pytest.raises(ValueError, match="unambiguous target yield"):
-        _prepare(protocol, raw)
+        prepare_protocol(protocol, raw)
+
+
+def test_cited_equipment_setup_is_retained_without_adding_a_new_primitive():
+    raw, protocol = minimal_source_and_extraction()
+    setup = "A 5.0 mL wheaton microreactor was charged. "
+    raw["procedure"] = setup + raw["procedure"]
+    protocol["extraction"]["unmapped_actions"] = [{"evidence": setup.strip(), "reason": "Vessel identity not in Add quote"}]
+    # Preserve the exact source prefix, including punctuation expected by the classifier.
+    protocol["extraction"]["unmapped_actions"][0]["evidence"] = setup.strip().rstrip(".")
+    result = prepare_protocol(protocol, raw)
+    assert result["hardware"]["nodes"]["reactor"]["apparatus_kind"] == "microreactor"
+    assert not result["extraction"]["unmapped_actions"]
+    assert result["context"]["source_context_events"][0]["kind"] == "source_vessel_setup"
+    protocol["extraction"]["unmapped_actions"].append({"evidence": "Wash with water", "reason": "Missing physical action"})
+    with pytest.raises(ValueError, match="not mapped"):
+        prepare_protocol(protocol, raw)

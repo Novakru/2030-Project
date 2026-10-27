@@ -32,6 +32,26 @@ def test_undeclared_initial_reagent_is_not_accepted_without_literal_text():
     assert validate_evidence(raw, {"steps": [{"op": "Add", "reagent": "imagined catalyst", "evidence": "Add water."}]})
 
 
+def test_workup_reuse_of_source_solvent_never_copies_the_initial_amount():
+    from protocol_risk.extract import build_ir
+    raw = {"id": "fixture", "procedure": "Add 1 mL water. Wash with 5 mL water.",
+           "components": [{"id": "r1", "name": "water", "smiles": "O", "role": "SOLVENT",
+                           "amount": {"value": 1, "unit": "mL"}, "source_path": "/inputs/water"}],
+           "source": {"db": "TEST"}, "raw_sha256": "fixture", "reaction_smiles": None,
+           "reaction_class": None, "yield_percent": None, "conditions": {}, "atmosphere": {}, "setup": {}}
+    plan = {"steps": [{"op": "Add", "reagent": "r1", "alias": "water", "evidence": "Add 1 mL water."},
+                      {"op": "Add", "reagent": "r1", "alias": "water", "stage": "workup",
+                       "amount": {"value": 5, "unit": "mL"}, "evidence": "Wash with 5 mL water."}]}
+    assert not validate_evidence(raw, plan)
+    result = build_ir(raw, plan, {})
+    assert result["steps"][0]["amount"]["value"] == 1
+    assert result["steps"][1]["amount"]["value"] == 5
+    assert result["steps"][1]["reagent"] != "r1"
+    assert result["reagents"][-1]["role"] == "WORKUP"
+    plan["steps"][1]["stage"] = "reaction"
+    assert any("repeated initial" in e for e in validate_evidence(raw, plan))
+
+
 def test_time_and_temperature_are_grounded_in_explicit_units():
     assert quantities_in_text("at −20 °C for 2 hours", "temp_C") == [-20]
     assert quantities_in_text("at 60 C for 18 hours", "temp_C") == [60]

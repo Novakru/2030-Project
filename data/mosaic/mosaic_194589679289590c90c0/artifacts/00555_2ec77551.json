@@ -1,0 +1,415 @@
+{
+  "id": "mosaic_pos_16838eda2be3fa765b8b",
+  "source": {
+    "dataset_id": "ord_dataset-dc0249930af34d17a3c76881a762aebf",
+    "dataset_name": "Transfer learning optimization of 26 decarboxylative olefination reactions",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-dc0249930af34d17a3c76881a762aebf.parquet",
+    "file_sha256": "7e735178d247caaa73cf39da15e43a3c27cb40cf9476f6e2eb95817a2980bba3",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": null,
+    "reaction_id": "ord-4916152bf45c46579daae12f3af04c4c",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/dc/ord_dataset-dc0249930af34d17a3c76881a762aebf.parquet"
+  },
+  "raw_id": "ord-4916152bf45c46579daae12f3af04c4c",
+  "raw_sha256": "76259bc120c80183e3fc7be920c1e9718c072e8de240ebb18d13a29a3356f0e4",
+  "reaction_smiles": "O=C(OCC)C(C(O)=O)F.[H]C(C1=CC=C(OC)C=C1)=O>>O=C(OCC)/C(F)=C/C1=CC=C(OC)C=C1",
+  "reaction_class": "Transfer learning optimization of 26 decarboxylative olefination reactions",
+  "yield_percent": 72.0,
+  "reagents": [
+    {
+      "addition_order": 1,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.1
+      },
+      "id": "r1",
+      "input_key": "Reaction Mixture",
+      "name": "[H]C(C1=CC=C(OC)C=C1)=O",
+      "role": "REACTANT",
+      "smiles": "[H]C(C1=CC=C(OC)C=C1)=O",
+      "source_path": "/inputs/Reaction Mixture/components/0"
+    },
+    {
+      "addition_order": 1,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 0.5
+      },
+      "id": "r2",
+      "input_key": "Reaction Mixture",
+      "name": "CN(C=O)C",
+      "role": "SOLVENT",
+      "smiles": "CN(C=O)C",
+      "source_path": "/inputs/Reaction Mixture/components/1"
+    },
+    {
+      "addition_order": 1,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.01
+      },
+      "id": "r3",
+      "input_key": "Reaction Mixture",
+      "name": "CN(C)c1ccncc1",
+      "role": "REAGENT",
+      "smiles": "CN(C)c1ccncc1",
+      "source_path": "/inputs/Reaction Mixture/components/2"
+    },
+    {
+      "addition_order": 1,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.1
+      },
+      "id": "r4",
+      "input_key": "Reaction Mixture",
+      "name": "NCC1=CC=CC=C1.O=C(C(F)(F)F)O",
+      "role": "CATALYST",
+      "smiles": "NCC1=CC=CC=C1.O=C(C(F)(F)F)O",
+      "source_path": "/inputs/Reaction Mixture/components/3"
+    },
+    {
+      "addition_order": 1,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.12
+      },
+      "id": "r5",
+      "input_key": "Reaction Mixture",
+      "name": "O=C(OCC)C(C(O)=O)F",
+      "role": "REACTANT",
+      "smiles": "O=C(OCC)C(C(O)=O)F",
+      "source_path": "/inputs/Reaction Mixture/components/4"
+    },
+    {
+      "addition_order": 1,
+      "addition_time": null,
+      "amount": {
+        "unit": "mg",
+        "value": 25.0
+      },
+      "id": "r6",
+      "input_key": "Reaction Mixture",
+      "name": "4Å Molecular Sieve",
+      "role": "REAGENT",
+      "smiles": null,
+      "source_path": "/inputs/Reaction Mixture/components/5"
+    }
+  ],
+  "steps": [
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "amount": {
+        "unit": "mmol",
+        "value": 0.1
+      },
+      "vessel": "reactor",
+      "id": "s001",
+      "meta": {
+        "source_path": "/inputs/Reaction Mixture/components/0",
+        "addition_group": "Reaction Mixture",
+        "addition_order": 1
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "amount": {
+        "unit": "mL",
+        "value": 0.5
+      },
+      "vessel": "reactor",
+      "id": "s002",
+      "meta": {
+        "source_path": "/inputs/Reaction Mixture/components/1",
+        "addition_group": "Reaction Mixture",
+        "addition_order": 1
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "amount": {
+        "unit": "mmol",
+        "value": 0.01
+      },
+      "vessel": "reactor",
+      "id": "s003",
+      "meta": {
+        "source_path": "/inputs/Reaction Mixture/components/2",
+        "addition_group": "Reaction Mixture",
+        "addition_order": 1
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "amount": {
+        "unit": "mmol",
+        "value": 0.1
+      },
+      "vessel": "reactor",
+      "id": "s004",
+      "meta": {
+        "source_path": "/inputs/Reaction Mixture/components/3",
+        "addition_group": "Reaction Mixture",
+        "addition_order": 1
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "amount": {
+        "unit": "mmol",
+        "value": 0.12
+      },
+      "vessel": "reactor",
+      "id": "s005",
+      "meta": {
+        "source_path": "/inputs/Reaction Mixture/components/4",
+        "addition_group": "Reaction Mixture",
+        "addition_order": 1
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r6",
+      "amount": {
+        "unit": "mg",
+        "value": 25.0
+      },
+      "vessel": "reactor",
+      "id": "s006",
+      "meta": {
+        "source_path": "/inputs/Reaction Mixture/components/5",
+        "addition_group": "Reaction Mixture",
+        "addition_order": 1
+      }
+    },
+    {
+      "op": "HeatChill",
+      "vessel": "reactor",
+      "temp_C": 50.0,
+      "duration_s": 86400.0,
+      "id": "s007",
+      "meta": {
+        "source_path": "/conditions/temperature/setpoint"
+      },
+      "requires": [
+        "s001",
+        "s002",
+        "s005"
+      ]
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "pressure_control": "UNKNOWN",
+    "source_setup": {
+      "environment": {
+        "type": "FUME_HOOD"
+      },
+      "is_automated": false,
+      "vessel": {
+        "material": {
+          "type": "GLASS"
+        },
+        "type": "VIAL",
+        "volume": {
+          "units": "MILLILITER",
+          "value": 8.0
+        }
+      }
+    },
+    "atmosphere": {}
+  },
+  "extraction": {
+    "method": "ord_structured",
+    "scope": "ordered_inputs_and_reaction_hold",
+    "unresolved": [],
+    "unmapped_actions": [],
+    "limitations": [
+      "Components in one input are premixed; same-order inputs have no inferred relative order.",
+      "This export does not reconstruct workup or preparative stock handling."
+    ]
+  },
+  "yield_evidence": {
+    "measurements": [
+      {
+        "analysis_key": "1H NMR with internal standard",
+        "percentage": 72.0,
+        "source_path": "/outcomes/0/products/0/measurements/0",
+        "valid": true
+      }
+    ],
+    "policy": "unique_target_unique_percentage_v1",
+    "selection": "explicit_desired_product",
+    "status": "selected",
+    "target_count": 1,
+    "target_source_path": "/outcomes/0/products/0"
+  },
+  "hardware": {
+    "config_id": "source_aware_provisional_v2",
+    "nodes": {
+      "reactor": {
+        "category": "vessel",
+        "apparatus_kind": "vial",
+        "description": "VIAL",
+        "params": {
+          "capacity_mL": 8.0
+        },
+        "capacity_scope": "single_reaction_vessel",
+        "wetted_materials": [
+          "glass_unspecified"
+        ],
+        "ports": [],
+        "model": null,
+        "verified": false,
+        "binding_basis": "source_reported",
+        "source_url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/dc/ord_dataset-dc0249930af34d17a3c76881a762aebf.parquet",
+        "source_parameters": [
+          "capacity_mL"
+        ],
+        "source_evidence": [
+          {
+            "source_url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/dc/ord_dataset-dc0249930af34d17a3c76881a762aebf.parquet",
+            "raw_sha256": "76259bc120c80183e3fc7be920c1e9718c072e8de240ebb18d13a29a3356f0e4",
+            "locator": "/setup/vessel",
+            "value": {
+              "material": {
+                "type": "GLASS"
+              },
+              "type": "VIAL",
+              "volume": {
+                "units": "MILLILITER",
+                "value": 8.0
+              }
+            }
+          }
+        ],
+        "verification": {
+          "status": "source_reported",
+          "human_verified": false
+        },
+        "note": "Procedure-reported facts; no manufacturer rating, flow capability or port topology inferred.",
+        "source_fact_sha256": "6395d804db1d3db77bd46785ebe305078142d30c4657bc9b4109ebf2eaebd90c",
+        "id": "source_apparatus_6395d804db1d3db7",
+        "source_setup_vessel": {
+          "material": {
+            "type": "GLASS"
+          },
+          "type": "VIAL",
+          "volume": {
+            "units": "MILLILITER",
+            "value": 8.0
+          }
+        }
+      },
+      "heater": {
+        "id": "ika_rct_basic_25008259",
+        "category": "heater_stirrer",
+        "params": {
+          "T_min_C": null,
+          "T_max_C": 310,
+          "rpm_min": 50,
+          "rpm_max": 1500
+        },
+        "parameter_scope": "Heating-plate setpoint maximum, not guaranteed liquid temperature; minimum depends on ambient/self-heating.",
+        "wetted_materials": [],
+        "ports": [],
+        "source_url": "https://www.ika.com/en/Products-LabEq/Magnetic-Stirrers-pg188/RCT-basic-25008259/Technical-Data-cptd.html",
+        "verified": false,
+        "verification": {
+          "status": "source_reviewed",
+          "human_verified": false
+        },
+        "binding_basis": "proposed_analysis_configuration",
+        "note": "Proposed analysis controller; source does not identify this model as the original equipment."
+      }
+    },
+    "edges": [
+      [
+        "reactor",
+        "heater"
+      ]
+    ],
+    "bindings": {
+      "heater": "heater"
+    },
+    "estimated_liquid_lower_bound_mL": 0.5,
+    "verification_status": "human_review_pending",
+    "source_issues": [],
+    "binding_scope": "Source-reported vessels; unspecified automation remains a proposed analysis configuration. Edges are provisional.",
+    "inventory_scope": "Sum of stated Add volumes, not peak vessel occupancy or inferred solvent volume."
+  },
+  "crosscheck": {
+    "checks": {
+      "structured_components_preserved": true,
+      "structured_amounts_preserved": true,
+      "amount_comparison_is_independent": false,
+      "solvent_set_preserved": true,
+      "temperature_match": true,
+      "reaction_duration_match": true,
+      "atmosphere_match": null,
+      "independent_text_crosscheck": false
+    },
+    "quantity_checks": [],
+    "conflicts": [],
+    "missing": [
+      "structured_reconstruction_not_independent_text_extraction"
+    ],
+    "tier": "silver",
+    "gold_blockers": [
+      "independent_quantity_review_pending",
+      "hardware_human_verification_pending",
+      "manual_protocol_review_pending"
+    ]
+  },
+  "xdl": "<Synthesis>\n  <Metadata description=\"Source-grounded protocol representation; hardware execution requires compilation and review.\" publication=\"https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/dc/ord_dataset-dc0249930af34d17a3c76881a762aebf.parquet\" reaction_class=\"Transfer learning optimization of 26 decarboxylative olefination reactions\"/>\n  <Hardware>\n    <!--Analysis binding: {\"component\": \"heater\", \"params\": {\"T_max_C\": 310, \"T_min_C\": null, \"rpm_max\": 1500, \"rpm_min\": 50}, \"verified\": false, \"wetted_materials\": []}-->\n    <Component id=\"heater\" type=\"heater\"/>\n    <!--Analysis binding: {\"component\": \"reactor\", \"params\": {\"capacity_mL\": 8.0}, \"verified\": false, \"wetted_materials\": [\"glass_unspecified\"]}-->\n    <Component id=\"reactor\" type=\"reactor\"/>\n  </Hardware>\n  <Reagents>\n    <!--r1: [H]C(C1=CC=C(OC)C=C1)=O-->\n    <Reagent name=\"r1\" role=\"substrate\"/>\n    <!--r2: CN(C=O)C-->\n    <Reagent name=\"r2\" role=\"solvent\"/>\n    <!--r3: CN(C)c1ccncc1-->\n    <Reagent name=\"r3\" role=\"reagent\"/>\n    <!--r4: NCC1=CC=CC=C1.O=C(C(F)(F)F)O-->\n    <Reagent name=\"r4\" role=\"catalyst\"/>\n    <!--r5: O=C(OCC)C(C(O)=O)F-->\n    <Reagent name=\"r5\" role=\"substrate\"/>\n    <!--r6: 4Å Molecular Sieve-->\n    <Reagent name=\"r6\" role=\"reagent\"/>\n  </Reagents>\n  <Procedure>\n    <!--Analysis context: {\"pressure_control\": \"UNKNOWN\", \"reflux\": false}-->\n    <Add vessel=\"reactor\" reagent=\"r1\" amount=\"0.1 mmol\"/>\n    <Add vessel=\"reactor\" reagent=\"r2\" amount=\"0.5 mL\"/>\n    <Add vessel=\"reactor\" reagent=\"r3\" amount=\"0.01 mmol\"/>\n    <Add vessel=\"reactor\" reagent=\"r4\" amount=\"0.1 mmol\"/>\n    <Add vessel=\"reactor\" reagent=\"r5\" amount=\"0.12 mmol\"/>\n    <Add vessel=\"reactor\" reagent=\"r6\" amount=\"25 mg\"/>\n    <HeatChill vessel=\"reactor\" temp=\"50 °C\" time=\"86400 s\"/>\n  </Procedure>\n</Synthesis>\n",
+  "canonical_sha1": "769402bb7b2545d13beeec1f648e11cfff499298",
+  "quality": {
+    "tier": "silver",
+    "source_grounded": true,
+    "observed_yield_above_30": true,
+    "xdl_profile": "protocol-risk-xdl2-subset-v1",
+    "xdl_profile_schema_passed": true,
+    "official_platform_compiled": false,
+    "symbolic_violations": [],
+    "unknown_constraints": [
+      {
+        "rule": "A2",
+        "step": 6,
+        "reason": "sample_to_controller_temperature_mapping_unknown"
+      },
+      {
+        "rule": "B1/B2/B3",
+        "step": 6,
+        "reason": "unknown_or_mixed_solvent_properties"
+      },
+      {
+        "rule": "B2",
+        "step": 6,
+        "reason": "solution_freezing_point_not_established"
+      }
+    ],
+    "manual_review": "pending",
+    "hardware_verification": "pending",
+    "full_feasibility_certified": false
+  },
+  "mosaic": {
+    "schema": "mosaic.ir/1",
+    "run_id": "mosaic_194589679289590c90c0",
+    "domain": "chemistry.batch/1",
+    "findings": [],
+    "apparatus_proposals": [],
+    "evidence_spans": []
+  },
+  "split_group": "product_scaffold:c1ccccc1"
+}

@@ -1,0 +1,291 @@
+{
+  "protocol": {
+    "id": "pos_5502e98555624e3f9c60c91ceda923f6",
+    "source": {
+      "dataset_id": "ord_dataset-4d431564f3ef4e9c91d8da5836f4eae6",
+      "dataset_name": "Figure 4 from Chemistry informer libraries",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-4d431564f3ef4e9c91d8da5836f4eae6.parquet",
+      "file_sha256": "7795ec36ff17faee8a8664401eaf317a67f2912db30cedc629ef3b77f7aa77ff",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://pubs.rsc.org/en/content/articlelanding/2016/SC/C5SC04751J#!divAbstract",
+      "reaction_id": "ord-5502e98555624e3f9c60c91ceda923f6",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/4d/ord_dataset-4d431564f3ef4e9c91d8da5836f4eae6.parquet"
+    },
+    "raw_id": "ord-5502e98555624e3f9c60c91ceda923f6",
+    "raw_sha256": "c461d4ce1436b3d7eb3182fca3ed5a828fa40021f6052c0b2aed7f740c931c5c",
+    "reaction_smiles": "C1CCNCC1.CC1(C(=C(C(=O)O1)Oc2ccc(cn2)Br)c3ccc(cc3)S(=O)(=O)C)C>>CC1(C(=C(C(=O)O1)Oc2ccc(cn2)N3CCCCC3)c4ccc(cc4)S(=O)(=O)C)C",
+    "reaction_class": "Figure 4 from Chemistry informer libraries",
+    "yield_percent": 78.0,
+    "reagents": [
+      {
+        "addition_order": 2,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.00375
+        },
+        "id": "r1",
+        "input_key": "Amine",
+        "name": "C1CCNCC1",
+        "role": "REACTANT",
+        "smiles": "C1CCNCC1",
+        "source_path": "/inputs/Amine/components/0"
+      },
+      {
+        "addition_order": 2,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.0075
+        },
+        "id": "r2",
+        "input_key": "Amine",
+        "name": "[O-]P(=O)([O-])[O-].[K+].[K+].[K+]",
+        "role": "REAGENT",
+        "smiles": "[O-]P(=O)([O-])[O-].[K+].[K+].[K+]",
+        "source_path": "/inputs/Amine/components/1"
+      },
+      {
+        "addition_order": 2,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.00025
+        },
+        "id": "r3",
+        "input_key": "Amine",
+        "name": "[Cu]I",
+        "role": "CATALYST",
+        "smiles": "[Cu]I",
+        "source_path": "/inputs/Amine/components/2"
+      },
+      {
+        "addition_order": 2,
+        "addition_time": null,
+        "amount": {
+          "unit": "mL",
+          "value": 0.0125
+        },
+        "id": "r4",
+        "input_key": "Amine",
+        "name": "CS(=O)C",
+        "role": "SOLVENT",
+        "smiles": "CS(=O)C",
+        "source_path": "/inputs/Amine/components/3"
+      },
+      {
+        "addition_order": 1,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.0025
+        },
+        "id": "r5",
+        "input_key": "Aryl Halide",
+        "name": "CC1(C(=C(C(=O)O1)Oc2ccc(cn2)Br)c3ccc(cc3)S(=O)(=O)C)C",
+        "role": "REACTANT",
+        "smiles": "CC1(C(=C(C(=O)O1)Oc2ccc(cn2)Br)c3ccc(cc3)S(=O)(=O)C)C",
+        "source_path": "/inputs/Aryl Halide/components/0"
+      },
+      {
+        "addition_order": 3,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.0005
+        },
+        "id": "r6",
+        "input_key": "Catalyst",
+        "name": "COc1cccc(c1NC(=O)C(=O)O)OC",
+        "role": "CATALYST",
+        "smiles": "COc1cccc(c1NC(=O)C(=O)O)OC",
+        "source_path": "/inputs/Catalyst/components/0"
+      },
+      {
+        "addition_order": 3,
+        "addition_time": null,
+        "amount": {
+          "unit": "mL",
+          "value": 0.0125
+        },
+        "id": "r7",
+        "input_key": "Catalyst",
+        "name": "CS(=O)C",
+        "role": "SOLVENT",
+        "smiles": "CS(=O)C",
+        "source_path": "/inputs/Catalyst/components/1"
+      }
+    ],
+    "steps": [
+      {
+        "id": "gas_context",
+        "op": "Atmosphere",
+        "vessel": "reactor",
+        "gas": "nitrogen",
+        "mode": "environment",
+        "meta": {
+          "source_path": "/atmosphere"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.0025
+        },
+        "vessel": "reactor",
+        "id": "s001",
+        "meta": {
+          "source_path": "/inputs/Aryl Halide/components/0",
+          "addition_group": "Aryl Halide",
+          "addition_order": 1
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.00375
+        },
+        "vessel": "reactor",
+        "id": "s002",
+        "meta": {
+          "source_path": "/inputs/Amine/components/0",
+          "addition_group": "Amine",
+          "addition_order": 2
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.0075
+        },
+        "vessel": "reactor",
+        "id": "s003",
+        "meta": {
+          "source_path": "/inputs/Amine/components/1",
+          "addition_group": "Amine",
+          "addition_order": 2
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r3",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.00025
+        },
+        "vessel": "reactor",
+        "id": "s004",
+        "meta": {
+          "source_path": "/inputs/Amine/components/2",
+          "addition_group": "Amine",
+          "addition_order": 2
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r4",
+        "amount": {
+          "unit": "mL",
+          "value": 0.0125
+        },
+        "vessel": "reactor",
+        "id": "s005",
+        "meta": {
+          "source_path": "/inputs/Amine/components/3",
+          "addition_group": "Amine",
+          "addition_order": 2
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r6",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.0005
+        },
+        "vessel": "reactor",
+        "id": "s006",
+        "meta": {
+          "source_path": "/inputs/Catalyst/components/0",
+          "addition_group": "Catalyst",
+          "addition_order": 3
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r7",
+        "amount": {
+          "unit": "mL",
+          "value": 0.0125
+        },
+        "vessel": "reactor",
+        "id": "s007",
+        "meta": {
+          "source_path": "/inputs/Catalyst/components/1",
+          "addition_group": "Catalyst",
+          "addition_order": 3
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 80.0,
+        "duration_s": 64800.0,
+        "id": "s008",
+        "meta": {
+          "source_path": "/conditions/temperature/setpoint"
+        },
+        "stir": true
+      }
+    ],
+    "context": {
+      "reflux": false,
+      "pressure_control": "UNKNOWN",
+      "source_setup": {
+        "environment": {
+          "details": "Nitrogen Filled",
+          "type": "GLOVE_BOX"
+        },
+        "vessel": {
+          "details": "96 Glass Vials",
+          "material": {
+            "type": "GLASS"
+          },
+          "type": "WELL_PLATE",
+          "volume": {
+            "units": "MICROLITER",
+            "value": 250.0
+          }
+        }
+      },
+      "atmosphere": {
+        "derived_from": "/setup/environment/details",
+        "type": "NITROGEN"
+      }
+    },
+    "extraction": {
+      "method": "ord_structured",
+      "scope": "ordered_inputs_and_reaction_hold",
+      "unresolved": [],
+      "unmapped_actions": [],
+      "limitations": [
+        "Components in one input are premixed; same-order inputs have no inferred relative order.",
+        "This export does not reconstruct workup or preparative stock handling."
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/1",
+    "findings": [],
+    "apparatus_proposals": [],
+    "evidence_spans": []
+  },
+  "raw_id": "ord-5502e98555624e3f9c60c91ceda923f6"
+}

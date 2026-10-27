@@ -1,0 +1,177 @@
+<?xdl version="0.5.0" ?>
+
+<Synthesis>
+
+  <Hardware>
+    <Component
+      id="reactor_1"
+      type="reactor" />
+    <Component
+      id="reactor_2"
+      type="filter" />
+    <Component
+      id="rotavap"
+      type="rotavap" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="ZnCl2"
+      role="reagent" />
+    <Reagent
+      name="p-Benzoquinone in DCE"
+      role="reagent" />
+    <Reagent
+      name="ethyl acetoacetate"
+      role="reagent" />
+    <Reagent
+      name="N-Methylamine in EtOH"
+      role="reagent" />
+    <Reagent
+      name="acetone"
+      role="solvent" />
+    <Reagent
+      name="water"
+      role="solvent" />
+    <Reagent
+      name="ethanol"
+      role="solvent" />
+    <Reagent
+      name="1,2-dichloroethane"
+      role="solvent" />
+  </Reagents>
+
+  <Procedure>
+  <!-- Step 1 -->
+    <ResetHandling
+      solvent="ethanol" />
+    <Add
+      vessel="reactor_1"
+      reagent="ethyl acetoacetate"
+      volume="4.424 mL"
+      priming_volume="1 mL"
+      aspiration_speed="2" />
+    <ResetHandling
+      solvent="ethanol" />
+    <Add
+      vessel="reactor_1"
+      reagent="N-Methylamine in EtOH"
+      volume="6.467 mL"
+      time="20 min"
+      priming_volume="1 mL"
+      aspiration_speed="2"
+      stir="True" />
+    <ResetHandling
+      solvent="ethanol" />
+    <Stir
+      vessel="reactor_1"
+      time="3 h" />
+    <Transfer
+      volume="all"
+      from_vessel="reactor_1"
+      to_vessel="rotavap"
+      rinsing_solvent="ethanol"
+      rinsing_volume="20 mL"
+      rinsing_repeats="3" />
+    <ResetHandling
+      solvent="1,2-dichloroethane" />
+    <Evaporate
+      vessel="rotavap"
+      pressure="100 mbar"
+      temp="50 °C"
+      mode="auto"
+      time="30 min" />
+    <Evaporate
+      vessel="rotavap"
+      pressure="50 mbar"
+      temp="50 °C"
+      mode="auto"
+      time="30 min" />
+    <Dry
+      vessel="rotavap"
+      time="60 min"
+      temp="80 °C"
+      pressure="10 mbar" />
+  <!-- Step 2 -->
+    <ResetHandling
+      solvent="1,2-dichloroethane" />
+    <AddSolid
+      vessel="reactor_2"
+      reagent="ZnCl2"
+      mass="905 mg" />
+    <HeatChillToTemp
+      vessel="reactor_2"
+      temp="55 °C"
+      continue_heatchill="True" />
+    <Add
+      vessel="reactor_2"
+      reagent="p-Benzoquinone in DCE"
+      volume="21.0 mL" />
+    <ResetHandling
+      solvent="1,2-dichloroethane" />
+    <Transfer
+      from_vessel="rotavap"
+      to_vessel="reactor_2"
+      dispense_speed="2"
+      volume="20 mL"
+      rinsing_solvent="1,2-dichloroethane"
+      rinsing_volume="2.0 mL"
+      rinsing_repeats="3"
+      stir_to_vessel="True"
+      stir_from_vessel="False" />
+    <ResetHandling
+      solvent="1,2-dichloroethane" />
+    <HeatChill
+      vessel="reactor_2"
+      temp="55 °C"
+      time="1 h" />
+    <HeatChill
+      vessel="reactor_2"
+      temp="15 °C"
+      time="5 min" />
+    <Filter
+      vessel="reactor_2"
+      stir="True"
+      wait_time="30 min"
+      temp="15 °C" />
+    <Dry
+      vessel="reactor_2"
+      time="30 min"
+      temp="15 °C" />
+    <HeatChillToTemp
+      vessel="reactor_2"
+      temp="15 °C"
+      continue_heatchill="True" />
+    <ResetHandling
+      solvent="ethanol" />
+    <Repeat repeats="1">
+      <Add
+        vessel="reactor_2"
+        reagent="ethanol"
+        volume="3.01 mL" />
+      <Add
+        vessel="reactor_2"
+        reagent="water"
+        volume="15.06 mL" />
+      <HeatChill
+        vessel="reactor_2"
+        temp="15 °C"
+        time="60 min"
+        stir_speed="500 rpm" />
+      <Filter
+        vessel="reactor_2"
+        stir="True"
+        wait_time="30 min"
+        temp="15 °C" />
+    </Repeat>
+    <Dry
+      vessel="reactor_2"
+      time="1 h"
+      temp="50 °C" />
+    <ResetHandling
+      solvent="acetone" />
+    <ResetHandling
+      solvent="ethanol" />
+  </Procedure>
+
+</Synthesis>

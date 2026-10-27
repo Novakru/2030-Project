@@ -1,0 +1,36 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_SUSPENSION_ACTION",
+        "quote": "were suspended in toluene (5 mL)",
+        "message": "The plan records solvent addition but does not represent the explicitly stated formation of a suspension. No mixing method or duration is specified, so stirring or other specific agitation should not be inferred.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "were suspended in toluene (5 mL)",
+          "reason": "Suspension formation is explicitly stated but is not represented by the Add steps alone. The method and duration of suspension preparation are unspecified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 1026,
+    "completion_tokens": 308,
+    "total_tokens": 1334,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 168
+    }
+  },
+  "cache_key": "ea834c442d1373e12b0a8b56b8c4f8ad43a5e69ed0799d7d186e5c5335470930"
+}

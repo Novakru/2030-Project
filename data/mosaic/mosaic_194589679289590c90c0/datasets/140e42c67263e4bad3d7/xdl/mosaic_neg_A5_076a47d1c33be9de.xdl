@@ -1,0 +1,54 @@
+<Synthesis>
+  <Metadata description="Intentionally perturbed source-derived procedure; experimental outcome not observed." publication="https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471" reaction_class="1.3.1 [N-arylation with Ar-X] Bromo Buchwald-Hartwig amination"/>
+  <Hardware>
+    <!--Analysis binding: {"component": "column", "params": {}, "verified": false, "wetted_materials": null}-->
+    <Component id="column" type="column"/>
+    <!--Analysis binding: {"component": "filtrate", "params": {}, "verified": false, "wetted_materials": null}-->
+    <Component id="filtrate" type="reactor"/>
+    <!--Analysis binding: {"component": "heater", "params": {"T_max_C": 310, "T_min_C": null, "rpm_max": 1500, "rpm_min": 50}, "verified": false, "wetted_materials": []}-->
+    <Component id="heater" type="heater"/>
+    <!--Analysis binding: {"component": "product", "params": {}, "verified": false, "wetted_materials": null}-->
+    <Component id="product" type="reactor"/>
+    <!--Analysis binding: {"component": "reactor", "params": {"capacity_mL": 50.0}, "verified": false, "wetted_materials": null}-->
+    <Component id="reactor" type="reactor"/>
+  </Hardware>
+  <Reagents>
+    <!--r1: [Li+].C[Si](C)(C)[N-][Si](C)(C)C-->
+    <Reagent name="r1" role="reagent"/>
+    <!--r2: C1CCOC1-->
+    <Reagent name="r2" role="solvent"/>
+    <!--r3: C1CNCC1O-->
+    <Reagent name="r3" role="substrate"/>
+    <!--r4: C1=CN=CC=C1Br-->
+    <Reagent name="r4" role="substrate"/>
+    <!--r5: CN(C)C1=CC=CC=C1C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4-->
+    <Reagent name="r5" role="catalyst"/>
+    <!--r6: C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]-->
+    <Reagent name="r6" role="catalyst"/>
+  </Reagents>
+  <Procedure>
+    <!--Analysis context: {"pressure_control": "UNKNOWN", "reflux": false}-->
+    <!--a mixture of 4-bromopyridine (1 g, 6.33 mmol), pyrrolidin-3-ol (0.662 g, 7.60 mmol),2-(dimethylamino)-2'-(dicyclohexylphosphino)biphenyl (0.249 g, 0.63 mmol) and Pd2(dba)3 (0.580 g, 0.63 mmol)-->
+    <Add vessel="reactor" reagent="r4" amount="6.33 mmol"/>
+    <!--pyrrolidin-3-ol (0.662 g, 7.60 mmol)-->
+    <Add vessel="reactor" reagent="r3" amount="7.6 mmol"/>
+    <!--2-(dimethylamino)-2'-(dicyclohexylphosphino)biphenyl (0.249 g, 0.63 mmol)-->
+    <Add vessel="reactor" reagent="r5" amount="0.633 mmol"/>
+    <!--Pd2(dba)3 (0.580 g, 0.63 mmol)-->
+    <Add vessel="reactor" reagent="r6" amount="0.633 mmol"/>
+    <!--THF (1 mL) was added to a mixture-->
+    <Add vessel="reactor" reagent="r2" amount="1 mL"/>
+    <!--lithium bis(trimethylsilyl)amide (13.92 mL, 13.92 mmol) was added dropwise at 0 °C-->
+    <HeatChillToTemp vessel="reactor" temp="0 °C"/>
+    <!--To the slurry lithium bis(trimethylsilyl)amide (13.92 mL, 13.92 mmol) was added dropwise at 0 °C-->
+    <Add vessel="reactor" reagent="r1" amount="13.9 mmol"/>
+    <!--the solution was refluxed at 65 °C overnight for 20 hrs-->
+    <HeatChill vessel="reactor" temp="65 °C" time="72000 s"/>
+    <!--The reaction mixture was passed through celite-->
+    <Filter vessel="reactor" filtrate_vessel="filtrate"/>
+    <!--concentrated-->
+    <Evaporate vessel="reactor"/>
+    <!--column purified (0-20%MeOH/DCM)-->
+    <RunColumn from_vessel="reactor" to_vessel="product" column="column"/>
+  </Procedure>
+</Synthesis>

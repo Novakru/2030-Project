@@ -1,0 +1,247 @@
+{
+  "protocol": {
+    "id": "pos_4aac4172a31649d2baa61a35b64e3070",
+    "source": {
+      "dataset_id": "ord_dataset-dc0249930af34d17a3c76881a762aebf",
+      "dataset_name": "Transfer learning optimization of 26 decarboxylative olefination reactions",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-dc0249930af34d17a3c76881a762aebf.parquet",
+      "file_sha256": "7e735178d247caaa73cf39da15e43a3c27cb40cf9476f6e2eb95817a2980bba3",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": null,
+      "reaction_id": "ord-4aac4172a31649d2baa61a35b64e3070",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/dc/ord_dataset-dc0249930af34d17a3c76881a762aebf.parquet"
+    },
+    "raw_id": "ord-4aac4172a31649d2baa61a35b64e3070",
+    "raw_sha256": "b5beaf0a3bf5fdd29be74047f9e860c1376a2fb0ffa2d9d05851543a21ff1bea",
+    "reaction_smiles": "O=C(OCC)C(C(O)=O)C.[H]C(C1=CC=C(OC)C=C1)=O>>COC1=CC=C(/C=C(C)/C(OCC)=O)C=C1",
+    "reaction_class": "Transfer learning optimization of 26 decarboxylative olefination reactions",
+    "yield_percent": 49.0,
+    "reagents": [
+      {
+        "addition_order": 1,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.1
+        },
+        "id": "r1",
+        "input_key": "Reaction Mixture",
+        "name": "[H]C(C1=CC=C(OC)C=C1)=O",
+        "role": "REACTANT",
+        "smiles": "[H]C(C1=CC=C(OC)C=C1)=O",
+        "source_path": "/inputs/Reaction Mixture/components/0"
+      },
+      {
+        "addition_order": 1,
+        "addition_time": null,
+        "amount": {
+          "unit": "mL",
+          "value": 0.5
+        },
+        "id": "r2",
+        "input_key": "Reaction Mixture",
+        "name": "C1COCC1",
+        "role": "SOLVENT",
+        "smiles": "C1COCC1",
+        "source_path": "/inputs/Reaction Mixture/components/1"
+      },
+      {
+        "addition_order": 1,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.0
+        },
+        "id": "r3",
+        "input_key": "Reaction Mixture",
+        "name": "CN(C)c1ccncc1",
+        "role": "REAGENT",
+        "smiles": "CN(C)c1ccncc1",
+        "source_path": "/inputs/Reaction Mixture/components/2"
+      },
+      {
+        "addition_order": 1,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.1
+        },
+        "id": "r4",
+        "input_key": "Reaction Mixture",
+        "name": "C1CNCCO1",
+        "role": "CATALYST",
+        "smiles": "C1CNCCO1",
+        "source_path": "/inputs/Reaction Mixture/components/3"
+      },
+      {
+        "addition_order": 1,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.2
+        },
+        "id": "r5",
+        "input_key": "Reaction Mixture",
+        "name": "O=C(OCC)C(C(O)=O)C",
+        "role": "REACTANT",
+        "smiles": "O=C(OCC)C(C(O)=O)C",
+        "source_path": "/inputs/Reaction Mixture/components/4"
+      },
+      {
+        "addition_order": 1,
+        "addition_time": null,
+        "amount": {
+          "unit": "mg",
+          "value": 25.0
+        },
+        "id": "r6",
+        "input_key": "Reaction Mixture",
+        "name": "4Å Molecular Sieve",
+        "role": "REAGENT",
+        "smiles": null,
+        "source_path": "/inputs/Reaction Mixture/components/5"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.1
+        },
+        "vessel": "reactor",
+        "id": "s001",
+        "meta": {
+          "source_path": "/inputs/Reaction Mixture/components/0",
+          "addition_group": "Reaction Mixture",
+          "addition_order": 1
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "amount": {
+          "unit": "mL",
+          "value": 0.5
+        },
+        "vessel": "reactor",
+        "id": "s002",
+        "meta": {
+          "source_path": "/inputs/Reaction Mixture/components/1",
+          "addition_group": "Reaction Mixture",
+          "addition_order": 1
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r3",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.0
+        },
+        "vessel": "reactor",
+        "id": "s003",
+        "meta": {
+          "source_path": "/inputs/Reaction Mixture/components/2",
+          "addition_group": "Reaction Mixture",
+          "addition_order": 1
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r4",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.1
+        },
+        "vessel": "reactor",
+        "id": "s004",
+        "meta": {
+          "source_path": "/inputs/Reaction Mixture/components/3",
+          "addition_group": "Reaction Mixture",
+          "addition_order": 1
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.2
+        },
+        "vessel": "reactor",
+        "id": "s005",
+        "meta": {
+          "source_path": "/inputs/Reaction Mixture/components/4",
+          "addition_group": "Reaction Mixture",
+          "addition_order": 1
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r6",
+        "amount": {
+          "unit": "mg",
+          "value": 25.0
+        },
+        "vessel": "reactor",
+        "id": "s006",
+        "meta": {
+          "source_path": "/inputs/Reaction Mixture/components/5",
+          "addition_group": "Reaction Mixture",
+          "addition_order": 1
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 25.0,
+        "duration_s": 86400.0,
+        "id": "s007",
+        "meta": {
+          "source_path": "/conditions/temperature/setpoint"
+        }
+      }
+    ],
+    "context": {
+      "reflux": false,
+      "pressure_control": "UNKNOWN",
+      "source_setup": {
+        "environment": {
+          "type": "FUME_HOOD"
+        },
+        "is_automated": false,
+        "vessel": {
+          "material": {
+            "type": "GLASS"
+          },
+          "type": "VIAL",
+          "volume": {
+            "units": "MILLILITER",
+            "value": 8.0
+          }
+        }
+      },
+      "atmosphere": {}
+    },
+    "extraction": {
+      "method": "ord_structured",
+      "scope": "ordered_inputs_and_reaction_hold",
+      "unresolved": [],
+      "unmapped_actions": [],
+      "limitations": [
+        "Components in one input are premixed; same-order inputs have no inferred relative order.",
+        "This export does not reconstruct workup or preparative stock handling."
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/1",
+    "findings": [],
+    "apparatus_proposals": [],
+    "evidence_spans": []
+  },
+  "raw_id": "ord-4aac4172a31649d2baa61a35b64e3070"
+}

@@ -1,0 +1,329 @@
+{
+  "protocol": {
+    "id": "pos_0504405df8c1467f8b71685038eb43da",
+    "source": {
+      "dataset_id": "ord_dataset-675eddcaa6674ce3ae61e79bbc1e1c08",
+      "dataset_name": "Pd-catalyzed C-H arylation of imidazole with aryl bromide",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-675eddcaa6674ce3ae61e79bbc1e1c08.parquet",
+      "file_sha256": "e95aa366e1e2fb05b8af252af83c024430203b84eb4a3caf738b3e89053f461a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/64c7e2e1658ec5f7e5808425",
+      "reaction_id": "ord-0504405df8c1467f8b71685038eb43da",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/67/ord_dataset-675eddcaa6674ce3ae61e79bbc1e1c08.parquet"
+    },
+    "raw_id": "ord-0504405df8c1467f8b71685038eb43da",
+    "raw_sha256": "3e138a89e16315a7c4ab4bfbe6f6999eefa8df92399eb8aebe2c1681dacc7bd7",
+    "reaction_smiles": "Brc1ccc2occc2c1.Cn1cnc(C#N)c1>>Cn1cnc(C#N)c1-c1ccc2occc2c1",
+    "reaction_class": "Pd-catalyzed C-H arylation of imidazole with aryl bromide",
+    "yield_percent": 47.8,
+    "reagents": [
+      {
+        "addition_order": 3,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.015
+        },
+        "id": "r1",
+        "input_key": "aryl bromide stock solution",
+        "name": "Brc1ccc2occc2c1",
+        "role": "REACTANT",
+        "smiles": "Brc1ccc2occc2c1",
+        "source_path": "/inputs/aryl bromide stock solution/components/0"
+      },
+      {
+        "addition_order": 3,
+        "addition_time": null,
+        "amount": {
+          "unit": "mL",
+          "value": 0.03
+        },
+        "id": "r2",
+        "input_key": "aryl bromide stock solution",
+        "name": "DMA",
+        "role": "SOLVENT",
+        "smiles": "CC(=O)N(C)C",
+        "source_path": "/inputs/aryl bromide stock solution/components/1"
+      },
+      {
+        "addition_order": 1,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.045
+        },
+        "id": "r3",
+        "input_key": "base",
+        "name": "KOPiv",
+        "role": "REAGENT",
+        "smiles": "CC(C)(C)C(=O)[O-].[K+]",
+        "source_path": "/inputs/base/components/0"
+      },
+      {
+        "addition_order": 5,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.03
+        },
+        "id": "r4",
+        "input_key": "imidazole stock solution with standard",
+        "name": "Cn1cnc(C#N)c1",
+        "role": "REACTANT",
+        "smiles": "Cn1cnc(C#N)c1",
+        "source_path": "/inputs/imidazole stock solution with standard/components/0"
+      },
+      {
+        "addition_order": 5,
+        "addition_time": null,
+        "amount": {
+          "unit": "mL",
+          "value": 0.1125
+        },
+        "id": "r5",
+        "input_key": "imidazole stock solution with standard",
+        "name": "DMA",
+        "role": "SOLVENT",
+        "smiles": "CC(=O)N(C)C",
+        "source_path": "/inputs/imidazole stock solution with standard/components/1"
+      },
+      {
+        "addition_order": 5,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.04275
+        },
+        "id": "r6",
+        "input_key": "imidazole stock solution with standard",
+        "name": "4,4'-di-tert-butylbiphenyl",
+        "role": "INTERNAL_STANDARD",
+        "smiles": "CC(C)(C)c1ccc(-c2ccc(C(C)(C)C)cc2)cc1",
+        "source_path": "/inputs/imidazole stock solution with standard/components/2"
+      },
+      {
+        "addition_order": 2,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.00075
+        },
+        "id": "r7",
+        "input_key": "ligand",
+        "name": "Cy-vBRIDP",
+        "role": "CATALYST",
+        "smiles": "CC(=C(c1ccccc1)c1ccccc1)P(C1CCCCC1)C1CCCCC1",
+        "source_path": "/inputs/ligand/components/0"
+      },
+      {
+        "addition_order": 4,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.0003375
+        },
+        "id": "r8",
+        "input_key": "palladium pre-catalyst",
+        "name": "[Pd(allyl)Cl]2",
+        "role": "CATALYST",
+        "smiles": "Cl[Pd]CC=C.C=CC[Pd]Cl",
+        "source_path": "/inputs/palladium pre-catalyst/components/0"
+      },
+      {
+        "addition_order": 4,
+        "addition_time": null,
+        "amount": {
+          "unit": "mL",
+          "value": 0.0075
+        },
+        "id": "r9",
+        "input_key": "palladium pre-catalyst",
+        "name": "DMA",
+        "role": "SOLVENT",
+        "smiles": "CC(=O)N(C)C",
+        "source_path": "/inputs/palladium pre-catalyst/components/1"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r3",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.045
+        },
+        "vessel": "reactor",
+        "id": "s001",
+        "meta": {
+          "source_path": "/inputs/base/components/0",
+          "addition_group": "base",
+          "addition_order": 1
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r7",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.00075
+        },
+        "vessel": "reactor",
+        "id": "s002",
+        "meta": {
+          "source_path": "/inputs/ligand/components/0",
+          "addition_group": "ligand",
+          "addition_order": 2
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.015
+        },
+        "vessel": "reactor",
+        "id": "s003",
+        "meta": {
+          "source_path": "/inputs/aryl bromide stock solution/components/0",
+          "addition_group": "aryl bromide stock solution",
+          "addition_order": 3
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "amount": {
+          "unit": "mL",
+          "value": 0.03
+        },
+        "vessel": "reactor",
+        "id": "s004",
+        "meta": {
+          "source_path": "/inputs/aryl bromide stock solution/components/1",
+          "addition_group": "aryl bromide stock solution",
+          "addition_order": 3
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r8",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.0003375
+        },
+        "vessel": "reactor",
+        "id": "s005",
+        "meta": {
+          "source_path": "/inputs/palladium pre-catalyst/components/0",
+          "addition_group": "palladium pre-catalyst",
+          "addition_order": 4
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r9",
+        "amount": {
+          "unit": "mL",
+          "value": 0.0075
+        },
+        "vessel": "reactor",
+        "id": "s006",
+        "meta": {
+          "source_path": "/inputs/palladium pre-catalyst/components/1",
+          "addition_group": "palladium pre-catalyst",
+          "addition_order": 4
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r4",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.03
+        },
+        "vessel": "reactor",
+        "id": "s007",
+        "meta": {
+          "source_path": "/inputs/imidazole stock solution with standard/components/0",
+          "addition_group": "imidazole stock solution with standard",
+          "addition_order": 5
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "amount": {
+          "unit": "mL",
+          "value": 0.1125
+        },
+        "vessel": "reactor",
+        "id": "s008",
+        "meta": {
+          "source_path": "/inputs/imidazole stock solution with standard/components/1",
+          "addition_group": "imidazole stock solution with standard",
+          "addition_order": 5
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r6",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.04275
+        },
+        "vessel": "reactor",
+        "id": "s009",
+        "meta": {
+          "source_path": "/inputs/imidazole stock solution with standard/components/2",
+          "addition_group": "imidazole stock solution with standard",
+          "addition_order": 5
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 120.0,
+        "duration_s": 86400.0,
+        "id": "s010",
+        "meta": {
+          "source_path": "/conditions/temperature/setpoint"
+        },
+        "stir": true
+      }
+    ],
+    "context": {
+      "reflux": false,
+      "pressure_control": "UNKNOWN",
+      "source_setup": {
+        "environment": {
+          "type": "GLOVE_BOX"
+        },
+        "is_automated": false,
+        "vessel": {
+          "details": "96-well plate",
+          "type": "WELL_PLATE"
+        }
+      },
+      "atmosphere": {}
+    },
+    "extraction": {
+      "method": "ord_structured",
+      "scope": "ordered_inputs_and_reaction_hold",
+      "unresolved": [],
+      "unmapped_actions": [],
+      "limitations": [
+        "Components in one input are premixed; same-order inputs have no inferred relative order.",
+        "This export does not reconstruct workup or preparative stock handling."
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/1",
+    "findings": [],
+    "apparatus_proposals": [],
+    "evidence_spans": []
+  },
+  "raw_id": "ord-0504405df8c1467f8b71685038eb43da"
+}

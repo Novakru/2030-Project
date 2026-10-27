@@ -1,0 +1,147 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "MISSING_VESSEL_IDENTITY",
+        "quote": "a 5.0 mL wheaton microreactor was charged",
+        "message": "The plan does not represent the identity or capacity of the reaction vessel.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_STIR_TEMPERATURE",
+        "quote": "The reaction mixture was stirred for 2 minutes at room temperature.",
+        "message": "The initial stirring duration is represented, but its room-temperature condition is missing from the structured step.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_TRANSFER_AND_HEATING_APPARATUS",
+        "quote": "placed into pre-heated aluminum block at 80 oC",
+        "message": "The heating step retains temperature and duration but does not represent placement of the microreactor into a pre-heated aluminum block. Capping is already retained separately as an unmapped action.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The GC/MS completion check preceding solvent removal is not represented.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_EVAPORATION_CONDITION",
+        "quote": "THF was removed under reduced pressure",
+        "message": "Reduced pressure is present in the evidence but is not represented as an evaporation condition.",
+        "severity": "error"
+      },
+      {
+        "code": "UNSTRUCTURED_REAGENT_QUANTITIES",
+        "quote": "[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%), L1 ligand (2.1 mg, 3.5 mol%), B2pin2 (50.8 mg, 1.0 equiv.), KOtBu (1.0 mg, 4.5 mol%) and dry THF (1.0 mL)",
+        "message": "The charging quantities are preserved in evidence but are absent from structured reagent-addition fields. The substrate addition likewise lacks structured mass and amount.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/steps/1/vessel",
+        "value": {
+          "type": "wheaton microreactor",
+          "capacity_mL": 5.0
+        }
+      },
+      {
+        "op": "add",
+        "path": "/steps/1/mass_mg",
+        "value": 1.98
+      },
+      {
+        "op": "add",
+        "path": "/steps/1/mol_percent",
+        "value": 1.5
+      },
+      {
+        "op": "add",
+        "path": "/steps/2/mass_mg",
+        "value": 2.1
+      },
+      {
+        "op": "add",
+        "path": "/steps/2/mol_percent",
+        "value": 3.5
+      },
+      {
+        "op": "add",
+        "path": "/steps/3/mass_mg",
+        "value": 50.8
+      },
+      {
+        "op": "add",
+        "path": "/steps/3/equiv",
+        "value": 1.0
+      },
+      {
+        "op": "add",
+        "path": "/steps/4/mass_mg",
+        "value": 1.0
+      },
+      {
+        "op": "add",
+        "path": "/steps/4/mol_percent",
+        "value": 4.5
+      },
+      {
+        "op": "add",
+        "path": "/steps/5/volume_mL",
+        "value": 1.0
+      },
+      {
+        "op": "add",
+        "path": "/steps/6/temperature",
+        "value": "room temperature"
+      },
+      {
+        "op": "add",
+        "path": "/steps/7/mass_mg",
+        "value": 41.3
+      },
+      {
+        "op": "add",
+        "path": "/steps/7/amount_mmol",
+        "value": 0.2
+      },
+      {
+        "op": "add",
+        "path": "/steps/9/pressure",
+        "value": "reduced pressure"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "placed into pre-heated aluminum block at 80 oC",
+          "reason": "After capping and before the 12-hour stirring period, the microreactor was placed into a pre-heated aluminum block; this placement and apparatus are not separately represented."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "Completion was judged by GC/MS before THF removal; the plan does not represent this analytical check."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1349,
+    "prompt_tokens": 1060,
+    "total_tokens": 2409,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1057,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 236
+    }
+  },
+  "cache_key": "d589756906f6ac3c346c2185e44b9073978bd13c0c7411756accb01378539c64"
+}

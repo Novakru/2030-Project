@@ -1,0 +1,93 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r7",
+        "alias": "N-(triisopropylsilyl)-1H-pyrrole",
+        "evidence": "Prepared from N-(triisopropylsilyl)-1H-pyrrole",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "alias": "catBH",
+        "evidence": "catBH (48.0 mg, 0.400 mmol, 2.00 equiv)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r4",
+        "alias": "norbornene",
+        "evidence": "norbornene (18.8 mg, 0.20 mmol, 1.00 equiv)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "alias": "B(C6F5)3",
+        "evidence": "B(C6F5)3 (10.1 mg, 0.020 mmol, 0.10 equiv)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "cyclohexane",
+        "alias": "cyclohexane",
+        "evidence": "using cyclohexane/EtOAc/Et3N (30/1/1) as eluent",
+        "stage": "purification"
+      },
+      {
+        "op": "Add",
+        "reagent": "EtOAc",
+        "alias": "EtOAc",
+        "evidence": "using cyclohexane/EtOAc/Et3N (30/1/1) as eluent",
+        "stage": "purification"
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "alias": "Et3N",
+        "evidence": "using cyclohexane/EtOAc/Et3N (30/1/1) as eluent",
+        "stage": "purification"
+      },
+      {
+        "op": "Purify",
+        "method": "chromatography",
+        "evidence": "purified by flash column chromatography using cyclohexane/EtOAc/Et3N (30/1/1) as eluent",
+        "stage": "purification"
+      }
+    ],
+    "uncertainties": [
+      "GP 3 is referenced but not supplied; reaction conditions, actual addition order, and any workup operations specified there are unknown. Reaction additions are listed in the order reagents appear in the supplied text.",
+      "Component r3 is not named in the supplied procedure. Its addition cannot be represented without inventing an alias or relying on the unavailable GP 3.",
+      "Component r6 is not named in the supplied procedure. Its addition cannot be represented without inventing an alias or relying on the unavailable GP 3.",
+      "The literal procedure names norbornene, mapped here to r4, but the supplied r4 structure represents norbornadiene rather than norbornene. This identity conflict remains unresolved.",
+      "N,N,4-trimethylaniline is explicitly listed as a starting reagent, but no supplied component matches it. Component r2 is triethylamine and is aligned only with the literal purification alias Et3N.",
+      "The eluent ratio is explicit, but individual eluent volumes and their preparation order are not specified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "N,N,4-trimethylaniline (1f, 2.7 mg, 0.020 mmol, 0.10 equiv)",
+        "reason": "Cannot encode this initial reagent addition because no matching component ID was supplied."
+      },
+      {
+        "evidence": "according to GP 3",
+        "reason": "The referenced general procedure is unavailable, so its operations cannot be extracted."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1127,
+    "prompt_tokens": 1330,
+    "total_tokens": 2457,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1327,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 246
+    }
+  },
+  "cache_key": "f3e27b14b06f883ac11fe2542ca2500dba9fe6ca7650a1670cbd463967293c37"
+}

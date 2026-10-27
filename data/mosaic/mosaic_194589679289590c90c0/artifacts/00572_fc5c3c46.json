@@ -1,0 +1,260 @@
+{
+  "protocol": {
+    "id": "pos_0159d5f931e649c8b99c8aa18f5c0ad4",
+    "source": {
+      "dataset_id": "ord_dataset-5c9a10329a8a48968d18879a48bb8ab2",
+      "dataset_name": "Chan-Lam coupling of primary sulfonamides with boronic acids",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-5c9a10329a8a48968d18879a48bb8ab2.parquet",
+      "file_sha256": "c710cdf3b1c4824282530d8067a130d0198b8ca3f52361206fe14a783b0825b1",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://doi.org/10.26434/chemrxiv-2024-22jrq",
+      "reaction_id": "ord-0159d5f931e649c8b99c8aa18f5c0ad4",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/5c/ord_dataset-5c9a10329a8a48968d18879a48bb8ab2.parquet"
+    },
+    "raw_id": "ord-0159d5f931e649c8b99c8aa18f5c0ad4",
+    "raw_sha256": "640f5966fe29248a9979a5bd8c95eae50fc37021e653f5d7c0f3a994206c7873",
+    "reaction_smiles": "BrC1=CC(S(=O)(N)=O)=CC(C(OC)=O)=C1.OB(O)C1=CC=C(OC)C=C1>>BrC1=CC(S(=O)(N(C2=CC=C(OC)C=C2)C3=CC=C(C=C3)OC)=O)=CC(C(OC)=O)=C1.BrC1=CC(S(=O)(NC2=CC=C(OC)C=C2)=O)=CC(C(OC)=O)=C1",
+    "reaction_class": "Chan-Lam coupling of primary sulfonamides with boronic acids",
+    "yield_percent": 47.702545,
+    "reagents": [
+      {
+        "addition_order": 2,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.02
+        },
+        "id": "r1",
+        "input_key": "Base_Solid",
+        "name": "[O-]P([O-])([O-])=O.[K+].[K+].[K+]",
+        "role": "REAGENT",
+        "smiles": "[O-]P([O-])([O-])=O.[K+].[K+].[K+]",
+        "source_path": "/inputs/Base_Solid/components/0"
+      },
+      {
+        "addition_order": 4,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.015
+        },
+        "id": "r2",
+        "input_key": "Boronic Acid",
+        "name": "OB(O)C1=CC=C(OC)C=C1",
+        "role": "REACTANT",
+        "smiles": "OB(O)C1=CC=C(OC)C=C1",
+        "source_path": "/inputs/Boronic Acid/components/0"
+      },
+      {
+        "addition_order": 4,
+        "addition_time": null,
+        "amount": {
+          "unit": "mL",
+          "value": 0.1
+        },
+        "id": "r3",
+        "input_key": "Boronic Acid",
+        "name": "CCOC(C)=O",
+        "role": "SOLVENT",
+        "smiles": "CCOC(C)=O",
+        "source_path": "/inputs/Boronic Acid/components/1"
+      },
+      {
+        "addition_order": 1,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.002
+        },
+        "id": "r4",
+        "input_key": "Catalyst",
+        "name": "CN(C)CCN(C)C.CN(C)CCN(C)C.[Cl-].[Cl-].[Cu+2].[Cu+2].[OH-].[OH-]",
+        "role": "CATALYST",
+        "smiles": "CN(C)CCN(C)C.CN(C)CCN(C)C.[Cl-].[Cl-].[Cu+2].[Cu+2].[OH-].[OH-]",
+        "source_path": "/inputs/Catalyst/components/0"
+      },
+      {
+        "addition_order": 3,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.01
+        },
+        "id": "r5",
+        "input_key": "Sulfonamide",
+        "name": "BrC1=CC(S(=O)(N)=O)=CC(C(OC)=O)=C1",
+        "role": "REACTANT",
+        "smiles": "BrC1=CC(S(=O)(N)=O)=CC(C(OC)=O)=C1",
+        "source_path": "/inputs/Sulfonamide/components/0"
+      },
+      {
+        "addition_order": 3,
+        "addition_time": null,
+        "amount": {
+          "unit": "mL",
+          "value": 0.1
+        },
+        "id": "r6",
+        "input_key": "Sulfonamide",
+        "name": "CCOC(C)=O",
+        "role": "SOLVENT",
+        "smiles": "CCOC(C)=O",
+        "source_path": "/inputs/Sulfonamide/components/1"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r4",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.002
+        },
+        "vessel": "reactor",
+        "id": "s001",
+        "meta": {
+          "source_path": "/inputs/Catalyst/components/0",
+          "addition_group": "Catalyst",
+          "addition_order": 1
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.02
+        },
+        "vessel": "reactor",
+        "id": "s002",
+        "meta": {
+          "source_path": "/inputs/Base_Solid/components/0",
+          "addition_group": "Base_Solid",
+          "addition_order": 2
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.01
+        },
+        "vessel": "reactor",
+        "id": "s003",
+        "meta": {
+          "source_path": "/inputs/Sulfonamide/components/0",
+          "addition_group": "Sulfonamide",
+          "addition_order": 3
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r6",
+        "amount": {
+          "unit": "mL",
+          "value": 0.1
+        },
+        "vessel": "reactor",
+        "id": "s004",
+        "meta": {
+          "source_path": "/inputs/Sulfonamide/components/1",
+          "addition_group": "Sulfonamide",
+          "addition_order": 3
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "amount": {
+          "unit": "mmol",
+          "value": 0.015
+        },
+        "vessel": "reactor",
+        "id": "s005",
+        "meta": {
+          "source_path": "/inputs/Boronic Acid/components/0",
+          "addition_group": "Boronic Acid",
+          "addition_order": 4
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r3",
+        "amount": {
+          "unit": "mL",
+          "value": 0.1
+        },
+        "vessel": "reactor",
+        "id": "s006",
+        "meta": {
+          "source_path": "/inputs/Boronic Acid/components/1",
+          "addition_group": "Boronic Acid",
+          "addition_order": 4
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 60.0,
+        "duration_s": 64800.0,
+        "id": "s007",
+        "meta": {
+          "source_path": "/conditions/temperature/setpoint"
+        },
+        "stir": true,
+        "rpm": 600
+      }
+    ],
+    "context": {
+      "reflux": false,
+      "pressure_control": "AMBIENT",
+      "source_setup": {
+        "environment": {
+          "details": "HTE",
+          "type": "FUME_HOOD"
+        },
+        "is_automated": false,
+        "vessel": {
+          "attachments": [
+            {
+              "details": "Para-dox plate sealed",
+              "type": "MAT"
+            }
+          ],
+          "details": "96-well Para-dox Aluminium Reaction Block",
+          "material": {
+            "details": "8 x 30 mm glass vial inserts",
+            "type": "GLASS"
+          },
+          "type": "WELL_PLATE",
+          "volume": {
+            "units": "MILLILITER",
+            "value": 1.0
+          }
+        }
+      },
+      "atmosphere": {
+        "type": "AIR"
+      }
+    },
+    "extraction": {
+      "method": "ord_structured",
+      "scope": "ordered_inputs_and_reaction_hold",
+      "unresolved": [],
+      "unmapped_actions": [],
+      "limitations": [
+        "Components in one input are premixed; same-order inputs have no inferred relative order.",
+        "This export does not reconstruct workup or preparative stock handling."
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/1",
+    "findings": [],
+    "apparatus_proposals": [],
+    "evidence_spans": []
+  },
+  "raw_id": "ord-0159d5f931e649c8b99c8aa18f5c0ad4"
+}

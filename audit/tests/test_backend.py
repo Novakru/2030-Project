@@ -219,6 +219,17 @@ class BackendTests(unittest.TestCase):
         self.assertEqual(result["quality"]["tier"], "gold")
         self.assertEqual(result["extension"], record["extension"])
 
+    def test_strict_batch_conflict_rolls_back_new_records_and_preserves_review(self):
+        from audit.import_json_to_db import import_documents
+        self.load(positive("existing"))
+        db.review_record(self.database, "existing", "accept", "Alice", "reviewed", 0)
+        changed = positive("existing")
+        changed["extra"] = "changed"
+        with self.assertRaises(ValueError):
+            import_documents(self.database, [("batch.json", json.dumps([positive("new"), changed]))], reject_changed=True)
+        self.assertIsNone(db.get_record(self.database, "new"))
+        self.assertEqual(db.get_record(self.database, "existing")["status"], "accepted")
+
 
 if __name__ == "__main__":
     unittest.main()

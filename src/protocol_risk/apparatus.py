@@ -14,7 +14,7 @@ _KINDS = {"VIAL": "vial", "ROUND_BOTTOM_FLASK": "round_bottom_flask",
 _VESSEL = r"micro[- ]?reactor|round[- ]bottom(?:ed)?\s+flask|vial|flask"
 _CAPACITY = re.compile(
     r"(?<![\w.])(?P<value>\d+(?:\.\d+)?)\s*(?P<unit>mL|[u\u00b5\u03bc]L|L)\s*"
-    r"(?:(?:Wheaton|glass|borosilicate|screw[- ]cap(?:ped)?|pressure|reaction|sealed)\s+){0,4}"
+    r"(?:(?:Wheaton|weaton|glass|borosilicate|screw[- ]cap(?:ped)?|pressure|reaction|sealed)\s+){0,4}"
     r"(?P<kind>" + _VESSEL + r")\b", re.I)
 
 
@@ -65,6 +65,20 @@ def _text_facts(protocol, raw):
             # A short exact quote, plus its containing quotation for inspection.
             found.setdefault(key, _node(protocol, raw, kind, {"capacity_mL": capacity},
                 "single_reaction_vessel", None, locator, text, match.group(0)))
+    if not found and raw and raw.get("procedure"):
+        text = raw["procedure"]
+        workup_offsets = [text.find(s.get("meta", {}).get("evidence", "")) for s in protocol.get("steps", [])
+                          if s.get("meta", {}).get("stage") != "reaction" and s.get("meta", {}).get("evidence")]
+        end = min((offset for offset in workup_offsets if offset >= 0), default=len(text))
+        prefix = text[:end]
+        # Short reagent quotes may omit the vessel in the same source sentence.
+        # Inspect the reaction prefix only, so later workup flasks cannot replace it.
+        for match in _CAPACITY.finditer(prefix):
+            capacity = float(match["value"]) * _UNITS[match["unit"].lower()]
+            label = match["kind"].lower()
+            kind = "microreactor" if "reactor" in label else "round_bottom_flask" if "round" in label else label
+            found.setdefault((kind, capacity), _node(protocol, raw, kind, {"capacity_mL": capacity},
+                "single_reaction_vessel", None, "/procedure", prefix, match.group(0)))
     return list(found.values()), snippets
 
 

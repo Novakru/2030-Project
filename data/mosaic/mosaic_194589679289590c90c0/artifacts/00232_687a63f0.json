@@ -1,0 +1,105 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Atmosphere",
+        "evidence": "In an argon filled glove box",
+        "stage": "reaction",
+        "gas": "argon",
+        "mode": "environment"
+      },
+      {
+        "op": "Add",
+        "evidence": "[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%)",
+        "stage": "reaction",
+        "reagent": "r1",
+        "alias": "[Ir(cod)(OMe)]2"
+      },
+      {
+        "op": "Add",
+        "evidence": "L1 ligand (2.1 mg, 3.5 mol%)",
+        "stage": "reaction",
+        "reagent": "r3",
+        "alias": "L1 ligand"
+      },
+      {
+        "op": "Add",
+        "evidence": "B2pin2 (50.8 mg, 1.0 equiv.)",
+        "stage": "reaction",
+        "reagent": "r4",
+        "alias": "B2pin2"
+      },
+      {
+        "op": "Add",
+        "evidence": "KOtBu (1.0 mg, 4.5 mol%)",
+        "stage": "reaction",
+        "reagent": "r2",
+        "alias": "KOtBu"
+      },
+      {
+        "op": "Add",
+        "evidence": "dry THF (1.0 mL)",
+        "stage": "reaction",
+        "reagent": "r5",
+        "alias": "dry THF"
+      },
+      {
+        "op": "Stir",
+        "evidence": "The reaction mixture was stirred for 2 minutes at room temperature.",
+        "stage": "reaction",
+        "duration_s": 120
+      },
+      {
+        "op": "Add",
+        "evidence": "To this mixture, N,N-diisopropylbenzamide (41.1 mg, 0.2 mmol) was added.",
+        "stage": "reaction",
+        "reagent": "r6",
+        "alias": "N,N-diisopropylbenzamide"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The microreactor was capped with a teflon pressure cap and placed into pre-heated aluminum block at 80 oC. The reaction mixture was stirred for 12 h.",
+        "stage": "reaction",
+        "temp_C": 80,
+        "duration_s": 43200,
+        "stir": true
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "THF was removed under reduced pressure",
+        "stage": "workup"
+      },
+      {
+        "op": "Purify",
+        "evidence": "chromatographic separation with silica gel (15% ethyl acetate in hexane as eluent)",
+        "stage": "purification",
+        "method": "chromatography"
+      }
+    ],
+    "uncertainties": [
+      "The procedure identifies the ligand only as 'L1 ligand' and does not explicitly link that label to the structure supplied for r3. The r3 alias assignment therefore remains unverified.",
+      "The pre-stirring temperature is stated only as room temperature; no numeric temperature is specified.",
+      "Reduced pressure is specified for THF removal, but no numeric pressure is given."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "The microreactor was capped with a teflon pressure cap",
+        "reason": "Capping is not represented by an allowed operation."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 869,
+    "prompt_tokens": 1293,
+    "total_tokens": 2162,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1290,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 77
+    }
+  },
+  "cache_key": "1f408217dcd47de25272fda8b3f25058580d1c6003e976d3be9f7d4c84b21a35"
+}

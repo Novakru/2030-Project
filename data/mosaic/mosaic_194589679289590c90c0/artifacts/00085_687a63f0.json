@@ -1,0 +1,80 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "evidence": "General procedure B",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "evidence": "General procedure B",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r3",
+        "evidence": "General procedure B",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r4",
+        "evidence": "General procedure B",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "alias": "2,7-dimethylquinoline",
+        "evidence": "General procedure B was applied to 2,7-dimethylquinoline (157 mg, 1.00mmol).",
+        "stage": "reaction"
+      },
+      {
+        "op": "HeatChill",
+        "temp_C": 25,
+        "duration_s": 259200,
+        "stir": true,
+        "evidence": "The reaction was stirred at room  temperature  (25  °C)  for  72  hours.",
+        "stage": "reaction"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "Volatiles were removed from the reaction under reduced pressure",
+        "stage": "workup"
+      },
+      {
+        "op": "Purify",
+        "method": "chromatography",
+        "stationary_phase": "silica  gel",
+        "eluent": "MeOH/DCM",
+        "gradient": "from  0.5 -12.5% over 25 column volumes",
+        "evidence": "the remaining residue was purified  by  silica  gel  flash-column  chromatography  with  gradient  elution  of  MeOH/DCM  from  0.5 -12.5% over 25 column volumes",
+        "stage": "purification"
+      }
+    ],
+    "uncertainties": [
+      "General procedure B is referenced but not supplied. The required initial components r1, r2, r3, and r4 are represented using the structured component list, but their additions and reagent aliases are not explicitly stated in the procedure. No literal aliases can be assigned to them.",
+      "The initial addition order, including the position of r5 relative to r1–r4, is unspecified; the listed initial Add steps do not establish an experimentally documented order.",
+      "Any pre-stirring, atmosphere, or other operations specified only in General procedure B cannot be recovered from the supplied text.",
+      "The evaporation pressure and temperature are unspecified."
+    ],
+    "unmapped_actions": []
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 865,
+    "prompt_tokens": 1231,
+    "total_tokens": 2096,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1228,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 240
+    }
+  },
+  "cache_key": "1418c726bcd11681711ccadebff556fc794232034f5ffac01859f5e8ea26dd6e"
+}

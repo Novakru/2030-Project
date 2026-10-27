@@ -1,0 +1,56 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "alias": "2-methylquinoline-7-carbonitrile",
+        "evidence": "General  procedure  B  was  applied to  2-methylquinoline-7-carbonitrile  (168  mg,  1.00mmol).",
+        "stage": "reaction"
+      },
+      {
+        "op": "HeatChill",
+        "temp_C": 25,
+        "duration_s": 172800,
+        "stir": true,
+        "evidence": "The  reaction was stirred at room temperature (25 °C) for 48 hours",
+        "stage": "reaction"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "Volatiles were removed under reduced pressure",
+        "stage": "workup"
+      },
+      {
+        "op": "Purify",
+        "method": "recrystallisation",
+        "solvent": "acetonitrile",
+        "evidence": "the remaining residue was purified by recrystallisation from    acetonitrile",
+        "stage": "purification"
+      }
+    ],
+    "uncertainties": [
+      "General procedure B is referenced but not supplied; its operations, reagent addition order, and any pre-stirring cannot be determined.",
+      "Components r1, r2, r3, and r4 have no literal reagent aliases in the supplied procedure. Their Add steps cannot be represented without inventing alias alignments.",
+      "The reduced pressure used for evaporation is not quantified.",
+      "The amount of acetonitrile and the recrystallisation conditions are not specified."
+    ],
+    "unmapped_actions": [
+      "Application of General procedure B cannot be expanded into operations because its text is absent; additions of supplied components r1, r2, r3, and r4 remain unrepresented."
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 622,
+    "prompt_tokens": 1159,
+    "total_tokens": 1781,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1156
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 201
+    }
+  },
+  "cache_key": "e8980a63dc4a499500b2231bd7ff1ac36b94beb780f1a69fe84d17db686771a3"
+}

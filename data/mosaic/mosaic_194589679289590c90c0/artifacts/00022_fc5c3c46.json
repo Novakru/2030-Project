@@ -1,0 +1,501 @@
+{
+  "protocol": {
+    "id": "pos_ff0eb93bbb4b45cdb3807c4588dd206f",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "dataset_name": "750 AstraZeneca ELN dataset",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "reaction_id": "ord-ff0eb93bbb4b45cdb3807c4588dd206f",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-ff0eb93bbb4b45cdb3807c4588dd206f",
+    "raw_sha256": "a00a32436d05b2d34c3b76978fa98fa332085139e612803a2f1be2ef0704f4f6",
+    "reaction_smiles": "C1COCCN1.COC(=O)C1=CC(=CC(=C1)Br)C(=O)OC>>COC(=O)C1=CC(=CC(=C1)N2CCOCC2)C(=O)OC",
+    "reaction_class": "1.3.1 [N-arylation with Ar-X] Bromo Buchwald-Hartwig amination",
+    "yield_percent": 78.22,
+    "reagents": [
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 55.2
+        },
+        "id": "r1",
+        "input_key": "Base",
+        "name": "C(=O)([O-])[O-].[Cs+].[Cs+]",
+        "role": "REAGENT",
+        "smiles": "C(=O)([O-])[O-].[Cs+].[Cs+]",
+        "source_path": "/inputs/Base/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mL",
+          "value": 100.0
+        },
+        "id": "r2",
+        "input_key": "Solvent",
+        "name": "CC1=CC=CC=C1",
+        "role": "SOLVENT",
+        "smiles": "CC1=CC=CC=C1",
+        "source_path": "/inputs/Solvent/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 50.5
+        },
+        "id": "r3",
+        "input_key": "amine",
+        "name": "C1COCCN1",
+        "role": "REACTANT",
+        "smiles": "C1COCCN1",
+        "source_path": "/inputs/amine/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 36.6
+        },
+        "id": "r4",
+        "input_key": "aryl halide",
+        "name": "COC(=O)C1=CC(=CC(=C1)Br)C(=O)OC",
+        "role": "REACTANT",
+        "smiles": "COC(=O)C1=CC(=CC(=C1)Br)C(=O)OC",
+        "source_path": "/inputs/aryl halide/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 4.01
+        },
+        "id": "r5",
+        "input_key": "metal and ligand",
+        "name": "C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=C(C4=CC=CC=C4C=C3)C5=C(C=CC6=CC=CC=C65)P(C7=CC=CC=C7)C8=CC=CC=C8",
+        "role": "CATALYST",
+        "smiles": "C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=C(C4=CC=CC=C4C=C3)C5=C(C=CC6=CC=CC=C65)P(C7=CC=CC=C7)C8=CC=CC=C8",
+        "source_path": "/inputs/metal and ligand/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 4.01
+        },
+        "id": "r6",
+        "input_key": "metal and ligand",
+        "name": "CC(=O)O.CC(=O)O.[Pd]",
+        "role": "CATALYST",
+        "smiles": "CC(=O)O.CC(=O)O.[Pd]",
+        "source_path": "/inputs/metal and ligand/components/1"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r4",
+        "mass_g": 10,
+        "amount_mmol": 36.62,
+        "id": "s001",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "To a solution of dimethyl 5-bromoisophthalate (10 g, 36.62 mmol) in toluene (100 mL)",
+          "stage": "reaction",
+          "amount_source": "/inputs/aryl halide/components/0/amount",
+          "source_alias": "dimethyl 5-bromoisophthalate"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 36.6
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "volume_ml": 100,
+        "id": "s002",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "in toluene (100 mL)",
+          "stage": "reaction",
+          "amount_source": "/inputs/Solvent/components/0/amount",
+          "source_alias": "toluene"
+        },
+        "amount": {
+          "unit": "mL",
+          "value": 100.0
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "mass_g": 2.5,
+        "amount_mmol": 4.01,
+        "id": "s003",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "BINAP (2.5 g, 4.01 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/metal and ligand/components/0/amount",
+          "source_alias": "BINAP"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 4.01
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r3",
+        "mass_g": 4.4,
+        "amount_mmol": 50.5,
+        "id": "s004",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "morpholine (4.4 g, 50.50 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/amine/components/0/amount",
+          "source_alias": "morpholine"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 50.5
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "mass_g": 18,
+        "amount_mmol": 55.25,
+        "id": "s005",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "CESIUM CARBONATE (18 g, 55.25 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/Base/components/0/amount",
+          "source_alias": "CESIUM CARBONATE"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 55.2
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r6",
+        "mass_g": 0.9,
+        "amount_mmol": 4.01,
+        "id": "s006",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "PALLADIUM(II) ACETATE (0.9 g, 4.01 mmol) added.",
+          "stage": "reaction",
+          "amount_source": "/inputs/metal and ligand/components/1/amount",
+          "source_alias": "PALLADIUM(II) ACETATE"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 4.01
+        }
+      },
+      {
+        "op": "HeatChill",
+        "duration_s": 50400,
+        "temperature_condition": "reflux",
+        "id": "s007",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The solution was heated to reflux under inert atm for 14h.",
+          "stage": "reaction"
+        }
+      },
+      {
+        "op": "Filter",
+        "keep": "filtrate",
+        "id": "s008",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The silvent was filtered and the filtrate was concentrated.",
+          "stage": "workup"
+        }
+      },
+      {
+        "op": "Evaporate",
+        "id": "s009",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "the filtrate was concentrated.",
+          "stage": "workup"
+        }
+      },
+      {
+        "op": "Purify",
+        "method": "chromatography",
+        "eluent": "Hep:EA",
+        "eluent_ratio": "1:1",
+        "id": "s010",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The residue was purified by column chropmatography (Hep:EA) 1:1",
+          "stage": "purification"
+        }
+      }
+    ],
+    "context": {
+      "reflux": false,
+      "atmosphere": {},
+      "pressure_control": "UNKNOWN",
+      "source_setup": {}
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 863,
+        "prompt_tokens": 1245,
+        "total_tokens": 2108,
+        "prompt_tokens_details": {
+          "cache_write_tokens": 1242,
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 159
+        }
+      },
+      "cache_key": "867c567df15c2b018eda0991b9f91869a20bb24ca0b5d08a10027ffb552b634d",
+      "unresolved": [
+        "Heating is specified at reflux, but no numeric temperature is given.",
+        "The inert atmosphere gas and method of establishing the atmosphere are not specified.",
+        "The chromatography eluent abbreviations Hep and EA are not expanded in the procedure.",
+        "s007: temperature unspecified"
+      ],
+      "unmapped_actions": [
+        {
+          "evidence": "under inert atm",
+          "reason": "An inert atmosphere is specified, but its gas cannot be mapped to an allowed Atmosphere gas without inference."
+        }
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/1",
+    "findings": [
+      {
+        "code": "OMITTED_REAGENT_QUANTITIES",
+        "quote": "dimethyl 5-bromoisophthalate (10 g, 36.62 mmol) in toluene (100 mL) where BINAP (2.5 g, 4.01 mmol), morpholine (4.4 g, 50.50 mmol), CESIUM CARBONATE (18 g, 55.25 mmol) and PALLADIUM(II) ACETATE (0.9 g, 4.01 mmol) added.",
+        "message": "The addition steps retain quantities only in evidence strings, not as extracted operational quantities. All six stated reagent or solvent quantities should be preserved explicitly.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-ff0eb93bbb4b45cdb3807c4588dd206f",
+          "source_sha256": "da8ca05eb9f4664aa1c849904e15b5aec9088068b0713293135f3d3e1aa064a6",
+          "start": 17,
+          "end": 236,
+          "quote": "dimethyl 5-bromoisophthalate (10 g, 36.62 mmol) in toluene (100 mL) where BINAP (2.5 g, 4.01 mmol), morpholine (4.4 g, 50.50 mmol), CESIUM CARBONATE (18 g, 55.25 mmol) and PALLADIUM(II) ACETATE (0.9 g, 4.01 mmol) added."
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "MISSING_REFLUX_CONDITION",
+        "quote": "The solution was heated to reflux under inert atm for 14h.",
+        "message": "The heating step records the correct duration but omits reflux as an operational condition. The uncertainty correctly notes that no numeric temperature is provided, but reflux itself is explicitly specified and can be retained without inferring a temperature. The inert-atmosphere requirement is already preserved under unmapped_actions.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-ff0eb93bbb4b45cdb3807c4588dd206f",
+          "source_sha256": "da8ca05eb9f4664aa1c849904e15b5aec9088068b0713293135f3d3e1aa064a6",
+          "start": 237,
+          "end": 295,
+          "quote": "The solution was heated to reflux under inert atm for 14h."
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "filtered",
+        "kind": "filtration apparatus",
+        "identity": null,
+        "scope": "workup; apparatus unspecified",
+        "evidence": {
+          "source_id": "ord-ff0eb93bbb4b45cdb3807c4588dd206f",
+          "source_sha256": "da8ca05eb9f4664aa1c849904e15b5aec9088068b0713293135f3d3e1aa064a6",
+          "start": 312,
+          "end": 320,
+          "quote": "filtered"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "column chropmatography (Hep:EA) 1:1",
+        "kind": "chromatography column",
+        "identity": null,
+        "scope": "purification; eluent reported as heptane:ethyl acetate 1:1",
+        "evidence": {
+          "source_id": "ord-ff0eb93bbb4b45cdb3807c4588dd206f",
+          "source_sha256": "da8ca05eb9f4664aa1c849904e15b5aec9088068b0713293135f3d3e1aa064a6",
+          "start": 384,
+          "end": 419,
+          "quote": "column chropmatography (Hep:EA) 1:1"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-ff0eb93bbb4b45cdb3807c4588dd206f",
+        "source_sha256": "da8ca05eb9f4664aa1c849904e15b5aec9088068b0713293135f3d3e1aa064a6",
+        "start": 0,
+        "end": 84,
+        "quote": "To a solution of dimethyl 5-bromoisophthalate (10 g, 36.62 mmol) in toluene (100 mL)"
+      },
+      {
+        "source_id": "ord-ff0eb93bbb4b45cdb3807c4588dd206f",
+        "source_sha256": "da8ca05eb9f4664aa1c849904e15b5aec9088068b0713293135f3d3e1aa064a6",
+        "start": 65,
+        "end": 84,
+        "quote": "in toluene (100 mL)"
+      },
+      {
+        "source_id": "ord-ff0eb93bbb4b45cdb3807c4588dd206f",
+        "source_sha256": "da8ca05eb9f4664aa1c849904e15b5aec9088068b0713293135f3d3e1aa064a6",
+        "start": 91,
+        "end": 115,
+        "quote": "BINAP (2.5 g, 4.01 mmol)"
+      },
+      {
+        "source_id": "ord-ff0eb93bbb4b45cdb3807c4588dd206f",
+        "source_sha256": "da8ca05eb9f4664aa1c849904e15b5aec9088068b0713293135f3d3e1aa064a6",
+        "start": 117,
+        "end": 147,
+        "quote": "morpholine (4.4 g, 50.50 mmol)"
+      },
+      {
+        "source_id": "ord-ff0eb93bbb4b45cdb3807c4588dd206f",
+        "source_sha256": "da8ca05eb9f4664aa1c849904e15b5aec9088068b0713293135f3d3e1aa064a6",
+        "start": 149,
+        "end": 184,
+        "quote": "CESIUM CARBONATE (18 g, 55.25 mmol)"
+      },
+      {
+        "source_id": "ord-ff0eb93bbb4b45cdb3807c4588dd206f",
+        "source_sha256": "da8ca05eb9f4664aa1c849904e15b5aec9088068b0713293135f3d3e1aa064a6",
+        "start": 189,
+        "end": 236,
+        "quote": "PALLADIUM(II) ACETATE (0.9 g, 4.01 mmol) added."
+      },
+      {
+        "source_id": "ord-ff0eb93bbb4b45cdb3807c4588dd206f",
+        "source_sha256": "da8ca05eb9f4664aa1c849904e15b5aec9088068b0713293135f3d3e1aa064a6",
+        "start": 237,
+        "end": 295,
+        "quote": "The solution was heated to reflux under inert atm for 14h."
+      },
+      {
+        "source_id": "ord-ff0eb93bbb4b45cdb3807c4588dd206f",
+        "source_sha256": "da8ca05eb9f4664aa1c849904e15b5aec9088068b0713293135f3d3e1aa064a6",
+        "start": 296,
+        "end": 355,
+        "quote": "The silvent was filtered and the filtrate was concentrated."
+      },
+      {
+        "source_id": "ord-ff0eb93bbb4b45cdb3807c4588dd206f",
+        "source_sha256": "da8ca05eb9f4664aa1c849904e15b5aec9088068b0713293135f3d3e1aa064a6",
+        "start": 325,
+        "end": 355,
+        "quote": "the filtrate was concentrated."
+      },
+      {
+        "source_id": "ord-ff0eb93bbb4b45cdb3807c4588dd206f",
+        "source_sha256": "da8ca05eb9f4664aa1c849904e15b5aec9088068b0713293135f3d3e1aa064a6",
+        "start": 356,
+        "end": 419,
+        "quote": "The residue was purified by column chropmatography (Hep:EA) 1:1"
+      }
+    ],
+    "repair": {
+      "accepted": true,
+      "patch": [
+        {
+          "op": "add",
+          "path": "/steps/0/mass_g",
+          "value": 10
+        },
+        {
+          "op": "add",
+          "path": "/steps/0/amount_mmol",
+          "value": 36.62
+        },
+        {
+          "op": "add",
+          "path": "/steps/1/volume_ml",
+          "value": 100
+        },
+        {
+          "op": "add",
+          "path": "/steps/2/mass_g",
+          "value": 2.5
+        },
+        {
+          "op": "add",
+          "path": "/steps/2/amount_mmol",
+          "value": 4.01
+        },
+        {
+          "op": "add",
+          "path": "/steps/3/mass_g",
+          "value": 4.4
+        },
+        {
+          "op": "add",
+          "path": "/steps/3/amount_mmol",
+          "value": 50.5
+        },
+        {
+          "op": "add",
+          "path": "/steps/4/mass_g",
+          "value": 18
+        },
+        {
+          "op": "add",
+          "path": "/steps/4/amount_mmol",
+          "value": 55.25
+        },
+        {
+          "op": "add",
+          "path": "/steps/5/mass_g",
+          "value": 0.9
+        },
+        {
+          "op": "add",
+          "path": "/steps/5/amount_mmol",
+          "value": 4.01
+        },
+        {
+          "op": "add",
+          "path": "/steps/6/temperature_condition",
+          "value": "reflux"
+        }
+      ]
+    },
+    "apparatus_unknowns": [
+      "Reaction vessel for the reflux operation is not specified.",
+      "Inert-atmosphere equipment is not specified.",
+      "Filtration apparatus and filter medium are not specified.",
+      "Concentration apparatus is not specified.",
+      "Chromatography column dimensions, stationary phase, and operating conditions are not specified."
+    ]
+  },
+  "raw_id": "ord-ff0eb93bbb4b45cdb3807c4588dd206f"
+}

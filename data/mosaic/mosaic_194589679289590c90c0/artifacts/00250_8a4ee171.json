@@ -1,0 +1,60 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "MISSING_VESSEL",
+        "quote": "In a CEM MW vial",
+        "message": "The plan omits the specified reaction vessel.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_ANALYTICAL_ACTION",
+        "quote": "The LCMS was checked showed the formation of required mass.",
+        "message": "The LCMS check after microwave irradiation and before work-up is omitted.",
+        "severity": "error"
+      },
+      {
+        "code": "UNSUPPORTED_AMOUNT_AUTHORITY",
+        "quote": "p-Bromoacetophenone (729 ml, 6.03 mmol)",
+        "message": "The source reports an anomalous volume, but does not establish an alternative structured amount as authoritative. Preserve the reported amount and flag it for verification without assuming a correction.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/steps/0/vessel",
+        "value": "CEM MW vial"
+      },
+      {
+        "op": "add",
+        "path": "/steps/7",
+        "value": {
+          "op": "Analyze",
+          "method": "LCMS",
+          "evidence": "The LCMS was checked showed the formation of required mass.",
+          "stage": "reaction"
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/uncertainties/0",
+        "value": "The source reports p-Bromoacetophenone as 729 ml, 6.03 mmol. The volume is anomalous and requires verification; no corrected amount or unit is established by the source."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 466,
+    "prompt_tokens": 993,
+    "total_tokens": 1459,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 88
+    }
+  },
+  "cache_key": "b242f8cbe2483f00dbc9adf644235787c6d1bce84b02148db248c3e8a2be98f8"
+}

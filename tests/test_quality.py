@@ -1,4 +1,4 @@
-from protocol_risk.quality import atomic_inventory
+from mosaic.catalog import atomic_inventory
 
 
 def test_mapped_ir_does_not_claim_complete_source_coverage_or_proven_minimality():

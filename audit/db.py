@@ -9,7 +9,8 @@ APP_ID = 0x52564131  # RVA1
 SCHEMA_VERSION = 1
 STATUSES = ("pending", "accepted", "rejected")
 EFFECTIVE_TIER = "CASE WHEN status = 'accepted' THEN 'gold' ELSE tier END"
-DEFAULT_DB = Path(__file__).resolve().parent / "data" / "reviews.sqlite3"
+_DATA_DIR = Path(__file__).resolve().parent / "data"
+DEFAULT_DB = _DATA_DIR / ("mosaic.sqlite3" if (_DATA_DIR / "mosaic.sqlite3").is_file() else "reviews.sqlite3")
 
 SCHEMA = """
 CREATE TABLE records (
@@ -67,7 +68,7 @@ def validate_database(path):
     with connect(path, readonly=True) as conn:
         if (conn.execute("PRAGMA application_id").fetchone()[0] != APP_ID or
                 conn.execute("PRAGMA user_version").fetchone()[0] != SCHEMA_VERSION):
-            raise ValueError("不是本审核工具的数据库，或数据库版本不兼容。请选择 reviews.sqlite3。")
+            raise ValueError("不是本审核工具的数据库，或数据库版本不兼容。请选择本工具创建的审核数据库。")
         conn.execute("SELECT record_id, raw_json, revision FROM records LIMIT 1")
 
 

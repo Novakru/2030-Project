@@ -212,6 +212,9 @@ def evaluate(protocol, properties=None):
             controller = nodes.get(controller_id)
             if controller is None:
                 result.add("A5", "A5.required_controller_missing", {**values, "controller": controller_id})
+            elif controller.get("category") in ("vessel", "pump", "valve", "filter", "separator", "column", "light_source"):
+                result.add("A5", "A5.controller_capability_mismatch", {**values, "controller": controller_id,
+                           "category": controller.get("category"), "operation": op})
             elif "temp_C" in step:
                 # Real hotplate limits apply to the plate, not directly to liquid temperature.
                 parameter = step.get("controller_setpoint_C", step["temp_C"]) if controller.get("sample_temperature_validated") else step.get("controller_setpoint_C")
@@ -233,9 +236,8 @@ def evaluate(protocol, properties=None):
             temperature = step.get("temp_C")
             solvents = {identify_solvent(reagents[r], properties) for r in contents[vessel]
                         if reagents[r].get("role") == "SOLVENT"}
-            solvents.discard(None)
             # Only exact single-solvent data supports this v0 check.
-            if len(solvents) == 1 and temperature is not None:
+            if len(solvents) == 1 and None not in solvents and temperature is not None:
                 solvent = next(iter(solvents))
                 prop = properties["solvents"][solvent]
                 mode = context.get("pressure_control", "UNKNOWN")

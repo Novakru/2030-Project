@@ -1,0 +1,163 @@
+<?xdl version="1.0.0" ?>
+
+<Synthesis>
+
+  <Metadata
+    description="Ugi-Heck cascade reaction"
+    product_vessel="filter"
+    publication="Org. Lett., 2004, Vol. 6, No. 18, 3155-3158" />
+
+  <Hardware>
+    <Component
+      id="filter"
+      type="filter" />
+    <Component
+      id="flask_methanol"
+      type="flask"
+      chemical="methanol" />
+    <Component
+      id="flask_acid"
+      type="flask"
+      chemical="2-iodobenzoic acid methanol solution (1 M)" />
+    <Component
+      id="flask_amine"
+      type="flask"
+      chemical="allylamine methanol solution (1 M)" />
+    <Component
+      id="flask_isocyanide"
+      type="flask"
+      chemical="cyclohexyl isocyanide" />
+    <Component
+      id="buffer_flask"
+      type="flask" />
+    <Component
+      id="rotovap"
+      type="flask" />
+  </Hardware>
+
+  <Reagents>
+    <Reagent
+      name="2-iodobenzoic acid methanol solution (1 M)"
+      role="reagent" />
+    <Reagent
+      name="4-chlorobenzaldehyde"
+      role="reagent" 
+      solid="True" />
+    <Reagent
+      name="allylamine methanol solution (1 M)"
+      role="reagent" />
+    <Reagent
+      name="cyclohexyl isocyanide"
+      role="reagent"
+      solid="True" />
+    <Reagent
+      name="palladium catalyst"
+      role="reagent"
+      solid="True" />
+    <Reagent
+      name="dimethylacetamide"
+      role="reagent"
+      use_for_cleaning="True" />
+    <Reagent
+      name="N-methyldicyclohexylamine"
+      role="reagent" />
+    <Reagent
+      name="methanol"
+      role="reagent"
+      use_for_cleaning="True" />
+  </Reagents>
+
+  <Procedure>
+    <Prep>
+      <ResetHandling
+        solvent="methanol"
+        volume="5 mL" />
+      <Add
+        vessel="filter"
+        reagent="4-chlorobenzaldehyde"
+        amount="0.84 g" />
+      <Add
+        vessel="filter"
+        reagent="allylamine methanol solution (1 M)"
+        amount="6 mL"
+        stir="True" />
+      <Stir
+        vessel="filter"
+        time="10 min" />
+      <Add
+        vessel="filter"
+        reagent="2-iodobenzoic acid methanol solution (1 M)"
+        amount="6 mL"
+        stir="True" />
+      <Stir
+        vessel="filter"
+        time="10 min" />
+      <Add
+        vessel="flask_isocyanide"
+        reagent="cyclohexyl isocyanide"
+        amount="0.65 g" />
+      <Add
+        vessel="flask_isocyanide"
+        reagent="methanol"
+        amount="8 mL"
+        stir="True" />
+      <Transfer
+        from_vessel="flask_isocyanide"
+        to_vessel="filter"
+        volume="all"
+        flush_tubing="True" />
+    </Prep>
+    <Reaction>
+      <Stir
+        vessel="filter"
+        time="60 s" />
+      <Wait
+        time="24 h" />
+      <Filter
+        vessel="filter"
+        wait_time="10 min"
+        aspiration_speed="10.0"
+        stir="False"
+        stir_speed="50 RPM" />
+      <ResetHandling
+        solvent="dimethylacetamide"
+        volume="3 mL" />
+      <StartPurge
+        vessel="filter"
+        gas="nitrogen" />
+      <Add
+        vessel="filter"
+        reagent="dimethylacetamide"
+        amount="20 mL"
+        stir="True" />
+      <Add
+        vessel="filter"
+        reagent="palladium catalyst"
+        amount="221 mg" />
+      <Add
+        vessel="filter"
+        reagent="N-methyldicyclohexylamine"
+        amount="5.14 mL"
+        stir="True"
+        viscous="True" />
+      <HeatChill
+        vessel="filter"
+        temp="100 °C"
+        time="16 hours"
+        stir="True" />
+    </Reaction>
+    <Workup>
+      <Transfer
+        from_vessel="filter"
+        to_vessel="rotovap"
+        volume="all"
+        flush_tubing="True" />
+      <Evaporate
+        vessel="rotovap"
+        temp="55 °C"
+        pressure="10 mbar"
+        stir_speed="130 RPM" />
+    </Workup>
+  </Procedure>
+
+</Synthesis>

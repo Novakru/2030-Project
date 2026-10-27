@@ -1,0 +1,56 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_DISSOLUTION",
+        "quote": "The indole from 4773-41, 1-bromo-3-methoxybenzenee,Pd2(dba)3, JohnPhos and KOtBu were dissolved in toluene.",
+        "message": "The Add steps capture reagent charging but not the explicitly reported dissolution in toluene.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_NMR_MONITORING",
+        "quote": "~65% conversion was observed on NMR*(see attached NMR).",
+        "message": "The plan omits the reported NMR monitoring result after heating. This observation does not establish an isolated yield.",
+        "severity": "error"
+      },
+      {
+        "code": "REAGENT_IDENTITY_CONFLICT",
+        "quote": "KOtBu",
+        "message": "As already noted in uncertainties, r1 reportedly identifies sodium tert-butoxide, whereas the source specifies potassium tert-butoxide. The executable reagent assignment remains inconsistent; a correct replacement identifier cannot be determined from the supplied information.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The indole from 4773-41, 1-bromo-3-methoxybenzenee,Pd2(dba)3, JohnPhos and KOtBu were dissolved in toluene.",
+          "reason": "Explicit dissolution in toluene is not represented separately from the Add steps."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "~65% conversion was observed on NMR*(see attached NMR).",
+          "reason": "NMR monitoring after heating and the reported approximate conversion are not captured in the steps."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 979,
+    "completion_tokens": 667,
+    "total_tokens": 1646,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 230
+    }
+  },
+  "cache_key": "8b5f5f1f1b2ec2867ee303ac12ff3c98e5fda8a8e51271e6408881fb1959abef"
+}

@@ -1,0 +1,56 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "alias": "7-methoxy-2-methylquinoline",
+        "evidence": "General procedure  B  was  applied to  7-methoxy-2-methylquinoline  (173 mg,  1.00mmol).",
+        "stage": "reaction"
+      },
+      {
+        "op": "Stir",
+        "duration_s": 172800,
+        "evidence": "The  reaction  was stirred  at  room  temperature  for  48  hours",
+        "stage": "reaction"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "Volatiles  were  removed  under  reduced  pressure",
+        "stage": "workup"
+      },
+      {
+        "op": "Purify",
+        "method": "chromatography",
+        "evidence": "the  remaining  residue  was purified  by  silica  gel  flash-column  chromatography  with  gradient  elution  of  MeOH/DCM  from  0.5 -12.5% over    25    column    volumes",
+        "stage": "purification"
+      }
+    ],
+    "uncertainties": [
+      "General procedure B is referenced but not supplied; its operations and addition order cannot be determined.",
+      "Components r1, r2, r3, and r4 have no literal reagent aliases in the supplied procedure. Their Add steps cannot be represented without inventing alias alignments.",
+      "Stirring is specified at room temperature without a numeric temperature.",
+      "Reduced pressure is specified without a numeric pressure."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "General procedure  B  was  applied",
+        "reason": "The referenced procedure is unavailable, so its constituent operations cannot be extracted."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "total_tokens": 1844,
+    "prompt_tokens": 1288,
+    "completion_tokens": 556,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1285
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 133
+    }
+  },
+  "cache_key": "d91986922824c6736ea44090cfbe5031496c838edb195e6ec901140c8802b424"
+}

@@ -1,6 +1,6 @@
 import copy
 
-from protocol_risk.audit import hard_review_metrics, judge_admitted
+from protocol_risk.admission import hard_review_metrics, judge_admitted
 
 
 def test_global_low_yield_metrics_cannot_substitute_for_subclass_evidence():

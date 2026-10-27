@@ -1,0 +1,436 @@
+{
+  "protocol": {
+    "id": "pos_088bd21d086a43258b728521904f368d",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "dataset_name": "750 AstraZeneca ELN dataset",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "reaction_id": "ord-088bd21d086a43258b728521904f368d",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-088bd21d086a43258b728521904f368d",
+    "raw_sha256": "a9f84e239bd5acab4f5aeea3e73e407954fc61fb1117e1857a38062b06648ba7",
+    "reaction_smiles": "CN1CCNCC1.COC1=CC(=CC(=C1)[N+](=O)[O-])Br>>CN1CCN(CC1)C2=CC(=CC(=C2)OC)[N+](=O)[O-]",
+    "reaction_class": "0.0 [Unassigned] Unrecognized",
+    "yield_percent": 71.17,
+    "reagents": [
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 1.0
+        },
+        "id": "r1",
+        "input_key": "Base",
+        "name": "C(=O)([O-])[O-].[Cs+].[Cs+]",
+        "role": "REAGENT",
+        "smiles": "C(=O)([O-])[O-].[Cs+].[Cs+]",
+        "source_path": "/inputs/Base/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mL",
+          "value": 10.0
+        },
+        "id": "r2",
+        "input_key": "Solvent",
+        "name": "CC1=CC=CC=C1",
+        "role": "SOLVENT",
+        "smiles": "CC1=CC=CC=C1",
+        "source_path": "/inputs/Solvent/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 1.5
+        },
+        "id": "r3",
+        "input_key": "amine",
+        "name": "CN1CCNCC1",
+        "role": "REACTANT",
+        "smiles": "CN1CCNCC1",
+        "source_path": "/inputs/amine/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.5
+        },
+        "id": "r4",
+        "input_key": "aryl halide",
+        "name": "COC1=CC(=CC(=C1)[N+](=O)[O-])Br",
+        "role": "REACTANT",
+        "smiles": "COC1=CC(=CC(=C1)[N+](=O)[O-])Br",
+        "source_path": "/inputs/aryl halide/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.05
+        },
+        "id": "r5",
+        "input_key": "metal and ligand",
+        "name": "C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=C(C4=CC=CC=C4C=C3)C5=C(C=CC6=CC=CC=C65)P(C7=CC=CC=C7)C8=CC=CC=C8",
+        "role": "CATALYST",
+        "smiles": "C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=C(C4=CC=CC=C4C=C3)C5=C(C=CC6=CC=CC=C65)P(C7=CC=CC=C7)C8=CC=CC=C8",
+        "source_path": "/inputs/metal and ligand/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.05
+        },
+        "id": "r6",
+        "input_key": "metal and ligand",
+        "name": "CC(=O)O.CC(=O)O.[Pd]",
+        "role": "CATALYST",
+        "smiles": "CC(=O)O.CC(=O)O.[Pd]",
+        "source_path": "/inputs/metal and ligand/components/1"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r4",
+        "id": "s001",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "1-bromo-3-methoxy-5-nitrobenzene (116 mg, 0.5 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/aryl halide/components/0/amount",
+          "source_alias": "1-bromo-3-methoxy-5-nitrobenzene"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.5
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r3",
+        "id": "s002",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "1-methylpiperazine (167 µl, 1.50 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/amine/components/0/amount",
+          "source_alias": "1-methylpiperazine"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 1.5
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r6",
+        "id": "s003",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "Palladium(II) acetate (11.23 mg, 0.05 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/metal and ligand/components/1/amount",
+          "source_alias": "Palladium(II) acetate"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.05
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "id": "s004",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "BINAP (31.1 mg, 0.05 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/metal and ligand/components/0/amount",
+          "source_alias": "BINAP"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.05
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "id": "s005",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "Cs2CO3 (326 mg, 1.00 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/Base/components/0/amount",
+          "source_alias": "Cs2CO3"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 1.0
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "id": "s006",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "PhCH3 (10 mL) were added to a 100ml rb flask",
+          "stage": "reaction",
+          "amount_source": "/inputs/Solvent/components/0/amount",
+          "source_alias": "PhCH3"
+        },
+        "amount": {
+          "unit": "mL",
+          "value": 10.0
+        }
+      },
+      {
+        "op": "HeatChill",
+        "temp_C": 150,
+        "duration_s": 3600,
+        "id": "s007",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "heated at 150 °C for 1h",
+          "stage": "reaction"
+        }
+      },
+      {
+        "op": "Filter",
+        "keep": "filtrate",
+        "id": "s008",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "Rxn was filtered and concentrated.",
+          "stage": "workup"
+        }
+      },
+      {
+        "op": "Evaporate",
+        "id": "s009",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "Rxn was filtered and concentrated.",
+          "stage": "workup"
+        }
+      },
+      {
+        "op": "Purify",
+        "method": "Gilson",
+        "id": "s010",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The residue was purified by Gilson (CH3CN/Water 0-50% + 0.1%TFA)",
+          "stage": "purification"
+        }
+      }
+    ],
+    "context": {
+      "reflux": false,
+      "atmosphere": {},
+      "pressure_control": "UNKNOWN",
+      "source_setup": {}
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 771,
+        "prompt_tokens": 1271,
+        "total_tokens": 2042,
+        "prompt_tokens_details": {
+          "cache_write_tokens": 1268,
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 92
+        }
+      },
+      "cache_key": "81d97ef573be79cac1f7e5c2c5e5c723c26515ba3cd6fc5c27e1a278d1c624eb",
+      "unresolved": [
+        "The retained filtration fraction is not explicitly identified; filtrate is indicated by the subsequent concentration.",
+        "Gilson is named, but the specific purification technique is not explicitly stated. The purification solvent specification is given literally as CH3CN/Water 0-50% + 0.1%TFA without further gradient details.",
+        "No stirring, atmosphere, or concentration conditions are specified."
+      ],
+      "unmapped_actions": []
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/1",
+    "findings": [
+      {
+        "code": "MISSING_VESSEL",
+        "quote": "were added to a 100ml rb flask",
+        "message": "The reaction vessel is mentioned in evidence but is not explicitly assigned in the operational plan: a 100 mL round-bottom flask.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-088bd21d086a43258b728521904f368d",
+          "source_sha256": "83943893222d7f4c7ae67ad5dc0419807b17d54d34144ed70b006acc18b04b2d",
+          "start": 211,
+          "end": 241,
+          "quote": "were added to a 100ml rb flask"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "OMITTED_ANALYTICAL_CHECK",
+        "quote": "LCMS showed rxn done with desired product formed.",
+        "message": "The LCMS check between heating and filtration is omitted from the steps.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-088bd21d086a43258b728521904f368d",
+          "source_sha256": "83943893222d7f4c7ae67ad5dc0419807b17d54d34144ed70b006acc18b04b2d",
+          "start": 272,
+          "end": 321,
+          "quote": "LCMS showed rxn done with desired product formed."
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "MISSING_PURIFICATION_CONDITIONS",
+        "quote": "CH3CN/Water 0-50% + 0.1%TFA",
+        "message": "The purification solvent specification appears only in evidence. Preserve it as an explicit condition without inferring the gradient direction or which solvent the percentage describes.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-088bd21d086a43258b728521904f368d",
+          "source_sha256": "83943893222d7f4c7ae67ad5dc0419807b17d54d34144ed70b006acc18b04b2d",
+          "start": 394,
+          "end": 421,
+          "quote": "CH3CN/Water 0-50% + 0.1%TFA"
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "100ml rb flask",
+        "kind": "vessel",
+        "identity": "round-bottom flask",
+        "scope": "reaction vessel; stated capacity 100 mL",
+        "evidence": {
+          "source_id": "ord-088bd21d086a43258b728521904f368d",
+          "source_sha256": "83943893222d7f4c7ae67ad5dc0419807b17d54d34144ed70b006acc18b04b2d",
+          "start": 227,
+          "end": 241,
+          "quote": "100ml rb flask"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "Gilson (CH3CN/Water 0-50% + 0.1%TFA)",
+        "kind": "separation apparatus",
+        "identity": "Gilson purification system",
+        "scope": "purification of reaction residue using an acetonitrile/water gradient with 0.1% TFA",
+        "evidence": {
+          "source_id": "ord-088bd21d086a43258b728521904f368d",
+          "source_sha256": "83943893222d7f4c7ae67ad5dc0419807b17d54d34144ed70b006acc18b04b2d",
+          "start": 386,
+          "end": 422,
+          "quote": "Gilson (CH3CN/Water 0-50% + 0.1%TFA)"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-088bd21d086a43258b728521904f368d",
+        "source_sha256": "83943893222d7f4c7ae67ad5dc0419807b17d54d34144ed70b006acc18b04b2d",
+        "start": 0,
+        "end": 51,
+        "quote": "1-bromo-3-methoxy-5-nitrobenzene (116 mg, 0.5 mmol)"
+      },
+      {
+        "source_id": "ord-088bd21d086a43258b728521904f368d",
+        "source_sha256": "83943893222d7f4c7ae67ad5dc0419807b17d54d34144ed70b006acc18b04b2d",
+        "start": 53,
+        "end": 91,
+        "quote": "1-methylpiperazine (167 µl, 1.50 mmol)"
+      },
+      {
+        "source_id": "ord-088bd21d086a43258b728521904f368d",
+        "source_sha256": "83943893222d7f4c7ae67ad5dc0419807b17d54d34144ed70b006acc18b04b2d",
+        "start": 93,
+        "end": 136,
+        "quote": "Palladium(II) acetate (11.23 mg, 0.05 mmol)"
+      },
+      {
+        "source_id": "ord-088bd21d086a43258b728521904f368d",
+        "source_sha256": "83943893222d7f4c7ae67ad5dc0419807b17d54d34144ed70b006acc18b04b2d",
+        "start": 138,
+        "end": 164,
+        "quote": "BINAP (31.1 mg, 0.05 mmol)"
+      },
+      {
+        "source_id": "ord-088bd21d086a43258b728521904f368d",
+        "source_sha256": "83943893222d7f4c7ae67ad5dc0419807b17d54d34144ed70b006acc18b04b2d",
+        "start": 166,
+        "end": 192,
+        "quote": "Cs2CO3 (326 mg, 1.00 mmol)"
+      },
+      {
+        "source_id": "ord-088bd21d086a43258b728521904f368d",
+        "source_sha256": "83943893222d7f4c7ae67ad5dc0419807b17d54d34144ed70b006acc18b04b2d",
+        "start": 197,
+        "end": 241,
+        "quote": "PhCH3 (10 mL) were added to a 100ml rb flask"
+      },
+      {
+        "source_id": "ord-088bd21d086a43258b728521904f368d",
+        "source_sha256": "83943893222d7f4c7ae67ad5dc0419807b17d54d34144ed70b006acc18b04b2d",
+        "start": 246,
+        "end": 269,
+        "quote": "heated at 150 °C for 1h"
+      },
+      {
+        "source_id": "ord-088bd21d086a43258b728521904f368d",
+        "source_sha256": "83943893222d7f4c7ae67ad5dc0419807b17d54d34144ed70b006acc18b04b2d",
+        "start": 323,
+        "end": 357,
+        "quote": "Rxn was filtered and concentrated."
+      },
+      {
+        "source_id": "ord-088bd21d086a43258b728521904f368d",
+        "source_sha256": "83943893222d7f4c7ae67ad5dc0419807b17d54d34144ed70b006acc18b04b2d",
+        "start": 323,
+        "end": 357,
+        "quote": "Rxn was filtered and concentrated."
+      },
+      {
+        "source_id": "ord-088bd21d086a43258b728521904f368d",
+        "source_sha256": "83943893222d7f4c7ae67ad5dc0419807b17d54d34144ed70b006acc18b04b2d",
+        "start": 358,
+        "end": 422,
+        "quote": "The residue was purified by Gilson (CH3CN/Water 0-50% + 0.1%TFA)"
+      }
+    ],
+    "repair": {
+      "accepted": false,
+      "errors": [
+        "step 7: unsupported operation"
+      ]
+    },
+    "apparatus_unknowns": [
+      "The heating apparatus and whether 150 °C is a heater setpoint or measured reaction-mixture temperature are not specified.",
+      "The filtration apparatus or filter medium is not specified.",
+      "The concentration apparatus is not specified.",
+      "The exact Gilson instrument model and purification mode/column are not specified."
+    ]
+  },
+  "raw_id": "ord-088bd21d086a43258b728521904f368d"
+}

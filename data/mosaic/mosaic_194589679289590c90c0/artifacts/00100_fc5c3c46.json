@@ -1,0 +1,485 @@
+{
+  "protocol": {
+    "id": "pos_15613520ef9b4d099659a0a3ac545228",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "dataset_name": "750 AstraZeneca ELN dataset",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "reaction_id": "ord-15613520ef9b4d099659a0a3ac545228",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-15613520ef9b4d099659a0a3ac545228",
+    "raw_sha256": "3d37c9044910d00ab0796ef3aea23c5d10a3bbc7c8ba856e09304d10987522dc",
+    "reaction_smiles": "C1=CN=CC=C1Br.C1CNCC1O>>C1CN(CC1O)C2=CC=NC=C2",
+    "reaction_class": "1.3.1 [N-arylation with Ar-X] Bromo Buchwald-Hartwig amination",
+    "yield_percent": 43.01,
+    "reagents": [
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 13.9
+        },
+        "id": "r1",
+        "input_key": "Base",
+        "name": "[Li+].C[Si](C)(C)[N-][Si](C)(C)C",
+        "role": "REAGENT",
+        "smiles": "[Li+].C[Si](C)(C)[N-][Si](C)(C)C",
+        "source_path": "/inputs/Base/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mL",
+          "value": 1.0
+        },
+        "id": "r2",
+        "input_key": "Solvent",
+        "name": "C1CCOC1",
+        "role": "SOLVENT",
+        "smiles": "C1CCOC1",
+        "source_path": "/inputs/Solvent/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 7.6
+        },
+        "id": "r3",
+        "input_key": "amine",
+        "name": "C1CNCC1O",
+        "role": "REACTANT",
+        "smiles": "C1CNCC1O",
+        "source_path": "/inputs/amine/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 6.33
+        },
+        "id": "r4",
+        "input_key": "aryl halide",
+        "name": "C1=CN=CC=C1Br",
+        "role": "REACTANT",
+        "smiles": "C1=CN=CC=C1Br",
+        "source_path": "/inputs/aryl halide/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.633
+        },
+        "id": "r5",
+        "input_key": "metal and ligand",
+        "name": "CN(C)C1=CC=CC=C1C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4",
+        "role": "CATALYST",
+        "smiles": "CN(C)C1=CC=CC=C1C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4",
+        "source_path": "/inputs/metal and ligand/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.633
+        },
+        "id": "r6",
+        "input_key": "metal and ligand",
+        "name": "C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]",
+        "role": "CATALYST",
+        "smiles": "C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]",
+        "source_path": "/inputs/metal and ligand/components/1"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r4",
+        "id": "s001",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "a mixture of 4-bromopyridine (1 g, 6.33 mmol), pyrrolidin-3-ol (0.662 g, 7.60 mmol),2-(dimethylamino)-2'-(dicyclohexylphosphino)biphenyl (0.249 g, 0.63 mmol) and Pd2(dba)3 (0.580 g, 0.63 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/aryl halide/components/0/amount",
+          "source_alias": "4-bromopyridine"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 6.33
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r3",
+        "id": "s002",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "pyrrolidin-3-ol (0.662 g, 7.60 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/amine/components/0/amount",
+          "source_alias": "pyrrolidin-3-ol"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 7.6
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "id": "s003",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "2-(dimethylamino)-2'-(dicyclohexylphosphino)biphenyl (0.249 g, 0.63 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/metal and ligand/components/0/amount",
+          "source_alias": "2-(dimethylamino)-2'-(dicyclohexylphosphino)biphenyl"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.633
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r6",
+        "id": "s004",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "Pd2(dba)3 (0.580 g, 0.63 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/metal and ligand/components/1/amount",
+          "source_alias": "Pd2(dba)3"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.633
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "id": "s005",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "THF (1 mL) was added to a mixture",
+          "stage": "reaction",
+          "amount_source": "/inputs/Solvent/components/0/amount",
+          "source_alias": "THF"
+        },
+        "amount": {
+          "unit": "mL",
+          "value": 1.0
+        }
+      },
+      {
+        "op": "HeatChill",
+        "temp_C": 0,
+        "id": "s006",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "lithium bis(trimethylsilyl)amide (13.92 mL, 13.92 mmol) was added dropwise at 0 °C",
+          "stage": "reaction"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "addition_mode": "dropwise",
+        "id": "s007",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "To the slurry lithium bis(trimethylsilyl)amide (13.92 mL, 13.92 mmol) was added dropwise at 0 °C",
+          "stage": "reaction",
+          "amount_source": "/inputs/Base/components/0/amount",
+          "source_alias": "lithium bis(trimethylsilyl)amide"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 13.9
+        }
+      },
+      {
+        "op": "HeatChill",
+        "temp_C": 65,
+        "duration_s": 72000,
+        "reflux": true,
+        "id": "s008",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "the solution was refluxed at 65 °C overnight for 20 hrs",
+          "stage": "reaction"
+        }
+      },
+      {
+        "op": "Filter",
+        "keep": "filtrate",
+        "medium": "celite",
+        "id": "s009",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The reaction mixture was passed through celite",
+          "stage": "workup"
+        }
+      },
+      {
+        "op": "Evaporate",
+        "id": "s010",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "concentrated",
+          "stage": "workup"
+        }
+      },
+      {
+        "op": "Purify",
+        "method": "chromatography",
+        "eluent": "0-20%MeOH/DCM",
+        "id": "s011",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "column purified (0-20%MeOH/DCM)",
+          "stage": "purification"
+        }
+      }
+    ],
+    "context": {
+      "reflux": false,
+      "atmosphere": {},
+      "pressure_control": "UNKNOWN",
+      "source_setup": {}
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 1030,
+        "prompt_tokens": 1305,
+        "total_tokens": 2335,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 1302
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 143
+        }
+      },
+      "cache_key": "1cfb905473005cf9e97f90384458b26ebdb02b439a8c158ad65199c29a4ede94",
+      "unresolved": [
+        "The relative charging order of the four components in the initial mixture is not specified; they are listed in source order before THF addition.",
+        "The procedure specifies addition at 0 °C but does not describe the cooling method or duration.",
+        "The basis of the percentages in the chromatography eluent is not specified."
+      ],
+      "unmapped_actions": []
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/1",
+    "findings": [
+      {
+        "code": "MISSING_VESSEL",
+        "quote": "In a 50 ml round bottomed flask",
+        "message": "The plan omits the reaction vessel type and capacity.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+          "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+          "start": 1,
+          "end": 32,
+          "quote": "In a 50 ml round bottomed flask"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "UNSTRUCTURED_REAGENT_QUANTITIES",
+        "quote": "THF (1 mL) was added to a mixture of 4-bromopyridine (1 g, 6.33 mmol), pyrrolidin-3-ol (0.662 g, 7.60 mmol),2-(dimethylamino)-2'-(dicyclohexylphosphino)biphenyl (0.249 g, 0.63 mmol) and Pd2(dba)3 (0.580 g, 0.63 mmol)",
+        "message": "The initial reagent quantities appear in evidence but are absent from the structured addition steps.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+          "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+          "start": 33,
+          "end": 249,
+          "quote": "THF (1 mL) was added to a mixture of 4-bromopyridine (1 g, 6.33 mmol), pyrrolidin-3-ol (0.662 g, 7.60 mmol),2-(dimethylamino)-2'-(dicyclohexylphosphino)biphenyl (0.249 g, 0.63 mmol) and Pd2(dba)3 (0.580 g, 0.63 mmol)"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "UNSTRUCTURED_REAGENT_QUANTITY",
+        "quote": "lithium bis(trimethylsilyl)amide (13.92 mL, 13.92 mmol)",
+        "message": "The base volume and amount appear in evidence but are absent from its structured addition step.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+          "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+          "start": 265,
+          "end": 320,
+          "quote": "lithium bis(trimethylsilyl)amide (13.92 mL, 13.92 mmol)"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "UNMAPPED_PRODUCT_AMOUNT",
+        "quote": "to obtain 0.447 mg of product",
+        "message": "The reported isolated product amount is not retained in the plan. Preserve the source unit, mg, without silently correcting it.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+          "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+          "start": 506,
+          "end": 535,
+          "quote": "to obtain 0.447 mg of product"
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "50 ml round bottomed flask",
+        "kind": "reaction vessel",
+        "identity": null,
+        "scope": "50 mL nominal flask volume; reaction conducted in this flask",
+        "evidence": {
+          "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+          "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+          "start": 6,
+          "end": 32,
+          "quote": "50 ml round bottomed flask"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "passed through celite",
+        "kind": "filtration medium",
+        "identity": "Celite",
+        "scope": "post-reaction filtration; filter hardware not specified",
+        "evidence": {
+          "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+          "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+          "start": 434,
+          "end": 455,
+          "quote": "passed through celite"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "column purified (0-20%MeOH/DCM)",
+        "kind": "chromatography column",
+        "identity": null,
+        "scope": "post-reaction column purification; column dimensions and stationary phase not specified",
+        "evidence": {
+          "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+          "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+          "start": 474,
+          "end": 505,
+          "quote": "column purified (0-20%MeOH/DCM)"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+        "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+        "start": 57,
+        "end": 249,
+        "quote": "a mixture of 4-bromopyridine (1 g, 6.33 mmol), pyrrolidin-3-ol (0.662 g, 7.60 mmol),2-(dimethylamino)-2'-(dicyclohexylphosphino)biphenyl (0.249 g, 0.63 mmol) and Pd2(dba)3 (0.580 g, 0.63 mmol)"
+      },
+      {
+        "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+        "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+        "start": 104,
+        "end": 140,
+        "quote": "pyrrolidin-3-ol (0.662 g, 7.60 mmol)"
+      },
+      {
+        "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+        "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+        "start": 141,
+        "end": 214,
+        "quote": "2-(dimethylamino)-2'-(dicyclohexylphosphino)biphenyl (0.249 g, 0.63 mmol)"
+      },
+      {
+        "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+        "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+        "start": 219,
+        "end": 249,
+        "quote": "Pd2(dba)3 (0.580 g, 0.63 mmol)"
+      },
+      {
+        "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+        "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+        "start": 33,
+        "end": 66,
+        "quote": "THF (1 mL) was added to a mixture"
+      },
+      {
+        "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+        "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+        "start": 265,
+        "end": 347,
+        "quote": "lithium bis(trimethylsilyl)amide (13.92 mL, 13.92 mmol) was added dropwise at 0 °C"
+      },
+      {
+        "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+        "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+        "start": 251,
+        "end": 347,
+        "quote": "To the slurry lithium bis(trimethylsilyl)amide (13.92 mL, 13.92 mmol) was added dropwise at 0 °C"
+      },
+      {
+        "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+        "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+        "start": 352,
+        "end": 407,
+        "quote": "the solution was refluxed at 65 °C overnight for 20 hrs"
+      },
+      {
+        "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+        "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+        "start": 409,
+        "end": 455,
+        "quote": "The reaction mixture was passed through celite"
+      },
+      {
+        "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+        "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+        "start": 457,
+        "end": 469,
+        "quote": "concentrated"
+      },
+      {
+        "source_id": "ord-15613520ef9b4d099659a0a3ac545228",
+        "source_sha256": "6e700393b7f0ad8c98f9e9be4217bfe2b5212aa697ef7ffafe0e0f9fdec50aab",
+        "start": 474,
+        "end": 505,
+        "quote": "column purified (0-20%MeOH/DCM)"
+      }
+    ],
+    "repair": {
+      "accepted": false,
+      "errors": [
+        "step 0: vessel must be a nonempty string identifier"
+      ]
+    },
+    "apparatus_unknowns": [
+      "The flask manufacturer, material, joint size, and pressure rating are not specified.",
+      "The heating apparatus and reflux condenser are not described.",
+      "The filtration apparatus used with Celite is not specified.",
+      "The chromatography column stationary phase, dimensions, and manufacturer are not specified."
+    ]
+  },
+  "raw_id": "ord-15613520ef9b4d099659a0a3ac545228"
+}

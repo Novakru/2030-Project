@@ -1,0 +1,78 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "MISSING_VESSEL_IDENTITY",
+        "quote": "a 5.0 mL wheaton microreactor was charged with",
+        "message": "The plan does not record the identity and capacity of the vessel used for charging and reaction.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_BLOCK_PLACEMENT",
+        "quote": "placed into pre-heated aluminum block at 80 oC",
+        "message": "The heating step captures temperature and duration but does not explicitly represent placement into an already preheated aluminum block.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The plan omits the GC/MS completion assessment preceding solvent removal.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_ISOLATION_RESULT",
+        "quote": "gave the meta-borylated product 4b (46.7 mg, 77%) as white solid",
+        "message": "The purification step does not record the reported isolated product, mass, yield, or physical form.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "a 5.0 mL wheaton microreactor was charged with",
+          "reason": "The initial reagents and dry THF were charged into a 5.0 mL Wheaton microreactor; vessel identity and capacity are not represented in the steps."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "placed into pre-heated aluminum block at 80 oC",
+          "reason": "After capping, the microreactor was physically placed into an aluminum block already preheated to 80 °C."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "Completion was judged by GC/MS before THF removal."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "gave the meta-borylated product 4b (46.7 mg, 77%) as white solid",
+          "reason": "Reported chromatographic isolation result: meta-borylated product 4b, 46.7 mg, 77%, white solid."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "total_tokens": 1862,
+    "prompt_tokens": 1050,
+    "completion_tokens": 812,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1047
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 210
+    }
+  },
+  "cache_key": "d30bc5fc7a53b1f6e33ee8ef25d0eb4582dce11c41634b1b169e43f3eee6cba9"
+}

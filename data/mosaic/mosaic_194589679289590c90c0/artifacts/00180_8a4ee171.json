@@ -1,0 +1,61 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNMAPPED_QUANTITIES",
+        "quote": "5-fluoro-4-(2-methyl-1-(tetrahydro-2H-pyran-4-yl)-1H-imidazol-5-yl)pyrimidin-2-amine (100 mg, 0.36 mmol), 4-(4-bromo-3-fluorobenzyl)morpholine (109 mg, 0.40 mmol), Palladium, 10% On Charcoal (115 mg, 0.11 mmol), racemic-2,2'-Bis(diphenylphosphino)-1,1'-binaphthyl (101 mg, 0.16 mmol) and Sodium tert-pentoxide (79 mg, 0.72 mmol) were dissolved in toluene (1.5 mL)",
+        "message": "The Add steps retain quantities only in evidence strings, not as structured parameters. The supplied plan does not show whether these quantities are represented in the referenced components.",
+        "severity": "unknown"
+      },
+      {
+        "code": "OMITTED_DISSOLUTION",
+        "quote": "were dissolved in toluene (1.5 mL)",
+        "message": "Adding toluene does not explicitly represent the stated dissolution before heating. Preserve dissolution as an unmapped action if no supported operation represents it.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_MONITORING",
+        "quote": "The reaction was monitorred by HPLC. After 16 h 81 % conversion was achieved.",
+        "message": "The plan records the elapsed time but omits HPLC monitoring and the reported 81% conversion at 16 h.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/uncertainties/-",
+        "value": "The Add steps contain the source quantities only in evidence strings. Verify that the referenced components preserve: amine 100 mg, 0.36 mmol; bromobenzylmorpholine 109 mg, 0.40 mmol; 10% palladium on charcoal 115 mg, 0.11 mmol; racemic BINAP 101 mg, 0.16 mmol; sodium tert-pentoxide 79 mg, 0.72 mmol; toluene 1.5 mL."
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "were dissolved in toluene (1.5 mL)",
+          "reason": "Dissolution before heating is stated but is not explicitly represented by the Add steps."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The reaction was monitorred by HPLC. After 16 h 81 % conversion was achieved.",
+          "reason": "HPLC monitoring and the reported 81% conversion after 16 h are not represented in the steps."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 881,
+    "prompt_tokens": 1081,
+    "total_tokens": 1962,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1078,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 200
+    }
+  },
+  "cache_key": "66238aee03014acf465be86066009e9bbdc04c59304f6e199c318201622b58c5"
+}

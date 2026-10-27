@@ -1,0 +1,610 @@
+{
+  "protocol": {
+    "id": "pos_03012762915d4ccdbd8b6fdfaf5ceb80",
+    "source": {
+      "dataset_id": "ord_dataset-99c23cf435dc42f1af884053bc8b11c7",
+      "dataset_name": "Borylation dataset from Roche",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+      "file_sha256": "59cd8c35e021be300944f8e556b8fd7ec30a6bc32ff36a54be133aad8e44c393",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": null,
+      "reaction_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet"
+    },
+    "raw_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+    "raw_sha256": "811ce34d07f8aa2cd5456b3adae7278b3f72f5ca8403bc4c3754074cac2133ce",
+    "reaction_smiles": "O=C(C=1C=CC=CC1)N(CCCC)CCCC>>O=C(C=1C=CC=C(C1)B2OC(C)(C)C(O2)(C)C)N(CCCC)CCCC",
+    "reaction_class": "borylation",
+    "yield_percent": 69.0,
+    "reagents": [
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.003
+        },
+        "id": "r1",
+        "input_key": "catalyst_1",
+        "name": "C[OH2+].C[OH2+].C1CC=CCCC=C1.C1CC=CCCC=C1.[Ir].[Ir]",
+        "role": "CATALYST",
+        "smiles": "C[OH2+].C[OH2+].C1CC=CCCC=C1.C1CC=CCCC=C1.[Ir].[Ir]",
+        "source_path": "/inputs/catalyst_1/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.009
+        },
+        "id": "r2",
+        "input_key": "catalyst_2",
+        "name": "[K].OC(C)(C)C",
+        "role": "CATALYST",
+        "smiles": "[K].OC(C)(C)C",
+        "source_path": "/inputs/catalyst_2/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.007
+        },
+        "id": "r3",
+        "input_key": "reagent_1",
+        "name": "O=C1C=CC=2C=CC=C(C3=CN=C(C=C3)C=4N=CC=CC4)C2N1",
+        "role": "REAGENT",
+        "smiles": "O=C1C=CC=2C=CC=C(C3=CN=C(C=C3)C=4N=CC=CC4)C2N1",
+        "source_path": "/inputs/reagent_1/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.2
+        },
+        "id": "r4",
+        "input_key": "reagent_2",
+        "name": "O1B(OC(C)(C)C1(C)C)B2OC(C)(C)C(O2)(C)C",
+        "role": "REAGENT",
+        "smiles": "O1B(OC(C)(C)C1(C)C)B2OC(C)(C)C(O2)(C)C",
+        "source_path": "/inputs/reagent_2/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mL",
+          "value": 1.0
+        },
+        "id": "r5",
+        "input_key": "solvent_1",
+        "name": "O1CCCC1",
+        "role": "SOLVENT",
+        "smiles": "O1CCCC1",
+        "source_path": "/inputs/solvent_1/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.2
+        },
+        "id": "r6",
+        "input_key": "startingmat_1",
+        "name": "O=C(C=1C=CC=CC1)N(CCCC)CCCC",
+        "role": "REACTANT",
+        "smiles": "O=C(C=1C=CC=CC1)N(CCCC)CCCC",
+        "source_path": "/inputs/startingmat_1/components/0"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Atmosphere",
+        "gas": "argon",
+        "mode": "environment",
+        "id": "s001",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "In an argon filled glove box",
+          "stage": "reaction"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "id": "s002",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%)",
+          "stage": "reaction",
+          "amount_source": "/inputs/catalyst_1/components/0/amount",
+          "source_alias": "[Ir(cod)(OMe)]2"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.003
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r3",
+        "id": "s003",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "L1 ligand (2.1 mg, 3.5 mol%)",
+          "stage": "reaction",
+          "amount_source": "/inputs/reagent_1/components/0/amount",
+          "source_alias": "L1 ligand"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.007
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r4",
+        "id": "s004",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "B2pin2 (50.8 mg, 1.0 equiv.)",
+          "stage": "reaction",
+          "amount_source": "/inputs/reagent_2/components/0/amount",
+          "source_alias": "B2pin2"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.2
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "id": "s005",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "KOtBu (1.0 mg, 4.5 mol%)",
+          "stage": "reaction",
+          "amount_source": "/inputs/catalyst_2/components/0/amount",
+          "source_alias": "KOtBu"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.009
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "id": "s006",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "dry THF (1.0 mL)",
+          "stage": "reaction",
+          "amount_source": "/inputs/solvent_1/components/0/amount",
+          "source_alias": "dry THF"
+        },
+        "amount": {
+          "unit": "mL",
+          "value": 1.0
+        }
+      },
+      {
+        "op": "Stir",
+        "duration_s": 120,
+        "temperature": "room temperature",
+        "id": "s007",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The reaction mixture was stirred for 2 minutes at room temperature.",
+          "stage": "reaction"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r6",
+        "id": "s008",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "To this mixture, N,N-dibutylbenzamide (46.7 mg, 0.2 mmol) was added.",
+          "stage": "reaction",
+          "amount_source": "/inputs/startingmat_1/components/0/amount",
+          "source_alias": "N,N-dibutylbenzamide"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.2
+        }
+      },
+      {
+        "op": "HeatChill",
+        "temp_C": 80,
+        "duration_s": 43200,
+        "stir": true,
+        "id": "s009",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "placed into pre-heated aluminum block at 80 oC. The reaction mixture was stirred for 12 h.",
+          "stage": "reaction"
+        }
+      },
+      {
+        "op": "Evaporate",
+        "pressure": "reduced pressure",
+        "id": "s010",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "THF was removed under reduced pressure",
+          "stage": "workup"
+        }
+      },
+      {
+        "op": "Purify",
+        "method": "chromatography",
+        "stationary_phase": "silica gel",
+        "eluent": "15% ethylacetate in hexane",
+        "id": "s011",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "chromatographic separation with silica gel (15% ethylacetate in hexane)",
+          "stage": "purification"
+        }
+      }
+    ],
+    "context": {
+      "reflux": false,
+      "atmosphere": {
+        "type": "ARGON"
+      },
+      "pressure_control": "SEALED",
+      "source_setup": {}
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 942,
+        "prompt_tokens": 1279,
+        "total_tokens": 2221,
+        "prompt_tokens_details": {
+          "cache_write_tokens": 1276,
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 144
+        }
+      },
+      "cache_key": "2dd3213511ee1bb1897574635bce409f6a7804d72031eba6a59ae827b27b591d",
+      "unresolved": [
+        "The procedure names the ligand only as \"L1 ligand\" and does not explicitly identify its structure. Its alignment with r3 cannot be independently verified from the literal procedure.",
+        "The pre-stirring temperature is stated only as room temperature; no numeric temperature is specified.",
+        "Reduced pressure is specified for THF removal, but no numeric pressure is provided."
+      ],
+      "unmapped_actions": [
+        {
+          "evidence": "The microreactor was capped with a teflon pressure cap",
+          "reason": "Capping is not represented by an allowed operation."
+        },
+        {
+          "evidence": "a 5.0 mL wheaton microreactor was charged",
+          "reason": "Initial reagents and solvent are charged into a 5.0 mL wheaton microreactor; vessel identity and capacity are not otherwise explicitly represented."
+        },
+        {
+          "evidence": "placed into pre-heated aluminum block at 80 oC",
+          "reason": "After capping and before the 12 h stirring period, the microreactor is placed into a pre-heated aluminum block at 80 °C."
+        },
+        {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "GC/MS is used to judge completion before THF removal; this check is not represented by a step."
+        }
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/1",
+    "findings": [
+      {
+        "code": "MISSING_VESSEL",
+        "quote": "a 5.0 mL wheaton microreactor was charged",
+        "message": "The plan does not explicitly represent the reaction vessel identity or its 5.0 mL capacity.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+          "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+          "start": 30,
+          "end": 71,
+          "quote": "a 5.0 mL wheaton microreactor was charged"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "MISSING_STIR_TEMPERATURE",
+        "quote": "The reaction mixture was stirred for 2 minutes at room temperature.",
+        "message": "The pre-stir step records the duration but leaves room temperature only in its evidence. Preserve the qualitative temperature without assigning a numeric value.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+          "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+          "start": 221,
+          "end": 288,
+          "quote": "The reaction mixture was stirred for 2 minutes at room temperature."
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "MISSING_HEATING_SETUP",
+        "quote": "placed into pre-heated aluminum block at 80 oC",
+        "message": "The heating step captures temperature and duration but does not explicitly preserve placement of the microreactor into a pre-heated aluminum block.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+          "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+          "start": 417,
+          "end": 463,
+          "quote": "placed into pre-heated aluminum block at 80 oC"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "MISSING_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The plan omits the GC/MS completion check preceding solvent removal.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+          "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+          "start": 508,
+          "end": 542,
+          "quote": "After completion (judged by GC/MS)"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "MISSING_EVAPORATION_CONDITION",
+        "quote": "THF was removed under reduced pressure",
+        "message": "Reduced pressure is preserved in evidence and uncertainty text but is not explicitly represented as an evaporation condition.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+          "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+          "start": 544,
+          "end": 582,
+          "quote": "THF was removed under reduced pressure"
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "argon filled glove box",
+        "kind": "glove box",
+        "identity": null,
+        "scope": "Reaction charging was performed in an argon-filled glove box.",
+        "evidence": {
+          "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+          "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+          "start": 6,
+          "end": 28,
+          "quote": "argon filled glove box"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "5.0 mL wheaton microreactor",
+        "kind": "microreactor vessel",
+        "identity": "Wheaton microreactor",
+        "scope": "A 5.0 mL microreactor was charged with reagents and 1.0 mL dry THF; 5.0 mL is the stated vessel volume, not the reaction-mixture volume.",
+        "evidence": {
+          "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+          "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+          "start": 32,
+          "end": 59,
+          "quote": "5.0 mL wheaton microreactor"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "teflon pressure cap",
+        "kind": "pressure cap",
+        "identity": null,
+        "scope": "The microreactor was capped with this Teflon pressure cap; no operating pressure or pressure rating is stated.",
+        "evidence": {
+          "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+          "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+          "start": 393,
+          "end": 412,
+          "quote": "teflon pressure cap"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "pre-heated aluminum block at 80 oC",
+        "kind": "heating block",
+        "identity": null,
+        "scope": "The capped microreactor was placed into an aluminum block stated to be at 80 oC; this is the block temperature, not an explicitly measured reaction-mixture temperature.",
+        "evidence": {
+          "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+          "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+          "start": 429,
+          "end": 463,
+          "quote": "pre-heated aluminum block at 80 oC"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "GC/MS",
+        "kind": "analytical instrument",
+        "identity": null,
+        "scope": "Used to judge reaction completion.",
+        "evidence": {
+          "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+          "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+          "start": 536,
+          "end": 541,
+          "quote": "GC/MS"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "under reduced pressure",
+        "kind": "solvent-removal operation",
+        "identity": null,
+        "scope": "THF was removed under reduced pressure; the evaporation apparatus is not identified.",
+        "evidence": {
+          "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+          "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+          "start": 560,
+          "end": 582,
+          "quote": "under reduced pressure"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "chromatographic separation with silica gel (15% ethylacetate in hexane)",
+        "kind": "chromatographic separation",
+        "identity": null,
+        "scope": "Silica-gel chromatography using 15% ethyl acetate in hexane was used for product isolation; no chromatography hardware is specified.",
+        "evidence": {
+          "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+          "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+          "start": 587,
+          "end": 658,
+          "quote": "chromatographic separation with silica gel (15% ethylacetate in hexane)"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+        "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+        "start": 0,
+        "end": 28,
+        "quote": "In an argon filled glove box"
+      },
+      {
+        "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+        "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+        "start": 77,
+        "end": 112,
+        "quote": "[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%)"
+      },
+      {
+        "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+        "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+        "start": 114,
+        "end": 142,
+        "quote": "L1 ligand (2.1 mg, 3.5 mol%)"
+      },
+      {
+        "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+        "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+        "start": 144,
+        "end": 172,
+        "quote": "B2pin2 (50.8 mg, 1.0 equiv.)"
+      },
+      {
+        "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+        "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+        "start": 174,
+        "end": 198,
+        "quote": "KOtBu (1.0 mg, 4.5 mol%)"
+      },
+      {
+        "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+        "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+        "start": 203,
+        "end": 219,
+        "quote": "dry THF (1.0 mL)"
+      },
+      {
+        "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+        "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+        "start": 221,
+        "end": 288,
+        "quote": "The reaction mixture was stirred for 2 minutes at room temperature."
+      },
+      {
+        "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+        "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+        "start": 289,
+        "end": 357,
+        "quote": "To this mixture, N,N-dibutylbenzamide (46.7 mg, 0.2 mmol) was added."
+      },
+      {
+        "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+        "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+        "start": 417,
+        "end": 507,
+        "quote": "placed into pre-heated aluminum block at 80 oC. The reaction mixture was stirred for 12 h."
+      },
+      {
+        "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+        "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+        "start": 544,
+        "end": 582,
+        "quote": "THF was removed under reduced pressure"
+      },
+      {
+        "source_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80",
+        "source_sha256": "dfd7156313249a53a46d16dfcb7fbfabcab216fafade3147281658ae1a11f7a9",
+        "start": 587,
+        "end": 658,
+        "quote": "chromatographic separation with silica gel (15% ethylacetate in hexane)"
+      }
+    ],
+    "repair": {
+      "accepted": true,
+      "patch": [
+        {
+          "op": "add",
+          "path": "/unmapped_actions/-",
+          "value": {
+            "evidence": "a 5.0 mL wheaton microreactor was charged",
+            "reason": "Initial reagents and solvent are charged into a 5.0 mL wheaton microreactor; vessel identity and capacity are not otherwise explicitly represented."
+          }
+        },
+        {
+          "op": "add",
+          "path": "/steps/6/temperature",
+          "value": "room temperature"
+        },
+        {
+          "op": "add",
+          "path": "/unmapped_actions/-",
+          "value": {
+            "evidence": "placed into pre-heated aluminum block at 80 oC",
+            "reason": "After capping and before the 12 h stirring period, the microreactor is placed into a pre-heated aluminum block at 80 °C."
+          }
+        },
+        {
+          "op": "add",
+          "path": "/unmapped_actions/-",
+          "value": {
+            "evidence": "After completion (judged by GC/MS)",
+            "reason": "GC/MS is used to judge completion before THF removal; this check is not represented by a step."
+          }
+        },
+        {
+          "op": "add",
+          "path": "/steps/9/pressure",
+          "value": "reduced pressure"
+        }
+      ]
+    },
+    "apparatus_unknowns": [
+      "The exact model and manufacturer designation of the Wheaton microreactor are not stated beyond the name \"wheaton microreactor.\"",
+      "No pressure rating, operating pressure, or seal specification is provided for the Teflon pressure cap or microreactor.",
+      "No temperature controller, heating-block model, or measured internal reaction temperature is reported.",
+      "The apparatus used for solvent removal under reduced pressure is not specified.",
+      "No chromatography column, cartridge, automated system, or silica-gel amount is specified."
+    ]
+  },
+  "raw_id": "ord-03012762915d4ccdbd8b6fdfaf5ceb80"
+}

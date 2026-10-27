@@ -1,0 +1,394 @@
+{
+  "protocol": {
+    "id": "pos_8ac590d4cc01454e9f3c19a34317cb92",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "dataset_name": "750 AstraZeneca ELN dataset",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "reaction_id": "ord-8ac590d4cc01454e9f3c19a34317cb92",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-8ac590d4cc01454e9f3c19a34317cb92",
+    "raw_sha256": "2b243560799905f91bc3e7b35193efe1bd170f703ea7bb88ca9242e8041e08bb",
+    "reaction_smiles": "CC(C)[C@@H]1CNCCN1C(=O)OC(C)(C)C.COC1=C(C=C(C=C1)Br)OC>>CC(C)[C@@H]1CN(CCN1C(=O)OC(C)(C)C)C2=CC(=C(C=C2)OC)OC",
+    "reaction_class": "1.3.1 [N-arylation with Ar-X] Bromo Buchwald-Hartwig amination",
+    "yield_percent": 60.0,
+    "reagents": [
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 1.29
+        },
+        "id": "r1",
+        "input_key": "Base",
+        "name": "CC(C)(C)[O-].[Na+]",
+        "role": "REAGENT",
+        "smiles": "CC(C)(C)[O-].[Na+]",
+        "source_path": "/inputs/Base/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mL",
+          "value": 5.0
+        },
+        "id": "r2",
+        "input_key": "Solvent",
+        "name": "CC1=CC=CC=C1",
+        "role": "SOLVENT",
+        "smiles": "CC1=CC=CC=C1",
+        "source_path": "/inputs/Solvent/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 1.11
+        },
+        "id": "r3",
+        "input_key": "amine",
+        "name": "CC(C)[C@@H]1CNCCN1C(=O)OC(C)(C)C",
+        "role": "REACTANT",
+        "smiles": "CC(C)[C@@H]1CNCCN1C(=O)OC(C)(C)C",
+        "source_path": "/inputs/amine/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.921
+        },
+        "id": "r4",
+        "input_key": "aryl halide",
+        "name": "COC1=C(C=C(C=C1)Br)OC",
+        "role": "REACTANT",
+        "smiles": "COC1=C(C=C(C=C1)Br)OC",
+        "source_path": "/inputs/aryl halide/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.0276
+        },
+        "id": "r5",
+        "input_key": "metal and ligand",
+        "name": "CN(C)C1=CC=CC=C1C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4",
+        "role": "CATALYST",
+        "smiles": "CN(C)C1=CC=CC=C1C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4",
+        "source_path": "/inputs/metal and ligand/components/0"
+      },
+      {
+        "addition_order": null,
+        "addition_time": null,
+        "amount": {
+          "unit": "mmol",
+          "value": 0.023
+        },
+        "id": "r6",
+        "input_key": "metal and ligand",
+        "name": "C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]",
+        "role": "CATALYST",
+        "smiles": "C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]",
+        "source_path": "/inputs/metal and ligand/components/1"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r4",
+        "id": "s001",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "4-bromo-1,2-dimethoxybenzene (0.135 mL, 0.92 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/aryl halide/components/0/amount",
+          "source_alias": "4-bromo-1,2-dimethoxybenzene"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.921
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r3",
+        "id": "s002",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "(R)-tert-butyl 2-isopropylpiperazine-1-carboxylate (252 mg, 1.11 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/amine/components/0/amount",
+          "source_alias": "(R)-tert-butyl 2-isopropylpiperazine-1-carboxylate"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 1.11
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r5",
+        "id": "s003",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "2-Dicyclohexylphosphino-2'-(N,N-dimethylamino)biphenyl (10.88 mg, 0.03 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/metal and ligand/components/0/amount",
+          "source_alias": "2-Dicyclohexylphosphino-2'-(N,N-dimethylamino)biphenyl"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.0276
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r1",
+        "id": "s004",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "Sodium tert-butoxide (128 mg, 1.29 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/Base/components/0/amount",
+          "source_alias": "Sodium tert-butoxide"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 1.29
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r6",
+        "id": "s005",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "Tris(dibenzylideneacetone)dipalladium(0) (21.09 mg, 0.02 mmol)",
+          "stage": "reaction",
+          "amount_source": "/inputs/metal and ligand/components/1/amount",
+          "source_alias": "Tris(dibenzylideneacetone)dipalladium(0)"
+        },
+        "amount": {
+          "unit": "mmol",
+          "value": 0.023
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r2",
+        "id": "s006",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "were suspended in toluene (5 mL)",
+          "stage": "reaction",
+          "amount_source": "/inputs/Solvent/components/0/amount",
+          "source_alias": "toluene"
+        },
+        "amount": {
+          "unit": "mL",
+          "value": 5.0
+        }
+      },
+      {
+        "op": "HeatChill",
+        "temp_C": 150,
+        "duration_s": 1800,
+        "id": "s007",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The reaction was heated to 150 °C for 30 minutes in the microwave reactor",
+          "stage": "reaction"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "id": "s008",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "cooled to RT",
+          "stage": "reaction"
+        }
+      }
+    ],
+    "context": {
+      "reflux": false,
+      "atmosphere": {},
+      "pressure_control": "UNKNOWN",
+      "source_setup": {}
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "prompt_tokens": 1359,
+        "completion_tokens": 869,
+        "total_tokens": 2228,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 1356
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 138
+        }
+      },
+      "cache_key": "922efb421d50ed050e5bfb2b9730893350b695eabc4a65221004e52ab0851f8c",
+      "unresolved": [
+        "RT is not specified numerically.",
+        "The statement 'reaction mixture to be combined with EN02263-45 and worked up' describes intended subsequent handling, not confirmed completion. The identity of EN02263-45, the combining details, and the workup operations are not specified.",
+        "s008: temperature unspecified"
+      ],
+      "unmapped_actions": [
+        {
+          "evidence": "sealed into a microwave tube",
+          "reason": "Sealing is not an allowed operation; no distinct transfer is explicitly described."
+        },
+        {
+          "evidence": "reaction mixture to be combined with EN02263-45 and worked up",
+          "reason": "Planned combination and unspecified workup cannot be represented as completed, defined operations."
+        },
+        {
+          "evidence": "were suspended in toluene (5 mL)",
+          "reason": "Suspension formation is explicitly stated but is not represented by the Add steps alone. The method and duration of suspension preparation are unspecified."
+        }
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/1",
+    "findings": [
+      {
+        "code": "OMITTED_SUSPENSION_ACTION",
+        "quote": "were suspended in toluene (5 mL)",
+        "message": "The plan records solvent addition but does not represent the explicitly stated formation of a suspension. No mixing method or duration is specified, so stirring or other specific agitation should not be inferred.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-8ac590d4cc01454e9f3c19a34317cb92",
+          "source_sha256": "9237c8dd4deb747c1e3f6d9e921a5ec1946d2a2145e35372e83adf2ef75e0d98",
+          "start": 342,
+          "end": 374,
+          "quote": "were suspended in toluene (5 mL)"
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "microwave tube",
+        "kind": "vessel",
+        "identity": null,
+        "scope": "sealed reaction vessel; capacity, material, and manufacturer not stated",
+        "evidence": {
+          "source_id": "ord-8ac590d4cc01454e9f3c19a34317cb92",
+          "source_sha256": "9237c8dd4deb747c1e3f6d9e921a5ec1946d2a2145e35372e83adf2ef75e0d98",
+          "start": 393,
+          "end": 407,
+          "quote": "microwave tube"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "microwave reactor",
+        "kind": "microwave reactor",
+        "identity": null,
+        "scope": "used to heat the sealed microwave tube; model and operating pressure not stated",
+        "evidence": {
+          "source_id": "ord-8ac590d4cc01454e9f3c19a34317cb92",
+          "source_sha256": "9237c8dd4deb747c1e3f6d9e921a5ec1946d2a2145e35372e83adf2ef75e0d98",
+          "start": 465,
+          "end": 482,
+          "quote": "microwave reactor"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-8ac590d4cc01454e9f3c19a34317cb92",
+        "source_sha256": "9237c8dd4deb747c1e3f6d9e921a5ec1946d2a2145e35372e83adf2ef75e0d98",
+        "start": 26,
+        "end": 76,
+        "quote": "4-bromo-1,2-dimethoxybenzene (0.135 mL, 0.92 mmol)"
+      },
+      {
+        "source_id": "ord-8ac590d4cc01454e9f3c19a34317cb92",
+        "source_sha256": "9237c8dd4deb747c1e3f6d9e921a5ec1946d2a2145e35372e83adf2ef75e0d98",
+        "start": 78,
+        "end": 148,
+        "quote": "(R)-tert-butyl 2-isopropylpiperazine-1-carboxylate (252 mg, 1.11 mmol)"
+      },
+      {
+        "source_id": "ord-8ac590d4cc01454e9f3c19a34317cb92",
+        "source_sha256": "9237c8dd4deb747c1e3f6d9e921a5ec1946d2a2145e35372e83adf2ef75e0d98",
+        "start": 153,
+        "end": 229,
+        "quote": "2-Dicyclohexylphosphino-2'-(N,N-dimethylamino)biphenyl (10.88 mg, 0.03 mmol)"
+      },
+      {
+        "source_id": "ord-8ac590d4cc01454e9f3c19a34317cb92",
+        "source_sha256": "9237c8dd4deb747c1e3f6d9e921a5ec1946d2a2145e35372e83adf2ef75e0d98",
+        "start": 234,
+        "end": 274,
+        "quote": "Sodium tert-butoxide (128 mg, 1.29 mmol)"
+      },
+      {
+        "source_id": "ord-8ac590d4cc01454e9f3c19a34317cb92",
+        "source_sha256": "9237c8dd4deb747c1e3f6d9e921a5ec1946d2a2145e35372e83adf2ef75e0d98",
+        "start": 279,
+        "end": 341,
+        "quote": "Tris(dibenzylideneacetone)dipalladium(0) (21.09 mg, 0.02 mmol)"
+      },
+      {
+        "source_id": "ord-8ac590d4cc01454e9f3c19a34317cb92",
+        "source_sha256": "9237c8dd4deb747c1e3f6d9e921a5ec1946d2a2145e35372e83adf2ef75e0d98",
+        "start": 342,
+        "end": 374,
+        "quote": "were suspended in toluene (5 mL)"
+      },
+      {
+        "source_id": "ord-8ac590d4cc01454e9f3c19a34317cb92",
+        "source_sha256": "9237c8dd4deb747c1e3f6d9e921a5ec1946d2a2145e35372e83adf2ef75e0d98",
+        "start": 409,
+        "end": 482,
+        "quote": "The reaction was heated to 150 °C for 30 minutes in the microwave reactor"
+      },
+      {
+        "source_id": "ord-8ac590d4cc01454e9f3c19a34317cb92",
+        "source_sha256": "9237c8dd4deb747c1e3f6d9e921a5ec1946d2a2145e35372e83adf2ef75e0d98",
+        "start": 487,
+        "end": 499,
+        "quote": "cooled to RT"
+      }
+    ],
+    "repair": {
+      "accepted": true,
+      "patch": [
+        {
+          "op": "add",
+          "path": "/unmapped_actions/-",
+          "value": {
+            "evidence": "were suspended in toluene (5 mL)",
+            "reason": "Suspension formation is explicitly stated but is not represented by the Add steps alone. The method and duration of suspension preparation are unspecified."
+          }
+        }
+      ]
+    },
+    "apparatus_unknowns": [
+      "Whether 150 °C is a measured reaction-mixture temperature or a microwave reactor setpoint is not specified.",
+      "Microwave tube volume, pressure rating, wetted material, and closure type are not specified.",
+      "Microwave reactor manufacturer, model, power, and pressure capability are not specified.",
+      "No separation apparatus is described; the reaction mixture is only stated to be combined with another batch and worked up."
+    ]
+  },
+  "raw_id": "ord-8ac590d4cc01454e9f3c19a34317cb92"
+}

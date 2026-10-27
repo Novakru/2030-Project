@@ -1,0 +1,50 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_VESSEL",
+        "quote": "a 5.0 mL wheaton microreactor was charged with",
+        "message": "The plan omits the reaction vessel's identity and capacity. Record that the initial reagents were charged into a 5.0 mL Wheaton microreactor.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The plan omits the GC/MS completion check preceding THF removal.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "a 5.0 mL wheaton microreactor was charged with",
+          "reason": "The initial reagent additions were made into a 5.0 mL Wheaton microreactor; this vessel identity and capacity are not represented in the steps."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "Reaction completion was judged by GC/MS before THF removal; this analytical check is not represented in the steps."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 546,
+    "prompt_tokens": 1072,
+    "total_tokens": 1618,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1069
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 227
+    }
+  },
+  "cache_key": "c9543e00b2d7b082f2a38f8784ee2ea75d8399667dd1dd8a389c087f6c0f8917"
+}

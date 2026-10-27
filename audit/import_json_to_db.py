@@ -70,7 +70,7 @@ def scan_files(paths):
     return sorted(found)
 
 
-def import_documents(database, documents, record_type="auto"):
+def import_documents(database, documents, record_type="auto", *, reject_changed=False):
     """All documents commit together. Existing IDs are always skipped, even if changed."""
     if record_type not in ("auto", "positive", "negative", "other"):
         raise ValueError("不支持的记录类型")
@@ -92,6 +92,8 @@ def import_documents(database, documents, record_type="auto"):
                 if old is not None:
                     report["skipped"] += 1
                     if old[0] != digest:
+                        if reject_changed:
+                            raise ValueError(f"不可变记录 ID 内容冲突：{record_id}；整批导入已回滚。")
                         report["changed_duplicates"].append({"record_id": record_id, "source": source})
                     continue
                 fields = index_fields(record)
@@ -109,10 +111,10 @@ def import_documents(database, documents, record_type="auto"):
     return report
 
 
-def import_paths(database, paths, record_type="auto"):
+def import_paths(database, paths, record_type="auto", *, reject_changed=False):
     files = scan_files(paths)
     documents = ((str(path), path.read_text(encoding="utf-8-sig")) for path in files)
-    return import_documents(database, documents, record_type)
+    return import_documents(database, documents, record_type, reject_changed=reject_changed)
 
 
 def main():

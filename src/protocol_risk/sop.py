@@ -2,15 +2,10 @@
 from __future__ import annotations
 
 import copy
-from collections import Counter
 import re
 
-import jsonpatch
 
-from .io import ROOT, digest, load_library, read_json, read_jsonl, write_json, write_jsonl
-from .perturb import make_negative
-from .symbolic import evaluate
-from .xdl import canonical_hash, export_xdl, validate_xdl
+from .io import ROOT, digest, load_library, read_json
 
 
 def source_text(identifier):
@@ -122,81 +117,3 @@ def candidates():
             child = copy.deepcopy(parent)
             child["context"]["ignition_source"] = ignition
             yield parent, "B3", child
-
-
-def records():
-    parents, negatives = {}, []
-    seen = set()
-    for parent, risk, child in candidates():
-        parent, child = copy.deepcopy(parent), copy.deepcopy(child)
-        parent["xdl"] = export_xdl(parent)
-        parent["canonical_sha1"] = canonical_hash(parent)
-        parent["xdl_path"] = "data/xdl/sop_positive/" + parent["id"] + ".xdl"
-        child["xdl"] = export_xdl(child)
-        row = make_negative(parent, child, risk, {}, origin=parent["origin"])
-        if row is None:
-            raise ValueError("SOP single-fault construction rejected: " + parent["id"])
-        row["xdl"] = export_xdl(row["protocol"])
-        row["xdl_path"] = "data/xdl/sop_negative/" + risk + "/" + row["id"] + ".xdl"
-        # The modified protocol has its own export path, never the parent's file.
-        row["protocol"].pop("xdl_path", None)
-        row["diff"] = jsonpatch.make_patch(parent, row["protocol"]).patch
-        row["benchmark_eligible"] = False
-        row["source_kind"] = parent["construction"]["kind"]
-        row["label"]["scope"] = ("Documented acid-dilution input order only; full procedure safety not certified."
-                                   if risk == "B5" else "Conditional on explicitly constructed pure-material/open-vapor scenario; no observed failure claim.")
-        fingerprint = digest({"protocol": canonical_hash(row["protocol"]), "risk": risk})
-        if fingerprint in seen:
-            raise ValueError("Duplicate SOP mutation")
-        seen.add(fingerprint)
-        parents[parent["id"]] = parent
-        negatives.append(row)
-    return list(parents.values()), negatives
-
-
-def build_sop():
-    parents, negatives = records()
-    write_jsonl(ROOT / "data/sop/parents.jsonl", parents)
-    write_jsonl(ROOT / "data/sop/negatives.jsonl", negatives)
-    expected = set()
-    for row in parents + negatives:
-        validate_xdl(row["xdl"])
-        path = ROOT / row["xdl_path"]
-        expected.add(path.resolve())
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_bytes(row["xdl"].encode("utf-8"))
-    for folder in (ROOT / "data/xdl/sop_positive", ROOT / "data/xdl/sop_negative"):
-        for path in folder.rglob("*.xdl"):
-            if path.resolve() not in expected and path.resolve().is_relative_to(folder.resolve()):
-                path.unlink()
-    result = {"parents": len(parents), "negatives": len(negatives), "risk_counts": dict(Counter(r["label"]["risk_l2"] for r in negatives)),
-              "literal_fragment_negatives": sum(r["origin"] == "published_sop_fragment" for r in negatives),
-              "instantiated_scenario_negatives": sum(r["origin"] == "instantiated_sop" for r in negatives),
-              "unique_parents_per_risk": {risk: len({r["parent_id"] for r in negatives if r["label"]["risk_l2"] == risk}) for risk in ("B2", "B3", "B5")},
-              "source_documents": len({p["source"]["id"] for p in parents}), "benchmark_eligible": 0,
-              "claim": "Source fragments and generated SOP instances are separate. Counts are variants, not independent experiments."}
-    write_json(ROOT / "reports/sop_dataset.json", result)
-    return result
-
-
-def audit_sop():
-    expected_parents, expected_negatives = records()
-    parents = list(read_jsonl(ROOT / "data/sop/parents.jsonl"))
-    negatives = list(read_jsonl(ROOT / "data/sop/negatives.jsonl"))
-    failures = []
-    if parents != expected_parents or negatives != expected_negatives:
-        failures.append("source_reconstruction_or_patch_mismatch")
-    for row in parents + negatives:
-        validate_xdl(row["xdl"])
-        if (ROOT / row["xdl_path"]).read_bytes() != row["xdl"].encode("utf-8"):
-            failures.append("xdl_file_mismatch:" + row["id"])
-    mapping = {p["id"]: p for p in parents}
-    for row in negatives:
-        parent = mapping[row["parent_id"]]
-        if (evaluate(parent).risks or evaluate(row["protocol"]).risks != [row["label"]["risk_l2"]]
-                or jsonpatch.apply_patch(copy.deepcopy(parent), row["diff"]) != row["protocol"]
-                or row["benchmark_eligible"] or row["protocol"]["construction"] != parent["construction"]):
-            failures.append("incorrect_single_fault:" + row["id"])
-    result = {"passed": not failures, "parents_checked": len(parents), "records_checked": len(negatives), "failures": failures}
-    write_json(ROOT / "reports/sop_audit.json", result)
-    return result

@@ -1,0 +1,112 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "REACTION_VESSEL_NOT_ENCODED",
+        "quote": "Reactions were run in 8 x 30 mm glass vial inserts in 96 well-plate Para-dox Aluminum Reaction Blocks.",
+        "message": "The plan does not identify the initial reaction vessels. Reactions occur in glass vial inserts held in the reaction block, not directly in unspecified plate wells.",
+        "severity": "error"
+      },
+      {
+        "code": "REACTION_SOLVENT_SELECTION_UNRESOLVED",
+        "quote": "the respective reaction solvent (MeCN, MeOH, DCE, or EtOAc)",
+        "message": "The source lists alternative reaction solvents without identifying the solvent for a particular well. The unconditional DCE addition at step 5 is not established by this text; the referenced screening design is needed.",
+        "severity": "unknown"
+      },
+      {
+        "code": "INITIAL_DOSING_DETAILS_NOT_ENCODED",
+        "quote": "First, the catalysts (2 umol per vial) and solid bases (20 umol per vial) were added by dosing 50 uL each of a stock solution in 1,2-dichloroethane (40 mM for catalysts, 0.4 M for bases) via single-channel pipette.",
+        "message": "The catalyst step lacks its explicit per-vial amount and stock-dosing details. The separate initial DCE Add also needs clarification that DCE is the stock carrier, not an additional independent solvent dose.",
+        "severity": "error"
+      },
+      {
+        "code": "ALIQUOT_VOLUME_NOT_ENCODED",
+        "quote": "Taking care not to agitate the solution, 25 uL from each well was sampled via multi-channel pipettor",
+        "message": "The transfer omits the explicit 25 uL aliquot amount and does not encode the instruction to avoid agitation during sampling.",
+        "severity": "error"
+      },
+      {
+        "code": "ANALYSIS_ACTION_OMITTED",
+        "quote": "then subjected to UPLC-MS analysis.",
+        "message": "UPLC-MS analysis is absent from both the steps and unmapped actions.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/steps/0/vessel",
+        "value": "8 x 30 mm glass vial insert in a 96 well-plate Para-dox Aluminum Reaction Block"
+      },
+      {
+        "op": "add",
+        "path": "/steps/0/amount",
+        "value": {
+          "value": 2,
+          "unit": "umol"
+        }
+      },
+      {
+        "op": "add",
+        "path": "/steps/0/stock_solution",
+        "value": {
+          "solvent": "1,2-dichloroethane",
+          "concentration": {
+            "value": 40,
+            "unit": "mM"
+          },
+          "dose_per_vial": {
+            "value": 50,
+            "unit": "uL"
+          },
+          "dispensing_method": "single-channel pipette"
+        }
+      },
+      {
+        "op": "add",
+        "path": "/uncertainties/-",
+        "value": "Step 1 represents 1,2-dichloroethane delivered as the catalyst and solid-base stock carrier, not an independent additional solvent dose. The source specifies 50 uL of each applicable stock per vial."
+      },
+      {
+        "op": "add",
+        "path": "/uncertainties/-",
+        "value": "The DCE reaction-solvent selection at step 5 is unresolved from this source alone. MeCN, MeOH, DCE, and EtOAc are alternatives assigned by the referenced screening design; no particular well's selection is provided here."
+      },
+      {
+        "op": "add",
+        "path": "/steps/10/amount",
+        "value": {
+          "value": 25,
+          "unit": "uL"
+        }
+      },
+      {
+        "op": "add",
+        "path": "/steps/10/sampling_conditions",
+        "value": "Sample from each reaction well via multi-channel pipettor, taking care not to agitate the solution."
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "then subjected to UPLC-MS analysis.",
+          "reason": "Explicit final analytical action, not represented among the proposed steps."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 2188,
+    "completion_tokens": 1208,
+    "total_tokens": 3396,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 2185
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 217
+    }
+  },
+  "cache_key": "b0287bf3ca936a837dc960f01b0bc93a014814b74b5e2d41d8affa9bcc582da5"
+}

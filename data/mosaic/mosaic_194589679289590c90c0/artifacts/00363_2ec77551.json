@@ -1,0 +1,598 @@
+{
+  "id": "mosaic_pos_93432df8b2e363e30d4e",
+  "source": {
+    "dataset_id": "ord_dataset-3b5db90e337942ea886b8f5bc5e3aa72",
+    "dataset_name": "Ni-catalyzed Suzuki Miyaura cross-coupling",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-3b5db90e337942ea886b8f5bc5e3aa72.parquet",
+    "file_sha256": "3da99773dd237932accd6f47784b49576ba8e9ae865ee9bf7384ee817ab49d9f",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": "https://chemrxiv.org/articles/preprint/Linking_Mechanistic_Analysis_of_Catalytic_Reactivity_Cliffs_to_Ligand_Classification/14388557",
+    "reaction_id": "ord-06e4ff836b39448f93822e608441dbbe",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/3b/ord_dataset-3b5db90e337942ea886b8f5bc5e3aa72.parquet"
+  },
+  "raw_id": "ord-06e4ff836b39448f93822e608441dbbe",
+  "raw_sha256": "1f5a8256d38b3670317f70b83387d2488630a9605b11c972d75eb95328d2b905",
+  "reaction_smiles": "ClC1=CC=C(C(F)(F)F)C=C1.OB(O)C1=CC=C(OC)C=C1>>FC(C(C=C1)=CC=C1C2=CC=C(OC)C=C2)(F)F",
+  "reaction_class": "Ni-catalyzed C(sp2)-C(sp2) Suzuki-Miyaura coupling",
+  "yield_percent": 44.0,
+  "reagents": [
+    {
+      "addition_order": 1,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.036
+      },
+      "id": "r1",
+      "input_key": "K3PO4 in dioxane ",
+      "name": "K3PO4",
+      "role": "REAGENT",
+      "smiles": "O=P([O-])([O-])[O-].[K+].[K+].[K+]",
+      "source_path": "/inputs/K3PO4 in dioxane /components/0"
+    },
+    {
+      "addition_order": 1,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 0.06
+      },
+      "id": "r2",
+      "input_key": "K3PO4 in dioxane ",
+      "name": "dioxane",
+      "role": "SOLVENT",
+      "smiles": "C1COCCO1",
+      "source_path": "/inputs/K3PO4 in dioxane /components/1"
+    },
+    {
+      "addition_order": 4,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.00016
+      },
+      "id": "r3",
+      "input_key": "Ni(cod)2 + phosphine ligand in dioxane",
+      "name": "Ni(cod)2",
+      "role": "CATALYST",
+      "smiles": "C1=C\\CC/C=C\\CC/1.C1=C\\CC/C=C\\CC/1.[Ni]",
+      "source_path": "/inputs/Ni(cod)2 + phosphine ligand in dioxane/components/0"
+    },
+    {
+      "addition_order": 4,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 0.016
+      },
+      "id": "r4",
+      "input_key": "Ni(cod)2 + phosphine ligand in dioxane",
+      "name": "dioxane",
+      "role": "SOLVENT",
+      "smiles": "C1COCCO1",
+      "source_path": "/inputs/Ni(cod)2 + phosphine ligand in dioxane/components/1"
+    },
+    {
+      "addition_order": 4,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.00032
+      },
+      "id": "r5",
+      "input_key": "Ni(cod)2 + phosphine ligand in dioxane",
+      "name": "Cy-BippyPhos",
+      "role": "CATALYST",
+      "smiles": "P(C1CCCCC1)(C1CCCCC1)c1n(ncc1)c1c(n(nc1c1ccccc1)c1ccccc1)c1ccccc1",
+      "source_path": "/inputs/Ni(cod)2 + phosphine ligand in dioxane/components/2"
+    },
+    {
+      "addition_order": 3,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.008
+      },
+      "id": "r6",
+      "input_key": "aryl chloride in dioxane",
+      "name": "ClC1=CC=C(C(F)(F)F)C=C1",
+      "role": "REACTANT",
+      "smiles": "ClC1=CC=C(C(F)(F)F)C=C1",
+      "source_path": "/inputs/aryl chloride in dioxane/components/0"
+    },
+    {
+      "addition_order": 3,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 0.044
+      },
+      "id": "r7",
+      "input_key": "aryl chloride in dioxane",
+      "name": "dioxane",
+      "role": "SOLVENT",
+      "smiles": "C1COCCO1",
+      "source_path": "/inputs/aryl chloride in dioxane/components/1"
+    },
+    {
+      "addition_order": 2,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.016
+      },
+      "id": "r8",
+      "input_key": "boronic acid + water in dioxane",
+      "name": "OB(O)C1=CC=C(OC)C=C1",
+      "role": "REACTANT",
+      "smiles": "OB(O)C1=CC=C(OC)C=C1",
+      "source_path": "/inputs/boronic acid + water in dioxane/components/0"
+    },
+    {
+      "addition_order": 2,
+      "addition_time": null,
+      "amount": {
+        "unit": "mmol",
+        "value": 0.04
+      },
+      "id": "r9",
+      "input_key": "boronic acid + water in dioxane",
+      "name": "water",
+      "role": "REAGENT",
+      "smiles": "O",
+      "source_path": "/inputs/boronic acid + water in dioxane/components/1"
+    },
+    {
+      "addition_order": 2,
+      "addition_time": null,
+      "amount": {
+        "unit": "mL",
+        "value": 0.04
+      },
+      "id": "r10",
+      "input_key": "boronic acid + water in dioxane",
+      "name": "dioxane",
+      "role": "SOLVENT",
+      "smiles": "C1COCCO1",
+      "source_path": "/inputs/boronic acid + water in dioxane/components/2"
+    }
+  ],
+  "steps": [
+    {
+      "id": "gas_context",
+      "op": "Atmosphere",
+      "vessel": "reactor",
+      "gas": "nitrogen",
+      "mode": "environment",
+      "meta": {
+        "source_path": "/atmosphere"
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r1",
+      "amount": {
+        "unit": "mmol",
+        "value": 0.036
+      },
+      "vessel": "reactor",
+      "id": "s001",
+      "meta": {
+        "source_path": "/inputs/K3PO4 in dioxane /components/0",
+        "addition_group": "K3PO4 in dioxane ",
+        "addition_order": 1
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r2",
+      "amount": {
+        "unit": "mL",
+        "value": 0.06
+      },
+      "vessel": "reactor",
+      "id": "s002",
+      "meta": {
+        "source_path": "/inputs/K3PO4 in dioxane /components/1",
+        "addition_group": "K3PO4 in dioxane ",
+        "addition_order": 1
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r10",
+      "amount": {
+        "unit": "mL",
+        "value": 0.04
+      },
+      "vessel": "reactor",
+      "id": "s003",
+      "meta": {
+        "source_path": "/inputs/boronic acid + water in dioxane/components/2",
+        "addition_group": "boronic acid + water in dioxane",
+        "addition_order": 2
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r8",
+      "amount": {
+        "unit": "mmol",
+        "value": 0.016
+      },
+      "vessel": "reactor",
+      "id": "s004",
+      "meta": {
+        "source_path": "/inputs/boronic acid + water in dioxane/components/0",
+        "addition_group": "boronic acid + water in dioxane",
+        "addition_order": 2
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r9",
+      "amount": {
+        "unit": "mmol",
+        "value": 0.04
+      },
+      "vessel": "reactor",
+      "id": "s005",
+      "meta": {
+        "source_path": "/inputs/boronic acid + water in dioxane/components/1",
+        "addition_group": "boronic acid + water in dioxane",
+        "addition_order": 2
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r6",
+      "amount": {
+        "unit": "mmol",
+        "value": 0.008
+      },
+      "vessel": "reactor",
+      "id": "s006",
+      "meta": {
+        "source_path": "/inputs/aryl chloride in dioxane/components/0",
+        "addition_group": "aryl chloride in dioxane",
+        "addition_order": 3
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r7",
+      "amount": {
+        "unit": "mL",
+        "value": 0.044
+      },
+      "vessel": "reactor",
+      "id": "s007",
+      "meta": {
+        "source_path": "/inputs/aryl chloride in dioxane/components/1",
+        "addition_group": "aryl chloride in dioxane",
+        "addition_order": 3
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r3",
+      "amount": {
+        "unit": "mmol",
+        "value": 0.00016
+      },
+      "vessel": "reactor",
+      "id": "s008",
+      "meta": {
+        "source_path": "/inputs/Ni(cod)2 + phosphine ligand in dioxane/components/0",
+        "addition_group": "Ni(cod)2 + phosphine ligand in dioxane",
+        "addition_order": 4
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r4",
+      "amount": {
+        "unit": "mL",
+        "value": 0.016
+      },
+      "vessel": "reactor",
+      "id": "s009",
+      "meta": {
+        "source_path": "/inputs/Ni(cod)2 + phosphine ligand in dioxane/components/1",
+        "addition_group": "Ni(cod)2 + phosphine ligand in dioxane",
+        "addition_order": 4
+      }
+    },
+    {
+      "op": "Add",
+      "reagent": "r5",
+      "amount": {
+        "unit": "mmol",
+        "value": 0.00032
+      },
+      "vessel": "reactor",
+      "id": "s010",
+      "meta": {
+        "source_path": "/inputs/Ni(cod)2 + phosphine ligand in dioxane/components/2",
+        "addition_group": "Ni(cod)2 + phosphine ligand in dioxane",
+        "addition_order": 4
+      }
+    },
+    {
+      "op": "HeatChill",
+      "vessel": "reactor",
+      "temp_C": 60.0,
+      "duration_s": 2700.0,
+      "id": "s011",
+      "meta": {
+        "source_path": "/conditions/temperature/setpoint"
+      },
+      "stir": true,
+      "requires": [
+        "s002",
+        "s003",
+        "s004",
+        "s006",
+        "s007",
+        "s009"
+      ]
+    }
+  ],
+  "context": {
+    "reflux": false,
+    "pressure_control": "UNKNOWN",
+    "source_setup": {
+      "environment": {
+        "details": "N2 glovebox",
+        "type": "GLOVE_BOX"
+      },
+      "is_automated": false,
+      "vessel": {
+        "details": "8 x 30 mm glass vials in 96 well-plate Para-dox Aluminum Reaction Block",
+        "material": {
+          "type": "GLASS"
+        },
+        "type": "WELL_PLATE"
+      }
+    },
+    "atmosphere": {
+      "derived_from": "/setup/environment/details",
+      "type": "NITROGEN"
+    },
+    "inert_required": {
+      "basis": "ORD.notes.is_sensitive_to_oxygen",
+      "source_url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/3b/ord_dataset-3b5db90e337942ea886b8f5bc5e3aa72.parquet"
+    }
+  },
+  "extraction": {
+    "method": "ord_structured",
+    "scope": "ordered_inputs_and_reaction_hold",
+    "unresolved": [],
+    "unmapped_actions": [],
+    "limitations": [
+      "Components in one input are premixed; same-order inputs have no inferred relative order.",
+      "This export does not reconstruct workup or preparative stock handling."
+    ]
+  },
+  "yield_evidence": {
+    "measurements": [
+      {
+        "analysis_key": "UPLC-MS",
+        "percentage": 44.0,
+        "source_path": "/outcomes/0/products/0/measurements/0",
+        "valid": true
+      }
+    ],
+    "policy": "unique_target_unique_percentage_v1",
+    "selection": "explicit_desired_product",
+    "status": "selected",
+    "target_count": 1,
+    "target_source_path": "/outcomes/0/products/0"
+  },
+  "hardware": {
+    "config_id": "source_aware_provisional_v2",
+    "nodes": {
+      "reactor": {
+        "category": "vessel",
+        "apparatus_kind": "well_plate",
+        "description": "8 x 30 mm glass vials in 96 well-plate Para-dox Aluminum Reaction Block",
+        "params": {
+          "capacity_mL": null,
+          "reported_volume_mL": null
+        },
+        "capacity_scope": "reported_vessel_volume_scope_unresolved",
+        "wetted_materials": [
+          "glass_unspecified"
+        ],
+        "ports": [],
+        "model": null,
+        "verified": false,
+        "binding_basis": "source_reported",
+        "source_url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/3b/ord_dataset-3b5db90e337942ea886b8f5bc5e3aa72.parquet",
+        "source_parameters": [],
+        "source_evidence": [
+          {
+            "source_url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/3b/ord_dataset-3b5db90e337942ea886b8f5bc5e3aa72.parquet",
+            "raw_sha256": "1f5a8256d38b3670317f70b83387d2488630a9605b11c972d75eb95328d2b905",
+            "locator": "/setup/vessel",
+            "value": {
+              "details": "8 x 30 mm glass vials in 96 well-plate Para-dox Aluminum Reaction Block",
+              "material": {
+                "type": "GLASS"
+              },
+              "type": "WELL_PLATE"
+            }
+          }
+        ],
+        "verification": {
+          "status": "source_reported",
+          "human_verified": false
+        },
+        "note": "Procedure-reported facts; no manufacturer rating, flow capability or port topology inferred.",
+        "source_fact_sha256": "a7b037e74fd055a79762a23ac7a126e6a86ff261d8847d767449921688dc845d",
+        "id": "source_apparatus_a7b037e74fd055a7",
+        "source_setup_vessel": {
+          "details": "8 x 30 mm glass vials in 96 well-plate Para-dox Aluminum Reaction Block",
+          "material": {
+            "type": "GLASS"
+          },
+          "type": "WELL_PLATE"
+        }
+      },
+      "heater": {
+        "id": "ika_rct_basic_25008259",
+        "category": "heater_stirrer",
+        "params": {
+          "T_min_C": null,
+          "T_max_C": 310,
+          "rpm_min": 50,
+          "rpm_max": 1500
+        },
+        "parameter_scope": "Heating-plate setpoint maximum, not guaranteed liquid temperature; minimum depends on ambient/self-heating.",
+        "wetted_materials": [],
+        "ports": [],
+        "source_url": "https://www.ika.com/en/Products-LabEq/Magnetic-Stirrers-pg188/RCT-basic-25008259/Technical-Data-cptd.html",
+        "verified": false,
+        "verification": {
+          "status": "source_reviewed",
+          "human_verified": false
+        },
+        "binding_basis": "proposed_analysis_configuration",
+        "note": "Proposed analysis controller; source does not identify this model as the original equipment."
+      }
+    },
+    "edges": [
+      [
+        "reactor",
+        "heater"
+      ]
+    ],
+    "bindings": {
+      "heater": "heater"
+    },
+    "estimated_liquid_lower_bound_mL": 0.16000000000000003,
+    "verification_status": "human_review_pending",
+    "source_issues": [],
+    "binding_scope": "Source-reported vessels; unspecified automation remains a proposed analysis configuration. Edges are provisional.",
+    "inventory_scope": "Sum of stated Add volumes, not peak vessel occupancy or inferred solvent volume."
+  },
+  "crosscheck": {
+    "checks": {
+      "structured_components_preserved": true,
+      "structured_amounts_preserved": true,
+      "amount_comparison_is_independent": false,
+      "solvent_set_preserved": true,
+      "temperature_match": true,
+      "reaction_duration_match": true,
+      "atmosphere_match": true,
+      "independent_text_crosscheck": false
+    },
+    "quantity_checks": [],
+    "conflicts": [],
+    "missing": [
+      "structured_reconstruction_not_independent_text_extraction"
+    ],
+    "tier": "silver",
+    "gold_blockers": [
+      "independent_quantity_review_pending",
+      "hardware_human_verification_pending",
+      "manual_protocol_review_pending"
+    ]
+  },
+  "xdl": "<Synthesis>\n  <Metadata description=\"Source-grounded protocol representation; hardware execution requires compilation and review.\" publication=\"https://chemrxiv.org/articles/preprint/Linking_Mechanistic_Analysis_of_Catalytic_Reactivity_Cliffs_to_Ligand_Classification/14388557\" reaction_class=\"Ni-catalyzed C(sp2)-C(sp2) Suzuki-Miyaura coupling\"/>\n  <Hardware>\n    <!--Analysis binding: {\"component\": \"heater\", \"params\": {\"T_max_C\": 310, \"T_min_C\": null, \"rpm_max\": 1500, \"rpm_min\": 50}, \"verified\": false, \"wetted_materials\": []}-->\n    <Component id=\"heater\" type=\"heater\"/>\n    <!--Analysis binding: {\"component\": \"reactor\", \"params\": {\"capacity_mL\": null, \"reported_volume_mL\": null}, \"verified\": false, \"wetted_materials\": [\"glass_unspecified\"]}-->\n    <Component id=\"reactor\" type=\"reactor\"/>\n  </Hardware>\n  <Reagents>\n    <!--r1: K3PO4-->\n    <Reagent name=\"r1\" role=\"reagent\"/>\n    <!--r2: dioxane-->\n    <Reagent name=\"r2\" role=\"solvent\"/>\n    <!--r3: Ni(cod)2-->\n    <Reagent name=\"r3\" role=\"catalyst\"/>\n    <!--r4: dioxane-->\n    <Reagent name=\"r4\" role=\"solvent\"/>\n    <!--r5: Cy-BippyPhos-->\n    <Reagent name=\"r5\" role=\"catalyst\"/>\n    <!--r6: ClC1=CC=C(C(F)(F)F)C=C1-->\n    <Reagent name=\"r6\" role=\"substrate\"/>\n    <!--r7: dioxane-->\n    <Reagent name=\"r7\" role=\"solvent\"/>\n    <!--r8: OB(O)C1=CC=C(OC)C=C1-->\n    <Reagent name=\"r8\" role=\"substrate\"/>\n    <!--r9: water-->\n    <Reagent name=\"r9\" role=\"reagent\"/>\n    <!--r10: dioxane-->\n    <Reagent name=\"r10\" role=\"solvent\"/>\n  </Reagents>\n  <Procedure>\n    <!--Analysis context: {\"inert_required\": {\"basis\": \"ORD.notes.is_sensitive_to_oxygen\", \"source_url\": \"https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/3b/ord_dataset-3b5db90e337942ea886b8f5bc5e3aa72.parquet\"}, \"pressure_control\": \"UNKNOWN\", \"reflux\": false}-->\n    <!--Atmosphere context (no purge operation inferred): nitrogen; environment-->\n    <Add vessel=\"reactor\" reagent=\"r1\" amount=\"0.036 mmol\"/>\n    <Add vessel=\"reactor\" reagent=\"r2\" amount=\"0.06 mL\"/>\n    <Add vessel=\"reactor\" reagent=\"r10\" amount=\"0.04 mL\"/>\n    <Add vessel=\"reactor\" reagent=\"r8\" amount=\"0.016 mmol\"/>\n    <Add vessel=\"reactor\" reagent=\"r9\" amount=\"0.04 mmol\"/>\n    <Add vessel=\"reactor\" reagent=\"r6\" amount=\"0.008 mmol\"/>\n    <Add vessel=\"reactor\" reagent=\"r7\" amount=\"0.044 mL\"/>\n    <Add vessel=\"reactor\" reagent=\"r3\" amount=\"0.00016 mmol\"/>\n    <Add vessel=\"reactor\" reagent=\"r4\" amount=\"0.016 mL\"/>\n    <Add vessel=\"reactor\" reagent=\"r5\" amount=\"0.00032 mmol\"/>\n    <HeatChill vessel=\"reactor\" temp=\"60 °C\" time=\"2700 s\" stir=\"true\"/>\n  </Procedure>\n</Synthesis>\n",
+  "canonical_sha1": "c17f38e1d1afd722adb3b80a629fae1b67d1547d",
+  "quality": {
+    "tier": "silver",
+    "source_grounded": true,
+    "observed_yield_above_30": true,
+    "xdl_profile": "protocol-risk-xdl2-subset-v1",
+    "xdl_profile_schema_passed": true,
+    "official_platform_compiled": false,
+    "symbolic_violations": [],
+    "unknown_constraints": [
+      {
+        "rule": "A1",
+        "step": 0,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 1,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 2,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 3,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 4,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 5,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 6,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 7,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 8,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 9,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 10,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A1",
+        "step": 11,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A2",
+        "step": 11,
+        "reason": "sample_to_controller_temperature_mapping_unknown"
+      },
+      {
+        "rule": "B2",
+        "step": 11,
+        "reason": "solution_freezing_point_not_established"
+      }
+    ],
+    "manual_review": "pending",
+    "hardware_verification": "pending",
+    "full_feasibility_certified": false
+  },
+  "mosaic": {
+    "schema": "mosaic.ir/1",
+    "run_id": "mosaic_194589679289590c90c0",
+    "domain": "chemistry.batch/1",
+    "findings": [],
+    "apparatus_proposals": [],
+    "evidence_spans": []
+  },
+  "split_group": "product_scaffold:c1ccc(-c2ccccc2)cc1"
+}

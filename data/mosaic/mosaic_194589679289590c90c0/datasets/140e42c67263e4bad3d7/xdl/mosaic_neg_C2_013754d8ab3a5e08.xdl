@@ -1,0 +1,48 @@
+<Synthesis>
+  <Metadata description="Intentionally perturbed source-derived procedure; experimental outcome not observed." publication="https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471" reaction_class="1.3.1 [N-arylation with Ar-X] Bromo Buchwald-Hartwig amination"/>
+  <Hardware>
+    <!--Analysis binding: {"component": "column", "params": {}, "verified": false, "wetted_materials": null}-->
+    <Component id="column" type="column"/>
+    <!--Analysis binding: {"component": "heater", "params": {"T_max_C": 310, "T_min_C": null, "rpm_max": 1500, "rpm_min": 50}, "verified": false, "wetted_materials": []}-->
+    <Component id="heater" type="heater"/>
+    <!--Analysis binding: {"component": "product", "params": {}, "verified": false, "wetted_materials": null}-->
+    <Component id="product" type="reactor"/>
+    <!--Analysis binding: {"component": "reactor", "params": {"T_max_C": null, "T_min_C": null, "capacity_mL": null, "pressure_max_bar": null}, "verified": false, "wetted_materials": null}-->
+    <Component id="reactor" type="reactor"/>
+  </Hardware>
+  <Reagents>
+    <!--r1: C(=O)([O-])[O-].[Cs+].[Cs+]-->
+    <Reagent name="r1" role="reagent"/>
+    <!--r2: CC1=CC=CC=C1-->
+    <Reagent name="r2" role="solvent"/>
+    <!--r3: CN(C)[C@H]1CCNC1-->
+    <Reagent name="r3" role="substrate"/>
+    <!--r4: C1=CC(=C(C=C1Cl)Br)C#N-->
+    <Reagent name="r4" role="substrate"/>
+    <!--r5: C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=C(C4=CC=CC=C4C=C3)C5=C(C=CC6=CC=CC=C65)P(C7=CC=CC=C7)C8=CC=CC=C8-->
+    <Reagent name="r5" role="catalyst"/>
+    <!--r6: C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]-->
+    <Reagent name="r6" role="catalyst"/>
+  </Reagents>
+  <Procedure>
+    <!--Analysis context: {"pressure_control": "UNKNOWN", "reflux": false}-->
+    <!--2-bromo-4-chlorobenzonitrile (500 mg, 2.31 mmol)-->
+    <Add vessel="reactor" reagent="r4" amount="2.31 mmol"/>
+    <!--(S)-N,N-dimethylpyrrolidin-3-amine (317 mg, 2.77 mmol)-->
+    <Add vessel="reactor" reagent="r3" amount="2.77 mmol"/>
+    <!--cesium carbonate (1505 mg, 4.62 mmol)-->
+    <Add vessel="reactor" reagent="r1" amount="4.62 mmol"/>
+    <!--tris(dibenzylideneacetone)dipalladium(0) (212 mg, 0.23 mmol)-->
+    <Add vessel="reactor" reagent="r6" amount="0.231 mmol"/>
+    <!--BINAP (288 mg, 0.46 mmol)-->
+    <Add vessel="reactor" reagent="r5" amount="0.462 mmol"/>
+    <!--in toluene (15 mL)-->
+    <Add vessel="reactor" reagent="r2" amount="15 mL"/>
+    <!--was stirred at 100 °C for overnight-->
+    <HeatChillToTemp vessel="reactor" temp="170 °C" stir="true"/>
+    <!--Conc. in vacuo-->
+    <Evaporate vessel="reactor"/>
+    <!--the residue was purified with ISCO (100% ethyl acetate to 30% methanol in ethyl acetate)-->
+    <RunColumn from_vessel="reactor" to_vessel="product" column="column"/>
+  </Procedure>
+</Synthesis>
