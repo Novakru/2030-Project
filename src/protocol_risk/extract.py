@@ -51,12 +51,16 @@ def text_plan(record, client, *, representations=None, normalizer=None):
     payload = {"procedure": source["procedure"]}
     if representations:
         payload["representations"] = representations
-    prompt = json.dumps(payload, ensure_ascii=False)
-    errors = []
-    for _ in range(3):
-        repair = "" if not errors else "\nPrevious output failed validation. Fix these issues: " + json.dumps(errors)
-        response = client.complete(SYSTEM, prompt + repair)
+    errors, previous = [], None
+    for attempt in range(3):
+        request = dict(payload)
+        if errors:
+            request["repair"] = {"attempt": attempt + 1, "previous_proposal": previous,
+                                 "validation_errors": errors,
+                                 "instruction": "Repair the proposal using only literal source evidence; never fill missing facts."}
+        response = client.complete(SYSTEM, json.dumps(request, ensure_ascii=False))
         plan = response["data"]
+        previous = copy.deepcopy(plan)
         try:
             if normalizer is not None:
                 plan = normalizer(copy.deepcopy(plan))

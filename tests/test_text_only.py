@@ -72,6 +72,36 @@ def test_admitted_library_composition_is_used_by_real_domain_interface():
     assert 'time="60 s"' in prepared["xdl"] and "DoseThenStir" not in prepared["xdl"]
 
 
+def test_bounded_repair_includes_failed_proposal_without_reference_fields():
+    requests = []
+    class RepairClient:
+        def complete(self, system, prompt):
+            requests.append(json.loads(prompt))
+            proposed = copy.deepcopy(PLAN)
+            if len(requests) == 1:
+                proposed["steps"][0]["amount"]["value"] = 999
+            return {"data": proposed, "model": "explicit-test-double"}
+    proposed, _ = text_plan(record(), RepairClient())
+    assert len(requests) == 2 and proposed["steps"][0]["amount"]["value"] == 1
+    assert requests[1]["repair"]["previous_proposal"]["steps"][0]["amount"]["value"] == 999
+    assert requests[1]["repair"]["validation_errors"]
+    assert "ord_component" not in json.dumps(requests)
+
+
+def test_short_heater_setup_quote_is_retained_as_context_not_false_omission():
+    raw = {"id": "heater_text", "raw_sha256": "test-source",
+           "source": {"db": "TEXT", "url": "https://example.invalid/heater"},
+           "procedure": "water (1 mL) was added. The vial was placed into a pre-heated aluminum block at 80 oC for 1 hour."}
+    plan = {"steps": [{"op": "Add", "reagent": "water", "amount": {"value": 1, "unit": "mL"},
+                       "evidence": "water (1 mL) was added."},
+                      {"op": "HeatChill", "temp_C": 80, "duration_s": 3600,
+                       "evidence": "placed into a pre-heated aluminum block at 80 oC for 1 hour"}],
+            "unmapped_actions": [{"evidence": "pre-heated aluminum block at 80 oC", "reason": "heater preparation"}]}
+    prepared = prepare_protocol(build_ir(raw, plan, {}), raw)
+    assert not prepared["extraction"]["unmapped_actions"]
+    assert prepared["context"]["source_context_events"][0]["kind"] == "source_heater_setup"
+
+
 def test_every_extraction_role_sees_only_literal_text_and_proposed_plan():
     runner = Runner()
     result = ChemistryDomain().extract(record(), runner)

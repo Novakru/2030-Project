@@ -307,7 +307,13 @@ def build(spec: BuildSpec, *, runtime=None):
                 failures = [f for f in failures if f["raw_id"] != raw["id"]]
                 retried.append({"raw_id": raw["id"], "status": "represented_after_verified_library_change"})
             except (ValueError, RuntimeError, KeyError, TypeError) as error:
-                retried.append({"raw_id": raw["id"], "status": "still_unresolved", "error": str(error)[:600]})
+                retry_input = _extraction_input(raw, retry_domain)
+                failure = store.find("quarantine", retry_input)
+                reason = failure[0]["error"] if failure else str(error)[:600]
+                if not failure:
+                    store.save("quarantine", retry_input, {"raw_id": raw["id"], "stage": "representation_retry",
+                               "error": reason, "text_attempted": True}, engine="program")
+                retried.append({"raw_id": raw["id"], "status": "still_unresolved", "error": reason})
         maintenance["report"]["bounded_retries"] = retried
     for parent in parents:
         parent.setdefault("mosaic", {}).update(registry_revision=registry.revision, observation_revision=evolved.revision)

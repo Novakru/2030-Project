@@ -22,7 +22,7 @@ def annotate_dependencies(protocol):
 def represented_setup(evidence, protocol):
     nodes = protocol["hardware"]["nodes"]
     vessel_fact = re.search(r"\b(micro[- ]?reactor|flask|vial)\s+(?:was|is)\s+charged(?:\s+with)?\s*$", evidence, re.I)
-    heater_fact = re.search(r"\bplaced\s+into\s+(?:a\s+)?(?:pre[- ]heated|heated|alumin(?:um|ium))[^.]*\bblock\b", evidence, re.I)
+    heater_fact = re.search(r"\b(?:pre[- ]heated|heating|heated|alumin(?:um|ium))[^.]*\bblock\b", evidence, re.I)
     for identifier, node in nodes.items():
         if node.get("binding_basis") != "source_reported":
             continue
