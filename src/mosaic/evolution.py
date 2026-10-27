@@ -305,6 +305,20 @@ def maintain_library(registry, observations, *, sources, runner, domain):
         changes.append(change)
         actions.append({"action": change["action"], "origins": [observation["observation_id"]],
                         "evidence": observation["evidence"], "status": "source_reported"})
+        if observation.get("extension_definition"):
+            from protocol_risk.extensions import normalize_definition
+            try:
+                definition = normalize_definition(observation["name"], observation["extension_definition"])
+                changes.append({"action": "admit_extension_operation", "name": observation["name"],
+                    "definition": definition, "origins": [observation["observation_id"]],
+                    "evidence": observation["evidence"]})
+                actions.append({"action": "admit_extension_operation", "name": observation["name"],
+                    "semantic_sha256": definition["semantic_sha256"],
+                    "origins": [observation["observation_id"]], "evidence": observation["evidence"],
+                    "status": "representation_admitted", "execution_supported": False})
+            except (ValueError, KeyError, TypeError) as error:
+                rejected.append({"stage": "extension_definition", "reason": str(error),
+                                 "origins": [observation["observation_id"]]})
     if changes:
         evolved = evolved.evolve(changes, expected_revision=evolved.revision, sources=sources)
     curator = {"role": "library_curator", "status": "disabled" if runner is None else "no_observations", "batches": []}

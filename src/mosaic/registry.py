@@ -66,6 +66,7 @@ class Registry:
         # executable operation contracts and manufacturer/model profiles.
         for key, default in (("operation_candidates", []), ("representation_candidates", []),
                              ("representations", {}), ("families", {}),
+                             ("extension_operations", {}),
                              ("family_candidates", []), ("operation_observations", [])):
             self.snapshot.setdefault(key, default)
 
@@ -99,6 +100,20 @@ class Registry:
                             "status": "candidate_not_executable", "automatic_core_admission": False}
                 if proposal not in next_snapshot["operation_candidates"]:
                     next_snapshot["operation_candidates"].append(proposal)
+            elif action == "admit_extension_operation":
+                from protocol_risk.extensions import normalize_definition
+                definition = normalize_definition(change["name"], change["definition"])
+                identifier = definition["semantic_sha256"]
+                known = next_snapshot["extension_operations"].get(identifier)
+                if known is None:
+                    known = {**definition, "evidence": [], "origins": []}
+                    next_snapshot["extension_operations"][identifier] = known
+                # Versions with different contracts coexist. Only an identical
+                # full definition can merge evidence automatically.
+                for key, values in (("evidence", evidence), ("origins", change.get("origins", []))):
+                    for value in values:
+                        if value not in known[key]:
+                            known[key].append(copy.deepcopy(value))
             elif action == "observe_operation":
                 observation = copy.deepcopy(change["observation"])
                 if observation.get("verified") or observation.get("executable"):

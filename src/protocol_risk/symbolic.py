@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 import math
 
 from .io import load_library
+from .missing import REQUIRED_PARAMETERS, parameter_absent
 from .reactivity import groups as reactive_groups, group_evidence
 
 
@@ -44,6 +45,20 @@ def _known(node, parameter):
         if isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value):
             return value
     return None
+
+
+def _number(value):
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value)
+
+
+def _affected_vessels(step, nodes):
+    """An unfamiliar effect cannot silently preserve precise vessel state."""
+    references = {step.get(key) for key in ("vessel", "from_vessel", "to_vessel") if isinstance(step.get(key), str)}
+    for key in ("vessel", "from_vessel", "to_vessel"):
+        parameter = step.get("parameters", {}).get(key)
+        if isinstance(parameter, dict) and isinstance(parameter.get("value"), str):
+            references.add(parameter["value"])
+    return references & set(nodes) or set(nodes)
 
 
 def _path(edges, start, finish):
@@ -92,8 +107,13 @@ def evaluate(protocol, properties=None):
     nodes, edges = hardware.get("nodes", {}), hardware.get("edges", [])
     result.unknowns.extend({"rule": "hardware_binding", **issue} for issue in hardware.get("source_issues", []))
     context = protocol.get("context", {})
-    seen_steps, contents, volumes, inventory_known = set(), defaultdict(set), defaultdict(float), defaultdict(lambda: True)
+    initial_unknown = context.get("initial_material_state") == "unknown_unless_reported"
+    seen_steps, contents, volumes, inventory_known = set(), defaultdict(set), defaultdict(float), defaultdict(lambda: not initial_unknown)
     chronology, drying_present, drying_removed = defaultdict(list), set(), set()
+    contents_unknown = set(nodes) if initial_unknown else set()
+    inert_unknown = set(nodes) if initial_unknown else set()
+    if initial_unknown:
+        result.unknowns.append({"rule": "initial_state", "reason": "initial_material_state_not_reported"})
     for vessel, items in protocol.get("initial_contents", {}).items():
         for item in items:
             reagent_id = item.get("reagent")
@@ -118,7 +138,12 @@ def evaluate(protocol, properties=None):
         op, vessel = step["op"], step.get("vessel", "reactor")
         node = nodes.get(vessel, {})
         values = {"step": index, "step_id": step["id"]}
-        references = [step[k] for k in ("vessel", "from_vessel", "to_vessel") if step.get(k)]
+        missing = [field for field in REQUIRED_PARAMETERS.get(op, ()) if parameter_absent(step, field)]
+        for field in missing:
+            gap = step.get("missing_parameters", {}).get(field, {})
+            result.unknowns.append({"rule": "source_parameter", **values, "parameter": field,
+                                    "reason": "missing_source_parameter", "status": gap.get("status", "not_reported")})
+        references = [step[k] for k in ("vessel", "from_vessel", "to_vessel") if step.get(k) and k not in missing]
         missing_references = [ref for ref in references if ref not in nodes]
         if op == "Add" and step.get("reagent") not in reagents:
             missing_references.append(step.get("reagent"))
@@ -128,23 +153,42 @@ def evaluate(protocol, properties=None):
             continue
         amount = step.get("amount")
         invalid_dimension = False
-        if amount:
+        if amount is not None:
             permitted = {"mL", "mg", "mmol", "eq"} if op == "Add" else {"mL"}
-            if amount.get("unit") not in permitted:
+            if not isinstance(amount, dict) or amount.get("unit") not in permitted:
                 result.add("D4", "D4.quantity_dimension", {**values, "amount": amount, "permitted": sorted(permitted)})
                 invalid_dimension = True
-            elif not isinstance(amount.get("value"), (float, int)) or amount["value"] <= 0:
+            elif not _number(amount.get("value")) or amount["value"] <= 0:
                 result.add("D4", "D4.nonpositive_quantity", {**values, "amount": amount})
                 invalid_dimension = True
         for dependency in step.get("requires", []):
             if dependency in step_ids and dependency not in seen_steps:
                 result.add("D1", "D1.order_dependency", {**values, "dependency": dependency})
+        if op not in {"Add", "Transfer", "HeatChill", "Stir", "Wait", "Atmosphere", "Filter", "Separate", "Evaporate", "Irradiate", "Purify"}:
+            affected = _affected_vessels(step, nodes)
+            result.unknowns.append({"rule": "operation_effects", **values, "operation": op,
+                                    "reason": "extension_effect_semantics_unknown", "vessels": sorted(affected)})
+            for target in affected:
+                volumes[target], inventory_known[target] = 0, False
+                contents[target].clear()
+                chronology[target].clear()
+                contents_unknown.add(target)
+                inert_unknown.add(target)
+                inert.discard(target)
+                drying_present.discard(target)
+                drying_removed.discard(target)
+            seen_steps.add(step["id"])
+            continue
         if op == "Atmosphere":
             if step.get("gas", "").lower() in ("argon", "nitrogen", "ar", "n2"):
                 inert.add(vessel)
+                inert_unknown.discard(vessel)
+            elif step.get("gas", "").lower() == "air":
+                inert.discard(vessel)
+                inert_unknown.discard(vessel)
         if op == "Add":
             reagent = reagents[step["reagent"]]
-            if context.get("inert_required") and vessel not in inert:
+            if context.get("inert_required") and vessel not in inert and vessel not in inert_unknown:
                 result.add("C5", "C5.source_declared_oxygen_sensitive", values, context["inert_required"].get("source_url"))
             chemical = reagent.get("chemical")
             contents[vessel].add(step["reagent"])
@@ -158,8 +202,10 @@ def evaluate(protocol, properties=None):
                 for pair in properties.get("compatibility", []):
                     if pair["chemical"] == chemical and pair["material"] in materials:
                         result.add("A4", "A4.material_incompatible", {**values, "chemical": chemical, "material": pair["material"]}, pair["source_url"])
-            if reagent.get("air_sensitive") and vessel not in inert:
+            if reagent.get("air_sensitive") and vessel not in inert and vessel not in inert_unknown:
                 result.add("C5", "C5.inert_context_missing", {**values, "reagent": step["reagent"]}, reagent.get("sensitivity_source_url"))
+            if vessel in inert_unknown and (reagent.get("air_sensitive") or context.get("inert_required")):
+                result.unknowns.append({"rule": "C5", **values, "reason": "atmosphere_state_after_extension_unknown"})
             if reagent.get("purpose") == "drying_agent":
                 drying_present.add(vessel)
             chemicals = {reagents[x].get("chemical") for x in contents[vessel]}
@@ -183,13 +229,25 @@ def evaluate(protocol, properties=None):
                 result.add("A1", "A1.capacity", {**values, "volume_mL": volumes[vessel], "capacity_mL": capacity}, node.get("source_url"))
             elif op in ("HeatChill", "Stir") and volumes[vessel] > capacity * 2 / 3 + 1e-9:
                 result.add("A1", "A1.fill_fraction", {**values, "volume_mL": volumes[vessel], "capacity_mL": capacity}, node.get("source_url"))
+            elif not inventory_known[vessel]:
+                result.unknowns.append({"rule": "A1", **values, "reason": "inventory_quantity_unknown"})
         else:
             result.unknowns.append({"rule": "A1", "step": index, "reason": "unverified_or_missing_capacity"})
         if op == "Transfer":
-            left, right = step["from_vessel"], step["to_vessel"]
+            left, right = step.get("from_vessel"), step.get("to_vessel")
+            if "from_vessel" in missing or "to_vessel" in missing:
+                for target in nodes:
+                    volumes[target], inventory_known[target] = 0, False
+                    contents[target].clear()
+                    chronology[target].clear()
+                    contents_unknown.add(target)
+                    drying_present.discard(target)
+                    drying_removed.discard(target)
+                seen_steps.add(step["id"])
+                continue
             if not _path(edges, left, right):
                 result.add("A5", "A5.disconnected_path", {**values, "from": left, "to": right})
-            if not contents[left]:
+            if not contents[left] and left not in contents_unknown:
                 result.add("D1", "D1.transfer_from_empty_vessel", {**values, "from": left})
             if amount and not invalid_dimension:
                 moved = amount["value"]
@@ -197,7 +255,19 @@ def evaluate(protocol, properties=None):
                     result.add("D1", "D1.insufficient_transfer_inventory", {**values, "available_mL": volumes[left], "requested_mL": moved})
                 volumes[left] = max(0, volumes[left] - moved)
                 volumes[right] += moved
-            contents[right].update(contents[left])
+                contents[right].update(contents[left])
+                if left in contents_unknown:
+                    contents_unknown.add(right)
+            elif not amount:
+                # The unknown moved quantity can invalidate both old bounds.
+                for target in (left, right):
+                    volumes[target], inventory_known[target] = 0, False
+                    contents[target].clear()
+                    chronology[target].clear()
+                    contents_unknown.add(target)
+                    drying_present.discard(target)
+                    drying_removed.discard(target)
+                result.unknowns.append({"rule": "D1/A1", **values, "reason": "transfer_quantity_unknown"})
             # Check receiving capacity after transfer, not just before mutation.
             destination_capacity = _known(nodes[right], "capacity_mL")
             if destination_capacity is not None and volumes[right] > destination_capacity + 1e-9:
@@ -218,7 +288,7 @@ def evaluate(protocol, properties=None):
             elif "temp_C" in step:
                 # Real hotplate limits apply to the plate, not directly to liquid temperature.
                 parameter = step.get("controller_setpoint_C", step["temp_C"]) if controller.get("sample_temperature_validated") else step.get("controller_setpoint_C")
-                if parameter is None:
+                if not _number(parameter):
                     result.unknowns.append({"rule": "A2", "step": index, "reason": "sample_to_controller_temperature_mapping_unknown"})
                 else:
                     low, high = _known(controller, "T_min_C"), _known(controller, "T_max_C")
@@ -226,7 +296,7 @@ def evaluate(protocol, properties=None):
                         result.add("A2", "A2.temperature_range", {**values, "setpoint_C": parameter, "min_C": low, "max_C": high}, controller.get("source_url"))
                     if low is None or high is None:
                         result.unknowns.append({"rule": "A2", "step": index, "reason": "temperature_range_not_fully_verified"})
-            if controller and "rpm" in step:
+            if controller and "rpm" in step and _number(step["rpm"]):
                 low, high = _known(controller, "rpm_min"), _known(controller, "rpm_max")
                 if low is not None and step["rpm"] < low or high is not None and step["rpm"] > high:
                     result.add("A3", "A3.stirring_range", {**values, "rpm": step["rpm"], "min": low, "max": high}, controller.get("source_url"))
@@ -237,7 +307,7 @@ def evaluate(protocol, properties=None):
             solvents = {identify_solvent(reagents[r], properties) for r in contents[vessel]
                         if reagents[r].get("role") == "SOLVENT"}
             # Only exact single-solvent data supports this v0 check.
-            if len(solvents) == 1 and None not in solvents and temperature is not None:
+            if len(solvents) == 1 and None not in solvents and _number(temperature) and vessel not in contents_unknown:
                 solvent = next(iter(solvents))
                 prop = properties["solvents"][solvent]
                 mode = context.get("pressure_control", "UNKNOWN")

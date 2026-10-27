@@ -22,7 +22,7 @@ from .store import RunStore, atomic_bytes, atomic_json, file_digest
 @dataclass(frozen=True)
 class BuildSpec:
     output_dir: str = "data/mosaic"
-    domain: str = "chemistry.batch/2"
+    domain: str = "chemistry.extended/1"
     positives: int = 100
     per_risk: int = 10
     source_limit: int = 0
@@ -138,6 +138,8 @@ def _observations(protocol, document, registry):
         if isinstance(quote, str) and quote and quote in text:
             observations.append({"kind": "operation", "name": step["op"],
                 "contract": registry.snapshot["operations"].get(step["op"]),
+                **({"extension_definition": protocol["operation_definitions"][step["op"]]}
+                   if step["op"] in protocol.get("operation_definitions", {}) else {}),
                 "evidence": [SourceSpan.locate(source_id, text, quote).to_dict()]})
     for action in protocol.get("extraction", {}).get("unmapped_actions", []):
         quote = action.get("evidence") if isinstance(action, dict) else action
@@ -188,7 +190,8 @@ def build(spec: BuildSpec, *, runtime=None):
     if spec.positives <= 0 or min(spec.per_risk, spec.source_limit, spec.llm_perturbations, spec.max_calls) < 0 or not 1 <= spec.workers <= 16:
         raise ValueError("Invalid dataset size or call budget")
     from .chemistry import ChemistryDomain, PhotochemistryDomain
-    domains = {d.name: d for d in (ChemistryDomain(), PhotochemistryDomain())}
+    from .extended_chemistry import ExtendedChemistryDomain
+    domains = {d.name: d for d in (ExtendedChemistryDomain(), ChemistryDomain(), PhotochemistryDomain())}
     domain = runtime.domain or domains.get(spec.domain)
     if domain is None or domain.name != spec.domain:
         raise ValueError("No implementation registered for domain " + spec.domain)
@@ -207,7 +210,7 @@ def build(spec: BuildSpec, *, runtime=None):
         domain = domain.with_registry(registry)
     library_paths = {str(i) + ":" + Path(p).name: Path(p) for i, p in enumerate(domain.library_paths())}
     library_files = {name: file_digest(path) for name, path in library_paths.items()}
-    roles = ("extractor", "critic", "apparatus_mapper", "perturber", "library_curator")
+    roles = ("extractor", "critic", "apparatus_mapper", "perturber", "library_curator", "operation_expander")
     default = "gpt-5.6-terra"
     backend_identity = runtime.backend_identity or ("injected-client" if runtime.client_factory else "program-only")
     if not runtime.offline and runtime.client_factory is None and spec.max_calls:

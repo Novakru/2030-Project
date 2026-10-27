@@ -25,7 +25,7 @@ def main(argv=None):
     run.add_argument("--include-reference-supplements", action="store_true", help="Explicitly add separately labelled SOP/native-XDL references")
     for command in (run, extract):
         command.add_argument("--output-dir", default="data/mosaic")
-        command.add_argument("--domain", default="chemistry.batch/2")
+        command.add_argument("--domain", default="chemistry.extended/1")
         command.add_argument("--registry", type=Path, help="Frozen library_registry.json from a previous run")
         command.add_argument("--no-curation", action="store_true", help="Keep deterministic observations without calling the library curator")
         command.add_argument("--max-calls", type=int, default=500)
@@ -47,8 +47,8 @@ def main(argv=None):
         models = {}
         for value in args.model:
             role, separator, model = value.partition("=")
-            if not separator or role not in ("extractor", "critic", "apparatus_mapper", "perturber", "library_curator") or not model:
-                parser.error("--model requires extractor|critic|apparatus_mapper|perturber|library_curator=MODEL")
+            if not separator or role not in ("extractor", "critic", "apparatus_mapper", "perturber", "library_curator", "operation_expander") or not model:
+                parser.error("--model requires extractor|critic|apparatus_mapper|perturber|library_curator|operation_expander=MODEL")
             models[role] = model
         inputs = args.paths if args.command == "extract" else args.input
         records = load_text_sources(inputs) if inputs else None

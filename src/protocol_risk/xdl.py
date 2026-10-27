@@ -21,6 +21,11 @@ def _value(number, unit):
 
 
 def export_xdl(protocol):
+    from .extensions import PROFILE as EXTENDED_PROFILE, export_extended_xdl
+    if protocol.get("xdl_profile") == EXTENDED_PROFILE:
+        return export_extended_xdl(protocol)
+    if protocol.get("xdl_profile") not in {None, PROFILE}:
+        raise ValueError("Unknown XDL profile: " + str(protocol["xdl_profile"]))
     root = etree.Element("Synthesis")
     description = ("Authored symbolic control; not an observed experiment." if protocol.get("source", {}).get("db") == "AUTHORED_CONTROL"
                    else "Source-grounded protocol representation; hardware execution requires compilation and review.")
@@ -132,10 +137,16 @@ def export_xdl(protocol):
 
 
 def validate_xdl(xml):
+    from .extensions import NS as EXTENDED_NS, PROFILE as EXTENDED_PROFILE, validate_extended_xdl
     parser = etree.XMLParser(resolve_entities=False, no_network=True)
     doc = etree.fromstring(xml.encode("utf-8"), parser)
     if doc.getroottree().docinfo.doctype:
         raise ValueError("DOCTYPE is not allowed")
+    profile = doc.get("{" + EXTENDED_NS + "}profile")
+    if profile is not None or EXTENDED_NS in doc.nsmap.values():
+        if profile != EXTENDED_PROFILE:
+            raise ValueError("Unknown or missing MOSAIC XDL profile")
+        return validate_extended_xdl(xml)
     schema = etree.XMLSchema(etree.parse(str(ROOT / "schemas/xdl2_subset.xsd"), parser))
     schema.assertValid(doc)
     return True
@@ -144,6 +155,8 @@ def validate_xdl(xml):
 def canonical_hash(protocol):
     # Provenance/comments/IDs do not make otherwise identical protocols unique.
     clean = copy.deepcopy(protocol)
+    from .extensions import PROFILE as EXTENDED_PROFILE, definition_semantic_hash
+    extended = clean.get("xdl_profile") == EXTENDED_PROFILE
     reagent_map = {r["id"]: r.get("smiles") or r["name"] for r in clean["reagents"]}
     steps = []
     step_positions = {s["id"]: i for i, s in enumerate(clean["steps"])}
@@ -153,6 +166,11 @@ def canonical_hash(protocol):
             s["reagent"] = reagent_map.get(s["reagent"], s["reagent"])
         if "requires" in s:
             s["requires"] = [step_positions.get(identifier, identifier) for identifier in s["requires"]]
+        if extended:
+            for field in ("parameters", "missing_parameters"):
+                if isinstance(s.get(field), dict):
+                    s[field] = {key: {k: v for k, v in value.items() if k not in {"evidence", "origins", "source"}}
+                                if isinstance(value, dict) else value for key, value in s[field].items()}
         steps.append(s)
     initial = {vessel: [{"reagent": reagent_map.get(item["reagent"], item["reagent"]), "amount": item.get("amount")} for item in items]
                for vessel, items in clean.get("initial_contents", {}).items()}
@@ -160,6 +178,10 @@ def canonical_hash(protocol):
                     ("reflux", "pressure_control", "pure_solvent", "ignition_source")}}
     if initial:
         semantic["initial_contents"] = initial
+    if extended:
+        definitions = clean.get("operation_definitions", {})
+        semantic["operation_definitions"] = {name: definition_semantic_hash(name, definitions[name])
+            for name in sorted({step["op"] for step in clean["steps"]} & set(definitions))}
     return digest(semantic, "sha1")
 
 

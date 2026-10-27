@@ -57,6 +57,18 @@ def verify_dataset(run_dir, *, upstream=True):
             if digest(raw["raw"]) != parent["raw_sha256"] or upstream and raw["id"] in ord_ids and upstream_hashes.get(raw["id"]) != parent["raw_sha256"]:
                 raise ValueError("Raw source snapshot or upstream hash mismatch")
             document = text_document(raw)
+            if parent.get("xdl_profile") == "mosaic-xdl/1":
+                from protocol_risk.extensions import read_extended_xdl, validate_extension_step
+                from protocol_risk.missing import annotate_missing
+                decoded = read_extended_xdl(parent["xdl"])
+                if decoded["steps"] != parent["steps"] or decoded["operation_definitions"] != parent.get("operation_definitions", {}):
+                    raise ValueError("Extended XDL roundtrip lost operation or parameter data")
+                checked = annotate_missing(copy.deepcopy(parent))
+                if checked["steps"] != parent["steps"]:
+                    raise ValueError("Source-missing parameter annotations are stale")
+                for step in parent["steps"]:
+                    if step["op"] in parent.get("operation_definitions", {}):
+                        validate_extension_step(step, parent["operation_definitions"][step["op"]], source=document["procedure"])
             if (parent.get("source_text") != document["procedure"] or parent.get("text_sha256") != document["text_sha256"]
                     or parent.get("extraction", {}).get("input_contract") != "text-only/1"):
                 raise ValueError("Text-only input contract or verbatim source snapshot mismatch")

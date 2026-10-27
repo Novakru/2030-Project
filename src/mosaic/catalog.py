@@ -110,8 +110,12 @@ def atomic_inventory(positives, snapshots, registry=None):
             "selected_steps": sum(used.values()), "extraction_snapshots": len(snapshots),
             "operations": operations, "macro_candidates": macros, "library_changes": library.get("changes", []),
             "representations": library.get("representations", {}),
+            "extension_operations": library.get("extension_operations", {}),
+            "extension_operations_used": {op: count for op, count in used.items()
+                if any(d.get("name") == op for d in library.get("extension_operations", {}).values())},
             "representation_candidates": library.get("representation_candidates", []),
-            "unregistered_operations": {op: count for op, count in used.items() if op not in definitions},
+            "unregistered_operations": {op: count for op, count in used.items() if op not in definitions
+                and not any(d.get("name") == op for d in library.get("extension_operations", {}).values())},
             "unmapped_snapshot_records": len(unmapped), "unmapped_snapshot_actions": sum(len(r["actions"]) for r in unmapped),
             "unmapped_examples": unmapped[:5], "source_action_coverage": None,
             "source_action_coverage_status": "unproven: no independently annotated complete source-action denominator",

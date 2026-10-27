@@ -37,7 +37,7 @@ def represented_setup(evidence, protocol):
                 return {"kind": "source_heater_setup", "device_id": identifier, "step_id": step["id"], "evidence": evidence}
     return None
 
-def prepare_protocol(protocol, raw, reviews=None, devices=None):
+def prepare_protocol(protocol, raw, reviews=None, devices=None, *, extended=False):
     protocol = copy.deepcopy(protocol)
     document = text_source(raw)
     protocol["reference_metadata"] = {key: copy.deepcopy(raw[key]) for key in
@@ -81,23 +81,37 @@ def prepare_protocol(protocol, raw, reviews=None, devices=None):
     check = evaluate(protocol)
     if check.risks:
         raise ValueError("symbolic violations: " + ",".join(check.risks))
-    for step in protocol["steps"]:
+    for step in protocol["steps"] if not extended else []:
         required = {"Add": ("amount",), "HeatChill": ("temp_C",), "Stir": ("duration_s",),
                     "Wait": ("duration_s",), "Irradiate": ("duration_s",),
                     "Transfer": ("from_vessel", "to_vessel", "amount")}.get(step["op"], ())
         absent = [key for key in required if step.get(key) is None]
         if absent:
             raise ValueError(f"{step['id']}: faithful XDL export needs unknown source parameters: {', '.join(absent)}")
+    if extended:
+        from .missing import annotate_missing
+        annotate_missing(protocol)
     xml = export_xdl(protocol)
     validate_xdl(xml)
     protocol["xdl"] = xml
     protocol["canonical_sha1"] = canonical_hash(protocol)
     protocol["quality"] = {"tier": "silver", "source_grounded": True, "source_input_contract": "text-only/1",
                            "outcome_annotation_scope": "reference_metadata_only",
-                           "xdl_profile": PROFILE, "xdl_profile_schema_passed": True,
+                           "xdl_profile": protocol.get("xdl_profile", PROFILE), "xdl_profile_schema_passed": True,
                            "official_platform_compiled": False, "symbolic_violations": [],
                            "unknown_constraints": check.unknowns, "manual_review": "pending",
                            "hardware_verification": "pending", "full_feasibility_certified": False}
+    if extended:
+        gaps = [{"step_id": step["id"], "parameter": key, **value}
+                for step in protocol["steps"] for key, value in step.get("missing_parameters", {}).items()]
+        gaps.extend({"step_id": step["id"], "parameter": key, **value}
+                    for step in protocol["steps"] for key, value in step.get("parameters", {}).items()
+                    if isinstance(value, dict) and "marker" in value)
+        protocol["quality"].update(representation_complete=True,
+            parameters_complete=not gaps, missing_parameters=gaps, execution_ready=False,
+            conversion_status="represented_with_missing_parameters" if gaps else "represented",
+            extension_operations=sorted(protocol.get("operation_definitions", {})),
+            risk_assessment_scope="Implemented rules only; unknown parameters and extension effects produce abstentions.")
     if reviews:
         reviews.apply(protocol)
         if protocol["quality"]["manual_review"] == "rejected":
