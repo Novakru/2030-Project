@@ -6,6 +6,8 @@
 
 当前生产路径为 **纯文本 → 有证据的操作计划 → XDL**。ORD 的物料、条件和器材结构字段不参与生成，只在 `reference_metadata` 和独立比较中保留。旧批次 140 条中有 125 条属于结构化重建，不能再用作纯文本提取的数量证明。本轮验收见 [TEXT_FIRST.md](docs/TEXT_FIRST.md)，新批次数量和局限见 [质量报告](reports/mosaic_quality.md)。
 
+默认启用[自动扩展 XDL](docs/EXTENDED_XDL.md)：agent 可新增有类型、有原文证据的原子操作；缺参用 `__NOT_REPORTED__` 等标识，可以作为完整表达的 silver 记录。动作表达、参数完整性和设备执行支持分别记录。原受限路径可显式选择 `--domain chemistry.batch/2`。
+
 ## 安装与运行
 
 Python 3.10+，在项目根目录执行：
@@ -37,7 +39,7 @@ $env:PYTHONIOENCODING = 'utf-8'
 ```powershell
 ./.venv/Scripts/python.exe -m mosaic verify <run_dir>
 ./.venv/Scripts/python.exe -m mosaic resume <run_dir> --offline
-./.venv/Scripts/python.exe -m mosaic publish <run_dir> --db audit/data/text_reviews.sqlite3
+./.venv/Scripts/python.exe -m mosaic publish <run_dir> --db audit/data/extended_reviews.sqlite3
 ./audit/start_review.ps1
 ```
 

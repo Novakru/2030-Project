@@ -10,7 +10,7 @@ SCHEMA_VERSION = 1
 STATUSES = ("pending", "accepted", "rejected")
 EFFECTIVE_TIER = "CASE WHEN status = 'accepted' THEN 'gold' ELSE tier END"
 _DATA_DIR = Path(__file__).resolve().parent / "data"
-DEFAULT_DB = _DATA_DIR / next((name for name in ("text_reviews.sqlite3", "mosaic.sqlite3")
+DEFAULT_DB = _DATA_DIR / next((name for name in ("extended_reviews.sqlite3", "text_reviews.sqlite3", "mosaic.sqlite3")
                               if (_DATA_DIR / name).is_file()), "reviews.sqlite3")
 
 SCHEMA = """

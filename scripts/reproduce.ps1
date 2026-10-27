@@ -3,7 +3,7 @@ param(
     [switch]$Fetch,
     [switch]$Offline,
     [switch]$Publish,
-    [string]$Database = 'audit/data/text_reviews.sqlite3',
+    [string]$Database = 'audit/data/extended_reviews.sqlite3',
     [int]$Positives = 100,
     [int]$PerRisk = 10,
     [int]$SourceLimit = 300,
@@ -41,7 +41,7 @@ if ($RunDir) {
     Invoke-Python -Arguments @('-m','protocol_risk','api-check')
     $taskArguments += @('--source-limit',"$SourceLimit",'--llm-perturbations','6','--max-calls',"$MaxCalls",
                         '--model','extractor=gpt-6.1-sol','--model','critic=gpt-6.1-sol',
-                        '--model','library_curator=gpt-6.1-sol','--workers','6')
+                        '--model','library_curator=gpt-6.1-sol','--model','operation_expander=gpt-6.1-sol','--workers','8')
     Invoke-Python -Arguments $taskArguments
     $taskCurrent = Get-Content -LiteralPath 'data/mosaic/current.json' -Raw -Encoding UTF8 | ConvertFrom-Json
     $RunDir = Join-Path 'data/mosaic' $taskCurrent.run_id

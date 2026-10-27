@@ -18,6 +18,9 @@ def summarize(run_dir):
     registry = read_json(root / result["library_registry"])
     evolution = read_json(root / result["library_evolution"])
     atomic = read_json(folder / "atomic_operations.json")
+    gaps = [gap for parent in parents for gap in parent.get("quality", {}).get("missing_parameters", [])]
+    extension_usage = Counter(step["op"] for parent in parents for step in parent["steps"]
+                              if step["op"] in parent.get("operation_definitions", {}))
     risk_counts = Counter(record["label"]["risk_l2"] for record in negatives)
     risks = {}
     for risk in load_library("risks.yaml")["risks"]:
@@ -30,6 +33,13 @@ def summarize(run_dir):
             "input_contract": result["input_contract"], "raw_source_records": result["raw_source_records"],
             "text_conversions": result["text_primary_positives"], "negative_candidates": len(negatives),
             "incomplete_conversions": len(failures), "audit_records": len(parents) + len(negatives) + len(failures),
+            "tool_failed_conversions": len(failures),
+            "representation_complete": sum(parent.get("quality", {}).get("representation_complete", False) for parent in parents),
+            "parameters_complete": sum(parent.get("quality", {}).get("parameters_complete", False) for parent in parents),
+            "missing_source_parameter_records": sum(bool(parent.get("quality", {}).get("missing_parameters")) for parent in parents),
+            "missing_parameter_statuses": dict(Counter(gap["status"] for gap in gaps)),
+            "extended_profile_records": sum(parent.get("xdl_profile") == "mosaic-xdl/1" for parent in parents),
+            "extension_usage": dict(sorted(extension_usage.items())),
             "positive_source_datasets": len({p["source"].get("dataset_id") for p in parents}),
             "strict_gold": sum(p.get("quality", {}).get("tier") == "gold" for p in parents),
             "quota_acceptance_passed": not result["positive_shortfall"] and not result["risk_shortfalls"],
@@ -44,6 +54,8 @@ def summarize(run_dir):
                         "operation_candidates": len(registry["operation_candidates"]),
                         "family_candidates": len(registry["family_candidates"]),
                         "admitted_representations": len(registry["representations"]),
+                        "admitted_extension_contract_versions": len(registry.get("extension_operations", {})),
+                        "admitted_extension_names": sorted({definition["name"] for definition in registry.get("extension_operations", {}).values()}),
                         "observations": evolution["observations"], "curator": evolution["curator"],
                         "curation_actions": evolution["counts"], "rejected_proposals": len(evolution["rejected"]),
                         "pending_observations": len(evolution["pending_observation_ids"]),
@@ -57,7 +69,7 @@ def summarize(run_dir):
                             "Action coverage is heuristic; unknowns and unrepresented parameters remain explicit.",
                             "No ORD structured-field backfill and no authored controls count toward text conversion quotas.",
                             "Same equipment family does not prove substitutability; unknown ratings remain unknown.",
-                            "Biology/materials extension seams are tested; production extractors/exporters are not implemented.",
+                            "Biology/materials contracts can be represented; specialized execution adapters are not implemented.",
                             "Automatic curation is bounded; the remainder stays pending; no new executable operation was admitted."]}
 
 

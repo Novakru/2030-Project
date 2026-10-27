@@ -40,8 +40,13 @@ def text(value, limit=260):
         result = "空值"
     elif isinstance(value, bool):
         result = "是" if value else "否"
+    elif isinstance(value, dict) and "marker" in value:
+        status = {"not_reported": "原文未报告", "qualitative": "原文仅定性描述", "ambiguous": "原文有歧义"}.get(value.get("status"), "参数未知")
+        result = status + "（" + str(value["marker"]) + "）" + ("：" + str(value["raw"]) if value.get("raw") else "")
     elif isinstance(value, dict) and "value" in value and "unit" in value:
         result = f"{value['value']} {value['unit']}"
+    elif isinstance(value, dict) and "value" in value and "evidence" in value:
+        result = str(value["value"])
     elif isinstance(value, (dict, list)):
         result = json.dumps(value, ensure_ascii=False, separators=(",", ":"))
     else:
@@ -205,6 +210,21 @@ def review_points(record, parent=None):
                        "note": "自动核对匹配，仍需确认来源与单位。" if status == "matched" else
                                REASONS.get(check.get("basis"), "用量未完成独立核对，请人工确认。"),
                        "evidence": [check], "priority": 2 if status == "matched" else 0})
+    definitions = as_dict(field(record, "operation_definitions"))
+    for step in steps:
+        definition = as_dict(definitions.get(step.get("op")))
+        if definition:
+            points.append({"key": "extension:" + step["_id"], "title": "扩展操作 · " + str(step["op"]),
+                "step_ids": [step["_id"]], "changes": [], "evidence": [definition],
+                "note": "核对新操作的语义与参数是否忠实表达原文：" + str(definition.get("description", "")), "priority": 0})
+        gaps = dict(as_dict(step.get("missing_parameters")))
+        gaps.update({key: value for key, value in as_dict(step.get("parameters")).items()
+                     if isinstance(value, dict) and "marker" in value})
+        for key, marker in gaps.items():
+            points.append({"key": "parameter:" + step["_id"] + ":" + key,
+                "title": "来源参数 · " + FIELD_NAMES.get(key, key), "step_ids": [step["_id"]],
+                "changes": [], "evidence": [marker],
+                "note": text(marker) + "。请确认原文确实没有可提取的明确值；保留标识即可。", "priority": 0})
     for index, unknown in enumerate(list_values(quality(record).get("unknown_constraints"))):
         item = as_dict(unknown)
         points.append({"key": f"unknown:{index}", "title": risk_name(str(item.get("rule", "约束"))),
@@ -279,6 +299,8 @@ def focus_indices(steps, point):
 def step_summary(step, record):
     op = str(step.get("op", step.get("action", step.get("type", "步骤"))))
     title = ACTION_NAMES.get(op, op)
+    if op in as_dict(field(record, "operation_definitions")):
+        title = "扩展 · " + title
     reagent = step.get("reagent")
     reagents = field(record, "reagents", [])
     item = next((r for r in reagents if isinstance(r, dict) and r.get("id") == reagent), {}) if isinstance(reagents, list) else {}
@@ -295,4 +317,8 @@ def step_summary(step, record):
     for key in ("temp", "time", "gas", "from_vessel", "to_vessel", "repeats"):
         if key in step:
             pieces.append(f"{key}: {step[key]}")
+    for key, value in as_dict(step.get("parameters")).items():
+        pieces.append(f"{FIELD_NAMES.get(key, key)}: {text(value, 150)}")
+    for key, value in as_dict(step.get("missing_parameters")).items():
+        pieces.append(f"{FIELD_NAMES.get(key, key)}: {text(value, 150)}")
     return title, " · ".join(pieces)

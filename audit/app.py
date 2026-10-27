@@ -279,11 +279,14 @@ def focus_review(database, row, reviewer):
     risk = as_dict(record.get("label")).get("risk_l2")
     title = risk_name(str(risk)) if risk else "正例 · 流程与来源核对" if row["record_type"] == "positive" else "流程与来源核对"
     if quality(record).get("conversion_status") == "incomplete_not_a_positive":
-        title = "提取待补全 · 尚未计入正例"
+        title = "提取工具未完成 · 尚未计入正例"
     st.markdown(f'<div class="record-heading"><strong>{escape(title)}</strong>'
                 f'<span>{escape(STATUS[row["status"]])}</span></div>'
                 f'<div class="record-id">{escape(row["record_id"])}</div>', unsafe_allow_html=True)
     mechanism = as_dict(record.get("mutation")).get("mechanism_id")
+    if quality(record).get("representation_complete"):
+        st.caption("动作已表达 · " + ("参数齐全" if quality(record).get("parameters_complete") else "缺失参数已显式标记")
+                   + " · 设备执行支持单独核验")
     if mechanism:
         st.caption("扰动方式：" + mechanism_name(str(mechanism)))
     suffix = hashlib.sha256((database + row["record_id"]).encode()).hexdigest()[:12] + str(row["revision"])
@@ -414,6 +417,8 @@ def detail(database, row):
             st.info("未提供结构化 steps；可在下方查看 XDL 和完整原始记录。")
         show_json("完整 steps（含每步其他字段）", field(record, "steps"))
         show_json("器材、容量与验证状态", field(record, "hardware"), True)
+        show_json("扩展原子操作定义（可表示不等于可执行）", field(record, "operation_definitions"))
+        show_json("来源缺失参数及标识", quality(record).get("missing_parameters"))
         show_json("Reagents · 全部原料", field(record, "reagents"), True)
         xdl = field(record, "xdl")
         if xdl:
