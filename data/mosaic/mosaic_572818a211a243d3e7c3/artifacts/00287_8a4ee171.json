@@ -1,0 +1,65 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "AMBIGUOUS_HEATING_TARGET",
+        "quote": "placed into pre-heated aluminum block at 80 oC",
+        "message": "The standalone HeatChill step has no vessel and conflates the preheated external block with reaction heating. Preserve block preheating and placement as unmapped details; the following HeatChill step already represents the reaction at 80 °C for 12 h.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_PURIFICATION_CONDITIONS",
+        "quote": "chromatographic separation with silica gel (20% ethyl acetate in hexane as eluent)",
+        "message": "The purification method omits the specified stationary phase and eluent composition. These appear in evidence but should also be retained in the operational method.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The GC/MS completion check before solvent removal is not represented. Preserve it as an unmapped action because the allowed operations do not include analytical monitoring.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/unmapped_actions/1",
+        "value": {
+          "evidence": "placed into pre-heated aluminum block at 80 oC",
+          "reason": "The aluminum block was already preheated to 80 °C, and the microreactor was physically placed into it. External-block preheating and reactor placement are not represented as separate reaction-vessel operations; reaction heating is represented by the 80 °C, 12 h HeatChill step."
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/steps/11/method",
+        "value": "Silica gel chromatography with 20% ethyl acetate in hexane as eluent"
+      },
+      {
+        "op": "remove",
+        "path": "/steps/8"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "Completion was judged by GC/MS before THF removal. Analytical monitoring is not represented by an allowed operation."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "total_tokens": 2243,
+    "prompt_tokens": 1523,
+    "completion_tokens": 720,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1520
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 196
+    }
+  },
+  "cache_key": "9534eabf1155861f3b2fed48b2cc6e4078d1daf8d7f0adc5493b7629c00c8c6e"
+}

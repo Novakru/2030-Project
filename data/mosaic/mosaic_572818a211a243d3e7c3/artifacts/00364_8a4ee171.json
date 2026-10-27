@@ -1,0 +1,54 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "APPARATUS_PREHEATING_AS_EXTRA_REACTION_STEP",
+        "quote": "The microreactor was capped with a teflon pressure cap and placed into pre-heated aluminum block at 80 oC.",
+        "message": "Step 8 treats the preheated block as a separate HeatChill operation without a vessel. The source describes placing the microreactor into an already heated block, followed by the heated stirring represented in step 9. Preserve the apparatus-placement detail as an unmapped action rather than an additional reaction-heating step.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The plan omits the GC/MS completion check preceding solvent removal. Preserve it as an unmapped action because the allowed operations do not represent analytical monitoring.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "remove",
+        "path": "/steps/8"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "placed into pre-heated aluminum block at 80 oC",
+          "reason": "Placement of the microreactor into an already preheated block is not separately represented by an allowed operation; the subsequent heated stirring is represented by HeatChill."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "GC/MS was used to judge completion before THF removal; analytical completion checks are not represented by an allowed operation."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 661,
+    "prompt_tokens": 1439,
+    "total_tokens": 2100,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1436,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 263
+    }
+  },
+  "cache_key": "effc28b05cfc6b12242ea43c6f67479c10cc979d9d10df97c4c08a5ef383fb58"
+}

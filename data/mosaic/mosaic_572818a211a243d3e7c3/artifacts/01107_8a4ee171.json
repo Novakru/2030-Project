@@ -1,0 +1,49 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "RETAINED_PHASE_NOT_CAPTURED",
+        "quote": "The organic layer was dried over MgSO4, filtered and evaporated.",
+        "message": "The workup identifies the organic layer as the retained phase. Both wash separations should retain the organic phase; its unspecified top/bottom position does not make its phase identity unknown.",
+        "severity": "error"
+      },
+      {
+        "code": "PURIFICATION_CONDITIONS_OMITTED",
+        "quote": "The crude product was purified by flash silica chromatography, elution 10 to 60% EtOAc in heptane.",
+        "message": "The purification method omits flash silica and the specified 10–60% EtOAc in heptane elution gradient. These conditions can be preserved in the supported method field.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/11/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/13/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/17/method",
+        "value": "flash silica chromatography, elution 10 to 60% EtOAc in heptane"
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 1872,
+    "completion_tokens": 332,
+    "total_tokens": 2204,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1869
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 93
+    }
+  },
+  "cache_key": "53cc1d481622534769de248c4155348c306b7ef36285468f0e62520d85fa83d7"
+}

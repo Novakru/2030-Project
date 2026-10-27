@@ -1,0 +1,55 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "PURIFICATION_CONDITIONS_NOT_STRUCTURED",
+        "quote": "silica gel chromatography (Pet. Ether (40‐60):EtOAc (19:1‐9:1)",
+        "message": "The purification method omits silica gel, and the eluent composition and ratio range appear only in evidence. Specify silica gel chromatography in method and preserve the eluent conditions as unmapped details because the step schema has no eluent fields.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_ANALYTICAL_OPERATION",
+        "quote": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane showed 1.3:1 meta:para borylation in 65% yield.",
+        "message": "The crude NMR analysis using 1,2‐dimethoxyethane as internal standard is omitted. Preserve it as an unmapped analytical operation; the source does not specify the standard quantity or an explicit addition procedure.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/8/method",
+        "value": "silica gel chromatography"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Pet. Ether (40‐60):EtOAc (19:1‐9:1)",
+          "reason": "Chromatography eluent conditions; the permitted Purify fields cannot separately represent solvent composition and ratio range."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane showed 1.3:1 meta:para borylation in 65% yield.",
+          "reason": "Crude NMR analysis using an internal standard is not representable by the permitted operations. The standard quantity and addition procedure are not specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 535,
+    "prompt_tokens": 1315,
+    "total_tokens": 1850,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1312
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 153
+    }
+  },
+  "cache_key": "b55f7f9b5e770c706b1ae5e21e5d89190bdb8bec0ea589c274ade1fbe106bc0f"
+}

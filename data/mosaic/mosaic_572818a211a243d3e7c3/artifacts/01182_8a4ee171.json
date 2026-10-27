@@ -1,0 +1,71 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "WRONG_KEEP_PHASE",
+        "quote": "extracted with ethyl acetate three times, the combined organics",
+        "message": "The retained extraction phase is explicitly organic, not unknown. Its top or bottom position need not be known to identify it as organic.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_VACUUM_CONDITION",
+        "quote": "the filtrate was conc. in vacuo",
+        "message": "Vacuum concentration is explicit. Because no numerical pressure is supplied and the Evaporate schema has no qualitative vacuum field, preserve this condition in unmapped_actions without inventing a pressure.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_PURIFICATION_GRADIENT",
+        "quote": "50% ethyl acetate in hexant to 100% ethyl acetate to 40% mthanol in ethyl acetate",
+        "message": "The purification solvent sequence appears in evidence but is not mapped as an operational condition. Preserve it in unmapped_actions because the Purify schema cannot express the gradient.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/9/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/11/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/13/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "the filtrate was conc. in vacuo",
+          "reason": "Concentration under vacuum is explicit, but no numerical pressure is given and the allowed Evaporate fields cannot encode qualitative vacuum."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "50% ethyl acetate in hexant to 100% ethyl acetate to 40% mthanol in ethyl acetate",
+          "reason": "The allowed Purify fields cannot encode this purification solvent gradient; solvent spellings are preserved literally."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 663,
+    "prompt_tokens": 1836,
+    "total_tokens": 2499,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1833,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 143
+    }
+  },
+  "cache_key": "9db340ec01312eabfa217943ce4053fc10c038c7db2e50f7feef3df012fbcfae"
+}

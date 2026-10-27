@@ -1,0 +1,36 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_MONITORING",
+        "quote": "LC/MS taken at 1, 2 and 4 hours indicated reaction was not progressing.",
+        "message": "The plan omits the explicitly reported LC/MS monitoring at 1, 2 and 4 hours. Preserve this timed monitoring as an unmapped action; it does not establish an explicit heating duration or sampling protocol.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "LC/MS taken at 1, 2 and 4 hours indicated reaction was not progressing.",
+          "reason": "LC/MS monitoring at the stated times is not represented by an allowed operation. No sampling protocol is specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 249,
+    "prompt_tokens": 1172,
+    "total_tokens": 1421,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1169,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 94
+    }
+  },
+  "cache_key": "7a2f4c2901cf230594961d78dbd85dddd42bea5a1b99127bae59f756cf454fad"
+}

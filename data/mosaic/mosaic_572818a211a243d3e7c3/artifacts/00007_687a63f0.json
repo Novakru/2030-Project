@@ -1,0 +1,179 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "First, the catalysts (2 umol per vial) and solid bases (20 umol per vial) were added by dosing 50 uL each of a stock solution in 1,2-dichloroethane (40 mM for catalysts, 0.4 M for bases) via single-channel pipette.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "catalysts",
+        "alias": "catalysts",
+        "amount": {
+          "value": 0.002,
+          "unit": "mmol"
+        },
+        "role": "CATALYST"
+      },
+      {
+        "op": "Add",
+        "evidence": "First, the catalysts (2 umol per vial) and solid bases (20 umol per vial) were added by dosing 50 uL each of a stock solution in 1,2-dichloroethane (40 mM for catalysts, 0.4 M for bases) via single-channel pipette.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "solid bases",
+        "alias": "solid bases",
+        "amount": {
+          "value": 0.02,
+          "unit": "mmol"
+        },
+        "role": "REAGENT"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "The 1,2-dichloroethane was then removed via centrifugal evaporation using a Genevac EZ-2 evaporator (Scientific Products)(method: low boiling point, maximum temperature of 30 C, 10-30 minutes).",
+        "stage": "reaction",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Add",
+        "evidence": "Stock solutions of sulfonamide and boronic acid (0.1 M in sulfonamide, 0.15 M in boronic acid) were prepared in the respective reaction solvent (MeCN, MeOH, DCE, or EtOAc) and 100 uL were dosed into the reaction plate according to the design.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "Stock solutions of sulfonamide and boronic acid",
+        "alias": "Stock solutions of sulfonamide and boronic acid",
+        "amount": {
+          "value": 0.1,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "Lastly, liquid bases were dispensed manually via single-channel pipette.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "liquid bases",
+        "alias": "liquid bases",
+        "role": "REAGENT"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The reaction block was sealed and the contents were tumble-stirred at ~600 rpm (3-Position Magnetic Tumble Stirrer, U.S. Series, V&P Scientific, Inc.) for 18 hours at 60 C.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "temp_C": 60,
+        "duration_s": 64800,
+        "stir": true
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "Upon cooling",
+        "stage": "workup",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Add",
+        "evidence": "Upon cooling, 500 uL of biphenyl stock solution (0.05 M in MeCN, 0.25 equiv) was added to each well as external standard.",
+        "stage": "workup",
+        "vessel": "reactor",
+        "reagent": "biphenyl stock solution",
+        "alias": "biphenyl stock solution",
+        "amount": {
+          "value": 0.5,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "Transfer",
+        "evidence": "Taking care not to agitate the solution, 25 uL from each well was sampled via multi-channel pipettor and dispensed into a Thermo Scientific(TM) 96-well 1 mL polypropylene plate (SKU 278743) for analysis.",
+        "stage": "workup",
+        "from_vessel": "reactor",
+        "to_vessel": "96-well 1 mL polypropylene plate",
+        "amount": {
+          "value": 0.025,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "Each well was diluted with 750 uL MeCN",
+        "stage": "workup",
+        "vessel": "96-well 1 mL polypropylene plate",
+        "reagent": "MeCN",
+        "alias": "MeCN",
+        "amount": {
+          "value": 0.75,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      }
+    ],
+    "uncertainties": [
+      "The referenced Figure S2 and Figure S3 are not supplied, so component identities and well-specific assignments cannot be resolved.",
+      "Catalysts and solid bases were each delivered as 50 uL (0.05 mL) of a stock solution in 1,2-dichloroethane; these are carrier-solution volumes, not separate solvent additions.",
+      "The evaporation specifies a maximum temperature of 30 C, not a definite operating temperature, and a duration range of 10–30 minutes rather than a single duration.",
+      "The identities of the sulfonamide and boronic acid and the solvent assigned to each reaction are unspecified. The 100 uL dose is recorded as stock solution, not as individual solute amounts.",
+      "Liquid-base identities and addition quantities are not specified.",
+      "Tumble stirring is reported at approximately 600 rpm; the combined heating-and-stirring step retains the explicit temperature and duration.",
+      "Cooling temperature and duration are not specified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "Reactions were run in 8 x 30 mm glass vial inserts in 96 well-plate Para-dox Aluminum Reaction Blocks.",
+        "reason": "Physical reaction configuration is specified, but no supported operation represents configuring vial inserts in a reaction block."
+      },
+      {
+        "evidence": "The reaction components were dosed according to the design shown in Figure S2 and Figure S3.",
+        "reason": "The referenced dosing design is unavailable; any additional additions or well-specific assignments cannot be extracted."
+      },
+      {
+        "evidence": "Parylene-coated stir bars (1.98 x 4.80 mm) were loaded into each pre-dosed vial using a stir bar dispenser (V&P Scientific, catalog number VP 711A-96-1).",
+        "reason": "Loading stirring equipment is not represented by the allowed reagent-addition or other core operations."
+      },
+      {
+        "evidence": "Stock solutions of sulfonamide and boronic acid (0.1 M in sulfonamide, 0.15 M in boronic acid) were prepared in the respective reaction solvent (MeCN, MeOH, DCE, or EtOAc)",
+        "reason": "Stock preparation is stated without individual preparation actions, quantities, or a resolved solvent choice; expanding it into additions would invent details."
+      },
+      {
+        "evidence": "The reaction block was sealed",
+        "reason": "Sealing is not an allowed operation."
+      },
+      {
+        "evidence": "After the reaction time had elapsed, the plate was removed from the heat.",
+        "reason": "Removal from the heat is not directly represented by an allowed operation; no transfer destination is specified."
+      },
+      {
+        "evidence": "The plate was sealed",
+        "reason": "Sealing is not an allowed operation."
+      },
+      {
+        "evidence": "inverted 3x",
+        "reason": "Inversion mixing is not an allowed operation and is not explicitly stirring."
+      },
+      {
+        "evidence": "centrifuged for 5 minutes to partition all solids to the bottom of the wells.",
+        "reason": "Centrifugation is not an allowed operation; no phase-removal action is stated."
+      },
+      {
+        "evidence": "Taking care not to agitate the solution",
+        "reason": "This handling constraint accompanies the mapped sampling transfer but has no corresponding allowed operation."
+      },
+      {
+        "evidence": "sealed using a PlateLoc Thermal Microplate Sealer",
+        "reason": "Sealing is not an allowed operation."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 2401,
+    "prompt_tokens": 1142,
+    "total_tokens": 3543,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1139,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 498
+    }
+  },
+  "cache_key": "096b7202f471213e273f85e75cc59ab670f5f71ef9352c21644fa08178fd0826"
+}

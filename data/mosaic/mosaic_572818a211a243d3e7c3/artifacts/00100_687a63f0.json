@@ -1,0 +1,110 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "A flask was loaded with diacetoxypalladium (6.39 mg, 0.03 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "diacetoxypalladium",
+        "alias": "diacetoxypalladium",
+        "amount": {
+          "value": 6.39,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "BUTYLDI-1-ADAMANTYLPHOSPHINE (0.020 g, 0.06 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "BUTYLDI-1-ADAMANTYLPHOSPHINE",
+        "alias": "BUTYLDI-1-ADAMANTYLPHOSPHINE",
+        "amount": {
+          "value": 20,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "sodium 2-methylpropan-2-olate (0.164 g, 1.71 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "sodium 2-methylpropan-2-olate",
+        "alias": "sodium 2-methylpropan-2-olate",
+        "amount": {
+          "value": 164,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "methyl 2-amino-2-methylpropanoate (0.2 g, 1.71 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "methyl 2-amino-2-methylpropanoate",
+        "alias": "methyl 2-amino-2-methylpropanoate",
+        "amount": {
+          "value": 200,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "toluene (5ml)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "toluene",
+        "alias": "toluene",
+        "amount": {
+          "value": 5,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "1-chloro-4-methylbenzene (0.168 ml, 1.42 mmol) was added.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "1-chloro-4-methylbenzene",
+        "alias": "1-chloro-4-methylbenzene",
+        "amount": {
+          "value": 0.168,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The mixture was stirred for 20h at 120°.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "duration_s": 72000,
+        "stir": true
+      }
+    ],
+    "uncertainties": [
+      "The flask was evacuated and backfilled before the toluene and 1-chloro-4-methylbenzene additions, but the backfill gas is not specified.",
+      "The reaction temperature is reported as 120° without an explicit temperature scale; temp_C is therefore omitted."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "The flask was evacuated and backfilled",
+        "reason": "Evacuation and backfilling are explicit, but the gas is unspecified, so an Atmosphere operation with a supported gas cannot be assigned."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 994,
+    "prompt_tokens": 801,
+    "total_tokens": 1795,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 125
+    }
+  },
+  "cache_key": "08a9a4a2afb37d868f3b229c1541381d6f8f3d179b2cd21fc558bfaf3e1a9c9d"
+}

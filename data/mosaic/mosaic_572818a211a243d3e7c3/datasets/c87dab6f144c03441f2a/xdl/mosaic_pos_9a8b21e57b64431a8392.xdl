@@ -1,0 +1,43 @@
+<Synthesis>
+  <Metadata description="Source-grounded protocol representation; hardware execution requires compilation and review." publication="https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471" reaction_class=""/>
+  <Hardware>
+    <!--Analysis binding: {"component": "heater", "params": {"T_max_C": 310, "T_min_C": null, "rpm_max": 1500, "rpm_min": 50}, "verified": false, "wetted_materials": []}-->
+    <Component id="heater" type="heater"/>
+    <!--Analysis binding: {"component": "reactor", "params": {"T_max_C": null, "T_min_C": null, "capacity_mL": null, "pressure_max_bar": null}, "verified": false, "wetted_materials": null}-->
+    <Component id="reactor" type="reactor"/>
+  </Hardware>
+  <Reagents>
+    <!--r001: dioxane-->
+    <Reagent name="r001" role="solvent"/>
+    <!--r002: Palladium(II) acetate-->
+    <Reagent name="r002" role="reagent"/>
+    <!--r003: 9,9-Dimethyl-4,5-bis(diphenylphosphino)xanthene-->
+    <Reagent name="r003" role="reagent"/>
+    <!--r004: 2-(4-((2-amino-4-chloro-6-methylpyrimidin-5-yl)methyl)phenyl)acetonitrile-->
+    <Reagent name="r004" role="reagent"/>
+    <!--r005: (S)-(+)-2-Amino-1-pentanol-->
+    <Reagent name="r005" role="reagent"/>
+    <!--r006: POTASSIUM CARBONATE-->
+    <Reagent name="r006" role="reagent"/>
+  </Reagents>
+  <Procedure>
+    <!--Representation scope: supplied_text_operations; source experimental completeness is not independently certified-->
+    <!--Analysis context: {"pressure_control": "UNKNOWN", "reflux": false}-->
+    <!--dioxane (3 mL)-->
+    <Add vessel="reactor" reagent="r001" amount="3 mL"/>
+    <!--Palladium(II) acetate (8.23 mg, 0.04 mmol)-->
+    <Add vessel="reactor" reagent="r002" amount="8.23 mg"/>
+    <!--9,9-Dimethyl-4,5-bis(diphenylphosphino)xanthene (42.4 mg, 0.07 mmol)-->
+    <Add vessel="reactor" reagent="r003" amount="42.4 mg"/>
+    <!--the solution was stirred at room temperature for 10 minutes-->
+    <Stir vessel="reactor" time="600 s"/>
+    <!--2-(4-((2-amino-4-chloro-6-methylpyrimidin-5-yl)methyl)phenyl)acetonitrile (200 mg, 0.73 mmol)-->
+    <Add vessel="reactor" reagent="r004" amount="200 mg"/>
+    <!--(S)-(+)-2-Amino-1-pentanol (151 mg, 1.47 mmol)-->
+    <Add vessel="reactor" reagent="r005" amount="151 mg"/>
+    <!--POTASSIUM CARBONATE (203 mg, 1.47 mmol)-->
+    <Add vessel="reactor" reagent="r006" amount="203 mg"/>
+    <!--the mixture was heated at 100 °C for 15 hours-->
+    <HeatChill vessel="reactor" temp="100 °C" time="54000 s"/>
+  </Procedure>
+</Synthesis>

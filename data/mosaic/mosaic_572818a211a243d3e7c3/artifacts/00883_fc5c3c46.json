@@ -1,0 +1,245 @@
+{
+  "protocol": {
+    "id": "pos_9cf4b02ff724463e9768d29a6363cf8d",
+    "source": {
+      "dataset_id": "ord_dataset-99c23cf435dc42f1af884053bc8b11c7",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+      "file_sha256": "59cd8c35e021be300944f8e556b8fd7ec30a6bc32ff36a54be133aad8e44c393",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": null,
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet"
+    },
+    "raw_id": "ord-9cf4b02ff724463e9768d29a6363cf8d",
+    "raw_sha256": "7c558df55cb96d98377b8d2ed0eeb03a4b08cfd363d851833d9a305915217765",
+    "source_text": "General procedure B was applied to 2-methyl-7-(trimethylsilyl)quinoline (215 mg, 1.00mmol). The reaction was stirred at room temperature for 72hoursaffording a mixture of monoborylated productsin an 85:10:5 ratio by GC-MS. Volatiles were removed under reduced pressure and the remaining residue was purified by silica  gel  flash-column  chromatography  with  gradient  elution  of  MeOH/DCM  from  0.5 -12.5%  over  25 column   volumes,   affording   only   the   major   2-methyl-4-(4,4,5,5-tetramethyl-[1,3,2]dioxaborolan-2-yl)-7-(trimethylsilyl)quinoline productas a white solid (231 mg, 68%); m.p.110 -111 °C;",
+    "text_sha256": "303bc8d530169db2f16bc1accbab642c286c8fd037a610d13ae20cb76c3fadc8",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "2-methyl-7-(trimethylsilyl)quinoline",
+        "smiles": null,
+        "role": "REACTANT",
+        "amount": {
+          "value": 215,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r001",
+        "amount": {
+          "value": 215,
+          "unit": "mg"
+        },
+        "id": "s001",
+        "meta": {
+          "evidence": "2-methyl-7-(trimethylsilyl)quinoline (215 mg, 1.00mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "2-methyl-7-(trimethylsilyl)quinoline",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Stir",
+        "vessel": "reactor",
+        "duration_s": 259200,
+        "id": "s002",
+        "meta": {
+          "evidence": "The reaction was stirred at room temperature for 72hours",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Evaporate",
+        "vessel": "reactor",
+        "id": "s003",
+        "meta": {
+          "evidence": "Volatiles were removed under reduced pressure",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Purify",
+        "method": "silica gel flash-column chromatography",
+        "id": "s004",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "the remaining residue was purified by silica  gel  flash-column  chromatography  with  gradient  elution  of  MeOH/DCM  from  0.5 -12.5%  over  25 column   volumes",
+          "stage": "purification",
+          "source_contract": "text-only/1"
+        }
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {},
+      "reflux": false,
+      "source_context_evidence": []
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "303bc8d530169db2f16bc1accbab642c286c8fd037a610d13ae20cb76c3fadc8",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 570,
+        "prompt_tokens": 840,
+        "total_tokens": 1410,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 108
+        }
+      },
+      "cache_key": "1e165f03ddc8258d6c21312e71c0c74632b7f59d9a6273c0133dcc20cbc0aff1",
+      "unresolved": [
+        "General procedure B is referenced but not provided; its reagents, quantities, conditions, and operations cannot be reconstructed.",
+        "\"The reaction was stirred at room temperature for 72hours\": room temperature is specified but has no numerical value; the Stir schema has no temperature field.",
+        "\"Volatiles were removed under reduced pressure\": reduced pressure is specified but not quantified.",
+        "\"gradient  elution  of  MeOH/DCM  from  0.5 -12.5%  over  25 column   volumes\": retain this elution condition; absolute solvent volumes are not provided."
+      ],
+      "unmapped_actions": [
+        {
+          "evidence": "General procedure B was applied",
+          "reason": "The referenced procedure is absent, so its constituent operations cannot be extracted."
+        }
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/2",
+    "findings": [
+      {
+        "code": "CHROMATOGRAPHY_METHOD_UNDERSPECIFIED",
+        "quote": "silica  gel  flash-column  chromatography",
+        "message": "The purification method omits the explicitly specified silica-gel stationary phase and flash-column technique.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-9cf4b02ff724463e9768d29a6363cf8d",
+          "source_sha256": "9a44f14dd3135bd8b17b56b0bf4b432c52a384e3b0a90e38faf420530b07daa7",
+          "start": 311,
+          "end": 352,
+          "quote": "silica  gel  flash-column  chromatography"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "CONDITIONS_REQUIRE_LITERAL_SOURCE_RETENTION",
+        "quote": "The reaction was stirred at room temperature for 72hours",
+        "message": "Room temperature cannot be represented numerically without inference. Retain its exact source wording in uncertainties, along with literal quotations for unquantified reduced pressure and the chromatographic gradient.",
+        "severity": "unknown",
+        "evidence": {
+          "source_id": "ord-9cf4b02ff724463e9768d29a6363cf8d",
+          "source_sha256": "9a44f14dd3135bd8b17b56b0bf4b432c52a384e3b0a90e38faf420530b07daa7",
+          "start": 92,
+          "end": 148,
+          "quote": "The reaction was stirred at room temperature for 72hours"
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "silica  gel  flash-column  chromatography",
+        "kind": "separation apparatus",
+        "identity": null,
+        "scope": "purification of the residue",
+        "evidence": {
+          "source_id": "ord-9cf4b02ff724463e9768d29a6363cf8d",
+          "source_sha256": "9a44f14dd3135bd8b17b56b0bf4b432c52a384e3b0a90e38faf420530b07daa7",
+          "start": 311,
+          "end": 352,
+          "quote": "silica  gel  flash-column  chromatography"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "under reduced pressure",
+        "kind": "volatile-removal apparatus",
+        "identity": null,
+        "scope": "removal of volatiles; apparatus not specified",
+        "evidence": {
+          "source_id": "ord-9cf4b02ff724463e9768d29a6363cf8d",
+          "source_sha256": "9a44f14dd3135bd8b17b56b0bf4b432c52a384e3b0a90e38faf420530b07daa7",
+          "start": 246,
+          "end": 268,
+          "quote": "under reduced pressure"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-9cf4b02ff724463e9768d29a6363cf8d",
+        "source_sha256": "9a44f14dd3135bd8b17b56b0bf4b432c52a384e3b0a90e38faf420530b07daa7",
+        "start": 35,
+        "end": 90,
+        "quote": "2-methyl-7-(trimethylsilyl)quinoline (215 mg, 1.00mmol)"
+      },
+      {
+        "source_id": "ord-9cf4b02ff724463e9768d29a6363cf8d",
+        "source_sha256": "9a44f14dd3135bd8b17b56b0bf4b432c52a384e3b0a90e38faf420530b07daa7",
+        "start": 92,
+        "end": 148,
+        "quote": "The reaction was stirred at room temperature for 72hours"
+      },
+      {
+        "source_id": "ord-9cf4b02ff724463e9768d29a6363cf8d",
+        "source_sha256": "9a44f14dd3135bd8b17b56b0bf4b432c52a384e3b0a90e38faf420530b07daa7",
+        "start": 223,
+        "end": 268,
+        "quote": "Volatiles were removed under reduced pressure"
+      },
+      {
+        "source_id": "ord-9cf4b02ff724463e9768d29a6363cf8d",
+        "source_sha256": "9a44f14dd3135bd8b17b56b0bf4b432c52a384e3b0a90e38faf420530b07daa7",
+        "start": 273,
+        "end": 436,
+        "quote": "the remaining residue was purified by silica  gel  flash-column  chromatography  with  gradient  elution  of  MeOH/DCM  from  0.5 -12.5%  over  25 column   volumes"
+      }
+    ],
+    "repair": {
+      "accepted": true,
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/steps/3/method",
+          "value": "silica gel flash-column chromatography"
+        },
+        {
+          "op": "replace",
+          "path": "/uncertainties/1",
+          "value": "\"The reaction was stirred at room temperature for 72hours\": room temperature is specified but has no numerical value; the Stir schema has no temperature field."
+        },
+        {
+          "op": "replace",
+          "path": "/uncertainties/2",
+          "value": "\"Volatiles were removed under reduced pressure\": reduced pressure is specified but not quantified."
+        },
+        {
+          "op": "replace",
+          "path": "/uncertainties/3",
+          "value": "\"gradient  elution  of  MeOH/DCM  from  0.5 -12.5%  over  25 column   volumes\": retain this elution condition; absolute solvent volumes are not provided."
+        }
+      ]
+    },
+    "apparatus_unknowns": [
+      "Reaction vessel is not specified.",
+      "The apparatus used to remove volatiles under reduced pressure is not specified.",
+      "No numerical room-temperature value is provided."
+    ]
+  },
+  "raw_id": "ord-9cf4b02ff724463e9768d29a6363cf8d"
+}

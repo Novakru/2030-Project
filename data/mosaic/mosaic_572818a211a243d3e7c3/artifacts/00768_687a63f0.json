@@ -1,0 +1,146 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile (50 mg, 0.21 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile",
+        "alias": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile",
+        "amount": {
+          "value": 50,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "cesium carbonate (77 mg, 0.24 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "cesium carbonate",
+        "alias": "cesium carbonate",
+        "amount": {
+          "value": 77,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "in DMA (0.5 mL)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "DMA",
+        "alias": "DMA",
+        "amount": {
+          "value": 0.5,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      },
+      {
+        "op": "Add",
+        "evidence": "Pd2(dba)3 (9.80 mg, 10.70 µmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "Pd2(dba)3",
+        "alias": "Pd2(dba)3",
+        "amount": {
+          "value": 9.8,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine) (12.38 mg, 0.02 mmol) were added.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)",
+        "alias": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)",
+        "amount": {
+          "value": 12.38,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Atmosphere",
+        "evidence": "The vial was filled with N2",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "gas": "nitrogen",
+        "mode": "environment"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "150C microwave for 30 min.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "temp_C": 150,
+        "duration_s": 1800
+      },
+      {
+        "op": "Irradiate",
+        "evidence": "150C microwave for 30 min.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "duration_s": 1800
+      },
+      {
+        "op": "Add",
+        "evidence": "added MeOH (3 mL)",
+        "stage": "workup",
+        "vessel": "reactor",
+        "reagent": "MeOH",
+        "alias": "MeOH",
+        "amount": {
+          "value": 3,
+          "unit": "mL"
+        },
+        "role": "WORKUP"
+      },
+      {
+        "op": "Filter",
+        "evidence": "filtered through celite.",
+        "stage": "workup"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "concentrated.",
+        "stage": "workup"
+      },
+      {
+        "op": "Purify",
+        "evidence": "The residue was purified by ISCO (Hexane to EtOAc:Hex=1;1 to EtOAc)",
+        "stage": "purification",
+        "method": "ISCO"
+      }
+    ],
+    "uncertainties": [
+      "The [Reactants] placeholder does not identify the additional reactant or its amount.",
+      "The [VOLUME] placeholder is unresolved; DMA nevertheless has an explicit volume of 0.5 mL.",
+      "Microwave heating is represented by linked HeatChill and Irradiate steps for the same 30-minute operation, not sequential treatments.",
+      "The source does not explicitly identify which material was retained after filtration.",
+      "The purification solvent program is preserved literally; its ratio notation 'EtOAc:Hex=1;1' is not corrected or interpreted."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "[Reactants]",
+        "reason": "An additional reaction component is indicated, but its identity and amount are unresolved placeholders."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1391,
+    "prompt_tokens": 872,
+    "total_tokens": 2263,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 211
+    }
+  },
+  "cache_key": "9bd9d481f543a33e5f00af83394967c6834b4c001cba41b628953b6da7bcd584"
+}

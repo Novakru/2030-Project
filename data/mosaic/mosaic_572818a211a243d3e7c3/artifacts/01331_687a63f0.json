@@ -1,0 +1,145 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "Tris(dibenzylideneacetone)dipalladium(0) (4.5 mg, 4.91 µmol)",
+        "stage": "reaction",
+        "vessel": "10 mL Schlenk tube",
+        "reagent": "Tris(dibenzylideneacetone)dipalladium(0)",
+        "alias": "Tris(dibenzylideneacetone)dipalladium(0)",
+        "amount": {
+          "value": 4.5,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "9,9-Dimethyl-4,5-bis(diphenylphosphino)xanthene (5.1 mg, 8.81 µmol)",
+        "stage": "reaction",
+        "vessel": "10 mL Schlenk tube",
+        "reagent": "9,9-Dimethyl-4,5-bis(diphenylphosphino)xanthene",
+        "alias": "9,9-Dimethyl-4,5-bis(diphenylphosphino)xanthene",
+        "amount": {
+          "value": 5.1,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "were dissolved in dioxane (1.8 mL) in a 10 mL Schlenk tube",
+        "stage": "reaction",
+        "vessel": "10 mL Schlenk tube",
+        "reagent": "dioxane",
+        "alias": "dioxane",
+        "amount": {
+          "value": 1.8,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      },
+      {
+        "op": "Atmosphere",
+        "evidence": "activated at 100 °C for 6 min under argon",
+        "stage": "reaction",
+        "vessel": "10 mL Schlenk tube",
+        "gas": "argon",
+        "mode": "environment"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "activated at 100 °C for 6 min under argon",
+        "stage": "reaction",
+        "vessel": "10 mL Schlenk tube",
+        "temp_C": 100,
+        "duration_s": 360
+      },
+      {
+        "op": "Add",
+        "evidence": "5-fluoro-4-(2-methyl-1-(tetrahydro-2H-pyran-4-yl)-1H-imidazol-5-yl)pyrimidin-2-amine (51 mg, 0.18 mmol)",
+        "stage": "reaction",
+        "vessel": "10 mL Schlenk tube",
+        "reagent": "5-fluoro-4-(2-methyl-1-(tetrahydro-2H-pyran-4-yl)-1H-imidazol-5-yl)pyrimidin-2-amine",
+        "alias": "5-fluoro-4-(2-methyl-1-(tetrahydro-2H-pyran-4-yl)-1H-imidazol-5-yl)pyrimidin-2-amine",
+        "amount": {
+          "value": 51,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "4-(4-bromobenzyl)morpholine (51 mg, 0.20 mmol)",
+        "stage": "reaction",
+        "vessel": "10 mL Schlenk tube",
+        "reagent": "4-(4-bromobenzyl)morpholine",
+        "alias": "4-(4-bromobenzyl)morpholine",
+        "amount": {
+          "value": 51,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "Cesium carbonate (94 mg, 0.29 mmol) were added.",
+        "stage": "reaction",
+        "vessel": "10 mL Schlenk tube",
+        "reagent": "Cesium carbonate",
+        "alias": "Cesium carbonate",
+        "amount": {
+          "value": 94,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Atmosphere",
+        "evidence": "stirred at 100 °C under argon",
+        "stage": "reaction",
+        "vessel": "10 mL Schlenk tube",
+        "gas": "argon",
+        "mode": "environment"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "stirred at 100 °C under argon",
+        "stage": "reaction",
+        "vessel": "10 mL Schlenk tube",
+        "temp_C": 100,
+        "stir": true
+      }
+    ],
+    "uncertainties": [
+      "The dissolution method is not specified.",
+      "The method and duration of degassing are not specified; bubbling or evacuation/refill cannot be assumed.",
+      "Conversion was reported after 26 h, but the duration of the 100 °C stirring operation is not explicitly stated.",
+      "The method and destination for discarding the reaction mixture are not specified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "were dissolved in dioxane (1.8 mL) in a 10 mL Schlenk tube",
+        "reason": "The component additions are represented, but dissolution itself has no allowed operation; stirring or another dissolution method cannot be inferred."
+      },
+      {
+        "evidence": "It was degassed again",
+        "reason": "Degassing is stated without a method that can be mapped to an allowed Atmosphere mode."
+      },
+      {
+        "evidence": "Finally, the reaction mixture was discarded.",
+        "reason": "Disposal is not an allowed operation, and no transfer destination is specified."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1570,
+    "prompt_tokens": 907,
+    "total_tokens": 2477,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 228
+    }
+  },
+  "cache_key": "8be65f8d19c05ad87a45f2d03758ee02b02a90faa06a38610fec9531605ae751"
+}

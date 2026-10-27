@@ -1,0 +1,47 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "INCOMPLETE_PURIFICATION_METHOD",
+        "quote": "silica gel chromatography (10% EtOAc in Petroleum Ether 40‐60 o C)",
+        "message": "The purification method omits the specified silica gel and eluent composition. The petroleum ether grade designation must not be interpreted as a purification temperature.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_ANALYTICAL_OPERATION",
+        "quote": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane",
+        "message": "The crude-product NMR analysis and named internal standard are not represented. Record this as an unmapped analytical operation; no standard quantity or separate addition step is specified.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/6/method",
+        "value": "silica gel chromatography (10% EtOAc in Petroleum Ether 40‐60 o C)"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane",
+          "reason": "Crude-product NMR analysis is outside the supported operation schema. The internal standard is identified, but its quantity and addition procedure are not specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 408,
+    "prompt_tokens": 1116,
+    "total_tokens": 1524,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1113,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 146
+    }
+  },
+  "cache_key": "24215a3bba5270f6ea2de5167e7894f1de8638a859048cea3701bbfdfe823388"
+}

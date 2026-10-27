@@ -1,0 +1,36 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "MISSING_HEATING_CONDITION",
+        "quote": "the resulting solution was stirred at 100C for 1h in the microwave.",
+        "message": "The 100 °C heating step captures temperature, duration and stirring but omits the explicit microwave condition. Because HeatChill has no allowed field for heating method, preserve this condition in unmapped_actions.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "the resulting solution was stirred at 100C for 1h in the microwave.",
+          "reason": "Microwave heating is explicitly specified for the 100 °C step but cannot be represented by the allowed HeatChill fields."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 260,
+    "prompt_tokens": 1743,
+    "total_tokens": 2003,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1740,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 107
+    }
+  },
+  "cache_key": "bb72b5d0427852d77abb6e193bfb41e5b309a0701411e3f7af2c3521ecbefba7"
+}

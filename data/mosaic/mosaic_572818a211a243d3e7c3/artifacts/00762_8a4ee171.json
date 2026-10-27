@@ -1,0 +1,50 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNMAPPED_HEATING_MODE",
+        "quote": "the reaction was heated to 120 °C for 10 hours in the microwave reactor",
+        "message": "Temperature and duration are captured, but microwave heating is not explicitly preserved as an operational condition outside the evidence field. The allowed HeatChill fields cannot encode this mode.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_ANALYTICAL_OBSERVATION",
+        "quote": "LCMS indicates mainly starting material",
+        "message": "The LCMS observation is omitted. Preserve it as unmapped source information without inventing sampling steps or inferring experimental failure.",
+        "severity": "unknown"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "the reaction was heated to 120 °C for 10 hours in the microwave reactor",
+          "reason": "Microwave heating is specified; temperature and duration are mapped, but the allowed HeatChill fields cannot encode the heating mode."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "LCMS indicates mainly starting material",
+          "reason": "Analytical observation has no corresponding allowed operation; sampling and analytical execution details are not stated."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 544,
+    "prompt_tokens": 1555,
+    "total_tokens": 2099,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1552,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 223
+    }
+  },
+  "cache_key": "bdb49d06733b32a4aeed0099aab5bbc702530fbde6f660b7e717408241e85612"
+}

@@ -1,0 +1,52 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The GC/MS completion check before solvent removal is omitted. Preserve it as an unmapped action because the allowed operations do not represent analytical monitoring.",
+        "severity": "error"
+      },
+      {
+        "code": "INCOMPLETE_PURIFICATION_METHOD",
+        "quote": "chromatographic separation with silica gel (20% ethyl acetate in hexane)",
+        "message": "The purification evidence retains the stationary phase and eluent, but the method field records only generic chromatography. Include the stated purification conditions in the method.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "Completion was judged by GC/MS before THF removal; analytical monitoring is not represented by an allowed operation."
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/steps/10/method",
+        "value": "silica gel chromatography (20% ethyl acetate in hexane)"
+      },
+      {
+        "op": "replace",
+        "path": "/uncertainties/0",
+        "value": "“The reaction mixture was stirred for 2 minutes at room temperature.” specifies room temperature for the initial stirring, but no numerical temperature is given."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 498,
+    "prompt_tokens": 1465,
+    "total_tokens": 1963,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1462
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 160
+    }
+  },
+  "cache_key": "f8916d2ba3caf319b9a900137a822ef0c442fb7a8bf0d69364b60478912b5fa9"
+}

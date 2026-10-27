@@ -1,0 +1,70 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "REAGENT_CONCENTRATION_OMITTED",
+        "quote": "H2O2  (30%  in  H2O;  153  μL,  1.5  mmol)",
+        "message": "The first peroxide charge is explicitly a 30% solution in water. Naming the reagent only H2O2 omits its specified formulation.",
+        "severity": "error"
+      },
+      {
+        "code": "RETAINED_PHASE_UNRESOLVED",
+        "quote": "the  aqueous  layer  was  extracted  with  Et2O  (2  x  25  mL).  The  combined  organic  extracts  were  washed  with  brine  (1  x  30  mL)",
+        "message": "The two extraction steps retain organic extracts, and the brine wash retains the combined organic phase. These retained phases are not unknown merely because their top/bottom positions are unspecified. The aqueous raffinate must also remain available between the two extractions.",
+        "severity": "error"
+      },
+      {
+        "code": "PURIFICATION_METHOD_UNDERSPECIFIED",
+        "quote": "preparative  thin-layer  chromatography",
+        "message": "The method field reduces the explicitly specified preparative thin-layer chromatography to generic chromatography.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/6/reagent",
+        "value": "H2O2 (30% in H2O)"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/6/alias",
+        "value": "H2O2 (30% in H2O)"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/19/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/21/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/24/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/28/method",
+        "value": "preparative thin-layer chromatography"
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1036,
+    "prompt_tokens": 3101,
+    "total_tokens": 4137,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 3098
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 516
+    }
+  },
+  "cache_key": "d1177c5b6836a82284dbc520984fb6cfe9620eca0a055d31193d35c5cc7bc3d7"
+}

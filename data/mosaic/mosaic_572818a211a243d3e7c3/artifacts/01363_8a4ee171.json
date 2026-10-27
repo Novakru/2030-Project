@@ -1,0 +1,55 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNMAPPED_ADDITION_MODE",
+        "quote": "was added in one portion",
+        "message": "The addition evidence preserves the wording, but the single-portion addition condition is not represented outside evidence. Record it in unmapped_actions because the Add schema has no addition-mode field.",
+        "severity": "error"
+      },
+      {
+        "code": "PURIFICATION_DETAILS_UNDERREPRESENTED",
+        "quote": "flash silica chromatography, elution gradient 0 to 5% MeOH in DCM",
+        "message": "The purification method is reduced to generic chromatography. Preserve flash silica chromatography in method and record the elution gradient in unmapped_actions, since no dedicated gradient field is allowed.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "diacetoxypalladium (0.303 g, 1.35 mmol) was added in one portion",
+          "reason": "The diacetoxypalladium was added in one portion; the allowed Add fields cannot encode addition mode."
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/steps/11/method",
+        "value": "flash silica chromatography"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "elution gradient 0 to 5% MeOH in DCM",
+          "reason": "The chromatography uses an elution gradient of 0 to 5% MeOH in DCM; the allowed Purify fields have no dedicated eluent-gradient field."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 571,
+    "prompt_tokens": 1517,
+    "total_tokens": 2088,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1514,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 182
+    }
+  },
+  "cache_key": "d03c93387da462fd1a6fb93e44707ee0b586d8f33bf2d98f3408269872c029e2"
+}

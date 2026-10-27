@@ -1,0 +1,36 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_ANALYTICAL_OPERATION",
+        "quote": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane showed 7.8:1 meta:para borylation in 71% yield.",
+        "message": "The plan omits crude-mixture NMR analysis using 1,2‐dimethoxyethane as an internal standard. Preserve this in unmapped_actions because the supported step operations do not represent NMR analysis. The source does not specify the standard's amount or its addition sequence.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane showed 7.8:1 meta:para borylation in 71% yield.",
+          "reason": "Crude-mixture NMR analysis using 1,2‐dimethoxyethane as an internal standard is not representable by the supported step operations. The standard's amount and addition sequence are unspecified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 388,
+    "prompt_tokens": 1291,
+    "total_tokens": 1679,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1288
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 154
+    }
+  },
+  "cache_key": "ac6973e8ec365ba8d72e5db7c3b1221d6696935e3ef90f85f8c927df161ffd69"
+}

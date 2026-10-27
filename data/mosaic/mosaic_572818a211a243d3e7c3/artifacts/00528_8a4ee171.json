@@ -1,0 +1,68 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "HEATING_TARGET_AND_PLACEMENT",
+        "quote": "The microreactor was capped with a teflon pressure cap and placed into pre-heated aluminum block at 80 oC.",
+        "message": "The standalone HeatChill step does not identify its target and risks treating aluminum-block preheating as a separate heating of the reaction. The subsequent step already captures the reaction heating. Preserve block preheating and physical placement as unmapped details rather than an untargeted HeatChill step.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The GC/MS completion check before solvent removal is omitted. Preserve it as an unmapped action because the allowed operations do not represent analytical monitoring.",
+        "severity": "error"
+      },
+      {
+        "code": "UNSTRUCTURED_PURIFICATION_CONDITIONS",
+        "quote": "chromatographic separation with silica gel (25 % ethyl acetate in hexane as eluent)",
+        "message": "The purification evidence retains the conditions, but the operational representation only specifies chromatography. Preserve the silica-gel stationary phase and eluent composition explicitly as unmapped details because the closed Purify schema cannot encode them.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "remove",
+        "path": "/steps/8"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "placed into pre-heated aluminum block at 80 oC",
+          "reason": "The aluminum block was preheated, and the microreactor was physically placed into it. These apparatus-preparation and placement details are not represented by the allowed vessel-based operations; reaction heating is retained in the HeatChill step."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "Completion was assessed by GC/MS before THF removal; analytical monitoring is not represented by an allowed operation."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "chromatographic separation with silica gel (25 % ethyl acetate in hexane as eluent)",
+          "reason": "Chromatography used silica gel and 25 % ethyl acetate in hexane as eluent; these conditions cannot be encoded in the closed Purify fields."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 825,
+    "prompt_tokens": 1466,
+    "total_tokens": 2291,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1463,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 238
+    }
+  },
+  "cache_key": "0540cd521c66ded998855c2faebe481a5f7d375e4a7c6ed858f584d0861ed5af"
+}

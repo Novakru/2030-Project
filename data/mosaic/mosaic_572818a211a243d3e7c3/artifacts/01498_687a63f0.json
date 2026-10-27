@@ -1,0 +1,161 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Atmosphere",
+        "evidence": "purged with nitrogen",
+        "stage": "reaction",
+        "vessel": "reaction vessel",
+        "gas": "nitrogen",
+        "mode": "purge"
+      },
+      {
+        "op": "Add",
+        "evidence": "(R)-(-)-1-[(S)-2-(dicyclohexylphosphino)ferrocenyl]ethyldi-t-butylphosphine (0.027 g, 0.05 mmol)",
+        "stage": "reaction",
+        "vessel": "reaction vessel",
+        "reagent": "(R)-(-)-1-[(S)-2-(dicyclohexylphosphino)ferrocenyl]ethyldi-t-butylphosphine",
+        "alias": "(R)-(-)-1-[(S)-2-(dicyclohexylphosphino)ferrocenyl]ethyldi-t-butylphosphine",
+        "amount": {
+          "value": 27,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "in THF (1 mL)",
+        "stage": "reaction",
+        "vessel": "reaction vessel",
+        "reagent": "THF",
+        "alias": "THF",
+        "amount": {
+          "value": 1,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      },
+      {
+        "op": "Add",
+        "evidence": "Palladium (II) acetate (0.011 g, 0.05 mmol) was added",
+        "stage": "reaction",
+        "vessel": "reaction vessel",
+        "reagent": "Palladium (II) acetate",
+        "alias": "Palladium (II) acetate",
+        "amount": {
+          "value": 11,
+          "unit": "mg"
+        },
+        "role": "CATALYST"
+      },
+      {
+        "op": "Atmosphere",
+        "evidence": "under nitrogen",
+        "stage": "reaction",
+        "vessel": "reaction vessel",
+        "gas": "nitrogen",
+        "mode": "environment"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The resulting catalyst mixture was stirred and under nitrogen at 50 °C for 30 minutes.",
+        "stage": "reaction",
+        "vessel": "reaction vessel",
+        "temp_C": 50,
+        "duration_s": 1800,
+        "stir": true
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "were added at 20 °C.",
+        "stage": "reaction",
+        "vessel": "second reaction vessel",
+        "temp_C": 20
+      },
+      {
+        "op": "Add",
+        "evidence": "LiHMDS (1.194 mL, 1.19 mmol)",
+        "stage": "reaction",
+        "vessel": "second reaction vessel",
+        "reagent": "LiHMDS",
+        "alias": "LiHMDS",
+        "amount": {
+          "value": 1.194,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "3-aminopropanamide, HCl (0.077 g, 0.62 mmol)",
+        "stage": "reaction",
+        "vessel": "second reaction vessel",
+        "reagent": "3-aminopropanamide, HCl",
+        "alias": "3-aminopropanamide, HCl",
+        "amount": {
+          "value": 77,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "4-bromobenzoic acid (0.1 g, 0.50 mmol)",
+        "stage": "reaction",
+        "vessel": "second reaction vessel",
+        "reagent": "4-bromobenzoic acid",
+        "alias": "4-bromobenzoic acid",
+        "amount": {
+          "value": 100,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Atmosphere",
+        "evidence": "was added to a second reaction vessel and purged with nitrogen.",
+        "stage": "reaction",
+        "vessel": "second reaction vessel",
+        "gas": "nitrogen",
+        "mode": "purge"
+      },
+      {
+        "op": "Transfer",
+        "evidence": "The catalyst solution was added to the reaction mixture",
+        "stage": "reaction",
+        "from_vessel": "reaction vessel",
+        "to_vessel": "second reaction vessel"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "the resulting mixture was stirred at 120 °C for 16 hours.",
+        "stage": "reaction",
+        "vessel": "second reaction vessel",
+        "temp_C": 120,
+        "duration_s": 57600,
+        "stir": true
+      }
+    ],
+    "uncertainties": [
+      "The source does not specify the relative charging order of the phosphine and THF; both are described as present when palladium (II) acetate was added.",
+      "The fragment 'were added at 20 °C.' is interpreted as the temperature for the additions to the second reaction vessel, but its grammatical attachment is unclear.",
+      "The source states evacuation and nitrogen purging but does not explicitly describe a nitrogen refill or the number of cycles."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "evacuated",
+        "reason": "Standalone vessel evacuation is not an allowed operation; nitrogen purging is represented separately, and an evacuation/refill cycle is not explicitly stated."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1601,
+    "prompt_tokens": 887,
+    "total_tokens": 2488,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 311
+    }
+  },
+  "cache_key": "a630e7823010779b8304951c67f27940965958f41af01798ef8134252b6aa2a6"
+}

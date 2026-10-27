@@ -1,0 +1,669 @@
+{
+  "protocol": {
+    "id": "pos_e2f4bb7b7a8a4f84a94e64c143c99234",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+    "raw_sha256": "164a4eddd043ba6fa308b2743d48f148ad5a84efe1f8835e3dbaa5b70fab5827",
+    "source_text": "methyl 4-bromobenzoate (1 g, 4.65 mmol), (3,5-difluorophenyl)methanamine (1.100 mL, 9.30 mmol) and Cesium carbonate (1.515 g, 4.65 mmol) were mixed in toluene (4 mL) and degassed by bubbling nitrogen through solution. Palladium acetate (0.052 g, 0.23 mmol) and rac-2,2'-Bis(diphenylphosphino)-1,1'-binaphthyl (0.203 g, 0.33 mmol) were added and the vial was capped and heated at 100°C over 5 days. Workup by dilution with EtOAc, washing with water, then extraction with 2M HCl. The HCl extract was neutralized with 2M NaOH and extracted with EtOAc and the EtOAc phase was dried (K2CO3) and evaporated to give the crude product. The identity of product was doubtful but it was already used in exp 60-68.  ",
+    "text_sha256": "b869f0e2a043b6f2480e5caaa491212718714ed1cad27ad5d27619e17ab2964c",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "methyl 4-bromobenzoate",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 1000,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r002",
+        "name": "(3,5-difluorophenyl)methanamine",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 1.1,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r003",
+        "name": "Cesium carbonate",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 1515,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r004",
+        "name": "toluene",
+        "smiles": null,
+        "role": "SOLVENT",
+        "amount": {
+          "value": 4,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r005",
+        "name": "Palladium acetate",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 52,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r006",
+        "name": "rac-2,2'-Bis(diphenylphosphino)-1,1'-binaphthyl",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 203,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r007",
+        "name": "EtOAc",
+        "smiles": null,
+        "role": "WORKUP",
+        "amount": null,
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r008",
+        "name": "water",
+        "smiles": null,
+        "role": "WORKUP",
+        "amount": null,
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r009",
+        "name": "HCl",
+        "smiles": null,
+        "role": "WORKUP",
+        "amount": null,
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r010",
+        "name": "NaOH",
+        "smiles": null,
+        "role": "WORKUP",
+        "amount": null,
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r011",
+        "name": "K2CO3",
+        "smiles": null,
+        "role": "WORKUP",
+        "amount": null,
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r001",
+        "amount": {
+          "value": 1000,
+          "unit": "mg"
+        },
+        "id": "s001",
+        "meta": {
+          "evidence": "methyl 4-bromobenzoate (1 g, 4.65 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "methyl 4-bromobenzoate",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r002",
+        "amount": {
+          "value": 1.1,
+          "unit": "mL"
+        },
+        "id": "s002",
+        "meta": {
+          "evidence": "(3,5-difluorophenyl)methanamine (1.100 mL, 9.30 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "(3,5-difluorophenyl)methanamine",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r003",
+        "amount": {
+          "value": 1515,
+          "unit": "mg"
+        },
+        "id": "s003",
+        "meta": {
+          "evidence": "Cesium carbonate (1.515 g, 4.65 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "Cesium carbonate",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r004",
+        "amount": {
+          "value": 4,
+          "unit": "mL"
+        },
+        "id": "s004",
+        "meta": {
+          "evidence": "were mixed in toluene (4 mL)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "toluene",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Stir",
+        "vessel": "reactor",
+        "id": "s005",
+        "meta": {
+          "evidence": "were mixed in toluene (4 mL)",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Atmosphere",
+        "vessel": "reactor",
+        "gas": "nitrogen",
+        "mode": "purge",
+        "id": "s006",
+        "meta": {
+          "evidence": "degassed by bubbling nitrogen through solution",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r005",
+        "amount": {
+          "value": 52,
+          "unit": "mg"
+        },
+        "id": "s007",
+        "meta": {
+          "evidence": "Palladium acetate (0.052 g, 0.23 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "Palladium acetate",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r006",
+        "amount": {
+          "value": 203,
+          "unit": "mg"
+        },
+        "id": "s008",
+        "meta": {
+          "evidence": "rac-2,2'-Bis(diphenylphosphino)-1,1'-binaphthyl (0.203 g, 0.33 mmol) were added",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "rac-2,2'-Bis(diphenylphosphino)-1,1'-binaphthyl",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 100,
+        "duration_s": 432000,
+        "id": "s009",
+        "meta": {
+          "evidence": "heated at 100°C over 5 days",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r007",
+        "id": "s010",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "dilution with EtOAc",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "EtOAc",
+          "amount_source": "unknown"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r008",
+        "id": "s011",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "washing with water",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "water",
+          "amount_source": "unknown"
+        }
+      },
+      {
+        "op": "Separate",
+        "keep_phase": "unknown",
+        "id": "s012",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "washing with water",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r009",
+        "id": "s013",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "extraction with 2M HCl",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "HCl",
+          "amount_source": "unknown"
+        }
+      },
+      {
+        "op": "Separate",
+        "keep_phase": "aqueous",
+        "id": "s014",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "extraction with 2M HCl. The HCl extract",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r010",
+        "id": "s015",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The HCl extract was neutralized with 2M NaOH",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "NaOH",
+          "amount_source": "unknown"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r007",
+        "id": "s016",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "extracted with EtOAc",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "EtOAc",
+          "amount_source": "unknown"
+        }
+      },
+      {
+        "op": "Separate",
+        "keep_phase": "organic",
+        "id": "s017",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "extracted with EtOAc and the EtOAc phase",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r011",
+        "id": "s018",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "the EtOAc phase was dried (K2CO3)",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "K2CO3",
+          "amount_source": "unknown"
+        }
+      },
+      {
+        "op": "Evaporate",
+        "id": "s019",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "evaporated to give the crude product",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      }
+    ],
+    "context": {
+      "pressure_control": "SEALED",
+      "atmosphere": {
+        "type": "NITROGEN",
+        "basis": "procedure_text"
+      },
+      "reflux": false,
+      "source_context_evidence": [
+        {
+          "field": "pressure_control",
+          "quote": "capped"
+        }
+      ]
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "b869f0e2a043b6f2480e5caaa491212718714ed1cad27ad5d27619e17ab2964c",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 1744,
+        "prompt_tokens": 874,
+        "total_tokens": 2618,
+        "prompt_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 212
+        }
+      },
+      "cache_key": "af7958111e94cc3fecf75a5b007a14629e0d897f71f714672237af625242ea8c",
+      "unresolved": [
+        "Mixing duration and speed are not specified.",
+        "Nitrogen bubbling duration is not specified.",
+        "The quantities of EtOAc for dilution, water for washing, EtOAc for extraction, and K2CO3 for drying are not specified.",
+        "HCl and NaOH are specified only as 2M solutions; their added quantities are not specified.",
+        "The HCl extract and subsequently the EtOAc phase are retained, but their top or bottom positions are not specified.",
+        "Evaporation conditions are not specified.",
+        "s005: duration unspecified",
+        "s010: addition amount unspecified",
+        "s011: addition amount unspecified",
+        "s012: product phase unspecified",
+        "s013: addition amount unspecified",
+        "s015: addition amount unspecified",
+        "s016: addition amount unspecified",
+        "s018: addition amount unspecified"
+      ],
+      "unmapped_actions": [
+        {
+          "evidence": "the vial was capped",
+          "reason": "Capping is not represented by an allowed operation."
+        },
+        {
+          "evidence": "the EtOAc phase was dried (K2CO3)",
+          "reason": "The drying-agent addition is represented, but drying itself is not an allowed operation."
+        },
+        {
+          "evidence": "Workup by dilution with EtOAc, washing with water, then extraction with 2M HCl.",
+          "reason": "Unrepresented physical action: washing"
+        },
+        {
+          "evidence": "The HCl extract was neutralized with 2M NaOH and extracted with EtOAc and the EtOAc phase was dried (K2CO3) and evaporated to give the crude product.",
+          "reason": "Unrepresented physical action: extracted"
+        }
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/2",
+    "findings": [
+      {
+        "code": "RETAINED_PHASE_NOT_IDENTIFIED",
+        "quote": "extraction with 2M HCl. The HCl extract was neutralized with 2M NaOH",
+        "message": "The retained HCl extract is the aqueous phase, rather than an unidentified phase. Its top or bottom position need not be inferred.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+          "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+          "start": 454,
+          "end": 522,
+          "quote": "extraction with 2M HCl. The HCl extract was neutralized with 2M NaOH"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "RETAINED_PHASE_NOT_IDENTIFIED",
+        "quote": "extracted with EtOAc and the EtOAc phase was dried (K2CO3)",
+        "message": "The retained EtOAc phase is the organic phase, rather than an unidentified phase.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+          "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+          "start": 527,
+          "end": 585,
+          "quote": "extracted with EtOAc and the EtOAc phase was dried (K2CO3)"
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "the vial was capped and heated at 100°C over 5 days",
+        "kind": "reaction vial",
+        "identity": null,
+        "scope": "Batch reaction vessel; capped and heated at 100°C for 5 days.",
+        "evidence": {
+          "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+          "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+          "start": 345,
+          "end": 396,
+          "quote": "the vial was capped and heated at 100°C over 5 days"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 0,
+        "end": 39,
+        "quote": "methyl 4-bromobenzoate (1 g, 4.65 mmol)"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 41,
+        "end": 94,
+        "quote": "(3,5-difluorophenyl)methanamine (1.100 mL, 9.30 mmol)"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 99,
+        "end": 136,
+        "quote": "Cesium carbonate (1.515 g, 4.65 mmol)"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 137,
+        "end": 165,
+        "quote": "were mixed in toluene (4 mL)"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 137,
+        "end": 165,
+        "quote": "were mixed in toluene (4 mL)"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 170,
+        "end": 216,
+        "quote": "degassed by bubbling nitrogen through solution"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 218,
+        "end": 256,
+        "quote": "Palladium acetate (0.052 g, 0.23 mmol)"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 261,
+        "end": 340,
+        "quote": "rac-2,2'-Bis(diphenylphosphino)-1,1'-binaphthyl (0.203 g, 0.33 mmol) were added"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 369,
+        "end": 396,
+        "quote": "heated at 100°C over 5 days"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 408,
+        "end": 427,
+        "quote": "dilution with EtOAc"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 429,
+        "end": 447,
+        "quote": "washing with water"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 429,
+        "end": 447,
+        "quote": "washing with water"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 454,
+        "end": 476,
+        "quote": "extraction with 2M HCl"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 454,
+        "end": 493,
+        "quote": "extraction with 2M HCl. The HCl extract"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 478,
+        "end": 522,
+        "quote": "The HCl extract was neutralized with 2M NaOH"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 527,
+        "end": 547,
+        "quote": "extracted with EtOAc"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 527,
+        "end": 567,
+        "quote": "extracted with EtOAc and the EtOAc phase"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 552,
+        "end": 585,
+        "quote": "the EtOAc phase was dried (K2CO3)"
+      },
+      {
+        "source_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234",
+        "source_sha256": "894b237572bcdb04be0508d2cbb942cfdc00641ad5a7e65b1466dfbafa295eb0",
+        "start": 590,
+        "end": 626,
+        "quote": "evaporated to give the crude product"
+      }
+    ],
+    "repair": {
+      "accepted": true,
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/steps/13/keep_phase",
+          "value": "aqueous"
+        },
+        {
+          "op": "replace",
+          "path": "/steps/16/keep_phase",
+          "value": "organic"
+        }
+      ]
+    },
+    "apparatus_unknowns": [
+      "Vial volume, material, closure type, and manufacturer/model are not specified.",
+      "The heating apparatus and whether 100°C is a heater setpoint or measured reaction-mixture temperature are not specified.",
+      "No specific apparatus for nitrogen degassing, liquid-liquid extraction, drying, or evaporation is described."
+    ]
+  },
+  "raw_id": "ord-e2f4bb7b7a8a4f84a94e64c143c99234"
+}

@@ -1,0 +1,50 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The GC/MS completion check before solvent removal is omitted. Preserve it as an unmapped action because the allowed operations do not represent analytical monitoring.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_HEATING_METHOD",
+        "quote": "dried on an oil bath at 90 oC for 30 minutes",
+        "message": "The drying temperature and duration are mapped, but the oil-bath heating method should also be preserved in unmapped_actions; it cannot be expressed using the allowed Evaporate fields.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "Completion was judged by GC/MS before THF removal. Analytical monitoring is not represented by an allowed operation."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "dried on an oil bath at 90 oC for 30 minutes",
+          "reason": "Oil-bath heating is specified for drying but cannot be represented by an allowed operational field. Drying temperature and duration are mapped."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 472,
+    "prompt_tokens": 1512,
+    "total_tokens": 1984,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1509,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 144
+    }
+  },
+  "cache_key": "879b61bb33490bed4017843aab4511ef70bce174a24925afbda5fa097d807f7f"
+}

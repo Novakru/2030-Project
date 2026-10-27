@@ -1,0 +1,47 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_ANALYSIS",
+        "quote": "Analysis of crude 1 H NMR using internal standard 1,2‐ dimethoxyethane showed 1:1.4 meta:para borylation in 98% yield.",
+        "message": "The crude NMR analysis using 1,2‐dimethoxyethane as internal standard is omitted. Preserve it as an unmapped operation because the step vocabulary does not support analysis; do not infer an amount or addition to the reaction vessel.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_PURIFICATION_DETAIL",
+        "quote": "silica gel chromatography (Pet. Ether (40‐60):EtOAc (19:1‐9:1)",
+        "message": "The purification method is recorded only as generic chromatography. Preserve the explicitly stated silica gel stationary phase and eluent ratio range in the method.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐ dimethoxyethane showed 1:1.4 meta:para borylation in 98% yield.",
+          "reason": "Crude NMR analysis using an internal standard is not representable by the supported step operations. The standard amount and sample preparation are unspecified."
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/steps/8/method",
+        "value": "silica gel chromatography (Pet. Ether (40‐60):EtOAc (19:1‐9:1))"
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 525,
+    "prompt_tokens": 1417,
+    "total_tokens": 1942,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1414,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 204
+    }
+  },
+  "cache_key": "82adb6fdca528ef44eaf0c13761d23351881c11c4d8adc09de99c4e684077d2c"
+}

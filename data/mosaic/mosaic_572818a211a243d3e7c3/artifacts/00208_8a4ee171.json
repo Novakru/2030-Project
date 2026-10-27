@@ -1,0 +1,36 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNMAPPED_SUSPENSION",
+        "quote": "were suspended in dioxane (3 mL)",
+        "message": "The additions capture the materials and solvent quantity but do not explicitly preserve suspension formation. Record this in unmapped_actions; do not infer stirring or a mixing duration.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "were suspended in dioxane (3 mL)",
+          "reason": "Suspension formation is explicitly reported but has no corresponding allowed operation. Stirring and mixing conditions are not specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 305,
+    "prompt_tokens": 1316,
+    "total_tokens": 1621,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1313,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 174
+    }
+  },
+  "cache_key": "6cedd91932ce1596904678996d8ac7b8bf1e74b099be5c8656d5bb82c001fe9b"
+}

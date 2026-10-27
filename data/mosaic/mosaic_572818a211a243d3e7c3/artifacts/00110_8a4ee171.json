@@ -1,0 +1,84 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "DRY_SOLVENT_CONDITION_OMITTED",
+        "quote": "dry THF (1.0 mL)",
+        "message": "The THF addition does not preserve the explicitly specified dry-solvent condition except in its evidence.",
+        "severity": "error"
+      },
+      {
+        "code": "PREHEATING_TARGET_UNRESOLVED",
+        "quote": "The microreactor was capped with a teflon pressure cap and placed into pre-heated aluminum block at 80 oC.",
+        "message": "The standalone HeatChill step has no vessel and represents block preheating ambiguously as an additional reaction operation. Preserve block preheating and reactor placement as unmapped details rather than duplicating reactor heating.",
+        "severity": "error"
+      },
+      {
+        "code": "COMPLETION_CHECK_OMITTED",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The GC/MS completion check before solvent removal is omitted.",
+        "severity": "error"
+      },
+      {
+        "code": "DRYING_ACTION_NOT_EXPLICIT",
+        "quote": "anddried on oil bath at 90 oC for 30 minutes",
+        "message": "The final HeatChill preserves temperature and duration but does not explicitly represent drying. Preserve the drying action as an unmapped detail; do not infer a drying pressure.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/5/reagent",
+        "value": "dry THF"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/5/alias",
+        "value": "dry THF"
+      },
+      {
+        "op": "remove",
+        "path": "/steps/8"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "placed into pre-heated aluminum block at 80 oC",
+          "reason": "The block was already preheated when the microreactor was placed into it. Block preheating and physical placement are not represented separately by the reactor HeatChill operation."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "GC/MS was used to judge completion before solvent removal; analytical completion checks are not represented by an allowed operation."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "anddried on oil bath at 90 oC for 30 minutes",
+          "reason": "Drying is only partially represented by HeatChill at 90 °C for 1800 seconds. The source specifies an oil bath but does not explicitly quantify or separately specify the pressure during drying."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 912,
+    "prompt_tokens": 1442,
+    "total_tokens": 2354,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1439,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 247
+    }
+  },
+  "cache_key": "95910d3dcb733ee1d0fc4bae03821ea5ff617e43f0917b700de3a96f26a1e614"
+}

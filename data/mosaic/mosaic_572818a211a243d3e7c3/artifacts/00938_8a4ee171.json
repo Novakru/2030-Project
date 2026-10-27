@@ -1,0 +1,50 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNMAPPED_PURIFICATION_CONDITIONS",
+        "quote": "silica gel chromatography (Pet. Ether (40‐60):EtOAc (19:1)",
+        "message": "The purification step records generic chromatography but does not preserve the silica gel stationary phase or the stated eluent details. These conditions should be retained in unmapped_actions because the closed Purify schema has no dedicated fields for them.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_CRUDE_ANALYSIS",
+        "quote": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane",
+        "message": "The crude NMR analysis using an internal standard is omitted. Preserve it as an unmapped analytical operation; the source does not specify the standard quantity or establish its addition to the reaction vessel.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "silica gel chromatography (Pet. Ether (40‐60):EtOAc (19:1)",
+          "reason": "Purification uses silica gel and the stated petroleum ether (40–60):EtOAc (19:1) eluent. The closed Purify schema has no dedicated fields for these conditions."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane",
+          "reason": "Crude NMR analysis occurs after solvent removal and before chromatography. No supported operation represents this analysis; the internal-standard quantity and sample vessel are unspecified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 521,
+    "prompt_tokens": 1307,
+    "total_tokens": 1828,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1304,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 113
+    }
+  },
+  "cache_key": "895e8d588749a20172a06ea2c08d68aee38e927025f3c8eeeac6707a27af0be9"
+}

@@ -1,0 +1,50 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_PURIFICATION_CONDITIONS",
+        "quote": "silica gel chromatography (Pet. Ether (40‐60):EtOAc (9:1‐8:1)",
+        "message": "The purification step records generic chromatography but does not operationally preserve the silica stationary phase and specified eluent system. Preserve these details in unmapped_actions because the closed Purify schema has no dedicated fields for them.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_ANALYTICAL_ACTION",
+        "quote": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane showed 3:1 meta:para borylation in 76% yield.",
+        "message": "Crude NMR analysis using 1,2‐dimethoxyethane as internal standard is omitted. Preserve it as an unmapped analytical action; neither the standard quantity nor its addition to the reaction vessel is specified.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "silica gel chromatography (Pet. Ether (40‐60):EtOAc (9:1‐8:1)",
+          "reason": "Chromatography uses silica gel and Pet. Ether (40‐60):EtOAc (9:1‐8:1). The closed Purify schema has no dedicated stationary-phase or eluent fields."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane showed 3:1 meta:para borylation in 76% yield.",
+          "reason": "Crude NMR analysis using an internal standard occurs after solvent removal and before chromatography. No supported operation represents this analysis; the standard quantity and analytical sample vessel are unspecified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 576,
+    "prompt_tokens": 1367,
+    "total_tokens": 1943,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1364
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 117
+    }
+  },
+  "cache_key": "ff298bdaf2462cfa30e4f44b375fccb9496e2cd4488ba43092b7b4da28a19496"
+}

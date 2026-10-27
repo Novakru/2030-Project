@@ -1,0 +1,62 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "FILTRATE_ROUTING_MISSING",
+        "quote": "The reaction mixture was allowed to cool then filtered through celite, washing with ethyl acetate. The filtrate was evaporated under reduced pressure to give a brown residue.",
+        "message": "The filtration does not identify the retained stream or connect it to evaporation. Explicitly retain the filtrate and route evaporation to its receiving vessel; this is a logical vessel identifier, not a claim about apparatus.",
+        "severity": "error"
+      },
+      {
+        "code": "WASH_ACTION_INCOMPLETELY_REPRESENTED",
+        "quote": "washing with ethyl acetate",
+        "message": "An ethyl acetate Add step alone does not capture the stated washing operation. Preserve the wash as an unmapped action because the allowed operations lack a Wash operation and the source does not specify the precise wash target or collection details.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/steps/9/vessel",
+        "value": "reactor"
+      },
+      {
+        "op": "add",
+        "path": "/steps/9/keep",
+        "value": "filtrate"
+      },
+      {
+        "op": "add",
+        "path": "/steps/9/to_vessel",
+        "value": "filtrate_receiver"
+      },
+      {
+        "op": "add",
+        "path": "/steps/11/vessel",
+        "value": "filtrate_receiver"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "washing with ethyl acetate",
+          "reason": "The ethyl acetate Add step records the wash reagent but not the physical washing operation. No Wash operation is available; the precise wash target and collection details are unspecified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 497,
+    "prompt_tokens": 1490,
+    "total_tokens": 1987,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1487,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 180
+    }
+  },
+  "cache_key": "d7a8030852ac371719e53106b2dc3d3f52bcaa311d426e69d7cdb1f42c65d3a3"
+}

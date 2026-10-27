@@ -1,0 +1,33 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "PURIFICATION_DETAILS_UNDERSPECIFIED",
+        "quote": "silica flash chromatography, MeOH, 0-10%, in DCM",
+        "message": "The purification method is recorded only as chromatography; retain the specified silica flash method and MeOH/DCM eluent conditions in the operational field, not only in evidence.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/10/method",
+        "value": "silica flash chromatography, MeOH, 0-10%, in DCM"
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 276,
+    "prompt_tokens": 1656,
+    "total_tokens": 1932,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1653,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 159
+    }
+  },
+  "cache_key": "168550c934b5303f3b8e41fe7b066e014186b4cb453623e3743a891ff96738cc"
+}

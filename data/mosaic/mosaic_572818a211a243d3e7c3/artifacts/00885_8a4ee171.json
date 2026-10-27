@@ -1,0 +1,55 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_ANALYSIS",
+        "quote": "Analysis  by  GC-MS  showed  a  95:5  mixture  of  2  monoborylated products.",
+        "message": "The GC-MS analysis between stirring and evaporation is omitted. Preserve it as an unmapped action because the allowed operations do not represent analytical measurements.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_PURIFICATION_DETAILS",
+        "quote": "silica  gel  flash-column  chromatography  with  gradient  elution  of  MeOH/DCM  from  0.5 -12.5% over 25 column volumes",
+        "message": "The purification method is reduced to generic chromatography. Preserve the silica-gel flash-column method and explicitly retain the solvent gradient and column-volume conditions as unmapped details.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/3/method",
+        "value": "silica gel flash-column chromatography"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Analysis  by  GC-MS  showed  a  95:5  mixture  of  2  monoborylated products.",
+          "reason": "GC-MS analysis occurred after stirring and before evaporation; no allowed operation represents this analytical measurement."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "gradient  elution  of  MeOH/DCM  from  0.5 -12.5% over 25 column volumes",
+          "reason": "Purification used this solvent gradient over 25 column volumes. The allowed Purify fields do not separately represent eluent composition, gradient endpoints, or column volumes."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 631,
+    "prompt_tokens": 925,
+    "total_tokens": 1556,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 194
+    }
+  },
+  "cache_key": "402fc068401a70e9f6e186d0300282749e0c09c59c7a3aab11504a4ca1a26660"
+}

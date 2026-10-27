@@ -1,0 +1,36 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_MONITORING",
+        "quote": "The reaction was monitored using LC/MS.",
+        "message": "LC/MS monitoring is omitted. Since monitoring has no supported step operation, preserve it in unmapped_actions.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The reaction was monitored using LC/MS.",
+          "reason": "Reaction monitoring by LC/MS is not representable by the allowed step operations."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 1332,
+    "completion_tokens": 193,
+    "total_tokens": 1525,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1329
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 88
+    }
+  },
+  "cache_key": "6550f21fc160224830ef645c9d2f1fd751dfc1248722acc00967f0e7e041243e"
+}

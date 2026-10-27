@@ -1,0 +1,36 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNMAPPED_HEATING_MODE",
+        "quote": "The mixture was heated in microwave at 180° for 60min.",
+        "message": "Both HeatChill steps preserve duration, but microwave heating is not explicitly retained as an unmapped operational condition. The allowed step fields cannot encode this heating mode.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The mixture was heated in microwave at 180° for 60min.",
+          "reason": "Microwave heating is specified for both recorded heating occurrences, but the allowed HeatChill fields cannot represent the heating mode."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 289,
+    "prompt_tokens": 1531,
+    "total_tokens": 1820,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1528,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 150
+    }
+  },
+  "cache_key": "e5799771cf9fe83cca44eece695500fc4309732f9243a95e636f43c64253c3fd"
+}

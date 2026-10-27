@@ -1,0 +1,63 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "REAGENT_CONCENTRATION_OMITTED",
+        "quote": "H2O2  (30%  in  H2O;  0.86  mL,  9.0  mmol)",
+        "message": "The first two peroxide additions specify 30% H2O2 in water, but their reagent identities omit this formulation. The third addition does not explicitly restate the concentration.",
+        "severity": "error"
+      },
+      {
+        "code": "PURIFICATION_CONDITIONS_OMITTED",
+        "quote": "column  chromatography  on  silica  gel  using  EtOAc  /  hexanes  (1:1  to  1:0)  as  eluent",
+        "message": "The purification method is reduced to generic chromatography. Preserve the specified stationary phase and eluent composition range in the method.",
+        "severity": "error"
+      },
+      {
+        "code": "PHYSICAL_ACTION_OMITTED",
+        "quote": "as an oil that crystallized on standing",
+        "message": "Crystallization on standing is absent from both the steps and unmapped actions. Record it without inventing a standing duration or a deliberate crystallization protocol.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/6/reagent",
+        "value": "H2O2 (30% in H2O)"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/9/reagent",
+        "value": "H2O2 (30% in H2O)"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/24/method",
+        "value": "column chromatography on silica gel using EtOAc / hexanes (1:1 to 1:0) as eluent"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "as an oil that crystallized on standing",
+          "reason": "The isolated oil crystallized on standing; no allowed operation directly represents crystallization, and no standing duration is specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 642,
+    "prompt_tokens": 2866,
+    "total_tokens": 3508,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 2863,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 141
+    }
+  },
+  "cache_key": "41dd5623e1a3b2faf77310e8a49bfc606afcc609d7b5a89670599c32a87a7924"
+}

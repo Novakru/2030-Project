@@ -1,0 +1,52 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "omitted_analytical_check",
+        "quote": "No sign of reaction by LCMS overnight.",
+        "message": "The reported LCMS check is omitted. Preserve it as an unmapped analytical action; do not infer a termination operation or experimental failure.",
+        "severity": "error"
+      },
+      {
+        "code": "uncertainties_missing_exact_quotations",
+        "quote": "The resultant mixture was stirred at 100 °C overnight.",
+        "message": "The uncertainties correctly identify unspecified atmosphere details and an unquantified duration, but should include exact source quotations.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/uncertainties/0",
+        "value": "The source states \"were thoroughly placed under an inert atmoshere.\" The gas and establishment method are unspecified."
+      },
+      {
+        "op": "replace",
+        "path": "/uncertainties/1",
+        "value": "The source states \"The resultant mixture was stirred at 100 °C overnight.\" The duration \"overnight\" is not quantified."
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "No sign of reaction by LCMS overnight.",
+          "reason": "An LCMS check and its reported observation are not represented by the available operations. Sampling details and exact timing are unspecified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 565,
+    "prompt_tokens": 1302,
+    "total_tokens": 1867,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1299,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 232
+    }
+  },
+  "cache_key": "de79bfb21e3165d0fb172a3450febb22a6b54d37dcae103a6f277d182b147f8b"
+}

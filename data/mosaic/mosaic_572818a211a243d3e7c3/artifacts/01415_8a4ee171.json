@@ -1,0 +1,57 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_EXTRACTION_AMOUNTS",
+        "quote": "extracted with EtOAc (3x20 mL)",
+        "message": "The source specifies three extractions using 20 mL of EtOAc each. The plan represents three cycles but omits the supported amount from every EtOAc addition. Multiplicative notation does not make the per-cycle quantity unspecified.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/steps/7/amount",
+        "value": {
+          "value": 20,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "add",
+        "path": "/steps/9/amount",
+        "value": {
+          "value": 20,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "add",
+        "path": "/steps/11/amount",
+        "value": {
+          "value": 20,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/uncertainties/3",
+        "value": "The source states 'extracted with EtOAc (3x20 mL)'; this is represented as three extraction cycles using 20 mL of EtOAc per cycle."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "total_tokens": 2363,
+    "prompt_tokens": 1982,
+    "completion_tokens": 381,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1979
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 66
+    }
+  },
+  "cache_key": "c58cf0ab586e9d91693d8c43478de09e3998c86b8dc62094274d663770fbc164"
+}

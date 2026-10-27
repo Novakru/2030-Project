@@ -1,0 +1,83 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "RETAINED_PHASE_UNRESOLVED",
+        "quote": "The combined organic extracts were washed with brine (3 x 50 mL)",
+        "message": "The source identifies the retained extracts as organic. The extraction and wash separations should retain the organic phase rather than leave keep_phase unknown. Its top/bottom position remains unspecified.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_VACUUM_CONDITION",
+        "quote": "the solvent removed  under  vacuum  to  leave  a  crude  residue",
+        "message": "Evaporation under vacuum is explicit. Because no numerical pressure is supplied and the Evaporate fields cannot express qualitative vacuum, preserve this condition in unmapped_actions without inventing a pressure.",
+        "severity": "error"
+      },
+      {
+        "code": "PURIFICATION_METHOD_INCOMPLETE",
+        "quote": "column chromatography on  silica  gels  using  MeOH  /  CH2Cl2  (0:1  to  1:19)  as  eluent",
+        "message": "The purification method omits the specified silica stationary phase and MeOH/CH2Cl2 eluent gradient. These can be preserved in the permitted method field.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/18/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/20/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/22/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/25/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/27/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/29/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "the solvent removed  under  vacuum  to  leave  a  crude  residue",
+          "reason": "Evaporation is explicitly under vacuum, but no numerical pressure is specified; the allowed Evaporate fields cannot encode this qualitative condition."
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/steps/33/method",
+        "value": "column chromatography on silica gels using MeOH / CH2Cl2 (0:1 to 1:19) as eluent"
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "total_tokens": 4262,
+    "prompt_tokens": 3360,
+    "completion_tokens": 902,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 3357
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 279
+    }
+  },
+  "cache_key": "0402adf7eff3333f2e1444e398fa365b76b929c12d5cf3f780338c5174262f25"
+}

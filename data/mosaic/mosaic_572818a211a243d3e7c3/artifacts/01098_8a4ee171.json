@@ -1,0 +1,33 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "incomplete_purification_method",
+        "quote": "flash chromatography using DCM to DCM/MeOH/NH4OH (10:1:0.1)",
+        "message": "The purification method is reduced to generic chromatography. Preserve the explicitly stated flash method and eluent progression and ratio in the method field.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/9/method",
+        "value": "flash chromatography using DCM to DCM/MeOH/NH4OH (10:1:0.1)"
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 370,
+    "prompt_tokens": 1498,
+    "total_tokens": 1868,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1495
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 246
+    }
+  },
+  "cache_key": "f15262b0b58f73a1702ed1e18778a9acdcb35c00a997b79fe2ce9adf42364d28"
+}

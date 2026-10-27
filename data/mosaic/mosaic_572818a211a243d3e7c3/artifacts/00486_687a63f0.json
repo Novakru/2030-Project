@@ -1,0 +1,139 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Atmosphere",
+        "evidence": "In an argon filled glove box",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "gas": "argon",
+        "mode": "environment"
+      },
+      {
+        "op": "Add",
+        "evidence": "[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "[Ir(cod)(OMe)]2",
+        "alias": "[Ir(cod)(OMe)]2",
+        "amount": {
+          "value": 1.98,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "L1 ligand (2.1 mg, 3.5 mol%)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "L1 ligand",
+        "alias": "L1 ligand",
+        "amount": {
+          "value": 2.1,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "B2pin2 (50.8 mg, 1.0 equiv.)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "B2pin2",
+        "alias": "B2pin2",
+        "amount": {
+          "value": 50.8,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "KOtBu (1.0 mg, 4.5 mol%)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "KOtBu",
+        "alias": "KOtBu",
+        "amount": {
+          "value": 1.0,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "dry THF (1.0 mL)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "dry THF",
+        "alias": "dry THF",
+        "amount": {
+          "value": 1.0,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      },
+      {
+        "op": "Stir",
+        "evidence": "The reaction mixture was stirred for 2 minutes at room temperature.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "duration_s": 120
+      },
+      {
+        "op": "Add",
+        "evidence": "To this mixture, 4-bromo-N,N-diisopropylbenzamide (56.8 mg, 0.2 mmol) was added.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "4-bromo-N,N-diisopropylbenzamide",
+        "alias": "4-bromo-N,N-diisopropylbenzamide",
+        "amount": {
+          "value": 56.8,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "placed into pre-heated aluminum block at 80 oC. The reaction mixture was stirred for 12 h.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "temp_C": 80,
+        "duration_s": 43200,
+        "stir": true
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "THF was removed under reduced pressure",
+        "stage": "workup",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Purify",
+        "evidence": "chromatographic separation with silica gel (12% ethyl acetate in hexane as eluent)",
+        "stage": "purification",
+        "method": "chromatography"
+      }
+    ],
+    "uncertainties": [
+      "Room temperature is not specified numerically.",
+      "The reduced pressure used to remove THF is not quantified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "The microreactor was capped with a teflon pressure cap",
+        "reason": "Capping a vessel is not represented by an allowed operation."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1217,
+    "prompt_tokens": 881,
+    "total_tokens": 2098,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 226
+    }
+  },
+  "cache_key": "e7f2b7770ce8f4a3cf046b9d514dcc4d0cb4c3204d8aacae5af9acbd50010630"
+}

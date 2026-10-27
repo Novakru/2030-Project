@@ -1,0 +1,47 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "PURIFICATION_METHOD_INCOMPLETE",
+        "quote": "Purification by silica gel chromatography proved not to be possible, leading to product decomposition.",
+        "message": "The purification method omits the explicitly specified silica gel. Retain the source-supported attempted purification without implying successful isolation.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_ANALYTICAL_OPERATION",
+        "quote": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane",
+        "message": "The crude NMR analysis and named internal standard are not represented. Record this as an unmapped analytical operation; the source does not specify the standard's amount or support adding it to the reaction vessel.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/6/method",
+        "value": "silica gel chromatography"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane",
+          "reason": "Crude NMR analysis using a named internal standard is not expressible with the available operations. The standard's amount and analytical sample preparation are not specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 513,
+    "prompt_tokens": 1142,
+    "total_tokens": 1655,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1139,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 197
+    }
+  },
+  "cache_key": "bd57f93bd23c4e0d937afcb3ce23b1b908646c811aec3aeef61fe87521fb475e"
+}

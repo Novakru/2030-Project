@@ -1,0 +1,64 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNMAPPED_HEATING_CONDITION",
+        "quote": "The reaction was heated at 110°C in oil-bath overnight.",
+        "message": "The heating step preserves temperature, and the uncertainty preserves the qualitative duration, but oil-bath heating is not explicitly accounted for outside evidence. Record it as an unrepresentable condition rather than adding an unsupported step field.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_FILTER_MEDIUM",
+        "quote": "The reaction mixture was filter through celite pad",
+        "message": "The Filter step does not explicitly account for the Celite pad as the filtration medium. The closed step schema has no medium field; preserve this condition in unmapped_actions.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_PURIFICATION_CONDITION",
+        "quote": "for a ISCO purification (30% EtOAc in Hex)",
+        "message": "The chromatography operation does not explicitly account for the stated eluent composition outside evidence. Preserve the literal composition without inferring a percentage basis or extending it to the later purifications.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The reaction was heated at 110°C in oil-bath overnight.",
+          "reason": "Heating used an oil bath; the allowed HeatChill fields cannot represent the heating method."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The reaction mixture was filter through celite pad",
+          "reason": "Filtration was through a Celite pad; the allowed Filter fields cannot represent the filtration medium."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "for a ISCO purification (30% EtOAc in Hex)",
+          "reason": "The stated purification eluent was 30% EtOAc in Hex. The allowed Purify fields cannot represent eluent composition; the percentage basis is unspecified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 675,
+    "prompt_tokens": 1464,
+    "total_tokens": 2139,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1461,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 177
+    }
+  },
+  "cache_key": "e40ad7fe68b27f57c6cea22d1ded1a546bc18dbc22fd1bfd8dba090f109ef916"
+}

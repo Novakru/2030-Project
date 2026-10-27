@@ -1,0 +1,140 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "1-bromo-2-methyl-3-nitrobenzene (500 mg, 2.31 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "1-bromo-2-methyl-3-nitrobenzene",
+        "alias": "1-bromo-2-methyl-3-nitrobenzene",
+        "amount": {
+          "value": 500,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine) (201 mg, 0.35 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)",
+        "alias": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)",
+        "amount": {
+          "value": 201,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "cesium carbonate (1131 mg, 3.47 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "cesium carbonate",
+        "alias": "cesium carbonate",
+        "amount": {
+          "value": 1131,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "diacetoxypalladium (52.0 mg, 0.23 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "diacetoxypalladium",
+        "alias": "diacetoxypalladium",
+        "amount": {
+          "value": 52,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "were dissolved in toluene (10 mL)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "toluene",
+        "alias": "toluene",
+        "amount": {
+          "value": 10,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      },
+      {
+        "op": "Atmosphere",
+        "evidence": "purged with argon",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "gas": "argon",
+        "mode": "purge"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The reaction was heated to 100 °C, over a period of 12 hours.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "temp_C": 100
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The reaction mixture was cooled down to room temperature",
+        "stage": "workup",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Filter",
+        "evidence": "filtered",
+        "stage": "workup"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "the residue was evaporated",
+        "stage": "workup"
+      },
+      {
+        "op": "Purify",
+        "evidence": "The crude product was purified by flash chromatography on silica gel eluting with 0 to 10% methanol in dichloromethane.",
+        "stage": "purification",
+        "method": "chromatography"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "The solvent was evaporated to dryness",
+        "stage": "purification"
+      }
+    ],
+    "uncertainties": [
+      "The wording 'heated to 100 °C, over a period of 12 hours' does not unambiguously distinguish a heating ramp from a hold at 100 °C; no hold duration is assigned.",
+      "Room temperature is not specified numerically.",
+      "The degassing method and purge duration are not specified.",
+      "The filtration does not explicitly identify which fraction was retained. The subsequent evaporation is described literally as evaporation of the residue.",
+      "The chromatography eluent percentage basis and solvent quantities are not specified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "sealed into a microwave tube",
+        "reason": "Sealing is not an allowed operation; this wording does not separately specify a transfer."
+      },
+      {
+        "evidence": "degazed",
+        "reason": "Degassing is stated without a method and cannot be assigned to an allowed operation without inventing details."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1069,
+    "prompt_tokens": 1949,
+    "total_tokens": 3018,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1946,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "cache_key": "b7bb7ea118b1490d2a6b5dfaeb3f7521509ef714477f455502c0fe79d5fff23f"
+}

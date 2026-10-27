@@ -1,0 +1,143 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "2-chloro-3-fluoro-5-methylpyridine (100 mg, 0.69 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "2-chloro-3-fluoro-5-methylpyridine",
+        "alias": "2-chloro-3-fluoro-5-methylpyridine",
+        "amount": {
+          "value": 100,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "tert-butyl carbamate (105 mg, 0.89 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "tert-butyl carbamate",
+        "alias": "tert-butyl carbamate",
+        "amount": {
+          "value": 105,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "and 2-chloro-3-fluoro-5-methylpyridine (100 mg, 0.69 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "2-chloro-3-fluoro-5-methylpyridine",
+        "alias": "2-chloro-3-fluoro-5-methylpyridine",
+        "amount": {
+          "value": 100,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "in dioxane (10 mL)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "dioxane",
+        "alias": "dioxane",
+        "amount": {
+          "value": 10,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "at 21°C",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "temp_C": 21
+      },
+      {
+        "op": "Add",
+        "evidence": "diacetoxypalladium (15.42 mg, 0.07 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "diacetoxypalladium",
+        "alias": "diacetoxypalladium",
+        "amount": {
+          "value": 15.42,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine) (39.8 mg, 0.07 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)",
+        "alias": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)",
+        "amount": {
+          "value": 39.8,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The resulting mixture was stirred at 100 °C for 2 hours.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "temp_C": 100,
+        "duration_s": 7200,
+        "stir": true
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "Cooled.",
+        "stage": "workup",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Purify",
+        "evidence": "The crude product was purified by flash silica chromatography, elution gradient 10 to 30% DCM in heptane.",
+        "stage": "purification",
+        "method": "chromatography"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "Pure fractions were evaporated to dryness",
+        "stage": "purification"
+      }
+    ],
+    "uncertainties": [
+      "The mixture lists 2-chloro-3-fluoro-5-methylpyridine twice, each with 100 mg and 0.69 mmol. Both entries are retained; whether this is an intentional second portion or a source duplication is unclear.",
+      "The order of combining the initial mixture components is not specified; they are listed before the additions to that mixture.",
+      "Degassing is stated, but its method, gas, duration and conditions are not specified.",
+      "Cooling has no specified target temperature or duration.",
+      "Adsorption onto silica has no specified silica quantity or operating conditions."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "degassed mixture",
+        "reason": "Degassing is a preparatory operation, but no method or gas is stated that permits mapping it to an allowed operation without inventing details."
+      },
+      {
+        "evidence": "Adsorbed onto silica.",
+        "reason": "Adsorption onto silica is not an allowed operation and cannot be represented as an addition, evaporation or purification without assuming an unstated method."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1384,
+    "prompt_tokens": 899,
+    "total_tokens": 2283,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 204
+    }
+  },
+  "cache_key": "5fc0c0cbdfc5db132b1997786e0d9ed08b83719d1604249dd204c17bdcde7e8f"
+}

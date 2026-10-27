@@ -1,0 +1,55 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "MISSING_PURIFICATION_DETAILS",
+        "quote": "silica gel chromatography (15% EtOAc in Petroleum Ether 40‐60 o C)",
+        "message": "The purification step omits the silica stationary phase and the specified eluent. Preserve the silica chromatography method and retain the eluent details as unmapped conditions.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_ANALYTICAL_ACTION",
+        "quote": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane",
+        "message": "Crude-product NMR analysis using an internal standard is omitted. Record it as an unmapped analytical action; the source does not specify the standard's quantity.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/6/method",
+        "value": "silica gel chromatography"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "silica gel chromatography (15% EtOAc in Petroleum Ether 40‐60 o C)",
+          "reason": "The specified eluent, 15% EtOAc in Petroleum Ether 40‐60 o C, has no dedicated field in the Purify schema. The petroleum ether designation is not a stated chromatography operating temperature."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane",
+          "reason": "Crude-product NMR analysis precedes purification and uses 1,2‐dimethoxyethane as an internal standard. Analytical operations are not represented by the available step types, and the standard quantity is unspecified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 572,
+    "prompt_tokens": 1164,
+    "total_tokens": 1736,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1161
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 139
+    }
+  },
+  "cache_key": "c086496ded37f5772f093736dce0565ea8cb3af1a95d506b3a58a31da4e0ae74"
+}

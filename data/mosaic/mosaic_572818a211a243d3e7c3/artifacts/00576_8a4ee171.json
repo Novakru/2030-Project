@@ -1,0 +1,58 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_REACTION_INTERVAL",
+        "quote": "After 16 h 73 % conversion was achieved.",
+        "message": "The plan omits the reported 16-hour reaction interval. It can be represented as a Wait after heating without asserting an explicitly maintained temperature.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_MONITORING",
+        "quote": "The reaction was monitorred by HPLC.",
+        "message": "HPLC monitoring is absent from both the steps and unmapped actions. The allowed operations cannot directly represent this action.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/steps/-",
+        "value": {
+          "op": "Wait",
+          "evidence": "After 16 h 73 % conversion was achieved.",
+          "stage": "reaction",
+          "vessel": "reactor",
+          "duration_s": 57600
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/uncertainties/1",
+        "value": "\"After 16 h 73 % conversion was achieved.\" establishes an elapsed reaction interval, represented as Wait; continuous maintenance at 110 °C is not explicitly stated."
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The reaction was monitorred by HPLC.",
+          "reason": "HPLC monitoring cannot be represented by an allowed operation; sampling details and monitoring frequency are not specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 467,
+    "prompt_tokens": 1411,
+    "total_tokens": 1878,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1408,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 200
+    }
+  },
+  "cache_key": "1960e67a3b5345c54568795be91858ba118dcd12bc5e76976f18f4b960fd6b4f"
+}

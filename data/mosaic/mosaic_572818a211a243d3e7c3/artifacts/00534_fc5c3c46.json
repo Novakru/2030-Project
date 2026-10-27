@@ -1,0 +1,461 @@
+{
+  "protocol": {
+    "id": "pos_542a3d0745614bcba1a86db54a9cc72d",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-542a3d0745614bcba1a86db54a9cc72d",
+    "raw_sha256": "566f982878aeceba776315c8983acd8c7ba10c771a68fc7b0ce7aa2a24aa8011",
+    "source_text": "The reaction vessel was charged with nitrogen, BINAP (2.491 mg, 4.00 µmol) and diacetoxypalladium (0.898 mg, 4.00 µmol) were dilutet in toluene (2 ml) and flushed with nitrogen.2,6-dichloro-3-iodopyridine (0.027 g, 0.1 mmol), aniline (10.96 µl, 0.12 mmol) and cesium carbonate (0.163 g, 0.50 mmol) were weight in another flask and flushed with nitrogen. The Pd-BINAP mixture was subjoined and the reaction mixture was warmed to 120° C and stirred over night. The reaction was monitored using LC/MS. No product could be obtained.  ",
+    "text_sha256": "f88d0feb079530b2567b52d691ac3a5e485ad66bfe8f3f64af9df23a76d832ea",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "BINAP",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 2.491,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r002",
+        "name": "diacetoxypalladium",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 0.898,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r003",
+        "name": "toluene",
+        "smiles": null,
+        "role": "SOLVENT",
+        "amount": {
+          "value": 2,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r004",
+        "name": "2,6-dichloro-3-iodopyridine",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 27,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r005",
+        "name": "aniline",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 0.01096,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r006",
+        "name": "cesium carbonate",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 163,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Atmosphere",
+        "vessel": "reactor",
+        "gas": "nitrogen",
+        "mode": "environment",
+        "id": "s001",
+        "meta": {
+          "evidence": "The reaction vessel was charged with nitrogen",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r001",
+        "amount": {
+          "value": 2.491,
+          "unit": "mg"
+        },
+        "id": "s002",
+        "meta": {
+          "evidence": "BINAP (2.491 mg, 4.00 µmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "BINAP",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r002",
+        "amount": {
+          "value": 0.898,
+          "unit": "mg"
+        },
+        "id": "s003",
+        "meta": {
+          "evidence": "diacetoxypalladium (0.898 mg, 4.00 µmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "diacetoxypalladium",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r003",
+        "amount": {
+          "value": 2,
+          "unit": "mL"
+        },
+        "id": "s004",
+        "meta": {
+          "evidence": "were dilutet in toluene (2 ml)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "toluene",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Atmosphere",
+        "vessel": "reactor",
+        "gas": "nitrogen",
+        "mode": "purge",
+        "id": "s005",
+        "meta": {
+          "evidence": "and flushed with nitrogen.",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "flask_2",
+        "reagent": "r004",
+        "amount": {
+          "value": 27,
+          "unit": "mg"
+        },
+        "id": "s006",
+        "meta": {
+          "evidence": "2,6-dichloro-3-iodopyridine (0.027 g, 0.1 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "2,6-dichloro-3-iodopyridine",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "flask_2",
+        "reagent": "r005",
+        "amount": {
+          "value": 0.01096,
+          "unit": "mL"
+        },
+        "id": "s007",
+        "meta": {
+          "evidence": "aniline (10.96 µl, 0.12 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "aniline",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "flask_2",
+        "reagent": "r006",
+        "amount": {
+          "value": 163,
+          "unit": "mg"
+        },
+        "id": "s008",
+        "meta": {
+          "evidence": "cesium carbonate (0.163 g, 0.50 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "cesium carbonate",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Atmosphere",
+        "vessel": "flask_2",
+        "gas": "nitrogen",
+        "mode": "purge",
+        "id": "s009",
+        "meta": {
+          "evidence": "were weight in another flask and flushed with nitrogen.",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Transfer",
+        "from_vessel": "reactor",
+        "to_vessel": "flask_2",
+        "id": "s010",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The Pd-BINAP mixture was subjoined",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "flask_2",
+        "temp_C": 120,
+        "stir": true,
+        "id": "s011",
+        "meta": {
+          "evidence": "the reaction mixture was warmed to 120° C and stirred over night.",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {
+        "type": "NITROGEN",
+        "basis": "procedure_text"
+      },
+      "reflux": false,
+      "source_context_evidence": []
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "f88d0feb079530b2567b52d691ac3a5e485ad66bfe8f3f64af9df23a76d832ea",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 1230,
+        "prompt_tokens": 806,
+        "total_tokens": 2036,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 227
+        }
+      },
+      "cache_key": "cfcb69983e5f909eda7afaeeba2c388826d38e950e72a92393a521aba6989a72",
+      "unresolved": [
+        "“Over night” does not specify a numerical duration; duration_s is omitted.",
+        "Nitrogen flushing is represented as purging; the source does not specify the flushing technique or duration."
+      ],
+      "unmapped_actions": [
+        {
+          "evidence": "were weight in another flask",
+          "reason": "Weighing is not an allowed operation. Placement of the listed reagents into the distinct flask is represented by the Add steps."
+        },
+        {
+          "evidence": "The reaction was monitored using LC/MS.",
+          "reason": "Reaction monitoring by LC/MS is not representable by the allowed step operations."
+        }
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/2",
+    "findings": [
+      {
+        "code": "OMITTED_MONITORING",
+        "quote": "The reaction was monitored using LC/MS.",
+        "message": "LC/MS monitoring is omitted. Since monitoring has no supported step operation, preserve it in unmapped_actions.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-542a3d0745614bcba1a86db54a9cc72d",
+          "source_sha256": "3f5e6f460580862b99021b5d3367d5fb4ef203d35116b6c13ff33db9375a9560",
+          "start": 459,
+          "end": 498,
+          "quote": "The reaction was monitored using LC/MS."
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "reaction vessel",
+        "kind": "vessel",
+        "identity": null,
+        "scope": "Initial nitrogen-charged vessel containing BINAP and diacetoxypalladium in 2 ml toluene.",
+        "evidence": {
+          "source_id": "ord-542a3d0745614bcba1a86db54a9cc72d",
+          "source_sha256": "3f5e6f460580862b99021b5d3367d5fb4ef203d35116b6c13ff33db9375a9560",
+          "start": 4,
+          "end": 19,
+          "quote": "reaction vessel"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "another flask",
+        "kind": "flask",
+        "identity": null,
+        "scope": "Separate nitrogen-flushed flask containing 2,6-dichloro-3-iodopyridine, aniline, and cesium carbonate.",
+        "evidence": {
+          "source_id": "ord-542a3d0745614bcba1a86db54a9cc72d",
+          "source_sha256": "3f5e6f460580862b99021b5d3367d5fb4ef203d35116b6c13ff33db9375a9560",
+          "start": 313,
+          "end": 326,
+          "quote": "another flask"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "LC/MS",
+        "kind": "analytical separation/detection system",
+        "identity": null,
+        "scope": "Used to monitor the reaction.",
+        "evidence": {
+          "source_id": "ord-542a3d0745614bcba1a86db54a9cc72d",
+          "source_sha256": "3f5e6f460580862b99021b5d3367d5fb4ef203d35116b6c13ff33db9375a9560",
+          "start": 492,
+          "end": 497,
+          "quote": "LC/MS"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-542a3d0745614bcba1a86db54a9cc72d",
+        "source_sha256": "3f5e6f460580862b99021b5d3367d5fb4ef203d35116b6c13ff33db9375a9560",
+        "start": 0,
+        "end": 45,
+        "quote": "The reaction vessel was charged with nitrogen"
+      },
+      {
+        "source_id": "ord-542a3d0745614bcba1a86db54a9cc72d",
+        "source_sha256": "3f5e6f460580862b99021b5d3367d5fb4ef203d35116b6c13ff33db9375a9560",
+        "start": 47,
+        "end": 74,
+        "quote": "BINAP (2.491 mg, 4.00 µmol)"
+      },
+      {
+        "source_id": "ord-542a3d0745614bcba1a86db54a9cc72d",
+        "source_sha256": "3f5e6f460580862b99021b5d3367d5fb4ef203d35116b6c13ff33db9375a9560",
+        "start": 79,
+        "end": 119,
+        "quote": "diacetoxypalladium (0.898 mg, 4.00 µmol)"
+      },
+      {
+        "source_id": "ord-542a3d0745614bcba1a86db54a9cc72d",
+        "source_sha256": "3f5e6f460580862b99021b5d3367d5fb4ef203d35116b6c13ff33db9375a9560",
+        "start": 120,
+        "end": 150,
+        "quote": "were dilutet in toluene (2 ml)"
+      },
+      {
+        "source_id": "ord-542a3d0745614bcba1a86db54a9cc72d",
+        "source_sha256": "3f5e6f460580862b99021b5d3367d5fb4ef203d35116b6c13ff33db9375a9560",
+        "start": 151,
+        "end": 177,
+        "quote": "and flushed with nitrogen."
+      },
+      {
+        "source_id": "ord-542a3d0745614bcba1a86db54a9cc72d",
+        "source_sha256": "3f5e6f460580862b99021b5d3367d5fb4ef203d35116b6c13ff33db9375a9560",
+        "start": 177,
+        "end": 224,
+        "quote": "2,6-dichloro-3-iodopyridine (0.027 g, 0.1 mmol)"
+      },
+      {
+        "source_id": "ord-542a3d0745614bcba1a86db54a9cc72d",
+        "source_sha256": "3f5e6f460580862b99021b5d3367d5fb4ef203d35116b6c13ff33db9375a9560",
+        "start": 226,
+        "end": 255,
+        "quote": "aniline (10.96 µl, 0.12 mmol)"
+      },
+      {
+        "source_id": "ord-542a3d0745614bcba1a86db54a9cc72d",
+        "source_sha256": "3f5e6f460580862b99021b5d3367d5fb4ef203d35116b6c13ff33db9375a9560",
+        "start": 260,
+        "end": 297,
+        "quote": "cesium carbonate (0.163 g, 0.50 mmol)"
+      },
+      {
+        "source_id": "ord-542a3d0745614bcba1a86db54a9cc72d",
+        "source_sha256": "3f5e6f460580862b99021b5d3367d5fb4ef203d35116b6c13ff33db9375a9560",
+        "start": 298,
+        "end": 353,
+        "quote": "were weight in another flask and flushed with nitrogen."
+      },
+      {
+        "source_id": "ord-542a3d0745614bcba1a86db54a9cc72d",
+        "source_sha256": "3f5e6f460580862b99021b5d3367d5fb4ef203d35116b6c13ff33db9375a9560",
+        "start": 354,
+        "end": 388,
+        "quote": "The Pd-BINAP mixture was subjoined"
+      },
+      {
+        "source_id": "ord-542a3d0745614bcba1a86db54a9cc72d",
+        "source_sha256": "3f5e6f460580862b99021b5d3367d5fb4ef203d35116b6c13ff33db9375a9560",
+        "start": 393,
+        "end": 458,
+        "quote": "the reaction mixture was warmed to 120° C and stirred over night."
+      }
+    ],
+    "repair": {
+      "accepted": true,
+      "patch": [
+        {
+          "op": "add",
+          "path": "/unmapped_actions/-",
+          "value": {
+            "evidence": "The reaction was monitored using LC/MS.",
+            "reason": "Reaction monitoring by LC/MS is not representable by the allowed step operations."
+          }
+        }
+      ]
+    },
+    "apparatus_unknowns": [
+      "The reaction-vessel type, size, manufacturer, material, pressure capability, and heating/stirring hardware are not specified.",
+      "The flask type, size, manufacturer, material, and pressure capability are not specified.",
+      "The stated 120 °C is the reaction-mixture temperature wording; no heater setpoint or temperature-control apparatus is specified.",
+      "No LC/MS instrument model, column, chromatographic mode, or operating conditions are specified."
+    ]
+  },
+  "raw_id": "ord-542a3d0745614bcba1a86db54a9cc72d"
+}

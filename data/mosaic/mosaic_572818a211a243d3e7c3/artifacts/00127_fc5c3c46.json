@@ -1,0 +1,287 @@
+{
+  "protocol": {
+    "id": "pos_9d52138831044592b5c7c5511d53f49c",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-9d52138831044592b5c7c5511d53f49c",
+    "raw_sha256": "d8c7d635f6710682a8cf9e56e36d356b0eccb543e38149afd39fb4f5135d32b8",
+    "source_text": "In a 25 mL round-bottomed flask (t=g) was 5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile (40 mg, 0.17 mmol), Pd2(dba)3 (7.84 mg, 8.56 µmol), and [Reactants] in DMA (1.5 mL) ([VOLUME]) to give a black suspension.[Reactants] and N-(5-amino-2-methylphenyl)acetamide (28.1 mg, 0.17 mmol) were added.  stirred at 110C for 2 days. TLC showed major is SM, small amount of product was formed/  did not workup  LCMS showed 349 mass ??  ",
+    "text_sha256": "fc18aff35ba12e3bed36f93d14535a796db5a92c2dd9971fbf0a06828fbf7cf0",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 40,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r002",
+        "name": "Pd2(dba)3",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 7.84,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r003",
+        "name": "DMA",
+        "smiles": null,
+        "role": "SOLVENT",
+        "amount": {
+          "value": 1.5,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r004",
+        "name": "N-(5-amino-2-methylphenyl)acetamide",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 28.1,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r001",
+        "amount": {
+          "value": 40,
+          "unit": "mg"
+        },
+        "id": "s001",
+        "meta": {
+          "evidence": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile (40 mg, 0.17 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r002",
+        "amount": {
+          "value": 7.84,
+          "unit": "mg"
+        },
+        "id": "s002",
+        "meta": {
+          "evidence": "Pd2(dba)3 (7.84 mg, 8.56 µmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "Pd2(dba)3",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r003",
+        "amount": {
+          "value": 1.5,
+          "unit": "mL"
+        },
+        "id": "s003",
+        "meta": {
+          "evidence": "in DMA (1.5 mL)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "DMA",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r004",
+        "amount": {
+          "value": 28.1,
+          "unit": "mg"
+        },
+        "id": "s004",
+        "meta": {
+          "evidence": "N-(5-amino-2-methylphenyl)acetamide (28.1 mg, 0.17 mmol) were added.",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "N-(5-amino-2-methylphenyl)acetamide",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 110,
+        "duration_s": 172800,
+        "stir": true,
+        "id": "s005",
+        "meta": {
+          "evidence": "stirred at 110C for 2 days.",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {},
+      "reflux": false,
+      "source_context_evidence": []
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "fc18aff35ba12e3bed36f93d14535a796db5a92c2dd9971fbf0a06828fbf7cf0",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 1044,
+        "prompt_tokens": 812,
+        "total_tokens": 1856,
+        "prompt_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 293
+        }
+      },
+      "cache_key": "faca2a5ad87cb55a5e88f8eb549a8f6cacd08ac6872d08f3036d308fae653f5b",
+      "unresolved": [
+        "Both occurrences of [Reactants] are unresolved placeholders; their reagent identities and quantities are unknown.",
+        "The annotations (t=g) and ([VOLUME]) are unexplained and do not establish additional operations or conditions."
+      ],
+      "unmapped_actions": [
+        {
+          "evidence": "and [Reactants] in DMA",
+          "reason": "The initial charge includes an unidentified [Reactants] placeholder, which cannot be mapped to a named reagent addition."
+        },
+        {
+          "evidence": "[Reactants] and N-(5-amino-2-methylphenyl)acetamide (28.1 mg, 0.17 mmol) were added.",
+          "reason": "The later addition includes another unidentified [Reactants] placeholder. The named reagent addition is mapped separately."
+        },
+        {
+          "evidence": "TLC showed major is SM, small amount of product was formed/  did not workup  LCMS showed 349 mass ??",
+          "reason": "TLC and LCMS observations are not representable by the supported operations. The source explicitly states that no workup was performed and records an uncertain LCMS mass observation."
+        }
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/2",
+    "findings": [
+      {
+        "code": "UNMAPPED_ANALYTICAL_RECORD",
+        "quote": "TLC showed major is SM, small amount of product was formed/  did not workup  LCMS showed 349 mass ??",
+        "message": "The plan omits the TLC and LCMS observations and the explicit statement that no workup was performed. Preserve these as unmapped source information; do not infer experimental failure or add a workup operation.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-9d52138831044592b5c7c5511d53f49c",
+          "source_sha256": "69366e0b3acb9b9e331637a592939c816f866860d9a7485e917bf5ed5e2d5229",
+          "start": 348,
+          "end": 448,
+          "quote": "TLC showed major is SM, small amount of product was formed/  did not workup  LCMS showed 349 mass ??"
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "25 mL round-bottomed flask",
+        "kind": "vessel",
+        "identity": null,
+        "scope": "Reaction vessel; stated capacity is 25 mL.",
+        "evidence": {
+          "source_id": "ord-9d52138831044592b5c7c5511d53f49c",
+          "source_sha256": "69366e0b3acb9b9e331637a592939c816f866860d9a7485e917bf5ed5e2d5229",
+          "start": 5,
+          "end": 31,
+          "quote": "25 mL round-bottomed flask"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-9d52138831044592b5c7c5511d53f49c",
+        "source_sha256": "69366e0b3acb9b9e331637a592939c816f866860d9a7485e917bf5ed5e2d5229",
+        "start": 42,
+        "end": 130,
+        "quote": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile (40 mg, 0.17 mmol)"
+      },
+      {
+        "source_id": "ord-9d52138831044592b5c7c5511d53f49c",
+        "source_sha256": "69366e0b3acb9b9e331637a592939c816f866860d9a7485e917bf5ed5e2d5229",
+        "start": 132,
+        "end": 162,
+        "quote": "Pd2(dba)3 (7.84 mg, 8.56 µmol)"
+      },
+      {
+        "source_id": "ord-9d52138831044592b5c7c5511d53f49c",
+        "source_sha256": "69366e0b3acb9b9e331637a592939c816f866860d9a7485e917bf5ed5e2d5229",
+        "start": 180,
+        "end": 195,
+        "quote": "in DMA (1.5 mL)"
+      },
+      {
+        "source_id": "ord-9d52138831044592b5c7c5511d53f49c",
+        "source_sha256": "69366e0b3acb9b9e331637a592939c816f866860d9a7485e917bf5ed5e2d5229",
+        "start": 250,
+        "end": 318,
+        "quote": "N-(5-amino-2-methylphenyl)acetamide (28.1 mg, 0.17 mmol) were added."
+      },
+      {
+        "source_id": "ord-9d52138831044592b5c7c5511d53f49c",
+        "source_sha256": "69366e0b3acb9b9e331637a592939c816f866860d9a7485e917bf5ed5e2d5229",
+        "start": 320,
+        "end": 347,
+        "quote": "stirred at 110C for 2 days."
+      }
+    ],
+    "repair": {
+      "accepted": true,
+      "patch": [
+        {
+          "op": "add",
+          "path": "/unmapped_actions/-",
+          "value": {
+            "evidence": "TLC showed major is SM, small amount of product was formed/  did not workup  LCMS showed 349 mass ??",
+            "reason": "TLC and LCMS observations are not representable by the supported operations. The source explicitly states that no workup was performed and records an uncertain LCMS mass observation."
+          }
+        }
+      ]
+    },
+    "apparatus_unknowns": [
+      "No manufacturer, model, material, pressure rating, or closure type is stated for the flask.",
+      "The heating/stirring apparatus is not described; 110C is an operating temperature statement, not an identified heater setpoint.",
+      "No separation apparatus is described; TLC and LCMS are analytical methods only.",
+      "No workup was performed according to the source."
+    ]
+  },
+  "raw_id": "ord-9d52138831044592b5c7c5511d53f49c"
+}

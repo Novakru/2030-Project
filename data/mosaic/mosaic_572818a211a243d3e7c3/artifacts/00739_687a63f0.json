@@ -1,0 +1,65 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "General  procedure  B  was  applied to  2-methylquinoline-7-carbonitrile  (168  mg,  1.00mmol).",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "2-methylquinoline-7-carbonitrile",
+        "alias": "2-methylquinoline-7-carbonitrile",
+        "amount": {
+          "value": 168,
+          "unit": "mg"
+        },
+        "role": "REACTANT"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The  reaction was stirred at room temperature (25 °C) for 48 hours",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "temp_C": 25,
+        "duration_s": 172800,
+        "stir": true
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "Volatiles were removed under reduced pressure",
+        "stage": "workup",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Purify",
+        "evidence": "the remaining residue was purified by recrystallisation from    acetonitrile",
+        "stage": "purification",
+        "method": "recrystallisation"
+      }
+    ],
+    "uncertainties": [
+      "General procedure B is referenced but not provided; its reagents, quantities, equipment and operations cannot be determined.",
+      "The reduced pressure used for evaporation is not quantified.",
+      "The amount of acetonitrile and the recrystallisation conditions are not specified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "General  procedure  B  was  applied",
+        "reason": "The referenced procedure is absent, so its constituent operations cannot be extracted."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "total_tokens": 1439,
+    "prompt_tokens": 802,
+    "completion_tokens": 637,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 203
+    }
+  },
+  "cache_key": "dc4a44d68ea10096ed4e425f8f59a1ef6fb1e6afcc6aa336129757e675e4e843"
+}

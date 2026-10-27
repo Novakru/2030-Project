@@ -1,0 +1,178 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "5-chloro-7-(1-methyl-1H-pyrazol-3-ylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile (80 mg, 0.29 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "5-chloro-7-(1-methyl-1H-pyrazol-3-ylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile",
+        "alias": "5-chloro-7-(1-methyl-1H-pyrazol-3-ylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile",
+        "amount": {
+          "value": 80,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "N-(5-amino-2-methylphenyl)acetamide (48.0 mg, 0.29 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "N-(5-amino-2-methylphenyl)acetamide",
+        "alias": "N-(5-amino-2-methylphenyl)acetamide",
+        "amount": {
+          "value": 48,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine) (16.91 mg, 0.03 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)",
+        "alias": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)",
+        "amount": {
+          "value": 16.91,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "in DMA (0.5 mL)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "DMA",
+        "alias": "DMA",
+        "amount": {
+          "value": 0.5,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      },
+      {
+        "op": "Add",
+        "evidence": "Pd2(dba)3 (13.38 mg, 0.01 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "Pd2(dba)3",
+        "alias": "Pd2(dba)3",
+        "amount": {
+          "value": 13.38,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "cesium carbonate (105 mg, 0.32 mmol) were added.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "cesium carbonate",
+        "alias": "cesium carbonate",
+        "amount": {
+          "value": 105,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Atmosphere",
+        "evidence": "filled with N2",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "gas": "nitrogen",
+        "mode": "environment"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "then microwave 150C for 30 min.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "temp_C": 150,
+        "duration_s": 1800
+      },
+      {
+        "op": "Add",
+        "evidence": "added 2 mL of MeOH",
+        "stage": "workup",
+        "vessel": "reactor",
+        "reagent": "MeOH",
+        "alias": "MeOH",
+        "amount": {
+          "value": 2,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "Filter",
+        "evidence": "filtered through celite.",
+        "stage": "workup"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "concentrated.",
+        "stage": "workup"
+      },
+      {
+        "op": "Purify",
+        "evidence": "The residue was purified by ISCO (Hex to Hex:EtOAc=1:4 to 1:1 to EtOAc)",
+        "stage": "purification",
+        "method": "ISCO"
+      },
+      {
+        "op": "Transfer",
+        "evidence": "collected prod fractions.",
+        "stage": "purification"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "concentrated to give offwhite solid.",
+        "stage": "purification"
+      },
+      {
+        "op": "Add",
+        "evidence": "This solid was washed with 0.5 mL of EtOAc",
+        "stage": "purification",
+        "reagent": "EtOAc",
+        "alias": "EtOAc",
+        "amount": {
+          "value": 0.5,
+          "unit": "mL"
+        }
+      }
+    ],
+    "uncertainties": [
+      "The degassing method, duration, and gas are not specified; an evacuation/refill cycle cannot be inferred.",
+      "Filtration through celite does not explicitly identify whether the solid or filtrate was retained.",
+      "The collection vessels for the product fractions are not specified.",
+      "The final solid-washing technique and subsequent liquid-removal operation are not specified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "degassed",
+        "reason": "Degassing is not a core operation, and no method is stated that permits mapping it to an allowed Atmosphere mode."
+      },
+      {
+        "evidence": "capped.",
+        "reason": "Closing the vessel is not an allowed operation."
+      },
+      {
+        "evidence": "This solid was washed with 0.5 mL of EtOAc to give pure prod",
+        "reason": "The EtOAc addition is represented, but the solid-washing action cannot be fully represented by a core operation without inventing a separation or filtration."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1802,
+    "prompt_tokens": 908,
+    "total_tokens": 2710,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 322
+    }
+  },
+  "cache_key": "75db588f0621c533a2ef8a79bb2eeb7e10a2f7447602187bfe2c06c64ce0dd5b"
+}

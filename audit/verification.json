@@ -1,36 +1,103 @@
 {
-  "verified_at": "2026-10-26T14:46:35.880605+00:00",
-  "run_id": "mosaic_194589679289590c90c0",
-  "database": "audit/data/mosaic.sqlite3",
+  "verified_at": "2026-10-27T06:29:17.913062+00:00",
+  "run_id": "mosaic_572818a211a243d3e7c3",
+  "database": "audit/data/text_reviews.sqlite3",
   "statistics": {
-    "pending": 366,
+    "pending": 383,
     "accepted": 0,
     "rejected": 0,
-    "total": 366
+    "total": 383
   },
   "main_tests": {
-    "passed": 266,
+    "passed": 413,
     "skipped": 1,
-    "skip_reason": "Original native SDK sources not installed; compatibility work deferred"
+    "deselected": 2,
+    "deselected_reason": "Two separate quantity quota acceptance tests; both explicitly fail in dataset_tests.log"
+  },
+  "quota_tests": {
+    "passed": 0,
+    "failed": 2,
+    "reason": "25/100 positive text conversions; risk coverage incomplete"
   },
   "audit_tests": {
     "passed": 40
   },
-  "dataset_verification": true,
+  "dataset_verification": {
+    "passed": true,
+    "positives_checked": 25,
+    "negatives_checked": 83,
+    "upstream_ord_records_checked": 300,
+    "risk_counts": {
+      "A1": 10,
+      "A2": 10,
+      "A5": 10,
+      "C1": 10,
+      "C4": 3,
+      "C6": 10,
+      "D1": 10,
+      "D3": 10,
+      "D4": 10
+    },
+    "mechanisms": {
+      "A1": {
+        "A1.active_fill_fraction": 5,
+        "A1.cumulative_overfill": 1,
+        "A1.single_add_overfill": 4
+      },
+      "A2": {
+        "A2.above_controller_range": 10
+      },
+      "A5": {
+        "A5.incompatible_bound_capability": 3,
+        "A5.unresolved_binding": 2,
+        "A5.missing_controller": 3,
+        "A5.missing_filter": 2
+      },
+      "C1": {
+        "C1.solvent_family_substitution": 10
+      },
+      "C4": {
+        "C4.excess_reagent": 1,
+        "C4.depleted_reagent": 2
+      },
+      "C6": {
+        "C6.extended_heatchill": 5,
+        "C6.extended_atmosphere": 1,
+        "C6.extended_stir": 4
+      },
+      "D1": {
+        "D1.move_step": 10
+      },
+      "D3": {
+        "D3.undefined_vessel": 5,
+        "D3.undefined_reagent": 5
+      },
+      "D4": {
+        "D4.nonpositive_quantity": 5,
+        "D4.incompatible_dimension": 5
+      }
+    },
+    "issues": [],
+    "scope": "Source integrity, rule checks and single-intervention replay; no experimental feasibility certificate."
+  },
   "replay": {
     "passed": true,
-    "files_compared": 372,
+    "run_id": "mosaic_572818a211a243d3e7c3",
+    "files_compared": 117,
     "byte_identical": true,
+    "changed_files": [],
     "http_blocked": true,
-    "model_calls": 0,
-    "run_id": "mosaic_194589679289590c90c0"
+    "new_model_calls": 0,
+    "cumulative_run_model_calls": 6
   },
   "browser": {
     "passed": true,
-    "negative_queue": 200,
+    "negative_queue": 83,
     "paging": true,
     "A5_focus": true,
-    "native_D2_focus": true,
+    "literal_positive_text": true,
+    "incomplete_queue": 275,
+    "incomplete_text": true,
     "help": true,
     "mobile_overflow": {
       "body": 390,
@@ -38,12 +105,16 @@
     },
     "page_errors": [],
     "actual_decisions_submitted": 0,
-    "A5_record_id": "mosaic_neg_A5_020b59784872d5c4"
+    "A5_record_id": "mosaic_neg_A5_0392fe1615863148"
   },
   "export": {
-    "directory": "E:\\claude projects\\protocol testcases generation\\audit\\exports\\review_20261026T144635_815091Z",
+    "directory": "audit\\exports\\review_20261027T062917_800975Z",
     "records": 10,
     "timestamped": true
+  },
+  "idempotent_publication": {
+    "inserted": 0,
+    "skipped": 383
   },
   "missing_parents": 0,
   "review_events": 0,

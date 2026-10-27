@@ -1,0 +1,174 @@
+{
+  "status": "partial",
+  "result": {
+    "run_id": "mosaic_572818a211a243d3e7c3",
+    "run_dir": "E:\\claude projects\\protocol testcases generation\\data\\mosaic\\mosaic_572818a211a243d3e7c3",
+    "positives": 25,
+    "negatives": 83,
+    "primary_positives": 25,
+    "supplement_counts": {},
+    "positive_shortfall": 75,
+    "risk_shortfalls": {
+      "A3": 10,
+      "A4": 10,
+      "B1": 10,
+      "B2": 10,
+      "B3": 10,
+      "B4": 10,
+      "B5": 10,
+      "C2": 10,
+      "C3": 10,
+      "C4": 7,
+      "C5": 10,
+      "D2": 10
+    },
+    "model_calls": 6,
+    "replayed_stages": {
+      "extractor": 371,
+      "critic": 292,
+      "apparatus_mapper": 292,
+      "library_curator": 4
+    },
+    "failures": 275,
+    "new_model_calls": 6,
+    "mutation_report": {
+      "coverage": {
+        "A1": {
+          "candidates": 38,
+          "selected": 10,
+          "available_mechanisms": [
+            "A1.active_fill_fraction",
+            "A1.cumulative_overfill",
+            "A1.single_add_overfill"
+          ],
+          "selected_mechanisms": {
+            "A1.active_fill_fraction": 5,
+            "A1.cumulative_overfill": 1,
+            "A1.single_add_overfill": 4
+          },
+          "parents": 10
+        },
+        "A2": {
+          "candidates": 10,
+          "selected": 10,
+          "available_mechanisms": [
+            "A2.above_controller_range"
+          ],
+          "selected_mechanisms": {
+            "A2.above_controller_range": 10
+          },
+          "parents": 9
+        },
+        "A5": {
+          "candidates": 77,
+          "selected": 10,
+          "available_mechanisms": [
+            "A5.incompatible_bound_capability",
+            "A5.missing_controller",
+            "A5.missing_filter",
+            "A5.unresolved_binding"
+          ],
+          "selected_mechanisms": {
+            "A5.incompatible_bound_capability": 3,
+            "A5.unresolved_binding": 2,
+            "A5.missing_controller": 3,
+            "A5.missing_filter": 2
+          },
+          "parents": 10
+        },
+        "C1": {
+          "candidates": 65,
+          "selected": 10,
+          "available_mechanisms": [
+            "C1.solvent_family_substitution"
+          ],
+          "selected_mechanisms": {
+            "C1.solvent_family_substitution": 10
+          },
+          "parents": 8
+        },
+        "C4": {
+          "candidates": 3,
+          "selected": 3,
+          "available_mechanisms": [
+            "C4.depleted_reagent",
+            "C4.excess_reagent"
+          ],
+          "selected_mechanisms": {
+            "C4.excess_reagent": 1,
+            "C4.depleted_reagent": 2
+          },
+          "parents": 1
+        },
+        "C6": {
+          "candidates": 44,
+          "selected": 10,
+          "available_mechanisms": [
+            "C6.extended_atmosphere",
+            "C6.extended_heatchill",
+            "C6.extended_stir"
+          ],
+          "selected_mechanisms": {
+            "C6.extended_heatchill": 5,
+            "C6.extended_atmosphere": 1,
+            "C6.extended_stir": 4
+          },
+          "parents": 10
+        },
+        "D1": {
+          "candidates": 22,
+          "selected": 10,
+          "available_mechanisms": [
+            "D1.move_step"
+          ],
+          "selected_mechanisms": {
+            "D1.move_step": 10
+          },
+          "parents": 10
+        },
+        "D3": {
+          "candidates": 77,
+          "selected": 10,
+          "available_mechanisms": [
+            "D3.undefined_reagent",
+            "D3.undefined_vessel"
+          ],
+          "selected_mechanisms": {
+            "D3.undefined_vessel": 5,
+            "D3.undefined_reagent": 5
+          },
+          "parents": 10
+        },
+        "D4": {
+          "candidates": 173,
+          "selected": 10,
+          "available_mechanisms": [
+            "D4.incompatible_dimension",
+            "D4.nonpositive_quantity"
+          ],
+          "selected_mechanisms": {
+            "D4.nonpositive_quantity": 5,
+            "D4.incompatible_dimension": 5
+          },
+          "parents": 10
+        }
+      },
+      "rejected": {
+        "unknown_risk": 30,
+        "multiple_or_missing_fault_instances": 3
+      }
+    },
+    "registry_revision": "eee0384e0262e01c0c7812e8cd2d3241611003f2195a4437b45a3ac7339791a8",
+    "input_contract": "text-only/1",
+    "text_primary_positives": 25,
+    "raw_source_records": 300,
+    "extraction_candidates": 275,
+    "library_registry": "datasets/c87dab6f144c03441f2a/library_registry.json",
+    "library_evolution": "datasets/c87dab6f144c03441f2a/library_evolution.json",
+    "review_bundle": {
+      "positives": "datasets/c87dab6f144c03441f2a/positives.jsonl",
+      "negatives": "datasets/c87dab6f144c03441f2a/negatives.jsonl",
+      "candidates": "datasets/c87dab6f144c03441f2a/extraction_candidates.jsonl"
+    }
+  }
+}

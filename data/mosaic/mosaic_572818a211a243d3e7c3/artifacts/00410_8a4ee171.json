@@ -1,0 +1,223 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "REAGENT_FORMULATION_MISSING",
+        "quote": "H2O2 (30% in H2O; 110 μL, 1.1 mmol)",
+        "message": "The first peroxide charge is a 30% aqueous solution, not unspecified H2O2. Preserve that formulation in the reagent identity.",
+        "severity": "error"
+      },
+      {
+        "code": "WORKUP_STREAM_ROUTING_MISSING",
+        "quote": "After allowing to cool, the mixture was poured into a 0.2 M solution of NaOH (50 mL) and Et2O (30 mL).",
+        "message": "The receiving solution charges and transfer lack a shared destination. Subsequent operations also need distinct logical stream identities so that the organic-layer processing and later aqueous-layer extraction are not interpreted as operations on the same material.",
+        "severity": "error"
+      },
+      {
+        "code": "KNOWN_RETAINED_PHASE_UNSPECIFIED",
+        "quote": "The  aqueous  layer  from  the  workup  above  was  saturated  with  solid  NaCl  and  extracted with EtOAc (3 x 30 mL). The combined organic extracts were dried (MgSO4), filtered",
+        "message": "The extraction separations retain organic extracts, not an unknown phase. The initial separation also explicitly supplies an organic stream for immediate processing while retaining the aqueous stream for later workup.",
+        "severity": "error"
+      },
+      {
+        "code": "FILTRATE_RETENTION_UNSPECIFIED",
+        "quote": "the  organic  layer  was  dried  (MgSO4),  filtered  and  the  solvent  removed  under  vacuum",
+        "message": "Both drying-agent filtrations should retain the filtrate for solvent removal.",
+        "severity": "error"
+      },
+      {
+        "code": "PURIFICATION_DETAILS_NOT_STRUCTURED",
+        "quote": "The oil was purified by column chromatography on silica gel using EtOAc as eluent",
+        "message": "The generic chromatography method omits the stated silica stationary phase and EtOAc eluent. The preparative HPLC conditions and its restriction to the isolated 17 mg mixed fraction also require explicit preservation outside unsupported step fields.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/6/reagent",
+        "value": "H2O2 (30% in H2O)"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/14/reagent",
+        "value": "0.2 M NaOH solution"
+      },
+      {
+        "op": "add",
+        "path": "/steps/14/vessel",
+        "value": "workup_receiver"
+      },
+      {
+        "op": "add",
+        "path": "/steps/15/vessel",
+        "value": "workup_receiver"
+      },
+      {
+        "op": "add",
+        "path": "/steps/16/to_vessel",
+        "value": "workup_receiver"
+      },
+      {
+        "op": "add",
+        "path": "/steps/17/vessel",
+        "value": "workup_receiver"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/17/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "add",
+        "path": "/steps/17/to_vessel",
+        "value": "initial_organic_layer"
+      },
+      {
+        "op": "add",
+        "path": "/steps/18/vessel",
+        "value": "initial_organic_layer"
+      },
+      {
+        "op": "add",
+        "path": "/steps/18/keep",
+        "value": "filtrate"
+      },
+      {
+        "op": "add",
+        "path": "/steps/19/vessel",
+        "value": "initial_organic_layer"
+      },
+      {
+        "op": "add",
+        "path": "/steps/20/vessel",
+        "value": "initial_organic_layer"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/20/method",
+        "value": "column chromatography on silica gel using EtOAc as eluent"
+      },
+      {
+        "op": "add",
+        "path": "/steps/22/vessel",
+        "value": "retained_aqueous_layer"
+      },
+      {
+        "op": "add",
+        "path": "/steps/23/vessel",
+        "value": "retained_aqueous_layer"
+      },
+      {
+        "op": "add",
+        "path": "/steps/24/vessel",
+        "value": "retained_aqueous_layer"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/24/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "add",
+        "path": "/steps/24/to_vessel",
+        "value": "organic_extract_1"
+      },
+      {
+        "op": "add",
+        "path": "/steps/25/vessel",
+        "value": "retained_aqueous_layer"
+      },
+      {
+        "op": "add",
+        "path": "/steps/26/vessel",
+        "value": "retained_aqueous_layer"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/26/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "add",
+        "path": "/steps/26/to_vessel",
+        "value": "organic_extract_2"
+      },
+      {
+        "op": "add",
+        "path": "/steps/27/vessel",
+        "value": "retained_aqueous_layer"
+      },
+      {
+        "op": "add",
+        "path": "/steps/28/vessel",
+        "value": "retained_aqueous_layer"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/28/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "add",
+        "path": "/steps/28/to_vessel",
+        "value": "organic_extract_3"
+      },
+      {
+        "op": "add",
+        "path": "/steps/29/vessel",
+        "value": "combined_organic_extracts"
+      },
+      {
+        "op": "add",
+        "path": "/steps/29/keep",
+        "value": "filtrate"
+      },
+      {
+        "op": "add",
+        "path": "/steps/30/vessel",
+        "value": "combined_organic_extracts"
+      },
+      {
+        "op": "add",
+        "path": "/steps/31/vessel",
+        "value": "combined_organic_extracts"
+      },
+      {
+        "op": "add",
+        "path": "/uncertainties/-",
+        "value": "Logical workup identifiers distinguish material streams, not source-specified apparatus. The initial aqueous phase must also be retained after the first separation: \"The  aqueous  layer  from  the  workup  above  was  saturated  with  solid  NaCl\"."
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The mixture of 1k and 2k (17 mg) was purified further by preparative high-performance liquid chromatography",
+          "reason": "This purification applies only to the separately isolated 17 mg mixed fraction from the silica column, not to all material from that column. The Purify fields do not encode fraction selection or input mass."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "column: Gemini C18; size:  150  x  21.2  mm;  eluent:  20-90%  CH3CN  in  10  mM  aqueous  Et2NH;  run  time:  20  min;  detection:  UV at 254 nM",
+          "reason": "Preserve the stated preparative HPLC conditions for the 17 mg mixed fraction. Dedicated chromatography-condition fields are unavailable; UV detection is not a preparative irradiation action. Column identity and dimensions remain for the apparatus mapper and literal-source parser."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 2320,
+    "prompt_tokens": 3647,
+    "total_tokens": 5967,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 3644,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 478
+    }
+  },
+  "cache_key": "72bc921724edd8e4418fea5115b0580c0199df5cb2a04490179e6b445d2fcd7d"
+}

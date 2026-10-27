@@ -1,0 +1,44 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_ANALYTICAL_ACTIONS",
+        "quote": "The reactions were analyzed and quantified by LC-MS and integrated against the trimethoxybenzene internal standard to determine the yield of product formed in each reaction and the amount of unreacted starting material remaining. Yields determined by LC-MS were also validated by quantification of the 1H NMR spectrum of the indicated entries.",
+        "message": "The plan omits LC-MS analysis and internal-standard quantification, as well as NMR validation for the indicated entries. These actions are not supported by the allowed step operations and should be retained under unmapped_actions.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The reactions were analyzed and quantified by LC-MS and integrated against the trimethoxybenzene internal standard to determine the yield of product formed in each reaction and the amount of unreacted starting material remaining.",
+          "reason": "LC-MS analysis and internal-standard quantification are not represented by the allowed operations."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Yields determined by LC-MS were also validated by quantification of the 1H NMR spectrum of the indicated entries.",
+          "reason": "NMR quantification to validate yields for the indicated entries is not represented by the allowed operations."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 577,
+    "prompt_tokens": 2621,
+    "total_tokens": 3198,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 2618
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 231
+    }
+  },
+  "cache_key": "f2f7b22b79e194121b01607470f28d2fb0583d927ffc978f33ca38121a044a63"
+}

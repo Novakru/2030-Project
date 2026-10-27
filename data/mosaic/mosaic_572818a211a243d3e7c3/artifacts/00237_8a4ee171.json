@@ -1,0 +1,90 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "SOLUTION_IDENTITY_UNDERSPECIFIED",
+        "quote": "H2O2  (30%  in  H2O;  0.31  mL,  3.0  mmol)",
+        "message": "The initial peroxide charge is a 30% solution in water, not an unspecified H2O2 reagent. Preserve this formulation in the reagent identity. The later charge does not explicitly restate its concentration.",
+        "severity": "error"
+      },
+      {
+        "code": "SOLUTION_IDENTITY_UNDERSPECIFIED",
+        "quote": "a  0.2  M  solution  of  NaOH  (30  mL)",
+        "message": "The 30 mL charge refers to 0.2 M NaOH solution. Preserve that concentration in the reagent identity as well as in the uncertainty note.",
+        "severity": "error"
+      },
+      {
+        "code": "ORGANIC_PHASE_RETENTION_UNRESOLVED",
+        "quote": "The  aqueous and organic layers were partitioned and the aqueous layer was extracted with Et2O (2 x 25 mL). The  combined  organic  extracts  were  washed  with  brine  (1  x  30  mL)",
+        "message": "The extraction and brine-wash separations retain the organic phase for subsequent workup. Its identity is supported even though its top or bottom position is unspecified.",
+        "severity": "error"
+      },
+      {
+        "code": "PURIFICATION_METHOD_TOO_GENERIC",
+        "quote": "preparative  thin-layer  chromatography using EtOAc / hexanes (3:7) as eluent",
+        "message": "The method field loses the explicitly specified preparative thin-layer chromatography technique.",
+        "severity": "error"
+      },
+      {
+        "code": "ANALYTICAL_PORTION_SCOPE_MISSING",
+        "quote": "An  analytical  portion  of  the  product  2b  was  recrystallized from hexanes for data purposes.",
+        "message": "The final purification applies only to an analytical portion, not the entire isolated product. The closed step schema cannot directly express this scope, so retain it explicitly as an unmapped detail.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/6/reagent",
+        "value": "H2O2 (30% in H2O)"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/13/reagent",
+        "value": "0.2 M NaOH solution"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/18/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/20/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/23/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/27/method",
+        "value": "preparative thin-layer chromatography"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "An  analytical  portion  of  the  product  2b  was  recrystallized from hexanes for data purposes.",
+          "reason": "The final recrystallization applies only to an analytical portion of product 2b. Portion selection and the scope of this operation are not represented by the available step fields; no portion quantity is specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1189,
+    "prompt_tokens": 3041,
+    "total_tokens": 4230,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 3038,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 368
+    }
+  },
+  "cache_key": "15e2a9f3368dde4dda92fe193ba1bcfd821e20c969beec06d0d8eac63f94328c"
+}

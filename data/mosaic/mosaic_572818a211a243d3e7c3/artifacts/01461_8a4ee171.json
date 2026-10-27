@@ -1,0 +1,78 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "RETAINED_PHASE_UNDERSPECIFIED",
+        "quote": "The aq phase was extracted with DCM (3x). The combined org phases were washed with water",
+        "message": "The extraction products and the phase retained after washing are organic. Unknown top/bottom position does not make the chemical phase identity unknown. The aqueous phase must also remain available between successive extractions.",
+        "severity": "error"
+      },
+      {
+        "code": "FILTER_KEEP_MISSING",
+        "quote": "dried (MgSO4), filtered and evaporated",
+        "message": "The filtrate, rather than the drying-agent solids, proceeds to evaporation; the filter step should identify the retained stream.",
+        "severity": "error"
+      },
+      {
+        "code": "PURIFICATION_CONDITIONS_UNMAPPED",
+        "quote": "flash (SiO2; DCM/MeOH 95/5)",
+        "message": "The generic chromatography method does not operationally represent flash chromatography, silica stationary phase, or the stated eluent composition. Preserve these conditions explicitly in unmapped_actions because the closed Purify fields cannot encode them separately.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/12/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/14/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/16/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/18/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "add",
+        "path": "/steps/20/keep",
+        "value": "filtrate"
+      },
+      {
+        "op": "replace",
+        "path": "/uncertainties/3",
+        "value": "\"The aq phase was extracted with DCM (3x). The combined org phases were washed with water\" identifies the organic phases as the collected product-bearing streams, but does not specify their top/bottom positions. The aqueous phase must remain available for successive extractions; the initial separation must preserve both phases."
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "flash (SiO2; DCM/MeOH 95/5)",
+          "reason": "Flash chromatography uses silica and DCM/MeOH 95/5. These explicit purification conditions are not separately represented by the closed Purify fields."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 740,
+    "prompt_tokens": 2151,
+    "total_tokens": 2891,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 2148,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 139
+    }
+  },
+  "cache_key": "36cd46115365b3dff1a88e986ec5a52ec9803a20e0c210fb72bc136ee26df4dc"
+}

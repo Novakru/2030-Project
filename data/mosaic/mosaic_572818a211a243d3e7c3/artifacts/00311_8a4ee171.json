@@ -1,0 +1,107 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "MISSING_OPERATIONAL_CONDITIONS",
+        "quote": "H2O2 (30% in H2O; 0.15 mL, 1.5 mmol)",
+        "message": "The peroxide solution composition is not encoded in the Add step. Preserve the exact formulation outside the closed step fields.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_REAGENT_CONDITION",
+        "quote": "concentrated  H2SO4  (51  μL,  1.0  mmol)",
+        "message": "The sulfuric acid Add step omits the explicitly specified concentrated form.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_HEATING_DETAIL",
+        "quote": "The mixture was then placed in an oil bath at 60 °C.",
+        "message": "The temperature is represented, but placement in an oil bath is not preserved as an unmapped operational detail.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_PHASE_RETENTION",
+        "quote": "The  combined  organic  layers  were  washed  with  brine  (25  mL)",
+        "message": "The extraction and brine-wash separations leave the retained phase unknown, although the subsequent workup identifies the organic phase as the product-bearing stream.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_FILTER_RETENTION",
+        "quote": "dried  (MgSO4),  filtered  and  the  solvent  removed under vacuum",
+        "message": "The filter step should retain the filtrate for the subsequent solvent removal.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_PURIFICATION_DETAILS",
+        "quote": "column chromatography on silica gel using EtOAc / hexanes (0:1 to 1:1) as eluent",
+        "message": "The generic chromatography method omits the stationary phase, eluent identity, and gradient. These details can be preserved in the supported method field.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "H2O2 (30% in H2O; 0.15 mL, 1.5 mmol)",
+          "reason": "The initial peroxide dose is explicitly 30% in H2O; the closed Add fields do not provide a formulation field."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "concentrated  H2SO4  (51  μL,  1.0  mmol)",
+          "reason": "The sulfuric acid is explicitly concentrated; no concentration field is available on Add."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The mixture was then placed in an oil bath at 60 °C.",
+          "reason": "The HeatChill step represents the temperature, but the specified oil-bath placement is not expressible in its closed fields."
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/steps/23/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/25/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/28/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "add",
+        "path": "/steps/30/keep",
+        "value": "filtrate"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/32/method",
+        "value": "column chromatography on silica gel using EtOAc / hexanes (0:1 to 1:1) as eluent"
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 877,
+    "prompt_tokens": 3251,
+    "total_tokens": 4128,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 3248
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 188
+    }
+  },
+  "cache_key": "cac58e92d8e8685b535ca5cf3f6c47d974d9ca04eb977a4308ac993ad46aabd8"
+}

@@ -1,0 +1,135 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "BINAP (4.67 mg, 7.50 µmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "BINAP",
+        "alias": "BINAP",
+        "amount": {
+          "value": 4.67,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "Pd2dba3 (2.289 mg, 2.50 µmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "Pd2dba3",
+        "alias": "Pd2dba3",
+        "amount": {
+          "value": 2.289,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "were dissolved in dioxane (1ml)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "dioxane",
+        "alias": "dioxane",
+        "amount": {
+          "value": 1,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      },
+      {
+        "op": "Atmosphere",
+        "evidence": "flushed with nitrogen",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "gas": "nitrogen",
+        "mode": "purge"
+      },
+      {
+        "op": "Add",
+        "evidence": "3-bromo-2,6-dichloropyridine (0.023 g, 0.1 mmol)",
+        "stage": "reaction",
+        "vessel": "flask_2",
+        "reagent": "3-bromo-2,6-dichloropyridine",
+        "alias": "3-bromo-2,6-dichloropyridine",
+        "amount": {
+          "value": 23,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "aniline (0.018 mL, 0.20 mmol)",
+        "stage": "reaction",
+        "vessel": "flask_2",
+        "reagent": "aniline",
+        "alias": "aniline",
+        "amount": {
+          "value": 0.018,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "sodium tert-butoxide (0.014 g, 0.15 mmol)",
+        "stage": "reaction",
+        "vessel": "flask_2",
+        "reagent": "sodium tert-butoxide",
+        "alias": "sodium tert-butoxide",
+        "amount": {
+          "value": 14,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Atmosphere",
+        "evidence": "were weight in another flask and flushed with nitrogen",
+        "stage": "reaction",
+        "vessel": "flask_2",
+        "gas": "nitrogen",
+        "mode": "purge"
+      },
+      {
+        "op": "Transfer",
+        "evidence": "The ligand- Pd mixture was subjoined",
+        "stage": "reaction",
+        "from_vessel": "reactor",
+        "to_vessel": "flask_2"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "the reaction mixture was stirred at 100°C over night",
+        "stage": "reaction",
+        "vessel": "flask_2",
+        "temp_C": 100,
+        "stir": true
+      }
+    ],
+    "uncertainties": [
+      "The overnight heating and stirring duration is not numerically specified.",
+      "Nitrogen flushing durations and the gas delivery method are not specified.",
+      "No separate mixing conditions are specified for dissolving BINAP and Pd2dba3 in dioxane."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "were weight in another flask",
+        "reason": "Weighing is not an allowed operation. Placement of the listed reagents in the distinct flask is represented by the Add steps."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1246,
+    "prompt_tokens": 843,
+    "total_tokens": 2089,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 293
+    }
+  },
+  "cache_key": "8385cc1676ed0b3d5cee8a55ecbc9ee783b114c12af27ba22f3448004ff3cbc2"
+}

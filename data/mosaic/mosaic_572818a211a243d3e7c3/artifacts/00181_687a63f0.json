@@ -1,0 +1,109 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "1-bromo-4-methoxybenzene (0.060 mL, 0.47 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "1-bromo-4-methoxybenzene",
+        "alias": "1-bromo-4-methoxybenzene",
+        "amount": {
+          "value": 0.06,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "methyl 2-amino-2-methylpropanoate (0.05 g, 0.43 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "methyl 2-amino-2-methylpropanoate",
+        "alias": "methyl 2-amino-2-methylpropanoate",
+        "amount": {
+          "value": 50,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "sodium 2-methylbutan-2-olate (0.052 g, 0.47 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "sodium 2-methylbutan-2-olate",
+        "alias": "sodium 2-methylbutan-2-olate",
+        "amount": {
+          "value": 52,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "diacetoxypalladium (2.68 mg, 0.01 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "diacetoxypalladium",
+        "alias": "diacetoxypalladium",
+        "amount": {
+          "value": 2.68,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "methyl 2-(4-methoxyphenylamino)-2-methylpropanoate (0.00 µg) was added to a microwave vial.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "methyl 2-(4-methoxyphenylamino)-2-methylpropanoate",
+        "alias": "methyl 2-(4-methoxyphenylamino)-2-methylpropanoate"
+      },
+      {
+        "op": "Add",
+        "evidence": "(TRIFLUOROMETHYL)-BENZENE (0.5 mL) was used as solvent (1-1.2 mL/mmol amine).",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "(TRIFLUOROMETHYL)-BENZENE",
+        "alias": "(TRIFLUOROMETHYL)-BENZENE",
+        "amount": {
+          "value": 0.5,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The mixture was heated in microwave at 180° for 60min.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "duration_s": 3600
+      },
+      {
+        "op": "Irradiate",
+        "evidence": "The mixture was heated in microwave at 180° for 60min.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "duration_s": 3600
+      }
+    ],
+    "uncertainties": [
+      "The stated temperature is 180° without an explicit temperature scale; temp_C is omitted.",
+      "The source reports adding methyl 2-(4-methoxyphenylamino)-2-methylpropanoate at 0.00 µg. The addition is retained, but amount is omitted because the reported zero is not a positive dose; no replacement quantity is inferred.",
+      "HeatChill and Irradiate represent the same simultaneous 60-minute microwave-heating operation, not consecutive treatments."
+    ],
+    "unmapped_actions": []
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "total_tokens": 2730,
+    "prompt_tokens": 1753,
+    "completion_tokens": 977,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1750
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 48
+    }
+  },
+  "cache_key": "dfcd22d55b9acf25ce64491b3ebe25ee131bcbe6a33e67cfec0ff4d7aaeed67e"
+}

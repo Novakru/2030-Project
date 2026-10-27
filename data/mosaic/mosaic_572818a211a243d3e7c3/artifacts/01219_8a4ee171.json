@@ -1,0 +1,36 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNMAPPED_HEATING_METHOD",
+        "quote": "in an oil-bath",
+        "message": "The oil-bath heating condition appears in step evidence but is not preserved in uncertainties or unmapped_actions. The allowed HeatChill fields cannot encode the heating method.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "in an oil-bath",
+          "reason": "Oil-bath heating is specified, but heating method is not represented by an allowed HeatChill field."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 286,
+    "prompt_tokens": 1740,
+    "total_tokens": 2026,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1737,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 167
+    }
+  },
+  "cache_key": "60af7a9986d96adf03af134bb55ce0d6ab31ed1973d73986964fab9b0d1c240b"
+}

@@ -1,0 +1,50 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNMAPPED_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The GC/MS completion check before solvent removal is omitted. Preserve it as an unmapped action because the allowed operations do not represent analytical monitoring.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_PURIFICATION_CONDITIONS",
+        "quote": "chromatographic separation with silica gel (15% ethyl acetate in hexane as eluent)",
+        "message": "The purification evidence retains the stationary phase and eluent, but the operational representation only specifies chromatography. Preserve silica gel and the stated eluent composition explicitly in unmapped_actions; the closed Purify schema cannot encode them.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "Completion was judged by GC/MS before THF removal. Analytical monitoring is not represented by an allowed operation."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "chromatographic separation with silica gel (15% ethyl acetate in hexane as eluent)",
+          "reason": "The mapped chromatography uses silica gel and 15% ethyl acetate in hexane as eluent. These conditions cannot be encoded in the allowed Purify fields."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 542,
+    "prompt_tokens": 1492,
+    "total_tokens": 2034,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1489,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 191
+    }
+  },
+  "cache_key": "31a24297ec41bd50388a9d74f5b19fa5bd6d8cdfac77ae446997e7a5160b1189"
+}

@@ -1,0 +1,112 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "REAGENT_FORMULATION_MISSING",
+        "quote": "H2O2(30%  in  H2O;  153  μL,  1.5  mmol)",
+        "message": "The first peroxide charge is explicitly a 30% aqueous formulation, not unspecified H2O2. Preserve the formulation in the reagent identity.",
+        "severity": "error"
+      },
+      {
+        "code": "REAGENT_CONCENTRATION_MISSING",
+        "quote": "concentrated  H2SO4 (80 μL, 1.5 mmol)",
+        "message": "The sulfuric acid is explicitly concentrated; the reagent field omits this condition.",
+        "severity": "error"
+      },
+      {
+        "code": "WORKUP_SOLUTION_AND_TRANSFER",
+        "quote": "the  mixture  was  poured  into  a  0.1  M  solution  of  NaOH  which  had  been  saturated  with  solid  NaCl  (50  mL)  and  EtOAc  (50  mL)",
+        "message": "The receiving medium consists of 50 mL of NaCl-saturated 0.1 M aqueous NaOH and 50 mL EtOAc. Representing NaCl as a separate workup addition obscures its pre-existing presence in the receiving solution. The transfer also needs explicit source and destination references to preserve the direction of pouring.",
+        "severity": "error"
+      },
+      {
+        "code": "RETAINED_PHASE_UNSPECIFIED",
+        "quote": "The  aqueous  and  organic  layers  were  partitioned  and  the  organic  layer  was  washed  with  brine  (1  x  30  mL),  dried  (Na2SO4)",
+        "message": "The organic phase is the phase carried forward through partitioning and washing. Its top/bottom position is unspecified, but its organic identity is supported; keep_phase should not be unknown.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/7/reagent",
+        "value": "H2O2 (30% in H2O)"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/1/reagent",
+        "value": "concentrated H2SO4"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/15",
+        "value": {
+          "op": "Add",
+          "evidence": "a  0.1  M  solution  of  NaOH  which  had  been  saturated  with  solid  NaCl  (50  mL)",
+          "stage": "workup",
+          "vessel": "workup_vessel",
+          "reagent": "0.1 M aqueous NaOH saturated with NaCl",
+          "alias": "NaOH",
+          "amount": {
+            "value": 50,
+            "unit": "mL"
+          },
+          "role": "WORKUP"
+        }
+      },
+      {
+        "op": "add",
+        "path": "/steps/17/vessel",
+        "value": "workup_vessel"
+      },
+      {
+        "op": "add",
+        "path": "/steps/18/from_vessel",
+        "value": "reactor"
+      },
+      {
+        "op": "add",
+        "path": "/steps/18/to_vessel",
+        "value": "workup_vessel"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/19/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/21/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/uncertainties/4",
+        "value": "The receiving solution is described as \"a  0.1  M  solution  of  NaOH  which  had  been  saturated  with  solid  NaCl  (50  mL)\". The 50 mL is the volume of the saturated aqueous solution, not an amount of solid NaCl."
+      },
+      {
+        "op": "replace",
+        "path": "/unmapped_actions/1/reason",
+        "value": "The receiving NaOH solution was already saturated with solid NaCl. Its formulation is represented in the solution charge; the prior saturation operation has no supported operation or endpoint field."
+      },
+      {
+        "op": "remove",
+        "path": "/steps/16"
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1366,
+    "prompt_tokens": 3051,
+    "total_tokens": 4417,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 3048
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 339
+    }
+  },
+  "cache_key": "70c69f3ab3a9f246dc5d372d0afb818ccc18eab4e245010e130a9944fe842ab5"
+}

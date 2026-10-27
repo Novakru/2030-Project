@@ -1,0 +1,38 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "PURIFICATION_CONDITIONS_UNMAPPED",
+        "quote": "The crude product was purified by flash chromatography on silica gel eluting with 5 to 15% ethyl acetate in petroleum ether.",
+        "message": "The purification is reduced to generic chromatography. Preserve the flash technique and explicitly retain the silica stationary phase and stated eluent range; these details currently appear only in evidence.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/11/method",
+        "value": "flash chromatography"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": "Purification stationary phase and eluent conditions: \"on silica gel eluting with 5 to 15% ethyl acetate in petroleum ether.\""
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 436,
+    "prompt_tokens": 1516,
+    "total_tokens": 1952,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1513
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 279
+    }
+  },
+  "cache_key": "a76f3367ae3c68f474495f4651d583111930e67854bf7a31d13fb114eb45090b"
+}

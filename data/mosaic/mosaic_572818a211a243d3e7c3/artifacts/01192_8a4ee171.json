@@ -1,0 +1,70 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_DRYING_AGENT_ADDITION",
+        "quote": "dried over MgSO4",
+        "message": "The drying operation is acknowledged in unmapped_actions, but the associated MgSO4 addition is missing from the steps. Represent the drying-agent addition without inventing its quantity or contact time.",
+        "severity": "error"
+      },
+      {
+        "code": "UNRESOLVED_RETAINED_PHASE",
+        "quote": "The organic layer was washed with water (3 x 30 mL), brine (30 mL)",
+        "message": "All four wash separations should retain the organic phase. Its unspecified top or bottom position does not make its phase identity unknown.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/11/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/13/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/15/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/17/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "add",
+        "path": "/steps/18",
+        "value": {
+          "op": "Add",
+          "evidence": "dried over MgSO4",
+          "stage": "workup",
+          "reagent": "MgSO4",
+          "alias": "MgSO4"
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/unmapped_actions/0/reason",
+        "value": "The MgSO4 addition is represented in steps. The drying operation in \"dried over MgSO4\" has no dedicated allowed operation; its duration and drying-agent quantity are not specified."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 627,
+    "prompt_tokens": 1950,
+    "total_tokens": 2577,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1947,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 181
+    }
+  },
+  "cache_key": "5dddbcf907e45e2b6f41199696f7fd0fd1d104e8bffdc605faf386f3a8f1d92f"
+}

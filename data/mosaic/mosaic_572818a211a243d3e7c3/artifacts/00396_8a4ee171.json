@@ -1,0 +1,54 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "AMBIGUOUS_PREHEATING_TARGET",
+        "quote": "placed into pre-heated aluminum block at 80 oC",
+        "message": "The standalone HeatChill step has no vessel and can be mistaken for an additional reaction-heating operation. The preheated object is the aluminum block; preserve that apparatus-preparation detail separately from the subsequent 12-hour reaction heating.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The GC/MS completion check before solvent removal is omitted. Preserve it as an unmapped action because the allowed operations do not represent analytical monitoring.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "remove",
+        "path": "/steps/8"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "placed into pre-heated aluminum block at 80 oC",
+          "reason": "The aluminum block was preheated to 80 °C before reactor placement. Preserve this apparatus-preparation detail separately from reaction heating; the preheating duration is not specified."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "Completion was checked by GC/MS before THF removal; analytical monitoring is not represented by an allowed operation."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 725,
+    "prompt_tokens": 1476,
+    "total_tokens": 2201,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1473,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 362
+    }
+  },
+  "cache_key": "bc3b657bda1f36d564922cb9c50d925c736f0b0b8f97205d18434d74538c5992"
+}

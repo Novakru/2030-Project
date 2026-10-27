@@ -1,0 +1,43 @@
+<Synthesis>
+  <Metadata description="Intentionally perturbed source-derived procedure; experimental outcome not observed." publication="https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471" reaction_class=""/>
+  <Hardware>
+    <!--Analysis binding: {"component": "heater", "params": {"T_max_C": 310, "T_min_C": null, "rpm_max": 1500, "rpm_min": 50}, "verified": false, "wetted_materials": []}-->
+    <Component id="heater" type="heater"/>
+    <!--Analysis binding: {"component": "reactor", "params": {"capacity_mL": 50.0}, "verified": false, "wetted_materials": null}-->
+    <Component id="reactor" type="reactor"/>
+  </Hardware>
+  <Reagents>
+    <!--r001: (2-chloropyridin-4-yl)methanol-->
+    <Reagent name="r001" role="reagent"/>
+    <!--r002: Pd2dba3-->
+    <Reagent name="r002" role="reagent"/>
+    <!--r003: biphenyl-2-yldicyclohexylphosphine-->
+    <Reagent name="r003" role="reagent"/>
+    <!--r004: toluene-->
+    <Reagent name="r004" role="solvent"/>
+    <!--r005: 4-fluoro-N-methylaniline-->
+    <Reagent name="r005" role="reagent"/>
+    <!--r006: KOtBu-->
+    <Reagent name="r006" role="reagent"/>
+  </Reagents>
+  <Procedure>
+    <!--Representation scope: supplied_text_operations; source experimental completeness is not independently certified-->
+    <!--Analysis context: {"pressure_control": "UNKNOWN", "reflux": false}-->
+    <!--(2-chloropyridin-4-yl)methanol (.1 g, 0.70 mmol)-->
+    <Add vessel="reactor" reagent="r001" amount="0.007 mmol"/>
+    <!--Pd2dba3 (0.032 g, 0.03 mmol)-->
+    <Add vessel="reactor" reagent="r002" amount="32 mg"/>
+    <!--biphenyl-2-yldicyclohexylphosphine (0.024 g, 0.07 mmol)-->
+    <Add vessel="reactor" reagent="r003" amount="24 mg"/>
+    <!--in toluene (6 mL)-->
+    <Add vessel="reactor" reagent="r004" amount="6 mL"/>
+    <!--4-fluoro-N-methylaniline (0.096 g, 0.77 mmol) and KOtBu (.323 g, 2.88 mmol) were added.-->
+    <Add vessel="reactor" reagent="r005" amount="96 mg"/>
+    <!--4-fluoro-N-methylaniline (0.096 g, 0.77 mmol) and KOtBu (.323 g, 2.88 mmol) were added.-->
+    <Add vessel="reactor" reagent="r006" amount="2.88 mmol"/>
+    <!--Mixture was degassed by bubbling N2 for 20 minutes-->
+    <Purge vessel="reactor" gas="nitrogen" time="1200 s"/>
+    <!--then placed in oil bath at 105 °C. Reaction went for 3 hours-->
+    <HeatChill vessel="reactor" temp="105 °C" time="10800 s"/>
+  </Procedure>
+</Synthesis>

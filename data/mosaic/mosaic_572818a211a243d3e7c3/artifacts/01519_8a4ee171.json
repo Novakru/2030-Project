@@ -1,0 +1,72 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNRESOLVED_RETAINED_PHASE",
+        "quote": "washed sequentially with water (2 x 100 mL) and saturated brine (100 mL). The organic layer was dried over MgSO4",
+        "message": "The washing steps retain the organic phase. Its unspecified top/bottom position does not require keep_phase to be unknown.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_REAGENT_ADDITION",
+        "quote": "The organic layer was dried over MgSO4",
+        "message": "Although drying itself lacks a dedicated operation, contact with MgSO4 can be represented as an Add step before filtration. No amount is specified.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_PURIFICATION_DETAILS",
+        "quote": "flash silica chromatography, elution gradient 0 to 100% EtOAc in heptane",
+        "message": "The generic chromatography method omits the stated flash silica technique and elution gradient. These details can be preserved in the method field.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/11/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/13/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/15/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/17/method",
+        "value": "flash silica chromatography, elution gradient 0 to 100% EtOAc in heptane"
+      },
+      {
+        "op": "add",
+        "path": "/steps/16",
+        "value": {
+          "op": "Add",
+          "evidence": "The organic layer was dried over MgSO4",
+          "stage": "workup",
+          "reagent": "MgSO4",
+          "alias": "MgSO4",
+          "role": "DRYING_AGENT"
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 656,
+    "prompt_tokens": 1902,
+    "total_tokens": 2558,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1899,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 166
+    }
+  },
+  "cache_key": "5bf60b228aa11968f9fbcd687ef3cc77b8e3ddacbb53e6c156904e195a3c4384"
+}

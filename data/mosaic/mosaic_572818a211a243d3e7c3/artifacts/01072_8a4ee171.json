@@ -1,0 +1,58 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNMAPPED_DISSOLUTION",
+        "quote": "were dissolved in dioxane (1ml)",
+        "message": "The solvent Add step records charging dioxane but does not explicitly preserve the reported dissolution. Since dissolution has no supported operation, retain it in unmapped_actions without inventing mixing conditions.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_ANALYTICAL_ACTIONS",
+        "quote": "Detection of the reaction was done by LC/MS. LC/MS showed the completion of the reation. the 3-bromo-2,6-dichloropyridine as well as the aniline were gone, but no desired product was detected. NMR verified the observations.",
+        "message": "The reported LC/MS analysis and NMR verification are absent. Preserve these analytical actions in unmapped_actions; do not infer sampling procedures or experimental failure.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "BINAP (4.67 mg, 7.50 µmol) and Pd2dba3 (2.289 mg, 2.50 µmol) were dissolved in dioxane (1ml)",
+          "reason": "Dissolution is explicitly reported but has no supported operation. Reagent and solvent additions are represented; dissolution conditions are not specified."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Detection of the reaction was done by LC/MS.",
+          "reason": "LC/MS analysis is reported but has no supported operation. Sampling and analytical conditions are not specified."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "NMR verified the observations.",
+          "reason": "NMR verification is reported but has no supported operation. Sample preparation and analytical conditions are not specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 645,
+    "prompt_tokens": 1328,
+    "total_tokens": 1973,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1325
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 178
+    }
+  },
+  "cache_key": "64078df21b697d5d5043d6478e95d407c1ca727098528ccb21ec17717d0675ed"
+}

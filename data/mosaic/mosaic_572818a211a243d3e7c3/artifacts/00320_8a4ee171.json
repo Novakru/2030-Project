@@ -1,0 +1,47 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "MISSING_PURIFICATION_CONDITIONS",
+        "quote": "chromatographic separation with silica gel (20% ethyl acetate in hexane as eluent)",
+        "message": "The purification method omits the stated silica gel stationary phase and eluent composition. These are supported conditions, not merely unspecified eluent details.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The plan omits the GC/MS completion check preceding solvent removal. Because no allowed operation represents analytical monitoring, retain it as an unmapped action.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/10/method",
+        "value": "chromatographic separation with silica gel (20% ethyl acetate in hexane as eluent)"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "Reaction completion was judged by GC/MS before THF removal. Analytical monitoring is not represented by an allowed operation."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 413,
+    "prompt_tokens": 1538,
+    "total_tokens": 1951,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1535,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 120
+    }
+  },
+  "cache_key": "902d69591b1044c093294015aca49729a261f1e01164e3ebce2b6dfd8e4ce922"
+}

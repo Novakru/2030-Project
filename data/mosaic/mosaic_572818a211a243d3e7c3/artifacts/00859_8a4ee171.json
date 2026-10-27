@@ -1,0 +1,41 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "PURIFICATION_DETAILS_UNDERREPRESENTED",
+        "quote": "flash silica chromatography, elution gradient 0 to 50% DCM in heptane",
+        "message": "The purification method is recorded only as generic chromatography. Preserve flash silica chromatography in the method field and record the specified elution gradient under unmapped_actions because the closed step schema has no eluent-gradient fields.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/9/method",
+        "value": "flash silica chromatography"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "elution gradient 0 to 50% DCM in heptane",
+          "reason": "The chromatography eluent and gradient are specified, but the allowed Purify fields cannot represent them separately."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 316,
+    "prompt_tokens": 1500,
+    "total_tokens": 1816,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1497,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 145
+    }
+  },
+  "cache_key": "10ea02e4f2773baeb1b4e98f846915d634810fb66d73d9e83cb69bd2131fbd1f"
+}

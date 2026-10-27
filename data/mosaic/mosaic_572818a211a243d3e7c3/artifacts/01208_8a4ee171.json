@@ -1,0 +1,56 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_EXTRACTION_VOLUMES",
+        "quote": "extracted with EtOAc (3x20 mL)",
+        "message": "The source specifies three extractions using 20 mL of EtOAc each. The plan represents all three cycles but unnecessarily omits the supported volume from each EtOAc addition.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/steps/7/amount",
+        "value": {
+          "value": 20,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "add",
+        "path": "/steps/9/amount",
+        "value": {
+          "value": 20,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "add",
+        "path": "/steps/11/amount",
+        "value": {
+          "value": 20,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "remove",
+        "path": "/uncertainties/2"
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 1823,
+    "completion_tokens": 338,
+    "total_tokens": 2161,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1820
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 76
+    }
+  },
+  "cache_key": "62a692fe51b9cff9203ea3ca5cbb8cffab10957babe9a14a4d2ebf89d221ac26"
+}

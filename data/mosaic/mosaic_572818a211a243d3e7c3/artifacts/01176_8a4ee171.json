@@ -1,0 +1,59 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNESTABLISHED_PURIFICATION_OPERATION",
+        "quote": "The crude product was unable to be purified by silica gel chromatography and was hence characterised from the crude.",
+        "message": "The affirmative Purify step overstates the source. This wording does not establish whether chromatography was actually performed. Preserve the statement as unmapped rather than asserting an operation.",
+        "severity": "unknown"
+      },
+      {
+        "code": "OMITTED_INTERNAL_STANDARD_USE",
+        "quote": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane showed 30:30:16:9 C4:C5:C3,5‐borylation:SM in 60% yield.",
+        "message": "The plan omits use of 1,2‐dimethoxyethane as an analytical internal standard. Preserve this in unmapped_actions; its quantity and analytical sample vessel are unspecified, so it should not be added to the reaction vessel.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "remove",
+        "path": "/steps/8"
+      },
+      {
+        "op": "replace",
+        "path": "/uncertainties/4",
+        "value": "“The crude product was unable to be purified by silica gel chromatography and was hence characterised from the crude.” This does not establish whether chromatography was actually attempted; no chromatography conditions are provided."
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The crude product was unable to be purified by silica gel chromatography and was hence characterised from the crude.",
+          "reason": "Preserves the purification limitation and crude characterization without asserting that a chromatography operation occurred."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane showed 30:30:16:9 C4:C5:C3,5‐borylation:SM in 60% yield.",
+          "reason": "Analytical use of 1,2‐dimethoxyethane is reported, but its quantity, sample vessel, and sample-preparation operations are unspecified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 667,
+    "prompt_tokens": 1331,
+    "total_tokens": 1998,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1328,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 145
+    }
+  },
+  "cache_key": "383fb36e2582d2772c93c6dbd5b75e895d9193d2f846fe7cefa9ac6e76f6f7e9"
+}

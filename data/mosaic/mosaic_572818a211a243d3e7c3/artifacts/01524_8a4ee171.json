@@ -1,0 +1,64 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNMAPPED_ANALYTICAL_OPERATION",
+        "quote": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane",
+        "message": "The crude NMR analysis using 1,2-dimethoxyethane as internal standard is omitted. Preserve this analytical operation as unmapped; the source does not specify the standard quantity or sample preparation.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_CHROMATOGRAPHY_CONDITIONS",
+        "quote": "silica gel chromatography (Pet. Ether (40‐60):EtOAc (19:1)",
+        "message": "The purification method is captured, but its silica stationary phase and specified eluent composition are not represented operationally. Preserve these conditions in unmapped_actions because the closed Purify schema has no dedicated fields for them.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_FRACTION_COLLECTION",
+        "quote": "to give the title compound in two fractions",
+        "message": "The plan omits recovery of two separate chromatography fractions. Preserve this distinction without inventing collection vessels or fraction volumes.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane",
+          "reason": "Crude NMR analysis using the specified internal standard is not expressible with the available operations. Standard quantity and sample preparation are unspecified."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "silica gel chromatography (Pet. Ether (40‐60):EtOAc (19:1)",
+          "reason": "Purification uses silica gel and Pet. Ether (40‐60):EtOAc (19:1). The closed Purify schema has no dedicated stationary-phase or eluent-composition fields."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "to give the title compound in two fractions",
+          "reason": "Chromatography affords two separate product fractions; collection vessels and volumes are not specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 1396,
+    "completion_tokens": 664,
+    "total_tokens": 2060,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1393
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 125
+    }
+  },
+  "cache_key": "5c5cdff3922b3ee39ebd54b6af13e222672ac437f905373b5af7ad5c962cebc1"
+}

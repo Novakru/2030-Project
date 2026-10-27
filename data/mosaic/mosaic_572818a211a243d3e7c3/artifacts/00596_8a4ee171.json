@@ -1,0 +1,50 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_MONITORING",
+        "quote": "The reaction was monitorred by HPLC.",
+        "message": "HPLC monitoring is omitted. Record it as an unmapped action because the allowed operations do not represent analytical monitoring.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_DISSOLUTION",
+        "quote": "were dissolved in toluene (1.5 mL)",
+        "message": "The solvent addition is captured, but the stated dissolution is not. Preserve it as an unmapped action without inferring stirring or a dissolution method.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The reaction was monitorred by HPLC.",
+          "reason": "Analytical monitoring is not represented by an allowed operation; sampling details and monitoring frequency are unspecified."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "were dissolved in toluene (1.5 mL)",
+          "reason": "Solvent addition is represented, but dissolution has no dedicated allowed operation. No stirring or other dissolution method is specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 413,
+    "prompt_tokens": 1419,
+    "total_tokens": 1832,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1416,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 108
+    }
+  },
+  "cache_key": "21363e3fb3c8061cafa3097f6001555f6e3f021fb9b749cd090127e276f0cd15"
+}

@@ -1,0 +1,61 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_PHYSICAL_ACTION",
+        "quote": "placed into pre-heated aluminum block at 80 oC",
+        "message": "The heating step captures temperature and duration but does not preserve placement into the pre-heated block as a physical action. Record it as unmapped because the allowed operations do not directly represent this action.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The GC/MS completion check preceding solvent removal is omitted and should be preserved as an unmapped action.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_PURIFICATION_CONDITIONS",
+        "quote": "chromatographic separation with silica gel (10% ethyl acetate in hexane as eluent)",
+        "message": "The purification evidence preserves the conditions, but the method field omits the silica gel stationary phase and specified eluent composition.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "placed into pre-heated aluminum block at 80 oC",
+          "reason": "After capping and before the 12-hour stirring period, the microreactor was placed into the pre-heated block. This physical placement is not directly represented by an allowed operation."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "Completion was judged by GC/MS before THF removal. This analytical check is not represented by an allowed operation."
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/steps/10/method",
+        "value": "silica gel chromatography (10% ethyl acetate in hexane as eluent)"
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 628,
+    "prompt_tokens": 1451,
+    "total_tokens": 2079,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1448,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 177
+    }
+  },
+  "cache_key": "575c2b15d096e6bd35104e776e7ebfbb31fe8927520da5bff44e8317453b9167"
+}

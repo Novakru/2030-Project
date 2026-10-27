@@ -1,0 +1,64 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNMAPPED_PRESSURE_CONDITION",
+        "quote": "THF was removed under reduced pressure",
+        "message": "The Evaporate evidence retains reduced pressure, but the qualitative pressure condition is not explicitly mapped. Preserve it as an unmapped condition without inventing a numerical pressure.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_PURIFICATION_CONDITIONS",
+        "quote": "chromatographic separation with silica gel (15% ethylacetate in hexane)",
+        "message": "The Purify step specifies only chromatography. Preserve the silica-gel stationary phase and stated eluent composition as unmapped conditions because the closed step schema has no dedicated fields for them.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The GC/MS completion check before solvent removal is omitted. Preserve it as an unmapped action; the allowed operations do not represent analytical monitoring.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "THF was removed under reduced pressure",
+          "reason": "Evaporation under reduced pressure is specified, but no numerical pressure is given. The qualitative pressure condition cannot be represented by pressure_mbar."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "chromatographic separation with silica gel (15% ethylacetate in hexane)",
+          "reason": "The chromatography uses silica gel and 15% ethylacetate in hexane. These purification conditions have no dedicated fields in the allowed Purify schema."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "Completion was judged by GC/MS before THF removal. Analytical monitoring is not represented by an allowed operation."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 722,
+    "prompt_tokens": 1466,
+    "total_tokens": 2188,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1463,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 233
+    }
+  },
+  "cache_key": "6731d0a8442a3b93829b2cf846b45fa5b42fc80dbb5538336a303554c6784610"
+}

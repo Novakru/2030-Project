@@ -1,0 +1,145 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Atmosphere",
+        "evidence": "In an argon filled glove box",
+        "stage": "reaction",
+        "gas": "argon",
+        "mode": "environment",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Add",
+        "evidence": "[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%)",
+        "stage": "reaction",
+        "reagent": "[Ir(cod)(OMe)]2",
+        "alias": "[Ir(cod)(OMe)]2",
+        "amount": {
+          "value": 1.98,
+          "unit": "mg"
+        },
+        "vessel": "reactor"
+      },
+      {
+        "op": "Add",
+        "evidence": "L1 ligand (2.1 mg, 3.5 mol%)",
+        "stage": "reaction",
+        "reagent": "L1 ligand",
+        "alias": "L1 ligand",
+        "amount": {
+          "value": 2.1,
+          "unit": "mg"
+        },
+        "vessel": "reactor"
+      },
+      {
+        "op": "Add",
+        "evidence": "B2pin2 (50.8 mg, 1.0 equiv.)",
+        "stage": "reaction",
+        "reagent": "B2pin2",
+        "alias": "B2pin2",
+        "amount": {
+          "value": 50.8,
+          "unit": "mg"
+        },
+        "vessel": "reactor"
+      },
+      {
+        "op": "Add",
+        "evidence": "KOtBu (1.0 mg, 4.5 mol%)",
+        "stage": "reaction",
+        "reagent": "KOtBu",
+        "alias": "KOtBu",
+        "amount": {
+          "value": 1.0,
+          "unit": "mg"
+        },
+        "vessel": "reactor"
+      },
+      {
+        "op": "Add",
+        "evidence": "dry THF (1.0 mL)",
+        "stage": "reaction",
+        "reagent": "dry THF",
+        "alias": "dry THF",
+        "amount": {
+          "value": 1.0,
+          "unit": "mL"
+        },
+        "role": "SOLVENT",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Stir",
+        "evidence": "The reaction mixture was stirred for 2 minutes at room temperature.",
+        "stage": "reaction",
+        "duration_s": 120,
+        "vessel": "reactor"
+      },
+      {
+        "op": "Add",
+        "evidence": "To this mixture, N,N-dibutylbenzamide (46.7 mg, 0.2 mmol) was added.",
+        "stage": "reaction",
+        "reagent": "N,N-dibutylbenzamide",
+        "alias": "N,N-dibutylbenzamide",
+        "amount": {
+          "value": 46.7,
+          "unit": "mg"
+        },
+        "vessel": "reactor"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "placed into pre-heated aluminum block at 80 oC. The reaction mixture was stirred for 12 h.",
+        "stage": "reaction",
+        "temp_C": 80,
+        "duration_s": 43200,
+        "stir": true,
+        "vessel": "reactor"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "THF was removed under reduced pressure",
+        "stage": "workup",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Purify",
+        "evidence": "chromatographic separation with silica gel (15% ethylacetate in hexane)",
+        "stage": "purification",
+        "method": "chromatography"
+      }
+    ],
+    "uncertainties": [
+      "Room temperature is not specified numerically.",
+      "The identity of L1 ligand is not further specified.",
+      "The reduced pressure used for THF removal is not specified numerically.",
+      "The basis of the 15% ethylacetate in hexane composition and the eluent quantity are not specified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "The microreactor was capped with a teflon pressure cap",
+        "reason": "Capping is not represented by an allowed operation."
+      },
+      {
+        "evidence": "pre-heated aluminum block at 80 oC",
+        "reason": "Preparatory heating of the aluminum block is stated, but equipment preheating is not represented by an allowed operation. Heating the reaction in this block is captured separately."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1330,
+    "prompt_tokens": 873,
+    "total_tokens": 2203,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 256
+    }
+  },
+  "cache_key": "d10bef7778305e6c8996ab1fcb65525352adaee4a64708ed0d1bf964c152a6b0"
+}

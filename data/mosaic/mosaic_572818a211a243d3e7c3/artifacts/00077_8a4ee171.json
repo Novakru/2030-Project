@@ -1,0 +1,33 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "PURIFICATION_METHOD_INCOMPLETE",
+        "quote": "the crude product was purified by normal phase column\nchromatography",
+        "message": "The purification method is reduced to generic chromatography, omitting the explicitly specified normal-phase column method.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/25/method",
+        "value": "normal phase column chromatography"
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 264,
+    "prompt_tokens": 2623,
+    "total_tokens": 2887,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 2620,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 178
+    }
+  },
+  "cache_key": "c0e73228a90433b4ba6c877e46c6c3d14bc21e89904048b973828164d571b948"
+}

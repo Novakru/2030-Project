@@ -1,0 +1,55 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "addition_order",
+        "quote": "diacetoxypalladium (20.76 mg, 0.09 mmol) was added to 5-bromopyridin-3-amine (160 mg, 0.92 mmol), morpholine (4028 µl, 46.24 mmol) (9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine) (64.2 mg, 0.11 mmol) and cesium carbonate (603 mg, 1.85 mmol).",
+        "message": "The source adds diacetoxypalladium to the other reagents, whereas the plan places it first. Move its addition after the receiving reagents; their internal charging order is unspecified.",
+        "severity": "error"
+      },
+      {
+        "code": "unmapped_microwave_heating",
+        "quote": "The resulting suspension was stirred at 150 °C for 30 minutes in a microwave.",
+        "message": "Temperature, duration and stirring are captured, but microwave heating is not preserved as an operational condition. Record it in unmapped_actions because the allowed HeatChill fields cannot express it.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "move",
+        "from": "/steps/0",
+        "path": "/steps/4"
+      },
+      {
+        "op": "add",
+        "path": "/uncertainties/-",
+        "value": {
+          "evidence": "diacetoxypalladium (20.76 mg, 0.09 mmol) was added to 5-bromopyridin-3-amine (160 mg, 0.92 mmol), morpholine (4028 µl, 46.24 mmol) (9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine) (64.2 mg, 0.11 mmol) and cesium carbonate (603 mg, 1.85 mmol).",
+          "reason": "The charging order among the reagents receiving diacetoxypalladium is unspecified."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The resulting suspension was stirred at 150 °C for 30 minutes in a microwave.",
+          "reason": "Microwave heating is specified, but the allowed HeatChill fields cannot represent this heating mode."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 701,
+    "prompt_tokens": 1153,
+    "total_tokens": 1854,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1150,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 136
+    }
+  },
+  "cache_key": "a71977c80fa88e90b249fe1fc353605e9071abbf5766d8732b1122140fd2573c"
+}

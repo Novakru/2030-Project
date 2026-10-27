@@ -1,0 +1,211 @@
+{
+  "protocol": {
+    "id": "pos_e480dfec5b664f3bbe97017be0f19814",
+    "source": {
+      "dataset_id": "ord_dataset-99c23cf435dc42f1af884053bc8b11c7",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+      "file_sha256": "59cd8c35e021be300944f8e556b8fd7ec30a6bc32ff36a54be133aad8e44c393",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": null,
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet"
+    },
+    "raw_id": "ord-e480dfec5b664f3bbe97017be0f19814",
+    "raw_sha256": "1eaf0a2c080f07f623a5ebb3edf58535b1661d9ee586185596a903fb8102fa1d",
+    "source_text": "General procedure  B  was  applied to  7-methoxy-2-methylquinoline  (173 mg,  1.00mmol).  The  reaction  was stirred  at  room  temperature  for  48  hours  affording  a  95:5  mixture  of  2  monoborylated  products  as determined  by  GC-MS.  Volatiles  were  removed  under  reduced  pressure  and  the  remaining  residue  was purified  by  silica  gel  flash-column  chromatography  with  gradient  elution  of  MeOH/DCM  from  0.5 -12.5% over    25    column    volumes,    affording    the major    7-methoxy-2-methyl-4-(4,4,5,5-tetramethyl-[1,3,2]-dioxaborolan-2-yl)quinolineproduct as a pale yellow solid (218 mg, 73%); m.p.87 -88 °C;",
+    "text_sha256": "bca979fc9b0bbda3f2a0265cad2d9874324ffa437737db15db85a2976b8962ed",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "7-methoxy-2-methylquinoline",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 173,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r001",
+        "amount": {
+          "value": 173,
+          "unit": "mg"
+        },
+        "id": "s001",
+        "meta": {
+          "evidence": "7-methoxy-2-methylquinoline  (173 mg,  1.00mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "7-methoxy-2-methylquinoline",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Stir",
+        "vessel": "reactor",
+        "duration_s": 172800,
+        "id": "s002",
+        "meta": {
+          "evidence": "The  reaction  was stirred  at  room  temperature  for  48  hours",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Evaporate",
+        "id": "s003",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "Volatiles  were  removed  under  reduced  pressure",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Purify",
+        "method": "silica gel flash-column chromatography",
+        "id": "s004",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "the  remaining  residue  was purified  by  silica  gel  flash-column  chromatography  with  gradient  elution  of  MeOH/DCM  from  0.5 -12.5% over    25    column    volumes",
+          "stage": "purification",
+          "source_contract": "text-only/1"
+        }
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {},
+      "reflux": false,
+      "source_context_evidence": []
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "bca979fc9b0bbda3f2a0265cad2d9874324ffa437737db15db85a2976b8962ed",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 550,
+        "prompt_tokens": 869,
+        "total_tokens": 1419,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 130
+        }
+      },
+      "cache_key": "04b8b07ceb37789ce6dbdc4e1d86431978da35c05527b27c09276586e4484b3f",
+      "unresolved": [
+        "General procedure B is referenced but not provided; its reagents, quantities, conditions and operations cannot be recovered.",
+        "Room temperature is specified without a numerical temperature.",
+        "Reduced pressure is specified without a numerical pressure."
+      ],
+      "unmapped_actions": [
+        {
+          "evidence": "General procedure  B  was  applied",
+          "reason": "The referenced procedure is absent, so its constituent operations cannot be mapped."
+        },
+        {
+          "evidence": "gradient  elution  of  MeOH/DCM  from  0.5 -12.5% over    25    column    volumes",
+          "reason": "Purification specifies a MeOH/DCM gradient from 0.5–12.5% over 25 column volumes; the step schema has no dedicated fields for these elution conditions."
+        }
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/2",
+    "findings": [
+      {
+        "code": "MISSING_PURIFICATION_DETAILS",
+        "quote": "silica  gel  flash-column  chromatography  with  gradient  elution  of  MeOH/DCM  from  0.5 -12.5% over    25    column    volumes",
+        "message": "The purification step omits the silica-gel flash-column method and the specified solvent gradient and column volumes. Preserve the method in the step and the gradient details as unmapped conditions.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-e480dfec5b664f3bbe97017be0f19814",
+          "source_sha256": "630da4e87816cbd87c7c9e3bab377a973da160a78df3a8e97c2fac70ccb5f44c",
+          "start": 345,
+          "end": 475,
+          "quote": "silica  gel  flash-column  chromatography  with  gradient  elution  of  MeOH/DCM  from  0.5 -12.5% over    25    column    volumes"
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "GC-MS",
+        "kind": "analytical separation instrument",
+        "identity": null,
+        "scope": "used to determine the 95:5 mixture of monoborylated products",
+        "evidence": {
+          "source_id": "ord-e480dfec5b664f3bbe97017be0f19814",
+          "source_sha256": "630da4e87816cbd87c7c9e3bab377a973da160a78df3a8e97c2fac70ccb5f44c",
+          "start": 237,
+          "end": 242,
+          "quote": "GC-MS"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-e480dfec5b664f3bbe97017be0f19814",
+        "source_sha256": "630da4e87816cbd87c7c9e3bab377a973da160a78df3a8e97c2fac70ccb5f44c",
+        "start": 39,
+        "end": 87,
+        "quote": "7-methoxy-2-methylquinoline  (173 mg,  1.00mmol)"
+      },
+      {
+        "source_id": "ord-e480dfec5b664f3bbe97017be0f19814",
+        "source_sha256": "630da4e87816cbd87c7c9e3bab377a973da160a78df3a8e97c2fac70ccb5f44c",
+        "start": 90,
+        "end": 155,
+        "quote": "The  reaction  was stirred  at  room  temperature  for  48  hours"
+      },
+      {
+        "source_id": "ord-e480dfec5b664f3bbe97017be0f19814",
+        "source_sha256": "630da4e87816cbd87c7c9e3bab377a973da160a78df3a8e97c2fac70ccb5f44c",
+        "start": 245,
+        "end": 295,
+        "quote": "Volatiles  were  removed  under  reduced  pressure"
+      },
+      {
+        "source_id": "ord-e480dfec5b664f3bbe97017be0f19814",
+        "source_sha256": "630da4e87816cbd87c7c9e3bab377a973da160a78df3a8e97c2fac70ccb5f44c",
+        "start": 302,
+        "end": 475,
+        "quote": "the  remaining  residue  was purified  by  silica  gel  flash-column  chromatography  with  gradient  elution  of  MeOH/DCM  from  0.5 -12.5% over    25    column    volumes"
+      }
+    ],
+    "repair": {
+      "accepted": true,
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/steps/3/method",
+          "value": "silica gel flash-column chromatography"
+        },
+        {
+          "op": "add",
+          "path": "/unmapped_actions/-",
+          "value": {
+            "evidence": "gradient  elution  of  MeOH/DCM  from  0.5 -12.5% over    25    column    volumes",
+            "reason": "Purification specifies a MeOH/DCM gradient from 0.5–12.5% over 25 column volumes; the step schema has no dedicated fields for these elution conditions."
+          }
+        }
+      ]
+    },
+    "apparatus_unknowns": [
+      "Mapping specialist proposal rejected: ValueError"
+    ]
+  },
+  "raw_id": "ord-e480dfec5b664f3bbe97017be0f19814"
+}

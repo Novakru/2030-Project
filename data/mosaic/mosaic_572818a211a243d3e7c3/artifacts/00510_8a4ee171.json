@@ -1,0 +1,58 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "DRY_SOLVENT_CONDITION_UNMAPPED",
+        "quote": "dry THF (1.0 mL)",
+        "message": "The addition records THF but does not explicitly retain the dry-solvent requirement outside its evidence. Preserve this condition in uncertainties because Add has no dryness field.",
+        "severity": "error"
+      },
+      {
+        "code": "COMPLETION_CHECK_OMITTED",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The GC/MS completion check preceding solvent removal is omitted. Preserve it as an unmapped action rather than inventing a monitoring operation.",
+        "severity": "error"
+      },
+      {
+        "code": "PURIFICATION_CONDITIONS_UNMAPPED",
+        "quote": "chromatographic separation with silica gel (12% ethyl acetate in hexane as eluent)",
+        "message": "The purification method is recorded only as chromatography. Retain the specified stationary phase and eluent composition in the method.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/uncertainties/-",
+        "value": "The source specifies \"dry THF (1.0 mL)\"; the dry-solvent requirement has no dedicated Add field."
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "Completion was judged by GC/MS before THF removal; analytical monitoring has no allowed operation."
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/steps/10/method",
+        "value": "silica gel chromatography (12% ethyl acetate in hexane as eluent)"
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 927,
+    "prompt_tokens": 1455,
+    "total_tokens": 2382,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1452,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 516
+    }
+  },
+  "cache_key": "d2ba365e7cc9320736a047f683c089e670da3ffe89d71b7ca7a14303e8fa063b"
+}

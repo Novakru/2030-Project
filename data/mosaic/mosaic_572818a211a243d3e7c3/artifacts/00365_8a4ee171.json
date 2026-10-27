@@ -1,0 +1,70 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "REAGENT_CONCENTRATION_LOST",
+        "quote": "concentrated  H2SO4(107 μL,  2.0  mmol)",
+        "message": "The sulfuric acid is explicitly concentrated; the structured reagent identity omits this condition.",
+        "severity": "error"
+      },
+      {
+        "code": "PHASE_RETENTION_UNRESOLVED",
+        "quote": "The aqueous and organic layers were partitioned and the aqueous layer was extracted with Et2O (2 x 25 mL). The combined organic extracts were washed with brine (25 mL)",
+        "message": "Unknown top/bottom identities do not make phase retention unknown. Both initial phases are needed, the ether extracts are collected, and the organic phase is retained after the brine wash. The aqueous phase must remain available for the second extraction.",
+        "severity": "error"
+      },
+      {
+        "code": "FILTER_RETENTION_MISSING",
+        "quote": "dried (MgSO4), filtered and the solvent removed under vacuum",
+        "message": "The sequence identifies the filtrate as the stream retained for solvent removal, but the Filter step does not specify it.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/1/reagent",
+        "value": "concentrated H2SO4"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/17/keep_phase",
+        "value": "both"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/19/keep_phase",
+        "value": "both"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/21/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/24/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "add",
+        "path": "/steps/26/keep",
+        "value": "filtrate"
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 768,
+    "prompt_tokens": 3205,
+    "total_tokens": 3973,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 3202,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 295
+    }
+  },
+  "cache_key": "7c085a0f413e7b325611947a07dc41028a2a3d08b2c60b3db5b9bf0daa7130c2"
+}

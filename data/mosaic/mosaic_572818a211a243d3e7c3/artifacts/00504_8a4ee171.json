@@ -1,0 +1,33 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_ANALYSIS",
+        "quote": "analyzed by LCMS.",
+        "message": "The post-heating LCMS analysis is omitted. Because analysis is not a supported step operation, retain it in unmapped_actions.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": "analyzed by LCMS."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 264,
+    "prompt_tokens": 1435,
+    "total_tokens": 1699,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1432,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 179
+    }
+  },
+  "cache_key": "44b7495d23405d917e077e1438d7a79ecdcc1bb94a58aac3f84fbb63f419c406"
+}

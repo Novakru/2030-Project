@@ -1,0 +1,856 @@
+{
+  "protocol": {
+    "id": "pos_2658d2fffcce43018f8455223d2c38f6",
+    "source": {
+      "dataset_id": "ord_dataset-feaf1b793c6d408aaec1cac7cc3ceadc",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-feaf1b793c6d408aaec1cac7cc3ceadc.parquet",
+      "file_sha256": "1de5717ecb37638ccfb586ef1f9b18f4a03c29157c8c4361111d5359037b5051",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": null,
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/fe/ord_dataset-feaf1b793c6d408aaec1cac7cc3ceadc.parquet"
+    },
+    "raw_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+    "raw_sha256": "0d7570dce220da19a2f46732753de5c82acda8e5be9147a488fcf1c5fca4e73f",
+    "source_text": "H2O2  (30%  in  H2O;  0.31  mL,  3.0  mmol)  was  added  dropwise  over 2 min to a stirred solution of ethyl isonicotinate 1d (151 mg, 1.0 mmol), concentrated H2SO4 (107 μL, 2.0 mmol), 3-iodooxetane (368 mg, 2.0 mmol) and iron(II) sulfate heptahydrate (80 mg, 0.3 mmol) in DMSO (10 mL) at 40 °C. After 1-2 min a further portion of iron(II) sulfate heptahydrate (80 mg, 0.3 mmol) was added and the mixture was stirred at 40 °C for 30 min. Further H2O2 (0.31 mL, 3.0 mmol) and iron(II) sulfate heptahydrate (80 mg, 0.3 mmol) was added, and the mixture was stirred at 40 °C for 60 min, then diluted with EtOAc (50 mL). The mixture was poured in to saturated NaHCO3 (5 mL) and brine (100 mL). The aqueous and organic layers were partitioned and the organic layer was washed with brine (3 x 20 mL), dried (MgSO4), filtered and the solvent removed under vacuum to leave a crude oil. The  oil  was  purified  by  column  chromatography  on  silica  gel  using  EtOAc  /  hexanes  (1:19  to  2:3)  to  give the desired product 2d (49 mg, 24%) as an oil.",
+    "text_sha256": "7a8379895e761702cd288fc8f4cc7f1874038001bff9b6c44a6fe9eb4a704dd7",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "ethyl isonicotinate 1d",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 151,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r002",
+        "name": "concentrated H2SO4",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 0.107,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r003",
+        "name": "3-iodooxetane",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 368,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r004",
+        "name": "iron(II) sulfate heptahydrate",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 80,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r005",
+        "name": "DMSO",
+        "smiles": null,
+        "role": "SOLVENT",
+        "amount": {
+          "value": 10,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r006",
+        "name": "H2O2",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 0.31,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r007",
+        "name": "EtOAc",
+        "smiles": null,
+        "role": "WORKUP",
+        "amount": {
+          "value": 50,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r008",
+        "name": "saturated NaHCO3",
+        "smiles": null,
+        "role": "WORKUP",
+        "amount": {
+          "value": 5,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r009",
+        "name": "brine",
+        "smiles": null,
+        "role": "WORKUP",
+        "amount": {
+          "value": 100,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r010",
+        "name": "MgSO4",
+        "smiles": null,
+        "role": "WORKUP",
+        "amount": null,
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r001",
+        "amount": {
+          "value": 151,
+          "unit": "mg"
+        },
+        "id": "s001",
+        "meta": {
+          "evidence": "ethyl isonicotinate 1d (151 mg, 1.0 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "ethyl isonicotinate 1d",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r002",
+        "amount": {
+          "value": 0.107,
+          "unit": "mL"
+        },
+        "id": "s002",
+        "meta": {
+          "evidence": "concentrated H2SO4 (107 μL, 2.0 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "concentrated H2SO4",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r003",
+        "amount": {
+          "value": 368,
+          "unit": "mg"
+        },
+        "id": "s003",
+        "meta": {
+          "evidence": "3-iodooxetane (368 mg, 2.0 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "3-iodooxetane",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r004",
+        "amount": {
+          "value": 80,
+          "unit": "mg"
+        },
+        "id": "s004",
+        "meta": {
+          "evidence": "iron(II) sulfate heptahydrate (80 mg, 0.3 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "iron(II) sulfate heptahydrate",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r005",
+        "amount": {
+          "value": 10,
+          "unit": "mL"
+        },
+        "id": "s005",
+        "meta": {
+          "evidence": "in DMSO (10 mL)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "DMSO",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 40,
+        "stir": true,
+        "id": "s006",
+        "meta": {
+          "evidence": "to a stirred solution of ethyl isonicotinate 1d (151 mg, 1.0 mmol), concentrated H2SO4 (107 μL, 2.0 mmol), 3-iodooxetane (368 mg, 2.0 mmol) and iron(II) sulfate heptahydrate (80 mg, 0.3 mmol) in DMSO (10 mL) at 40 °C",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r006",
+        "amount": {
+          "value": 0.31,
+          "unit": "mL"
+        },
+        "id": "s007",
+        "meta": {
+          "evidence": "H2O2  (30%  in  H2O;  0.31  mL,  3.0  mmol)  was  added  dropwise  over 2 min",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "H2O2",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Wait",
+        "vessel": "reactor",
+        "id": "s008",
+        "meta": {
+          "evidence": "After 1-2 min",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r004",
+        "amount": {
+          "value": 80,
+          "unit": "mg"
+        },
+        "id": "s009",
+        "meta": {
+          "evidence": "a further portion of iron(II) sulfate heptahydrate (80 mg, 0.3 mmol) was added",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "iron(II) sulfate heptahydrate",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 40,
+        "duration_s": 1800,
+        "stir": true,
+        "id": "s010",
+        "meta": {
+          "evidence": "the mixture was stirred at 40 °C for 30 min",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r006",
+        "amount": {
+          "value": 0.31,
+          "unit": "mL"
+        },
+        "id": "s011",
+        "meta": {
+          "evidence": "Further H2O2 (0.31 mL, 3.0 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "H2O2",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r004",
+        "amount": {
+          "value": 80,
+          "unit": "mg"
+        },
+        "id": "s012",
+        "meta": {
+          "evidence": "iron(II) sulfate heptahydrate (80 mg, 0.3 mmol) was added",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "iron(II) sulfate heptahydrate",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 40,
+        "duration_s": 3600,
+        "stir": true,
+        "id": "s013",
+        "meta": {
+          "evidence": "the mixture was stirred at 40 °C for 60 min",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r007",
+        "amount": {
+          "value": 50,
+          "unit": "mL"
+        },
+        "id": "s014",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "then diluted with EtOAc (50 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "EtOAc",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r008",
+        "amount": {
+          "value": 5,
+          "unit": "mL"
+        },
+        "id": "s015",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "saturated NaHCO3 (5 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "saturated NaHCO3",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r009",
+        "amount": {
+          "value": 100,
+          "unit": "mL"
+        },
+        "id": "s016",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "brine (100 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "brine",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Transfer",
+        "id": "s017",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The mixture was poured in to saturated NaHCO3 (5 mL) and brine (100 mL).",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Separate",
+        "keep_phase": "organic",
+        "id": "s018",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The aqueous and organic layers were partitioned",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r009",
+        "amount": {
+          "value": 20,
+          "unit": "mL"
+        },
+        "id": "s019",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "the organic layer was washed with brine (3 x 20 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "brine",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Separate",
+        "keep_phase": "organic",
+        "id": "s020",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "the organic layer was washed with brine (3 x 20 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r009",
+        "amount": {
+          "value": 20,
+          "unit": "mL"
+        },
+        "id": "s021",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "the organic layer was washed with brine (3 x 20 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "brine",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Separate",
+        "keep_phase": "organic",
+        "id": "s022",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "the organic layer was washed with brine (3 x 20 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r009",
+        "amount": {
+          "value": 20,
+          "unit": "mL"
+        },
+        "id": "s023",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "the organic layer was washed with brine (3 x 20 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "brine",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Separate",
+        "keep_phase": "organic",
+        "id": "s024",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "the organic layer was washed with brine (3 x 20 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r010",
+        "id": "s025",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "dried (MgSO4)",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "MgSO4",
+          "amount_source": "unknown"
+        }
+      },
+      {
+        "op": "Filter",
+        "keep": "filtrate",
+        "id": "s026",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "filtered",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Evaporate",
+        "id": "s027",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "the solvent removed under vacuum to leave a crude oil",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Purify",
+        "method": "chromatography",
+        "id": "s028",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The  oil  was  purified  by  column  chromatography  on  silica  gel  using  EtOAc  /  hexanes  (1:19  to  2:3)",
+          "stage": "purification",
+          "source_contract": "text-only/1"
+        }
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {},
+      "reflux": false,
+      "source_context_evidence": []
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "7a8379895e761702cd288fc8f4cc7f1874038001bff9b6c44a6fe9eb4a704dd7",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 2787,
+        "prompt_tokens": 1024,
+        "total_tokens": 3811,
+        "prompt_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 334
+        }
+      },
+      "cache_key": "eec8f76f5a1c87bf9413846ce11699cfd04aff9de965c17cb1a5eba516a1b0ee",
+      "unresolved": [
+        "The order of preparing the initial stirred solution is not specified; its component additions are listed in source order.",
+        "The first H2O2 addition is explicitly dropwise over 2 min; these details are retained in its evidence rather than encoded as a reaction hold.",
+        "The waiting interval is 1–2 min; no single duration_s value is assigned.",
+        "The order of the further H2O2 and iron(II) sulfate heptahydrate additions is not specified beyond their source listing.",
+        "No receiving vessel is identified for pouring the mixture into saturated NaHCO3 and brine. The workup additions represent the receiving liquids, not an instruction to reverse the stated pouring direction.",
+        "The retained organic layer is identified, but its top or bottom position is not specified.",
+        "The amount of MgSO4 and the drying duration are not specified.",
+        "Vacuum pressure and solvent-removal temperature are not specified.",
+        "Chromatography solvent quantities and the implementation of the stated EtOAc / hexanes ratio range are not specified.",
+        "s008: duration unspecified",
+        "s025: addition amount unspecified"
+      ],
+      "unmapped_actions": [
+        {
+          "evidence": "dried (MgSO4)",
+          "reason": "Drying over a drying agent has no allowed operation. The MgSO4 addition is separately represented."
+        },
+        {
+          "evidence": "The aqueous and organic layers were partitioned and the organic layer was washed with brine (3 x 20 mL), dried (MgSO4), filtered and the solvent removed under vacuum to leave a crude oil.",
+          "reason": "Unrepresented physical action: washed"
+        }
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/2",
+    "findings": [
+      {
+        "code": "RETAINED_PHASE_NOT_ENCODED",
+        "quote": "The aqueous and organic layers were partitioned and the organic layer was washed with brine (3 x 20 mL), dried (MgSO4)",
+        "message": "The source identifies the organic layer as the material carried forward through partitioning and all three washes. The four Separate steps should retain the organic phase, not an unknown phase. Its top or bottom position need not be inferred.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+          "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+          "start": 689,
+          "end": 807,
+          "quote": "The aqueous and organic layers were partitioned and the organic layer was washed with brine (3 x 20 mL), dried (MgSO4)"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "FILTER_KEEP_NOT_ENCODED",
+        "quote": "dried (MgSO4), filtered and the solvent removed under vacuum to leave a crude oil",
+        "message": "The filtration is followed by solvent removal from the liquid product stream. Encode retention of the filtrate rather than leaving the retained stream unspecified.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+          "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+          "start": 794,
+          "end": 875,
+          "quote": "dried (MgSO4), filtered and the solvent removed under vacuum to leave a crude oil"
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [],
+    "evidence_spans": [
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 103,
+        "end": 144,
+        "quote": "ethyl isonicotinate 1d (151 mg, 1.0 mmol)"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 146,
+        "end": 183,
+        "quote": "concentrated H2SO4 (107 μL, 2.0 mmol)"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 185,
+        "end": 217,
+        "quote": "3-iodooxetane (368 mg, 2.0 mmol)"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 222,
+        "end": 269,
+        "quote": "iron(II) sulfate heptahydrate (80 mg, 0.3 mmol)"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 270,
+        "end": 285,
+        "quote": "in DMSO (10 mL)"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 78,
+        "end": 294,
+        "quote": "to a stirred solution of ethyl isonicotinate 1d (151 mg, 1.0 mmol), concentrated H2SO4 (107 μL, 2.0 mmol), 3-iodooxetane (368 mg, 2.0 mmol) and iron(II) sulfate heptahydrate (80 mg, 0.3 mmol) in DMSO (10 mL) at 40 °C"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 0,
+        "end": 77,
+        "quote": "H2O2  (30%  in  H2O;  0.31  mL,  3.0  mmol)  was  added  dropwise  over 2 min"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 296,
+        "end": 309,
+        "quote": "After 1-2 min"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 310,
+        "end": 388,
+        "quote": "a further portion of iron(II) sulfate heptahydrate (80 mg, 0.3 mmol) was added"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 393,
+        "end": 436,
+        "quote": "the mixture was stirred at 40 °C for 30 min"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 438,
+        "end": 470,
+        "quote": "Further H2O2 (0.31 mL, 3.0 mmol)"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 331,
+        "end": 388,
+        "quote": "iron(II) sulfate heptahydrate (80 mg, 0.3 mmol) was added"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 538,
+        "end": 581,
+        "quote": "the mixture was stirred at 40 °C for 60 min"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 583,
+        "end": 614,
+        "quote": "then diluted with EtOAc (50 mL)"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 645,
+        "end": 668,
+        "quote": "saturated NaHCO3 (5 mL)"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 673,
+        "end": 687,
+        "quote": "brine (100 mL)"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 616,
+        "end": 688,
+        "quote": "The mixture was poured in to saturated NaHCO3 (5 mL) and brine (100 mL)."
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 689,
+        "end": 736,
+        "quote": "The aqueous and organic layers were partitioned"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 741,
+        "end": 792,
+        "quote": "the organic layer was washed with brine (3 x 20 mL)"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 741,
+        "end": 792,
+        "quote": "the organic layer was washed with brine (3 x 20 mL)"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 741,
+        "end": 792,
+        "quote": "the organic layer was washed with brine (3 x 20 mL)"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 741,
+        "end": 792,
+        "quote": "the organic layer was washed with brine (3 x 20 mL)"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 741,
+        "end": 792,
+        "quote": "the organic layer was washed with brine (3 x 20 mL)"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 741,
+        "end": 792,
+        "quote": "the organic layer was washed with brine (3 x 20 mL)"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 794,
+        "end": 807,
+        "quote": "dried (MgSO4)"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 809,
+        "end": 817,
+        "quote": "filtered"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 822,
+        "end": 875,
+        "quote": "the solvent removed under vacuum to leave a crude oil"
+      },
+      {
+        "source_id": "ord-2658d2fffcce43018f8455223d2c38f6",
+        "source_sha256": "0e61d652c37949f97c4ab14e83f4a0ce85e797bd55b6f3b757fe4abd8390f9fd",
+        "start": 877,
+        "end": 988,
+        "quote": "The  oil  was  purified  by  column  chromatography  on  silica  gel  using  EtOAc  /  hexanes  (1:19  to  2:3)"
+      }
+    ],
+    "repair": {
+      "accepted": true,
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/steps/17/keep_phase",
+          "value": "organic"
+        },
+        {
+          "op": "replace",
+          "path": "/steps/19/keep_phase",
+          "value": "organic"
+        },
+        {
+          "op": "replace",
+          "path": "/steps/21/keep_phase",
+          "value": "organic"
+        },
+        {
+          "op": "replace",
+          "path": "/steps/23/keep_phase",
+          "value": "organic"
+        },
+        {
+          "op": "add",
+          "path": "/steps/25/keep",
+          "value": "filtrate"
+        }
+      ]
+    },
+    "apparatus_unknowns": [
+      "Mapping specialist proposal rejected: ValueError"
+    ]
+  },
+  "raw_id": "ord-2658d2fffcce43018f8455223d2c38f6"
+}

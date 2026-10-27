@@ -1,0 +1,82 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "MISSING_REAGENT_CONCENTRATION",
+        "quote": "H2O2 (30% in H2O; 0.31 mL, 3.0 mmol)",
+        "message": "The first peroxide addition does not preserve the specified 30% aqueous formulation outside its evidence. Record this operational detail explicitly in uncertainties because the Add fields cannot encode concentration.",
+        "severity": "error"
+      },
+      {
+        "code": "UNRESOLVED_EXTRACTION_PHASE",
+        "quote": "The aqueous and organic layers were partitioned and the aqueous layer was extracted with Et2O (2 x 25 mL). The combined organic extracts",
+        "message": "The two extraction separations retain organic extracts, not an unknown phase. The aqueous phase must remain available between extractions, and the initial organic layer must also be included in the combined extracts.",
+        "severity": "error"
+      },
+      {
+        "code": "UNDERSPECIFIED_PURIFICATION_METHOD",
+        "quote": "preparative  thin-layer  chromatography using 30% EtOAc / hexanes as eluent",
+        "message": "The generic method 'chromatography' omits the explicitly specified preparative thin-layer technique.",
+        "severity": "error"
+      },
+      {
+        "code": "ANALYTICAL_PORTION_SCOPE",
+        "quote": "An  analytical  portion  of  the  product  5a  was  recrystallized from hexanes for data purposes.",
+        "message": "The final purification step must not be interpreted as recrystallization of the entire isolated product. The analytical-portion restriction is not operationally represented.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/uncertainties/-",
+        "value": "The first peroxide charge is explicitly an aqueous 30% formulation: \"H2O2 (30% in H2O; 0.31 mL, 3.0 mmol)\". The Add fields do not encode this concentration."
+      },
+      {
+        "op": "replace",
+        "path": "/steps/18/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/20/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The aqueous and organic layers were partitioned and the aqueous layer was extracted with Et2O (2 x 25 mL). The combined organic extracts",
+          "reason": "Retain the initial organic layer for pooling, retain the aqueous phase for the two successive extractions, and combine the recovered organic extracts. The current steps do not explicitly route these separate streams."
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/steps/25/method",
+        "value": "preparative thin-layer chromatography using 30% EtOAc / hexanes as eluent"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "An  analytical  portion  of  the  product  5a  was  recrystallized from hexanes for data purposes.",
+          "reason": "Only an analytical portion undergoes the final recrystallization; its isolation from the bulk product is not represented. No portion quantity is specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1001,
+    "prompt_tokens": 2870,
+    "total_tokens": 3871,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 2867
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 230
+    }
+  },
+  "cache_key": "75c1159327aaa0d1e33a897da7c5e3126d9394822b24f9c7317c86fcd26da1cf"
+}

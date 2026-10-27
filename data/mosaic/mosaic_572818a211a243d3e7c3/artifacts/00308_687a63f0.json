@@ -1,0 +1,116 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "DME (2 mL)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "DME",
+        "alias": "DME",
+        "amount": {
+          "value": 2,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "Et3N (0.028 mL, 0.20 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "Et3N",
+        "alias": "Et3N",
+        "amount": {
+          "value": 0.028,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "Stir",
+        "evidence": "the mixture was stirred at room temperature for 30 min",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "duration_s": 1800
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "then heated to 100°C in a microwave apparatus for 1h",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "temp_C": 100,
+        "duration_s": 3600
+      },
+      {
+        "op": "Add",
+        "evidence": "The reaction mixture was diluted with dichloromethane and ethyl acetate",
+        "stage": "workup",
+        "vessel": "reactor",
+        "reagent": "dichloromethane",
+        "alias": "dichloromethane",
+        "role": "WORKUP"
+      },
+      {
+        "op": "Add",
+        "evidence": "The reaction mixture was diluted with dichloromethane and ethyl acetate",
+        "stage": "workup",
+        "vessel": "reactor",
+        "reagent": "ethyl acetate",
+        "alias": "ethyl acetate",
+        "role": "WORKUP"
+      },
+      {
+        "op": "Filter",
+        "evidence": "fitered",
+        "stage": "workup",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "concentrated",
+        "stage": "workup",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Purify",
+        "evidence": "The residue was purified by reversed phase HPLC",
+        "stage": "purification",
+        "method": "reversed phase HPLC"
+      }
+    ],
+    "uncertainties": [
+      "The opening fragment does not identify the materials placed in the microwave vial or their quantities.",
+      "Room temperature is not specified numerically.",
+      "Amounts of dichloromethane and ethyl acetate are not specified.",
+      "The filtration does not explicitly identify which fraction was retained.",
+      "Argon flushing is stated, but bubbling, evacuation/refilling, or an ongoing argon environment is not explicitly specified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "were placed in a microwave vial equipped with a stirring bar.",
+        "reason": "The materials being placed are missing from the source fragment; stirring-bar setup also has no supported operation."
+      },
+      {
+        "evidence": "The vial was capped",
+        "reason": "Capping has no supported operation."
+      },
+      {
+        "evidence": "flushed with argon",
+        "reason": "Flushing is explicit, but the specified Atmosphere modes do not explicitly cover flushing without stated bubbling, evacuation/refilling, or an environmental context."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1099,
+    "prompt_tokens": 763,
+    "total_tokens": 1862,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 281
+    }
+  },
+  "cache_key": "92de0ac7455c3365ba76b2f9ba363080a9af9e46b359c5a6f457e89e97c8e449"
+}

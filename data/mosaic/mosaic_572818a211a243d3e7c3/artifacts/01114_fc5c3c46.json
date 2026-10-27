@@ -1,0 +1,665 @@
+{
+  "protocol": {
+    "id": "pos_fbf696d6dcb34e7c9c731cbe586b831a",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+    "raw_sha256": "e7d1d5613aa030bf2d1591cb936f38793e07dd450e91662096bb5d3c8f969bb9",
+    "source_text": "aniline (0.162 mL, 1.78 mmol) was added to methyl 3-chloro-5-(4,4,5,5-tetramethyl-1,3,2-dioxaborolan-2-yl)benzoate (440mg, 1.48 mmol), TRIS(DIBENZYLIDENEACETONE)DIPALLADIUM(0) (13.59 mg, 0.01 mmol), tri- tert-butylphosphine (10.80 µL, 0.04 mmol) and potassium phosphate (441 mg, 2.08 mmol) in degassed DME (6 mL) at 20°C under nitrogen. The reaction was stirred at 100 °C for 2 days. The reaction mixture was diluted with Et2O (50 mL), and washed sequentially with water (50 mL) and saturated brine (50 mL). The organic layer was dried over MgSO4, filtered and evaporated. The crude product was purified by flash silica chromatography, elution 10 to 60% EtOAc in heptane.  ",
+    "text_sha256": "da6287067270f20a5389172e47105edd50fde48a3063edbb61a01f5a540d844b",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "DME",
+        "smiles": null,
+        "role": "SOLVENT",
+        "amount": {
+          "value": 6,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r002",
+        "name": "methyl 3-chloro-5-(4,4,5,5-tetramethyl-1,3,2-dioxaborolan-2-yl)benzoate",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 440,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r003",
+        "name": "TRIS(DIBENZYLIDENEACETONE)DIPALLADIUM(0)",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 13.59,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r004",
+        "name": "tri- tert-butylphosphine",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 0.0108,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r005",
+        "name": "potassium phosphate",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 441,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r006",
+        "name": "aniline",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 0.162,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r007",
+        "name": "Et2O",
+        "smiles": null,
+        "role": "WORKUP",
+        "amount": {
+          "value": 50,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r008",
+        "name": "water",
+        "smiles": null,
+        "role": "WORKUP",
+        "amount": {
+          "value": 50,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r009",
+        "name": "saturated brine",
+        "smiles": null,
+        "role": "WORKUP",
+        "amount": {
+          "value": 50,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r010",
+        "name": "MgSO4",
+        "smiles": null,
+        "role": "WORKUP",
+        "amount": null,
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "r001",
+        "amount": {
+          "value": 6,
+          "unit": "mL"
+        },
+        "id": "s001",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "in degassed DME (6 mL)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "DME",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r002",
+        "amount": {
+          "value": 440,
+          "unit": "mg"
+        },
+        "id": "s002",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "methyl 3-chloro-5-(4,4,5,5-tetramethyl-1,3,2-dioxaborolan-2-yl)benzoate (440mg, 1.48 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "methyl 3-chloro-5-(4,4,5,5-tetramethyl-1,3,2-dioxaborolan-2-yl)benzoate",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r003",
+        "amount": {
+          "value": 13.59,
+          "unit": "mg"
+        },
+        "id": "s003",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "TRIS(DIBENZYLIDENEACETONE)DIPALLADIUM(0) (13.59 mg, 0.01 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "TRIS(DIBENZYLIDENEACETONE)DIPALLADIUM(0)",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r004",
+        "amount": {
+          "value": 0.0108,
+          "unit": "mL"
+        },
+        "id": "s004",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "tri- tert-butylphosphine (10.80 µL, 0.04 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "tri- tert-butylphosphine",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r005",
+        "amount": {
+          "value": 441,
+          "unit": "mg"
+        },
+        "id": "s005",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "potassium phosphate (441 mg, 2.08 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "potassium phosphate",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Atmosphere",
+        "gas": "nitrogen",
+        "mode": "environment",
+        "id": "s006",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "under nitrogen",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "temp_C": 20,
+        "id": "s007",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "at 20°C",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r006",
+        "amount": {
+          "value": 0.162,
+          "unit": "mL"
+        },
+        "id": "s008",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "aniline (0.162 mL, 1.78 mmol) was added",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "aniline",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "temp_C": 100,
+        "duration_s": 172800,
+        "stir": true,
+        "id": "s009",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The reaction was stirred at 100 °C for 2 days.",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r007",
+        "amount": {
+          "value": 50,
+          "unit": "mL"
+        },
+        "id": "s010",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The reaction mixture was diluted with Et2O (50 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "Et2O",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r008",
+        "amount": {
+          "value": 50,
+          "unit": "mL"
+        },
+        "id": "s011",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "washed sequentially with water (50 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "water",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Separate",
+        "keep_phase": "organic",
+        "id": "s012",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "washed sequentially with water (50 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r009",
+        "amount": {
+          "value": 50,
+          "unit": "mL"
+        },
+        "id": "s013",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "saturated brine (50 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "saturated brine",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Separate",
+        "keep_phase": "organic",
+        "id": "s014",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "washed sequentially with water (50 mL) and saturated brine (50 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r010",
+        "id": "s015",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The organic layer was dried over MgSO4",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "MgSO4",
+          "amount_source": "unknown"
+        }
+      },
+      {
+        "op": "Filter",
+        "id": "s016",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "filtered",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Evaporate",
+        "id": "s017",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "evaporated",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Purify",
+        "method": "flash silica chromatography, elution 10 to 60% EtOAc in heptane",
+        "id": "s018",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The crude product was purified by flash silica chromatography, elution 10 to 60% EtOAc in heptane.",
+          "stage": "purification",
+          "source_contract": "text-only/1"
+        }
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {
+        "type": "NITROGEN",
+        "basis": "procedure_text"
+      },
+      "reflux": false,
+      "source_context_evidence": []
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "da6287067270f20a5389172e47105edd50fde48a3063edbb61a01f5a540d844b",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "prompt_tokens": 880,
+        "completion_tokens": 1856,
+        "total_tokens": 2736,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 358
+        }
+      },
+      "cache_key": "63babfc967208b5bdb5c5e455b9f3c32ba4b1206f3e6ba3429e704d06baa704e",
+      "unresolved": [
+        "The order of charging DME and the components present before the aniline addition is not specified; their listed order is a serialization of the initial mixture.",
+        "The method and conditions used to degas DME are not specified.",
+        "The retained organic layer is identified, but its top or bottom position is not specified.",
+        "The amount of MgSO4 and the drying duration are not specified.",
+        "s015: addition amount unspecified"
+      ],
+      "unmapped_actions": [
+        {
+          "evidence": "degassed DME",
+          "reason": "Solvent degassing is indicated, but no degassing method or gas is specified; it cannot be faithfully represented by an allowed operation."
+        },
+        {
+          "evidence": "The organic layer was dried over MgSO4",
+          "reason": "MgSO4 introduction is represented by an Add step; drying over a drying agent itself has no supported operation."
+        },
+        {
+          "evidence": "The reaction mixture was diluted with Et2O (50 mL), and washed sequentially with water (50 mL) and saturated brine (50 mL).",
+          "reason": "Unrepresented physical action: washed"
+        }
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/2",
+    "findings": [
+      {
+        "code": "RETAINED_PHASE_NOT_CAPTURED",
+        "quote": "The organic layer was dried over MgSO4, filtered and evaporated.",
+        "message": "The workup identifies the organic layer as the retained phase. Both wash separations should retain the organic phase; its unspecified top/bottom position does not make its phase identity unknown.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+          "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+          "start": 508,
+          "end": 572,
+          "quote": "The organic layer was dried over MgSO4, filtered and evaporated."
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "PURIFICATION_CONDITIONS_OMITTED",
+        "quote": "The crude product was purified by flash silica chromatography, elution 10 to 60% EtOAc in heptane.",
+        "message": "The purification method omits flash silica and the specified 10–60% EtOAc in heptane elution gradient. These conditions can be preserved in the supported method field.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+          "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+          "start": 573,
+          "end": 671,
+          "quote": "The crude product was purified by flash silica chromatography, elution 10 to 60% EtOAc in heptane."
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "filtered",
+        "kind": "filtration apparatus",
+        "identity": null,
+        "scope": "Filtration was performed after drying the organic layer over MgSO4; no filter type or hardware is specified.",
+        "evidence": {
+          "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+          "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+          "start": 548,
+          "end": 556,
+          "quote": "filtered"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "flash silica chromatography",
+        "kind": "chromatography apparatus",
+        "identity": null,
+        "scope": "Flash silica chromatographic purification; no column dimensions, system, or manufacturer is specified.",
+        "evidence": {
+          "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+          "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+          "start": 607,
+          "end": 634,
+          "quote": "flash silica chromatography"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 290,
+        "end": 312,
+        "quote": "in degassed DME (6 mL)"
+      },
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 43,
+        "end": 133,
+        "quote": "methyl 3-chloro-5-(4,4,5,5-tetramethyl-1,3,2-dioxaborolan-2-yl)benzoate (440mg, 1.48 mmol)"
+      },
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 135,
+        "end": 197,
+        "quote": "TRIS(DIBENZYLIDENEACETONE)DIPALLADIUM(0) (13.59 mg, 0.01 mmol)"
+      },
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 199,
+        "end": 245,
+        "quote": "tri- tert-butylphosphine (10.80 µL, 0.04 mmol)"
+      },
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 250,
+        "end": 289,
+        "quote": "potassium phosphate (441 mg, 2.08 mmol)"
+      },
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 321,
+        "end": 335,
+        "quote": "under nitrogen"
+      },
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 313,
+        "end": 320,
+        "quote": "at 20°C"
+      },
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 0,
+        "end": 39,
+        "quote": "aniline (0.162 mL, 1.78 mmol) was added"
+      },
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 337,
+        "end": 383,
+        "quote": "The reaction was stirred at 100 °C for 2 days."
+      },
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 384,
+        "end": 434,
+        "quote": "The reaction mixture was diluted with Et2O (50 mL)"
+      },
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 440,
+        "end": 478,
+        "quote": "washed sequentially with water (50 mL)"
+      },
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 440,
+        "end": 478,
+        "quote": "washed sequentially with water (50 mL)"
+      },
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 483,
+        "end": 506,
+        "quote": "saturated brine (50 mL)"
+      },
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 440,
+        "end": 506,
+        "quote": "washed sequentially with water (50 mL) and saturated brine (50 mL)"
+      },
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 508,
+        "end": 546,
+        "quote": "The organic layer was dried over MgSO4"
+      },
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 548,
+        "end": 556,
+        "quote": "filtered"
+      },
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 561,
+        "end": 571,
+        "quote": "evaporated"
+      },
+      {
+        "source_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a",
+        "source_sha256": "1ec59b440abd6ccbb8f2f09929a14074abf9eef334bfa26c3f9feeb384a58ee1",
+        "start": 573,
+        "end": 671,
+        "quote": "The crude product was purified by flash silica chromatography, elution 10 to 60% EtOAc in heptane."
+      }
+    ],
+    "repair": {
+      "accepted": true,
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/steps/11/keep_phase",
+          "value": "organic"
+        },
+        {
+          "op": "replace",
+          "path": "/steps/13/keep_phase",
+          "value": "organic"
+        },
+        {
+          "op": "replace",
+          "path": "/steps/17/method",
+          "value": "flash silica chromatography, elution 10 to 60% EtOAc in heptane"
+        }
+      ]
+    },
+    "apparatus_unknowns": [
+      "Reaction vessel is not specified.",
+      "Nitrogen/inert-gas delivery or control apparatus is not specified.",
+      "Stirring and heating apparatus are not specified.",
+      "The 20 °C addition condition and 100 °C reaction condition are stated as reaction temperatures; no heater setpoint or temperature-control hardware is specified.",
+      "Liquid-liquid washing is described, but no separatory funnel or phase-separation apparatus is specified.",
+      "Filtration medium and filtration hardware are not specified.",
+      "Flash chromatography column/system details are not specified."
+    ]
+  },
+  "raw_id": "ord-fbf696d6dcb34e7c9c731cbe586b831a"
+}

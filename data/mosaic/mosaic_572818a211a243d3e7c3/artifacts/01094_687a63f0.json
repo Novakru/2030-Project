@@ -1,0 +1,130 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "A 1L flask was charged with 7-bromo-4-(2-fluoro-4-methylphenylamino)cinnoline-3-carbonitrile (3.93 g, 11.00 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "7-bromo-4-(2-fluoro-4-methylphenylamino)cinnoline-3-carbonitrile",
+        "alias": "7-bromo-4-(2-fluoro-4-methylphenylamino)cinnoline-3-carbonitrile",
+        "amount": {
+          "value": 3930,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "Piperazine (3.88 ml, 49.51 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "Piperazine",
+        "alias": "Piperazine",
+        "amount": {
+          "value": 3.88,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "Tris(dibenzylideneacetone)dipalladium (0) (0.806 g, 0.88 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "Tris(dibenzylideneacetone)dipalladium (0)",
+        "alias": "Tris(dibenzylideneacetone)dipalladium (0)",
+        "amount": {
+          "value": 806,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "2-Dicyclohexylphosphino-2',4',6'-tri-iso-propyl-1,1'-biphenyl (0.787 g, 1.65 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "2-Dicyclohexylphosphino-2',4',6'-tri-iso-propyl-1,1'-biphenyl",
+        "alias": "2-Dicyclohexylphosphino-2',4',6'-tri-iso-propyl-1,1'-biphenyl",
+        "amount": {
+          "value": 787,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "Sodium tert-butoxide (3.37 ml, 27.51 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "Sodium tert-butoxide",
+        "alias": "Sodium tert-butoxide",
+        "amount": {
+          "value": 3.37,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "Atmosphere",
+        "evidence": "The atmosphere was evacuated and replaced with N2(g)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "gas": "nitrogen",
+        "mode": "evac_refill"
+      },
+      {
+        "op": "Add",
+        "evidence": "DMA (157 ml) was added to the mixture",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "DMA",
+        "alias": "DMA",
+        "amount": {
+          "value": 157,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The reaction mixture was stirred at 100 °C for 1h.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "temp_C": 100,
+        "duration_s": 3600,
+        "stir": true
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The reaction mixture was cooled to rt",
+        "stage": "workup",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Purify",
+        "evidence": "flash chromatography using DCM to DCM/MeOH/NH4OH (10:1:0.1)",
+        "stage": "purification",
+        "method": "chromatography"
+      }
+    ],
+    "uncertainties": [
+      "The cooling target is stated as rt; no numeric temperature or cooling duration is specified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "adsorbed on silica gel",
+        "reason": "Adsorption onto silica gel is not an allowed operation, and the text does not specify the physical actions used to perform it."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 881,
+    "completion_tokens": 1204,
+    "total_tokens": 2085,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 126
+    }
+  },
+  "cache_key": "17b87daf09adb36c6cb3ca1109b2d160d5f3dd0622d41d5ae35a8ce87271baff"
+}

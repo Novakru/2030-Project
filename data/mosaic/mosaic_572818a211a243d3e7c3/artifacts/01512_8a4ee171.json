@@ -1,0 +1,41 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "PURIFICATION_DETAILS_UNDERMAPPED",
+        "quote": "the crude product was purified by silica flash chromatography, MeOH, 0-10%, in DCM",
+        "message": "The purification method is reduced to generic chromatography. Preserve silica flash chromatography in the method field and record the specified MeOH/DCM eluent range as an unmapped condition because the permitted step fields do not include eluent composition.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/11/method",
+        "value": "silica flash chromatography"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "MeOH, 0-10%, in DCM",
+          "reason": "The chromatography eluent is specified as 0–10% MeOH in DCM; the permitted Purify fields cannot separately encode eluent composition."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 330,
+    "prompt_tokens": 1698,
+    "total_tokens": 2028,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1695,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 147
+    }
+  },
+  "cache_key": "65e7eb949b0b7b76f5fb780c520b4baa8b026a6488a91b034200336355267fff"
+}

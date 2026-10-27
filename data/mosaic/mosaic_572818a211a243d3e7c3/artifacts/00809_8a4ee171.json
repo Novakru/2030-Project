@@ -1,0 +1,36 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_ANALYTICAL_CHECK",
+        "quote": "UPLC shows di-Cl SM almost completely consumed but no evidence of desired product.",
+        "message": "The reported UPLC check is omitted. Preserve it as an unmapped analytical action because the allowed operations do not represent UPLC analysis; do not infer experimental failure from the observation.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "UPLC shows di-Cl SM almost completely consumed but no evidence of desired product.",
+          "reason": "Reported UPLC analysis and observation cannot be represented by an allowed operation."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 284,
+    "prompt_tokens": 1416,
+    "total_tokens": 1700,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1413,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 148
+    }
+  },
+  "cache_key": "119f68431f387ca28af97613fb5ead65b9d924503007dd18d8f702291e89926b"
+}

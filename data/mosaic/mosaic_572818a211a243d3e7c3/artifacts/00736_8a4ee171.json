@@ -1,0 +1,33 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "PURIFICATION_METHOD_UNDERSPECIFIED",
+        "quote": "purified by flash column chromatography",
+        "message": "The purification method omits the explicitly specified flash column chromatography subtype.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/5/method",
+        "value": "flash column chromatography"
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "total_tokens": 1347,
+    "prompt_tokens": 1186,
+    "completion_tokens": 161,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1183
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 87
+    }
+  },
+  "cache_key": "6d78ee9622f8a865694dddfa414ce9149816d87ecfac3341f13d7c6a98a332ae"
+}

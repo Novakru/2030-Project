@@ -1,0 +1,36 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_ANALYTICAL_OBSERVATION",
+        "quote": "The LCMS indicated no reaction ???",
+        "message": "The source reports an LCMS observation that is not retained in the plan. Preserve it as unmapped information without treating the questioned statement as confirmed experimental failure.",
+        "severity": "unknown"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The LCMS indicated no reaction ???",
+          "reason": "LCMS analysis is not represented by an allowed operation. The source's questioned observation is retained without inferring experimental failure."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 280,
+    "prompt_tokens": 1154,
+    "total_tokens": 1434,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1151,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 153
+    }
+  },
+  "cache_key": "7354e98e1157ab97df81a7fdee068caf6104f73d483fbbedfb05fa85d43e9a85"
+}

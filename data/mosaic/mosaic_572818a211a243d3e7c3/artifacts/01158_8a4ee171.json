@@ -1,0 +1,50 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNMAPPED_CHROMATOGRAPHY_CONDITIONS",
+        "quote": "ISCO (Hex to Hex:EtOAc=1:4 to 1:1 to EtOAc)",
+        "message": "The purification method is represented, but the stated eluent sequence is present only in evidence. Preserve this operational condition explicitly in unmapped_actions because the allowed Purify fields do not encode an eluent program.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_FILTER_MEDIUM",
+        "quote": "filtered through celite",
+        "message": "The filtration is represented, but Celite is not operationally encoded. Preserve the specified filtration medium in unmapped_actions; the allowed Filter fields do not include a medium.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "ISCO (Hex to Hex:EtOAc=1:4 to 1:1 to EtOAc)",
+          "reason": "The stated chromatography eluent sequence is Hex, Hex:EtOAc=1:4, Hex:EtOAc=1:1, then EtOAc. The allowed Purify fields do not separately encode this program."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "filtered through celite",
+          "reason": "Filtration is represented, but the specified Celite filtration medium cannot be encoded in the allowed Filter fields."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 744,
+    "prompt_tokens": 1864,
+    "total_tokens": 2608,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1861,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 374
+    }
+  },
+  "cache_key": "e3e81fdf14568a7beb9d64f785c3c578f106bdd71aa469777166d0d4904664ae"
+}

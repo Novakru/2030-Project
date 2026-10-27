@@ -1,0 +1,52 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "MISSING_CHROMATOGRAPHY_DETAILS",
+        "quote": "silica gel chromatography (10% EtOAc in Petroleum Ether 40‐60 o C)",
+        "message": "The purification step omits the stated silica gel stationary phase and eluent composition. The petroleum ether designation should not be interpreted as a chromatography operating temperature.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_CRUDE_ANALYSIS",
+        "quote": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane",
+        "message": "The crude NMR analysis and named internal standard are not represented. Preserve this analytical operation as unmapped; the source does not specify the standard quantity or establish its addition to the reaction vessel.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/6/method",
+        "value": "silica gel chromatography"
+      },
+      {
+        "op": "add",
+        "path": "/uncertainties/-",
+        "value": "Chromatography eluent is specified as \"10% EtOAc in Petroleum Ether 40‐60 o C\"; total eluent quantity and percentage basis are not stated. The petroleum ether designation does not establish an operating temperature."
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane",
+          "reason": "Analytical operation has no corresponding supported step type. Internal-standard quantity and sample preparation are not specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 479,
+    "prompt_tokens": 1124,
+    "total_tokens": 1603,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1121,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 170
+    }
+  },
+  "cache_key": "96a896569e2722d936c46ec1de3bd48c53c023aa1d75852e555bdd8dcc3d354e"
+}

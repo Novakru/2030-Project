@@ -1,0 +1,749 @@
+{
+  "data": {
+    "proposals": [
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_8f325181a142750c2a21",
+          "mention_f4667dee8870125b5f31",
+          "mention_f9197b1162d40699097a",
+          "mention_c3fee1f6509ec6f4ee8d",
+          "mention_47fc3cd7d27188c4edf5"
+        ],
+        "name": "AdsorbOntoSupport",
+        "reason": "The operation phrases match the existing adsorption candidate, not Add or terminal Purify. Retain each reported support name without equating silica with silica gel. The adsorption-medium observation describes a material role, not evidence of apparatus.",
+        "contract": {
+          "status": "semantic_candidate",
+          "candidate_id": "op_candidate_9daa3e383b02f835ca0c",
+          "parameters": {
+            "material": "material_reference",
+            "support": "literal_name"
+          },
+          "effects": [
+            "material_adsorbed_onto_support"
+          ],
+          "unresolved": [
+            "support amount",
+            "vessel",
+            "loading procedure",
+            "solvent conditions",
+            "material identity where unspecified"
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_88df3a2e0c3381fa6cb1"
+        ],
+        "name": "MicrowaveHeat",
+        "reason": "The evidence matches the existing microwave-heating candidate with different parameter values. Irradiate is optical and HeatChill alone loses microwave mode; the supplied Irradiate label is not authoritative.",
+        "contract": {
+          "status": "semantic_candidate",
+          "candidate_id": "op_candidate_950fc61a0a20402d7313",
+          "observed": {
+            "temp_C": 120,
+            "duration_s": 14400
+          },
+          "effects": [
+            "microwave_energy_applied",
+            "temperature_condition_maintained_for_duration"
+          ],
+          "guards": [
+            "duration_s > 0",
+            "microwave-compatible configuration must be established before execution"
+          ],
+          "unresolved": [
+            "vessel",
+            "microwave power",
+            "pressure configuration",
+            "temperature measurement basis"
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_ef23f6dcb77635cff24a"
+        ],
+        "name": "PreligateMetalAndLigand",
+        "reason": "Pre-ligation specifies a chemical preparation purpose beyond elapsed time. Wait would discard this effect, and no quantified additions or approved lossless macro are supplied.",
+        "contract": {
+          "status": "semantic_candidate",
+          "parameters": {
+            "vessel": "identifier",
+            "metal_source": "literal_name",
+            "ligand": "material_reference",
+            "solvent": "literal_name",
+            "duration_s": "positive_time"
+          },
+          "effects": [
+            "metal_source_and_ligand_subject_to_preligation_conditions"
+          ],
+          "observed": {
+            "metal_source": "Ni(cod)2",
+            "ligand": "phosphine ligand",
+            "solvent": "dioxane",
+            "duration_s": 900,
+            "vessel_role": "separate plate"
+          },
+          "unresolved": [
+            "vessel identity",
+            "ligand identity",
+            "material quantities",
+            "temperature",
+            "mixing conditions",
+            "ligation endpoint"
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_569bc86f85fcc4395a7a"
+        ],
+        "name": "Add",
+        "reason": "The quantified morpholine observation fits Add without a new dosing concept. The quotation is a material listing rather than an explicit addition verb, so action context and vessel remain unresolved.",
+        "contract": {
+          "observed": {
+            "reagent": "morpholine",
+            "amount": {
+              "value": 4028,
+              "unit": "µl"
+            },
+            "reported_substance_amount": {
+              "value": 46.24,
+              "unit": "mmol"
+            }
+          },
+          "unresolved": [
+            "vessel",
+            "confirmation of addition context"
+          ]
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_e2702c47864984445936",
+          "mention_fc8ca48f7a0c7fa25ea9",
+          "mention_84dbe20e102a014f5f67",
+          "mention_e6245ce3d8fae9fd8e45",
+          "mention_49f39e6507874dd0524e",
+          "mention_8d37a29c29ad9022ff8f",
+          "mention_42f3724a818315e776d4",
+          "mention_66cc9730983f7220a56c",
+          "mention_edda2b6753926dc3f8fa",
+          "mention_4905f813387a1220bdeb"
+        ],
+        "name": "AnalyzeSample",
+        "reason": "These passages describe analytical observations, not purification or waiting. One parameterized concept can preserve the distinct reported methods, standards, results, and completion conditions; no registry operation represents analytical measurement.",
+        "contract": {
+          "status": "semantic_candidate",
+          "parameters": {
+            "sample": "material_reference",
+            "method": "reported_method_or_unknown",
+            "internal_standard": "optional_reported_material",
+            "result": "reported_result_or_unknown",
+            "timing_context": "optional_reported_context"
+          },
+          "effects": [
+            "analytical_observation_recorded"
+          ],
+          "guards": [
+            "retain each observation's method and result without substitution",
+            "a completion judgment remains distinct from a numerical conversion or product ratio",
+            "an internal standard mention does not establish a quantified Add"
+          ],
+          "observed_methods": [
+            "GC/MS",
+            "GC-MS",
+            "LC/MS",
+            "LCMS",
+            "1 H NMR",
+            "unspecified analysis"
+          ],
+          "unresolved": [
+            "sample identities where unspecified",
+            "sampling procedure",
+            "instrument configurations",
+            "measurement protocols",
+            "completion thresholds where unspecified"
+          ],
+          "scope": "Analytical clauses only; subsequent evaporation and drying remain separate.",
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_24a6e6509f631ceff661",
+          "mention_f3309edc09942d2f351c"
+        ],
+        "name": "AllowToCool",
+        "reason": "Both phrases report allowing cooling without a numeric endpoint. HeatChill requires temp_C, and Wait would lose the cooling condition; no target temperature may be inferred.",
+        "contract": {
+          "status": "semantic_candidate",
+          "parameters": {
+            "vessel": "identifier",
+            "endpoint": "reported_cooling_endpoint_or_unknown"
+          },
+          "effects": [
+            "mixture_allowed_to_cool_before_subsequent_transfer"
+          ],
+          "unresolved": [
+            "vessel",
+            "initial temperature",
+            "final temperature",
+            "duration",
+            "cooling configuration"
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_24a6e6509f631ceff661",
+          "mention_f3309edc09942d2f351c"
+        ],
+        "name": "Transfer",
+        "reason": "Pouring the mixture into a receiving solution changes material location and matches Transfer. Receiving NaOH solution, ice, and any pH endpoint remain separate conditions; this is not an admitted workup macro.",
+        "contract": {
+          "scope": "Pouring clause only",
+          "observed": [
+            {
+              "origin": "mention_24a6e6509f631ceff661",
+              "receiving_contents": "0.2 M solution of NaOH",
+              "receiving_solution_volume": {
+                "value": 50,
+                "unit": "mL"
+              }
+            },
+            {
+              "origin": "mention_f3309edc09942d2f351c",
+              "receiving_contents": "solution of NaOH and ice"
+            }
+          ],
+          "unresolved": [
+            "from_vessel",
+            "to_vessel",
+            "transferred amount"
+          ],
+          "note": "The receiving-solution volume is not the transferred-mixture amount."
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_f3309edc09942d2f351c"
+        ],
+        "name": "AdjustPH",
+        "reason": "The pH > 10 endpoint matches the existing candidate. Transfer alone cannot express the endpoint, and the unspecified dose and control procedure prevent a lossless macro.",
+        "contract": {
+          "status": "semantic_candidate",
+          "candidate_id": "op_candidate_ab7722b0228a7ccfc6fc",
+          "observed": {
+            "endpoint": "pH > 10",
+            "adjusting_material_context": "NaOH and ice"
+          },
+          "unresolved": [
+            "vessel",
+            "NaOH amount and concentration",
+            "measurement method",
+            "endpoint-control procedure"
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_24a6e6509f631ceff661",
+          "mention_f3309edc09942d2f351c"
+        ],
+        "name": "ExtractWithSolvent",
+        "reason": "Extraction requires solvent contact and partitioning, not just Separate's retained-phase selection. The first observation also specifies three extraction portions; no approved macro or complete phase and parameter mapping is available.",
+        "contract": {
+          "status": "semantic_candidate",
+          "parameters": {
+            "vessel": "identifier",
+            "solvent": "literal_name",
+            "cycles": "reported_count_or_unknown",
+            "solvent_amount_per_cycle": "quantity_or_unknown",
+            "keep_phase": "reported_phase_or_unknown"
+          },
+          "effects": [
+            "mixture_subject_to_solvent_extraction"
+          ],
+          "observed": [
+            {
+              "origin": "mention_24a6e6509f631ceff661",
+              "solvent": "EtOAc",
+              "cycles": 3,
+              "solvent_amount_per_cycle": {
+                "value": 30,
+                "unit": "mL"
+              }
+            },
+            {
+              "origin": "mention_f3309edc09942d2f351c",
+              "solvent": "Et2O",
+              "cycles": null,
+              "solvent_amount_per_cycle": null
+            }
+          ],
+          "guards": [
+            "preserve explicitly reported extraction cycles",
+            "do not infer the retained phase or pooling procedure"
+          ],
+          "unresolved": [
+            "vessel",
+            "contact procedure",
+            "retained phase",
+            "phase destinations"
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_06e46b6d39afaeba8e69"
+        ],
+        "name": "OpenToAir",
+        "reason": "Opening establishes exposure by a physical configuration change. Atmosphere's environment metadata does not preserve that action, and neither purge nor evacuation/refill is stated.",
+        "contract": {
+          "status": "semantic_candidate",
+          "parameters": {
+            "vessel": "identifier"
+          },
+          "effects": [
+            "vessel_opened_to_ambient_air"
+          ],
+          "unresolved": [
+            "vessel",
+            "opening configuration",
+            "exposure duration",
+            "prior atmosphere"
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_435edb4227df60817d4c"
+        ],
+        "name": "Centrifuge",
+        "reason": "Centrifugation uses centrifugal action absent from Filter and Separate. Neither a retained fraction nor any speed, force, or duration is reported.",
+        "contract": {
+          "status": "semantic_candidate",
+          "parameters": {
+            "sample_container": "identifier",
+            "duration_s": "positive_time_or_unknown",
+            "relative_centrifugal_force_g": "reported_force_or_unknown",
+            "speed_rpm": "reported_speed_or_unknown"
+          },
+          "effects": [
+            "sample_subject_to_centrifugation"
+          ],
+          "guards": [
+            "g and rpm remain distinct quantities",
+            "do not infer fraction removal or retention"
+          ],
+          "unresolved": [
+            "sample container",
+            "centrifuge configuration",
+            "duration",
+            "force",
+            "speed",
+            "temperature"
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_e0747301e088d2c4ae8f",
+          "mention_84dbe20e102a014f5f67",
+          "mention_e6245ce3d8fae9fd8e45",
+          "mention_49f39e6507874dd0524e"
+        ],
+        "name": "Evaporate",
+        "reason": "Solvent removal matches Evaporate. In the three THF passages, reduced pressure is qualitative and the subsequent 90 °C oil-bath drying is a separate stage, not an evaporation temperature.",
+        "contract": {
+          "scope": "Solvent-removal clauses only",
+          "observed": [
+            {
+              "origin": "mention_e0747301e088d2c4ae8f",
+              "endpoint": "solid solute remains before other reactants/reagents are added"
+            },
+            {
+              "origins": [
+                "mention_84dbe20e102a014f5f67",
+                "mention_e6245ce3d8fae9fd8e45",
+                "mention_49f39e6507874dd0524e"
+              ],
+              "removed_solvent": "THF",
+              "pressure_condition": "reduced pressure"
+            }
+          ],
+          "unresolved": [
+            "vessel",
+            "numeric pressure",
+            "evaporation temperature",
+            "evaporation duration"
+          ]
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_84dbe20e102a014f5f67",
+          "mention_e6245ce3d8fae9fd8e45",
+          "mention_49f39e6507874dd0524e"
+        ],
+        "name": "ThermalDry",
+        "reason": "These passages share a post-evaporation drying stage using an oil bath. HeatChill alone loses drying intent, Evaporate conflates stages, and VacuumDry would infer vacuum during drying from the preceding removal clause.",
+        "contract": {
+          "status": "semantic_candidate",
+          "parameters": {
+            "vessel": "identifier",
+            "material": "material_reference",
+            "heating_configuration": "reported_configuration",
+            "reported_temperature_C": "temperature",
+            "temperature_basis": "reported_basis_or_unknown",
+            "duration_s": "positive_time"
+          },
+          "effects": [
+            "material_subject_to_thermal_drying"
+          ],
+          "observed": {
+            "heating_configuration": "oil bath",
+            "reported_temperature_C": 90,
+            "duration_s": 1800
+          },
+          "guards": [
+            "do not equate reported temperature with measured sample temperature",
+            "do not inherit reduced pressure from the preceding evaporation stage"
+          ],
+          "unresolved": [
+            "vessel",
+            "temperature measurement basis",
+            "drying atmosphere or pressure",
+            "dryness criterion"
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_465dfab598231751c0f4"
+        ],
+        "name": "Filter",
+        "reason": "The explicit filtration verb matches Filter; missing stream selection is an unresolved required parameter, not evidence for a new operation.",
+        "contract": {
+          "unresolved": [
+            "vessel",
+            "keep"
+          ],
+          "note": "Neither retained solid nor retained filtrate is established by this quotation."
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_459d5372e374f0491659"
+        ],
+        "name": "HeatChill",
+        "reason": "The numeric temperature and duration fit HeatChill's temperature condition. Agitation is a separate concurrent condition, not an effect of HeatChill.",
+        "contract": {
+          "observed": {
+            "temp_C": 25,
+            "duration_s": 57600
+          },
+          "unresolved": [
+            "vessel",
+            "temperature-control configuration"
+          ],
+          "note": "No sequential HeatChill-then-agitation macro is proposed."
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_459d5372e374f0491659"
+        ],
+        "name": "Agitate",
+        "reason": "The quotation specifies agitation but not stirring, shaking, or another mechanism. Stir would narrow the hardware mode without evidence, while HeatChill preserves only the temperature condition.",
+        "contract": {
+          "status": "semantic_candidate",
+          "parameters": {
+            "vessel": "identifier",
+            "duration_s": "positive_time",
+            "mode": "reported_mode_or_unknown"
+          },
+          "effects": [
+            "mixture_agitated_for_duration"
+          ],
+          "observed": {
+            "duration_s": 57600,
+            "concurrent_temperature_C": 25
+          },
+          "unresolved": [
+            "vessel",
+            "agitation mechanism",
+            "agitation rate"
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_fe2ea5210b2be4e38fb9"
+        ],
+        "name": "Stir",
+        "reason": "A stirred solution uses the existing stirring semantics. The quotation does not supply the required duration or identify the vessel.",
+        "contract": {
+          "unresolved": [
+            "vessel",
+            "duration_s"
+          ],
+          "note": "No stirring speed is inferred."
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_0f2587e934a0b6d3016d",
+          "mention_d233b55b1eec03af911d",
+          "mention_17b0b4b37de1a98d4a56",
+          "mention_6ceb196ca66cb7413202"
+        ],
+        "name": "Purify",
+        "reason": "Purify already permits opaque terminal purification with an explicit method. Column chromatography, analytical-portion recrystallization, and analytical-portion trituration remain distinct method values and sample roles, not aliases or interchangeable procedures. The further-purification observation lacks its required method.",
+        "contract": {
+          "observed": [
+            {
+              "origin": "mention_0f2587e934a0b6d3016d",
+              "method": "column chromatography on silica gel",
+              "eluent": "EtOAc / hexanes (3:7 to 7:3)"
+            },
+            {
+              "origin": "mention_d233b55b1eec03af911d",
+              "sample": "analytical sample of product 2i",
+              "reported_initial_purity": "83%",
+              "method": null
+            },
+            {
+              "origin": "mention_17b0b4b37de1a98d4a56",
+              "sample": "analytical portion of product 5a",
+              "method": "recrystallization from hexanes",
+              "purpose": "data purposes"
+            },
+            {
+              "origin": "mention_6ceb196ca66cb7413202",
+              "sample": "analytical portion of product 5d",
+              "method": "trituration with Et2O",
+              "purpose": "data purposes"
+            }
+          ],
+          "unresolved": [
+            "vessel identities",
+            "method for further purification of product 2i"
+          ],
+          "export_constraint": "Only chromatography has the supplied verified export mapping; no recrystallization or trituration backend is established."
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_edc4a6e81e56c0ba8520"
+        ],
+        "name": "WashLiquidPhase",
+        "reason": "Washing an organic layer with brine includes wash contact and phase handling. Separate can express organic-phase retention but not the complete wash, and wash quantity and a lossless approved expansion are absent.",
+        "contract": {
+          "status": "semantic_candidate",
+          "parameters": {
+            "vessel": "identifier",
+            "phase_to_wash": "phase_reference",
+            "wash_material": "literal_name",
+            "wash_amount": "quantity_or_unknown",
+            "cycles": "reported_count_or_unknown"
+          },
+          "effects": [
+            "specified_liquid_phase_washed_with_wash_material"
+          ],
+          "observed": {
+            "phase_to_wash": "organic layer",
+            "wash_material": "brine"
+          },
+          "guards": [
+            "preserve organic-layer role",
+            "do not infer wash cycles or quantities"
+          ],
+          "unresolved": [
+            "vessel",
+            "wash amount",
+            "cycles",
+            "contact procedure",
+            "phase destinations"
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "cluster_device",
+        "origins": [
+          "mention_84d9694f2afeb8381090"
+        ],
+        "name": "UV detector",
+        "family": "uv_detector",
+        "reason": "UV detection in HPLC supports a detector family, not the existing light_source family, whose role is reaction irradiation. No detector identity or interchangeability is established.",
+        "contract": {
+          "status": "family_candidate",
+          "category": "analytical_detector",
+          "observed_role": "HPLC detection",
+          "reported_detection_setting": "UV at 254 nM",
+          "unresolved": [
+            "manufacturer",
+            "model",
+            "intended unit of reported detection setting"
+          ],
+          "note": "The source unit nM is retained verbatim, not silently converted to nm."
+        }
+      },
+      {
+        "action": "cluster_device",
+        "origins": [
+          "mention_595290989d1a2155baa7"
+        ],
+        "name": "Magnetic stir bar",
+        "family": "magnetic_stir_bar",
+        "reason": "The quotation identifies a stirring accessory, not a hotplate_stirrer or evidence of heating capability. The registry has no corresponding accessory family.",
+        "contract": {
+          "status": "family_candidate",
+          "category": "agitation_accessory",
+          "unresolved": [
+            "manufacturer",
+            "model",
+            "dimensions",
+            "material"
+          ],
+          "note": "Family membership does not establish compatibility with any particular vessel or drive."
+        }
+      },
+      {
+        "action": "cluster_device",
+        "origins": [
+          "mention_99a35e5e1caf9d3d25b2"
+        ],
+        "name": "Analysis collection plate",
+        "family": "collection_plate",
+        "reason": "The source identifies a collection plate but does not explicitly establish well geometry. Classifying it as well_plate would add structure not established by the quotation.",
+        "contract": {
+          "status": "family_candidate",
+          "category": "sample_collection_container",
+          "observed_role": "analysis collection",
+          "unresolved": [
+            "manufacturer",
+            "model",
+            "well configuration",
+            "capacity"
+          ],
+          "note": "The reported 300 uL aliquot is a transfer amount, not a capacity."
+        }
+      },
+      {
+        "action": "cluster_device",
+        "origins": [
+          "mention_9ff8947a46dde02687ca",
+          "mention_aac60664a181275948f8"
+        ],
+        "name": "HPLC analytical apparatus",
+        "family": "hplc_analytical_system",
+        "reason": "Both quotations identify HPLC analysis and can share a family while retaining unknown instrument identities. Purification apparatus and UV detectors are not equivalent to a complete HPLC system.",
+        "contract": {
+          "status": "family_candidate",
+          "category": "analytical_chromatography_system",
+          "observed_role": "reaction monitoring",
+          "unresolved": [
+            "manufacturer",
+            "model",
+            "column",
+            "detector configuration",
+            "operating conditions"
+          ],
+          "note": "Shared family membership does not establish interchangeability."
+        }
+      },
+      {
+        "action": "cluster_device",
+        "origins": [
+          "mention_7d4a1a79a8c19a871a99"
+        ],
+        "name": "UPLC analytical apparatus",
+        "family": "uplc_analytical_system",
+        "reason": "The source explicitly names UPLC analysis. Retaining a distinct family avoids inferring hardware equivalence with HPLC systems or unspecified purification apparatus.",
+        "contract": {
+          "status": "family_candidate",
+          "category": "analytical_chromatography_system",
+          "unresolved": [
+            "manufacturer",
+            "model",
+            "column",
+            "operating conditions"
+          ],
+          "note": "No ratings or interchangeability are established."
+        }
+      },
+      {
+        "action": "cluster_device",
+        "origins": [
+          "mention_42891dec9768966f5cda",
+          "mention_d24204af3c2fca12010a",
+          "mention_e22d2aa26184d82a0488"
+        ],
+        "name": "GC-MS analytical apparatus",
+        "family": "gc_ms_analytical_system",
+        "reason": "GC/MS and GC-MS name the same analytical method here and support one apparatus family. They do not identify a model, establish operating specifications, or imply interchangeability.",
+        "contract": {
+          "status": "family_candidate",
+          "category": "coupled_analytical_system",
+          "observed_roles": [
+            "reaction conversion or completion assessment",
+            "product-mixture analysis"
+          ],
+          "unresolved": [
+            "manufacturer",
+            "model",
+            "chromatographic configuration",
+            "mass-spectrometric configuration",
+            "operating conditions"
+          ]
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 13275,
+    "completion_tokens": 6148,
+    "total_tokens": 19423,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 13272
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 168
+    }
+  },
+  "cache_key": "a26115d83b75aca2acf603c4b11540d2d63f1a9bc5500dfd21b5e4d81f4c994d"
+}

@@ -1,0 +1,337 @@
+{
+  "protocol": {
+    "id": "pos_a21d6ec12c02473a98dce7de6b637849",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+    "raw_sha256": "0c3ee7227932b6f4c064c8e818eea8a00fd5cb11e8631e6ec0ee3664a91f8571",
+    "source_text": "diacetoxypalladium (9.34 mg, 0.04 mmol) and RuPhos (0.039 g, 0.08 mmol) were suspended in 1,4 dioxane (5 mL), degassed and stirred at 50 °C for 10 minutes. Then (R)-tert-butyl 3-methylpiperazine-1-carboxylate (0.100 g, 0.50 mmol), 3-bromopyridine (0.040 mL, 0.42 mmol) and cesium carbonate (0.203 g, 0.62 mmol) were added and the reaction mixture was stirred at 100 °C for 16 h. LCMS showed only 5% conversion to desired product.  This was part of a screen and Ruphos, sodium tert-butoxide in toluene gave far better conversion so this was abandoned.  ",
+    "text_sha256": "afb97b7d8fce904dd0ec401016e8f144b59321ac9d49d0539aeea4bae04d5e9e",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "diacetoxypalladium",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 9.34,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r002",
+        "name": "RuPhos",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 39,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r003",
+        "name": "1,4 dioxane",
+        "smiles": null,
+        "role": "SOLVENT",
+        "amount": {
+          "value": 5,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r004",
+        "name": "(R)-tert-butyl 3-methylpiperazine-1-carboxylate",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 100,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r005",
+        "name": "3-bromopyridine",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 0.04,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r006",
+        "name": "cesium carbonate",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 203,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r001",
+        "amount": {
+          "value": 9.34,
+          "unit": "mg"
+        },
+        "id": "s001",
+        "meta": {
+          "evidence": "diacetoxypalladium (9.34 mg, 0.04 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "diacetoxypalladium",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r002",
+        "amount": {
+          "value": 39,
+          "unit": "mg"
+        },
+        "id": "s002",
+        "meta": {
+          "evidence": "RuPhos (0.039 g, 0.08 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "RuPhos",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r003",
+        "amount": {
+          "value": 5,
+          "unit": "mL"
+        },
+        "id": "s003",
+        "meta": {
+          "evidence": "were suspended in 1,4 dioxane (5 mL)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "1,4 dioxane",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 50,
+        "duration_s": 600,
+        "stir": true,
+        "id": "s004",
+        "meta": {
+          "evidence": "stirred at 50 °C for 10 minutes",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r004",
+        "amount": {
+          "value": 100,
+          "unit": "mg"
+        },
+        "id": "s005",
+        "meta": {
+          "evidence": "(R)-tert-butyl 3-methylpiperazine-1-carboxylate (0.100 g, 0.50 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "(R)-tert-butyl 3-methylpiperazine-1-carboxylate",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r005",
+        "amount": {
+          "value": 0.04,
+          "unit": "mL"
+        },
+        "id": "s006",
+        "meta": {
+          "evidence": "3-bromopyridine (0.040 mL, 0.42 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "3-bromopyridine",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r006",
+        "amount": {
+          "value": 203,
+          "unit": "mg"
+        },
+        "id": "s007",
+        "meta": {
+          "evidence": "cesium carbonate (0.203 g, 0.62 mmol) were added",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "cesium carbonate",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 100,
+        "duration_s": 57600,
+        "stir": true,
+        "id": "s008",
+        "meta": {
+          "evidence": "the reaction mixture was stirred at 100 °C for 16 h",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {},
+      "reflux": false,
+      "source_context_evidence": []
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "afb97b7d8fce904dd0ec401016e8f144b59321ac9d49d0539aeea4bae04d5e9e",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 1055,
+        "prompt_tokens": 830,
+        "total_tokens": 1885,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 160
+        }
+      },
+      "cache_key": "31f6bccc6f0f24607db0a80298c76be6808f956dcc51aca988ba3924eb9848f8",
+      "unresolved": [
+        "The degassing method, gas, and duration are unspecified.",
+        "The comparison involving Ruphos, sodium tert-butoxide, and toluene reports a screening result rather than an executable procedure; no quantities or operating conditions are provided."
+      ],
+      "unmapped_actions": [
+        {
+          "evidence": "degassed",
+          "reason": "Degassing is not a core operation, and no gas or method is specified to support mapping it to Atmosphere."
+        },
+        {
+          "evidence": "so this was abandoned",
+          "reason": "Abandonment is reported without a physical termination or workup operation that can be mapped to an allowed operation."
+        }
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/2",
+    "findings": [],
+    "apparatus_proposals": [],
+    "evidence_spans": [
+      {
+        "source_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+        "source_sha256": "7e5d79107d690df6756eb7241c2cffdb451bf2c20902c2b2a2dda3f4fb330d35",
+        "start": 0,
+        "end": 39,
+        "quote": "diacetoxypalladium (9.34 mg, 0.04 mmol)"
+      },
+      {
+        "source_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+        "source_sha256": "7e5d79107d690df6756eb7241c2cffdb451bf2c20902c2b2a2dda3f4fb330d35",
+        "start": 44,
+        "end": 71,
+        "quote": "RuPhos (0.039 g, 0.08 mmol)"
+      },
+      {
+        "source_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+        "source_sha256": "7e5d79107d690df6756eb7241c2cffdb451bf2c20902c2b2a2dda3f4fb330d35",
+        "start": 72,
+        "end": 108,
+        "quote": "were suspended in 1,4 dioxane (5 mL)"
+      },
+      {
+        "source_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+        "source_sha256": "7e5d79107d690df6756eb7241c2cffdb451bf2c20902c2b2a2dda3f4fb330d35",
+        "start": 123,
+        "end": 154,
+        "quote": "stirred at 50 °C for 10 minutes"
+      },
+      {
+        "source_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+        "source_sha256": "7e5d79107d690df6756eb7241c2cffdb451bf2c20902c2b2a2dda3f4fb330d35",
+        "start": 161,
+        "end": 229,
+        "quote": "(R)-tert-butyl 3-methylpiperazine-1-carboxylate (0.100 g, 0.50 mmol)"
+      },
+      {
+        "source_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+        "source_sha256": "7e5d79107d690df6756eb7241c2cffdb451bf2c20902c2b2a2dda3f4fb330d35",
+        "start": 231,
+        "end": 268,
+        "quote": "3-bromopyridine (0.040 mL, 0.42 mmol)"
+      },
+      {
+        "source_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+        "source_sha256": "7e5d79107d690df6756eb7241c2cffdb451bf2c20902c2b2a2dda3f4fb330d35",
+        "start": 273,
+        "end": 321,
+        "quote": "cesium carbonate (0.203 g, 0.62 mmol) were added"
+      },
+      {
+        "source_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+        "source_sha256": "7e5d79107d690df6756eb7241c2cffdb451bf2c20902c2b2a2dda3f4fb330d35",
+        "start": 326,
+        "end": 377,
+        "quote": "the reaction mixture was stirred at 100 °C for 16 h"
+      }
+    ],
+    "repair": {
+      "accepted": false,
+      "patch": []
+    },
+    "apparatus_unknowns": [
+      "Reaction vessel not specified.",
+      "Degassing method/apparatus not specified.",
+      "Stirring apparatus not specified.",
+      "Heating apparatus or temperature controller not specified; 50 °C and 100 °C are reaction temperatures.",
+      "No separation apparatus described."
+    ]
+  },
+  "raw_id": "ord-a21d6ec12c02473a98dce7de6b637849"
+}

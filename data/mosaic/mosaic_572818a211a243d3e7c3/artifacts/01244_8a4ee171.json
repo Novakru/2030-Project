@@ -1,0 +1,64 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNMAPPED_HEATING_MODE",
+        "quote": "then microwave 150C for 30 min.",
+        "message": "Temperature and duration are represented, but microwave heating is not explicitly preserved as an unmapped operational detail; HeatChill has no heating-mode field.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_FILTER_MEDIUM",
+        "quote": "filtered through celite.",
+        "message": "The Filter operation does not encode the Celite filtration medium. Preserve this detail in unmapped_actions because the allowed Filter fields cannot represent it.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_ELUTION_CONDITIONS",
+        "quote": "The residue was purified by ISCO (Hex to Hex:EtOAc=1:4 to 1:1 to EtOAc)",
+        "message": "The purification method is represented, but the stated elution sequence is not explicitly preserved as an unmapped condition. Retain the literal sequence without correcting or reordering it.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "then microwave 150C for 30 min.",
+          "reason": "Temperature and duration are represented by HeatChill; microwave heating cannot be encoded in its allowed fields."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "filtered through celite.",
+          "reason": "Filtration is represented, but the Celite filtration medium cannot be encoded in the allowed Filter fields."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The residue was purified by ISCO (Hex to Hex:EtOAc=1:4 to 1:1 to EtOAc)",
+          "reason": "ISCO purification is represented; the stated elution sequence Hex to Hex:EtOAc=1:4 to 1:1 to EtOAc cannot be encoded separately in the allowed Purify fields."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 564,
+    "prompt_tokens": 1863,
+    "total_tokens": 2427,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1860,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 171
+    }
+  },
+  "cache_key": "96fea83d28c7428eb5ee4b220148f15166b15b1a889d141a9c59618886d34789"
+}

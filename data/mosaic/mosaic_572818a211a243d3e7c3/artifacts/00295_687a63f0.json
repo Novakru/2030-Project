@@ -1,0 +1,128 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "dimethyl 5-bromoisophthalate (10 g, 36.62 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "dimethyl 5-bromoisophthalate",
+        "alias": "dimethyl 5-bromoisophthalate",
+        "amount": {
+          "value": 10000,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "in toluene (100 mL)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "toluene",
+        "alias": "toluene",
+        "amount": {
+          "value": 100,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      },
+      {
+        "op": "Add",
+        "evidence": "BINAP (2.5 g, 4.01 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "BINAP",
+        "alias": "BINAP",
+        "amount": {
+          "value": 2500,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "morpholine (4.4 g, 50.50 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "morpholine",
+        "alias": "morpholine",
+        "amount": {
+          "value": 4400,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "CESIUM CARBONATE (18 g, 55.25 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "CESIUM CARBONATE",
+        "alias": "CESIUM CARBONATE",
+        "amount": {
+          "value": 18000,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "PALLADIUM(II) ACETATE (0.9 g, 4.01 mmol) added",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "PALLADIUM(II) ACETATE",
+        "alias": "PALLADIUM(II) ACETATE",
+        "amount": {
+          "value": 900,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The solution was heated to reflux under inert atm for 14h.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "duration_s": 50400
+      },
+      {
+        "op": "Filter",
+        "evidence": "The silvent was filtered",
+        "stage": "workup",
+        "keep": "filtrate"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "the filtrate was concentrated",
+        "stage": "workup"
+      },
+      {
+        "op": "Purify",
+        "evidence": "The residue was purified by column chropmatography (Hep:EA) 1:1",
+        "stage": "purification",
+        "method": "chromatography"
+      }
+    ],
+    "uncertainties": [
+      "The inert atmosphere gas is not identified.",
+      "Reflux is specified without a numerical temperature.",
+      "The chromatography eluent is given only as '(Hep:EA) 1:1'; the abbreviations are not expanded in the source."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "under inert atm",
+        "reason": "An inert atmosphere is required, but no gas is identified; an Atmosphere operation cannot be assigned an allowed gas without inference."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1011,
+    "prompt_tokens": 811,
+    "total_tokens": 1822,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 118
+    }
+  },
+  "cache_key": "1d4232a5d86e3cc28be804e7c1e530abbd28786bc7c67acbd3104698de06f079"
+}

@@ -1,0 +1,57 @@
+<Synthesis>
+  <Metadata description="Source-grounded protocol representation; hardware execution requires compilation and review." publication="https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet" reaction_class=""/>
+  <Hardware>
+    <!--Analysis binding: {"component": "column", "params": {}, "verified": false, "wetted_materials": null}-->
+    <Component id="column" type="column"/>
+    <!--Analysis binding: {"component": "heater", "params": {"T_max_C": 310, "T_min_C": null, "rpm_max": 1500, "rpm_min": 50}, "verified": false, "wetted_materials": []}-->
+    <Component id="heater" type="heater"/>
+    <!--Analysis binding: {"component": "product", "params": {}, "verified": false, "wetted_materials": null}-->
+    <Component id="product" type="reactor"/>
+    <!--Analysis binding: {"component": "reactor", "params": {"T_max_C": null, "T_min_C": null, "capacity_mL": null, "pressure_max_bar": null}, "verified": false, "wetted_materials": null}-->
+    <Component id="reactor" type="reactor"/>
+  </Hardware>
+  <Reagents>
+    <!--r001: 3,4,7,8-tetramethyl-1,10-phenanthroline-->
+    <Reagent name="r001" role="reagent"/>
+    <!--r002: [Ir(OMe)(cod)]2-->
+    <Reagent name="r002" role="reagent"/>
+    <!--r003: cyclohexane-->
+    <Reagent name="r003" role="solvent"/>
+    <!--r004: N-Cyclopropylpivalamide-->
+    <Reagent name="r004" role="reagent"/>
+    <!--r005: 4,4,5,5-tetramethyl-1,3,2-dioxaborolane-->
+    <Reagent name="r005" role="reagent"/>
+  </Reagents>
+  <Procedure>
+    <!--Representation scope: supplied_text_operations; source experimental completeness is not independently certified-->
+    <!--Analysis context: {"pressure_control": "UNKNOWN", "reflux": false}-->
+    <!--under N2 atmosphere-->
+    <!--Atmosphere context (no purge operation inferred): nitrogen; environment-->
+    <!--3,4,7,8-tetramethyl-1,10-phenanthroline (46.9 mg, 71 µmol)-->
+    <Add vessel="reactor" reagent="r001" amount="46.9 mg"/>
+    <!--[Ir(OMe)(cod)]2 (33.5 mg, 0.14 mmol)-->
+    <Add vessel="reactor" reagent="r002" amount="33.5 mg"/>
+    <!--cyclohexane (5 mL)-->
+    <Add vessel="reactor" reagent="r003" amount="5 mL"/>
+    <!--was stirred at room temperature for 15 min-->
+    <Stir vessel="reactor" time="900 s"/>
+    <!--under N2 flow-->
+    <!--Atmosphere context (no purge operation inferred): nitrogen; environment-->
+    <!--N-Cyclopropylpivalamide (1a: 2.0 g, 14 mmol)-->
+    <Add vessel="reactor" reagent="r004" amount="2000 mg"/>
+    <!--4,4,5,5-tetramethyl-1,3,2-dioxaborolane (HBpin: 3.08 mL, 21 mmol)-->
+    <Add vessel="reactor" reagent="r005" amount="3.08 mL"/>
+    <!--cyclohexane (20 mL)-->
+    <Add vessel="reactor" reagent="r003" amount="20 mL"/>
+    <!--under N2 atmosphere-->
+    <!--Atmosphere context (no purge operation inferred): nitrogen; environment-->
+    <!--the reaction mixture was heated at 80 °C for 18 h under N2 atmosphere-->
+    <HeatChill vessel="reactor" temp="80 °C" time="64800 s"/>
+    <!--The reaction mixture was concentrated in vacuo.-->
+    <Evaporate vessel="reactor"/>
+    <!--The resultant residue was purified by silica gel flash column chromatography (chloroform/acetone = 25:1 to 20:1).-->
+    <RunColumn from_vessel="reactor" to_vessel="product" column="column"/>
+    <!--The collected fractions were purified again by silica gel column chromatography (hexane/ether = 1:2 to 1:4)-->
+    <RunColumn from_vessel="reactor" to_vessel="product" column="column"/>
+  </Procedure>
+</Synthesis>

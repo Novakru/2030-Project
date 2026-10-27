@@ -1,0 +1,54 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "AMBIGUOUS_EXTRA_HEATING_STEP",
+        "quote": "The microreactor was capped with a teflon pressure cap and placed into pre-heated aluminum block at 80 oC.",
+        "message": "Step 8 represents the preheated block as a separate HeatChill operation without identifying its vessel. The reaction heating is already represented in step 9. Preserve placement into the preheated block as an unmapped physical action rather than an additional reaction-heating operation.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The GC/MS completion check before solvent removal is omitted. Preserve this condition in unmapped_actions because the allowed operations do not represent analytical monitoring.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "remove",
+        "path": "/steps/8"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "placed into pre-heated aluminum block at 80 oC",
+          "reason": "Placement of the microreactor into a preheated block is not represented by an allowed operation; reaction heating at 80 °C for 12 h is represented separately."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "Completion was judged by GC/MS before THF removal; analytical completion checks are not represented by an allowed operation."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 1435,
+    "completion_tokens": 591,
+    "total_tokens": 2026,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1432
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 207
+    }
+  },
+  "cache_key": "9976f4a1addbbb2a9ae50aac38891dbd0f5df90d2cab3c5f846f3b2ea48801a7"
+}

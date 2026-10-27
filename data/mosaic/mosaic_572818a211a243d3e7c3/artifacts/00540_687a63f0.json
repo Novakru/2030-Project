@@ -1,0 +1,132 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Atmosphere",
+        "evidence": "under an argon atmosphere",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "gas": "argon",
+        "mode": "environment"
+      },
+      {
+        "op": "Add",
+        "evidence": "containing PALLADIUM(II) ACETATE (0.409 mg, 1.82 µmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "PALLADIUM(II) ACETATE",
+        "alias": "PALLADIUM(II) ACETATE",
+        "amount": {
+          "value": 0.409,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "2-(DICYCLOHEXYLPHOSPHINO)BIPHENYL (0.638 mg, 1.82 µmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "2-(DICYCLOHEXYLPHOSPHINO)BIPHENYL",
+        "alias": "2-(DICYCLOHEXYLPHOSPHINO)BIPHENYL",
+        "amount": {
+          "value": 0.638,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "CESIUM CARBONATE (8.89 mg, 0.03 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "CESIUM CARBONATE",
+        "alias": "CESIUM CARBONATE",
+        "amount": {
+          "value": 8.89,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "A solution of (R)-8-chloro-4-methyl-2-phenyl-2,3,4,5-tetrahydropyrido[3,2-f][1,4]oxazepine (5.00 mg, 0.02 mmol)",
+        "stage": "reaction",
+        "reagent": "(R)-8-chloro-4-methyl-2-phenyl-2,3,4,5-tetrahydropyrido[3,2-f][1,4]oxazepine",
+        "alias": "(R)-8-chloro-4-methyl-2-phenyl-2,3,4,5-tetrahydropyrido[3,2-f][1,4]oxazepine",
+        "amount": {
+          "value": 5,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "4-(3-methyl-1H-1,2,4-triazol-1-yl)aniline (3.17 mg, 0.02 mmol)",
+        "stage": "reaction",
+        "reagent": "4-(3-methyl-1H-1,2,4-triazol-1-yl)aniline",
+        "alias": "4-(3-methyl-1H-1,2,4-triazol-1-yl)aniline",
+        "amount": {
+          "value": 3.17,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "in DME (.5 mL)",
+        "stage": "reaction",
+        "reagent": "DME",
+        "alias": "DME",
+        "amount": {
+          "value": 0.5,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      },
+      {
+        "op": "Transfer",
+        "evidence": "was added via a syringe to a capped microwave vial",
+        "stage": "reaction",
+        "to_vessel": "reactor"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The resulting mixture was heated to 100°C in a microwave apparatus for 1 h",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "temp_C": 100,
+        "duration_s": 3600
+      },
+      {
+        "op": "Irradiate",
+        "evidence": "heated to 100°C in a microwave apparatus for 1 h",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "duration_s": 3600
+      }
+    ],
+    "uncertainties": [
+      "The solution-preparation vessel and order of combining its components are not specified.",
+      "The order of loading the components initially present in the microwave vial is not specified.",
+      "The transfer source vessel and total solution volume are not specified.",
+      "The timing of capping and establishment of the argon atmosphere is not specified.",
+      "The HeatChill and Irradiate steps represent the same microwave-heating operation, not sequential treatments."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "capped microwave vial",
+        "reason": "Capping is not represented by the allowed operations; its timing is not specified."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1398,
+    "prompt_tokens": 1976,
+    "total_tokens": 3374,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1973
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 237
+    }
+  },
+  "cache_key": "1c3b8b5c9b3881a0e3d507e39df8551bdc9ffe92d944401c5f2c931bd87a2eaf"
+}

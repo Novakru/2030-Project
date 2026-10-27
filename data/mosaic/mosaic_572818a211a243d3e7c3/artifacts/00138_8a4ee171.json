@@ -1,0 +1,54 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "CONCURRENT_MICROWAVE_HEATING_SPLIT",
+        "quote": "The resulting suspension was stirred at 150 °C in the microwave for 30 minutes.",
+        "message": "The source describes one 30-minute stirred microwave-heating operation, not heating followed by a separate 30-minute irradiation. Retain the HeatChill step and preserve microwave heating as an unmapped condition because the step schema cannot express its heating mode.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_ANALYTICAL_OBSERVATION",
+        "quote": "None of the desired material was visible by LCMS.",
+        "message": "The reported LCMS observation is omitted. Preserve it as an unmapped observation without inventing sampling or analytical preparation steps.",
+        "severity": "unknown"
+      }
+    ],
+    "patch": [
+      {
+        "op": "remove",
+        "path": "/steps/7"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The resulting suspension was stirred at 150 °C in the microwave for 30 minutes.",
+          "reason": "Microwave heating occurred during the same 30-minute stirred heating operation represented by HeatChill; its heating mode cannot be expressed in the permitted HeatChill fields."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "None of the desired material was visible by LCMS.",
+          "reason": "Reported analytical observation; no sampling or analytical preparation operation is specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 575,
+    "prompt_tokens": 1250,
+    "total_tokens": 1825,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1247,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 289
+    }
+  },
+  "cache_key": "347e3aa6bfc45f2d8f26adf019fa9825824efbaef397d62209ed191380055bdd"
+}

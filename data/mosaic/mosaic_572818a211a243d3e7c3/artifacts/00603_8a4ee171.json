@@ -1,0 +1,87 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "MISASSIGNED_PREHEATING",
+        "quote": "The microreactor was capped with a teflon pressure cap and placed into pre-heated aluminum block at 80 oC.",
+        "message": "The standalone HeatChill step does not identify a vessel and conflates block preheating with reaction heating. Preserve block preheating and reactor placement as unmapped actions; the following HeatChill step already captures the reaction heating.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_TEMPERATURE_CONDITION",
+        "quote": "The reaction mixture was stirred for 2 minutes at room temperature.",
+        "message": "The Stir step cannot encode temperature with the allowed fields. Preserve the explicit room-temperature condition with an exact quotation in uncertainties.",
+        "severity": "error"
+      },
+      {
+        "code": "UNENCODED_REDUCED_PRESSURE",
+        "quote": "THF was removed under reduced pressure",
+        "message": "Reduced pressure is explicitly required, although no numerical pressure is given. Preserve this condition in uncertainties rather than only noting the missing numerical value.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_PURIFICATION_DETAILS",
+        "quote": "chromatographic separation with silica gel (20% ethyl acetate in hexane as eluent)",
+        "message": "The purification method omits the stated stationary phase and eluent composition. These details appear only in evidence.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The GC/MS completion check is not represented. Preserve it as an unmapped action because the allowed operations do not include analytical monitoring.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/11/method",
+        "value": "silica gel chromatography (20% ethyl acetate in hexane as eluent)"
+      },
+      {
+        "op": "remove",
+        "path": "/steps/8"
+      },
+      {
+        "op": "replace",
+        "path": "/uncertainties/0",
+        "value": "The initial 120-second stirring is explicitly at room temperature, but no numerical temperature is provided: \"The reaction mixture was stirred for 2 minutes at room temperature.\""
+      },
+      {
+        "op": "replace",
+        "path": "/uncertainties/3",
+        "value": "Evaporation explicitly requires reduced pressure, but numerical pressure and evaporation temperature are not specified: \"THF was removed under reduced pressure\"."
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "placed into pre-heated aluminum block at 80 oC",
+          "reason": "Placement of the microreactor into an already preheated aluminum block is not represented by an allowed operation. Block preheating is an apparatus condition, not a separate heating step for the reaction mixture."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "GC/MS monitoring establishes completion before solvent removal; analytical monitoring is not represented by an allowed operation."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 910,
+    "prompt_tokens": 1491,
+    "total_tokens": 2401,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1488,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 158
+    }
+  },
+  "cache_key": "08ad4ee1ab66faa7cdc13b556f627cf30909196929217761ab1a18a6c9742c37"
+}

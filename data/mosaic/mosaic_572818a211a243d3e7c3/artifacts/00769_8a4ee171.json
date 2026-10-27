@@ -1,0 +1,36 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_ANALYTICAL_RECORD",
+        "quote": "**LCMS High pH:**  No reaction observed",
+        "message": "The source's LCMS analytical record is not retained. Preserve it in unmapped_actions because the allowed operations do not represent LCMS analysis; do not infer experimental failure from the reported observation.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "**LCMS High pH:**  No reaction observed",
+          "reason": "Source-reported LCMS analytical observation; no allowed operation represents LCMS analysis. Analytical conditions beyond 'High pH' are not specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "total_tokens": 1811,
+    "prompt_tokens": 1502,
+    "completion_tokens": 309,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1499
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 165
+    }
+  },
+  "cache_key": "3b3f72ee2855fd5f8350af276ee71b2e1e62971b323e67c103a46c3375972609"
+}

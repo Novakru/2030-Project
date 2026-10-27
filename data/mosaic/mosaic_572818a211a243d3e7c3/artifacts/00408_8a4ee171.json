@@ -1,0 +1,36 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_ANALYTICAL_ACTION",
+        "quote": "LCMS o/n shows several peaks.",
+        "message": "The overnight LCMS analysis is not represented. Preserve it as an unmapped analytical action without inferring sampling details or an overnight heating duration.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "LCMS o/n shows several peaks.",
+          "reason": "LCMS analysis is not represented by an allowed operation. The overnight notation does not establish a heating duration."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 365,
+    "prompt_tokens": 1285,
+    "total_tokens": 1650,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1282
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 246
+    }
+  },
+  "cache_key": "9fbfa0ad533d9f404bf0f7564a82ba414c0e217acdc5d93445720c45e5c65770"
+}

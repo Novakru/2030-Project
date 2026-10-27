@@ -1,0 +1,95 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_REAGENT_AMOUNT",
+        "quote": "1-methylbenzimidazole  1g  (100  mg,  1.0  mmol)",
+        "message": "The source explicitly supplies 100 mg for 1-methylbenzimidazole. The intervening compound label does not justify omitting that amount.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_REAGENT_FORMULATION",
+        "quote": "H2O2  (30%  in  H2O;  0.31  mL,  3.0  mmol)",
+        "message": "The initial peroxide charge is a 30% aqueous formulation, not unspecified H2O2. Preserve that formulation in the reagent identity.",
+        "severity": "error"
+      },
+      {
+        "code": "UNRESOLVED_RECEIVING_MIXTURE",
+        "quote": "the mixture was poured into a solution  of  NaOH  and  ice  (to  pH  >  10)",
+        "message": "The Transfer does not operationally identify its receiving mixture. Preserve the NaOH/ice receiving-mixture requirement as an unmapped action; its preparation quantities and order are not supplied.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_PHASE_ROUTING",
+        "quote": "The  aqueous  layer  was  saturated  with  solid  NaCl  and  extracted  with  CHCl3.  The  combined  organic  extracts",
+        "message": "The ether extraction requires retaining both the aqueous layer for further extraction and the organic extract for combining. The chloroform organic extract is also retained. Marking both separations' retained phases unknown loses this explicit routing.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_FILTRATION_STREAM",
+        "quote": "The  combined  organic  extracts  were  dried  (MgSO4),  filtered  and  the  solvent  removed  under  vacuum",
+        "message": "The filtrate, rather than the drying-agent solids, proceeds to solvent removal.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/steps/0/amount",
+        "value": {
+          "value": 100,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/uncertainties/0",
+        "value": "The source states '1-methylbenzimidazole  1g  (100  mg,  1.0  mmol)'; '1g' is a compound label, and the stated charge is 100 mg."
+      },
+      {
+        "op": "replace",
+        "path": "/steps/6/reagent",
+        "value": "H2O2 (30% in H2O)"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": "Receiving-mixture requirement: 'the mixture was poured into a solution  of  NaOH  and  ice  (to  pH  >  10)'. The transfer must be into this mixture; receiving-mixture quantities and preparation sequence are unspecified."
+      },
+      {
+        "op": "replace",
+        "path": "/steps/18/keep_phase",
+        "value": "both"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/21/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "add",
+        "path": "/steps/24/keep",
+        "value": "filtrate"
+      },
+      {
+        "op": "add",
+        "path": "/uncertainties/-",
+        "value": "Phase routing follows 'The  aqueous  layer  was  saturated  with  solid  NaCl  and  extracted  with  CHCl3' and 'The  combined  organic  extracts': reserve the ether organic extract, process the ether aqueous layer with NaCl and CHCl3, then combine the organic extracts. The current steps do not identify separate vessels for these streams."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 2954,
+    "completion_tokens": 1188,
+    "total_tokens": 4142,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 2951
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 264
+    }
+  },
+  "cache_key": "d6f125b54c990982089bb56943fb5bcccde0e2a6a44c046b3583613c70aaadba"
+}

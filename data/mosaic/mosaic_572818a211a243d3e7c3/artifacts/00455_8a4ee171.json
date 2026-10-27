@@ -1,0 +1,36 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_MONITORING_AND_TERMINATION",
+        "quote": "LCMS indicated little reaction so reaction abandoned.",
+        "message": "The plan omits the reported LCMS observation and explicit abandonment of the reaction. Preserve these in unmapped_actions because the allowed operations do not represent analytical monitoring or abandonment; do not infer any additional workup or outcome.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "LCMS indicated little reaction so reaction abandoned.",
+          "reason": "LCMS monitoring and subsequent abandonment are explicitly reported but are not representable by the allowed operations."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 1462,
+    "completion_tokens": 213,
+    "total_tokens": 1675,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1459
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 75
+    }
+  },
+  "cache_key": "84779c88e1321a190c6156966c5b484f2f3a83644664f41822df569e0aedf31f"
+}

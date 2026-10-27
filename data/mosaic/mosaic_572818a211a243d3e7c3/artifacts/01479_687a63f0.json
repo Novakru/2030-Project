@@ -1,0 +1,165 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile (100mg, 0.43 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile",
+        "alias": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile",
+        "amount": {
+          "value": 100,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "[Reactants]",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "[Reactants]",
+        "alias": "[Reactants]"
+      },
+      {
+        "op": "Add",
+        "evidence": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine) (24.76 mg, 0.04 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)",
+        "alias": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)",
+        "amount": {
+          "value": 24.76,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "in DMA (1.0 mL)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "DMA",
+        "alias": "DMA",
+        "amount": {
+          "value": 1.0,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      },
+      {
+        "op": "Add",
+        "evidence": "Pd2(dba)3 (19.60 mg, 0.02 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "Pd2(dba)3",
+        "alias": "Pd2(dba)3",
+        "amount": {
+          "value": 19.6,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "cesium carbonate (279 mg, 0.86 mmol) were added",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "cesium carbonate",
+        "alias": "cesium carbonate",
+        "amount": {
+          "value": 279,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Atmosphere",
+        "evidence": "filled with N2",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "gas": "nitrogen",
+        "mode": "environment"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "microwave 150C for 30 min",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "temp_C": 150,
+        "duration_s": 1800
+      },
+      {
+        "op": "Filter",
+        "evidence": "filtered",
+        "stage": "workup"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "then concentrated",
+        "stage": "workup"
+      },
+      {
+        "op": "Purify",
+        "evidence": "The crude material was purified by ISC(Hex to Hex:EtOAc=1;1 to EtOAc to EtOAc:MeOH=10:1 to EtOAc:MeOH:Et3N=10:1:0.1))",
+        "stage": "purification",
+        "method": "ISC"
+      },
+      {
+        "op": "Transfer",
+        "evidence": "collect the product fraction",
+        "stage": "purification"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "concentrated to dryness",
+        "stage": "purification"
+      },
+      {
+        "op": "Transfer",
+        "evidence": "sent to ananlytic group for purification",
+        "stage": "purification"
+      }
+    ],
+    "uncertainties": [
+      "The identity, number, and quantities of the materials represented by [Reactants] are unspecified.",
+      "The degassing method and duration are unspecified.",
+      "Nitrogen filling is stated, but bubbling or evacuation/refill cycles are not specified.",
+      "The retained material after filtration is not specified.",
+      "Concentration conditions are not specified.",
+      "ISC is retained literally because its expansion is not provided. The eluent sequence is retained in the purification evidence; solvent quantities are not specified.",
+      "The method used in the unsuccessful attempt to form a solid is unspecified.",
+      "The analytical group's purification method and operating details are not provided.",
+      "The returned material is reported as a 1TFA salt, but no salt-formation operation or TFA addition is described."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "degassed",
+        "reason": "The allowed operations do not represent unspecified degassing without inventing a gas or evacuation procedure."
+      },
+      {
+        "evidence": "capped",
+        "reason": "Vessel closure is not represented by an allowed operation."
+      },
+      {
+        "evidence": "tried to form solid",
+        "reason": "No physical method is given for this unsuccessful solid-formation attempt."
+      },
+      {
+        "evidence": "purification",
+        "reason": "Purification by the analytical group is mentioned, but no method is specified for the required Purify method field."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1617,
+    "prompt_tokens": 920,
+    "total_tokens": 2537,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 258
+    }
+  },
+  "cache_key": "7b78f93812c2b1fd36693e47a3d7e8dd3e43cbe1d9e70eeeffd06c4d4a117b1f"
+}

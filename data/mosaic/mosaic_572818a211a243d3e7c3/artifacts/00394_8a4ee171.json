@@ -1,0 +1,40 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "SINGLE_EVENT_SPLIT",
+        "quote": "The reaction was heated to 130 °C in a CEM microwave for 1 hour.",
+        "message": "The source describes one microwave-heating event lasting one hour, not heating followed by a separate hour of irradiation. Retain the HeatChill step and preserve the microwave qualification in unmapped_actions, since the step schema cannot express its concurrence with heating.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "remove",
+        "path": "/steps/8"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The reaction was heated to 130 °C in a CEM microwave for 1 hour.",
+          "reason": "Microwave heating qualifies the existing one-hour HeatChill event; the available step fields cannot encode this qualification without implying a separate irradiation event."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 1355,
+    "completion_tokens": 465,
+    "total_tokens": 1820,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1352
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 286
+    }
+  },
+  "cache_key": "a40db31ad5e07234ca3172e78c3647c0ea8140ebc769902c0c1b6c4834a9b7fd"
+}

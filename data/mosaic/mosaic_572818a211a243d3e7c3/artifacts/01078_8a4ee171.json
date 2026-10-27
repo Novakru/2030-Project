@@ -1,0 +1,36 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_PURIFICATION_CONDITIONS",
+        "quote": "silica gel chromatography (10% EtOAc in Petroleum Ether 40‐60 o C)",
+        "message": "The purification step records only generic chromatography, omitting silica gel and the specified eluent. Preserve these details as unmapped conditions because the permitted Purify fields do not separately represent them. The 40–60 °C designation belongs to petroleum ether, not the purification temperature.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "silica gel chromatography (10% EtOAc in Petroleum Ether 40‐60 o C)",
+          "reason": "Purification uses silica gel and 10% EtOAc in petroleum ether designated 40–60 °C. These details are not separately represented by the permitted Purify fields; the petroleum ether designation must not be interpreted as an operating temperature."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 324,
+    "prompt_tokens": 1146,
+    "total_tokens": 1470,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1143,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 123
+    }
+  },
+  "cache_key": "48d636f5cf332b0c92374caa8ea19b5b16ce10468a6814f7bd6e835750306890"
+}

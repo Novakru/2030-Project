@@ -1,0 +1,68 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_SUBSTRATE_AMOUNT",
+        "quote": "methyl 2‐((2,2,2‐trifluoroacetamido)methyl)benzoate using (65.3 mg, 0.25 mmol)",
+        "message": "The substrate quantity is explicitly given despite the intervening word 'using'. Record 65.3 mg and remove the uncertainty claiming that its amount cannot be assigned.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_PURIFICATION_CONDITIONS",
+        "quote": "silica gel chromatography (Pet. Ether (40‐60):EtOAc (9:1)",
+        "message": "The purification step omits the stated stationary phase and eluent conditions. Preserve these in unmapped_actions because the closed Purify fields do not provide dedicated condition fields.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_ANALYTICAL_OPERATION",
+        "quote": "Analysis of crude 1 H NMR using internalstandard 1,2‐dimethoxyethane showed 2.2:1 meta:para borylation in 88% yield.",
+        "message": "The crude NMR analysis using 1,2‐dimethoxyethane as internal standard is not represented. Preserve it as an unmapped analytical operation; the source does not specify an internal-standard quantity or an addition to the reaction vessel.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/steps/0/amount",
+        "value": {
+          "value": 65.3,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "remove",
+        "path": "/uncertainties/1"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "silica gel chromatography (Pet. Ether (40‐60):EtOAc (9:1)",
+          "reason": "Purification uses silica gel and Pet. Ether (40‐60):EtOAc (9:1); dedicated stationary-phase and eluent fields are unavailable in the closed Purify schema."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Analysis of crude 1 H NMR using internalstandard 1,2‐dimethoxyethane showed 2.2:1 meta:para borylation in 88% yield.",
+          "reason": "Crude NMR analysis using 1,2‐dimethoxyethane as internal standard occurs after solvent removal and before chromatography. No supported operation represents analytical measurement; the standard quantity and sample preparation are unspecified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 688,
+    "prompt_tokens": 1343,
+    "total_tokens": 2031,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1340,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 63
+    }
+  },
+  "cache_key": "379c8a4b7a5e3a6a9c28b6479733c63d25b0e1b6ffde3dfa623919cf8f600b97"
+}

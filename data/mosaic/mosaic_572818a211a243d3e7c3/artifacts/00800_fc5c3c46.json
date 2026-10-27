@@ -1,0 +1,222 @@
+{
+  "protocol": {
+    "id": "pos_066c508c5a254808b5bb566fd4b02a47",
+    "source": {
+      "dataset_id": "ord_dataset-99c23cf435dc42f1af884053bc8b11c7",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+      "file_sha256": "59cd8c35e021be300944f8e556b8fd7ec30a6bc32ff36a54be133aad8e44c393",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": null,
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet"
+    },
+    "raw_id": "ord-066c508c5a254808b5bb566fd4b02a47",
+    "raw_sha256": "4442a205084c9559710926cb608332139626b390fa38bb331b177a7dcdd90aa1",
+    "source_text": "The general procedure A was followed using 1,4-dibromobenzene (118.0 mg, 0.5 mmol) and B2pin2 (126.9 mg, 0.5 mmol, 1.0 eq.) as starting material. The resulting mixture was allowed to stir 16 hours at 100 oC. The 1H NMR conversion was 90% and the byproducts were 2,6-di- and 2,5-di- borylated products. The 1H NMR yields of 5ac, 2,6-di- and 2,5-di- borylated products were 67%, 12% and 12% respectively. 5ac was obtained as white solid (112.0 mg, 62%) after purification by silica gel flash chromatography (EtOAc/PE=1:100 v/v). m.p.: 54-56 oC.",
+    "text_sha256": "414449d18d53b165ab229706e2175e0055a41193630b7de44d6672d22474efdc",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "1,4-dibromobenzene",
+        "smiles": null,
+        "role": "REACTANT",
+        "amount": {
+          "value": 118.0,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r002",
+        "name": "B2pin2",
+        "smiles": null,
+        "role": "REACTANT",
+        "amount": {
+          "value": 126.9,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r001",
+        "amount": {
+          "value": 118.0,
+          "unit": "mg"
+        },
+        "id": "s001",
+        "meta": {
+          "evidence": "using 1,4-dibromobenzene (118.0 mg, 0.5 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "1,4-dibromobenzene",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r002",
+        "amount": {
+          "value": 126.9,
+          "unit": "mg"
+        },
+        "id": "s002",
+        "meta": {
+          "evidence": "B2pin2 (126.9 mg, 0.5 mmol, 1.0 eq.) as starting material",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "B2pin2",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 100,
+        "duration_s": 57600,
+        "stir": true,
+        "id": "s003",
+        "meta": {
+          "evidence": "The resulting mixture was allowed to stir 16 hours at 100 oC.",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Purify",
+        "method": "silica gel flash chromatography (EtOAc/PE=1:100 v/v)",
+        "id": "s004",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "purification by silica gel flash chromatography (EtOAc/PE=1:100 v/v)",
+          "stage": "purification",
+          "source_contract": "text-only/1"
+        }
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {},
+      "reflux": false,
+      "source_context_evidence": []
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "414449d18d53b165ab229706e2175e0055a41193630b7de44d6672d22474efdc",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 622,
+        "prompt_tokens": 834,
+        "total_tokens": 1456,
+        "prompt_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 153
+        }
+      },
+      "cache_key": "40dfbf0552de4c37ea81a65c27c4dd42ad15ceb3ea0dd053e3f2c464c0220c48",
+      "unresolved": [
+        "General procedure A is referenced but not provided; its additional operations, reagents, quantities, and conditions cannot be determined.",
+        "The order of charging the two starting materials is not specified."
+      ],
+      "unmapped_actions": [
+        {
+          "evidence": "The general procedure A was followed",
+          "reason": "The referenced procedure is absent, so its operations cannot be expanded."
+        }
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/2",
+    "findings": [
+      {
+        "code": "PURIFICATION_DETAILS_OMITTED",
+        "quote": "purification by silica gel flash chromatography (EtOAc/PE=1:100 v/v)",
+        "message": "The purification step omits the specified silica gel stationary phase, flash chromatography technique, and EtOAc/PE eluent ratio of 1:100 v/v.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-066c508c5a254808b5bb566fd4b02a47",
+          "source_sha256": "7f3bb8d897caaf7647e1f82f034d0093ed99125ba094522c5f19e101b31aaa05",
+          "start": 457,
+          "end": 525,
+          "quote": "purification by silica gel flash chromatography (EtOAc/PE=1:100 v/v)"
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "silica gel flash chromatography",
+        "kind": "separation apparatus",
+        "identity": null,
+        "scope": "purification of 5ac; eluent EtOAc/PE = 1:100 v/v",
+        "evidence": {
+          "source_id": "ord-066c508c5a254808b5bb566fd4b02a47",
+          "source_sha256": "7f3bb8d897caaf7647e1f82f034d0093ed99125ba094522c5f19e101b31aaa05",
+          "start": 473,
+          "end": 504,
+          "quote": "silica gel flash chromatography"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-066c508c5a254808b5bb566fd4b02a47",
+        "source_sha256": "7f3bb8d897caaf7647e1f82f034d0093ed99125ba094522c5f19e101b31aaa05",
+        "start": 37,
+        "end": 82,
+        "quote": "using 1,4-dibromobenzene (118.0 mg, 0.5 mmol)"
+      },
+      {
+        "source_id": "ord-066c508c5a254808b5bb566fd4b02a47",
+        "source_sha256": "7f3bb8d897caaf7647e1f82f034d0093ed99125ba094522c5f19e101b31aaa05",
+        "start": 87,
+        "end": 144,
+        "quote": "B2pin2 (126.9 mg, 0.5 mmol, 1.0 eq.) as starting material"
+      },
+      {
+        "source_id": "ord-066c508c5a254808b5bb566fd4b02a47",
+        "source_sha256": "7f3bb8d897caaf7647e1f82f034d0093ed99125ba094522c5f19e101b31aaa05",
+        "start": 146,
+        "end": 207,
+        "quote": "The resulting mixture was allowed to stir 16 hours at 100 oC."
+      },
+      {
+        "source_id": "ord-066c508c5a254808b5bb566fd4b02a47",
+        "source_sha256": "7f3bb8d897caaf7647e1f82f034d0093ed99125ba094522c5f19e101b31aaa05",
+        "start": 457,
+        "end": 525,
+        "quote": "purification by silica gel flash chromatography (EtOAc/PE=1:100 v/v)"
+      }
+    ],
+    "repair": {
+      "accepted": true,
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/steps/3/method",
+          "value": "silica gel flash chromatography (EtOAc/PE=1:100 v/v)"
+        }
+      ]
+    },
+    "apparatus_unknowns": [
+      "Reaction vessel not specified.",
+      "Stirring and heating apparatus not specified.",
+      "The stated 100 oC is not identified as a heater setpoint or measured reaction-mixture temperature.",
+      "Flash chromatography hardware (e.g., column dimensions or automated system) not specified."
+    ]
+  },
+  "raw_id": "ord-066c508c5a254808b5bb566fd4b02a47"
+}

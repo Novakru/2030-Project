@@ -1,0 +1,37 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "omitted_return_transfer",
+        "quote": "came back.",
+        "message": "The source explicitly reports return of the material after it was sent to the analytical group. The plan includes the outgoing transfer but omits the return transfer. No return vessel is specified.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/steps/-",
+        "value": {
+          "op": "Transfer",
+          "evidence": "came back.",
+          "stage": "purification"
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 312,
+    "prompt_tokens": 1773,
+    "total_tokens": 2085,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1770,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 215
+    }
+  },
+  "cache_key": "00c664777b0582990604e9561e3c82efa0593a3ab33cecda432f62a657a0b5b0"
+}

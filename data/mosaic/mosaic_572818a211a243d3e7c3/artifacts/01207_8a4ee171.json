@@ -1,0 +1,47 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "PURIFICATION_CONDITIONS_UNDERSPECIFIED",
+        "quote": "silica gel chromatography (Pet. Ether (40‐ 60):EtOAc (19:1‐6:4)",
+        "message": "The purification method records only chromatography, omitting the specified silica gel and eluent composition from the operational field.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_ANALYTICAL_OPERATION",
+        "quote": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane",
+        "message": "The crude NMR analysis using 1,2‐dimethoxyethane is not represented. Preserve it as an unmapped operation because the allowed step types do not encode NMR analysis. The source does not specify the standard quantity or how the analytical sample was prepared.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/8/method",
+        "value": "silica gel chromatography (Pet. Ether (40‐ 60):EtOAc (19:1‐6:4))"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane",
+          "reason": "Crude NMR analysis with an internal standard is not expressible using the allowed step types. Standard quantity and sample-preparation operations are not specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 521,
+    "prompt_tokens": 1314,
+    "total_tokens": 1835,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1311
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 157
+    }
+  },
+  "cache_key": "77c46e3b9103d525d11a07af000d7ccb0e9db7b091d95534a57031da1ccad040"
+}

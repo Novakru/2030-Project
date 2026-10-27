@@ -1,0 +1,97 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "REAGENT_FORMULATION_MISSING",
+        "quote": "H2O2 (30% in H2O; 0.31 mL, 3.0 mmol)",
+        "message": "The first peroxide addition is represented as H2O2 without its specified 30% formulation in water. The evidence preserves this condition, but the operational reagent field does not.",
+        "severity": "error"
+      },
+      {
+        "code": "RETAINED_PHASE_MISSING",
+        "quote": "The combined organic layers were washed with brine (25 mL)",
+        "message": "The brine-wash separations should retain the organic phase, rather than mark the retained phase unknown. This also applies to the three brine washes after redissolution in Et2O. Organic versus aqueous identity does not require assigning top versus bottom.",
+        "severity": "error"
+      },
+      {
+        "code": "VACUUM_CONDITION_UNMAPPED",
+        "quote": "the solvent removed under vacuum",
+        "message": "Both evaporations omit the explicitly specified vacuum condition from the operational representation. The uncertainty about unspecified numerical pressures does not preserve the known use of vacuum. Because Evaporate has no qualitative vacuum field, retain this condition in unmapped_actions.",
+        "severity": "error"
+      },
+      {
+        "code": "PURIFICATION_CONDITIONS_MISSING",
+        "quote": "column  chromatography  on  silica  gel  using  EtOAc  /  hexanes  (0:1  to  1:4)  as  eluent",
+        "message": "Both purification methods are reduced to generic chromatography, omitting column format, silica gel, and the specified eluent gradient. These conditions can be preserved in the allowed method field.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/7/reagent",
+        "value": "H2O2 (30% in H2O)"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/26/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/33/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/35/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/37/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "the solvent removed under vacuum to leave a crude oil (617 mg)",
+          "reason": "Evaporation is performed under vacuum; the allowed Evaporate fields cannot encode qualitative vacuum without inventing a numerical pressure."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "the solvent removed under vacuum to leave a  crude  oil  (165  mg)",
+          "reason": "Evaporation is performed under vacuum; the allowed Evaporate fields cannot encode qualitative vacuum without inventing a numerical pressure."
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/steps/30/method",
+        "value": "column chromatography on silica gel using EtOAc / hexanes (0:1 to 1:4) as eluent"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/41/method",
+        "value": "column chromatography on silica gel using EtOAc / hexanes (0:1 to 1:4) as eluent"
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "total_tokens": 4705,
+    "prompt_tokens": 3619,
+    "completion_tokens": 1086,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 3616
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 250
+    }
+  },
+  "cache_key": "8efacd550ebede6ac8940c4a0d7016acc07a8eefa4cc734dbfdf45f59732aa93"
+}

@@ -1,0 +1,65 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "MISREPRESENTED_BLOCK_PREHEATING",
+        "quote": "placed into pre-heated aluminum block at 80 oC",
+        "message": "The standalone HeatChill step represents apparatus preheating as a separate reaction-heating operation without a vessel. Keep reactor heating in the following HeatChill step and record block preheating as an unmapped apparatus operation.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The GC/MS completion check before solvent removal is not represented. Record it as an unmapped action because the allowed operations do not include analytical monitoring.",
+        "severity": "error"
+      },
+      {
+        "code": "INCOMPLETE_PURIFICATION_METHOD",
+        "quote": "chromatographic separation with silica gel (12% ethyl acetate in hexane as eluent)",
+        "message": "The purification method omits the specified stationary phase and eluent composition, although they are retained in the evidence.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "remove",
+        "path": "/steps/8"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/10/method",
+        "value": "silica gel chromatography with 12% ethyl acetate in hexane as eluent"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "pre-heated aluminum block at 80 oC",
+          "reason": "The aluminum block was preheated to 80 °C. Apparatus preheating is not a separate heating operation on the reaction mixture; its timing and duration are unspecified."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "Completion was judged by GC/MS before THF removal. Analytical monitoring is not represented by an allowed operation."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 651,
+    "prompt_tokens": 1581,
+    "total_tokens": 2232,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1578,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 170
+    }
+  },
+  "cache_key": "cc982b78656f9f117654c67f4da3b8bfc089d5f5220408faf1060d433123283f"
+}

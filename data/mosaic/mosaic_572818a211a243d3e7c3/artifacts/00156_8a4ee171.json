@@ -1,0 +1,36 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The plan omits the GC/MS completion check preceding solvent removal. Because analytical checks are not represented by the allowed operations, preserve this check in unmapped_actions.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "Completion was judged by GC/MS before THF removal; analytical checks are not represented by an allowed operation."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 1457,
+    "completion_tokens": 367,
+    "total_tokens": 1824,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1454
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 241
+    }
+  },
+  "cache_key": "20083d4cc2f14a4c7e98e57f1f4434ac4e1859e8ded48bd685f6a2a38cd24eca"
+}

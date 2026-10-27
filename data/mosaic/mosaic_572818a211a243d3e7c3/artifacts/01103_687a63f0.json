@@ -1,0 +1,196 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "in degassed DME (6 mL)",
+        "stage": "reaction",
+        "reagent": "DME",
+        "alias": "DME",
+        "amount": {
+          "value": 6,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      },
+      {
+        "op": "Add",
+        "evidence": "methyl 3-chloro-5-(4,4,5,5-tetramethyl-1,3,2-dioxaborolan-2-yl)benzoate (440mg, 1.48 mmol)",
+        "stage": "reaction",
+        "reagent": "methyl 3-chloro-5-(4,4,5,5-tetramethyl-1,3,2-dioxaborolan-2-yl)benzoate",
+        "alias": "methyl 3-chloro-5-(4,4,5,5-tetramethyl-1,3,2-dioxaborolan-2-yl)benzoate",
+        "amount": {
+          "value": 440,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "TRIS(DIBENZYLIDENEACETONE)DIPALLADIUM(0) (13.59 mg, 0.01 mmol)",
+        "stage": "reaction",
+        "reagent": "TRIS(DIBENZYLIDENEACETONE)DIPALLADIUM(0)",
+        "alias": "TRIS(DIBENZYLIDENEACETONE)DIPALLADIUM(0)",
+        "amount": {
+          "value": 13.59,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "tri- tert-butylphosphine (10.80 µL, 0.04 mmol)",
+        "stage": "reaction",
+        "reagent": "tri- tert-butylphosphine",
+        "alias": "tri- tert-butylphosphine",
+        "amount": {
+          "value": 0.0108,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "potassium phosphate (441 mg, 2.08 mmol)",
+        "stage": "reaction",
+        "reagent": "potassium phosphate",
+        "alias": "potassium phosphate",
+        "amount": {
+          "value": 441,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Atmosphere",
+        "evidence": "under nitrogen",
+        "stage": "reaction",
+        "gas": "nitrogen",
+        "mode": "environment"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "at 20°C",
+        "stage": "reaction",
+        "temp_C": 20
+      },
+      {
+        "op": "Add",
+        "evidence": "aniline (0.162 mL, 1.78 mmol) was added",
+        "stage": "reaction",
+        "reagent": "aniline",
+        "alias": "aniline",
+        "amount": {
+          "value": 0.162,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The reaction was stirred at 100 °C for 2 days.",
+        "stage": "reaction",
+        "temp_C": 100,
+        "duration_s": 172800,
+        "stir": true
+      },
+      {
+        "op": "Add",
+        "evidence": "The reaction mixture was diluted with Et2O (50 mL)",
+        "stage": "workup",
+        "reagent": "Et2O",
+        "alias": "Et2O",
+        "amount": {
+          "value": 50,
+          "unit": "mL"
+        },
+        "role": "WORKUP"
+      },
+      {
+        "op": "Add",
+        "evidence": "washed sequentially with water (50 mL)",
+        "stage": "workup",
+        "reagent": "water",
+        "alias": "water",
+        "amount": {
+          "value": 50,
+          "unit": "mL"
+        },
+        "role": "WORKUP"
+      },
+      {
+        "op": "Separate",
+        "evidence": "washed sequentially with water (50 mL)",
+        "stage": "workup",
+        "keep_phase": "unknown"
+      },
+      {
+        "op": "Add",
+        "evidence": "saturated brine (50 mL)",
+        "stage": "workup",
+        "reagent": "saturated brine",
+        "alias": "saturated brine",
+        "amount": {
+          "value": 50,
+          "unit": "mL"
+        },
+        "role": "WORKUP"
+      },
+      {
+        "op": "Separate",
+        "evidence": "washed sequentially with water (50 mL) and saturated brine (50 mL)",
+        "stage": "workup",
+        "keep_phase": "unknown"
+      },
+      {
+        "op": "Add",
+        "evidence": "The organic layer was dried over MgSO4",
+        "stage": "workup",
+        "reagent": "MgSO4",
+        "alias": "MgSO4",
+        "role": "WORKUP"
+      },
+      {
+        "op": "Filter",
+        "evidence": "filtered",
+        "stage": "workup"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "evaporated",
+        "stage": "workup"
+      },
+      {
+        "op": "Purify",
+        "evidence": "The crude product was purified by flash silica chromatography, elution 10 to 60% EtOAc in heptane.",
+        "stage": "purification",
+        "method": "chromatography"
+      }
+    ],
+    "uncertainties": [
+      "The order of charging DME and the components present before the aniline addition is not specified; their listed order is a serialization of the initial mixture.",
+      "The method and conditions used to degas DME are not specified.",
+      "The retained organic layer is identified, but its top or bottom position is not specified.",
+      "The amount of MgSO4 and the drying duration are not specified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "degassed DME",
+        "reason": "Solvent degassing is indicated, but no degassing method or gas is specified; it cannot be faithfully represented by an allowed operation."
+      },
+      {
+        "evidence": "The organic layer was dried over MgSO4",
+        "reason": "MgSO4 introduction is represented by an Add step; drying over a drying agent itself has no supported operation."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 880,
+    "completion_tokens": 1856,
+    "total_tokens": 2736,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 358
+    }
+  },
+  "cache_key": "63babfc967208b5bdb5c5e455b9f3c32ba4b1206f3e6ba3429e704d06baa704e"
+}

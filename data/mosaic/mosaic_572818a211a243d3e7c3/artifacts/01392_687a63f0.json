@@ -1,0 +1,132 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "The indole from 4773-25",
+        "stage": "reaction",
+        "reagent": "indole from 4773-25",
+        "alias": "indole from 4773-25",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Add",
+        "evidence": "1-(benzyloxy)-3-iodobenzene",
+        "stage": "reaction",
+        "reagent": "1-(benzyloxy)-3-iodobenzene",
+        "alias": "1-(benzyloxy)-3-iodobenzene",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Add",
+        "evidence": "Pd2(dba)3",
+        "stage": "reaction",
+        "reagent": "Pd2(dba)3",
+        "alias": "Pd2(dba)3",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Add",
+        "evidence": "JohnPhos",
+        "stage": "reaction",
+        "reagent": "JohnPhos",
+        "alias": "JohnPhos",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Add",
+        "evidence": "KOtBu were dissolved in toluene.",
+        "stage": "reaction",
+        "reagent": "KOtBu",
+        "alias": "KOtBu",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Add",
+        "evidence": "were dissolved in toluene.",
+        "stage": "reaction",
+        "reagent": "toluene",
+        "alias": "toluene",
+        "role": "SOLVENT",
+        "vessel": "reactor"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The mixture was warmed at 120 °C for 1h",
+        "stage": "reaction",
+        "temp_C": 120,
+        "duration_s": 3600,
+        "vessel": "reactor"
+      },
+      {
+        "op": "Transfer",
+        "evidence": "Small amount from reaction mixture was dissolved in CDCl3",
+        "stage": "reaction",
+        "from_vessel": "reactor"
+      },
+      {
+        "op": "Add",
+        "evidence": "Small amount from reaction mixture was dissolved in CDCl3",
+        "stage": "reaction",
+        "reagent": "CDCl3",
+        "alias": "CDCl3",
+        "role": "SOLVENT"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The mixture was warmed further 15h at 120°C",
+        "stage": "reaction",
+        "temp_C": 120,
+        "duration_s": 54000,
+        "vessel": "reactor"
+      },
+      {
+        "op": "Transfer",
+        "evidence": "the reaction mixture was directly applied to a silica column (heptane 3:1).",
+        "stage": "purification",
+        "from_vessel": "reactor",
+        "to_vessel": "silica column"
+      },
+      {
+        "op": "Purify",
+        "evidence": "the reaction mixture was directly applied to a silica column (heptane 3:1).",
+        "stage": "purification",
+        "method": "chromatography"
+      },
+      {
+        "op": "Transfer",
+        "evidence": "Product was collected in fraction 22-23",
+        "stage": "purification",
+        "from_vessel": "silica column"
+      }
+    ],
+    "uncertainties": [
+      "No quantities are given for the indole from 4773-25, 1-(benzyloxy)-3-iodobenzene, Pd2(dba)3, JohnPhos, KOtBu, or toluene. Their individual addition order is not specified.",
+      "The indole is identified only by the reference 4773-25.",
+      "The analytical aliquot is described only as a small amount; its quantity, receiving vessel, and CDCl3 quantity are unspecified. Its placement after the first heating period follows the associated NMR-monitoring reference.",
+      "The chromatography notation 'heptane 3:1' does not identify a second solvent or otherwise define the ratio.",
+      "Collection vessels for fractions 22-23 are not specified.",
+      "The reported 19.3 mg is a recovered-product quantity, not an addition dose."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "Test reaction with bromide was performed in 4773-53.",
+        "reason": "A separate test reaction is reported, but its operations, bromide identity, quantities, and conditions are not provided."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1420,
+    "prompt_tokens": 852,
+    "total_tokens": 2272,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 339
+    }
+  },
+  "cache_key": "c7ddfe2757ac0670d77b562f7f9afe1b7661fcdae3d8f67aa47370534088f7c4"
+}

@@ -1,0 +1,47 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "PURIFICATION_DETAILS_NOT_STRUCTURED",
+        "quote": "The crude product was purified by silica gel chromatography (Pet. Ether (40‐60):EtOAc (9:1)",
+        "message": "The purification method is recorded only as chromatography. The source specifies silica gel and a Pet. Ether (40‐60):EtOAc (9:1) eluent; these supported details can be retained in the method field.",
+        "severity": "error"
+      },
+      {
+        "code": "UNMAPPED_INTERNAL_STANDARD_USE",
+        "quote": "Analysis of crude 1 H NMR using internalstandard 1,2‐dimethoxyethane",
+        "message": "The analytical use of 1,2‐dimethoxyethane is not represented. Its amount, introduction procedure, and sample vessel are unspecified, so it should be retained as an unmapped action rather than added to the reaction vessel.",
+        "severity": "unknown"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/8/method",
+        "value": "silica gel chromatography; Pet. Ether (40‐60):EtOAc (9:1)"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Analysis of crude 1 H NMR using internalstandard 1,2‐dimethoxyethane",
+          "reason": "Analytical use of 1,2‐dimethoxyethane as an internal standard is stated, but its amount, introduction procedure, and sample vessel are not specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 480,
+    "prompt_tokens": 1385,
+    "total_tokens": 1865,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1382,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 173
+    }
+  },
+  "cache_key": "f64e6e1110ee92437976f921e573900e953bb89a25c65f11c17456f1d7f611fd"
+}

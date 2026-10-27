@@ -1,0 +1,58 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "OMITTED_REACTION_TIME",
+        "quote": "After 16 h 81 % conversion was achieved.",
+        "message": "The plan omits the explicitly reported 16 h elapsed reaction period. This can be represented as a Wait without asserting an explicitly documented 16 h hold at 110 °C.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_MONITORING",
+        "quote": "The reaction was monitorred by HPLC.",
+        "message": "HPLC monitoring is absent from both the steps and unmapped actions. Preserve it as an unmapped action because the permitted operations do not represent analytical monitoring.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/steps/-",
+        "value": {
+          "op": "Wait",
+          "evidence": "After 16 h 81 % conversion was achieved.",
+          "stage": "reaction",
+          "vessel": "reactor",
+          "duration_s": 57600
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/uncertainties/0",
+        "value": "The elapsed reaction period is represented by \"After 16 h 81 % conversion was achieved.\" The source states \"heated to 110 °C under argon\" but does not explicitly specify that this temperature was maintained throughout that period."
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The reaction was monitorred by HPLC.",
+          "reason": "Analytical monitoring is not represented by the permitted operations; monitoring times and sampling details are not specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 650,
+    "prompt_tokens": 1449,
+    "total_tokens": 2099,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1446
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 257
+    }
+  },
+  "cache_key": "915dab028be31fcac7961f7f2ecd0b5b4518a097c82c9e1441a875c77fb9190b"
+}

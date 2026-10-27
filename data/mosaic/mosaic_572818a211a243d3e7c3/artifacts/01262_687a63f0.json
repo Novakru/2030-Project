@@ -1,0 +1,204 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "methyl 4-bromobenzoate (1 g, 4.65 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "methyl 4-bromobenzoate",
+        "alias": "methyl 4-bromobenzoate",
+        "amount": {
+          "value": 1000,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "(3,5-difluorophenyl)methanamine (1.100 mL, 9.30 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "(3,5-difluorophenyl)methanamine",
+        "alias": "(3,5-difluorophenyl)methanamine",
+        "amount": {
+          "value": 1.1,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "Cesium carbonate (1.515 g, 4.65 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "Cesium carbonate",
+        "alias": "Cesium carbonate",
+        "amount": {
+          "value": 1515,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "were mixed in toluene (4 mL)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "toluene",
+        "alias": "toluene",
+        "amount": {
+          "value": 4,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      },
+      {
+        "op": "Stir",
+        "evidence": "were mixed in toluene (4 mL)",
+        "stage": "reaction",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Atmosphere",
+        "evidence": "degassed by bubbling nitrogen through solution",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "gas": "nitrogen",
+        "mode": "purge"
+      },
+      {
+        "op": "Add",
+        "evidence": "Palladium acetate (0.052 g, 0.23 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "Palladium acetate",
+        "alias": "Palladium acetate",
+        "amount": {
+          "value": 52,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "rac-2,2'-Bis(diphenylphosphino)-1,1'-binaphthyl (0.203 g, 0.33 mmol) were added",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "rac-2,2'-Bis(diphenylphosphino)-1,1'-binaphthyl",
+        "alias": "rac-2,2'-Bis(diphenylphosphino)-1,1'-binaphthyl",
+        "amount": {
+          "value": 203,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "heated at 100°C over 5 days",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "temp_C": 100,
+        "duration_s": 432000
+      },
+      {
+        "op": "Add",
+        "evidence": "dilution with EtOAc",
+        "stage": "workup",
+        "reagent": "EtOAc",
+        "alias": "EtOAc",
+        "role": "WORKUP"
+      },
+      {
+        "op": "Add",
+        "evidence": "washing with water",
+        "stage": "workup",
+        "reagent": "water",
+        "alias": "water",
+        "role": "WORKUP"
+      },
+      {
+        "op": "Separate",
+        "evidence": "washing with water",
+        "stage": "workup",
+        "keep_phase": "unknown"
+      },
+      {
+        "op": "Add",
+        "evidence": "extraction with 2M HCl",
+        "stage": "workup",
+        "reagent": "HCl",
+        "alias": "HCl",
+        "role": "WORKUP"
+      },
+      {
+        "op": "Separate",
+        "evidence": "extraction with 2M HCl. The HCl extract",
+        "stage": "workup",
+        "keep_phase": "unknown"
+      },
+      {
+        "op": "Add",
+        "evidence": "The HCl extract was neutralized with 2M NaOH",
+        "stage": "workup",
+        "reagent": "NaOH",
+        "alias": "NaOH",
+        "role": "WORKUP"
+      },
+      {
+        "op": "Add",
+        "evidence": "extracted with EtOAc",
+        "stage": "workup",
+        "reagent": "EtOAc",
+        "alias": "EtOAc",
+        "role": "WORKUP"
+      },
+      {
+        "op": "Separate",
+        "evidence": "extracted with EtOAc and the EtOAc phase",
+        "stage": "workup",
+        "keep_phase": "unknown"
+      },
+      {
+        "op": "Add",
+        "evidence": "the EtOAc phase was dried (K2CO3)",
+        "stage": "workup",
+        "reagent": "K2CO3",
+        "alias": "K2CO3",
+        "role": "WORKUP"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "evaporated to give the crude product",
+        "stage": "workup"
+      }
+    ],
+    "uncertainties": [
+      "Mixing duration and speed are not specified.",
+      "Nitrogen bubbling duration is not specified.",
+      "The quantities of EtOAc for dilution, water for washing, EtOAc for extraction, and K2CO3 for drying are not specified.",
+      "HCl and NaOH are specified only as 2M solutions; their added quantities are not specified.",
+      "The HCl extract and subsequently the EtOAc phase are retained, but their top or bottom positions are not specified.",
+      "Evaporation conditions are not specified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "the vial was capped",
+        "reason": "Capping is not represented by an allowed operation."
+      },
+      {
+        "evidence": "the EtOAc phase was dried (K2CO3)",
+        "reason": "The drying-agent addition is represented, but drying itself is not an allowed operation."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1744,
+    "prompt_tokens": 874,
+    "total_tokens": 2618,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 212
+    }
+  },
+  "cache_key": "af7958111e94cc3fecf75a5b007a14629e0d897f71f714672237af625242ea8c"
+}

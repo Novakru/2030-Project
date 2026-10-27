@@ -1,0 +1,36 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNMAPPED_CHROMATOGRAPHY_CONDITIONS",
+        "quote": "Hex to Hex:EtOAc To EtOAc:MeOH=10:1 to EtOAc:MeOH:Et3N=10:1:0.1",
+        "message": "The chromatography solvent sequence and explicit mixture ratios appear in the evidence but are not represented as operational conditions. Preserve them in unmapped_actions because the Purify schema has no eluent fields. The Hex:EtOAc ratio remains unspecified.",
+        "severity": "unknown"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Hex to Hex:EtOAc To EtOAc:MeOH=10:1 to EtOAc:MeOH:Et3N=10:1:0.1",
+          "reason": "Reported chromatography eluent sequence, including EtOAc:MeOH=10:1 and EtOAc:MeOH:Et3N=10:1:0.1, cannot be encoded in the allowed Purify fields. The Hex:EtOAc ratio is not specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 652,
+    "prompt_tokens": 1748,
+    "total_tokens": 2400,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1745
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 413
+    }
+  },
+  "cache_key": "c1eed8524a8584054018a334a5482e4c798676e25224bdcecc1cda57170dfa3e"
+}

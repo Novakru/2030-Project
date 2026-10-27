@@ -1,0 +1,50 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "UNMAPPED_CHROMATOGRAPHY_CONDITIONS",
+        "quote": "15% EtOAc in Petroleum Ether 40‐60 o C",
+        "message": "The chromatography eluent specification appears in evidence but is not explicitly retained as an operational condition. Preserve it in unmapped_actions because the Purify schema has no eluent field. The petroleum ether designation must not be interpreted as a purification temperature.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_ANALYTICAL_OPERATION",
+        "quote": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane",
+        "message": "The crude NMR analysis using an internal standard is omitted. Record it as an unmapped analytical operation; the source does not specify the standard's quantity or establish addition to the reaction vessel.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "15% EtOAc in Petroleum Ether 40‐60 o C",
+          "reason": "Chromatography eluent specification; the Purify schema has no field for this condition. The petroleum ether designation is not a stated purification temperature."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane",
+          "reason": "Analytical operation not represented by the available step types. The internal standard quantity and analytical vessel are not specified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 479,
+    "prompt_tokens": 1153,
+    "total_tokens": 1632,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1150,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 95
+    }
+  },
+  "cache_key": "c4ee056da389d3403ccb8363f4c275b692c9ebbc0597122666aa10c6c822f4a1"
+}

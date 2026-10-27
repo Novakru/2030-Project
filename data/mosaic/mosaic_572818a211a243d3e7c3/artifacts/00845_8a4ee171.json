@@ -1,0 +1,59 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "AMBIGUOUS_PURIFICATION_ACTION",
+        "quote": "The crude product was unable to be purified by silica gel chromatography and was hence characterised from the crude mixture.",
+        "message": "The Purify step presents chromatography as an affirmative operation. The source reports inability to purify, without clearly establishing whether chromatography was performed. Preserve this statement as unmapped rather than asserting a purification step.",
+        "severity": "unknown"
+      },
+      {
+        "code": "OMITTED_ANALYTICAL_HANDLING",
+        "quote": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane showed 2.3:1 meta:para borylation in 70% yield.",
+        "message": "The plan omits crude-mixture NMR analysis using 1,2-dimethoxyethane as internal standard. Preserve this analytical handling as unmapped; the source does not specify the standard's amount or the sample-preparation operations.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "remove",
+        "path": "/steps/8"
+      },
+      {
+        "op": "replace",
+        "path": "/uncertainties/5",
+        "value": "The source states 'The crude product was unable to be purified by silica gel chromatography and was hence characterised from the crude mixture.' It does not clearly establish whether chromatography was performed; no purification conditions are provided."
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "The crude product was unable to be purified by silica gel chromatography and was hence characterised from the crude mixture.",
+          "reason": "Reports inability to purify and characterisation from the crude mixture; whether chromatography was performed is unclear."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane showed 2.3:1 meta:para borylation in 70% yield.",
+          "reason": "Analytical operation outside the supported step types. Internal-standard amount and sample-preparation operations are unspecified."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 646,
+    "prompt_tokens": 1292,
+    "total_tokens": 1938,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1289,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 137
+    }
+  },
+  "cache_key": "529a9424b78fc5b1d36d0ba74c4e65cc12c08142076036190f0f0654b465fee6"
+}

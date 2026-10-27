@@ -1,0 +1,54 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "MISSING_INTERVESSEL_TRANSFER",
+        "quote": "The catalyst solution wad added to the reaction mixture",
+        "message": "The catalyst solution is transferred from the catalyst-preparation vessel to the second microwave vial. Representing it only as a reagent addition omits its source vessel.",
+        "severity": "error"
+      },
+      {
+        "code": "MISSING_MICROWAVE_CONDITION",
+        "quote": "the resulting solution was stirred at 100C for 1h in the microwave.",
+        "message": "The temperature, duration and stirring are captured, but microwave heating is not preserved outside step evidence. Because HeatChill has no allowed heating-method field, preserve this condition in unmapped_actions.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/10",
+        "value": {
+          "op": "Transfer",
+          "evidence": "The catalyst solution wad added to the reaction mixture",
+          "stage": "reaction",
+          "vessel": "microwave_vial_2",
+          "from_vessel": "reactor",
+          "to_vessel": "microwave_vial_2"
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "the resulting solution was stirred at 100C for 1h in the microwave.",
+          "reason": "Microwave heating is explicit, but the allowed HeatChill fields cannot encode the heating method."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 459,
+    "prompt_tokens": 1713,
+    "total_tokens": 2172,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1710
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 104
+    }
+  },
+  "cache_key": "5fb24d813f30a2d87f60bf7cd4956587a35308a64acac7840dcd26469a6e40b7"
+}

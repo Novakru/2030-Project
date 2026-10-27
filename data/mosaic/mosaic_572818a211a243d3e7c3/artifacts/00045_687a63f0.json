@@ -1,0 +1,185 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "evidence": "1-methylbenzimidazole  1g  (100  mg,  1.0  mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "1-methylbenzimidazole  1g",
+        "alias": "1-methylbenzimidazole  1g",
+        "amount": {
+          "value": 100,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "concentrated  H2SO4  (108  μL,  1.0  mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "concentrated  H2SO4",
+        "alias": "concentrated  H2SO4",
+        "amount": {
+          "value": 0.108,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "1-Boc-3-(iodo)azetidine  (566  mg,  2.0  mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "1-Boc-3-(iodo)azetidine",
+        "alias": "1-Boc-3-(iodo)azetidine",
+        "amount": {
+          "value": 566,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "iron(II)  sulfate heptahydrate (80 mg, 0.3 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "iron(II)  sulfate heptahydrate",
+        "alias": "iron(II)  sulfate heptahydrate",
+        "amount": {
+          "value": 80,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "in DMSO (5 mL)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "DMSO",
+        "alias": "DMSO",
+        "amount": {
+          "value": 5,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      },
+      {
+        "op": "Stir",
+        "evidence": "a  stirred  solution",
+        "stage": "reaction",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Add",
+        "evidence": "H2O2  (30%  in  H2O;  0.31  mL,  3.0  mmol)  was  added",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "H2O2",
+        "alias": "H2O2",
+        "amount": {
+          "value": 0.31,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "Stir",
+        "evidence": "The mixture was stirred at  room  temperature  for  120  min",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "duration_s": 7200
+      },
+      {
+        "op": "Add",
+        "evidence": "diluted  with  EtOAc  and  saturated  NaHCO3",
+        "stage": "workup",
+        "vessel": "reactor",
+        "reagent": "EtOAc",
+        "alias": "EtOAc",
+        "role": "WORKUP"
+      },
+      {
+        "op": "Add",
+        "evidence": "diluted  with  EtOAc  and  saturated  NaHCO3",
+        "stage": "workup",
+        "vessel": "reactor",
+        "reagent": "saturated  NaHCO3",
+        "alias": "saturated  NaHCO3",
+        "role": "WORKUP"
+      },
+      {
+        "op": "Separate",
+        "evidence": "The  aqueous  and  organic  layers  were  partitioned",
+        "stage": "workup",
+        "keep_phase": "unknown"
+      },
+      {
+        "op": "Add",
+        "evidence": "the  organic  layer  was  washed  with  brine",
+        "stage": "workup",
+        "reagent": "brine",
+        "alias": "brine",
+        "role": "WORKUP"
+      },
+      {
+        "op": "Separate",
+        "evidence": "the  organic  layer  was  washed  with  brine",
+        "stage": "workup",
+        "keep_phase": "unknown"
+      },
+      {
+        "op": "Add",
+        "evidence": "dried  (MgSO4)",
+        "stage": "workup",
+        "reagent": "MgSO4",
+        "alias": "MgSO4",
+        "role": "WORKUP"
+      },
+      {
+        "op": "Filter",
+        "evidence": "filtered",
+        "stage": "workup"
+      },
+      {
+        "op": "Evaporate",
+        "evidence": "the  solvent  removed  under  vacuum",
+        "stage": "workup"
+      },
+      {
+        "op": "Purify",
+        "evidence": "The  residue  was  purified  by  column  chromatography on silica gel using EtOAc / hexanes (3:7 to 7:3) as eluent",
+        "stage": "purification",
+        "method": "chromatography"
+      }
+    ],
+    "uncertainties": [
+      "The source identifier '1g' is retained with the literal reagent name; the parenthetical mass is 100 mg.",
+      "The order of preparing the initial stirred solution is not specified; its listed components precede the H2O2 addition.",
+      "Room temperature is specified without a numerical temperature.",
+      "The duration and speed of stirring before H2O2 addition are not specified; the subsequent stirring speed is also unspecified.",
+      "Amounts of EtOAc, saturated NaHCO3, brine and MgSO4 used in the workup are not specified.",
+      "The organic layer is processed after partitioning and washing, but its top/bottom position is not specified.",
+      "The retained fraction during filtration is not explicitly specified.",
+      "Vacuum pressure is not specified.",
+      "Chromatography eluent quantities are not specified."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "dried  (MgSO4)",
+        "reason": "MgSO4 addition is represented, but drying itself has no supported operation type."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1615,
+    "prompt_tokens": 2299,
+    "total_tokens": 3914,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 2296
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 121
+    }
+  },
+  "cache_key": "330fd719c6e5138e2b3f0f79af8e74fa30ae3d0bac9a0a1a835a3c09775d6bed"
+}

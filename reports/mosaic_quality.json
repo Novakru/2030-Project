@@ -1,308 +1,282 @@
 {
-  "run_id": "mosaic_194589679289590c90c0",
-  "status": "complete",
-  "primary_ord_positives": 140,
-  "positive_records": 166,
-  "negative_records": 200,
-  "primary_methods": {
-    "llm_evidence_constrained": 15,
-    "ord_structured": 125
+  "run_id": "mosaic_572818a211a243d3e7c3",
+  "status": "partial",
+  "input_contract": "text-only/1",
+  "raw_source_records": 300,
+  "text_conversions": 25,
+  "negative_candidates": 83,
+  "incomplete_conversions": 275,
+  "audit_records": 383,
+  "positive_source_datasets": 2,
+  "strict_gold": 0,
+  "quota_acceptance_passed": false,
+  "positive_shortfall": 75,
+  "risk_shortfalls": {
+    "A3": 10,
+    "A4": 10,
+    "B1": 10,
+    "B2": 10,
+    "B3": 10,
+    "B4": 10,
+    "B5": 10,
+    "C2": 10,
+    "C3": 10,
+    "C4": 7,
+    "C5": 10,
+    "D2": 10
   },
-  "primary_vessel_types": {
-    "round_bottom_flask": 2,
-    "unknown": 2,
-    "microreactor": 11,
-    "vial": 43,
-    "well_plate": 82
-  },
-  "selected_ord_datasets": 12,
-  "mechanism_groups": 44,
-  "risk_diversity": {
+  "risks": {
     "A1": {
-      "count": 10,
+      "records": 10,
       "mechanisms": {
-        "A1.cumulative_overfill": 3,
-        "A1.single_add_overfill": 4,
-        "A1.active_fill_fraction": 3
+        "A1.active_fill_fraction": 5,
+        "A1.cumulative_overfill": 1,
+        "A1.single_add_overfill": 4
       },
       "parents": 10,
-      "source_groups": 6,
-      "origins": {
-        "observed_parent": 10
-      },
-      "label_type": "hard"
+      "label_types": {
+        "hard": 10
+      }
     },
     "A2": {
-      "count": 10,
+      "records": 10,
       "mechanisms": {
         "A2.above_controller_range": 10
       },
-      "parents": 10,
-      "source_groups": 10,
-      "origins": {
-        "observed_parent": 10
-      },
-      "label_type": "hard"
+      "parents": 9,
+      "label_types": {
+        "hard": 10
+      }
     },
     "A3": {
-      "count": 10,
-      "mechanisms": {
-        "A3.below_controller_range": 5,
-        "A3.above_controller_range": 5
-      },
-      "parents": 10,
-      "source_groups": 1,
-      "origins": {
-        "observed_parent": 10
-      },
-      "label_type": "hard"
+      "records": 0,
+      "mechanisms": {},
+      "parents": 0,
+      "label_types": {}
     },
     "A4": {
-      "count": 10,
-      "mechanisms": {
-        "A4.reagent_identity": 10
-      },
-      "parents": 10,
-      "source_groups": 8,
-      "origins": {
-        "observed_parent": 10
-      },
-      "label_type": "hard"
+      "records": 0,
+      "mechanisms": {},
+      "parents": 0,
+      "label_types": {}
     },
     "A5": {
-      "count": 10,
+      "records": 10,
       "mechanisms": {
-        "A5.unresolved_binding": 3,
-        "A5.incompatible_bound_capability": 2,
+        "A5.incompatible_bound_capability": 3,
+        "A5.unresolved_binding": 2,
         "A5.missing_controller": 3,
         "A5.missing_filter": 2
       },
       "parents": 10,
-      "source_groups": 10,
-      "origins": {
-        "observed_parent": 10
-      },
-      "label_type": "hard"
+      "label_types": {
+        "hard": 10
+      }
     },
     "B1": {
-      "count": 10,
-      "mechanisms": {
-        "B1.overheat_open_liquid": 5,
-        "B1.open_hot_closed_vessel": 5
-      },
-      "parents": 10,
-      "source_groups": 2,
-      "origins": {
-        "observed_parent": 10
-      },
-      "label_type": "hard"
+      "records": 0,
+      "mechanisms": {},
+      "parents": 0,
+      "label_types": {}
     },
     "B2": {
-      "count": 10,
-      "mechanisms": {
-        "B2.below_pure_solvent_melting_point": 10
-      },
-      "parents": 1,
-      "source_groups": 1,
-      "origins": {
-        "instantiated_sop": 10
-      },
-      "label_type": "hard"
+      "records": 0,
+      "mechanisms": {},
+      "parents": 0,
+      "label_types": {}
     },
     "B3": {
-      "count": 10,
-      "mechanisms": {
-        "B3.exposed_vapor_ignition_source": 10
-      },
-      "parents": 5,
-      "source_groups": 1,
-      "origins": {
-        "instantiated_sop": 10
-      },
-      "label_type": "hard"
+      "records": 0,
+      "mechanisms": {},
+      "parents": 0,
+      "label_types": {}
     },
     "B4": {
-      "count": 10,
-      "mechanisms": {
-        "B4.reagent_identity": 10
-      },
-      "parents": 10,
-      "source_groups": 1,
-      "origins": {
-        "observed_parent": 10
-      },
-      "label_type": "hard"
+      "records": 0,
+      "mechanisms": {},
+      "parents": 0,
+      "label_types": {}
     },
     "B5": {
-      "count": 10,
-      "mechanisms": {
-        "B5.water_into_concentrated_acid": 10
-      },
-      "parents": 10,
-      "source_groups": 8,
-      "origins": {
-        "published_sop_fragment": 10
-      },
-      "label_type": "hard"
+      "records": 0,
+      "mechanisms": {},
+      "parents": 0,
+      "label_types": {}
     },
     "C1": {
-      "count": 10,
+      "records": 10,
       "mechanisms": {
         "C1.solvent_family_substitution": 10
       },
-      "parents": 10,
-      "source_groups": 9,
-      "origins": {
-        "observed_parent": 10
-      },
-      "label_type": "soft"
+      "parents": 8,
+      "label_types": {
+        "soft": 10
+      }
     },
     "C2": {
-      "count": 10,
-      "mechanisms": {
-        "C2.cooler_than_source": 5,
-        "C2.hotter_than_source": 5
-      },
-      "parents": 10,
-      "source_groups": 10,
-      "origins": {
-        "observed_parent": 10
-      },
-      "label_type": "soft"
+      "records": 0,
+      "mechanisms": {},
+      "parents": 0,
+      "label_types": {}
     },
     "C3": {
-      "count": 10,
-      "mechanisms": {
-        "C3.catalyst_omission": 5,
-        "C3.catalyst_identity_substitution": 5
-      },
-      "parents": 10,
-      "source_groups": 10,
-      "origins": {
-        "observed_parent": 10
-      },
-      "label_type": "soft"
+      "records": 0,
+      "mechanisms": {},
+      "parents": 0,
+      "label_types": {}
     },
     "C4": {
-      "count": 10,
+      "records": 3,
       "mechanisms": {
-        "C4.depleted_reactant": 2,
-        "C4.excess_reactant": 1,
-        "C4.depleted_catalyst": 2,
-        "C4.depleted_internal_standard": 1,
-        "C4.depleted_reagent": 1,
         "C4.excess_reagent": 1,
-        "C4.excess_catalyst": 1,
-        "C4.excess_internal_standard": 1
+        "C4.depleted_reagent": 2
       },
-      "parents": 10,
-      "source_groups": 10,
-      "origins": {
-        "observed_parent": 10
-      },
-      "label_type": "soft"
+      "parents": 1,
+      "label_types": {
+        "soft": 3
+      }
     },
     "C5": {
-      "count": 10,
-      "mechanisms": {
-        "C5.remove_step": 10
-      },
-      "parents": 10,
-      "source_groups": 1,
-      "origins": {
-        "observed_parent": 10
-      },
-      "label_type": "hard"
+      "records": 0,
+      "mechanisms": {},
+      "parents": 0,
+      "label_types": {}
     },
     "C6": {
-      "count": 10,
+      "records": 10,
       "mechanisms": {
-        "C6.shortened_heatchill": 3,
-        "C6.extended_heatchill": 3,
-        "C6.extended_stir": 1,
-        "C6.extended_irradiate": 1,
-        "C6.shortened_evaporate": 1,
-        "C6.extended_evaporate": 1
+        "C6.extended_heatchill": 5,
+        "C6.extended_atmosphere": 1,
+        "C6.extended_stir": 4
       },
       "parents": 10,
-      "source_groups": 8,
-      "origins": {
-        "observed_parent": 10
-      },
-      "label_type": "soft"
+      "label_types": {
+        "soft": 10
+      }
     },
     "D1": {
-      "count": 10,
+      "records": 10,
       "mechanisms": {
         "D1.move_step": 10
       },
       "parents": 10,
-      "source_groups": 10,
-      "origins": {
-        "observed_parent": 10
-      },
-      "label_type": "hard"
+      "label_types": {
+        "hard": 10
+      }
     },
     "D2": {
-      "count": 10,
-      "mechanisms": {
-        "D2.omitted_filterthrough": 1,
-        "D2.omitted_transfer": 9
-      },
-      "parents": 10,
-      "source_groups": 1,
-      "origins": {
-        "published_source": 10
-      },
-      "label_type": "hard"
+      "records": 0,
+      "mechanisms": {},
+      "parents": 0,
+      "label_types": {}
     },
     "D3": {
-      "count": 10,
+      "records": 10,
       "mechanisms": {
         "D3.undefined_vessel": 5,
         "D3.undefined_reagent": 5
       },
       "parents": 10,
-      "source_groups": 10,
-      "origins": {
-        "observed_parent": 10
-      },
-      "label_type": "hard"
+      "label_types": {
+        "hard": 10
+      }
     },
     "D4": {
-      "count": 10,
+      "records": 10,
       "mechanisms": {
         "D4.nonpositive_quantity": 5,
         "D4.incompatible_dimension": 5
       },
       "parents": 10,
-      "source_groups": 10,
-      "origins": {
-        "observed_parent": 10
-      },
-      "label_type": "hard"
+      "label_types": {
+        "hard": 10
+      }
     }
   },
-  "single_mechanism_risks": [
-    "A2",
-    "A4",
-    "B2",
-    "B3",
-    "B4",
-    "B5",
-    "C1",
-    "C5",
-    "D1"
-  ],
-  "source_device_observations": 149,
-  "operation_candidates": 64,
-  "global_minimality_proven": false,
-  "manual_decisions_created": 0,
-  "strict_gold": 0,
+  "mechanism_groups": 19,
+  "failure_reasons": {
+    "source actions not mapped; requires review": 230,
+    "Evidence validation failed": 8,
+    "s005": 1,
+    "Only documented RunColumn mapping is available for chromatography": 20,
+    "s003": 3,
+    "'from_vessel'": 1,
+    "s007": 4,
+    "s009": 1,
+    "s006": 4,
+    "s010": 1,
+    "s008": 1,
+    "s012": 1
+  },
+  "positive_apparatus_kinds": {
+    "heating_block": 16,
+    "microreactor": 16,
+    "column": 19,
+    "vessel": 28,
+    "heater_stirrer": 9,
+    "round_bottom_flask": 2,
+    "filter": 2
+  },
+  "library": {
+    "families": 16,
+    "catalog_profiles": 22,
+    "canonical_operations": 12,
+    "operations_used": 7,
+    "operation_candidates": 26,
+    "family_candidates": 15,
+    "admitted_representations": 0,
+    "observations": 4663,
+    "curator": {
+      "role": "library_curator",
+      "status": "completed",
+      "batches": [
+        {
+          "status": "completed",
+          "observations": 40,
+          "proposals": 25
+        },
+        {
+          "status": "completed",
+          "observations": 40,
+          "proposals": 25
+        },
+        {
+          "status": "completed",
+          "observations": 40,
+          "proposals": 17
+        },
+        {
+          "status": "completed",
+          "observations": 40,
+          "proposals": 25
+        }
+      ],
+      "model": "gpt-6.1-sol"
+    },
+    "curation_actions": {
+      "observe_operation": 3900,
+      "observe_device": 763,
+      "reuse": 28,
+      "cluster_operation": 26,
+      "propose_device_family": 15
+    },
+    "rejected_proposals": 23,
+    "pending_observations": 4503,
+    "before_revision": "ed0693f939eb8f7d6dbe4ed85a23c9cb7ea773ec7eb132b9b0c4b7a26ad1c3ce",
+    "after_revision": "eee0384e0262e01c0c7812e8cd2d3241611003f2195a4437b45a3ac7339791a8",
+    "minimality_proven": false
+  },
+  "model_receipts": {
+    "live_calls_this_run": 6,
+    "cached_role_responses": 959,
+    "note": "Cached responses include earlier live work; replay does not mean no historical API usage."
+  },
   "limitations": [
-    "SOP B2/B3 are conditional scenarios; variants are not independent observed experiments.",
-    "Several narrow risk classes retain one mechanism; mechanism IDs are operational groups, not independently proven causal families.",
-    "Source apparatus facts and proposed controllers are provisional. Manufacturer limits, sample-to-controller mapping and universal minima are not certified.",
-    "Official platform compilation is deferred; internal XDL validation does not certify robot execution."
+    "Silver means static checks passed, not experimental completeness or feasibility certification.",
+    "Action coverage is heuristic; unknowns and unrepresented parameters remain explicit.",
+    "No ORD structured-field backfill and no authored controls count toward text conversion quotas.",
+    "Same equipment family does not prove substitutability; unknown ratings remain unknown.",
+    "Biology/materials extension seams are tested; production extractors/exporters are not implemented.",
+    "Automatic curation is bounded; the remainder stays pending; no new executable operation was admitted."
   ]
 }

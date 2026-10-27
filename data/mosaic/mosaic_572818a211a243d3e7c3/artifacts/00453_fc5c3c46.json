@@ -1,0 +1,356 @@
+{
+  "protocol": {
+    "id": "pos_e4f50ecc5cb146dc9c3dbbd5fbb158a0",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-e4f50ecc5cb146dc9c3dbbd5fbb158a0",
+    "raw_sha256": "6d3a751f69cc583040b658984c9b1a71522b80358ade00cfd1b38bd73aab87a8",
+    "source_text": "A solution of diacetoxypalladium (10.87 mg, 0.05 mmol) and dicyclohexyl(2',6'-diisopropoxy-[1,1'-biphenyl]-2-yl)phosphine (45.2 mg, 0.10 mmol) dissolved in toluene (3 mL) was degassed and heated to 50°C for 30 minutes before adding ethyl piperidine-4-carboxylate (0.105 mL, 0.68 mmol), 5-bromo-2-chloro-4-methylpyridine (100 mg, 0.48 mmol) and sodium 2-methylpropan-2-olate (74.5 mg, 0.77 mmol) under nitrogen. The mixture was heated to 100°C for 2 hours.    LCMS indicated little product so reaction abandoned.  ",
+    "text_sha256": "ddf4f6eda90800e8ab411b175488b9a850fafa9b6d4f794f51a0adee08f75fb2",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "diacetoxypalladium",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 10.87,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r002",
+        "name": "dicyclohexyl(2',6'-diisopropoxy-[1,1'-biphenyl]-2-yl)phosphine",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 45.2,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r003",
+        "name": "toluene",
+        "smiles": null,
+        "role": "SOLVENT",
+        "amount": {
+          "value": 3,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r004",
+        "name": "ethyl piperidine-4-carboxylate",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 0.105,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r005",
+        "name": "5-bromo-2-chloro-4-methylpyridine",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 100,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r006",
+        "name": "sodium 2-methylpropan-2-olate",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 74.5,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r001",
+        "amount": {
+          "value": 10.87,
+          "unit": "mg"
+        },
+        "id": "s001",
+        "meta": {
+          "evidence": "diacetoxypalladium (10.87 mg, 0.05 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "diacetoxypalladium",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r002",
+        "amount": {
+          "value": 45.2,
+          "unit": "mg"
+        },
+        "id": "s002",
+        "meta": {
+          "evidence": "dicyclohexyl(2',6'-diisopropoxy-[1,1'-biphenyl]-2-yl)phosphine (45.2 mg, 0.10 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "dicyclohexyl(2',6'-diisopropoxy-[1,1'-biphenyl]-2-yl)phosphine",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r003",
+        "amount": {
+          "value": 3,
+          "unit": "mL"
+        },
+        "id": "s003",
+        "meta": {
+          "evidence": "dissolved in toluene (3 mL)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "toluene",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 50,
+        "duration_s": 1800,
+        "id": "s004",
+        "meta": {
+          "evidence": "heated to 50°C for 30 minutes",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Atmosphere",
+        "vessel": "reactor",
+        "gas": "nitrogen",
+        "mode": "environment",
+        "id": "s005",
+        "meta": {
+          "evidence": "under nitrogen",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r004",
+        "amount": {
+          "value": 0.105,
+          "unit": "mL"
+        },
+        "id": "s006",
+        "meta": {
+          "evidence": "adding ethyl piperidine-4-carboxylate (0.105 mL, 0.68 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "ethyl piperidine-4-carboxylate",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r005",
+        "amount": {
+          "value": 100,
+          "unit": "mg"
+        },
+        "id": "s007",
+        "meta": {
+          "evidence": "5-bromo-2-chloro-4-methylpyridine (100 mg, 0.48 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "5-bromo-2-chloro-4-methylpyridine",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r006",
+        "amount": {
+          "value": 74.5,
+          "unit": "mg"
+        },
+        "id": "s008",
+        "meta": {
+          "evidence": "sodium 2-methylpropan-2-olate (74.5 mg, 0.77 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "sodium 2-methylpropan-2-olate",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 100,
+        "duration_s": 7200,
+        "id": "s009",
+        "meta": {
+          "evidence": "The mixture was heated to 100°C for 2 hours.",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {
+        "type": "NITROGEN",
+        "basis": "procedure_text"
+      },
+      "reflux": false,
+      "source_context_evidence": []
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "ddf4f6eda90800e8ab411b175488b9a850fafa9b6d4f794f51a0adee08f75fb2",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "prompt_tokens": 833,
+        "completion_tokens": 1102,
+        "total_tokens": 1935,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 88
+        }
+      },
+      "cache_key": "15a478a08c02642ff51c80f38a572389a3795ccb88c860020fdb018118f09eb8",
+      "unresolved": [
+        "The degassing method, gas, and duration are unspecified. Degassing occurs before heating to 50°C.",
+        "No physical operation for abandoning the reaction is specified."
+      ],
+      "unmapped_actions": [
+        {
+          "evidence": "was degassed",
+          "reason": "Degassing cannot be mapped to an allowed operation without an explicitly stated method."
+        },
+        {
+          "evidence": "reaction abandoned",
+          "reason": "Reaction termination is reported without a physical action that can be mapped to an allowed operation."
+        }
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/2",
+    "findings": [],
+    "apparatus_proposals": [],
+    "evidence_spans": [
+      {
+        "source_id": "ord-e4f50ecc5cb146dc9c3dbbd5fbb158a0",
+        "source_sha256": "05f2c8825ff5460320d57427c95fdcbfe853223e20483b4244f629d134a786d5",
+        "start": 14,
+        "end": 54,
+        "quote": "diacetoxypalladium (10.87 mg, 0.05 mmol)"
+      },
+      {
+        "source_id": "ord-e4f50ecc5cb146dc9c3dbbd5fbb158a0",
+        "source_sha256": "05f2c8825ff5460320d57427c95fdcbfe853223e20483b4244f629d134a786d5",
+        "start": 59,
+        "end": 142,
+        "quote": "dicyclohexyl(2',6'-diisopropoxy-[1,1'-biphenyl]-2-yl)phosphine (45.2 mg, 0.10 mmol)"
+      },
+      {
+        "source_id": "ord-e4f50ecc5cb146dc9c3dbbd5fbb158a0",
+        "source_sha256": "05f2c8825ff5460320d57427c95fdcbfe853223e20483b4244f629d134a786d5",
+        "start": 143,
+        "end": 170,
+        "quote": "dissolved in toluene (3 mL)"
+      },
+      {
+        "source_id": "ord-e4f50ecc5cb146dc9c3dbbd5fbb158a0",
+        "source_sha256": "05f2c8825ff5460320d57427c95fdcbfe853223e20483b4244f629d134a786d5",
+        "start": 188,
+        "end": 217,
+        "quote": "heated to 50°C for 30 minutes"
+      },
+      {
+        "source_id": "ord-e4f50ecc5cb146dc9c3dbbd5fbb158a0",
+        "source_sha256": "05f2c8825ff5460320d57427c95fdcbfe853223e20483b4244f629d134a786d5",
+        "start": 395,
+        "end": 409,
+        "quote": "under nitrogen"
+      },
+      {
+        "source_id": "ord-e4f50ecc5cb146dc9c3dbbd5fbb158a0",
+        "source_sha256": "05f2c8825ff5460320d57427c95fdcbfe853223e20483b4244f629d134a786d5",
+        "start": 225,
+        "end": 284,
+        "quote": "adding ethyl piperidine-4-carboxylate (0.105 mL, 0.68 mmol)"
+      },
+      {
+        "source_id": "ord-e4f50ecc5cb146dc9c3dbbd5fbb158a0",
+        "source_sha256": "05f2c8825ff5460320d57427c95fdcbfe853223e20483b4244f629d134a786d5",
+        "start": 286,
+        "end": 339,
+        "quote": "5-bromo-2-chloro-4-methylpyridine (100 mg, 0.48 mmol)"
+      },
+      {
+        "source_id": "ord-e4f50ecc5cb146dc9c3dbbd5fbb158a0",
+        "source_sha256": "05f2c8825ff5460320d57427c95fdcbfe853223e20483b4244f629d134a786d5",
+        "start": 344,
+        "end": 394,
+        "quote": "sodium 2-methylpropan-2-olate (74.5 mg, 0.77 mmol)"
+      },
+      {
+        "source_id": "ord-e4f50ecc5cb146dc9c3dbbd5fbb158a0",
+        "source_sha256": "05f2c8825ff5460320d57427c95fdcbfe853223e20483b4244f629d134a786d5",
+        "start": 411,
+        "end": 455,
+        "quote": "The mixture was heated to 100°C for 2 hours."
+      }
+    ],
+    "repair": {
+      "accepted": false,
+      "patch": []
+    },
+    "apparatus_unknowns": [
+      "Reaction vessel not specified.",
+      "Heating apparatus not specified.",
+      "Degassing method/apparatus not specified.",
+      "Nitrogen delivery or atmosphere-control apparatus not specified."
+    ]
+  },
+  "raw_id": "ord-e4f50ecc5cb146dc9c3dbbd5fbb158a0"
+}

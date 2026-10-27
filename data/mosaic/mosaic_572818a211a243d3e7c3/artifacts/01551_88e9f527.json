@@ -1,0 +1,519 @@
+{
+  "data": {
+    "proposals": [
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_faa0131853bf977eaeda",
+          "mention_bc442e0a42ceaa171330",
+          "mention_ed0f9e9927156bd323a2",
+          "mention_1ac7d0cf6c677d507d96",
+          "mention_4442255db5c745454bca",
+          "mention_44501624b52e06b089e9",
+          "mention_3e79d1ac6615e68e4b88",
+          "mention_f5dc690ff7013194aee0",
+          "mention_51b34ce6ad41ada1c0a5",
+          "mention_99de3c5c5b76128b17cf",
+          "mention_86d0b1adaacd0883d8ab",
+          "mention_5112f2e6d5896be93ade",
+          "mention_e9d18f84109d306a9aa5",
+          "mention_c02cc4b7ea1de80d816b",
+          "mention_50af0ca74d7256f630ca",
+          "mention_d94ec5699c09f3e4fa61",
+          "mention_d366d688b9db3dc28683"
+        ],
+        "name": "AnalyzeSample",
+        "reason": "These are crude proton-NMR observations with an internal standard, matching the existing analytical semantic candidate. Different ratios and yields remain observation-specific; mentioning a standard does not establish an Add.",
+        "contract": {
+          "status": "semantic_candidate",
+          "existing_candidate": "op_candidate_31a652b59e965c8b80ae",
+          "method": "1 H NMR",
+          "internal_standard": "1,2‐dimethoxyethane",
+          "effects": [
+            "analytical_observation_recorded"
+          ],
+          "results_by_origin": {
+            "mention_faa0131853bf977eaeda": {
+              "ratio": "0.8:1",
+              "labels": "meta:para",
+              "yield_percent": 96
+            },
+            "mention_bc442e0a42ceaa171330": {
+              "ratio": "1.3:1",
+              "labels": "meta:para",
+              "yield_percent": 65
+            },
+            "mention_ed0f9e9927156bd323a2": {
+              "ratio": "1.4:1",
+              "labels": "meta:para",
+              "yield_percent": 92
+            },
+            "mention_1ac7d0cf6c677d507d96": {
+              "ratio": "1.6:1",
+              "labels": "meta:para",
+              "yield_percent": 54
+            },
+            "mention_4442255db5c745454bca": {
+              "ratio": "1:1.6",
+              "labels": "meta:para",
+              "yield_percent": 98
+            },
+            "mention_44501624b52e06b089e9": {
+              "ratio": "1:2",
+              "labels": "meta:para",
+              "yield_percent": 84
+            },
+            "mention_3e79d1ac6615e68e4b88": {
+              "ratio": "1:2.4",
+              "labels": "meta:para",
+              "yield_percent": 85
+            },
+            "mention_f5dc690ff7013194aee0": {
+              "ratio": "2.3:1",
+              "labels": "meta:para",
+              "yield_percent": 70
+            },
+            "mention_51b34ce6ad41ada1c0a5": {
+              "ratio": "29:16:6:33",
+              "labels": "dimeta:meta1:meta2:para",
+              "yield_percent": 84
+            },
+            "mention_99de3c5c5b76128b17cf": {
+              "ratio": "30:30:16:9",
+              "labels": "C4:C5:C3,5‐borylation:SM",
+              "yield_percent": 60
+            },
+            "mention_86d0b1adaacd0883d8ab": {
+              "ratio": "3:1",
+              "labels": "meta:para",
+              "yield_percent": 76
+            },
+            "mention_5112f2e6d5896be93ade": {
+              "ratio": "5.2:1",
+              "labels": "meta:para",
+              "yield_percent": 99
+            },
+            "mention_e9d18f84109d306a9aa5": {
+              "ratio": "7.8:1",
+              "labels": "meta:para",
+              "yield_percent": 71
+            },
+            "mention_c02cc4b7ea1de80d816b": {
+              "ratio": "7.8:1",
+              "labels": "meta:para",
+              "yield_percent": 93
+            },
+            "mention_50af0ca74d7256f630ca": {
+              "ratio": ">20:1",
+              "labels": "meta:para",
+              "yield_percent": 100
+            },
+            "mention_d94ec5699c09f3e4fa61": {
+              "result": null
+            },
+            "mention_d366d688b9db3dc28683": {
+              "ratio": "1:2",
+              "labels": "meta:para",
+              "yield_percent": 93
+            }
+          },
+          "guards": [
+            "Preserve ratio labels, order, inequalities, and reported yields.",
+            "Do not replace an unreported result with another observation's result."
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_4f0ceb46f8c0d82667a5"
+        ],
+        "name": "PlaceVesselsInBlock",
+        "reason": "Filling plate positions with intact empty vials matches the existing vessel-positioning candidate, not Transfer's movement of material between vessels.",
+        "contract": {
+          "status": "semantic_candidate",
+          "existing_candidate": "op_candidate_ac0e2a0d648c40ef9b7d",
+          "observed": {
+            "vessels": "empty vials",
+            "positions": "remainder of the plate positions"
+          },
+          "effects": [
+            "vessels_positioned_in_block",
+            "no_material_transfer_between_vessels"
+          ],
+          "unresolved": [
+            "individual vial identities",
+            "explicit remaining position labels",
+            "vial-to-position assignment"
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_61a7b9a50a05bff6ff23",
+          "mention_5675b6ea350044172550",
+          "mention_46f4a37a3f72cde7941f",
+          "mention_a6c75e4f543fd535f30c"
+        ],
+        "name": "Atmosphere",
+        "reason": "These clauses specify gas environments, which Atmosphere already supports as context-only metadata. They do not establish purge, evacuation/refill, or an identified gas-control device.",
+        "contract": {
+          "mode": "environment",
+          "context_only": true,
+          "observed_by_origin": {
+            "mention_61a7b9a50a05bff6ff23": {
+              "gas": "nitrogen"
+            },
+            "mention_5675b6ea350044172550": {
+              "gas": "nitrogen"
+            },
+            "mention_46f4a37a3f72cde7941f": {
+              "gas": "argon"
+            },
+            "mention_a6c75e4f543fd535f30c": {
+              "gas": "argon",
+              "environment": "glove box"
+            }
+          },
+          "unresolved": [
+            "vessel identities",
+            "gas establishment method"
+          ],
+          "guards": [
+            "Do not export environment metadata as a gas-establishment action.",
+            "Do not infer gas-control hardware."
+          ]
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_71c919c804777ea5e163"
+        ],
+        "name": "Wait",
+        "reason": "The clause reports elapsed time without another stated action, matching Wait. The reported range must not be replaced by an invented point duration.",
+        "contract": {
+          "observed": {
+            "duration_s_range": [
+              60,
+              120
+            ]
+          },
+          "unresolved": [
+            "single executable duration_s"
+          ]
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_135fb022c1b1e5b876c1"
+        ],
+        "name": "Evaporate",
+        "reason": "Removing solvent under vacuum matches Evaporate's volatile-inventory removal, rather than a separate material-drying concept.",
+        "contract": {
+          "observed": {
+            "pressure_condition": "vacuum"
+          },
+          "unresolved": [
+            "vessel",
+            "numeric pressure",
+            "temperature",
+            "duration"
+          ],
+          "guards": [
+            "Do not infer a numeric vacuum pressure or rotary-evaporator hardware."
+          ]
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_974e2b574d0652a69dc7"
+        ],
+        "name": "Filter",
+        "reason": "The explicit filtration verb matches Filter; missing retained-stream information is an unresolved argument, not evidence for a new operation.",
+        "contract": {
+          "unresolved": [
+            "vessel",
+            "keep",
+            "filter medium",
+            "destination"
+          ],
+          "guards": [
+            "Do not infer solid or filtrate retention."
+          ]
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_3961da9f00c14ae6beee"
+        ],
+        "name": "Purify",
+        "reason": "Terminal column chromatography on silica gel directly matches Purify's chromatography semantics.",
+        "contract": {
+          "observed": {
+            "method": "column chromatography on silica gel",
+            "material": "oil"
+          },
+          "unresolved": [
+            "vessel",
+            "column configuration",
+            "eluent",
+            "destination"
+          ]
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_944e4c4366680ea02c1a"
+        ],
+        "name": "Separate",
+        "reason": "Partitioning aqueous and organic layers matches liquid-phase separation. The quotation does not identify which phase is retained.",
+        "contract": {
+          "observed": {
+            "phases": [
+              "aqueous",
+              "organic"
+            ]
+          },
+          "unresolved": [
+            "vessel",
+            "keep_phase",
+            "phase destinations"
+          ],
+          "guards": [
+            "Do not infer the product-containing or retained phase."
+          ]
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_43e724620b50239645f2"
+        ],
+        "name": "HeatChill",
+        "reason": "The explicit 80 °C condition for 24 hours matches HeatChill. Stirring and physical plate placement are distinct clauses, not effects supplied by HeatChill.",
+        "contract": {
+          "observed": {
+            "temp_C": 80,
+            "duration_s": 86400,
+            "heating_configuration": "pre-heated temperature-controlled metal block"
+          },
+          "unresolved": [
+            "vessel identity",
+            "temperature measurement basis"
+          ],
+          "guards": [
+            "Do not equate block setpoint with measured sample temperature."
+          ]
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_43e724620b50239645f2"
+        ],
+        "name": "Stir",
+        "reason": "The same passage explicitly reports stirring for 24 hours, which Stir represents separately from the concurrent temperature condition.",
+        "contract": {
+          "observed": {
+            "duration_s": 86400
+          },
+          "unresolved": [
+            "vessel identity",
+            "rpm"
+          ],
+          "guards": [
+            "Preserve concurrence with the reported 80 °C condition; do not serialize heating and stirring."
+          ]
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_23b73988e00041745253"
+        ],
+        "name": "MicrowaveHeat",
+        "reason": "Explicit microwave heating matches the existing microwave semantic candidate, not optical Irradiate. The different duration and temperature report remain separate parameter values.",
+        "contract": {
+          "status": "semantic_candidate",
+          "existing_candidate": "op_candidate_950fc61a0a20402d7313",
+          "observed": {
+            "duration_s": 3600,
+            "reported_temperature": "180°"
+          },
+          "effects": [
+            "microwave_energy_applied",
+            "reported_heating_condition_applied_for_duration"
+          ],
+          "guards": [
+            "Establish a microwave-compatible configuration before execution.",
+            "Do not infer a temperature scale absent from this quotation."
+          ],
+          "unresolved": [
+            "vessel",
+            "temperature scale",
+            "microwave power",
+            "pressure configuration",
+            "temperature measurement basis"
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_0d452c0dab0c84dfcace"
+        ],
+        "name": "ThermalDry",
+        "reason": "Oil-bath drying at 90 °C for 30 minutes matches the existing thermal-drying candidate. HeatChill alone loses drying intent, and vacuum must not be inherited from another stage.",
+        "contract": {
+          "status": "semantic_candidate",
+          "existing_candidate": "op_candidate_5422c1e046a2a7735d82",
+          "observed": {
+            "heating_configuration": "oil bath",
+            "reported_temperature_C": 90,
+            "duration_s": 1800
+          },
+          "guards": [
+            "Keep temperature measurement basis unresolved.",
+            "Do not infer drying pressure."
+          ],
+          "unresolved": [
+            "vessel",
+            "material identity",
+            "temperature measurement basis",
+            "drying atmosphere or pressure",
+            "dryness criterion"
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_686ee25b2e8b00b549f9"
+        ],
+        "name": "Centrifuge",
+        "reason": "The evidence names a centrifugation step, matching the existing operation candidate, but does not identify a physical centrifuge. The parameter-scope narrative does not establish a second timed cycle.",
+        "contract": {
+          "status": "semantic_candidate",
+          "existing_candidate": "op_candidate_7b344ce91d05f184048a",
+          "effects": [
+            "sample_subject_to_centrifugation"
+          ],
+          "guards": [
+            "Keep g and rpm distinct.",
+            "Do not infer fraction retention, cycle count, or duration from unsupported scope text."
+          ],
+          "unresolved": [
+            "sample container",
+            "centrifuge identity and configuration",
+            "duration",
+            "force",
+            "speed",
+            "temperature"
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_1fc6802375f2f6f59b17"
+        ],
+        "name": "SealVessel",
+        "reason": "Sealing changes closure state, an effect absent from the registry. Atmosphere does not represent physical sealing, and no lossless approved macro is supplied.",
+        "contract": {
+          "status": "semantic_candidate",
+          "parameters": {
+            "vessel": "identifier",
+            "closure_method": "reported_method_or_unknown"
+          },
+          "effects": [
+            "vessel_sealed"
+          ],
+          "guards": [
+            "Do not infer pressure rating, gas identity, or sealing method."
+          ],
+          "unresolved": [
+            "vessel",
+            "closure method",
+            "seal specification"
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_43e724620b50239645f2"
+        ],
+        "name": "PlacePlateInHeatingBlock",
+        "reason": "Placing an intact plate in a heated block changes apparatus configuration, not material location across vessels. The existing vial-in-block candidate has a different positioned object and endpoint.",
+        "contract": {
+          "status": "semantic_candidate",
+          "parameters": {
+            "plate": "apparatus_reference",
+            "block": "apparatus_reference"
+          },
+          "effects": [
+            "plate_positioned_in_heating_block",
+            "contents_remain_in_existing_containers"
+          ],
+          "observed": {
+            "block_condition": "pre-heated and temperature-controlled"
+          },
+          "unresolved": [
+            "plate identity",
+            "block identity",
+            "placement configuration"
+          ],
+          "executable_mapping": "not established"
+        }
+      },
+      {
+        "action": "cluster_device",
+        "origins": [
+          "mention_7b070f4dbbf1c864f574"
+        ],
+        "name": "LC-MS analytical system",
+        "family": "lc_ms_system",
+        "reason": "LC/MS supports an analytical liquid-chromatography/mass-spectrometry system family, which is absent from the supplied apparatus families. No manufacturer, model, configuration, or interchangeability is established."
+      },
+      {
+        "action": "cluster_device",
+        "origins": [
+          "mention_60639bee3b36405b2798",
+          "mention_20d8211efecef9a4c8f6",
+          "mention_a63d056985b8787c72a3",
+          "mention_d326651c6bcd714c50e6",
+          "mention_daa202dc21f966c671b7"
+        ],
+        "name": "Chromatography apparatus",
+        "family": "chromatography_apparatus",
+        "reason": "These observations support a broad chromatography apparatus family absent from the registry, not the solid-liquid filter family. Preserve HPLC, the ISCO wording and eluent sequence, and each silica-gel/eluent report separately; unspecified format stays unknown. Shared family membership does not establish interchangeable hardware or operating modes."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 4391,
+    "prompt_tokens": 19635,
+    "total_tokens": 24026,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 19632
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 201
+    }
+  },
+  "cache_key": "5972b7527de09c8febf8799c7bec002dd32c88723b9936bee4792af30995f429"
+}

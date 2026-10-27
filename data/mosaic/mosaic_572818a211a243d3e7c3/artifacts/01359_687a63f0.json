@@ -1,0 +1,142 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Irradiate",
+        "evidence": "use MW* only",
+        "stage": "reaction",
+        "vessel": "reactor"
+      },
+      {
+        "op": "Add",
+        "evidence": "6-bromo-3,4-dihydroisoquinolin-1(2H)-one (100 mg, 0.44 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "6-bromo-3,4-dihydroisoquinolin-1(2H)-one",
+        "alias": "6-bromo-3,4-dihydroisoquinolin-1(2H)-one",
+        "amount": {
+          "value": 100,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "phenylmethanamine (97 µl, 0.88 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "phenylmethanamine",
+        "alias": "phenylmethanamine",
+        "amount": {
+          "value": 0.097,
+          "unit": "mL"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "BINAP (13.77 mg, 0.02 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "BINAP",
+        "alias": "BINAP",
+        "amount": {
+          "value": 13.77,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "palladium(II) acetate (4.97 mg, 0.02 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "palladium(II) acetate",
+        "alias": "palladium(II) acetate",
+        "amount": {
+          "value": 4.97,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "in DMF (500 mL) combined to give a tan suspension.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "DMF",
+        "alias": "DMF",
+        "amount": {
+          "value": 500,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      },
+      {
+        "op": "Add",
+        "evidence": "potassium tert-butoxide (49.6 mg, 0.44 mmol) was then added last.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "potassium tert-butoxide",
+        "alias": "potassium tert-butoxide",
+        "amount": {
+          "value": 49.6,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "Heated reaction to 130°C for 15 minutes.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "temp_C": 130,
+        "duration_s": 900
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "Placed sealed test tube in heated (130°C) oil bath over weekend.",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "temp_C": 130
+      }
+    ],
+    "uncertainties": [
+      "The referenced procedure 02915-84 is not supplied; its operations cannot be recovered.",
+      "The introductory benzylamine modification specifies equivalents only. It is not treated as an additional reagent addition or used to infer an identity relationship with phenylmethanamine.",
+      "MW* is not defined. The irradiation instruction has no explicit wavelength or duration; the subsequent heating duration is not independently assigned to irradiation.",
+      "The instruction to use MW* only conflicts with the later explicit oil-bath operation; both are preserved.",
+      "DMF is explicitly reported as 500 mL despite the stated 10 mL test tube. The reported quantity is preserved without correction.",
+      "The initial components are described as combined; their individual addition order is not specified. Potassium tert-butoxide is explicitly added last.",
+      "Over weekend does not specify a numerical duration.",
+      "The test tube is described as sealed, but no separate sealing operation is stated."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "Repeat 02915-84",
+        "reason": "The referenced procedure is unavailable, so its physical operations cannot be extracted."
+      },
+      {
+        "evidence": "Reduce benzylamine from 4 to 2 eqs.",
+        "reason": "This is a relative recipe modification, not a separately specified addition. Equivalents alone do not provide an absolute dose."
+      },
+      {
+        "evidence": "Placed test tube onto Smith MW* platform.",
+        "reason": "This is equipment placement, not a transfer between explicitly identified vessels; no allowed operation represents it faithfully."
+      },
+      {
+        "evidence": "Discarded reaction.",
+        "reason": "Disposal is not represented by an allowed operation."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1430,
+    "prompt_tokens": 875,
+    "total_tokens": 2305,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 262
+    }
+  },
+  "cache_key": "f7129ed8e21dfb2515107a8a94c2c4592ff50c89508d37ed7be65ed099a081f2"
+}

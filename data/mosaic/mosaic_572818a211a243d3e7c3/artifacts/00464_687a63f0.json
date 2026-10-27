@@ -1,0 +1,127 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Atmosphere",
+        "evidence": "under an argon atmosphere",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "gas": "argon",
+        "mode": "environment"
+      },
+      {
+        "op": "Add",
+        "evidence": "Pd2(dba)3 (0.833 mg, 0.91 µmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "Pd2(dba)3",
+        "alias": "Pd2(dba)3",
+        "amount": {
+          "value": 0.833,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "2-(DICYCLOHEXYLPHOSPHINO)BIPHENYL (0.638 mg, 1.82 µmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "2-(DICYCLOHEXYLPHOSPHINO)BIPHENYL",
+        "alias": "2-(DICYCLOHEXYLPHOSPHINO)BIPHENYL",
+        "amount": {
+          "value": 0.638,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "Cs2CO3 (8.89 mg, 0.03 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "Cs2CO3",
+        "alias": "Cs2CO3",
+        "amount": {
+          "value": 8.89,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "(R)-8-chloro-4-methyl-2-phenyl-2,3,4,5-tetrahydropyrido[3,2-f][1,4]oxazepine (5.00 mg, 0.02 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "(R)-8-chloro-4-methyl-2-phenyl-2,3,4,5-tetrahydropyrido[3,2-f][1,4]oxazepine",
+        "alias": "(R)-8-chloro-4-methyl-2-phenyl-2,3,4,5-tetrahydropyrido[3,2-f][1,4]oxazepine",
+        "amount": {
+          "value": 5,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "4-(3-methyl-1H-1,2,4-triazol-1-yl)aniline (3.17 mg, 0.02 mmol)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "4-(3-methyl-1H-1,2,4-triazol-1-yl)aniline",
+        "alias": "4-(3-methyl-1H-1,2,4-triazol-1-yl)aniline",
+        "amount": {
+          "value": 3.17,
+          "unit": "mg"
+        }
+      },
+      {
+        "op": "Add",
+        "evidence": "DME (.5 mL)",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "reagent": "DME",
+        "alias": "DME",
+        "amount": {
+          "value": 0.5,
+          "unit": "mL"
+        },
+        "role": "SOLVENT"
+      },
+      {
+        "op": "HeatChill",
+        "evidence": "The resulting mixture was heated to 100°C in a microwavwe apparatus for 1 h",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "temp_C": 100,
+        "duration_s": 3600
+      },
+      {
+        "op": "Irradiate",
+        "evidence": "The resulting mixture was heated to 100°C in a microwavwe apparatus for 1 h",
+        "stage": "reaction",
+        "vessel": "reactor",
+        "duration_s": 3600
+      }
+    ],
+    "uncertainties": [
+      "The two reactants and DME were added together as a solution via syringe, not as three separate additions; their Add steps describe components of that single addition.",
+      "The HeatChill and Irradiate steps describe the same microwave-heating operation, not sequential treatments.",
+      "The source does not specify the order of loading the three materials initially contained in the vial or the timing of establishing the argon atmosphere."
+    ],
+    "unmapped_actions": [
+      {
+        "evidence": "a capped microwave vial",
+        "reason": "The capped vessel condition is explicit, but capping cannot be represented by an allowed operation and its timing is not stated."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1309,
+    "prompt_tokens": 2008,
+    "total_tokens": 3317,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 2005
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 176
+    }
+  },
+  "cache_key": "d5c9c4802db10c8eafb490cbe5a62e29e37bebecaef0beedfbeb0f3fa2d00fc6"
+}

@@ -1,0 +1,65 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "APPARATUS_PREHEATING_AS_REACTION_STEP",
+        "quote": "The microreactor was capped with a teflon pressure cap and placed into pre-heated aluminum block at 80 oC.",
+        "message": "The first HeatChill step incorrectly represents the preheated block as an initial reaction-heating operation before charging. Reaction heating is already represented after substrate addition. Preserve block preheating and reactor placement as unmapped details rather than a separate initial reaction step.",
+        "severity": "error"
+      },
+      {
+        "code": "OMITTED_COMPLETION_CHECK",
+        "quote": "After completion (judged by GC/MS)",
+        "message": "The GC/MS completion check before solvent removal is omitted. It cannot be represented by an allowed operation and should be retained in unmapped_actions.",
+        "severity": "error"
+      },
+      {
+        "code": "UNDER_SPECIFIED_PURIFICATION_METHOD",
+        "quote": "chromatographic separation with silica gel (20% ethyl acetate in hexane as eluent)",
+        "message": "The purification evidence retains the conditions, but the method field omits the specified silica gel and eluent composition.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "remove",
+        "path": "/steps/0"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/10/method",
+        "value": "silica gel chromatography with 20% ethyl acetate in hexane as eluent"
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "placed into pre-heated aluminum block at 80 oC",
+          "reason": "The block was already preheated when the microreactor was placed into it after capping. Block preheating and physical placement are not separately representable by the allowed operations; reaction heating is represented in the subsequent HeatChill step."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/unmapped_actions/-",
+        "value": {
+          "evidence": "After completion (judged by GC/MS)",
+          "reason": "GC/MS was used to judge completion before THF removal; analytical completion checks are not represented by an allowed operation."
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 1488,
+    "completion_tokens": 733,
+    "total_tokens": 2221,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1485
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 214
+    }
+  },
+  "cache_key": "f1365e413c3d314cf80d517bf5f6ea3369a84f2e906372bab5b1fccb5b94f950"
+}

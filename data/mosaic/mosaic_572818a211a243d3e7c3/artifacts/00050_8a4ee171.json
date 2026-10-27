@@ -1,0 +1,65 @@
+{
+  "data": {
+    "findings": [
+      {
+        "code": "REAGENT_FORMULATION_MISSING",
+        "quote": "H2O2  (30%  in  H2O;  0.31  mL,  3.0  mmol)",
+        "message": "The 0.31 mL charge is 30% H2O2 in water, not neat H2O2. Preserve the formulation in the reagent identity.",
+        "severity": "error"
+      },
+      {
+        "code": "RETAINED_PHASE_KNOWN",
+        "quote": "The  aqueous  and  organic  layers  were  partitioned  and  the  organic  layer  was  washed  with  brine,  dried  (MgSO4)",
+        "message": "The organic phase is retained both after initial partitioning and after the brine wash. Unknown top/bottom position does not make the retained phase unknown.",
+        "severity": "error"
+      },
+      {
+        "code": "PURIFICATION_CONDITIONS_NOT_MAPPED",
+        "quote": "column  chromatography on silica gel using EtOAc / hexanes (3:7 to 7:3) as eluent",
+        "message": "The purification method should retain the specified silica stationary phase and EtOAc/hexanes eluent progression, rather than only generic chromatography.",
+        "severity": "error"
+      }
+    ],
+    "patch": [
+      {
+        "op": "replace",
+        "path": "/steps/6/reagent",
+        "value": "H2O2 (30% in H2O)"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/6/alias",
+        "value": "H2O2 (30% in H2O)"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/10/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/12/keep_phase",
+        "value": "organic"
+      },
+      {
+        "op": "replace",
+        "path": "/steps/16/method",
+        "value": "column chromatography on silica gel using EtOAc / hexanes (3:7 to 7:3) as eluent"
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 653,
+    "prompt_tokens": 1951,
+    "total_tokens": 2604,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1948
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 146
+    }
+  },
+  "cache_key": "1a280dfca29ab96425a981a86aa62e2afaca004c4e6e0e0e9eb4d2b3ee5fba05"
+}

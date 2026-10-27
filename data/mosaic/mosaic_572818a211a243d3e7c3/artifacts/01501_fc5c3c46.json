@@ -1,0 +1,698 @@
+{
+  "protocol": {
+    "id": "pos_72db1f71b9ee4c528872b1ba0810230a",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+    "raw_sha256": "6fab92fdd6893c1f87984f48dc528b2ccc9bba7a9a570360cc9583efaa3e693d",
+    "source_text": "ANILINE (3.94 mL, 43.29 mmol) was added to 4-bromopyridine (5.7 g, 36.08 mmol), PALLADIUM(II) ACETATE (0.162 g, 0.72 mmol), XANTPHOS (1.252 g, 2.16 mmol) and SODIUM TERT-BUTOXIDE (4.85 g, 50.51 mmol) in toluene (280 mL) under nitrogen. The resulting mixture was stirred at 100 °C for 4 hours. The reaction mixture was evaporated to dryness and redissolved in EtOAc (200 mL), and washed sequentially with water (2 x 100 mL) and saturated brine (100 mL). The organic layer was dried over MgSO4, filtered and preadsorbed onto silica. The crude product was purified by flash silica chromatography, elution gradient 0 to 100% EtOAc in heptane. Pure fractions were evaporated to dryness to afford N-phenylpyridin-4-amine (1.528 g, 24.88 %) as a pink solid.  ",
+    "text_sha256": "74114a99bc68ae85f7283827593da50379f6c5581e7b1a9dbac0bbf8b35efcd7",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "4-bromopyridine",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 5700,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r002",
+        "name": "PALLADIUM(II) ACETATE",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 162,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r003",
+        "name": "XANTPHOS",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 1252,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r004",
+        "name": "SODIUM TERT-BUTOXIDE",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 4850,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r005",
+        "name": "toluene",
+        "smiles": null,
+        "role": "SOLVENT",
+        "amount": {
+          "value": 280,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r006",
+        "name": "ANILINE",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 3.94,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r007",
+        "name": "EtOAc",
+        "smiles": null,
+        "role": "SOLVENT",
+        "amount": {
+          "value": 200,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r008",
+        "name": "water",
+        "smiles": null,
+        "role": "WORKUP",
+        "amount": {
+          "value": 100,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r009",
+        "name": "saturated brine",
+        "smiles": null,
+        "role": "WORKUP",
+        "amount": {
+          "value": 100,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r010",
+        "name": "MgSO4",
+        "smiles": null,
+        "role": "WORKUP",
+        "amount": null,
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Atmosphere",
+        "gas": "nitrogen",
+        "mode": "environment",
+        "vessel": "reactor",
+        "id": "s001",
+        "meta": {
+          "evidence": "under nitrogen",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r001",
+        "amount": {
+          "value": 5700,
+          "unit": "mg"
+        },
+        "vessel": "reactor",
+        "id": "s002",
+        "meta": {
+          "evidence": "4-bromopyridine (5.7 g, 36.08 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "4-bromopyridine",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r002",
+        "amount": {
+          "value": 162,
+          "unit": "mg"
+        },
+        "vessel": "reactor",
+        "id": "s003",
+        "meta": {
+          "evidence": "PALLADIUM(II) ACETATE (0.162 g, 0.72 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "PALLADIUM(II) ACETATE",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r003",
+        "amount": {
+          "value": 1252,
+          "unit": "mg"
+        },
+        "vessel": "reactor",
+        "id": "s004",
+        "meta": {
+          "evidence": "XANTPHOS (1.252 g, 2.16 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "XANTPHOS",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r004",
+        "amount": {
+          "value": 4850,
+          "unit": "mg"
+        },
+        "vessel": "reactor",
+        "id": "s005",
+        "meta": {
+          "evidence": "SODIUM TERT-BUTOXIDE (4.85 g, 50.51 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "SODIUM TERT-BUTOXIDE",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r005",
+        "amount": {
+          "value": 280,
+          "unit": "mL"
+        },
+        "vessel": "reactor",
+        "id": "s006",
+        "meta": {
+          "evidence": "in toluene (280 mL)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "toluene",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r006",
+        "amount": {
+          "value": 3.94,
+          "unit": "mL"
+        },
+        "vessel": "reactor",
+        "id": "s007",
+        "meta": {
+          "evidence": "ANILINE (3.94 mL, 43.29 mmol) was added",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "ANILINE",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "temp_C": 100,
+        "duration_s": 14400,
+        "stir": true,
+        "vessel": "reactor",
+        "id": "s008",
+        "meta": {
+          "evidence": "The resulting mixture was stirred at 100 °C for 4 hours.",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Evaporate",
+        "id": "s009",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The reaction mixture was evaporated to dryness",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r007",
+        "amount": {
+          "value": 200,
+          "unit": "mL"
+        },
+        "id": "s010",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "redissolved in EtOAc (200 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "EtOAc",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r008",
+        "amount": {
+          "value": 100,
+          "unit": "mL"
+        },
+        "id": "s011",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "washed sequentially with water (2 x 100 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "water",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Separate",
+        "keep_phase": "organic",
+        "id": "s012",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "washed sequentially with water (2 x 100 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r008",
+        "amount": {
+          "value": 100,
+          "unit": "mL"
+        },
+        "id": "s013",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "washed sequentially with water (2 x 100 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "water",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Separate",
+        "keep_phase": "organic",
+        "id": "s014",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "washed sequentially with water (2 x 100 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r009",
+        "amount": {
+          "value": 100,
+          "unit": "mL"
+        },
+        "id": "s015",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "saturated brine (100 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "saturated brine",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Separate",
+        "keep_phase": "organic",
+        "id": "s016",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "washed sequentially with water (2 x 100 mL) and saturated brine (100 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Add",
+        "reagent": "r010",
+        "id": "s017",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The organic layer was dried over MgSO4",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "MgSO4",
+          "amount_source": "unknown"
+        }
+      },
+      {
+        "op": "Filter",
+        "id": "s018",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "filtered",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Purify",
+        "method": "flash silica chromatography, elution gradient 0 to 100% EtOAc in heptane",
+        "id": "s019",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The crude product was purified by flash silica chromatography, elution gradient 0 to 100% EtOAc in heptane.",
+          "stage": "purification",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Evaporate",
+        "id": "s020",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "Pure fractions were evaporated to dryness",
+          "stage": "purification",
+          "source_contract": "text-only/1"
+        }
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {
+        "type": "NITROGEN",
+        "basis": "procedure_text"
+      },
+      "reflux": false,
+      "source_context_evidence": []
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "74114a99bc68ae85f7283827593da50379f6c5581e7b1a9dbac0bbf8b35efcd7",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 1690,
+        "prompt_tokens": 892,
+        "total_tokens": 2582,
+        "prompt_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 138
+        }
+      },
+      "cache_key": "2e3242a1875717c7bf99fffdc86c889d398300394556d43ea97bad117aafc322",
+      "unresolved": [
+        "The order of charging the components already present before ANILINE addition is not specified.",
+        "The retained organic layer is identified, but its top or bottom position is not specified.",
+        "The amount of MgSO4 and the drying duration are not specified.",
+        "The material retained after filtration is not explicitly specified.",
+        "The quantity of silica used for preadsorption is not specified.",
+        "Chromatography solvent volumes and gradient duration are not specified.",
+        "s017: addition amount unspecified"
+      ],
+      "unmapped_actions": [
+        {
+          "evidence": "preadsorbed onto silica",
+          "reason": "Preadsorption is not an allowed core operation; the text does not specify the component additions or solvent-removal operations used to accomplish it."
+        },
+        {
+          "evidence": "The reaction mixture was evaporated to dryness and redissolved in EtOAc (200 mL), and washed sequentially with water (2 x 100 mL) and saturated brine (100 mL).",
+          "reason": "Unrepresented physical action: washed"
+        },
+        {
+          "evidence": "The organic layer was dried over MgSO4, filtered and preadsorbed onto silica.",
+          "reason": "Unrepresented physical action: dried"
+        }
+      ]
+    }
+  },
+  "notes": {
+    "domain": "chemistry.batch/2",
+    "findings": [
+      {
+        "code": "RETAINED_PHASE_UNRESOLVED",
+        "quote": "washed sequentially with water (2 x 100 mL) and saturated brine (100 mL). The organic layer was dried over MgSO4",
+        "message": "The subsequent treatment of the organic layer identifies the phase retained through the washes. Set keep_phase to organic for all three separations; its top or bottom position remains unspecified.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+          "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+          "start": 379,
+          "end": 491,
+          "quote": "washed sequentially with water (2 x 100 mL) and saturated brine (100 mL). The organic layer was dried over MgSO4"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "PURIFICATION_CONDITIONS_NOT_STRUCTURED",
+        "quote": "flash silica chromatography, elution gradient 0 to 100% EtOAc in heptane",
+        "message": "The purification method is recorded only as chromatography. Preserve the explicitly stated flash silica method and elution gradient in the method field.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+          "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+          "start": 565,
+          "end": 637,
+          "quote": "flash silica chromatography, elution gradient 0 to 100% EtOAc in heptane"
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "flash silica chromatography",
+        "kind": "separation apparatus",
+        "identity": "flash silica chromatography",
+        "scope": "purification of the crude product",
+        "evidence": {
+          "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+          "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+          "start": 565,
+          "end": 592,
+          "quote": "flash silica chromatography"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 220,
+        "end": 234,
+        "quote": "under nitrogen"
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 43,
+        "end": 78,
+        "quote": "4-bromopyridine (5.7 g, 36.08 mmol)"
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 80,
+        "end": 122,
+        "quote": "PALLADIUM(II) ACETATE (0.162 g, 0.72 mmol)"
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 124,
+        "end": 153,
+        "quote": "XANTPHOS (1.252 g, 2.16 mmol)"
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 158,
+        "end": 199,
+        "quote": "SODIUM TERT-BUTOXIDE (4.85 g, 50.51 mmol)"
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 200,
+        "end": 219,
+        "quote": "in toluene (280 mL)"
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 0,
+        "end": 39,
+        "quote": "ANILINE (3.94 mL, 43.29 mmol) was added"
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 236,
+        "end": 292,
+        "quote": "The resulting mixture was stirred at 100 °C for 4 hours."
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 293,
+        "end": 339,
+        "quote": "The reaction mixture was evaporated to dryness"
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 344,
+        "end": 373,
+        "quote": "redissolved in EtOAc (200 mL)"
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 379,
+        "end": 422,
+        "quote": "washed sequentially with water (2 x 100 mL)"
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 379,
+        "end": 422,
+        "quote": "washed sequentially with water (2 x 100 mL)"
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 379,
+        "end": 422,
+        "quote": "washed sequentially with water (2 x 100 mL)"
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 379,
+        "end": 422,
+        "quote": "washed sequentially with water (2 x 100 mL)"
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 427,
+        "end": 451,
+        "quote": "saturated brine (100 mL)"
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 379,
+        "end": 451,
+        "quote": "washed sequentially with water (2 x 100 mL) and saturated brine (100 mL)"
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 453,
+        "end": 491,
+        "quote": "The organic layer was dried over MgSO4"
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 493,
+        "end": 501,
+        "quote": "filtered"
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 531,
+        "end": 638,
+        "quote": "The crude product was purified by flash silica chromatography, elution gradient 0 to 100% EtOAc in heptane."
+      },
+      {
+        "source_id": "ord-72db1f71b9ee4c528872b1ba0810230a",
+        "source_sha256": "c9b0f5c5e515a0a5373565bb448b93b23b28926b1411af28f40dcb92e2631197",
+        "start": 639,
+        "end": 680,
+        "quote": "Pure fractions were evaporated to dryness"
+      }
+    ],
+    "repair": {
+      "accepted": true,
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/steps/11/keep_phase",
+          "value": "organic"
+        },
+        {
+          "op": "replace",
+          "path": "/steps/13/keep_phase",
+          "value": "organic"
+        },
+        {
+          "op": "replace",
+          "path": "/steps/15/keep_phase",
+          "value": "organic"
+        },
+        {
+          "op": "replace",
+          "path": "/steps/18/method",
+          "value": "flash silica chromatography, elution gradient 0 to 100% EtOAc in heptane"
+        }
+      ]
+    },
+    "apparatus_unknowns": [
+      "Reaction vessel is not specified.",
+      "Nitrogen delivery or inert-atmosphere apparatus is not specified.",
+      "Stirring and heating apparatus for 100 °C operation is not specified.",
+      "Evaporation apparatus is not specified.",
+      "Filtration apparatus is not specified.",
+      "Flash chromatography column hardware and dimensions are not specified."
+    ]
+  },
+  "raw_id": "ord-72db1f71b9ee4c528872b1ba0810230a"
+}
