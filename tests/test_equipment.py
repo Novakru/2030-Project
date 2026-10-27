@@ -4,6 +4,7 @@ import pytest
 
 from mosaic.catalog import atomic_inventory, equipment_inventory
 from mosaic.equipment import check_substitution, classify_equipment, equipment_groups
+from mosaic.evidence import SourceSpan
 from mosaic.registry import Registry
 from protocol_risk.io import load_library
 
@@ -33,6 +34,24 @@ def test_microreactor_is_preserved_and_unknown_specific_kind_is_not_generic_flas
     assert classify_equipment({"category": "vessel"}) is None
     assert classify_equipment({"apparatus_kind": "custom_block", "category": "heater_stirrer"}) is None
     assert classify_equipment({"apparatus_kind": "microreactor", "family": "vial"}) is None
+
+
+@pytest.mark.parametrize("labels", [
+    {"apparatus_kind": "vial", "type": "microreactor"},
+    {"apparatus_kind": "vial", "kind": "flask"},
+    {"kind": "vial", "type": "unknown", "family": "vial"},
+    {"type": "vial", "family": "microreactor"},
+])
+def test_conflicting_or_unresolved_source_type_labels_remain_unclassified(labels):
+    device = {"id": "source_conflict", **labels}
+    assert classify_equipment(device) is None
+    report = equipment_groups([device])
+    assert report["unclassified"] == [{"kind": "catalog_entry", "id": "source_conflict"}]
+    assert not report["substitution_groups"]
+
+
+def test_consistent_source_type_aliases_can_still_share_a_family():
+    assert classify_equipment({"apparatus_kind": "micro-reactor", "kind": "microreactor", "type": "MICROREACTOR"}) == "microreactor"
 
 
 def test_existing_catalog_models_and_templates_are_indexed_without_adding_models():
@@ -104,6 +123,22 @@ def test_hotplate_setpoint_limits_do_not_establish_sample_temperature_range():
     assert check_substitution({"temperature_C": 100, "temperature_scope": "plate_setpoint"}, candidate)["status"] == "compatible"
 
 
+@pytest.mark.parametrize("scope", ["unknown", "unresolved", "reported_vessel_volume_scope_unresolved", "N/A", "not reported"])
+@pytest.mark.parametrize("field,scope_field,params", [
+    ("capacity_mL", "capacity_scope", {"capacity_mL": 10}),
+    ("temperature_C", "temperature_scope", {"T_min_C": 0, "T_max_C": 100}),
+    ("pressure_bar", "pressure_scope", {"pressure_min_bar": 0, "pressure_max_bar": 100}),
+    ("flow_mL_min", "flow_scope", {"flow_min_mL_min": 0, "flow_max_mL_min": 100}),
+    ("rpm", "mixing_mode", {"rpm_min": 0, "rpm_max": 100}),
+])
+def test_identical_uncertainty_labels_do_not_establish_applicable_numeric_scope(scope, field, scope_field, params):
+    requirement = {field: 5, scope_field: scope}
+    candidate = {"params": params, scope_field: scope, "source_url": "urn:test:explicit-contract"}
+    result = check_substitution(requirement, candidate)
+    assert result["status"] == "unknown"
+    assert any(item["field"] == scope_field for item in result["unknowns"])
+
+
 def test_missing_bound_and_uncited_numeric_claims_are_unknown():
     candidate = {"params": {"rpm_max": 1500}, "mixing_mode": "magnetic", "source_url": "urn:test:stirrer"}
     assert check_substitution({"rpm": 300, "mixing_mode": "magnetic"}, candidate)["status"] == "unknown"
@@ -111,6 +146,27 @@ def test_missing_bound_and_uncited_numeric_claims_are_unknown():
     assert check_substitution({"rpm": 300}, {"params": {"rpm_min": 0, "rpm_max": 1500}})["status"] == "unknown"
     candidate["params"]["rpm_min"] = 1600
     assert check_substitution({"rpm": 300}, candidate)["status"] == "unknown"
+
+
+@pytest.mark.parametrize("reference", [{}, None, "not a reference", {"quote": "a number"},
+    {"source_url": "unknown"}, {"source_url": "https://"},
+    {"source_id": "source", "source_sha256": "bad", "start": 0, "end": 1, "quote": "x"},
+    {"source_id": "source", "source_sha256": "a" * 64, "start": True, "end": 1, "quote": "x"}])
+def test_empty_or_malformed_references_cannot_authorize_numeric_ranges(reference):
+    candidate = {"params": {"rpm_min": 0, "rpm_max": 1000}, "mixing_mode": "magnetic", "evidence": [reference]}
+    result = check_substitution({"rpm": 300, "mixing_mode": "magnetic"}, candidate)
+    assert result["status"] == "unknown"
+    assert all(not item["evidence"] for item in result["checks"])
+
+
+def test_valid_reference_shapes_remain_usable_without_pretending_to_verify_ratings():
+    text = "Test contract: magnetic stirring range 0 to 1000 rpm."
+    references = [SourceSpan.locate("test_contract", text, text).to_dict(),
+                  {"raw_sha256": "a" * 64, "locator": "/device/rpm"},
+                  {"source_url": "https://example.test/manual"}]
+    for reference in references:
+        candidate = {"params": {"rpm_min": 0, "rpm_max": 1000}, "mixing_mode": "magnetic", "evidence": [reference]}
+        assert check_substitution({"rpm": 300, "mixing_mode": "magnetic"}, candidate)["status"] == "compatible"
 
 
 def test_flow_and_pressure_numeric_limits_require_matching_operating_scopes():
@@ -135,6 +191,27 @@ def test_material_ports_geometry_and_sterility_check_actual_requested_values():
     result = check_substitution({"wetted_materials": ["PTFE"], "ports": ["vacuum"],
                                  "geometry": {"joint": "14/20"}, "sterile": True}, candidate)
     assert result["status"] == "incompatible" and len(result["incompatibilities"]) == 4
+
+
+@pytest.mark.parametrize("geometry", [
+    {"diameter_mm": {"value": None, "unit": "mm"}}, {"diameter_mm": "unknown"},
+    {"height_mm": True}, {"height_mm": {"value": 5, "unit": "unknown"}},
+    {"height_mm": {"value": 5, "unit": "kg"}}, {"dimensions_mm": [5, None]},
+    {"height_mm": {"value": 5}}, {},
+])
+def test_recursively_unknown_or_untyped_geometry_never_passes_even_when_equal(geometry):
+    candidate = cited_vial(geometry=copy.deepcopy(geometry))
+    result = check_substitution({"capabilities": ["contain_material"], "geometry": geometry}, candidate)
+    assert result["status"] == "unknown"
+
+
+def test_boolean_and_numeric_geometry_cannot_match_through_python_coercion():
+    assert check_substitution({"geometry": {"height_mm": True}}, cited_vial(geometry={"height_mm": 1}))["status"] == "unknown"
+
+
+def test_fully_specified_geometry_identifiers_and_dimensions_remain_usable():
+    geometry = {"joint": "24/40", "well_count": 96, "height_mm": {"value": 5, "unit": "mm"}}
+    assert check_substitution({"geometry": geometry}, cited_vial(geometry=copy.deepcopy(geometry)))["status"] == "compatible"
 
 
 def test_unsupported_constraint_and_missing_topology_never_silently_pass():
@@ -184,3 +261,20 @@ def test_equipment_inventory_keeps_record_binding_and_family_candidates_distinct
     assert report["groups"]["anonymous_observations"][0]["id"] == "fixture_vial"
     assert report["requirements"][0]["uses"][0]["record_id"] == "fixture_parent"
     assert report["cover"]["status"] == "incomplete"
+
+
+def test_unknown_operation_cannot_use_a_generic_containing_vial_as_hardware_coverage():
+    snapshot = Registry().snapshot
+    snapshot["devices"] = [cited_vial()]
+    parent = {"id": "fixture", "hardware": {"nodes": {"reactor": {"apparatus_kind": "vial"}}, "bindings": {}},
+              "steps": [{"id": "spin", "op": "biology.Centrifuge", "vessel": "reactor"}]}
+    report = equipment_inventory([parent], registry=snapshot)
+    assert report["cover"]["status"] == "incomplete"
+    assert report["requirements"][0]["requirement"]["unresolved_operation"] == "biology.Centrifuge"
+    assert report["substitutions"][0]["status"] == "unknown"
+
+
+def test_wait_alone_does_not_invent_a_hardware_requirement():
+    parent = {"id": "fixture", "hardware": {"nodes": {}, "bindings": {}},
+              "steps": [{"id": "pause", "op": "Wait", "duration_s": 30}]}
+    assert equipment_inventory([parent])["requirements"] == []

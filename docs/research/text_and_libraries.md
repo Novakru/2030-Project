@@ -91,6 +91,98 @@ result = project.convert("procedures/example.txt")
 
 **Depth/locality/trade-offs：**常见 caller 只需 workspace、runtime、文本路径，获得完整证据产物与可审计失败，depth 高；文本事实隔离与字段引用集中在一个 module，locality 好。代价是高级 caller 不直接安排每个 agent，且 convert 既做计算又保存不可变产物；需要分布式调度时可以以后将同一结果与存储分离，不应现在向 caller 暴露一组易漏执行的步骤。
 
+## 7. Biology / materials：当前 seam 的用法与尚缺的 adapters
+
+当前可复用的是来源证据、角色调用、库修订记录与版本化发布。`Runtime(domain=...)` 已允许注入不同的领域 implementation，`CurationPolicy` 允许提供领域自己的合同验证；这不表示仓库已经提供生物或材料实验的提取器、XDL exporter 或设备驱动。
+
+下面的例子使用当前真实存在的 `maintain_library` interface，演示两种领域的动作如何进入有来源的语义候选。原文和 curator 响应都是**手写的文档测试输入**，不是模型提取结果，也不是新收集的实验数据；`RecordedCurator` 是本地 adapter，不发出网络调用。
+
+```python
+from types import SimpleNamespace
+
+from mosaic.evidence import SourceSpan
+from mosaic.evolution import CurationPolicy, maintain_library
+from mosaic.registry import Registry
+
+
+class RecordedCurator:
+    def __init__(self, name, parameters):
+        self.name, self.parameters = name, parameters
+
+    def model_call(self, role, system, payload):
+        origins = [item["observation_id"] for item in payload["observations"]]
+        return {
+            "model": "local-documentation-fixture",
+            "data": {"proposals": [{
+                "action": "cluster_operation", "origins": origins,
+                "name": self.name,
+                "reason": "Needs a domain contract; no validated exporter is supplied.",
+                "contract": {"parameters": self.parameters},
+            }]},
+        }
+
+
+def candidate_only(domain_name, text, name, parameters):
+    source_id = "documentation_fixture"
+    observation = {
+        "kind": "operation", "observation_id": "action_1",
+        "source_action": name, "text": text,
+        "evidence": [SourceSpan.locate(source_id, text, text).to_dict()],
+    }
+    domain = SimpleNamespace(
+        name=domain_name, curation_policy=CurationPolicy(domain_name)
+    )
+    evolved, report = maintain_library(
+        Registry(), [observation], sources={source_id: text},
+        runner=RecordedCurator(name, parameters), domain=domain,
+    )
+    candidate = evolved.snapshot["operation_candidates"][0]
+    assert candidate["status"] == "candidate_not_executable"
+    assert name not in evolved.snapshot["operations"]
+    return evolved, report
+
+
+bio, bio_report = candidate_only(
+    "biology.protocol/1", "Centrifuge at 5000 g for 5 min.",
+    "Centrifuge", {"rcf_g": "relative_acceleration", "duration_s": "time"},
+)
+materials, materials_report = candidate_only(
+    "materials.solids/1", "Anneal the sample under argon.",
+    "Anneal", {"temperature_C": "temperature", "atmosphere": "gas_identity"},
+)
+```
+
+该示意只把带精确引用的动作归入候选并保留领域标识。它不解析或补全数字；例如第二段没有温度和保温时长，合同中的参数名不会生成对应数值。`CurationPolicy(domain_name)` 没有注册宏实现，因此不会因为名称像某个已知操作而自动取得可执行资格。
+
+后续真正接入完整转换时，需提供以下 implementation，而不是只修改 `domain` 字符串：
+
+| 实际 seam | 生物领域 adapter 应处理的内容 | 材料领域 adapter 应处理的内容 |
+| --- | --- | --- |
+| `registry()` / `with_registry()` | 有领域作用范围的操作、样品和风险合同；不得把化学风险类别直接当生物风险全集 | 固体样品、相、气氛、升降温和测量合同；保留不同设备作用位置 |
+| `extract(document, runner, ...)` | 只读原文，保留培养、移液、离心、洗涤、检测的顺序；不把相对离心力 `g` 当作 `rpm` | 保留研磨、压制、退火、烧结及表征；原文没有的升温速率、保温时间、气体流量保持未知 |
+| `validate(extracted, raw, run_id)` | 对类型、维度、动作覆盖、物料与端点进行领域核查；原始参考字段只作独立对照 | 区分样品温度、炉温和程序设定；验证样品形态、气氛、热历史与端点；不从参考字段补值 |
+| `curation_policy()` | 为确已实现的合同提供类型及状态 verifier；没有转子几何信息时，不能通过转换公式臆造 `g` / `rpm` 等价 | 为实际支持的分解提供 verifier；保温、热循环和气氛变化不能只因都涉及加热而合并 |
+| `mutate(...)` | 使用生物领域的适用前提与错误机制；没有实现时明确不生成这一类 negative | 使用材料领域的热程序、样品和设备约束；不直接套用溶液反应的风险标签 |
+| 导出与设备 adapter | LabOP 或特定液体处理平台可以是后续独立目标；每种操作必须有经过核查的 mapping | 若平台与标准不能表达目标操作，保留 IR 和未支持原因；不得生成看似标准的自造 XDL 标签 |
+
+已有通用构建 interface 的接线形式如下；其中 `implemented_domain_adapter` **需要先实现、测试并固定版本**，本仓库没有提供名为该变量的生物或材料 adapter：
+
+```python
+from mosaic import BuildSpec, Runtime, build
+from mosaic.sources import load_text_sources
+
+adapter = implemented_domain_adapter
+result = build(
+    BuildSpec(domain=adapter.name, positives=1, per_risk=0),
+    runtime=Runtime(
+        records=load_text_sources(["procedures/domain_example.txt"]),
+        domain=adapter,
+    ),
+)
+```
+
+LabOP 的 Protocol / Execution 分离及 `BehaviorSpecialization` 提供了表达与平台解释分开的实际参考，但不能据此认定本项目已能转换任何 LabOP primitive。[LabOP 作者文档](https://github.com/Bioprotocols/labop/tree/develop) 对 Opentrons 的适配仍需要明确的容器定义、模块与夹具组合；“有标准孔板”不能省略几何与交互检查。[Opentrons 官方定义说明](https://docs.opentrons.com/flex/labware/definitions/) XDL 中已有 HeatChill 也不能自动证明烧结、退火或生物培养已得到语义完整的表示及物理执行支持。[XDL 官方操作规范](https://croningroup.gitlab.io/chemputer/xdl/standard/full_steps_specification.html)
+
 ## 验收重点
 
 应以混入矛盾 ORD 字段仍保持文本结果、短流程和无 ORD 的文本文件可提取、原文后处理动作不丢失、器材同族但条件不兼容/未知、实际库 revision 变化且可重放、至少两个领域合同在同一 interface 下工作为验证对象。跨领域样例必须明确标注测试合同或真实来源，不能仅换领域名称就宣称支持。

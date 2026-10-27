@@ -149,7 +149,8 @@ def test_macro_stays_candidate_until_domain_has_implemented_contract():
 def test_macro_admission_checks_implemented_contract_and_actual_roundtrip():
     proposal = macro_proposal()
     template = {key: copy.deepcopy(proposal[key]) for key in ("contract", "expansion", "parameter_mapping")}
-    policy = CurationPolicy("chemistry.batch/2", {"TimedPause": template})
+    policy = CurationPolicy("chemistry.batch/2", {"TimedPause": template},
+                            canonical_contracts=Registry().snapshot["operations"])
     domain = SimpleNamespace(name=policy.domain, curation_policy=policy)
     observation = observed("wait for one minute", "a", op="Wait")
     result, report = evolve([observation], [proposal], domain=domain)
@@ -165,7 +166,8 @@ def test_macro_admission_checks_implemented_contract_and_actual_roundtrip():
 def test_macro_parameter_or_effect_loss_cannot_be_laundered_by_a_model_claim():
     proposal = macro_proposal()
     template = {key: copy.deepcopy(proposal[key]) for key in ("contract", "expansion", "parameter_mapping")}
-    domain = SimpleNamespace(name="chemistry.batch/2", curation_policy=CurationPolicy("chemistry.batch/2", {"TimedPause": template}))
+    domain = SimpleNamespace(name="chemistry.batch/2", curation_policy=CurationPolicy(
+        "chemistry.batch/2", {"TimedPause": template}, canonical_contracts=Registry().snapshot["operations"]))
     proposal["contract"]["effects"] = []
     result, report = evolve([observed("wait one minute", "a", op="Wait")], [proposal], domain=domain)
     assert not result.snapshot["representations"]
@@ -175,7 +177,8 @@ def test_macro_parameter_or_effect_loss_cannot_be_laundered_by_a_model_claim():
 def test_roundtrip_alone_cannot_approve_a_guard_violating_witness():
     proposal = macro_proposal()
     template = {key: copy.deepcopy(proposal[key]) for key in ("contract", "expansion", "parameter_mapping")}
-    domain = SimpleNamespace(name="chemistry.batch/2", curation_policy=CurationPolicy("chemistry.batch/2", {"TimedPause": template}))
+    domain = SimpleNamespace(name="chemistry.batch/2", curation_policy=CurationPolicy(
+        "chemistry.batch/2", {"TimedPause": template}, canonical_contracts=Registry().snapshot["operations"]))
     proposal["witnesses"][0] = {"parameters": {"duration_s": -60}, "steps": [{"op": "Wait", "duration_s": -60}]}
     result, report = evolve([observed("wait one minute", "a", op="Wait")], [proposal], domain=domain)
     assert not result.snapshot["representations"]

@@ -12,6 +12,7 @@ from __future__ import annotations
 import copy
 import math
 import re
+from urllib.parse import urlsplit
 
 from protocol_risk.io import digest, load_library
 
@@ -24,10 +25,24 @@ def _label(value):
     return re.sub(r"[\s-]+", "_", str(value or "").strip().lower())
 
 
+def _known_label(value):
+    """Uncertainty markers do not become facts when two identical labels match."""
+    if not isinstance(value, str) or not value.strip():
+        return False
+    label = _label(value)
+    if label in {"none", "null", "n/a", "n_a", "na", "tbd", "?"}:
+        return False
+    return not any(marker in label for marker in (
+        "unknown", "unresolved", "unspecified", "undefined", "undetermined", "unverified", "uncertain",
+        "not_stated", "not_reported", "not_established", "not_available", "not_applicable", "missing"))
+
+
 def classify_equipment(device, *, families=None):
     """Return a known family without inferring identity, ratings or capabilities."""
     families = _families(families)
     def lookup(value):
+        if not _known_label(value):
+            return None
         value = _label(value)
         if value in families:
             return value
@@ -36,11 +51,15 @@ def classify_equipment(device, *, families=None):
         return matches[0] if len(matches) == 1 else None
 
     declared = lookup(device.get("family"))
-    for field in ("apparatus_kind", "kind", "type"):
-        if device.get(field):
-            found = lookup(device[field])
-            # A specific, unrecognised source kind must not collapse to a generic category.
-            return None if declared and found != declared else found
+    labels = [device[field] for field in ("apparatus_kind", "kind", "type") if device.get(field)]
+    if labels:
+        found = {lookup(value) for value in labels}
+        # Unrecognised or conflicting source types cannot collapse to a category
+        # or be overridden by a proposed family membership.
+        if None in found or len(found) != 1:
+            return None
+        family = found.pop()
+        return None if declared and family != declared else family
     if declared:
         return declared
     matches = [name for name, spec in families.items()
@@ -117,6 +136,42 @@ def _number(value):
     return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value)
 
 
+def _fact_known(value):
+    if isinstance(value, str):
+        return _known_label(value)
+    if isinstance(value, (list, dict)):
+        return bool(value) and all(_fact_known(item) for item in (value.values() if isinstance(value, dict) else value))
+    return isinstance(value, bool) or _number(value)
+
+
+def _uri(value):
+    if not isinstance(value, str) or not value.strip() or any(char.isspace() for char in value):
+        return False
+    try:
+        parsed = urlsplit(value)
+        return (parsed.scheme in {"http", "https"} and bool(parsed.hostname)
+                or parsed.scheme in {"urn", "file"} and bool(parsed.path))
+    except ValueError:
+        return False
+
+
+def _reference(value):
+    """Validate locator shape only; this does not attest a rating's truth."""
+    if not isinstance(value, dict):
+        return False
+    if _uri(value.get("source_url")) or _uri(value.get("url")):
+        return True
+    sha = value.get("source_sha256", value.get("raw_sha256"))
+    if not isinstance(sha, str) or not re.fullmatch(r"[0-9a-fA-F]{64}", sha):
+        return False
+    start, end, quote = value.get("start"), value.get("end"), value.get("quote")
+    if (isinstance(value.get("source_id"), str) and value["source_id"].strip()
+            and all(isinstance(n, int) and not isinstance(n, bool) for n in (start, end))
+            and isinstance(quote, str) and quote and 0 <= start < end and end - start == len(quote)):
+        return True
+    return isinstance(value.get("locator"), str) and bool(value["locator"].strip())
+
+
 def _evidence(candidate):
     evidence = []
     for field in ("evidence", "source_evidence"):
@@ -124,9 +179,9 @@ def _evidence(candidate):
         if not isinstance(items, list):
             raise ValueError(field + " must be a list of references")
         for item in items:
-            if item not in evidence:
+            if _reference(item) and item not in evidence:
                 evidence.append(copy.deepcopy(item))
-    if candidate.get("source_url"):
+    if _uri(candidate.get("source_url")):
         evidence.append({"source_url": candidate["source_url"], "locator": candidate.get("source_locator")})
     return evidence
 
@@ -137,6 +192,26 @@ def _scope(value):
             "liquid_temperature": "sample_temperature", "plate_setpoint": "heating_plate_setpoint",
             "bath": "bath_temperature", "bath_setpoint": "bath_temperature",
             "circulating_bath_working_range": "bath_temperature"}.get(value, value)
+
+
+def _geometry_known(value, name=""):
+    """Reject recursively unknown quantities and Python's bool == int coercion."""
+    dimension = re.search(r"(?:diameter|height|depth|length|width|radius|pitch|spacing|count|rows|columns)(?:_(?:mm|cm|um|nm|m))?$", name)
+    if _number(value):
+        return True
+    if isinstance(value, str):
+        return _known_label(value) and not dimension
+    if isinstance(value, list):
+        return bool(value) and all(_geometry_known(item, name) for item in value)
+    if isinstance(value, dict) and value:
+        if "value" in value or "unit" in value:
+            units = {"m", "cm", "mm", "um", "µm", "μm", "nm", "in", "inch", "inches", "deg", "rad", "dimensionless"}
+            unit = _label(value.get("unit"))
+            expected = re.search(r"_(mm|cm|um|nm|m)$", name)
+            if not _number(value.get("value")) or unit not in units or expected and expected[1] != unit:
+                return False
+        return all(_geometry_known(item, key) for key, item in value.items())
+    return False
 
 
 def check_substitution(requirement, candidate, *, families=None):
@@ -160,6 +235,8 @@ def check_substitution(requirement, candidate, *, families=None):
             raise ValueError(field + " must specify at least one identifier")
     if "geometry" in requirement and not isinstance(requirement["geometry"], dict):
         raise ValueError("geometry must be a dictionary")
+    if candidate.get("geometry") is not None and not isinstance(candidate["geometry"], dict):
+        raise ValueError("Candidate geometry must be a dictionary")
     for field in ("sterile", "sealed"):
         if field in requirement and not isinstance(requirement[field], bool):
             raise ValueError(field + " must be a boolean")
@@ -173,8 +250,10 @@ def check_substitution(requirement, candidate, *, families=None):
                        "reason": reason, "evidence": copy.deepcopy(evidence)})
 
     def known(field, needed, actual, matches):
-        if actual is None:
-            add(field, "unknown", needed, actual, "Candidate fact is missing")
+        if not _fact_known(needed) or not _fact_known(actual):
+            add(field, "unknown", needed, actual, "Required or candidate fact is missing or explicitly unresolved")
+        elif field in ("sterile", "sealed") and not isinstance(actual, bool):
+            add(field, "unknown", needed, actual, "Candidate boolean fact has an invalid type")
         elif not evidence:
             add(field, "unknown", needed, actual, "Candidate fact has no source reference")
         else:
@@ -215,13 +294,13 @@ def check_substitution(requirement, candidate, *, families=None):
             raise ValueError(field + " must be a positive finite number")
         expected_scope = requirement.get("capacity_scope")
         actual_scope = candidate.get("capacity_scope")
-        if not expected_scope or not actual_scope:
-            add("capacity_scope", "unknown", expected_scope, actual_scope, "Capacity needs an explicit compatible per-vessel/per-well scope")
+        if not _known_label(expected_scope) or not _known_label(actual_scope):
+            add("capacity_scope", "unknown", expected_scope, actual_scope, "Capacity needs an explicit resolved per-vessel/per-well scope")
         elif _label(expected_scope) != _label(actual_scope):
             add("capacity_scope", "unknown", expected_scope, actual_scope, "Capacity facts have a different scope and do not establish the requested capacity")
         else:
             known("capacity_scope", expected_scope, actual_scope, True)
-        if not expected_scope or not actual_scope or _label(expected_scope) != _label(actual_scope):
+        if not _known_label(expected_scope) or not _known_label(actual_scope) or _label(expected_scope) != _label(actual_scope):
             add(field, "unknown", needed, actual, "Capacity rating cannot be applied without matching scope")
         elif not _number(actual):
             add(field, "unknown", needed, actual, "Candidate capacity is missing or invalid")
@@ -229,13 +308,13 @@ def check_substitution(requirement, candidate, *, families=None):
             known(field, needed, actual, actual >= needed)
     if "temperature_C" in requirement:
         expected_scope, actual_scope = requirement.get("temperature_scope"), candidate.get("temperature_scope") or candidate.get("parameter_scope")
-        if not expected_scope or not actual_scope:
-            add("temperature_scope", "unknown", expected_scope, actual_scope, "Temperature needs an explicit scope")
+        if not _known_label(expected_scope) or not _known_label(actual_scope):
+            add("temperature_scope", "unknown", expected_scope, actual_scope, "Temperature needs an explicit resolved scope")
         elif _scope(expected_scope) != _scope(actual_scope):
             add("temperature_scope", "unknown", expected_scope, actual_scope, "Controller/bath/sample scopes differ; no sample-temperature mapping is inferred")
         else:
             known("temperature_scope", expected_scope, actual_scope, True)
-        if not expected_scope or not actual_scope or _scope(expected_scope) != _scope(actual_scope):
+        if not _known_label(expected_scope) or not _known_label(actual_scope) or _scope(expected_scope) != _scope(actual_scope):
             add("temperature_C", "unknown", requirement["temperature_C"],
                 {"T_min_C": params.get("T_min_C"), "T_max_C": params.get("T_max_C")},
                 "Temperature limits do not establish the requested scope")
@@ -246,15 +325,15 @@ def check_substitution(requirement, candidate, *, families=None):
         if field in requirement:
             scope_field = {"rpm": "mixing_mode", "flow_mL_min": "flow_scope", "pressure_bar": "pressure_scope"}[field]
             expected, actual = requirement.get(scope_field), candidate.get(scope_field)
-            if not expected or not actual:
-                add(scope_field, "unknown", expected, actual, "Numeric rating needs its operating mode/scope")
+            if not _known_label(expected) or not _known_label(actual):
+                add(scope_field, "unknown", expected, actual, "Numeric rating needs an explicitly resolved operating mode/scope")
             elif _label(expected) != _label(actual) and scope_field != "mixing_mode":
                 add(scope_field, "unknown", expected, actual, "Rating scope differs; no numeric conversion is inferred")
             elif scope_field != "mixing_mode":
                 known(scope_field, expected, actual, True)
             if not _number(requirement[field]):
                 raise ValueError(field + " must be a finite number")
-            if expected and actual and _label(expected) == _label(actual):
+            if _known_label(expected) and _known_label(actual) and _label(expected) == _label(actual):
                 interval(field, low, high)
             else:
                 add(field, "unknown", requirement[field], {low: params.get(low), high: params.get(high)},
@@ -266,9 +345,14 @@ def check_substitution(requirement, candidate, *, families=None):
         needed, actual = requirement["ports"], candidate.get("ports")
         known("ports", needed, actual, actual is not None and set(needed).issubset(actual))
     if "geometry" in requirement:
+        if not requirement["geometry"]:
+            add("geometry", "unknown", {}, candidate.get("geometry"), "No resolved geometry demand was specified")
         for name, value in requirement["geometry"].items():
             actual = (candidate.get("geometry") or {}).get(name)
-            known("geometry." + name, value, actual, value == actual)
+            if not _geometry_known(value, name) or not _geometry_known(actual, name):
+                add("geometry." + name, "unknown", value, actual, "Geometry needs resolved, correctly typed dimensions or identifiers")
+            else:
+                known("geometry." + name, value, actual, value == actual)
     for field in ("sterile", "mixing_mode", "sealed", "atmosphere_mode"):
         if field in requirement:
             actual = candidate.get(field)

@@ -48,6 +48,7 @@ class CurationPolicy:
     """
     domain: str
     macro_templates: dict = field(default_factory=dict)
+    canonical_contracts: dict = field(default_factory=dict)
 
     def verify_witness(self, values, contract):
         """Check implemented scalar guards without evaluating model/source code.
@@ -91,6 +92,8 @@ class CurationPolicy:
             operation = snapshot["operations"].get(op)
             if operation is None or not operation.get("xdl_steps"):
                 raise ValueError("Macro expansion requires implemented exportable operations")
+            if op not in self.canonical_contracts or operation != self.canonical_contracts[op]:
+                raise ValueError("Macro expansion differs from the current backend canonical contract")
             required = {str(index) + "." + key for key in operation.get("required", [])}
             allowed = required | {str(index) + "." + key for key in operation.get("optional", [])}
             targets = {key for key in mapping if key.startswith(str(index) + ".")}

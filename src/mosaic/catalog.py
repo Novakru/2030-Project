@@ -22,8 +22,10 @@ def equipment_inventory(parents, registry=None):
     bindings, demands = [], {}
     operation_roles = {"HeatChill": "heater", "Stir": "heater", "Filter": "filter",
                        "Separate": "separator", "Evaporate": "rotavap", "Irradiate": "light"}
-    capabilities = {"HeatChill": "heat", "Stir": "stir", "Filter": "solid_liquid_separation",
-                    "Separate": "liquid_phase_separation", "Evaporate": "evaporate", "Irradiate": "irradiate"}
+    capabilities = {"Add": "contain_material", "Transfer": "transfer_material", "HeatChill": "heat",
+                    "Stir": "stir", "Filter": "solid_liquid_separation", "Separate": "liquid_phase_separation",
+                    "Evaporate": "evaporate", "Irradiate": "irradiate", "Atmosphere": "establish_atmosphere",
+                    "Sonicate": "sonicate", "Purify": "purify"}
     for parent in parents:
         nodes = parent.get("hardware", {}).get("nodes", {})
         if not isinstance(nodes, dict):
@@ -37,10 +39,14 @@ def equipment_inventory(parents, registry=None):
                 if not any(item.get("observation_id") == observation["observation_id"] for item in observations):
                     observations.append(observation)
         for step in parent.get("steps", []):
+            if step["op"] == "Wait":
+                # Elapsed time alone does not assert a physical apparatus demand.
+                continue
             role = operation_roles.get(step["op"])
             node_id = parent["hardware"].get("bindings", {}).get(role, role) if role else step.get("vessel", "reactor")
             node = nodes.get(node_id, {})
-            requirement = {"capabilities": [capabilities.get(step["op"], "contain_material")]}
+            requirement = ({"capabilities": [capabilities[step["op"]]]} if step["op"] in capabilities
+                           else {"unresolved_operation": step["op"]})
             family = classify_equipment(node, families=families)
             if family:
                 requirement["family"] = family

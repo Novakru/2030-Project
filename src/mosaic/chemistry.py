@@ -51,6 +51,7 @@ class ChemistryDomain:
 
     def curation_policy(self):
         from .evolution import CurationPolicy
+        from protocol_risk.io import load_library
         # A composition of implemented primitives; it adds no new atomic action.
         template = {"contract": {"parameters": {"vessel": "identifier", "reagent": "literal_name",
                      "amount": "quantity", "duration_s": "positive_time"},
@@ -58,7 +59,8 @@ class ChemistryDomain:
                     "expansion": ["Add", "Stir"],
                     "parameter_mapping": {"0.vessel": "vessel", "0.reagent": "reagent", "0.amount": "amount",
                                           "1.vessel": "vessel", "1.duration_s": "duration_s"}}
-        return CurationPolicy(self.name, {"DoseThenStir": template})
+        return CurationPolicy(self.name, {"DoseThenStir": template},
+                              canonical_contracts=load_library("primitives.yaml")["operations"])
 
     def inventories(self, parents, snapshots, registry_snapshot):
         from .catalog import atomic_inventory, equipment_inventory
@@ -98,10 +100,11 @@ class ChemistryDomain:
                 raise ValueError("Text extraction requires a source procedure")
             from .representation import expand_plan, trusted_representations
             snapshot = self.registry().snapshot
-            active = trusted_representations(snapshot)
+            policy = self.curation_policy()
+            active = trusted_representations(snapshot, policy=policy)
             plan, provenance = text_plan(raw, runner.extraction_client(),
                 representations=active if active["aliases"] or active["macros"] else None,
-                normalizer=lambda proposed: expand_plan(proposed, snapshot, source=raw))
+                normalizer=lambda proposed: expand_plan(proposed, snapshot, source=raw, policy=policy))
             if critique:
                 try:
                     response = runner.model_call("critic", CRITIC_PROMPT, {"source": source_text, "plan": plan})
