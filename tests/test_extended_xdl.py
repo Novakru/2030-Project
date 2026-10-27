@@ -1,5 +1,6 @@
 """Representation admission, source fidelity and lossless extended XDL."""
 import copy
+import json
 
 import pytest
 from lxml import etree
@@ -46,6 +47,13 @@ def protocol():
         "reagents": [{"id": "r001", "name": "water", "smiles": None}],
         "context": {},
     }
+
+
+def test_xml_bytes_are_stable_after_database_json_key_canonicalization():
+    original = protocol()
+    original["context"] = {"z_last": True, "a_first": {"z": 3, "a": 1}}
+    reloaded = json.loads(json.dumps(original, sort_keys=True))
+    assert export_extended_xdl(original).encode("utf-8") == export_extended_xdl(reloaded).encode("utf-8")
 
 
 def test_automatic_contract_admission_is_separate_from_execution():

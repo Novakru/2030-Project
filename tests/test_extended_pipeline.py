@@ -67,3 +67,6 @@ def test_default_pipeline_admits_new_atomic_expression_and_missing_source_parame
     assert again["new_model_calls"] == 0
     after = {p.name: p.read_bytes() for p in (root / Path(result["review_bundle"]["positives"]).parent).rglob("*") if p.is_file()}
     assert before == after
+    from mosaic.verification import verify_dataset
+    checked = verify_dataset(root, upstream=False)
+    assert checked["passed"], checked["issues"]

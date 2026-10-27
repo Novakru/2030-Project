@@ -254,7 +254,7 @@ def _write_value(parent, value):
     """A closed typed tree preserves JSON exactly without arbitrary XML nodes."""
     if isinstance(value, dict):
         element = etree.SubElement(parent, _tag("Object"))
-        for key, item in value.items():
+        for key, item in sorted(value.items()):
             if not isinstance(key, str):
                 raise ValueError("JSON object keys must be strings")
             _write_value(etree.SubElement(element, _tag("Field"), name=key), item)
