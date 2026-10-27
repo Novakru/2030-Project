@@ -89,3 +89,25 @@ def test_malformed_model_quantity_does_not_abort_programmatic_generation():
     assert report["rejected"].get("Step intervention must change one supported operational field", 0) >= 1
     assert all(not isinstance(step.get("amount", {}).get("value"), dict)
                for sample in samples for step in sample["protocol"]["steps"])
+
+
+def test_quantity_perturbation_skips_unreported_addition_without_changing_its_marker():
+    from protocol_risk.missing import missing_parameter
+    from protocol_risk.mutation_rules import proposals
+    parent = reference("A1", 0)
+    for step in parent["steps"]:
+        if step["op"] == "Add":
+            step.pop("amount", None)
+            step["missing_parameters"] = {"amount": missing_parameter("material was added")}
+    first = parent["steps"][0]
+    original = copy.deepcopy(parent)
+    candidates = list(proposals(parent, {}))
+    assert not any(risk == "D4" for risk, _, _ in candidates)
+    assert parent == original
+    quantified = {**copy.deepcopy(first), "id": "quantified", "amount": {"value": 1, "unit": "mL"}}
+    quantified.pop("missing_parameters")
+    parent["steps"].insert(1, quantified)
+    candidates = list(proposals(parent, {}))
+    child = next(child for risk, child, _ in candidates if risk == "D4")
+    assert child["steps"][0]["missing_parameters"] == first["missing_parameters"]
+    assert child["steps"][1]["amount"]["unit"] == "s"

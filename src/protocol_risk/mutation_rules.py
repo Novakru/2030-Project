@@ -213,16 +213,21 @@ def proposals(parent, reference):
         child = copy.deepcopy(parent)
         child["steps"][adds[0]]["reagent"] = "undeclared_reagent"
         yield "D3", child, {"precondition": "declared_initial_reagent"}
+    quantified = next((i for i in adds if isinstance(parent["steps"][i].get("amount"), dict)
+                       and isinstance(parent["steps"][i]["amount"].get("value"), (int, float))), None)
+    if quantified is not None:
         child = copy.deepcopy(parent)
-        child["steps"][adds[0]]["amount"]["unit"] = "s"
+        child["steps"][quantified]["amount"]["unit"] = "s"
         yield "D4", child, {"precondition": "material_quantity", "dimension_change": "material_to_time"}
     # Undefined vessel and undefined reagent are distinct reference failures;
     # use only operations actually present in the source-derived procedure.
     for op in ("Add", "HeatChill", "Transfer", "Filter", "Separate"):
         target = next((i for i, s in enumerate(parent["steps"]) if s["op"] == op), None)
         if target is not None:
-            child = copy.deepcopy(parent)
             key = "to_vessel" if op == "Transfer" else "vessel"
+            if not parent["steps"][target].get(key) or key in parent["steps"][target].get("missing_parameters", {}):
+                continue
+            child = copy.deepcopy(parent)
             child["steps"][target][key] = "undeclared_vessel"
             yield "D3", child, {"precondition": "existing_operation_with_declared_vessel", "operation": op, "reference_type": key}
     if heat and adds:
