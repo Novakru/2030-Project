@@ -17,7 +17,7 @@ $env:PYTHONPATH = "$PWD/src"
 $env:PYTHONIOENCODING = 'utf-8'
 ./.venv/Scripts/python.exe -m protocol_risk api-check
 ./.venv/Scripts/python.exe -m mosaic extract path/to/procedure.txt --model extractor=gpt-6.1-sol --model critic=gpt-6.1-sol
-./.venv/Scripts/python.exe -m mosaic run --positives 100 --per-risk 10 --source-limit 300 --llm-perturbations 6 --max-calls 800 --workers 4 --model extractor=gpt-6.1-sol --model critic=gpt-6.1-sol
+./.venv/Scripts/python.exe -m mosaic run --positives 100 --per-risk 10 --source-limit 300 --llm-perturbations 6 --max-calls 1600 --workers 6 --model extractor=gpt-6.1-sol --model critic=gpt-6.1-sol --model library_curator=gpt-6.1-sol
 ```
 
 `.env` 提供 `api_key`、`base_url`、`model`，格式见 [.env.example](.env.example)。默认角色使用配置模型；`--model ROLE=MODEL` 可指定 `extractor`、`critic`、`apparatus_mapper`、`perturber`、`library_curator`。连通性检查包含真实 nonce 请求和随机无效密钥对照，见 `reports/api_connectivity.json`；网关返回名称不是独立模型身份认证。
@@ -37,7 +37,7 @@ $env:PYTHONIOENCODING = 'utf-8'
 ```powershell
 ./.venv/Scripts/python.exe -m mosaic verify <run_dir>
 ./.venv/Scripts/python.exe -m mosaic resume <run_dir> --offline
-./.venv/Scripts/python.exe -m mosaic publish <run_dir> --db audit/data/mosaic.sqlite3
+./.venv/Scripts/python.exe -m mosaic publish <run_dir> --db audit/data/text_reviews.sqlite3
 ./audit/start_review.ps1
 ```
 
@@ -102,8 +102,11 @@ data/
 ## 测试
 
 ```powershell
-./.venv/Scripts/python.exe -m pytest -q
+./.venv/Scripts/python.exe -m pytest -q -k 'not quota'
+./.venv/Scripts/python.exe -m pytest -q tests/test_dataset.py -k quota
 ./audit/.venv/Scripts/python.exe -m unittest discover -s audit/tests -q
+./.venv/Scripts/python.exe scripts/verify_replay.py <run_dir> --output reports/mosaic_replay.json
+./.venv/Scripts/python.exe scripts/report_dataset.py <run_dir>
 ```
 
-真实批次验收读取当前清单；手写控制只在 `tests/chemistry_fixtures.py` 作夹具，不计入交付数量。
+真实批次验收读取当前清单；手写控制只在 `tests/chemistry_fixtures.py` 作夹具，不计入交付数量。当前代码与数据一致性检查 413 项通过、1 项 SDK 测试跳过；两项数量验收明确失败：300 条原文中仅 25 条通过转换，83 条风险候选尚未覆盖全部类别。完整 `pytest -q` 因此会显示这两项失败，不能理解为已达 100 条／每类 10 条。383 条记录已进入审计平台，其中 275 条是待补全记录。

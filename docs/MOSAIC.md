@@ -1,5 +1,7 @@
 # MOSAIC：当前重构目标
 
+本页保留首轮架构与历史批次记录。当前生产实现和验收以 [TEXT_FIRST.md](TEXT_FIRST.md) 为准：结构化重建已删除，旧混合批次的数量不能作为纯文本提取效果证明。
+
 MOSAIC = **Multi-agent Orchestration for Source-grounded Actions, Instruments and Constraints**。
 工作分支：`refactor/mosaic`，从 `main` 的 `7a960ed` 继承。
 

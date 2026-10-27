@@ -35,7 +35,6 @@ def latest_inputs():
         return []
 
 
-DEFAULT_INPUTS = latest_inputs()
 STATUS = {"pending": "待审核", "accepted": "已审核 · 通过", "rejected": "已审核 · 拒绝"}
 KINDS = {"positive": "正例 pos", "negative": "负例 neg", "other": "其他记录"}
 
@@ -63,7 +62,7 @@ def show_import_report(report):
 
 def import_panel(database, suffix):
     with st.form("import_" + suffix):
-        paths = st.text_area("数据文件或目录（每行一个路径）", "\n".join(str(p) for p in DEFAULT_INPUTS),
+        paths = st.text_area("数据文件或目录（每行一个路径）", "\n".join(str(p) for p in latest_inputs()),
                              height=130, key="inputs_" + suffix,
                              help="支持 JSON 单记录、JSON 数组和 JSONL；目录递归扫描。只选择记录数据目录。")
         uploads = st.file_uploader("也可以上传 JSON / JSONL", type=["json", "jsonl"],
