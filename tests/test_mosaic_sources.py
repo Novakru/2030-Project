@@ -15,8 +15,10 @@ def test_complete_text_does_not_require_structured_addition_order():
            "procedure": "A source procedure with explicit input actions. " * 12}
     domain = ChemistryDomain()
     assert domain.eligible(raw) and domain.text_ready(raw)
-    assert not domain.structured_ready(raw)
-    raw["procedure"] = "A generic record note."
+    # A short literal document is an input, not an excuse to reconstruct ORD.
+    raw["procedure"] = "Stir for 30 seconds."
+    assert domain.eligible(raw)
+    raw["procedure"] = "   "
     assert not domain.eligible(raw)
 
 

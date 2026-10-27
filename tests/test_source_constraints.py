@@ -41,15 +41,15 @@ def test_wrong_upper_bound_number_cannot_bypass_numeric_grounding():
         prepare_protocol(protocol, raw)
 
 
-def test_cached_extraction_cannot_preserve_an_outdated_success_label():
+def test_database_outcomes_remain_reference_metadata_without_becoming_process_facts():
     raw, protocol = minimal_source_and_extraction()
     protocol["yield_percent"] = 99
     result = prepare_protocol(protocol, raw)
-    assert result["yield_percent"] == 80
-    assert result["yield_evidence"] == raw["yield_evidence"]
+    assert "yield_percent" not in result
+    assert result["reference_metadata"]["yield_percent"] == 80
+    assert result["reference_metadata"]["yield_evidence"] == raw["yield_evidence"]
     raw["yield_percent"] = None
-    with pytest.raises(ValueError, match="unambiguous target yield"):
-        prepare_protocol(protocol, raw)
+    assert prepare_protocol(protocol, raw)["reference_metadata"]["yield_percent"] is None
 
 
 def test_cited_equipment_setup_is_retained_without_adding_a_new_primitive():

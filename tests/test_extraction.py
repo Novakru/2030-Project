@@ -39,17 +39,20 @@ def test_workup_reuse_of_source_solvent_never_copies_the_initial_amount():
                            "amount": {"value": 1, "unit": "mL"}, "source_path": "/inputs/water"}],
            "source": {"db": "TEST"}, "raw_sha256": "fixture", "reaction_smiles": None,
            "reaction_class": None, "yield_percent": None, "conditions": {}, "atmosphere": {}, "setup": {}}
-    plan = {"steps": [{"op": "Add", "reagent": "r1", "alias": "water", "evidence": "Add 1 mL water."},
-                      {"op": "Add", "reagent": "r1", "alias": "water", "stage": "workup",
+    plan = {"steps": [{"op": "Add", "reagent": "water", "alias": "water", "amount": {"value": 1, "unit": "mL"}, "evidence": "Add 1 mL water."},
+                      {"op": "Add", "reagent": "water", "alias": "water", "stage": "workup",
                        "amount": {"value": 5, "unit": "mL"}, "evidence": "Wash with 5 mL water."}]}
     assert not validate_evidence(raw, plan)
     result = build_ir(raw, plan, {})
     assert result["steps"][0]["amount"]["value"] == 1
     assert result["steps"][1]["amount"]["value"] == 5
-    assert result["steps"][1]["reagent"] != "r1"
+    assert result["steps"][1]["reagent"] != result["steps"][0]["reagent"]
     assert result["reagents"][-1]["role"] == "WORKUP"
+    # Repeated reaction additions are legal, but each must retain its own dose.
     plan["steps"][1]["stage"] = "reaction"
-    assert any("repeated initial" in e for e in validate_evidence(raw, plan))
+    assert not validate_evidence(raw, plan)
+    plan["steps"][1]["amount"]["value"] = 1
+    assert any("literal quantity" in e for e in validate_evidence(raw, plan))
 
 
 def test_time_and_temperature_are_grounded_in_explicit_units():

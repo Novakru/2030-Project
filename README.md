@@ -4,7 +4,7 @@
 
 设计目标见 [docs/MOSAIC.md](docs/MOSAIC.md)，ACRA 论文与固定版本代码研究见 [docs/research/acra.md](docs/research/acra.md)。来源事实、建议配置、模型假设和人工决定分别保存；候选不自动成为经过实验认证的 gold。
 
-当前交付：140 条 ORD raw／XDL、26 条补充父记录、200 条风险候选（20 类各 10 条，44 个扰动分组）。网页已导入 366 条待审记录，实测与仍需迭代的类别见 [质量报告](reports/mosaic_quality.md)。
+当前生产路径为 **纯文本 → 有证据的操作计划 → XDL**。ORD 的物料、条件和器材结构字段不参与生成，只在 `reference_metadata` 和独立比较中保留。旧批次 140 条中有 125 条属于结构化重建，不能再用作纯文本提取的数量证明。本轮验收见 [TEXT_FIRST.md](docs/TEXT_FIRST.md)，新批次数量和局限见 [质量报告](reports/mosaic_quality.md)。
 
 ## 安装与运行
 
@@ -16,12 +16,17 @@ python -m venv .venv
 $env:PYTHONPATH = "$PWD/src"
 $env:PYTHONIOENCODING = 'utf-8'
 ./.venv/Scripts/python.exe -m protocol_risk api-check
-./.venv/Scripts/python.exe -m mosaic run --positives 140 --per-risk 10 --text-limit 60 --llm-perturbations 6 --max-calls 200 --workers 4 --model extractor=gpt-6.1-sol --model critic=gpt-6.1-sol
+./.venv/Scripts/python.exe -m mosaic extract path/to/procedure.txt --model extractor=gpt-6.1-sol --model critic=gpt-6.1-sol
+./.venv/Scripts/python.exe -m mosaic run --positives 100 --per-risk 10 --source-limit 300 --llm-perturbations 6 --max-calls 800 --workers 4 --model extractor=gpt-6.1-sol --model critic=gpt-6.1-sol
 ```
 
-`.env` 提供 `api_key`、`base_url`、`model`，格式见 [.env.example](.env.example)。默认角色使用配置模型；`--model ROLE=MODEL` 可指定 `extractor`、`critic`、`apparatus_mapper`、`perturber`。连通性检查包含真实 nonce 请求和随机无效密钥对照，见 `reports/api_connectivity.json`；网关返回名称不是独立模型身份认证。
+`.env` 提供 `api_key`、`base_url`、`model`，格式见 [.env.example](.env.example)。默认角色使用配置模型；`--model ROLE=MODEL` 可指定 `extractor`、`critic`、`apparatus_mapper`、`perturber`、`library_curator`。连通性检查包含真实 nonce 请求和随机无效密钥对照，见 `reports/api_connectivity.json`；网关返回名称不是独立模型身份认证。
 
-`--max-calls` 限制 completion 调用次数，HTTP 仍有有限重试；`--workers` 控制文字来源并发数，默认 4。失败调用和缓存重放独立记录。校验失败来源进入 `quarantined.jsonl`；数量或覆盖不足时批次为 `partial`。
+`extract` 接受文件或目录，兼容 `.txt`、`.md`、包含 `procedure`／`text` 的单记录 JSON、数组 JSON 和 JSONL。`run --input PATH` 可以从这些文本构造数据集；省略时读取 ORD 的原始 `procedure_details`，不会用结构化字段合成替代文本。原文没有写出的条件保持未知，不能凭 ORD 补全。
+
+`--max-calls` 限制 completion 调用次数，HTTP 仍有有限重试；`--workers` 默认 4，按固定顺序收集结果。校验失败来源进入 `quarantined.jsonl`，完整原文和部分提取另存 `extraction_candidates.jsonl` 供审核，明确不计正例。数量或覆盖不足时批次为 `partial`，不会用别的来源形式凑数。SOP／作者 XDL 补充只能显式加 `--include-reference-supplements`，单独统计。
+
+每批输出 `library_registry.json`、`library_evolution.json`、`atomic_operations.json` 和 `equipment_inventory.json`。使用 `--registry PATH/TO/library_registry.json` 将已冻结的上一版库作为下一批输入。curator 归纳候选，程序验证来源和合同；同义别名、有证书的组合可参与后续提取，未支持的新操作不能直接执行。`--no-curation` 可只保存观察。器材族、具体型号、来源观察分开；同族只提供替代候选，容量、材料、温度作用范围、接口等需求仍须逐项满足。
 
 来源位于 `data/raw/reactions.parquet`、`data/upstream/` 及相应锁文件。缺少 ORD 文件时先运行 `python -m protocol_risk fetch`、`python -m protocol_risk ingest`；作者 XDL 可用 `collect-chemputer` 恢复。SOP 使用锁文件中已下载并验证的来源，不可获取的候选不参与构造。
 
@@ -76,12 +81,15 @@ data/
         positives.jsonl
         negatives.jsonl
         quarantined.jsonl
+        extraction_candidates.jsonl # 未完成提取，供专家定位缺口，不计正例
         xdl/             # 逐条 XDL
         atomic_operations.json
         equipment_inventory.json
+        library_registry.json
+        library_evolution.json
 ```
 
-文本提取不要求 ORD 已给出加料顺序；结构化重建要求明确顺序和可用单位。批评角色只能提出带原文证据的修复，程序决定是否接受。microreactor、孔板单孔容量、来源加热块保留适用范围，未知额定参数继续为未知。
+所有生产提取只读取文本，不要求 ORD 提供物料或加料顺序。批评角色只能提出带原文证据的修复，程序决定是否接受。microreactor、孔板单孔容量、来源加热块保留适用范围，未知额定参数继续为未知。
 
 领域可通过 `Runtime(domain=…, records=…)` 注入：领域负责提取、验证、扰动、库和来源，核心负责版本与持久化。当前以批式化学为主；光化学扩展示例要求来源中实际存在 `Irradiate`，流动、电化学、微波和动态条件仍需独立适配。
 

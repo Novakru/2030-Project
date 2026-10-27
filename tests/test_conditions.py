@@ -1,6 +1,5 @@
 from protocol_risk.conditions import SuccessIndex, fingerprint, protocol_key, raw_key
 from tests.chemistry_fixtures import reference
-from protocol_risk.extract import structured_plan
 
 
 def test_success_filter_compares_conditions_independently_of_component_ids(tmp_path):
@@ -9,7 +8,11 @@ def test_success_filter_compares_conditions_independently_of_component_ids(tmp_p
            "components": [{"id": "r1", "name": "ethanol", "smiles": "CCO", "role": "REACTANT",
                            "amount": {"value": 1, "unit": "mmol"}, "addition_order": 1, "input_key": "a", "source_path": "/inputs/a"}],
            "temperature": {"value": 25, "unit": "°C"}, "duration": {"value": 3600, "unit": "s"}}
-    protocol = structured_plan(raw)
+    # This unit fixture exercises only the success-index adapter, not extraction.
+    protocol = {"reaction_smiles": raw["reaction_smiles"], "reagents": raw["components"],
+                "context": {"atmosphere": raw["atmosphere"]},
+                "steps": [{"op": "Add", "reagent": "r1", "amount": {"value": 1, "unit": "mmol"}},
+                          {"op": "HeatChill", "temp_C": 25, "duration_s": 3600}]}
     assert raw_key(raw) == protocol_key(protocol)
     index = SuccessIndex(tmp_path / "index.sqlite")
     try:

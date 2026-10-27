@@ -1,0 +1,103 @@
+version: 1
+policy: "Families index candidates, not interchangeable ratings. Preserve source type, individual facts and missing values. Family capabilities describe search intent, not certified capabilities of every member."
+families:
+  vial:
+    category: vessel
+    aliases: [vial, reaction_vial, screw_cap_vial]
+    capabilities: [contain_material]
+    source_urls: [https://docs.opentrons.com/flex/labware/definitions/]
+  flask:
+    category: vessel
+    aliases: [flask, reaction_flask]
+    capabilities: [contain_material]
+    source_urls: [https://croningroup.gitlab.io/chemputer/xdl/standard/xdl_file_structure.html]
+    note: "Unspecified flask geometry remains unknown; round-bottom and pressure ratings are not inferred."
+  round_bottom_flask:
+    category: vessel
+    aliases: [round_bottom_flask, round_bottomed_flask]
+    profile_ids: [pyrex_rb_4320a_50]
+    capabilities: [contain_material]
+    source_urls: [https://ecatalog.corning.com/life-sciences/b2c/US/en/General-Labware/Flasks/Flasks%2C-Glass/PYREX%C2%AE-Short-Neck-Boiling-Flask%2C-Round-Bottom%2C-Standard-Taper-Joint/p/pyrexFlaskBoilingRoundBottomShortNeckJoint]
+  microreactor:
+    category: vessel
+    aliases: [microreactor, micro_reactor]
+    capabilities: [contain_material]
+    source_urls: [https://github.com/Open-Reaction-Database/ord-schema/blob/main/proto/ord-schema/proto/reaction.proto]
+    note: "Source type retained. Generic microreactor implies neither flow operation nor pressure rating."
+  well_plate:
+    category: vessel
+    aliases: [well_plate, microplate, microwell_plate]
+    profile_ids: [corning_3730_coc_1536]
+    capabilities: [contain_material, address_wells]
+    source_urls: [https://autoprotocol-python.readthedocs.io/en/stable/container_type.html]
+    note: "Well, insert and whole-plate capacities remain distinct."
+  storage_bottle:
+    category: vessel
+    aliases: [storage_bottle, laboratory_bottle]
+    profile_ids: [duran_youtility_125, duran_youtility_250, duran_youtility_500, duran_youtility_1000]
+    capabilities: [contain_material]
+    source_urls: [https://www.duran-youtility.com/]
+    note: "Not a pressure reactor. Capacity variants share a family without merging their facts."
+  batch_reactor:
+    category: vessel
+    aliases: [batch_reactor]
+    profile_ids: [chemputer_reactor_template]
+    capabilities: [contain_material]
+    source_urls: [https://croningroup.gitlab.io/chemputer/xdl/standard/xdl_file_structure.html]
+    note: "Abstract platform template is separate from an identified physical model."
+  heating_block:
+    category: heater
+    aliases: [heating_block, heater_block, heat_block]
+    capabilities: [heat]
+    source_urls: [https://docs.opentrons.com/python-api/labware/]
+    note: "Block setpoint is not sample temperature; stirring is not implied."
+  hotplate_stirrer:
+    category: heater_stirrer
+    aliases: [hotplate_stirrer, heater_stirrer, magnetic_hotplate_stirrer]
+    profile_ids: [ika_rct_basic_25008259, ika_cmag_hs7_digital_3487000]
+    capabilities: [heat, magnetic_stir]
+    source_urls: [https://www.ika.com/en/Products-LabEq/Magnetic-Stirrers-pg188/RCT-basic-25008259/Technical-Data-cptd.html]
+  circulating_bath:
+    category: chiller
+    aliases: [circulating_bath, refrigerated_circulator, chiller]
+    profile_ids: [julabo_corio_cd200f, julabo_corio_cp200f]
+    capabilities: [circulate_heat_transfer_fluid]
+    source_urls: [https://www.julabo.com/en-us/products/refrigerated-circulators/refrigerated-heating-circulators/corio-cd-200f]
+  filter:
+    category: filter
+    aliases: [filter, filter_funnel, gravity_filter]
+    profile_ids: [duran_filter_funnel_250mm, chemputer_filter_template]
+    capabilities: [solid_liquid_separation]
+    source_urls: [https://croningroup.gitlab.io/chemputer/xdl/standard/full_steps_specification.html#filter]
+    note: "Filter medium, retained stream and driving method are separate requirements."
+  separator:
+    category: separator
+    aliases: [separator, separating_funnel, separatory_funnel]
+    profile_ids: [duran_separator_250_glass_key, chemputer_separator_template]
+    capabilities: [liquid_phase_separation]
+    source_urls: [https://croningroup.gitlab.io/chemputer/xdl/standard/full_steps_specification.html#separate]
+  rotavap:
+    category: rotavap
+    aliases: [rotavap, rotary_evaporator]
+    profile_ids: [buchi_r300_b305, buchi_r300_b301]
+    capabilities: [rotary_evaporation]
+    source_urls: [https://assets.buchi.com/image/upload/v1620133163/pdf/Operation-Manuals/OM_11593738_R-300_en.pdf]
+    note: "Bath, vacuum source, condenser and vessel must be checked for the requested configuration."
+  pump:
+    category: pump
+    aliases: [pump, syringe_pump]
+    profile_ids: [tricontinent_c3000_10010, tricontinent_c24000_10028]
+    capabilities: [move_liquid]
+    source_urls: [https://www.tricontinent.com/en/syringe-pumps-and-rotary-valves/c-series-syringe-pumps/]
+  valve:
+    category: valve
+    aliases: [valve, rotary_valve]
+    profile_ids: [tricontinent_c3000mp_10095_valve, tricontinent_c3000mp_10114_valve]
+    capabilities: [route_material]
+    source_urls: [https://www.tricontinent.com/en/syringe-pumps-and-rotary-valves/c-series-syringe-pumps/]
+  light_source:
+    category: light_source
+    aliases: [light_source, irradiation_source]
+    profile_ids: [chemputer_light_template]
+    capabilities: [irradiate]
+    source_urls: [https://croningroup.gitlab.io/chemputer/xdl/standard/full_steps_specification.html#irradiate]

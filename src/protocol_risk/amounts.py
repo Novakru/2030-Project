@@ -41,7 +41,7 @@ def local_measurements(evidence, alias):
     position = positions[0]
     after = _after_alias(_normalize(evidence[position.end():]))
     before = _normalize(evidence[:position.start()])
-    leading = re.search(rf"({NUMBER}\s*{UNIT})(?:\s+of)?\s*$", before, re.I)
+    leading = re.search(rf"({NUMBER}\s*{UNIT})(?:\s+of(?:\s+(?:a|an))?)?\s*$", before, re.I)
     segment = after or (leading[1] if leading else "")
     if not segment:
         return [], "no_adjacent_quantity"

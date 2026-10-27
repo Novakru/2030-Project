@@ -17,6 +17,8 @@ def batch():
         pytest.skip("Generate a MOSAIC batch first")
     manifest_path = pointer.parent / read_json(pointer)["manifest"]
     manifest = read_json(manifest_path)
+    if manifest.get("result", {}).get("input_contract") != "text-only/1":
+        pytest.skip("Legacy mixed-source batch: regenerate with the text-only generator")
     bundle = manifest["result"]["review_bundle"]
     return manifest_path.parent, list(read_jsonl(manifest_path.parent / bundle["positives"])), list(read_jsonl(manifest_path.parent / bundle["negatives"])), bundle
 
@@ -28,7 +30,9 @@ def test_one_hundred_real_raw_and_xdl_pairs(batch):
     observed = [p for p in parents if p["source"]["db"] == "ORD"]
     assert len(observed) >= 100 and len(raws) >= 100
     for parent in observed:
-        assert parent["raw_id"] in raws and parent["yield_percent"] > 30
+        assert parent["raw_id"] in raws
+        assert parent["source_text"] == raws[parent["raw_id"]]["procedure"]
+        assert parent["extraction"]["input_contract"] == "text-only/1"
         assert parent["quality"]["tier"] == "silver"
         assert (root / Path(bundle["positives"]).parent / "xdl" / (parent["id"] + ".xdl")).read_text(encoding="utf-8") == parent["xdl"]
 

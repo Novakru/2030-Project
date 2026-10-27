@@ -19,6 +19,7 @@ from protocol_risk.yields import target_yield
 
 from .mutations import assess_intervention, fault_instances
 from .store import RunStore
+from .sources import text_document
 
 
 def verify_dataset(run_dir, *, upstream=True):
@@ -31,11 +32,12 @@ def verify_dataset(run_dir, *, upstream=True):
     raws = {r["id"]: r for r in read_jsonl(root / Path(bundle["positives"]).parent / "raw.jsonl")}
     issues, fingerprints, groups = [], set(), {}
     upstream_hashes = {}
-    if upstream:
+    ord_ids = {r["id"] for r in raws.values() if r.get("source", {}).get("db") == "ORD"}
+    if upstream and ord_ids:
         for source in read_json(ROOT / "data/sources.lock.json")["files"]:
             if digest((ROOT / source["path"]).read_bytes()) != source["sha256"]:
                 raise ValueError("Upstream ORD file checksum changed")
-            for raw, _ in iter_ord(ROOT / source["path"], ids=set(raws)):
+            for raw, _ in iter_ord(ROOT / source["path"], ids=ord_ids):
                 if raw.get("reaction_id") in raws:
                     upstream_hashes[raw["reaction_id"]] = digest(raw)
     for parent in parents.values():
@@ -49,14 +51,25 @@ def verify_dataset(run_dir, *, upstream=True):
             if evaluate(parent).risks or export_xdl(parent) != parent["xdl"]:
                 raise ValueError("Positive rules or XDL mismatch")
             validate_xdl(parent["xdl"])
-            if parent["source"]["db"] != "ORD":
+            if parent["source"]["db"] not in ("ORD", "TEXT"):
                 continue
             raw = raws[parent["raw_id"]]
-            if digest(raw["raw"]) != parent["raw_sha256"] or upstream and upstream_hashes.get(raw["id"]) != parent["raw_sha256"]:
+            if digest(raw["raw"]) != parent["raw_sha256"] or upstream and raw["id"] in ord_ids and upstream_hashes.get(raw["id"]) != parent["raw_sha256"]:
                 raise ValueError("Raw source snapshot or upstream hash mismatch")
-            observed, evidence = target_yield(raw["raw"])
-            if observed != parent["yield_percent"] or evidence != parent["yield_evidence"]:
-                raise ValueError("Yield evidence changed")
+            document = text_document(raw)
+            if (parent.get("source_text") != document["procedure"] or parent.get("text_sha256") != document["text_sha256"]
+                    or parent.get("extraction", {}).get("input_contract") != "text-only/1"):
+                raise ValueError("Text-only input contract or verbatim source snapshot mismatch")
+            if any(s.get("meta", {}).get("amount_source") != "procedure_text"
+                   for s in parent["steps"] if s["op"] == "Add" and s.get("amount")):
+                raise ValueError("Addition amount was not obtained from source text")
+            if "source_setup" in parent.get("context", {}):
+                raise ValueError("Structured apparatus leaked into operational context")
+            if raw["id"] in ord_ids:
+                observed, evidence = target_yield(raw["raw"])
+                reference = parent.get("reference_metadata", {})
+                if observed != reference.get("yield_percent") or evidence != reference.get("yield_evidence"):
+                    raise ValueError("Independent reference yield evidence changed")
             if crosscheck(parent, raw) != parent["crosscheck"] or canonical_hash(parent) != parent["canonical_sha1"]:
                 raise ValueError("Crosscheck or canonical export is stale")
             for node in parent["hardware"]["nodes"].values():
@@ -67,8 +80,7 @@ def verify_dataset(run_dir, *, upstream=True):
                         if citation["raw_sha256"] != raw["raw_sha256"]:
                             raise ValueError("Apparatus citation source mismatch")
                         if citation["locator"] == "/setup/vessel":
-                            if citation["value"] != raw["setup"]["vessel"]:
-                                raise ValueError("Apparatus setup citation mismatch")
+                            raise ValueError("Structured apparatus citation crossed text-only seam")
                         elif isinstance(citation["value"], str) and " ".join(citation["value"].split()).casefold() not in " ".join((raw.get("procedure") or "").split()).casefold():
                             raise ValueError("Apparatus quote missing from source")
         except (ValueError, KeyError, TypeError) as error:

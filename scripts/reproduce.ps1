@@ -4,9 +4,10 @@ param(
     [switch]$Offline,
     [switch]$Publish,
     [string]$Database = 'audit/data/mosaic.sqlite3',
-    [int]$Positives = 140,
+    [int]$Positives = 100,
     [int]$PerRisk = 10,
-    [int]$TextLimit = 60
+    [int]$SourceLimit = 300,
+    [int]$MaxCalls = 800
 )
 $ErrorActionPreference = 'Stop'
 $taskRoot = Split-Path -Parent $PSScriptRoot
@@ -15,6 +16,7 @@ $taskPython = Join-Path $taskRoot '.venv/Scripts/python.exe'
 if (-not (Test-Path -LiteralPath $taskPython)) { throw 'Create .venv and install requirements.lock.txt first.' }
 $env:PYTHONPATH = Join-Path $taskRoot 'src'
 $env:PYTHONIOENCODING = 'utf-8'
+if ($Offline -and -not $RunDir) { throw 'Offline replay requires -RunDir; structured reconstruction is disabled.' }
 function Invoke-Python([string[]]$Arguments) {
     $taskPreference = $ErrorActionPreference
     $ErrorActionPreference = 'Continue'
@@ -36,13 +38,9 @@ if ($RunDir) {
         Invoke-Python -Arguments @('-m', 'protocol_risk', 'ingest')
     }
     $taskArguments = @('-m','mosaic','run','--positives',"$Positives",'--per-risk',"$PerRisk")
-    if ($Offline) {
-        $taskArguments += @('--offline','--text-limit','0','--llm-perturbations','0','--max-calls','0')
-    } else {
-        Invoke-Python -Arguments @('-m','protocol_risk','api-check')
-        $taskArguments += @('--text-limit',"$TextLimit",'--llm-perturbations','6','--max-calls','200',
-                            '--model','extractor=gpt-6.1-sol','--model','critic=gpt-6.1-sol')
-    }
+    Invoke-Python -Arguments @('-m','protocol_risk','api-check')
+    $taskArguments += @('--source-limit',"$SourceLimit",'--llm-perturbations','6','--max-calls',"$MaxCalls",
+                        '--model','extractor=gpt-6.1-sol','--model','critic=gpt-6.1-sol')
     Invoke-Python -Arguments $taskArguments
     $taskCurrent = Get-Content -LiteralPath 'data/mosaic/current.json' -Raw -Encoding UTF8 | ConvertFrom-Json
     $RunDir = Join-Path 'data/mosaic' $taskCurrent.run_id

@@ -84,7 +84,10 @@ def _text_facts(protocol, raw):
 
 def source_apparatus(protocol, raw=None):
     """Return one unambiguous vessel or unresolved conflicts, never size by liquid volume."""
-    setup = (raw or {}).get("setup", protocol.get("context", {}).get("source_setup", {})) or {}
+    # Text extraction cannot acquire apparatus facts from ORD setup, even when a
+    # caller accidentally passes its full raw record at this downstream seam.
+    text_only = protocol.get("extraction", {}).get("input_contract") == "text-only/1"
+    setup = {} if text_only else ((raw or {}).get("setup", protocol.get("context", {}).get("source_setup", {})) or {})
     vessel = setup.get("vessel", {}) or {}
     candidates, snippets = _text_facts(protocol, raw)
     structured = None

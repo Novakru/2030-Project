@@ -58,7 +58,11 @@ def hardware_node_summary(node, node_id):
         return text(node)
     category = {"heater_stirrer": "加热搅拌器", "heater": "加热设备", "stirrer": "搅拌设备",
                 "vessel": "容器", "pump": "泵", "column": "色谱柱"}.get(node.get("category"), "器材")
-    model = node.get("id")
+    kind = {"microreactor": "微反应器", "vial": "反应小瓶", "round_bottom_flask": "圆底烧瓶",
+            "well_plate": "多孔板", "heating_block": "加热块"}.get(node.get("apparatus_kind"))
+    if kind:
+        category = kind
+    model = node.get("model") or (node.get("id") if node.get("binding_basis") != "source_reported" else None)
     return f"{category} {node_id}" + (f"（{model}）" if model else "")
 
 

@@ -279,6 +279,8 @@ def focus_review(database, row, reviewer):
     label = as_dict(record.get("label"))
     risk = as_dict(record.get("label")).get("risk_l2")
     title = risk_name(str(risk)) if risk else "正例 · 流程与来源核对" if row["record_type"] == "positive" else "流程与来源核对"
+    if quality(record).get("conversion_status") == "incomplete_not_a_positive":
+        title = "提取待补全 · 尚未计入正例"
     st.markdown(f'<div class="record-heading"><strong>{escape(title)}</strong>'
                 f'<span>{escape(STATUS[row["status"]])}</span></div>'
                 f'<div class="record-id">{escape(row["record_id"])}</div>', unsafe_allow_html=True)
@@ -293,6 +295,12 @@ def focus_review(database, row, reviewer):
     targets = focus_indices(steps, point)
     flow_col, review_col = st.columns([1.25, 1], gap="large")
     with flow_col:
+        source_text = field(record, "source_text")
+        if source_text:
+            with st.expander("对照实验原文（提取依据）"):
+                st.text_area("完整原文", str(source_text), height=240, disabled=True,
+                             key="source_" + suffix, label_visibility="collapsed")
+                st.caption("步骤、用量和器材应由这段文本支持。ORD 结构字段仅用于独立比较。")
         st.markdown("#### 流程片段")
         if point.get("removed_step") and parent:
             st.caption("父记录中的以下步骤已被删除：")
@@ -374,13 +382,16 @@ def focus_review(database, row, reviewer):
 def detail(database, row):
     record = json.loads(row["raw_json"])
     st.subheader("记录详情")
-    yield_value = field(record, "yield_percent")
+    reference = as_dict(field(record, "reference_metadata"))
+    yield_value = reference.get("yield_percent", field(record, "yield_percent"))
     st.write("Yield (%)：", "未提供" if yield_value is None else str(yield_value))
-    smiles = field(record, "reaction_smiles")
+    smiles = reference.get("reaction_smiles", field(record, "reaction_smiles"))
     if smiles:
         st.code(str(smiles), language=None, wrap_lines=True)
     else:
         st.caption("原始记录未提供 reaction_smiles。")
+    if reference:
+        st.caption("以上 ORD 产率和 SMILES 是参考注释，不参与流程生成。")
     checks_tab, steps_tab, risks_tab, raw_tab, history_tab = st.tabs(
         ["核对与质量", "步骤与器材", "负例与父记录", "原始记录", "审核历史"])
     with checks_tab:
@@ -393,6 +404,8 @@ def detail(database, row):
         show_json("Quality · symbolic / unknown / hardware / feasibility / manual_review", field(record, "quality"), True)
         show_json("来源与抽取证据", {"source": field(record, "source"), "extraction": field(record, "extraction"),
                                       "source_evidence": field(record, "source_evidence")})
+        if reference:
+            show_json("ORD 参考注释（与文本独立比较）", reference)
     with steps_tab:
         rows = step_rows(record)
         if rows:

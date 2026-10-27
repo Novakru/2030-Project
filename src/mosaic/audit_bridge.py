@@ -21,7 +21,9 @@ def publish(run_dir, database):
     if not bundle:
         raise ValueError("Run has no completed review bundle")
     files = []
-    for key in ("positives", "negatives"):
+    for key in ("positives", "negatives", "candidates"):
+        if not bundle.get(key):
+            continue
         path = (run_dir / bundle[key]).resolve()
         if not path.is_relative_to(run_dir):
             raise ValueError("Review bundle escapes the run")

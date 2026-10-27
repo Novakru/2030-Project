@@ -13,20 +13,24 @@ from protocol_risk.ingest import read_raw
 from protocol_risk.io import ROOT, canonical, digest, read_json
 
 from .agents import AgentRunner
-from .chemistry import ChemistryDomain, PhotochemistryDomain
 from .evidence import SourceSpan
+from .registry import Registry
+from .sources import text_document
 from .store import RunStore, atomic_bytes, atomic_json, file_digest
 
 
 @dataclass(frozen=True)
 class BuildSpec:
     output_dir: str = "data/mosaic"
-    domain: str = "chemistry.batch/1"
-    positives: int = 140
-    per_risk: int = 12
-    text_limit: int = 10
+    domain: str = "chemistry.batch/2"
+    positives: int = 100
+    per_risk: int = 10
+    source_limit: int = 0
+    registry_path: str = None
+    curate: bool = True
+    include_reference_supplements: bool = False
     llm_perturbations: int = 4
-    max_calls: int = 60
+    max_calls: int = 500
     workers: int = 4
     models: dict = field(default_factory=dict)
 
@@ -41,41 +45,37 @@ class Runtime:
     source_archive_sha256: str = None
     expected_run_id: str = None
     backend_identity: str = None
+    registry_snapshot: dict = None
 
 
-def _select(domain, limit, text_limit):
-    pools, text_pools = defaultdict(deque), defaultdict(list)
+def _select(domain, limit, source_limit=0):
+    """Round-robin distinct literal procedures; reference fields never select a path."""
+    pools = defaultdict(list)
     for raw in read_raw():
         if domain.eligible(raw):
             name = raw["source"].get("dataset_id", raw["source"].get("url", "unknown"))
-            if domain.text_ready(raw):
-                text_pools[name].append(raw)
-            if domain.structured_ready(raw) and len(pools[name]) < max(20, limit):
-                pools[name].append(raw)
-    # Start with compact procedures. Very long generic recipes often describe a
-    # different scale from the record's structured quantities and need review.
-    text_pools = {name: deque(sorted(rows, key=lambda r: (len(r["procedure"]), r["id"])))
-                  for name, rows in text_pools.items()}
-    selected, seen_texts, seen_ids = [], set(), set()
-    while any(text_pools.values()) and len(selected) < min(text_limit, limit):
-        for name in sorted(text_pools):
-            while text_pools[name]:
-                raw = text_pools[name].popleft()
-                text_hash = digest(raw["procedure"])
+            pools[name].append(raw)
+    # Prefer substantive text over purification-only fragments, using text alone.
+    def priority(raw):
+        text = raw["procedure"]
+        return (not bool(re.search(r"\b(?:added|charged|mixed|dissolved)\b", text, re.I)),
+                not bool(re.search(r"\b(?:mg|mmol|mL|µL|μL)\b", text)),
+                not 400 <= len(text) <= 3500, len(text), raw["id"])
+
+    pools = {name: deque(sorted(rows, key=priority)) for name, rows in pools.items()}
+    selected, seen_texts = [], set()
+    cap = source_limit or limit * 4
+    while any(pools.values()) and len(selected) < cap:
+        for name in sorted(pools):
+            while pools[name]:
+                raw = pools[name].popleft()
+                text_hash = digest(" ".join(raw["procedure"].split()))
                 if text_hash not in seen_texts:
                     selected.append(raw)
                     seen_texts.add(text_hash)
-                    seen_ids.add(raw["id"])
                     break
-            if len(selected) >= min(text_limit, limit):
+            if len(selected) >= cap:
                 break
-    while any(pools.values()) and len(selected) < limit * 4:
-        for name in sorted(pools):
-            if pools[name]:
-                raw = pools[name].popleft()
-                if raw["id"] not in seen_ids:
-                    selected.append(raw)
-                    seen_ids.add(raw["id"])
     return selected
 
 
@@ -97,34 +97,117 @@ def _write_records(store, relative, records):
     store.track_file("dataset/" + Path(relative).name, relative)
 
 
-def _extract_source(raw, domain, runner, run_id, use_model):
-    stage_input = {"raw": digest(raw), "domain": domain.name, "text": use_model}
+def _extraction_input(raw, domain):
+    document = text_document(raw)
+    return {"document": digest(document), "domain": domain.name, "registry_revision": domain.registry().revision}
+
+
+def _extract_source(raw, domain, runner, run_id):
+    document = text_document(raw)
+    stage_input = _extraction_input(raw, domain)
+    quarantined = runner.store.find("quarantine", stage_input)
+    if quarantined:
+        raise ValueError(quarantined[0]["error"])
     extracted = runner.program("extraction", stage_input,
-        lambda: domain.extract(copy.deepcopy(raw), runner, use_model=use_model))
+        lambda: domain.extract(copy.deepcopy(document), runner, use_model=True))
     parent = runner.program("source_validation", {"extracted": digest(extracted), "raw": digest(raw)},
         lambda: domain.validate(copy.deepcopy(extracted), copy.deepcopy(raw), run_id))
     return extracted, parent
 
 
+def _admit_parent(parent, raw):
+    document = text_document(raw)
+    if (parent.get("raw_id") != raw["id"] or parent.get("raw_sha256") != raw["raw_sha256"]
+            or parent.get("source") != document["source"]):
+        raise ValueError("Domain output changed source identity")
+    if not re.fullmatch(r"[A-Za-z0-9_-]{1,180}", parent["id"]):
+        raise ValueError("Invalid generated record identifier")
+    parent.update(record_type="positive", source_text=document["procedure"], text_sha256=document["text_sha256"])
+    parent.setdefault("split_group", parent["raw_id"])
+    split_value = int(digest(parent["split_group"])[:8], 16) % 100
+    parent["split"] = "train" if split_value < 70 else "val" if split_value < 85 else "test"
+    return parent
+
+
+def _observations(protocol, document, registry):
+    """The curator receives quoted observations, never the reference measurements."""
+    text, source_id = document["procedure"], document["id"]
+    observations = []
+    for step in protocol.get("steps", []):
+        quote = step.get("meta", {}).get("evidence")
+        if isinstance(quote, str) and quote and quote in text:
+            observations.append({"kind": "operation", "name": step["op"],
+                "contract": registry.snapshot["operations"].get(step["op"]),
+                "evidence": [SourceSpan.locate(source_id, text, quote).to_dict()]})
+    for action in protocol.get("extraction", {}).get("unmapped_actions", []):
+        quote = action.get("evidence") if isinstance(action, dict) else action
+        if isinstance(quote, str) and quote and quote in text:
+            observations.append({"kind": "operation", "text": quote,
+                "name": action.get("action", action.get("op")) if isinstance(action, dict) else None,
+                "evidence": [SourceSpan.locate(source_id, text, quote).to_dict()]})
+    for node in protocol.get("hardware", {}).get("nodes", {}).values():
+        if node.get("binding_basis") != "source_reported":
+            continue
+        for citation in node.get("source_evidence", []):
+            quote = citation.get("value")
+            if isinstance(quote, str) and quote and quote in text:
+                observations.append({"kind": "device", "device": {
+                    "identity": {"manufacturer": None, "model": node.get("model")},
+                    "kind": node.get("apparatus_kind"), "params": node.get("params", {}),
+                    "parameter_scope": node.get("capacity_scope"), "verified": False},
+                    "evidence": [SourceSpan.locate(source_id, text, quote).to_dict()]})
+                break
+    return observations
+
+
+def _review_candidates(failures, records, snapshots, run_id, revision):
+    """Keep incomplete conversions reviewable without counting them as positives."""
+    raws = {r["id"]: r for r in records}
+    proposed = {p.get("raw_id"): p for p in snapshots}
+    candidates = []
+    for failure in failures:
+        document = text_document(raws[failure["raw_id"]])
+        candidate = copy.deepcopy(proposed.get(document["id"], {}))
+        candidate.update(id="mosaic_unresolved_" + digest([run_id, document["id"]])[:20],
+            record_type="other", raw_id=document["id"], raw_sha256=document["raw_sha256"],
+            source=document["source"], source_text=document["procedure"], text_sha256=document["text_sha256"])
+        candidate.pop("xdl", None)
+        candidate["quality"] = {"tier": "silver", "manual_review": "pending",
+            "conversion_status": "incomplete_not_a_positive", "source_input_contract": "text-only/1",
+            "gold_blockers": ["incomplete_text_representation"], "full_feasibility_certified": False}
+        candidate["crosscheck"] = {"tier": "silver", "missing": [failure["error"]],
+                                  "gold_blockers": ["incomplete_text_representation"]}
+        candidate["mosaic"] = {"schema": "mosaic.ir/2", "run_id": run_id,
+                               "registry_revision": revision, "conversion_failure": failure}
+        candidates.append(candidate)
+    return candidates
+
+
 def build(spec: BuildSpec, *, runtime=None):
     runtime = runtime or Runtime()
-    if min(spec.positives, spec.per_risk) <= 0 or min(spec.text_limit, spec.llm_perturbations, spec.max_calls) < 0 or not 1 <= spec.workers <= 16:
+    if spec.positives <= 0 or min(spec.per_risk, spec.source_limit, spec.llm_perturbations, spec.max_calls) < 0 or not 1 <= spec.workers <= 16:
         raise ValueError("Invalid dataset size or call budget")
+    from .chemistry import ChemistryDomain, PhotochemistryDomain
     domains = {d.name: d for d in (ChemistryDomain(), PhotochemistryDomain())}
     domain = runtime.domain or domains.get(spec.domain)
     if domain is None or domain.name != spec.domain:
         raise ValueError("No implementation registered for domain " + spec.domain)
-    records = list(runtime.records) if runtime.records is not None else _select(domain, spec.positives, spec.text_limit)
+    records = list(runtime.records) if runtime.records is not None else _select(domain, spec.positives, spec.source_limit)
     if not records:
         raise ValueError("No eligible source records")
     if len({r["id"] for r in records}) != len(records):
         raise ValueError("Source identifiers must be unique")
     if any(r.get("raw") is not None and digest(r["raw"]) != r.get("raw_sha256") for r in records):
         raise ValueError("Source record hash mismatch")
-    registry = domain.registry()
+    for raw in records:
+        text_document(raw)  # Even injected adapters receive text documents exclusively.
+    registry = (Registry(runtime.registry_snapshot) if runtime.registry_snapshot is not None else
+                Registry(read_json(Path(spec.registry_path))) if spec.registry_path else domain.registry())
+    if hasattr(domain, "with_registry"):
+        domain = domain.with_registry(registry)
     library_paths = {str(i) + ":" + Path(p).name: Path(p) for i, p in enumerate(domain.library_paths())}
     library_files = {name: file_digest(path) for name, path in library_paths.items()}
-    roles = ("extractor", "critic", "apparatus_mapper", "perturber")
+    roles = ("extractor", "critic", "apparatus_mapper", "perturber", "library_curator")
     default = "gpt-5.6-terra"
     backend_identity = runtime.backend_identity or ("injected-client" if runtime.client_factory else "program-only")
     if not runtime.offline and runtime.client_factory is None and spec.max_calls:
@@ -135,7 +218,7 @@ def build(spec: BuildSpec, *, runtime=None):
             raise ValueError("Configured backend changed since this run")
         backend_identity = current_backend
     models = {role: spec.models.get(role, default) for role in roles}
-    request_spec = {k: v for k, v in asdict(spec).items() if k != "output_dir"}
+    request_spec = {k: v for k, v in asdict(spec).items() if k not in ("output_dir", "registry_path")}
     request_spec["models"] = models
     request = {"spec": request_spec, "sources": [{"id": r["id"], "sha256": digest(r)} for r in records],
                "registry_revision": registry.revision, "library_files": library_files,
@@ -150,94 +233,93 @@ def build(spec: BuildSpec, *, runtime=None):
         raise ValueError("Cannot resume after code, library, request or source inputs changed")
     store = RunStore(Path(spec.output_dir) / run_id, request)
     runner = AgentRunner(store, models=models, max_calls=spec.max_calls, offline=runtime.offline, client_factory=runtime.client_factory)
+    prior_model_calls = runner.calls
+    runner.program("registry", registry.revision, lambda: registry.snapshot)
     records = runner.program("sources", request["sources"], lambda: records)
-    parents, failures, source_texts, changes = [], [], {}, []
-    reactions, seen_texts, model_records = Counter(), set(), []
-    for raw in records:
-        text_hash = digest(raw.get("procedure"))
-        if len(raw.get("procedure") or "") > 400 and text_hash not in seen_texts and len(model_records) < spec.text_limit:
-            model_records.append(raw)
-            seen_texts.add(text_hash)
+    parents, failures, observations, snapshots = [], [], [], []
+    source_texts = {raw["id"]: raw["procedure"] for raw in records}
     executor = ThreadPoolExecutor(max_workers=spec.workers)
-    pending = {r["id"]: executor.submit(_extract_source, r, domain, runner, run_id, True) for r in model_records}
+    queue, pending = iter(records), deque()
+
+    def submit_next():
+        raw = next(queue, None)
+        if raw is not None:
+            pending.append((raw, executor.submit(_extract_source, raw, domain, runner, run_id)))
+
+    for _ in range(spec.workers):
+        submit_next()
     try:
-        for raw in records:
-            if len(parents) >= spec.positives:
-                break
+        while pending and len(parents) < spec.positives:
+            raw, future = pending.popleft()
             if raw.get("raw") is not None and digest(raw["raw"]) != raw.get("raw_sha256"):
                 raise ValueError("Source record hash mismatch: " + raw["id"])
-            if raw.get("reaction_smiles") and reactions[raw["reaction_smiles"]] >= 3:
-                continue
-            use_model = raw["id"] in pending
-            stage_input = {"raw": digest(raw), "domain": spec.domain, "text": use_model}
-            extracted = None
+            document = text_document(raw)
+            stage_input = _extraction_input(raw, domain)
+            extracted, parent = None, None
             try:
-                extracted, parent = pending[raw["id"]].result() if use_model else _extract_source(raw, domain, runner, run_id, False)
-                if (parent.get("raw_id") != raw["id"] or parent.get("raw_sha256") != raw["raw_sha256"]
-                        or parent.get("source") != raw["source"]):
-                    raise ValueError("Domain output changed source identity")
-                if not re.fullmatch(r"[A-Za-z0-9_-]{1,180}", parent["id"]):
-                    raise ValueError("Invalid generated record identifier")
-                parent["record_type"] = "positive"
-                parent.setdefault("split_group", parent["raw_id"])
-                split_value = int(digest(parent["split_group"])[:8], 16) % 100
-                parent["split"] = "train" if split_value < 70 else "val" if split_value < 85 else "test"
-                parents.append(parent)
-                reactions[raw.get("reaction_smiles")] += 1
-                text = raw.get("procedure") or ""
-                source_texts[raw["id"]] = text
-                for node in parent.get("hardware", {}).get("nodes", {}).values():
-                    if node.get("binding_basis") != "source_reported":
-                        continue
-                    for citation in node.get("source_evidence", []):
-                        quote = citation.get("value")
-                        if isinstance(quote, dict):
-                            source_id = raw["id"] + "/setup"
-                            source_texts[source_id] = canonical(raw.get("setup", {}).get("vessel", {}))
-                            quote = canonical(quote)
-                        else:
-                            source_id = raw["id"]
-                        evidence_text = source_texts.get(source_id, "")
-                        if not isinstance(quote, str) or quote not in evidence_text:
-                            continue
-                        changes.append({"action": "observe_device", "device": {
-                            "identity": {"manufacturer": None, "model": node.get("model")},
-                            "kind": node.get("apparatus_kind"), "params": node.get("params", {}),
-                            "parameter_scope": node.get("capacity_scope"), "verified": False},
-                            "evidence": [SourceSpan.locate(source_id, evidence_text, quote).to_dict()]})
-                        break
+                extracted, parent = future.result()
+                parents.append(_admit_parent(parent, raw))
             except (ValueError, RuntimeError, KeyError, TypeError) as error:
                 cached_extraction = store.find("program/extraction", stage_input)
                 extracted = cached_extraction[0] if cached_extraction else None
-                if extracted:
-                    source_texts[raw["id"]] = raw.get("procedure") or ""
-                    for action in extracted.get("protocol", {}).get("extraction", {}).get("unmapped_actions", []):
-                        quote = action.get("evidence") if isinstance(action, dict) else None
-                        if quote and quote in source_texts[raw["id"]]:
-                            changes.append({"action": "propose_operation", "name": "unmapped_" + digest(quote)[:12],
-                                "counterexample": {"raw_id": raw["id"], "unmapped_action": action, "failure": str(error)[:600]},
-                                "evidence": [SourceSpan.locate(raw["id"], source_texts[raw["id"]], quote).to_dict()]})
-                failure = {"raw_id": raw["id"], "stage": "extraction_or_validation", "error": str(error)[:600], "text_attempted": use_model}
+                saved_failure = store.find("quarantine", stage_input)
+                failure = saved_failure[0] if saved_failure else {"raw_id": raw["id"], "stage": "extraction_or_validation",
+                                                               "error": str(error)[:600], "text_attempted": True}
                 failures.append(failure)
-                store.save("quarantine", stage_input, failure, engine="program")
+                if not saved_failure:
+                    store.save("quarantine", stage_input, failure, engine="program")
+            if extracted and isinstance(extracted.get("protocol"), dict):
+                snapshots.append(extracted["protocol"])
+                observations.extend(_observations(parent or extracted["protocol"], document, registry))
+                for mention in extracted.get("notes", {}).get("apparatus_proposals", []):
+                    quote = mention.get("quote")
+                    if isinstance(quote, str) and quote in document["procedure"]:
+                        observations.append({"kind": "device", "device": {"kind": mention.get("kind"),
+                            "identity": {"manufacturer": None, "model": None}, "params": {},
+                            "parameter_scope": mention.get("scope"), "verified": False},
+                            "evidence": [SourceSpan.locate(raw["id"], document["procedure"], quote).to_dict()]})
+            if len(parents) < spec.positives:
+                submit_next()
             if runtime.progress:
                 runtime.progress({"accepted": len(parents), "target": spec.positives, "failed": len(failures), "model_calls": runner.calls})
     finally:
+        for _, future in pending:
+            future.cancel()
         executor.shutdown(wait=True, cancel_futures=True)
-    evolved = registry.evolve(changes, expected_revision=registry.revision, sources=source_texts) if changes else registry
-    runner.program("library_maintenance", {"revision": registry.revision, "changes": changes},
-        lambda: {"revision": evolved.revision, "snapshot": evolved.snapshot, "compact": evolved.compact_device_observations()})
+    def curate():
+        from .evolution import maintain_library
+        evolved, report = maintain_library(registry, observations, sources=source_texts,
+                                          runner=runner if spec.curate else None, domain=domain)
+        return {"revision": evolved.revision, "snapshot": evolved.snapshot, "report": report}
+
+    maintenance = runner.program("library_maintenance", {"revision": registry.revision, "observations": observations}, curate)
+    evolved = Registry(maintenance["snapshot"])
+    retry_ids = set(maintenance["report"].get("retryable_source_ids", [])) & {f["raw_id"] for f in failures}
+    if retry_ids and hasattr(domain, "with_registry"):
+        retry_domain = domain.with_registry(evolved)
+        retried = []
+        for raw in records:
+            if raw["id"] not in retry_ids or len(parents) >= spec.positives:
+                continue
+            try:
+                extracted, parent = _extract_source(raw, retry_domain, runner, run_id)
+                parents.append(_admit_parent(parent, raw))
+                failures = [f for f in failures if f["raw_id"] != raw["id"]]
+                retried.append({"raw_id": raw["id"], "status": "represented_after_verified_library_change"})
+            except (ValueError, RuntimeError, KeyError, TypeError) as error:
+                retried.append({"raw_id": raw["id"], "status": "still_unresolved", "error": str(error)[:600]})
+        maintenance["report"]["bounded_retries"] = retried
     for parent in parents:
         parent.setdefault("mosaic", {}).update(registry_revision=registry.revision, observation_revision=evolved.revision)
     negatives, mutation_report = runner.program("perturbation", {"parents": digest(parents), "per_risk": spec.per_risk, "llm_limit": spec.llm_perturbations},
-        lambda: domain.mutate(parents, runner, per_risk=spec.per_risk, llm_limit=spec.llm_perturbations))
+        lambda: domain.mutate(parents, runner, per_risk=spec.per_risk, llm_limit=spec.llm_perturbations) if spec.per_risk and parents else ([], {}))
     for sample in negatives:
         parent = next(p for p in parents if p["id"] == sample["parent_id"])
         sample["split"], sample["split_group"] = parent["split"], parent["split_group"]
         sample["record_type"] = "negative"
     primary_count = len(parents)
     supplement_report = {}
-    if hasattr(domain, "supplements"):
+    if spec.include_reference_supplements and hasattr(domain, "supplements"):
         supplement_report = runner.program("source_supplements", {"run": run_id, "per_risk": spec.per_risk},
             lambda: domain.supplements(run_id, spec.per_risk))
         parents.extend(supplement_report["parents"])
@@ -248,9 +330,11 @@ def build(spec: BuildSpec, *, runtime=None):
         raise ValueError("Program changed during the run; resume with its original code or start a new batch")
     snapshot = digest({"parents": parents, "negatives": negatives})[:20]
     folder = "datasets/" + snapshot
+    candidates = _review_candidates(failures, records, snapshots, run_id, evolved.revision)
     _write_records(store, folder + "/positives.jsonl", parents)
     _write_records(store, folder + "/negatives.jsonl", negatives)
     _write_records(store, folder + "/quarantined.jsonl", failures)
+    _write_records(store, folder + "/extraction_candidates.jsonl", candidates)
     selected_ids = {p.get("raw_id") for p in parents}
     _write_records(store, folder + "/raw.jsonl", [raw for raw in records if raw["id"] in selected_ids])
     for record in parents + negatives:
@@ -262,21 +346,24 @@ def build(spec: BuildSpec, *, runtime=None):
             if not path.exists():
                 atomic_bytes(path, payload)
             store.track_file("xdl/" + record["id"], relative)
-    if isinstance(domain, ChemistryDomain):
-        from .catalog import atomic_inventory, equipment_inventory
-        inventory = atomic_inventory([p for p in parents if "steps" in p], [p for p in parents if "steps" in p])
-        atomic_json(store.root / folder / "atomic_operations.json", inventory)
-        store.track_file("library/atomic_operations", folder + "/atomic_operations.json")
-        atomic_json(store.root / folder / "equipment_inventory.json", equipment_inventory(parents))
-        store.track_file("library/equipment_inventory", folder + "/equipment_inventory.json")
+    inventories = domain.inventories(parents, snapshots, evolved.snapshot) if hasattr(domain, "inventories") else {}
+    inventories.update(library_registry=evolved.snapshot, library_evolution=maintenance["report"])
+    for name, inventory in inventories.items():
+        atomic_json(store.root / folder / (name + ".json"), inventory)
+        store.track_file("library/" + name, folder + "/" + name + ".json")
     counts = Counter(n["label"]["risk_l2"] for n in negatives)
-    gaps = {risk: spec.per_risk - counts[risk] for risk in registry.snapshot["risks"] if counts[risk] < spec.per_risk}
+    gaps = {risk: spec.per_risk - counts[risk] for risk in registry.snapshot.get("risks", {}) if counts[risk] < spec.per_risk}
     result = {"run_id": run_id, "run_dir": str(store.root), "positives": len(parents), "negatives": len(negatives),
               "primary_positives": primary_count, "supplement_counts": supplement_report.get("counts", {}),
               "positive_shortfall": max(0, spec.positives - primary_count), "risk_shortfalls": gaps,
               "model_calls": runner.calls, "replayed_stages": dict(runner.replayed), "failures": len(failures),
+              "new_model_calls": runner.calls - prior_model_calls,
               "mutation_report": mutation_report, "registry_revision": evolved.revision,
-              "review_bundle": {"positives": folder + "/positives.jsonl", "negatives": folder + "/negatives.jsonl"}}
+              "input_contract": "text-only/1", "text_primary_positives": primary_count,
+              "extraction_candidates": len(candidates),
+              "library_registry": folder + "/library_registry.json", "library_evolution": folder + "/library_evolution.json",
+              "review_bundle": {"positives": folder + "/positives.jsonl", "negatives": folder + "/negatives.jsonl",
+                                "candidates": folder + "/extraction_candidates.jsonl"}}
     status = "complete" if not result["positive_shortfall"] and not gaps else "partial"
     store.finish(status, result)
     store.verify()
@@ -299,6 +386,10 @@ def resume(run_dir, *, offline=False, client_factory=None, runtime=None):
         raise ValueError("Cannot resume after the source archive changed")
     runtime = runtime or Runtime()
     runtime.records, runtime.offline = records, offline
+    frozen_registry = stored.find("program/registry", manifest["request"]["registry_revision"])
+    if frozen_registry is None:
+        raise ValueError("Run has no frozen input registry")
+    runtime.registry_snapshot = frozen_registry[0]
     runtime.client_factory = client_factory or runtime.client_factory
     runtime.source_archive_sha256, runtime.expected_run_id = archive_sha256, run_dir.name
     runtime.backend_identity = manifest["request"]["backend_identity"]
