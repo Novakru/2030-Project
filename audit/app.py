@@ -17,7 +17,7 @@ from audit.import_json_to_db import import_documents, import_paths
 from audit.records import as_dict, field, quality, step_rows
 from audit.risk_reason import explain_risk
 from audit.review_view import (FIELD_NAMES, focus_indices, procedure, review_points,
-                               mechanism_name, risk_name, step_summary, text)
+                               equipment_label, mechanism_name, risk_name, step_summary, text)
 
 ROOT = Path(__file__).resolve().parents[1]
 def latest_inputs():
@@ -240,7 +240,7 @@ def step_card(step, record, highlighted=False, tag_text="核对位置"):
     params = as_dict(node.get("params"))
     capacity = params.get("capacity_mL")
     facts = (f"容器 {vessel}" if vessel else "") + (f" · 容量 {capacity} mL" if capacity is not None else "")
-    apparatus = {"microreactor": "微型反应器", "well_plate": "孔板", "vial": "反应瓶", "round_bottom_flask": "圆底烧瓶"}.get(node.get("apparatus_kind"))
+    apparatus = equipment_label(node)
     if apparatus:
         facts += " · " + apparatus
     if node.get("capacity_scope") == "per_well":

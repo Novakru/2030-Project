@@ -2,11 +2,16 @@
 from copy import deepcopy
 import unittest
 
-from audit.review_view import focus_indices, procedure, review_points, step_summary
+from audit.review_view import equipment_label, focus_indices, procedure, review_points, step_summary
 from audit.tests.test_risk_reason import missing_heater
 
 
 class ReviewViewTests(unittest.TestCase):
+    def test_canonical_equipment_subtype_is_visible_without_inventing_flow_or_shape(self):
+        self.assertEqual(equipment_label({"category": "ReactionContainer", "subtype_id": "equipment.microreactor"}), "微型反应器")
+        self.assertEqual(equipment_label({"category": "ReactionContainer", "normalization": {"status": "unresolved"}}), "子型未报告")
+        self.assertEqual(equipment_label({"subtype_id": "equipment.round_bottom_flask"}), "圆底烧瓶")
+
     def base(self):
         return {"id": "pos", "steps": [{"id": "s1", "op": "Add", "reagent": "r1",
                     "amount": {"value": 1, "unit": "mL"}}, {"id": "s2", "op": "Stir"}],
