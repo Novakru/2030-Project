@@ -194,10 +194,12 @@ class ChemistryDomain:
         from protocol_risk.conditions import SuccessIndex
         from protocol_risk.ingest import read_raw
         from .mutations import generate
+        from .canonical import registry_vocabulary
         index = SuccessIndex(runner.store.root / "success_conditions.sqlite")
         try:
             index.build(read_raw())
-            return generate(parents, read_raw(), per_risk=per_risk, success_index=index, runner=runner, llm_limit=llm_limit)
+            return generate(parents, read_raw(), per_risk=per_risk, success_index=index, runner=runner,
+                            llm_limit=llm_limit, vocabulary=registry_vocabulary(self.registry()))
         finally:
             index.close()
 

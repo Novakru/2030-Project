@@ -68,6 +68,14 @@ def test_unknown_or_ambiguous_surface_forms_stay_unresolved_without_shape_repair
     assert result == source and traces == {}
 
 
+def test_alias_adapter_cannot_hide_a_reported_quantity_behind_a_missing_marker():
+    quote = "The mixture was shaken for 30 seconds."
+    proposal = {"steps": [{"op": "shake", "object_role": "material_or_contents", "evidence": quote,
+        "parameters": {"duration_s": {"status": "not_reported", "marker": "__NOT_REPORTED__", "raw": None, "evidence": quote}}}]}
+    with pytest.raises(ValueError, match="(?:reported|explicit|quantity)"):
+        complete({"id": "source", "procedure": quote}, None, {}, Runner(proposal))
+
+
 def test_initial_extractor_uses_the_same_deterministic_core_alias_adapter():
     quote = "Water (1 mL) was added."
     class Client:

@@ -322,7 +322,7 @@ def model_proposals(parent, runner):
         yield proposal.get("risk"), child, {"precondition": "model_proposal_program_checked", "rationale": proposal.get("rationale"), "proposal_engine": "llm"}
 
 
-def generate(parents, raw_records, *, per_risk=12, success_index=None, runner=None, llm_limit=0):
+def generate(parents, raw_records, *, per_risk=12, success_index=None, runner=None, llm_limit=0, vocabulary=None):
     from protocol_risk.normalization import analysis_protocol, is_normalized
     if any(is_normalized(parent) for parent in parents):
         if not all(is_normalized(parent) for parent in parents):
@@ -332,7 +332,7 @@ def generate(parents, raw_records, *, per_risk=12, success_index=None, runner=No
         samples, report = generate(projected, raw_records, per_risk=per_risk,
                                    success_index=success_index, runner=runner, llm_limit=llm_limit)
         by_id = {parent["id"]: parent for parent in parents}
-        return [finalize_negative(sample, by_id[sample["parent_id"]]) for sample in samples], report
+        return [finalize_negative(sample, by_id[sample["parent_id"]], vocabulary=vocabulary) for sample in samples], report
     references = corpus_reference(raw_records)
     pools, rejected, seen = defaultdict(list), Counter(), set()
     known_risks = set(load_library("risks.yaml")["risks"])

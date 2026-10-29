@@ -24,7 +24,9 @@ def equipment_inventory(parents, registry=None):
         for binding in result["record_bindings"]:
             node = nodes[(binding["record_id"], binding["node_id"])]
             binding.update({key: node.get(key) for key in ("category_id", "subtype_id", "category", "apparatus_kind")})
-        result["canonical_catalog"] = load_library("equipment.yaml")
+        equipment = _snapshot(registry).get("equipment_catalog") or load_library("equipment.yaml")
+        equipment_mappings = _snapshot(registry).get("equipment_mappings") or load_library("equipment_mappings.yaml")
+        result["canonical_catalog"] = equipment
         result["mapping_library"] = "equipment_mappings.yaml"
         from protocol_risk.equipment_normalization import conditional_substitutes
         profiles = _snapshot(registry).get("devices", [])
@@ -32,7 +34,7 @@ def equipment_inventory(parents, registry=None):
         by_id = {profile["id"]: profile for profile in profiles}
         comparisons, witnesses = [], []
         for demand in result["requirements"]:
-            for candidate in conditional_substitutes(demand["requirement"], profiles):
+            for candidate in conditional_substitutes(demand["requirement"], profiles, catalog=equipment, mappings=equipment_mappings):
                 identifier = candidate["candidate_id"]
                 comparisons.append({"demand_id": demand["id"], "catalog_id": identifier, **candidate})
                 source = by_id[identifier].get("source_url")

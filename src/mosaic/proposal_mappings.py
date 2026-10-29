@@ -92,8 +92,13 @@ def resolve_proposal(proposal, registry, *, core_only=False):
                     declared = contract.get("parameters", {}).get(key, {}).get("type")
                     kind = "number" if declared == "quantity" else declared or "string"
                 specification[key] = {"type": kind, "required": False}
+                declared = contract.get("parameters", {}).get(key, {})
+                if declared.get("dimension"):
+                    specification[key]["dimension"] = declared["dimension"]
                 if isinstance(item, dict) and "unit" in item:
                     specification[key]["unit"] = item["unit"]
+                elif kind == "number" and key in _UNITS:
+                    specification[key]["unit"] = _UNITS[key]
             definition = {"name": adapter, "domain": contract.get("domain", "general"),
                           "description": contract["description"], "parameters": specification,
                           "effects": contract.get("effects", []), "hardware_roles": contract.get("capabilities", [])}

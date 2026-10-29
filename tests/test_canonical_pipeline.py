@@ -4,7 +4,7 @@ import copy
 import jsonpatch
 import pytest
 
-from mosaic.canonical import finalize_protocol
+from mosaic.canonical import finalize_negative, finalize_protocol, registry_vocabulary
 from mosaic.mutations import assess_intervention
 from protocol_risk.canonical_xdl import read_canonical_xdl
 from protocol_risk.io import load_library
@@ -134,3 +134,18 @@ def test_qualitative_conditions_and_temporal_relations_remain_semantically_disti
     changed = copy.deepcopy(original)
     changed["temporal_relations"][0]["relation"] = "before"
     assert canonical_hash(changed) != canonical_hash(original)
+
+
+def test_registry_equipment_vocabulary_is_used_for_parents_and_perturbed_children():
+    from mosaic.registry import Registry
+    vocabulary = registry_vocabulary(Registry())
+    vocabulary = copy.deepcopy(vocabulary)
+    category = vocabulary["equipment"]["subtypes"]["equipment.microreactor"]["category_id"]
+    vocabulary["equipment"]["categories"][category]["name"] = "ReactionVesselDisplay"
+    parent = finalize_protocol(example(), vocabulary=vocabulary)
+    assert parent["hardware"]["nodes"]["v1"]["category"] == "ReactionVesselDisplay"
+    child = analysis_protocol(parent)
+    child["steps"][0]["amount"]["value"] = 3
+    sample = finalize_negative({"protocol": child}, parent, vocabulary=vocabulary)
+    assert sample["protocol"]["hardware"]["nodes"]["v1"]["category"] == "ReactionVesselDisplay"
+    assert evaluate(sample["protocol"]).risks == ["A1"]

@@ -8,6 +8,14 @@ from protocol_risk.io import load_library
 from protocol_risk.xdl import canonical_hash, export_xdl, validate_xdl
 
 
+def registry_vocabulary(registry):
+    snapshot = (registry.snapshot if hasattr(registry, "snapshot") else registry) or {}
+    return {"operations": snapshot.get("canonical_operations") or load_library("atomic_operations.yaml")["operations"],
+            "mappings": snapshot.get("operation_mappings") or load_library("operation_mappings.yaml"),
+            "equipment": snapshot.get("equipment_catalog") or load_library("equipment.yaml"),
+            "equipment_mappings": snapshot.get("equipment_mappings") or load_library("equipment_mappings.yaml")}
+
+
 def finalize_protocol(protocol, *, vocabulary=None):
     result = normalize_protocol(protocol, vocabulary=vocabulary)
     validate_normalized(result)
@@ -23,11 +31,12 @@ def finalize_protocol(protocol, *, vocabulary=None):
     return result
 
 
-def finalize_negative(sample, parent):
+def finalize_negative(sample, parent, *, vocabulary=None):
     result = copy.deepcopy(sample)
-    operations = copy.deepcopy(load_library("atomic_operations.yaml")["operations"])
+    vocabulary = copy.deepcopy(vocabulary or {})
+    operations = vocabulary.get("operations") or copy.deepcopy(load_library("atomic_operations.yaml")["operations"])
     operations.update({contract["id"]: contract for contract in parent.get("operation_definitions", {}).values()})
-    mappings = copy.deepcopy(load_library("operation_mappings.yaml"))
+    mappings = vocabulary.get("mappings") or copy.deepcopy(load_library("operation_mappings.yaml"))
     for rule in parent.get("normalization", {}).get("mapping_rules", {}).values():
         if rule.get("contract_hash"):
             if rule["contract_hash"] not in mappings["contracts"]:
@@ -35,7 +44,8 @@ def finalize_negative(sample, parent):
         else:
             if not any(item["id"] == rule["mapping"]["id"] for item in mappings["aliases"]):
                 mappings["aliases"].append({**rule["mapping"], "expressions": [rule["expression"]]})
-    result["protocol"] = finalize_protocol(sample["protocol"], vocabulary={"operations": operations, "mappings": mappings})
+    vocabulary.update(operations=operations, mappings=mappings)
+    result["protocol"] = finalize_protocol(sample["protocol"], vocabulary=vocabulary)
     result["xdl"] = result["protocol"]["xdl"]
     result["diff"] = jsonpatch.make_patch(parent, result["protocol"]).patch
     if jsonpatch.apply_patch(copy.deepcopy(parent), result["diff"]) != result["protocol"]:
