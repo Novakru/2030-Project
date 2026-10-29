@@ -1,0 +1,259 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "5-bromopyridin-3-amine (160 mg, 0.92 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "5-bromopyridin-3-amine",
+            "evidence": "5-bromopyridin-3-amine"
+          },
+          "mass": {
+            "value": 160,
+            "unit": "mg",
+            "evidence": "160 mg"
+          },
+          "amount_of_substance": {
+            "value": 0.92,
+            "unit": "mmol",
+            "evidence": "0.92 mmol"
+          }
+        }
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "morpholine (0.403 mL, 4.62 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "morpholine",
+            "evidence": "morpholine"
+          },
+          "volume": {
+            "value": 0.403,
+            "unit": "mL",
+            "evidence": "0.403 mL"
+          },
+          "amount_of_substance": {
+            "value": 4.62,
+            "unit": "mmol",
+            "evidence": "4.62 mmol"
+          }
+        }
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine) (64.2 mg, 0.11 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)",
+            "evidence": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)"
+          },
+          "mass": {
+            "value": 64.2,
+            "unit": "mg",
+            "evidence": "64.2 mg"
+          },
+          "amount_of_substance": {
+            "value": 0.11,
+            "unit": "mmol",
+            "evidence": "0.11 mmol"
+          }
+        }
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "cesium carbonate (603 mg, 1.85 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "cesium carbonate",
+            "evidence": "cesium carbonate"
+          },
+          "mass": {
+            "value": 603,
+            "unit": "mg",
+            "evidence": "603 mg"
+          },
+          "amount_of_substance": {
+            "value": 1.85,
+            "unit": "mmol",
+            "evidence": "1.85 mmol"
+          }
+        }
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "in dioxane (5 mL)",
+        "parameters": {
+          "reagent": {
+            "value": "dioxane",
+            "evidence": "dioxane"
+          },
+          "volume": {
+            "value": 5,
+            "unit": "mL",
+            "evidence": "5 mL"
+          }
+        }
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "diacetoxypalladium (20.76 mg, 0.09 mmol) was added",
+        "parameters": {
+          "reagent": {
+            "value": "diacetoxypalladium",
+            "evidence": "diacetoxypalladium"
+          },
+          "mass": {
+            "value": 20.76,
+            "unit": "mg",
+            "evidence": "20.76 mg"
+          },
+          "amount_of_substance": {
+            "value": 0.09,
+            "unit": "mmol",
+            "evidence": "0.09 mmol"
+          }
+        }
+      },
+      {
+        "op": "MicrowaveHeatAndStir",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "The resulting solution was stirred at 150 °C in the microwave for 30 minutes.",
+        "parameters": {
+          "temperature": {
+            "value": 150,
+            "unit": "°C",
+            "evidence": "150 °C"
+          },
+          "duration": {
+            "value": 30,
+            "unit": "minutes",
+            "evidence": "30 minutes"
+          },
+          "heating_method": {
+            "value": "in the microwave",
+            "evidence": "in the microwave"
+          },
+          "concurrent_agitation": {
+            "value": "stirred",
+            "evidence": "stirred"
+          }
+        }
+      }
+    ],
+    "definitions": {
+      "AddMeasuredMaterial": {
+        "name": "AddMeasuredMaterial",
+        "domain": "material_handling",
+        "description": "Introduce the identified material into the vessel, retaining each independently reported mass, volume, and amount of substance without deriving unreported quantities.",
+        "parameters": {
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": false,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "volume": {
+            "type": "quantity",
+            "required": false,
+            "unit": "mL",
+            "dimension": "volume"
+          },
+          "amount_of_substance": {
+            "type": "quantity",
+            "required": false,
+            "unit": "mmol",
+            "dimension": "amount_of_substance"
+          }
+        },
+        "effects": [
+          "Introduces the identified material into the receiving vessel."
+        ],
+        "hardware_roles": [
+          "receiving_vessel"
+        ]
+      },
+      "MicrowaveHeatAndStir": {
+        "name": "MicrowaveHeatAndStir",
+        "domain": "reaction",
+        "description": "Heat the vessel contents using microwave energy at the reported temperature for the reported duration while concurrently stirring. The duration applies once to the combined operation; microwave power and stirring speed are not inferred.",
+        "parameters": {
+          "temperature": {
+            "type": "quantity",
+            "required": true,
+            "unit": "°C",
+            "dimension": "temperature"
+          },
+          "duration": {
+            "type": "quantity",
+            "required": true,
+            "unit": "minutes",
+            "dimension": "time"
+          },
+          "heating_method": {
+            "type": "string",
+            "required": true
+          },
+          "concurrent_agitation": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Applies microwave heating and concurrent stirring for the specified interval."
+        ],
+        "hardware_roles": [
+          "reaction_vessel",
+          "microwave_heating_source",
+          "stirring_device"
+        ]
+      }
+    },
+    "uncertainties": [
+      {
+        "evidence": "diacetoxypalladium (20.76 mg, 0.09 mmol) was added to 5-bromopyridin-3-amine (160 mg, 0.92 mmol), morpholine (0.403 mL, 4.62 mmol) (9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine) (64.2 mg, 0.11 mmol) and cesium carbonate (603 mg, 1.85 mmol) in dioxane (5 mL).",
+        "description": "The individual charging order of the receiving mixture components is not specified. They are listed in source order before the explicit addition of diacetoxypalladium."
+      },
+      {
+        "evidence": "The major product was the dimer.",
+        "description": "Reported product observation, not a synthesis action; no further product identity is specified."
+      },
+      {
+        "evidence": "Rection abandoned.",
+        "description": "Reported abandonment; no physical termination, quenching, disposal, workup, or purification operation is specified."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 2382,
+    "total_tokens": 4669,
+    "completion_tokens": 2287,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 2379,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 362
+    }
+  },
+  "cache_key": "e4815db7100b63d3a7ebce815dfef3823ecfdc5ea3e5d6da76c856f1456be750"
+}

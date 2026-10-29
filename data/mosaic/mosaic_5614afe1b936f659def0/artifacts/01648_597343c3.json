@@ -1,0 +1,30 @@
+{
+  "data": {
+    "proposals": [
+      {
+        "risk": "liquid-handling device omission",
+        "patch": [
+          {
+            "op": "remove",
+            "path": "/steps/0/parameters/device"
+          }
+        ],
+        "rationale": "Hypothesis: removing the specified Mosquito assignment from the multi-aspiration step could leave component combination operationally undefined, creating a risk of inconsistent component uptake before dispensing. This is an uncalibrated protocol-completeness risk, not an observed failure."
+      }
+    ]
+  },
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "completion_tokens": 483,
+    "prompt_tokens": 1092,
+    "total_tokens": 1575,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1089,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 388
+    }
+  },
+  "cache_key": "a2bfb0f4ed709bd45efa1b2586b35357dd0ecb065f8844ef89956fdff3f34883"
+}

@@ -1,0 +1,1235 @@
+<Synthesis xmlns:mx="urn:mosaic:xdl:extensions:1" mx:profile="mosaic-xdl/1">
+  <Metadata description="Source-grounded extended XDL representation; hardware execution is not certified.">
+    <mx:Data>
+      <mx:Object>
+        <mx:Field name="context">
+          <mx:Object>
+            <mx:Field name="atmosphere">
+              <mx:Object/>
+            </mx:Field>
+            <mx:Field name="initial_material_state">
+              <mx:String>unknown_unless_reported</mx:String>
+            </mx:Field>
+            <mx:Field name="pressure_control">
+              <mx:String>SEALED</mx:String>
+            </mx:Field>
+            <mx:Field name="reflux">
+              <mx:Boolean>false</mx:Boolean>
+            </mx:Field>
+            <mx:Field name="source_context_events">
+              <mx:Array/>
+            </mx:Field>
+            <mx:Field name="source_context_evidence">
+              <mx:Array>
+                <mx:Item>
+                  <mx:Object>
+                    <mx:Field name="field">
+                      <mx:String>pressure_control</mx:String>
+                    </mx:Field>
+                    <mx:Field name="quote">
+                      <mx:String>capped</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Item>
+              </mx:Array>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="source_text">
+          <mx:String>A solution of (R)-8-chloro-4-methyl-2-phenyl-2,3,4,5-tetrahydropyrido[3,2-f][1,4]oxazepine (5.00 mg, 0.02 mmol) and 4-(3-methyl-1H-1,2,4-triazol-1-yl)aniline (3.17 mg, 0.02 mmol) in DME (.5 mL) was added via a syringe to a capped microwave vial containing Pd2(dba)3 (0.833 mg, 0.91 µmol), 2-(DICYCLOHEXYLPHOSPHINO)BIPHENYL (0.638 mg, 1.82 µmol) and Cs2CO3 (8.89 mg, 0.03 mmol) under an argon atmosphere. The resulting mixture was heated to 100°C in a microwavwe apparatus for 1 h and analyzed by LCMS. No product.  </mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Data>
+  </Metadata>
+  <Hardware>
+    <mx:Data>
+      <mx:Object>
+        <mx:Field name="binding_scope">
+          <mx:String>Source-reported vessels; unspecified automation remains a proposed analysis configuration. Edges are provisional.</mx:String>
+        </mx:Field>
+        <mx:Field name="bindings">
+          <mx:Object>
+            <mx:Field name="heater">
+              <mx:String>heater</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="config_id">
+          <mx:String>source_aware_provisional_v2</mx:String>
+        </mx:Field>
+        <mx:Field name="edges">
+          <mx:Array>
+            <mx:Item>
+              <mx:Array>
+                <mx:Item>
+                  <mx:String>reactor</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>heater</mx:String>
+                </mx:Item>
+              </mx:Array>
+            </mx:Item>
+            <mx:Item>
+              <mx:Array>
+                <mx:Item>
+                  <mx:String>reactor</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>capped microwave vial</mx:String>
+                </mx:Item>
+              </mx:Array>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="estimated_liquid_lower_bound_mL">
+          <mx:Number>0</mx:Number>
+        </mx:Field>
+        <mx:Field name="inventory_scope">
+          <mx:String>Sum of stated Add volumes, not peak vessel occupancy or inferred solvent volume.</mx:String>
+        </mx:Field>
+        <mx:Field name="nodes">
+          <mx:Object>
+            <mx:Field name="capped microwave vial">
+              <mx:Object>
+                <mx:Field name="category">
+                  <mx:String>vessel</mx:String>
+                </mx:Field>
+                <mx:Field name="params">
+                  <mx:Object/>
+                </mx:Field>
+                <mx:Field name="verified">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="heater">
+              <mx:Object>
+                <mx:Field name="binding_basis">
+                  <mx:String>proposed_analysis_configuration</mx:String>
+                </mx:Field>
+                <mx:Field name="category">
+                  <mx:String>heater_stirrer</mx:String>
+                </mx:Field>
+                <mx:Field name="id">
+                  <mx:String>ika_rct_basic_25008259</mx:String>
+                </mx:Field>
+                <mx:Field name="note">
+                  <mx:String>Proposed analysis controller; source does not identify this model as the original equipment.</mx:String>
+                </mx:Field>
+                <mx:Field name="parameter_scope">
+                  <mx:String>Heating-plate setpoint maximum, not guaranteed liquid temperature; minimum depends on ambient/self-heating.</mx:String>
+                </mx:Field>
+                <mx:Field name="params">
+                  <mx:Object>
+                    <mx:Field name="T_max_C">
+                      <mx:Number>310</mx:Number>
+                    </mx:Field>
+                    <mx:Field name="T_min_C">
+                      <mx:Null/>
+                    </mx:Field>
+                    <mx:Field name="rpm_max">
+                      <mx:Number>1500</mx:Number>
+                    </mx:Field>
+                    <mx:Field name="rpm_min">
+                      <mx:Number>50</mx:Number>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="ports">
+                  <mx:Array/>
+                </mx:Field>
+                <mx:Field name="source_url">
+                  <mx:String>https://www.ika.com/en/Products-LabEq/Magnetic-Stirrers-pg188/RCT-basic-25008259/Technical-Data-cptd.html</mx:String>
+                </mx:Field>
+                <mx:Field name="verification">
+                  <mx:Object>
+                    <mx:Field name="human_verified">
+                      <mx:Boolean>false</mx:Boolean>
+                    </mx:Field>
+                    <mx:Field name="status">
+                      <mx:String>source_reviewed</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="verified">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="wetted_materials">
+                  <mx:Array/>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reactor">
+              <mx:Object>
+                <mx:Field name="binding_basis">
+                  <mx:String>unresolved_source_apparatus</mx:String>
+                </mx:Field>
+                <mx:Field name="category">
+                  <mx:String>vessel</mx:String>
+                </mx:Field>
+                <mx:Field name="id">
+                  <mx:String>chemputer_reactor_template</mx:String>
+                </mx:Field>
+                <mx:Field name="params">
+                  <mx:Object>
+                    <mx:Field name="T_max_C">
+                      <mx:Null/>
+                    </mx:Field>
+                    <mx:Field name="T_min_C">
+                      <mx:Null/>
+                    </mx:Field>
+                    <mx:Field name="capacity_mL">
+                      <mx:Null/>
+                    </mx:Field>
+                    <mx:Field name="pressure_max_bar">
+                      <mx:Null/>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="ports">
+                  <mx:Array>
+                    <mx:Item>
+                      <mx:String>top</mx:String>
+                    </mx:Item>
+                    <mx:Item>
+                      <mx:String>bottom</mx:String>
+                    </mx:Item>
+                    <mx:Item>
+                      <mx:String>gas</mx:String>
+                    </mx:Item>
+                    <mx:Item>
+                      <mx:String>jacket</mx:String>
+                    </mx:Item>
+                  </mx:Array>
+                </mx:Field>
+                <mx:Field name="source_url">
+                  <mx:String>https://croningroup.gitlab.io/chemputer/xdl/standard/full_steps_specification.html</mx:String>
+                </mx:Field>
+                <mx:Field name="verification">
+                  <mx:Object>
+                    <mx:Field name="human_verified">
+                      <mx:Boolean>false</mx:Boolean>
+                    </mx:Field>
+                    <mx:Field name="status">
+                      <mx:String>template_only</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="verified">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="wetted_materials">
+                  <mx:Null/>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="source_issues">
+          <mx:Array/>
+        </mx:Field>
+        <mx:Field name="verification_status">
+          <mx:String>human_review_pending</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Data>
+  </Hardware>
+  <Reagents>
+    <mx:Data>
+      <mx:Array/>
+    </mx:Data>
+  </Reagents>
+  <mx:OperationDefinitions>
+    <mx:Definition name="AnalyzeSample" semantic_sha256="b69982aefc4b9a1b760715466945aa94ece7acab38f568a8bb68067b7f99d2f7">
+      <mx:Object>
+        <mx:Field name="description">
+          <mx:String>Analyze reaction material using the stated method and record the reported observation. This is an analytical action, not a synthesis or isolation action; sample preparation is not inferred.</mx:String>
+        </mx:Field>
+        <mx:Field name="domain">
+          <mx:String>analytical_observation</mx:String>
+        </mx:Field>
+        <mx:Field name="effects">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>Records the reported analytical observation without inferring product isolation.</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="execution_supported">
+          <mx:Boolean>false</mx:Boolean>
+        </mx:Field>
+        <mx:Field name="hardware_roles">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>analytical instrument</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="name">
+          <mx:String>AnalyzeSample</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="method">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reported_observation">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="representation_status">
+          <mx:String>admitted</mx:String>
+        </mx:Field>
+        <mx:Field name="semantic_sha256">
+          <mx:String>b69982aefc4b9a1b760715466945aa94ece7acab38f568a8bb68067b7f99d2f7</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Definition>
+    <mx:Definition name="ChargeQuantifiedMaterial" semantic_sha256="717f9fd8346e8b4d17f9d8fb84ab4efe50529639118eb84d309c70ff5ebf29b6">
+      <mx:Object>
+        <mx:Field name="description">
+          <mx:String>Charge a specified material to a vessel while retaining both reported mass and substance amount. A material described as already contained in the vessel is represented as prerequisite inventory without asserting loading technique or closure sequence.</mx:String>
+        </mx:Field>
+        <mx:Field name="domain">
+          <mx:String>material_addition</mx:String>
+        </mx:Field>
+        <mx:Field name="effects">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>Establishes the specified material inventory in the receiving vessel.</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="execution_supported">
+          <mx:Boolean>false</mx:Boolean>
+        </mx:Field>
+        <mx:Field name="hardware_roles">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>receiving vessel</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="name">
+          <mx:String>ChargeQuantifiedMaterial</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="mass">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>mass</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reagent">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="substance_amount">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>amount_of_substance</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="representation_status">
+          <mx:String>admitted</mx:String>
+        </mx:Field>
+        <mx:Field name="semantic_sha256">
+          <mx:String>717f9fd8346e8b4d17f9d8fb84ab4efe50529639118eb84d309c70ff5ebf29b6</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Definition>
+    <mx:Definition name="MicrowaveHeat" semantic_sha256="a00aad5f80ab03e54749d39d3651fdb4baf49978c9401682fbd12b472dfd26fe">
+      <mx:Object>
+        <mx:Field name="description">
+          <mx:String>Heat the mixture using microwave apparatus to the specified temperature for the reported duration. No microwave power, pressure, ramp, or stirring is inferred.</mx:String>
+        </mx:Field>
+        <mx:Field name="domain">
+          <mx:String>reaction_heating</mx:String>
+        </mx:Field>
+        <mx:Field name="effects">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>Applies microwave heating to the reaction mixture.</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="execution_supported">
+          <mx:Boolean>false</mx:Boolean>
+        </mx:Field>
+        <mx:Field name="hardware_roles">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>microwave heating apparatus</mx:String>
+            </mx:Item>
+            <mx:Item>
+              <mx:String>reaction vessel</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="name">
+          <mx:String>MicrowaveHeat</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="apparatus">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="duration">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>time</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="temperature">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>temperature</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="representation_status">
+          <mx:String>admitted</mx:String>
+        </mx:Field>
+        <mx:Field name="semantic_sha256">
+          <mx:String>a00aad5f80ab03e54749d39d3651fdb4baf49978c9401682fbd12b472dfd26fe</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Definition>
+    <mx:Definition name="PrepareBinarySolution" semantic_sha256="ad8d1b8f0efeb8a2805099cb41db39ef5ecfbe169857f8da4613b00f1614f637">
+      <mx:Object>
+        <mx:Field name="description">
+          <mx:String>Prepare a solution of two specified solutes in the specified solvent. Retain the mass and substance amount of each solute and the literal reported solvent volume, including its decimal notation and unit. No dissolution order, mixing conditions, or preparation vessel is implied.</mx:String>
+        </mx:Field>
+        <mx:Field name="domain">
+          <mx:String>solution_preparation</mx:String>
+        </mx:Field>
+        <mx:Field name="effects">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>Prepares the specified solution for subsequent addition.</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="execution_supported">
+          <mx:Boolean>false</mx:Boolean>
+        </mx:Field>
+        <mx:Field name="hardware_roles">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>solution preparation vessel</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="name">
+          <mx:String>PrepareBinarySolution</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="first_solute">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="first_solute_amount">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>amount_of_substance</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="first_solute_mass">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>mass</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="second_solute">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="second_solute_amount">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>amount_of_substance</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="second_solute_mass">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>mass</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="solvent">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="solvent_volume_literal">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="representation_status">
+          <mx:String>admitted</mx:String>
+        </mx:Field>
+        <mx:Field name="semantic_sha256">
+          <mx:String>ad8d1b8f0efeb8a2805099cb41db39ef5ecfbe169857f8da4613b00f1614f637</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Definition>
+    <mx:Definition name="SyringeTransfer" semantic_sha256="9736f6ab34d29d811c6d115e3c6bcba990e46e4b424f3ef9d663dee6fb88905d">
+      <mx:Object>
+        <mx:Field name="description">
+          <mx:String>Add the specified material to the destination using a syringe under the reported concurrent atmosphere. The atmosphere is an environmental condition, not an instruction to purge. Preserve destination closure wording without inferring access technique. Transfer amount is distinct from solvent volume.</mx:String>
+        </mx:Field>
+        <mx:Field name="domain">
+          <mx:String>material_transfer</mx:String>
+        </mx:Field>
+        <mx:Field name="effects">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>Transfers the specified solution into the receiving vessel.</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="execution_supported">
+          <mx:Boolean>false</mx:Boolean>
+        </mx:Field>
+        <mx:Field name="hardware_roles">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>syringe</mx:String>
+            </mx:Item>
+            <mx:Item>
+              <mx:String>source vessel</mx:String>
+            </mx:Item>
+            <mx:Item>
+              <mx:String>receiving vessel</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="name">
+          <mx:String>SyringeTransfer</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="atmosphere">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="delivery_method">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="destination">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="material">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="transfer_amount">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>volume</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="representation_status">
+          <mx:String>admitted</mx:String>
+        </mx:Field>
+        <mx:Field name="semantic_sha256">
+          <mx:String>9736f6ab34d29d811c6d115e3c6bcba990e46e4b424f3ef9d663dee6fb88905d</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Definition>
+  </mx:OperationDefinitions>
+  <Procedure>
+    <mx:Step operation="PrepareBinarySolution" id="s001">
+      <mx:Object>
+        <mx:Field name="id">
+          <mx:String>s001</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>A solution of (R)-8-chloro-4-methyl-2-phenyl-2,3,4,5-tetrahydropyrido[3,2-f][1,4]oxazepine (5.00 mg, 0.02 mmol) and 4-(3-methyl-1H-1,2,4-triazol-1-yl)aniline (3.17 mg, 0.02 mmol) in DME (.5 mL)</mx:String>
+            </mx:Field>
+            <mx:Field name="operation_expression">
+              <mx:String>declarative_extension</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>PrepareBinarySolution</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="first_solute">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>(R)-8-chloro-4-methyl-2-phenyl-2,3,4,5-tetrahydropyrido[3,2-f][1,4]oxazepine</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>(R)-8-chloro-4-methyl-2-phenyl-2,3,4,5-tetrahydropyrido[3,2-f][1,4]oxazepine</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="first_solute_amount">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>0.02 mmol</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>mmol</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>0.02</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="first_solute_mass">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>5.00 mg</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>mg</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>5.0</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="second_solute">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>4-(3-methyl-1H-1,2,4-triazol-1-yl)aniline</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>4-(3-methyl-1H-1,2,4-triazol-1-yl)aniline</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="second_solute_amount">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>0.02 mmol</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>mmol</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>0.02</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="second_solute_mass">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>3.17 mg</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>mg</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>3.17</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="solvent">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>DME</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>DME</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="solvent_volume_literal">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>.5 mL</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>.5 mL</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>reactor</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+    <mx:Step operation="ChargeQuantifiedMaterial" id="s002">
+      <mx:Object>
+        <mx:Field name="id">
+          <mx:String>s002</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>a capped microwave vial containing Pd2(dba)3 (0.833 mg, 0.91 µmol)</mx:String>
+            </mx:Field>
+            <mx:Field name="operation_expression">
+              <mx:String>declarative_extension</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>ChargeQuantifiedMaterial</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="mass">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>0.833 mg</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>mg</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>0.833</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reagent">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>Pd2(dba)3</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>Pd2(dba)3</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="substance_amount">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>0.91 µmol</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>µmol</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>0.91</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>capped microwave vial</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+    <mx:Step operation="ChargeQuantifiedMaterial" id="s003">
+      <mx:Object>
+        <mx:Field name="id">
+          <mx:String>s003</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>2-(DICYCLOHEXYLPHOSPHINO)BIPHENYL (0.638 mg, 1.82 µmol)</mx:String>
+            </mx:Field>
+            <mx:Field name="operation_expression">
+              <mx:String>declarative_extension</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>ChargeQuantifiedMaterial</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="mass">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>0.638 mg</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>mg</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>0.638</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reagent">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>2-(DICYCLOHEXYLPHOSPHINO)BIPHENYL</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>2-(DICYCLOHEXYLPHOSPHINO)BIPHENYL</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="substance_amount">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>1.82 µmol</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>µmol</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>1.82</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>capped microwave vial</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+    <mx:Step operation="ChargeQuantifiedMaterial" id="s004">
+      <mx:Object>
+        <mx:Field name="id">
+          <mx:String>s004</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>Cs2CO3 (8.89 mg, 0.03 mmol)</mx:String>
+            </mx:Field>
+            <mx:Field name="operation_expression">
+              <mx:String>declarative_extension</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>ChargeQuantifiedMaterial</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="mass">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>8.89 mg</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>mg</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>8.89</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reagent">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>Cs2CO3</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>Cs2CO3</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="substance_amount">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>0.03 mmol</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>mmol</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>0.03</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>capped microwave vial</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+    <mx:Step operation="SyringeTransfer" id="s005">
+      <mx:Object>
+        <mx:Field name="id">
+          <mx:String>s005</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>A solution of (R)-8-chloro-4-methyl-2-phenyl-2,3,4,5-tetrahydropyrido[3,2-f][1,4]oxazepine (5.00 mg, 0.02 mmol) and 4-(3-methyl-1H-1,2,4-triazol-1-yl)aniline (3.17 mg, 0.02 mmol) in DME (.5 mL) was added via a syringe to a capped microwave vial containing Pd2(dba)3 (0.833 mg, 0.91 µmol), 2-(DICYCLOHEXYLPHOSPHINO)BIPHENYL (0.638 mg, 1.82 µmol) and Cs2CO3 (8.89 mg, 0.03 mmol) under an argon atmosphere.</mx:String>
+            </mx:Field>
+            <mx:Field name="operation_expression">
+              <mx:String>declarative_extension</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>SyringeTransfer</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="atmosphere">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>under an argon atmosphere</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>under an argon atmosphere</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="delivery_method">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>via a syringe</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>via a syringe</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="destination">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>capped microwave vial</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>capped microwave vial</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="material">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>A solution of (R)-8-chloro-4-methyl-2-phenyl-2,3,4,5-tetrahydropyrido[3,2-f][1,4]oxazepine (5.00 mg, 0.02 mmol) and 4-(3-methyl-1H-1,2,4-triazol-1-yl)aniline (3.17 mg, 0.02 mmol) in DME (.5 mL)</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>A solution of (R)-8-chloro-4-methyl-2-phenyl-2,3,4,5-tetrahydropyrido[3,2-f][1,4]oxazepine (5.00 mg, 0.02 mmol) and 4-(3-methyl-1H-1,2,4-triazol-1-yl)aniline (3.17 mg, 0.02 mmol) in DME (.5 mL)</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="transfer_amount">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>was added via a syringe</mx:String>
+                </mx:Field>
+                <mx:Field name="marker">
+                  <mx:String>__NOT_REPORTED__</mx:String>
+                </mx:Field>
+                <mx:Field name="raw">
+                  <mx:Null/>
+                </mx:Field>
+                <mx:Field name="status">
+                  <mx:String>not_reported</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>capped microwave vial</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+    <mx:Step operation="MicrowaveHeat" id="s006">
+      <mx:Object>
+        <mx:Field name="id">
+          <mx:String>s006</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>The resulting mixture was heated to 100°C in a microwavwe apparatus for 1 h</mx:String>
+            </mx:Field>
+            <mx:Field name="operation_expression">
+              <mx:String>declarative_extension</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>MicrowaveHeat</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="apparatus">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>microwavwe apparatus</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>microwavwe apparatus</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="duration">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>1 h</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>h</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>1</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="temperature">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>100°C</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>°C</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>100</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>capped microwave vial</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+    <mx:Step operation="AnalyzeSample" id="s007">
+      <mx:Object>
+        <mx:Field name="id">
+          <mx:String>s007</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>analyzed by LCMS. No product.</mx:String>
+            </mx:Field>
+            <mx:Field name="operation_expression">
+              <mx:String>declarative_extension</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>AnalyzeSample</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="method">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>LCMS</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>LCMS</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reported_observation">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>No product.</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>No product.</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>reactor</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+  </Procedure>
+</Synthesis>

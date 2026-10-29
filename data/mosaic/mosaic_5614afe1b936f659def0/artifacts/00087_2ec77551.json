@@ -1,0 +1,1223 @@
+{
+  "id": "mosaic_pos_f025434b076e6082f085",
+  "source": {
+    "dataset_id": "ord_dataset-99c23cf435dc42f1af884053bc8b11c7",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+    "file_sha256": "59cd8c35e021be300944f8e556b8fd7ec30a6bc32ff36a54be133aad8e44c393",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": null,
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet"
+  },
+  "raw_id": "ord-8a61495c860141f1a8046698b9543528",
+  "raw_sha256": "74bc24bd662c0f5be508e480d4b43bf5e9300b8e961cd9e09f969627e443eaea",
+  "source_text": "In an argon filled glove box, a 5.0 mL wheaton microreactor was charged with [Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%), L1 ligand (2.1 mg, 3.5 mol%), B2pin2 (50.8 mg, 1.0 equiv.), KOtBu (1.0 mg, 4.5 mol%), and dry THF (1.0 mL). The reaction mixture was stirred for 2 minutes at room temperature. To this mixture, benzamide (24.2 mg, 0.2 mmol) was added. The microreactor was capped with a teflon pressure cap and placed into pre-heated aluminum block at 80 oC. After 12 h, (judged by GC/MS), we found that the conversion was 23% and meta/para ratio was 1/1.5.",
+  "text_sha256": "d2080c1404f471c56d491716580b2202873ecd3e808a97a73487a836ce8db15f",
+  "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+  "reagents": [
+    {
+      "id": "r001",
+      "name": "[Ir(cod)(OMe)]2",
+      "smiles": null,
+      "role": "REAGENT",
+      "amount": {
+        "value": 1.98,
+        "unit": "mg"
+      },
+      "source_path": null,
+      "identity_basis": "literal_procedure_name"
+    },
+    {
+      "id": "r002",
+      "name": "L1 ligand",
+      "smiles": null,
+      "role": "REAGENT",
+      "amount": {
+        "value": 2.1,
+        "unit": "mg"
+      },
+      "source_path": null,
+      "identity_basis": "literal_procedure_name"
+    },
+    {
+      "id": "r003",
+      "name": "B2pin2",
+      "smiles": null,
+      "role": "REAGENT",
+      "amount": {
+        "value": 50.8,
+        "unit": "mg"
+      },
+      "source_path": null,
+      "identity_basis": "literal_procedure_name"
+    },
+    {
+      "id": "r004",
+      "name": "KOtBu",
+      "smiles": null,
+      "role": "REAGENT",
+      "amount": {
+        "value": 1.0,
+        "unit": "mg"
+      },
+      "source_path": null,
+      "identity_basis": "literal_procedure_name"
+    },
+    {
+      "id": "r005",
+      "name": "dry THF",
+      "smiles": null,
+      "role": "SOLVENT",
+      "amount": {
+        "value": 1.0,
+        "unit": "mL"
+      },
+      "source_path": null,
+      "identity_basis": "literal_procedure_name"
+    },
+    {
+      "id": "r006",
+      "name": "benzamide",
+      "smiles": null,
+      "role": "REAGENT",
+      "amount": {
+        "value": 24.2,
+        "unit": "mg"
+      },
+      "source_path": null,
+      "identity_basis": "literal_procedure_name"
+    }
+  ],
+  "steps": [
+    {
+      "op": "Atmosphere",
+      "vessel": "reactor",
+      "gas": "argon",
+      "mode": "environment",
+      "id": "s001",
+      "meta": {
+        "evidence": "In an argon filled glove box",
+        "stage": "reaction",
+        "source_contract": "text-only/1"
+      }
+    },
+    {
+      "op": "SelectReactionVessel",
+      "vessel": "reactor",
+      "parameters": {
+        "vessel_type": {
+          "value": "wheaton microreactor",
+          "evidence": "a 5.0 mL wheaton microreactor"
+        },
+        "capacity": {
+          "value": 5.0,
+          "unit": "mL",
+          "evidence": "5.0 mL"
+        },
+        "location": {
+          "value": "argon filled glove box",
+          "evidence": "In an argon filled glove box"
+        }
+      },
+      "meta": {
+        "evidence": "In an argon filled glove box, a 5.0 mL wheaton microreactor was charged",
+        "stage": "reaction",
+        "source_contract": "text-only/1",
+        "operation_expression": "declarative_extension"
+      },
+      "id": "s002"
+    },
+    {
+      "op": "AddMeasuredMaterial",
+      "vessel": "reactor",
+      "parameters": {
+        "reagent": {
+          "value": "[Ir(cod)(OMe)]2",
+          "evidence": "[Ir(cod)(OMe)]2"
+        },
+        "alias": {
+          "value": "[Ir(cod)(OMe)]2",
+          "evidence": "[Ir(cod)(OMe)]2"
+        },
+        "mass": {
+          "value": 1.98,
+          "unit": "mg",
+          "evidence": "1.98 mg"
+        },
+        "molar_loading": {
+          "value": 1.5,
+          "unit": "mol%",
+          "evidence": "1.5 mol%"
+        }
+      },
+      "meta": {
+        "evidence": "[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%)",
+        "stage": "reaction",
+        "source_contract": "text-only/1",
+        "operation_expression": "declarative_extension",
+        "refined_core_proposal": "Add"
+      },
+      "id": "s003"
+    },
+    {
+      "op": "AddMeasuredMaterial",
+      "vessel": "reactor",
+      "parameters": {
+        "reagent": {
+          "value": "L1 ligand",
+          "evidence": "L1 ligand"
+        },
+        "alias": {
+          "value": "L1 ligand",
+          "evidence": "L1 ligand"
+        },
+        "mass": {
+          "value": 2.1,
+          "unit": "mg",
+          "evidence": "2.1 mg"
+        },
+        "molar_loading": {
+          "value": 3.5,
+          "unit": "mol%",
+          "evidence": "3.5 mol%"
+        }
+      },
+      "meta": {
+        "evidence": "L1 ligand (2.1 mg, 3.5 mol%)",
+        "stage": "reaction",
+        "source_contract": "text-only/1",
+        "operation_expression": "declarative_extension",
+        "refined_core_proposal": "Add"
+      },
+      "id": "s004"
+    },
+    {
+      "op": "AddMeasuredMaterial",
+      "vessel": "reactor",
+      "parameters": {
+        "reagent": {
+          "value": "B2pin2",
+          "evidence": "B2pin2"
+        },
+        "alias": {
+          "value": "B2pin2",
+          "evidence": "B2pin2"
+        },
+        "mass": {
+          "value": 50.8,
+          "unit": "mg",
+          "evidence": "50.8 mg"
+        },
+        "equivalents": {
+          "value": 1.0,
+          "unit": "equiv.",
+          "evidence": "1.0 equiv."
+        }
+      },
+      "meta": {
+        "evidence": "B2pin2 (50.8 mg, 1.0 equiv.)",
+        "stage": "reaction",
+        "source_contract": "text-only/1",
+        "operation_expression": "declarative_extension",
+        "refined_core_proposal": "Add"
+      },
+      "id": "s005"
+    },
+    {
+      "op": "AddMeasuredMaterial",
+      "vessel": "reactor",
+      "parameters": {
+        "reagent": {
+          "value": "KOtBu",
+          "evidence": "KOtBu"
+        },
+        "alias": {
+          "value": "KOtBu",
+          "evidence": "KOtBu"
+        },
+        "mass": {
+          "value": 1.0,
+          "unit": "mg",
+          "evidence": "1.0 mg"
+        },
+        "molar_loading": {
+          "value": 4.5,
+          "unit": "mol%",
+          "evidence": "4.5 mol%"
+        }
+      },
+      "meta": {
+        "evidence": "KOtBu (1.0 mg, 4.5 mol%)",
+        "stage": "reaction",
+        "source_contract": "text-only/1",
+        "operation_expression": "declarative_extension",
+        "refined_core_proposal": "Add"
+      },
+      "id": "s006"
+    },
+    {
+      "op": "Add",
+      "vessel": "reactor",
+      "reagent": "r005",
+      "amount": {
+        "value": 1.0,
+        "unit": "mL"
+      },
+      "id": "s007",
+      "meta": {
+        "evidence": "dry THF (1.0 mL)",
+        "stage": "reaction",
+        "source_contract": "text-only/1",
+        "source_alias": "dry THF",
+        "amount_source": "procedure_text"
+      },
+      "source_quantities": [
+        {
+          "value": 1.0,
+          "unit": "mL",
+          "quote": "1.0 mL",
+          "printed_rounding_half_unit": 0.05,
+          "source_segment": "1.0 mL"
+        }
+      ]
+    },
+    {
+      "op": "StirAtQualitativeTemperature",
+      "vessel": "reactor",
+      "parameters": {
+        "duration": {
+          "value": 120,
+          "unit": "s",
+          "evidence": "2 minutes"
+        },
+        "temperature": {
+          "status": "qualitative",
+          "marker": "__QUALITATIVE__",
+          "evidence": "at room temperature",
+          "raw": "room temperature"
+        }
+      },
+      "meta": {
+        "evidence": "The reaction mixture was stirred for 2 minutes at room temperature.",
+        "stage": "reaction",
+        "source_contract": "text-only/1",
+        "operation_expression": "declarative_extension",
+        "refined_core_proposal": "Stir"
+      },
+      "id": "s008"
+    },
+    {
+      "op": "AddMeasuredMaterial",
+      "vessel": "reactor",
+      "parameters": {
+        "reagent": {
+          "value": "benzamide",
+          "evidence": "benzamide"
+        },
+        "alias": {
+          "value": "benzamide",
+          "evidence": "benzamide"
+        },
+        "mass": {
+          "value": 24.2,
+          "unit": "mg",
+          "evidence": "24.2 mg"
+        },
+        "amount_of_substance": {
+          "value": 0.2,
+          "unit": "mmol",
+          "evidence": "0.2 mmol"
+        }
+      },
+      "meta": {
+        "evidence": "To this mixture, benzamide (24.2 mg, 0.2 mmol) was added.",
+        "stage": "reaction",
+        "source_contract": "text-only/1",
+        "operation_expression": "declarative_extension",
+        "refined_core_proposal": "Add"
+      },
+      "id": "s009"
+    },
+    {
+      "op": "CapVessel",
+      "vessel": "reactor",
+      "parameters": {
+        "closure": {
+          "value": "teflon pressure cap",
+          "evidence": "a teflon pressure cap"
+        }
+      },
+      "meta": {
+        "evidence": "The microreactor was capped with a teflon pressure cap",
+        "stage": "reaction",
+        "source_contract": "text-only/1",
+        "operation_expression": "declarative_extension"
+      },
+      "id": "s010"
+    },
+    {
+      "op": "HeatChill",
+      "vessel": "aluminum_block",
+      "temp_C": 80,
+      "id": "s011",
+      "meta": {
+        "evidence": "pre-heated aluminum block at 80 oC",
+        "stage": "reaction",
+        "source_contract": "text-only/1"
+      }
+    },
+    {
+      "op": "PlaceAndHoldInHeatingBlock",
+      "vessel": "reactor",
+      "parameters": {
+        "heating_block": {
+          "value": "aluminum block",
+          "evidence": "aluminum block"
+        },
+        "block_condition": {
+          "value": "pre-heated",
+          "evidence": "pre-heated aluminum block at 80 oC"
+        },
+        "block_temperature": {
+          "value": 80,
+          "unit": "°C",
+          "evidence": "80 oC"
+        },
+        "duration": {
+          "value": 43200,
+          "unit": "s",
+          "evidence": "12 h"
+        }
+      },
+      "meta": {
+        "evidence": "placed into pre-heated aluminum block at 80 oC. After 12 h",
+        "stage": "reaction",
+        "source_contract": "text-only/1",
+        "operation_expression": "declarative_extension",
+        "refined_core_proposal": "HeatChill"
+      },
+      "id": "s012"
+    },
+    {
+      "op": "RecordReactionAnalysis",
+      "vessel": "reactor",
+      "parameters": {
+        "method": {
+          "value": "GC/MS",
+          "evidence": "judged by GC/MS"
+        },
+        "conversion": {
+          "value": 23,
+          "unit": "%",
+          "evidence": "the conversion was 23%"
+        },
+        "ratio_identity": {
+          "value": "meta/para",
+          "evidence": "meta/para ratio"
+        },
+        "ratio": {
+          "value": "1/1.5",
+          "evidence": "meta/para ratio was 1/1.5"
+        }
+      },
+      "meta": {
+        "evidence": "After 12 h, (judged by GC/MS), we found that the conversion was 23% and meta/para ratio was 1/1.5.",
+        "stage": "reaction",
+        "source_contract": "text-only/1",
+        "operation_expression": "declarative_extension"
+      },
+      "id": "s013"
+    }
+  ],
+  "context": {
+    "pressure_control": "SEALED",
+    "atmosphere": {
+      "type": "ARGON",
+      "basis": "procedure_text"
+    },
+    "reflux": false,
+    "source_context_evidence": [
+      {
+        "field": "pressure_control",
+        "quote": "capped"
+      }
+    ],
+    "initial_material_state": "unknown_unless_reported",
+    "source_context_events": []
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "input_contract": "text-only/1",
+    "procedure_sha256": "d2080c1404f471c56d491716580b2202873ecd3e808a97a73487a836ce8db15f",
+    "model": "gpt-6.1-sol",
+    "usage": {
+      "completion_tokens": 1184,
+      "prompt_tokens": 835,
+      "total_tokens": 2019,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 279
+      }
+    },
+    "cache_key": "dac4fd8e9c3cd07a89c66edd0cbff1f3194d3b1b97b32c6530f79893449de897",
+    "unresolved": [
+      "Room temperature is not specified numerically.",
+      "The aluminum block is described as pre-heated, but its preheating duration is not specified."
+    ],
+    "unmapped_actions": [],
+    "uncertainties": [],
+    "completion": "source_grounded_extension",
+    "source_observations": [
+      {
+        "evidence": "The microreactor was capped with a teflon pressure cap",
+        "reason": "Capping a vessel is not represented by an allowed operation."
+      }
+    ],
+    "analytical_observations": []
+  },
+  "operation_definitions": {
+    "AddMeasuredMaterial": {
+      "name": "AddMeasuredMaterial",
+      "domain": "material addition",
+      "description": "Introduce the identified material into the reaction vessel, retaining its reported mass and any independently reported molar amount, molar loading, or equivalents without calculating missing quantities.",
+      "parameters": {
+        "reagent": {
+          "type": "string",
+          "required": true
+        },
+        "alias": {
+          "type": "string",
+          "required": true
+        },
+        "mass": {
+          "type": "quantity",
+          "required": true,
+          "unit": "mg",
+          "dimension": "mass"
+        },
+        "molar_loading": {
+          "type": "number",
+          "required": false,
+          "unit": "mol%"
+        },
+        "equivalents": {
+          "type": "number",
+          "required": false,
+          "unit": "equiv."
+        },
+        "amount_of_substance": {
+          "type": "quantity",
+          "required": false,
+          "unit": "mmol",
+          "dimension": "amount of substance"
+        }
+      },
+      "effects": [
+        "Adds the reported material to the vessel inventory."
+      ],
+      "hardware_roles": [
+        "reaction vessel"
+      ],
+      "execution_supported": false,
+      "representation_status": "admitted",
+      "semantic_sha256": "2f084bf83780bf3d35f2ea047147033c6c9e74e586b719237fd15594a47a949c"
+    },
+    "CapVessel": {
+      "name": "CapVessel",
+      "domain": "vessel closure",
+      "description": "Close the reaction vessel with the specified cap without inferring an operating pressure or apparatus pressure rating.",
+      "parameters": {
+        "closure": {
+          "type": "string",
+          "required": true
+        }
+      },
+      "effects": [
+        "Closes the reaction vessel with the reported closure."
+      ],
+      "hardware_roles": [
+        "reaction vessel",
+        "vessel cap"
+      ],
+      "execution_supported": false,
+      "representation_status": "admitted",
+      "semantic_sha256": "e2e11aefadca6f783b3cb0bba9faecd3a50bb5b030978786ecf679dfa2052e08"
+    },
+    "PlaceAndHoldInHeatingBlock": {
+      "name": "PlaceAndHoldInHeatingBlock",
+      "domain": "reaction heating",
+      "description": "Place the reaction vessel into the specified preheated heating block and leave it there for the stated duration. The reported temperature describes the block and does not establish a measured internal reaction temperature.",
+      "parameters": {
+        "heating_block": {
+          "type": "string",
+          "required": true
+        },
+        "block_condition": {
+          "type": "string",
+          "required": true
+        },
+        "block_temperature": {
+          "type": "quantity",
+          "required": true,
+          "unit": "°C",
+          "dimension": "temperature"
+        },
+        "duration": {
+          "type": "quantity",
+          "required": true,
+          "unit": "s",
+          "dimension": "time"
+        }
+      },
+      "effects": [
+        "Positions the reaction vessel in the heating block.",
+        "Exposes the vessel to the reported block heating condition for the reported duration."
+      ],
+      "hardware_roles": [
+        "reaction vessel",
+        "aluminum heating block"
+      ],
+      "execution_supported": false,
+      "representation_status": "admitted",
+      "semantic_sha256": "567eb930011bf958aa1f53658f14018bf32c3a8937057da10c75d893a2694774"
+    },
+    "RecordReactionAnalysis": {
+      "name": "RecordReactionAnalysis",
+      "domain": "analytical observation",
+      "description": "Record the reported analytical method, conversion, and regioisomer ratio as observations, not as synthesis actions or inferred outcomes. No sampling or analytical preparation procedure is implied.",
+      "parameters": {
+        "method": {
+          "type": "string",
+          "required": true
+        },
+        "conversion": {
+          "type": "number",
+          "required": true,
+          "unit": "%"
+        },
+        "ratio_identity": {
+          "type": "string",
+          "required": true
+        },
+        "ratio": {
+          "type": "string",
+          "required": true
+        }
+      },
+      "effects": [
+        "Associates the reported analytical observations with the reaction without changing its material state."
+      ],
+      "hardware_roles": [
+        "GC/MS analytical instrument"
+      ],
+      "execution_supported": false,
+      "representation_status": "admitted",
+      "semantic_sha256": "19439acfa9715b62115b4b9f4f1e0f3093093eaec8377dbb051c2b706282f1d0"
+    },
+    "SelectReactionVessel": {
+      "name": "SelectReactionVessel",
+      "domain": "reaction setup",
+      "description": "Select and position the specified reaction vessel in the stated working environment. Capacity describes vessel volume, not a pressure rating.",
+      "parameters": {
+        "vessel_type": {
+          "type": "string",
+          "required": true
+        },
+        "capacity": {
+          "type": "quantity",
+          "required": true,
+          "unit": "mL",
+          "dimension": "volume"
+        },
+        "location": {
+          "type": "string",
+          "required": true
+        }
+      },
+      "effects": [
+        "Establishes the physical reaction vessel and its working location."
+      ],
+      "hardware_roles": [
+        "reaction vessel",
+        "glove box"
+      ],
+      "execution_supported": false,
+      "representation_status": "admitted",
+      "semantic_sha256": "6376a3a6f2c89c5fbffacca93e718aaa5b8913ac2136eb6d71a23923add7c962"
+    },
+    "StirAtQualitativeTemperature": {
+      "name": "StirAtQualitativeTemperature",
+      "domain": "reaction mixing",
+      "description": "Stir the reaction mixture for the stated duration under a qualitatively specified temperature condition without assigning an unreported numerical temperature or stirring speed.",
+      "parameters": {
+        "duration": {
+          "type": "quantity",
+          "required": true,
+          "unit": "s",
+          "dimension": "time"
+        },
+        "temperature": {
+          "type": "string",
+          "required": true
+        }
+      },
+      "effects": [
+        "Mixes the vessel contents for the reported duration under the stated temperature condition."
+      ],
+      "hardware_roles": [
+        "reaction vessel",
+        "stirring apparatus"
+      ],
+      "execution_supported": false,
+      "representation_status": "admitted",
+      "semantic_sha256": "abb0f706f77e30b6dff1c1eb024bacf35374f059edaac6162b192e2dce94e797"
+    }
+  },
+  "xdl_profile": "mosaic-xdl/1",
+  "reference_metadata": {
+    "reaction_smiles": "O=C(N)C=1C=CC=CC1>>O=C(N)C1=CC=C(C=C1)B2OC(C)(C)C(O2)(C)C.O=C(N)C=1C=CC=C(C1)B2OC(C)(C)C(O2)(C)C",
+    "reaction_class": "borylation",
+    "yield_percent": null,
+    "yield_evidence": {
+      "measurements": [],
+      "policy": "unique_target_unique_percentage_v1",
+      "selection": "sole_nonexcluded_product",
+      "status": "ambiguous_target",
+      "target_count": 2
+    },
+    "authority": "reference_only_not_process_input"
+  },
+  "hardware": {
+    "config_id": "source_aware_provisional_v2",
+    "nodes": {
+      "reactor": {
+        "category": "vessel",
+        "apparatus_kind": "microreactor",
+        "description": "5.0 mL wheaton microreactor",
+        "params": {
+          "capacity_mL": 5.0
+        },
+        "capacity_scope": "single_reaction_vessel",
+        "wetted_materials": null,
+        "ports": [],
+        "model": null,
+        "verified": false,
+        "binding_basis": "source_reported",
+        "source_url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+        "source_parameters": [
+          "capacity_mL"
+        ],
+        "source_evidence": [
+          {
+            "source_url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+            "raw_sha256": "74bc24bd662c0f5be508e480d4b43bf5e9300b8e961cd9e09f969627e443eaea",
+            "locator": "/steps/1/meta/evidence",
+            "value": "In an argon filled glove box, a 5.0 mL wheaton microreactor was charged"
+          }
+        ],
+        "verification": {
+          "status": "source_reported",
+          "human_verified": false
+        },
+        "note": "Procedure-reported facts; no manufacturer rating, flow capability or port topology inferred.",
+        "source_fact_sha256": "a29d6e0d3f752226cab8ab59ab330d4690cc47b4b9a81f803058e809db30a1b9",
+        "id": "source_apparatus_a29d6e0d3f752226"
+      },
+      "heater": {
+        "category": "heater",
+        "apparatus_kind": "heating_block",
+        "description": "Source-reported heating block; controller model and limits unknown",
+        "params": {},
+        "capacity_scope": "not_a_reaction_volume",
+        "wetted_materials": [],
+        "ports": [],
+        "model": null,
+        "verified": false,
+        "binding_basis": "source_reported",
+        "source_url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+        "source_parameters": [],
+        "source_evidence": [
+          {
+            "source_url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+            "raw_sha256": "74bc24bd662c0f5be508e480d4b43bf5e9300b8e961cd9e09f969627e443eaea",
+            "locator": "/steps/10/meta/evidence",
+            "value": "pre-heated aluminum block at 80 oC"
+          }
+        ],
+        "verification": {
+          "status": "source_reported",
+          "human_verified": false
+        },
+        "note": "Procedure-reported facts; no manufacturer rating, flow capability or port topology inferred.",
+        "source_fact_sha256": "0d4d6a20a69ee0310c04c0a69d3b5bbc0c3ffd1b0b1831be5f9b44b2cf273366",
+        "id": "source_apparatus_0d4d6a20a69ee031",
+        "stirring_capability": "unknown"
+      },
+      "aluminum_block": {
+        "category": "vessel",
+        "params": {},
+        "verified": false
+      }
+    },
+    "edges": [
+      [
+        "reactor",
+        "heater"
+      ],
+      [
+        "reactor",
+        "aluminum_block"
+      ]
+    ],
+    "bindings": {
+      "heater": "heater"
+    },
+    "estimated_liquid_lower_bound_mL": 1.0,
+    "verification_status": "human_review_pending",
+    "source_issues": [],
+    "binding_scope": "Source-reported vessels; unspecified automation remains a proposed analysis configuration. Edges are provisional.",
+    "inventory_scope": "Sum of stated Add volumes, not peak vessel occupancy or inferred solvent volume."
+  },
+  "crosscheck": {
+    "checks": {
+      "text_only_extraction": true,
+      "literal_steps_grounded": true,
+      "amount_comparison_is_independent": true
+    },
+    "quantity_checks": [
+      {
+        "reagent": "r005",
+        "alias": "dry THF",
+        "expected": {
+          "value": 1.0,
+          "unit": "mL"
+        },
+        "measurements": [
+          {
+            "value": 1.0,
+            "unit": "mL",
+            "quote": "1.0 mL",
+            "printed_rounding_half_unit": 0.05,
+            "source_segment": "1.0 mL"
+          }
+        ],
+        "status": "matched",
+        "basis": "adjacent_literal_quantity",
+        "comparable_quantities": [
+          {
+            "value": 1.0,
+            "unit": "mL",
+            "basis": "direct_source_quantity",
+            "within_tolerance": true,
+            "compatible_with_printed_rounding": true,
+            "printed_rounding_half_unit": 0.05
+          }
+        ],
+        "step_id": "s007",
+        "comparison": "text_extraction_vs_independent_literal_parser"
+      }
+    ],
+    "conflicts": [],
+    "missing": [
+      "Room temperature is not specified numerically.",
+      "The aluminum block is described as pre-heated, but its preheating duration is not specified."
+    ],
+    "reference_comparison": {
+      "authority": "comparison_only_never_process_input",
+      "checks": {
+        "temperature_match": true
+      },
+      "component_checks": [
+        {
+          "reference_id": "r1",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        },
+        {
+          "reference_id": "r2",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        },
+        {
+          "reference_id": "r3",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        },
+        {
+          "reference_id": "r4",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        },
+        {
+          "reference_id": "r5",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        },
+        {
+          "reference_id": "r6",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        }
+      ],
+      "conflicts": [],
+      "missing": [
+        "reference_duration_not_comparable"
+      ]
+    },
+    "tier": "silver",
+    "gold_blockers": [
+      "hardware_human_verification_pending",
+      "manual_protocol_review_pending"
+    ]
+  },
+  "xdl": "<Synthesis xmlns:mx=\"urn:mosaic:xdl:extensions:1\" mx:profile=\"mosaic-xdl/1\">\n  <Metadata description=\"Source-grounded extended XDL representation; hardware execution is not certified.\">\n    <mx:Data>\n      <mx:Object>\n        <mx:Field name=\"context\">\n          <mx:Object>\n            <mx:Field name=\"atmosphere\">\n              <mx:Object>\n                <mx:Field name=\"basis\">\n                  <mx:String>procedure_text</mx:String>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>ARGON</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"initial_material_state\">\n              <mx:String>unknown_unless_reported</mx:String>\n            </mx:Field>\n            <mx:Field name=\"pressure_control\">\n              <mx:String>SEALED</mx:String>\n            </mx:Field>\n            <mx:Field name=\"reflux\">\n              <mx:Boolean>false</mx:Boolean>\n            </mx:Field>\n            <mx:Field name=\"source_context_events\">\n              <mx:Array/>\n            </mx:Field>\n            <mx:Field name=\"source_context_evidence\">\n              <mx:Array>\n                <mx:Item>\n                  <mx:Object>\n                    <mx:Field name=\"field\">\n                      <mx:String>pressure_control</mx:String>\n                    </mx:Field>\n                    <mx:Field name=\"quote\">\n                      <mx:String>capped</mx:String>\n                    </mx:Field>\n                  </mx:Object>\n                </mx:Item>\n              </mx:Array>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"representation_scope\">\n          <mx:String>supplied_text_operations; source experimental completeness is not independently certified</mx:String>\n        </mx:Field>\n        <mx:Field name=\"source_text\">\n          <mx:String>In an argon filled glove box, a 5.0 mL wheaton microreactor was charged with [Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%), L1 ligand (2.1 mg, 3.5 mol%), B2pin2 (50.8 mg, 1.0 equiv.), KOtBu (1.0 mg, 4.5 mol%), and dry THF (1.0 mL). The reaction mixture was stirred for 2 minutes at room temperature. To this mixture, benzamide (24.2 mg, 0.2 mmol) was added. The microreactor was capped with a teflon pressure cap and placed into pre-heated aluminum block at 80 oC. After 12 h, (judged by GC/MS), we found that the conversion was 23% and meta/para ratio was 1/1.5.</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Data>\n  </Metadata>\n  <Hardware>\n    <mx:Data>\n      <mx:Object>\n        <mx:Field name=\"binding_scope\">\n          <mx:String>Source-reported vessels; unspecified automation remains a proposed analysis configuration. Edges are provisional.</mx:String>\n        </mx:Field>\n        <mx:Field name=\"bindings\">\n          <mx:Object>\n            <mx:Field name=\"heater\">\n              <mx:String>heater</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"config_id\">\n          <mx:String>source_aware_provisional_v2</mx:String>\n        </mx:Field>\n        <mx:Field name=\"edges\">\n          <mx:Array>\n            <mx:Item>\n              <mx:Array>\n                <mx:Item>\n                  <mx:String>reactor</mx:String>\n                </mx:Item>\n                <mx:Item>\n                  <mx:String>heater</mx:String>\n                </mx:Item>\n              </mx:Array>\n            </mx:Item>\n            <mx:Item>\n              <mx:Array>\n                <mx:Item>\n                  <mx:String>reactor</mx:String>\n                </mx:Item>\n                <mx:Item>\n                  <mx:String>aluminum_block</mx:String>\n                </mx:Item>\n              </mx:Array>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"estimated_liquid_lower_bound_mL\">\n          <mx:Number>1.0</mx:Number>\n        </mx:Field>\n        <mx:Field name=\"inventory_scope\">\n          <mx:String>Sum of stated Add volumes, not peak vessel occupancy or inferred solvent volume.</mx:String>\n        </mx:Field>\n        <mx:Field name=\"nodes\">\n          <mx:Object>\n            <mx:Field name=\"aluminum_block\">\n              <mx:Object>\n                <mx:Field name=\"category\">\n                  <mx:String>vessel</mx:String>\n                </mx:Field>\n                <mx:Field name=\"params\">\n                  <mx:Object/>\n                </mx:Field>\n                <mx:Field name=\"verified\">\n                  <mx:Boolean>false</mx:Boolean>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"heater\">\n              <mx:Object>\n                <mx:Field name=\"apparatus_kind\">\n                  <mx:String>heating_block</mx:String>\n                </mx:Field>\n                <mx:Field name=\"binding_basis\">\n                  <mx:String>source_reported</mx:String>\n                </mx:Field>\n                <mx:Field name=\"capacity_scope\">\n                  <mx:String>not_a_reaction_volume</mx:String>\n                </mx:Field>\n                <mx:Field name=\"category\">\n                  <mx:String>heater</mx:String>\n                </mx:Field>\n                <mx:Field name=\"description\">\n                  <mx:String>Source-reported heating block; controller model and limits unknown</mx:String>\n                </mx:Field>\n                <mx:Field name=\"id\">\n                  <mx:String>source_apparatus_0d4d6a20a69ee031</mx:String>\n                </mx:Field>\n                <mx:Field name=\"model\">\n                  <mx:Null/>\n                </mx:Field>\n                <mx:Field name=\"note\">\n                  <mx:String>Procedure-reported facts; no manufacturer rating, flow capability or port topology inferred.</mx:String>\n                </mx:Field>\n                <mx:Field name=\"params\">\n                  <mx:Object/>\n                </mx:Field>\n                <mx:Field name=\"ports\">\n                  <mx:Array/>\n                </mx:Field>\n                <mx:Field name=\"source_evidence\">\n                  <mx:Array>\n                    <mx:Item>\n                      <mx:Object>\n                        <mx:Field name=\"locator\">\n                          <mx:String>/steps/10/meta/evidence</mx:String>\n                        </mx:Field>\n                        <mx:Field name=\"raw_sha256\">\n                          <mx:String>74bc24bd662c0f5be508e480d4b43bf5e9300b8e961cd9e09f969627e443eaea</mx:String>\n                        </mx:Field>\n                        <mx:Field name=\"source_url\">\n                          <mx:String>https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet</mx:String>\n                        </mx:Field>\n                        <mx:Field name=\"value\">\n                          <mx:String>pre-heated aluminum block at 80 oC</mx:String>\n                        </mx:Field>\n                      </mx:Object>\n                    </mx:Item>\n                  </mx:Array>\n                </mx:Field>\n                <mx:Field name=\"source_fact_sha256\">\n                  <mx:String>0d4d6a20a69ee0310c04c0a69d3b5bbc0c3ffd1b0b1831be5f9b44b2cf273366</mx:String>\n                </mx:Field>\n                <mx:Field name=\"source_parameters\">\n                  <mx:Array/>\n                </mx:Field>\n                <mx:Field name=\"source_url\">\n                  <mx:String>https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet</mx:String>\n                </mx:Field>\n                <mx:Field name=\"stirring_capability\">\n                  <mx:String>unknown</mx:String>\n                </mx:Field>\n                <mx:Field name=\"verification\">\n                  <mx:Object>\n                    <mx:Field name=\"human_verified\">\n                      <mx:Boolean>false</mx:Boolean>\n                    </mx:Field>\n                    <mx:Field name=\"status\">\n                      <mx:String>source_reported</mx:String>\n                    </mx:Field>\n                  </mx:Object>\n                </mx:Field>\n                <mx:Field name=\"verified\">\n                  <mx:Boolean>false</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"wetted_materials\">\n                  <mx:Array/>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"reactor\">\n              <mx:Object>\n                <mx:Field name=\"apparatus_kind\">\n                  <mx:String>microreactor</mx:String>\n                </mx:Field>\n                <mx:Field name=\"binding_basis\">\n                  <mx:String>source_reported</mx:String>\n                </mx:Field>\n                <mx:Field name=\"capacity_scope\">\n                  <mx:String>single_reaction_vessel</mx:String>\n                </mx:Field>\n                <mx:Field name=\"category\">\n                  <mx:String>vessel</mx:String>\n                </mx:Field>\n                <mx:Field name=\"description\">\n                  <mx:String>5.0 mL wheaton microreactor</mx:String>\n                </mx:Field>\n                <mx:Field name=\"id\">\n                  <mx:String>source_apparatus_a29d6e0d3f752226</mx:String>\n                </mx:Field>\n                <mx:Field name=\"model\">\n                  <mx:Null/>\n                </mx:Field>\n                <mx:Field name=\"note\">\n                  <mx:String>Procedure-reported facts; no manufacturer rating, flow capability or port topology inferred.</mx:String>\n                </mx:Field>\n                <mx:Field name=\"params\">\n                  <mx:Object>\n                    <mx:Field name=\"capacity_mL\">\n                      <mx:Number>5.0</mx:Number>\n                    </mx:Field>\n                  </mx:Object>\n                </mx:Field>\n                <mx:Field name=\"ports\">\n                  <mx:Array/>\n                </mx:Field>\n                <mx:Field name=\"source_evidence\">\n                  <mx:Array>\n                    <mx:Item>\n                      <mx:Object>\n                        <mx:Field name=\"locator\">\n                          <mx:String>/steps/1/meta/evidence</mx:String>\n                        </mx:Field>\n                        <mx:Field name=\"raw_sha256\">\n                          <mx:String>74bc24bd662c0f5be508e480d4b43bf5e9300b8e961cd9e09f969627e443eaea</mx:String>\n                        </mx:Field>\n                        <mx:Field name=\"source_url\">\n                          <mx:String>https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet</mx:String>\n                        </mx:Field>\n                        <mx:Field name=\"value\">\n                          <mx:String>In an argon filled glove box, a 5.0 mL wheaton microreactor was charged</mx:String>\n                        </mx:Field>\n                      </mx:Object>\n                    </mx:Item>\n                  </mx:Array>\n                </mx:Field>\n                <mx:Field name=\"source_fact_sha256\">\n                  <mx:String>a29d6e0d3f752226cab8ab59ab330d4690cc47b4b9a81f803058e809db30a1b9</mx:String>\n                </mx:Field>\n                <mx:Field name=\"source_parameters\">\n                  <mx:Array>\n                    <mx:Item>\n                      <mx:String>capacity_mL</mx:String>\n                    </mx:Item>\n                  </mx:Array>\n                </mx:Field>\n                <mx:Field name=\"source_url\">\n                  <mx:String>https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet</mx:String>\n                </mx:Field>\n                <mx:Field name=\"verification\">\n                  <mx:Object>\n                    <mx:Field name=\"human_verified\">\n                      <mx:Boolean>false</mx:Boolean>\n                    </mx:Field>\n                    <mx:Field name=\"status\">\n                      <mx:String>source_reported</mx:String>\n                    </mx:Field>\n                  </mx:Object>\n                </mx:Field>\n                <mx:Field name=\"verified\">\n                  <mx:Boolean>false</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"wetted_materials\">\n                  <mx:Null/>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"source_issues\">\n          <mx:Array/>\n        </mx:Field>\n        <mx:Field name=\"verification_status\">\n          <mx:String>human_review_pending</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Data>\n  </Hardware>\n  <Reagents>\n    <mx:Data>\n      <mx:Array>\n        <mx:Item>\n          <mx:Object>\n            <mx:Field name=\"amount\">\n              <mx:Object>\n                <mx:Field name=\"unit\">\n                  <mx:String>mg</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>1.98</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"id\">\n              <mx:String>r001</mx:String>\n            </mx:Field>\n            <mx:Field name=\"identity_basis\">\n              <mx:String>literal_procedure_name</mx:String>\n            </mx:Field>\n            <mx:Field name=\"name\">\n              <mx:String>[Ir(cod)(OMe)]2</mx:String>\n            </mx:Field>\n            <mx:Field name=\"role\">\n              <mx:String>REAGENT</mx:String>\n            </mx:Field>\n            <mx:Field name=\"smiles\">\n              <mx:Null/>\n            </mx:Field>\n            <mx:Field name=\"source_path\">\n              <mx:Null/>\n            </mx:Field>\n          </mx:Object>\n        </mx:Item>\n        <mx:Item>\n          <mx:Object>\n            <mx:Field name=\"amount\">\n              <mx:Object>\n                <mx:Field name=\"unit\">\n                  <mx:String>mg</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>2.1</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"id\">\n              <mx:String>r002</mx:String>\n            </mx:Field>\n            <mx:Field name=\"identity_basis\">\n              <mx:String>literal_procedure_name</mx:String>\n            </mx:Field>\n            <mx:Field name=\"name\">\n              <mx:String>L1 ligand</mx:String>\n            </mx:Field>\n            <mx:Field name=\"role\">\n              <mx:String>REAGENT</mx:String>\n            </mx:Field>\n            <mx:Field name=\"smiles\">\n              <mx:Null/>\n            </mx:Field>\n            <mx:Field name=\"source_path\">\n              <mx:Null/>\n            </mx:Field>\n          </mx:Object>\n        </mx:Item>\n        <mx:Item>\n          <mx:Object>\n            <mx:Field name=\"amount\">\n              <mx:Object>\n                <mx:Field name=\"unit\">\n                  <mx:String>mg</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>50.8</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"id\">\n              <mx:String>r003</mx:String>\n            </mx:Field>\n            <mx:Field name=\"identity_basis\">\n              <mx:String>literal_procedure_name</mx:String>\n            </mx:Field>\n            <mx:Field name=\"name\">\n              <mx:String>B2pin2</mx:String>\n            </mx:Field>\n            <mx:Field name=\"role\">\n              <mx:String>REAGENT</mx:String>\n            </mx:Field>\n            <mx:Field name=\"smiles\">\n              <mx:Null/>\n            </mx:Field>\n            <mx:Field name=\"source_path\">\n              <mx:Null/>\n            </mx:Field>\n          </mx:Object>\n        </mx:Item>\n        <mx:Item>\n          <mx:Object>\n            <mx:Field name=\"amount\">\n              <mx:Object>\n                <mx:Field name=\"unit\">\n                  <mx:String>mg</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>1.0</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"id\">\n              <mx:String>r004</mx:String>\n            </mx:Field>\n            <mx:Field name=\"identity_basis\">\n              <mx:String>literal_procedure_name</mx:String>\n            </mx:Field>\n            <mx:Field name=\"name\">\n              <mx:String>KOtBu</mx:String>\n            </mx:Field>\n            <mx:Field name=\"role\">\n              <mx:String>REAGENT</mx:String>\n            </mx:Field>\n            <mx:Field name=\"smiles\">\n              <mx:Null/>\n            </mx:Field>\n            <mx:Field name=\"source_path\">\n              <mx:Null/>\n            </mx:Field>\n          </mx:Object>\n        </mx:Item>\n        <mx:Item>\n          <mx:Object>\n            <mx:Field name=\"amount\">\n              <mx:Object>\n                <mx:Field name=\"unit\">\n                  <mx:String>mL</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>1.0</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"id\">\n              <mx:String>r005</mx:String>\n            </mx:Field>\n            <mx:Field name=\"identity_basis\">\n              <mx:String>literal_procedure_name</mx:String>\n            </mx:Field>\n            <mx:Field name=\"name\">\n              <mx:String>dry THF</mx:String>\n            </mx:Field>\n            <mx:Field name=\"role\">\n              <mx:String>SOLVENT</mx:String>\n            </mx:Field>\n            <mx:Field name=\"smiles\">\n              <mx:Null/>\n            </mx:Field>\n            <mx:Field name=\"source_path\">\n              <mx:Null/>\n            </mx:Field>\n          </mx:Object>\n        </mx:Item>\n        <mx:Item>\n          <mx:Object>\n            <mx:Field name=\"amount\">\n              <mx:Object>\n                <mx:Field name=\"unit\">\n                  <mx:String>mg</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>24.2</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"id\">\n              <mx:String>r006</mx:String>\n            </mx:Field>\n            <mx:Field name=\"identity_basis\">\n              <mx:String>literal_procedure_name</mx:String>\n            </mx:Field>\n            <mx:Field name=\"name\">\n              <mx:String>benzamide</mx:String>\n            </mx:Field>\n            <mx:Field name=\"role\">\n              <mx:String>REAGENT</mx:String>\n            </mx:Field>\n            <mx:Field name=\"smiles\">\n              <mx:Null/>\n            </mx:Field>\n            <mx:Field name=\"source_path\">\n              <mx:Null/>\n            </mx:Field>\n          </mx:Object>\n        </mx:Item>\n      </mx:Array>\n    </mx:Data>\n  </Reagents>\n  <mx:OperationDefinitions>\n    <mx:Definition name=\"AddMeasuredMaterial\" semantic_sha256=\"2f084bf83780bf3d35f2ea047147033c6c9e74e586b719237fd15594a47a949c\">\n      <mx:Object>\n        <mx:Field name=\"description\">\n          <mx:String>Introduce the identified material into the reaction vessel, retaining its reported mass and any independently reported molar amount, molar loading, or equivalents without calculating missing quantities.</mx:String>\n        </mx:Field>\n        <mx:Field name=\"domain\">\n          <mx:String>material addition</mx:String>\n        </mx:Field>\n        <mx:Field name=\"effects\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>Adds the reported material to the vessel inventory.</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"execution_supported\">\n          <mx:Boolean>false</mx:Boolean>\n        </mx:Field>\n        <mx:Field name=\"hardware_roles\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>reaction vessel</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"name\">\n          <mx:String>AddMeasuredMaterial</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"alias\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"amount_of_substance\">\n              <mx:Object>\n                <mx:Field name=\"dimension\">\n                  <mx:String>amount of substance</mx:String>\n                </mx:Field>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>false</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>quantity</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mmol</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"equivalents\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>false</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>number</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>equiv.</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"mass\">\n              <mx:Object>\n                <mx:Field name=\"dimension\">\n                  <mx:String>mass</mx:String>\n                </mx:Field>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>quantity</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mg</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"molar_loading\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>false</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>number</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mol%</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"reagent\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"representation_status\">\n          <mx:String>admitted</mx:String>\n        </mx:Field>\n        <mx:Field name=\"semantic_sha256\">\n          <mx:String>2f084bf83780bf3d35f2ea047147033c6c9e74e586b719237fd15594a47a949c</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Definition>\n    <mx:Definition name=\"CapVessel\" semantic_sha256=\"e2e11aefadca6f783b3cb0bba9faecd3a50bb5b030978786ecf679dfa2052e08\">\n      <mx:Object>\n        <mx:Field name=\"description\">\n          <mx:String>Close the reaction vessel with the specified cap without inferring an operating pressure or apparatus pressure rating.</mx:String>\n        </mx:Field>\n        <mx:Field name=\"domain\">\n          <mx:String>vessel closure</mx:String>\n        </mx:Field>\n        <mx:Field name=\"effects\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>Closes the reaction vessel with the reported closure.</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"execution_supported\">\n          <mx:Boolean>false</mx:Boolean>\n        </mx:Field>\n        <mx:Field name=\"hardware_roles\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>reaction vessel</mx:String>\n            </mx:Item>\n            <mx:Item>\n              <mx:String>vessel cap</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"name\">\n          <mx:String>CapVessel</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"closure\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"representation_status\">\n          <mx:String>admitted</mx:String>\n        </mx:Field>\n        <mx:Field name=\"semantic_sha256\">\n          <mx:String>e2e11aefadca6f783b3cb0bba9faecd3a50bb5b030978786ecf679dfa2052e08</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Definition>\n    <mx:Definition name=\"PlaceAndHoldInHeatingBlock\" semantic_sha256=\"567eb930011bf958aa1f53658f14018bf32c3a8937057da10c75d893a2694774\">\n      <mx:Object>\n        <mx:Field name=\"description\">\n          <mx:String>Place the reaction vessel into the specified preheated heating block and leave it there for the stated duration. The reported temperature describes the block and does not establish a measured internal reaction temperature.</mx:String>\n        </mx:Field>\n        <mx:Field name=\"domain\">\n          <mx:String>reaction heating</mx:String>\n        </mx:Field>\n        <mx:Field name=\"effects\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>Positions the reaction vessel in the heating block.</mx:String>\n            </mx:Item>\n            <mx:Item>\n              <mx:String>Exposes the vessel to the reported block heating condition for the reported duration.</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"execution_supported\">\n          <mx:Boolean>false</mx:Boolean>\n        </mx:Field>\n        <mx:Field name=\"hardware_roles\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>reaction vessel</mx:String>\n            </mx:Item>\n            <mx:Item>\n              <mx:String>aluminum heating block</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"name\">\n          <mx:String>PlaceAndHoldInHeatingBlock</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"block_condition\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"block_temperature\">\n              <mx:Object>\n                <mx:Field name=\"dimension\">\n                  <mx:String>temperature</mx:String>\n                </mx:Field>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>quantity</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>°C</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"duration\">\n              <mx:Object>\n                <mx:Field name=\"dimension\">\n                  <mx:String>time</mx:String>\n                </mx:Field>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>quantity</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>s</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"heating_block\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"representation_status\">\n          <mx:String>admitted</mx:String>\n        </mx:Field>\n        <mx:Field name=\"semantic_sha256\">\n          <mx:String>567eb930011bf958aa1f53658f14018bf32c3a8937057da10c75d893a2694774</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Definition>\n    <mx:Definition name=\"RecordReactionAnalysis\" semantic_sha256=\"19439acfa9715b62115b4b9f4f1e0f3093093eaec8377dbb051c2b706282f1d0\">\n      <mx:Object>\n        <mx:Field name=\"description\">\n          <mx:String>Record the reported analytical method, conversion, and regioisomer ratio as observations, not as synthesis actions or inferred outcomes. No sampling or analytical preparation procedure is implied.</mx:String>\n        </mx:Field>\n        <mx:Field name=\"domain\">\n          <mx:String>analytical observation</mx:String>\n        </mx:Field>\n        <mx:Field name=\"effects\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>Associates the reported analytical observations with the reaction without changing its material state.</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"execution_supported\">\n          <mx:Boolean>false</mx:Boolean>\n        </mx:Field>\n        <mx:Field name=\"hardware_roles\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>GC/MS analytical instrument</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"name\">\n          <mx:String>RecordReactionAnalysis</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"conversion\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>number</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>%</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"method\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"ratio\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"ratio_identity\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"representation_status\">\n          <mx:String>admitted</mx:String>\n        </mx:Field>\n        <mx:Field name=\"semantic_sha256\">\n          <mx:String>19439acfa9715b62115b4b9f4f1e0f3093093eaec8377dbb051c2b706282f1d0</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Definition>\n    <mx:Definition name=\"SelectReactionVessel\" semantic_sha256=\"6376a3a6f2c89c5fbffacca93e718aaa5b8913ac2136eb6d71a23923add7c962\">\n      <mx:Object>\n        <mx:Field name=\"description\">\n          <mx:String>Select and position the specified reaction vessel in the stated working environment. Capacity describes vessel volume, not a pressure rating.</mx:String>\n        </mx:Field>\n        <mx:Field name=\"domain\">\n          <mx:String>reaction setup</mx:String>\n        </mx:Field>\n        <mx:Field name=\"effects\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>Establishes the physical reaction vessel and its working location.</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"execution_supported\">\n          <mx:Boolean>false</mx:Boolean>\n        </mx:Field>\n        <mx:Field name=\"hardware_roles\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>reaction vessel</mx:String>\n            </mx:Item>\n            <mx:Item>\n              <mx:String>glove box</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"name\">\n          <mx:String>SelectReactionVessel</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"capacity\">\n              <mx:Object>\n                <mx:Field name=\"dimension\">\n                  <mx:String>volume</mx:String>\n                </mx:Field>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>quantity</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mL</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"location\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"vessel_type\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"representation_status\">\n          <mx:String>admitted</mx:String>\n        </mx:Field>\n        <mx:Field name=\"semantic_sha256\">\n          <mx:String>6376a3a6f2c89c5fbffacca93e718aaa5b8913ac2136eb6d71a23923add7c962</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Definition>\n    <mx:Definition name=\"StirAtQualitativeTemperature\" semantic_sha256=\"abb0f706f77e30b6dff1c1eb024bacf35374f059edaac6162b192e2dce94e797\">\n      <mx:Object>\n        <mx:Field name=\"description\">\n          <mx:String>Stir the reaction mixture for the stated duration under a qualitatively specified temperature condition without assigning an unreported numerical temperature or stirring speed.</mx:String>\n        </mx:Field>\n        <mx:Field name=\"domain\">\n          <mx:String>reaction mixing</mx:String>\n        </mx:Field>\n        <mx:Field name=\"effects\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>Mixes the vessel contents for the reported duration under the stated temperature condition.</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"execution_supported\">\n          <mx:Boolean>false</mx:Boolean>\n        </mx:Field>\n        <mx:Field name=\"hardware_roles\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>reaction vessel</mx:String>\n            </mx:Item>\n            <mx:Item>\n              <mx:String>stirring apparatus</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"name\">\n          <mx:String>StirAtQualitativeTemperature</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"duration\">\n              <mx:Object>\n                <mx:Field name=\"dimension\">\n                  <mx:String>time</mx:String>\n                </mx:Field>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>quantity</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>s</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"temperature\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"representation_status\">\n          <mx:String>admitted</mx:String>\n        </mx:Field>\n        <mx:Field name=\"semantic_sha256\">\n          <mx:String>abb0f706f77e30b6dff1c1eb024bacf35374f059edaac6162b192e2dce94e797</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Definition>\n  </mx:OperationDefinitions>\n  <Procedure>\n    <mx:Step operation=\"Atmosphere\" id=\"s001\">\n      <mx:Object>\n        <mx:Field name=\"gas\">\n          <mx:String>argon</mx:String>\n        </mx:Field>\n        <mx:Field name=\"id\">\n          <mx:String>s001</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>In an argon filled glove box</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"mode\">\n          <mx:String>environment</mx:String>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>Atmosphere</mx:String>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"SelectReactionVessel\" id=\"s002\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s002</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>In an argon filled glove box, a 5.0 mL wheaton microreactor was charged</mx:String>\n            </mx:Field>\n            <mx:Field name=\"operation_expression\">\n              <mx:String>declarative_extension</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>SelectReactionVessel</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"capacity\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>5.0 mL</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mL</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>5.0</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"location\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>In an argon filled glove box</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>argon filled glove box</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"vessel_type\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>a 5.0 mL wheaton microreactor</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>wheaton microreactor</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"AddMeasuredMaterial\" id=\"s003\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s003</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%)</mx:String>\n            </mx:Field>\n            <mx:Field name=\"operation_expression\">\n              <mx:String>declarative_extension</mx:String>\n            </mx:Field>\n            <mx:Field name=\"refined_core_proposal\">\n              <mx:String>Add</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>AddMeasuredMaterial</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"alias\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>[Ir(cod)(OMe)]2</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>[Ir(cod)(OMe)]2</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"mass\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>1.98 mg</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mg</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>1.98</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"molar_loading\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>1.5 mol%</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mol%</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>1.5</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"reagent\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>[Ir(cod)(OMe)]2</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>[Ir(cod)(OMe)]2</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"AddMeasuredMaterial\" id=\"s004\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s004</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>L1 ligand (2.1 mg, 3.5 mol%)</mx:String>\n            </mx:Field>\n            <mx:Field name=\"operation_expression\">\n              <mx:String>declarative_extension</mx:String>\n            </mx:Field>\n            <mx:Field name=\"refined_core_proposal\">\n              <mx:String>Add</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>AddMeasuredMaterial</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"alias\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>L1 ligand</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>L1 ligand</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"mass\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>2.1 mg</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mg</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>2.1</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"molar_loading\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>3.5 mol%</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mol%</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>3.5</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"reagent\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>L1 ligand</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>L1 ligand</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"AddMeasuredMaterial\" id=\"s005\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s005</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>B2pin2 (50.8 mg, 1.0 equiv.)</mx:String>\n            </mx:Field>\n            <mx:Field name=\"operation_expression\">\n              <mx:String>declarative_extension</mx:String>\n            </mx:Field>\n            <mx:Field name=\"refined_core_proposal\">\n              <mx:String>Add</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>AddMeasuredMaterial</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"alias\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>B2pin2</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>B2pin2</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"equivalents\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>1.0 equiv.</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>equiv.</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>1.0</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"mass\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>50.8 mg</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mg</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>50.8</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"reagent\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>B2pin2</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>B2pin2</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"AddMeasuredMaterial\" id=\"s006\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s006</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>KOtBu (1.0 mg, 4.5 mol%)</mx:String>\n            </mx:Field>\n            <mx:Field name=\"operation_expression\">\n              <mx:String>declarative_extension</mx:String>\n            </mx:Field>\n            <mx:Field name=\"refined_core_proposal\">\n              <mx:String>Add</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>AddMeasuredMaterial</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"alias\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>KOtBu</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>KOtBu</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"mass\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>1.0 mg</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mg</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>1.0</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"molar_loading\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>4.5 mol%</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mol%</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>4.5</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"reagent\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>KOtBu</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>KOtBu</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"Add\" id=\"s007\">\n      <mx:Object>\n        <mx:Field name=\"amount\">\n          <mx:Object>\n            <mx:Field name=\"unit\">\n              <mx:String>mL</mx:String>\n            </mx:Field>\n            <mx:Field name=\"value\">\n              <mx:Number>1.0</mx:Number>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"id\">\n          <mx:String>s007</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"amount_source\">\n              <mx:String>procedure_text</mx:String>\n            </mx:Field>\n            <mx:Field name=\"evidence\">\n              <mx:String>dry THF (1.0 mL)</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_alias\">\n              <mx:String>dry THF</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>Add</mx:String>\n        </mx:Field>\n        <mx:Field name=\"reagent\">\n          <mx:String>r005</mx:String>\n        </mx:Field>\n        <mx:Field name=\"source_quantities\">\n          <mx:Array>\n            <mx:Item>\n              <mx:Object>\n                <mx:Field name=\"printed_rounding_half_unit\">\n                  <mx:Number>0.05</mx:Number>\n                </mx:Field>\n                <mx:Field name=\"quote\">\n                  <mx:String>1.0 mL</mx:String>\n                </mx:Field>\n                <mx:Field name=\"source_segment\">\n                  <mx:String>1.0 mL</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mL</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>1.0</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"StirAtQualitativeTemperature\" id=\"s008\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s008</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>The reaction mixture was stirred for 2 minutes at room temperature.</mx:String>\n            </mx:Field>\n            <mx:Field name=\"operation_expression\">\n              <mx:String>declarative_extension</mx:String>\n            </mx:Field>\n            <mx:Field name=\"refined_core_proposal\">\n              <mx:String>Stir</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>StirAtQualitativeTemperature</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"duration\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>2 minutes</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>s</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>120</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"temperature\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>at room temperature</mx:String>\n                </mx:Field>\n                <mx:Field name=\"marker\">\n                  <mx:String>__QUALITATIVE__</mx:String>\n                </mx:Field>\n                <mx:Field name=\"raw\">\n                  <mx:String>room temperature</mx:String>\n                </mx:Field>\n                <mx:Field name=\"status\">\n                  <mx:String>qualitative</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"AddMeasuredMaterial\" id=\"s009\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s009</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>To this mixture, benzamide (24.2 mg, 0.2 mmol) was added.</mx:String>\n            </mx:Field>\n            <mx:Field name=\"operation_expression\">\n              <mx:String>declarative_extension</mx:String>\n            </mx:Field>\n            <mx:Field name=\"refined_core_proposal\">\n              <mx:String>Add</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>AddMeasuredMaterial</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"alias\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>benzamide</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>benzamide</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"amount_of_substance\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>0.2 mmol</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mmol</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>0.2</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"mass\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>24.2 mg</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mg</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>24.2</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"reagent\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>benzamide</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>benzamide</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"CapVessel\" id=\"s010\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s010</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>The microreactor was capped with a teflon pressure cap</mx:String>\n            </mx:Field>\n            <mx:Field name=\"operation_expression\">\n              <mx:String>declarative_extension</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>CapVessel</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"closure\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>a teflon pressure cap</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>teflon pressure cap</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"HeatChill\" id=\"s011\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s011</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>pre-heated aluminum block at 80 oC</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>HeatChill</mx:String>\n        </mx:Field>\n        <mx:Field name=\"temp_C\">\n          <mx:Number>80</mx:Number>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>aluminum_block</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"PlaceAndHoldInHeatingBlock\" id=\"s012\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s012</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>placed into pre-heated aluminum block at 80 oC. After 12 h</mx:String>\n            </mx:Field>\n            <mx:Field name=\"operation_expression\">\n              <mx:String>declarative_extension</mx:String>\n            </mx:Field>\n            <mx:Field name=\"refined_core_proposal\">\n              <mx:String>HeatChill</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>PlaceAndHoldInHeatingBlock</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"block_condition\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>pre-heated aluminum block at 80 oC</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>pre-heated</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"block_temperature\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>80 oC</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>°C</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>80</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"duration\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>12 h</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>s</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>43200</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"heating_block\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>aluminum block</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>aluminum block</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"RecordReactionAnalysis\" id=\"s013\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s013</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>After 12 h, (judged by GC/MS), we found that the conversion was 23% and meta/para ratio was 1/1.5.</mx:String>\n            </mx:Field>\n            <mx:Field name=\"operation_expression\">\n              <mx:String>declarative_extension</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>RecordReactionAnalysis</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"conversion\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>the conversion was 23%</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>%</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>23</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"method\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>judged by GC/MS</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>GC/MS</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"ratio\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>meta/para ratio was 1/1.5</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>1/1.5</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"ratio_identity\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>meta/para ratio</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>meta/para</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n  </Procedure>\n</Synthesis>\n",
+  "canonical_sha1": "b456d11dc7016521c9148f79ee004f0a7ead53f2",
+  "quality": {
+    "tier": "silver",
+    "source_grounded": true,
+    "source_input_contract": "text-only/1",
+    "outcome_annotation_scope": "reference_metadata_only",
+    "xdl_profile": "mosaic-xdl/1",
+    "xdl_profile_schema_passed": true,
+    "official_platform_compiled": false,
+    "symbolic_violations": [],
+    "unknown_constraints": [
+      {
+        "rule": "initial_state",
+        "reason": "initial_material_state_not_reported"
+      },
+      {
+        "rule": "A1",
+        "step": 0,
+        "step_id": "s001",
+        "reason": "inventory_quantity_unknown"
+      },
+      {
+        "rule": "operation_effects",
+        "step": 1,
+        "step_id": "s002",
+        "operation": "SelectReactionVessel",
+        "reason": "extension_effect_semantics_unknown",
+        "vessels": [
+          "reactor"
+        ]
+      },
+      {
+        "rule": "operation_effects",
+        "step": 2,
+        "step_id": "s003",
+        "operation": "AddMeasuredMaterial",
+        "reason": "extension_effect_semantics_unknown",
+        "vessels": [
+          "reactor"
+        ]
+      },
+      {
+        "rule": "operation_effects",
+        "step": 3,
+        "step_id": "s004",
+        "operation": "AddMeasuredMaterial",
+        "reason": "extension_effect_semantics_unknown",
+        "vessels": [
+          "reactor"
+        ]
+      },
+      {
+        "rule": "operation_effects",
+        "step": 4,
+        "step_id": "s005",
+        "operation": "AddMeasuredMaterial",
+        "reason": "extension_effect_semantics_unknown",
+        "vessels": [
+          "reactor"
+        ]
+      },
+      {
+        "rule": "operation_effects",
+        "step": 5,
+        "step_id": "s006",
+        "operation": "AddMeasuredMaterial",
+        "reason": "extension_effect_semantics_unknown",
+        "vessels": [
+          "reactor"
+        ]
+      },
+      {
+        "rule": "A1",
+        "step": 6,
+        "step_id": "s007",
+        "reason": "inventory_quantity_unknown"
+      },
+      {
+        "rule": "operation_effects",
+        "step": 7,
+        "step_id": "s008",
+        "operation": "StirAtQualitativeTemperature",
+        "reason": "extension_effect_semantics_unknown",
+        "vessels": [
+          "reactor"
+        ]
+      },
+      {
+        "rule": "operation_effects",
+        "step": 8,
+        "step_id": "s009",
+        "operation": "AddMeasuredMaterial",
+        "reason": "extension_effect_semantics_unknown",
+        "vessels": [
+          "reactor"
+        ]
+      },
+      {
+        "rule": "operation_effects",
+        "step": 9,
+        "step_id": "s010",
+        "operation": "CapVessel",
+        "reason": "extension_effect_semantics_unknown",
+        "vessels": [
+          "reactor"
+        ]
+      },
+      {
+        "rule": "A1",
+        "step": 10,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "A2",
+        "step": 10,
+        "reason": "sample_to_controller_temperature_mapping_unknown"
+      },
+      {
+        "rule": "B1/B2/B3",
+        "step": 10,
+        "reason": "unknown_or_mixed_solvent_properties"
+      },
+      {
+        "rule": "B2",
+        "step": 10,
+        "reason": "solution_freezing_point_not_established"
+      },
+      {
+        "rule": "operation_effects",
+        "step": 11,
+        "step_id": "s012",
+        "operation": "PlaceAndHoldInHeatingBlock",
+        "reason": "extension_effect_semantics_unknown",
+        "vessels": [
+          "reactor"
+        ]
+      },
+      {
+        "rule": "operation_effects",
+        "step": 12,
+        "step_id": "s013",
+        "operation": "RecordReactionAnalysis",
+        "reason": "extension_effect_semantics_unknown",
+        "vessels": [
+          "reactor"
+        ]
+      }
+    ],
+    "manual_review": "pending",
+    "hardware_verification": "pending",
+    "full_feasibility_certified": false,
+    "representation_complete": true,
+    "parameters_complete": false,
+    "missing_parameters": [
+      {
+        "step_id": "s008",
+        "parameter": "temperature",
+        "status": "qualitative",
+        "marker": "__QUALITATIVE__",
+        "evidence": "at room temperature",
+        "raw": "room temperature"
+      }
+    ],
+    "execution_ready": false,
+    "conversion_status": "represented_with_missing_parameters",
+    "extension_operations": [
+      "AddMeasuredMaterial",
+      "CapVessel",
+      "PlaceAndHoldInHeatingBlock",
+      "RecordReactionAnalysis",
+      "SelectReactionVessel",
+      "StirAtQualitativeTemperature"
+    ],
+    "risk_assessment_scope": "Implemented rules only; unknown parameters and extension effects produce abstentions."
+  },
+  "mosaic": {
+    "schema": "mosaic.ir/2",
+    "run_id": "mosaic_5614afe1b936f659def0",
+    "domain": "chemistry.extended/1",
+    "findings": [],
+    "apparatus_proposals": [
+      {
+        "quote": "argon filled glove box",
+        "kind": "controlled-atmosphere enclosure",
+        "identity": null,
+        "scope": "Reaction setup environment; no specific glove box model stated.",
+        "evidence": {
+          "source_id": "ord-8a61495c860141f1a8046698b9543528",
+          "source_sha256": "e1f19ef30299fc1f2326ae10ce16a6ce6cf90acef9f7b6bf974c820c2f728c30",
+          "start": 6,
+          "end": 28,
+          "quote": "argon filled glove box"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "5.0 mL wheaton microreactor",
+        "kind": "microreactor vessel",
+        "identity": "Wheaton microreactor",
+        "scope": "One reaction vessel with stated 5.0 mL capacity.",
+        "evidence": {
+          "source_id": "ord-8a61495c860141f1a8046698b9543528",
+          "source_sha256": "e1f19ef30299fc1f2326ae10ce16a6ce6cf90acef9f7b6bf974c820c2f728c30",
+          "start": 32,
+          "end": 59,
+          "quote": "5.0 mL wheaton microreactor"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "teflon pressure cap",
+        "kind": "pressure cap",
+        "identity": null,
+        "scope": "Cap used on the microreactor; no pressure rating or operating pressure stated.",
+        "evidence": {
+          "source_id": "ord-8a61495c860141f1a8046698b9543528",
+          "source_sha256": "e1f19ef30299fc1f2326ae10ce16a6ce6cf90acef9f7b6bf974c820c2f728c30",
+          "start": 383,
+          "end": 402,
+          "quote": "teflon pressure cap"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "pre-heated aluminum block at 80 oC",
+        "kind": "heating block",
+        "identity": null,
+        "scope": "Aluminum block used to heat the capped microreactor; 80 °C is the stated block temperature.",
+        "evidence": {
+          "source_id": "ord-8a61495c860141f1a8046698b9543528",
+          "source_sha256": "e1f19ef30299fc1f2326ae10ce16a6ce6cf90acef9f7b6bf974c820c2f728c30",
+          "start": 419,
+          "end": 453,
+          "quote": "pre-heated aluminum block at 80 oC"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "GC/MS",
+        "kind": "analytical instrument",
+        "identity": null,
+        "scope": "Used to judge reaction conversion after 12 h; no instrument model stated.",
+        "evidence": {
+          "source_id": "ord-8a61495c860141f1a8046698b9543528",
+          "source_sha256": "e1f19ef30299fc1f2326ae10ce16a6ce6cf90acef9f7b6bf974c820c2f728c30",
+          "start": 478,
+          "end": 483,
+          "quote": "GC/MS"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-8a61495c860141f1a8046698b9543528",
+        "source_sha256": "e1f19ef30299fc1f2326ae10ce16a6ce6cf90acef9f7b6bf974c820c2f728c30",
+        "start": 0,
+        "end": 28,
+        "quote": "In an argon filled glove box"
+      },
+      {
+        "source_id": "ord-8a61495c860141f1a8046698b9543528",
+        "source_sha256": "e1f19ef30299fc1f2326ae10ce16a6ce6cf90acef9f7b6bf974c820c2f728c30",
+        "start": 77,
+        "end": 112,
+        "quote": "[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%)"
+      },
+      {
+        "source_id": "ord-8a61495c860141f1a8046698b9543528",
+        "source_sha256": "e1f19ef30299fc1f2326ae10ce16a6ce6cf90acef9f7b6bf974c820c2f728c30",
+        "start": 114,
+        "end": 142,
+        "quote": "L1 ligand (2.1 mg, 3.5 mol%)"
+      },
+      {
+        "source_id": "ord-8a61495c860141f1a8046698b9543528",
+        "source_sha256": "e1f19ef30299fc1f2326ae10ce16a6ce6cf90acef9f7b6bf974c820c2f728c30",
+        "start": 144,
+        "end": 172,
+        "quote": "B2pin2 (50.8 mg, 1.0 equiv.)"
+      },
+      {
+        "source_id": "ord-8a61495c860141f1a8046698b9543528",
+        "source_sha256": "e1f19ef30299fc1f2326ae10ce16a6ce6cf90acef9f7b6bf974c820c2f728c30",
+        "start": 174,
+        "end": 198,
+        "quote": "KOtBu (1.0 mg, 4.5 mol%)"
+      },
+      {
+        "source_id": "ord-8a61495c860141f1a8046698b9543528",
+        "source_sha256": "e1f19ef30299fc1f2326ae10ce16a6ce6cf90acef9f7b6bf974c820c2f728c30",
+        "start": 204,
+        "end": 220,
+        "quote": "dry THF (1.0 mL)"
+      },
+      {
+        "source_id": "ord-8a61495c860141f1a8046698b9543528",
+        "source_sha256": "e1f19ef30299fc1f2326ae10ce16a6ce6cf90acef9f7b6bf974c820c2f728c30",
+        "start": 222,
+        "end": 289,
+        "quote": "The reaction mixture was stirred for 2 minutes at room temperature."
+      },
+      {
+        "source_id": "ord-8a61495c860141f1a8046698b9543528",
+        "source_sha256": "e1f19ef30299fc1f2326ae10ce16a6ce6cf90acef9f7b6bf974c820c2f728c30",
+        "start": 290,
+        "end": 347,
+        "quote": "To this mixture, benzamide (24.2 mg, 0.2 mmol) was added."
+      },
+      {
+        "source_id": "ord-8a61495c860141f1a8046698b9543528",
+        "source_sha256": "e1f19ef30299fc1f2326ae10ce16a6ce6cf90acef9f7b6bf974c820c2f728c30",
+        "start": 407,
+        "end": 465,
+        "quote": "placed into pre-heated aluminum block at 80 oC. After 12 h"
+      }
+    ],
+    "repair": {
+      "accepted": false,
+      "patch": []
+    },
+    "apparatus_unknowns": [
+      "The microreactor's material, manufacturer-specific model/catalog number, pressure rating, and actual internal pressure are not stated.",
+      "The Teflon pressure cap's manufacturer, pressure rating, and temperature rating are not stated.",
+      "The aluminum block heater/controller and whether 80 °C is a setpoint versus independently measured block temperature are not stated.",
+      "The reaction-mixture temperature is not independently reported; only the aluminum block temperature is stated.",
+      "The stirring apparatus is not identified.",
+      "No separation apparatus is described."
+    ],
+    "completion": {
+      "agent_called": true,
+      "attempts": 1,
+      "model": "gpt-6.1-sol",
+      "extension_operations": [
+        "AddMeasuredMaterial",
+        "CapVessel",
+        "PlaceAndHoldInHeatingBlock",
+        "RecordReactionAnalysis",
+        "SelectReactionVessel",
+        "StirAtQualitativeTemperature"
+      ],
+      "expression_profile": "mosaic-xdl/1",
+      "execution_supported": false
+    }
+  },
+  "split_group": "acyclic_product:"
+}

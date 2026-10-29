@@ -1,0 +1,751 @@
+{
+  "protocol": {
+    "id": "pos_8fdcadcf8d694b72a4ad9ff8119e3e79",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-8fdcadcf8d694b72a4ad9ff8119e3e79",
+    "raw_sha256": "38350ed4da68b8d658d30ed56e60175e6bc1aeabe929f9d2af14f6bacfc5550d",
+    "source_text": "In a 100 mL round-bottomed flask (t=g) was biphenyl-2-yldicyclohexylphosphine (0.024 g, 0.07 mmol), methyl 2-bromoisonicotinate (.1 g, 0.46 mmol), and 4-fluoro-N-methylaniline (0.070 g, 0.56 mmol) in toluene (3 mL) to give a purple suspension. Pd2dba3 (0.021 g, 0.02 mmol) and CS2CO3 (0.211 g, 0.65 mmol) were added. Flask was placed in an oil bath at 85 °C.  LC/MS taken at 1, 2 and 4 hours indicated reaction was not progressing. Reaction was discarded.  ",
+    "text_sha256": "4a2c25295e322b0e53560f9e1acd16f7f327fbe97739c3ad2eb9bc400909523b",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "biphenyl-2-yldicyclohexylphosphine",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 0.07,
+          "unit": "mmol"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r002",
+        "name": "methyl 2-bromoisonicotinate",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 0.46,
+          "unit": "mmol"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r003",
+        "name": "4-fluoro-N-methylaniline",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 0.56,
+          "unit": "mmol"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r004",
+        "name": "toluene",
+        "smiles": null,
+        "role": "SOLVENT",
+        "amount": {
+          "value": 3,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r005",
+        "name": "Pd2dba3",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 0.02,
+          "unit": "mmol"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r006",
+        "name": "CS2CO3",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 0.65,
+          "unit": "mmol"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "SelectReactionVessel",
+        "vessel": "reactor",
+        "parameters": {
+          "vessel_type": {
+            "value": "round-bottomed flask",
+            "evidence": "round-bottomed flask"
+          },
+          "capacity": {
+            "value": 100,
+            "unit": "mL",
+            "evidence": "100 mL"
+          },
+          "source_annotation": {
+            "value": "t=g",
+            "evidence": "t=g"
+          }
+        },
+        "meta": {
+          "evidence": "In a 100 mL round-bottomed flask (t=g)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s001"
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "biphenyl-2-yldicyclohexylphosphine",
+            "evidence": "biphenyl-2-yldicyclohexylphosphine"
+          },
+          "alias": {
+            "value": "biphenyl-2-yldicyclohexylphosphine",
+            "evidence": "biphenyl-2-yldicyclohexylphosphine"
+          },
+          "reported_mass": {
+            "value": "0.024 g",
+            "evidence": "0.024 g"
+          },
+          "substance_amount": {
+            "value": 0.07,
+            "unit": "mmol",
+            "evidence": "0.07 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "biphenyl-2-yldicyclohexylphosphine (0.024 g, 0.07 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s002"
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "methyl 2-bromoisonicotinate",
+            "evidence": "methyl 2-bromoisonicotinate"
+          },
+          "alias": {
+            "value": "methyl 2-bromoisonicotinate",
+            "evidence": "methyl 2-bromoisonicotinate"
+          },
+          "reported_mass": {
+            "value": ".1 g",
+            "evidence": ".1 g"
+          },
+          "substance_amount": {
+            "value": 0.46,
+            "unit": "mmol",
+            "evidence": "0.46 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "methyl 2-bromoisonicotinate (.1 g, 0.46 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s003"
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "4-fluoro-N-methylaniline",
+            "evidence": "4-fluoro-N-methylaniline"
+          },
+          "alias": {
+            "value": "4-fluoro-N-methylaniline",
+            "evidence": "4-fluoro-N-methylaniline"
+          },
+          "reported_mass": {
+            "value": "0.070 g",
+            "evidence": "0.070 g"
+          },
+          "substance_amount": {
+            "value": 0.56,
+            "unit": "mmol",
+            "evidence": "0.56 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "4-fluoro-N-methylaniline (0.070 g, 0.56 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s004"
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r004",
+        "amount": {
+          "value": 3,
+          "unit": "mL"
+        },
+        "id": "s005",
+        "meta": {
+          "evidence": "in toluene (3 mL)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "toluene",
+          "amount_source": "procedure_text"
+        },
+        "source_quantities": [
+          {
+            "value": 3.0,
+            "unit": "mL",
+            "quote": "3 mL",
+            "printed_rounding_half_unit": 0.5,
+            "source_segment": "3 mL"
+          }
+        ]
+      },
+      {
+        "op": "ObserveMixtureAppearance",
+        "vessel": "reactor",
+        "parameters": {
+          "appearance": {
+            "value": "purple suspension",
+            "evidence": "purple suspension"
+          }
+        },
+        "meta": {
+          "evidence": "to give a purple suspension",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s006"
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "Pd2dba3",
+            "evidence": "Pd2dba3"
+          },
+          "alias": {
+            "value": "Pd2dba3",
+            "evidence": "Pd2dba3"
+          },
+          "reported_mass": {
+            "value": "0.021 g",
+            "evidence": "0.021 g"
+          },
+          "substance_amount": {
+            "value": 0.02,
+            "unit": "mmol",
+            "evidence": "0.02 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "Pd2dba3 (0.021 g, 0.02 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s007"
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "CS2CO3",
+            "evidence": "CS2CO3"
+          },
+          "alias": {
+            "value": "CS2CO3",
+            "evidence": "CS2CO3"
+          },
+          "reported_mass": {
+            "value": "0.211 g",
+            "evidence": "0.211 g"
+          },
+          "substance_amount": {
+            "value": 0.65,
+            "unit": "mmol",
+            "evidence": "0.65 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "CS2CO3 (0.211 g, 0.65 mmol) were added.",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s008"
+      },
+      {
+        "op": "PlaceVesselInHeatingBath",
+        "vessel": "reactor",
+        "parameters": {
+          "bath_type": {
+            "value": "oil bath",
+            "evidence": "oil bath"
+          },
+          "bath_temperature": {
+            "value": 85,
+            "unit": "°C",
+            "evidence": "85 °C"
+          }
+        },
+        "meta": {
+          "evidence": "Flask was placed in an oil bath at 85 °C.",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "HeatChill"
+        },
+        "id": "s009"
+      },
+      {
+        "op": "MonitorByTimedAnalysis",
+        "vessel": "reactor",
+        "parameters": {
+          "method": {
+            "value": "LC/MS",
+            "evidence": "LC/MS"
+          },
+          "reported_times": {
+            "value": "1, 2 and 4 hours",
+            "evidence": "1, 2 and 4 hours"
+          },
+          "time_reference": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "LC/MS taken at 1, 2 and 4 hours",
+            "raw": null
+          },
+          "sampling_protocol": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "LC/MS taken at 1, 2 and 4 hours",
+            "raw": null
+          },
+          "reported_observation": {
+            "value": "reaction was not progressing",
+            "evidence": "reaction was not progressing"
+          }
+        },
+        "meta": {
+          "evidence": "LC/MS taken at 1, 2 and 4 hours indicated reaction was not progressing.",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s010"
+      },
+      {
+        "op": "DiscardReactionMixture",
+        "vessel": "reactor",
+        "parameters": {
+          "disposal_method": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "Reaction was discarded.",
+            "raw": null
+          }
+        },
+        "meta": {
+          "evidence": "Reaction was discarded.",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s011"
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {},
+      "reflux": false,
+      "source_context_evidence": [],
+      "initial_material_state": "unknown_unless_reported"
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "4a2c25295e322b0e53560f9e1acd16f7f327fbe97739c3ad2eb9bc400909523b",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 873,
+        "prompt_tokens": 1542,
+        "total_tokens": 2415,
+        "prompt_tokens_details": {
+          "cache_write_tokens": 1539,
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 107
+        }
+      },
+      "cache_key": "1b95ba2ea72da77157a347c7bfd18ef4ae0f79064c7f58f5c8bb4bf5f601d5c3",
+      "unresolved": [
+        "85 °C is the stated oil-bath temperature; the internal reaction temperature and heating duration are not explicitly specified.",
+        "The reagent name CS2CO3 is preserved literally without correcting or interpreting its identity."
+      ],
+      "unmapped_actions": [],
+      "uncertainties": [],
+      "completion": "source_grounded_extension",
+      "source_observations": []
+    },
+    "operation_definitions": {
+      "AddMeasuredMaterial": {
+        "name": "AddMeasuredMaterial",
+        "domain": "material handling",
+        "description": "Introduce the named material into the vessel, preserving its literal alias, its reported mass expression including the source unit and precision, and its reported amount of substance as independent source measurements.",
+        "parameters": {
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "alias": {
+            "type": "string",
+            "required": true
+          },
+          "reported_mass": {
+            "type": "string",
+            "required": true
+          },
+          "substance_amount": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mmol",
+            "dimension": "amount of substance"
+          }
+        },
+        "effects": [
+          "Introduces the specified material into the receiving vessel."
+        ],
+        "hardware_roles": [
+          "receiving vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "ade93dd42293edcfc15213b240d0a2c539caa2b6e452f1d7e18ec16612daec4d"
+      },
+      "DiscardReactionMixture": {
+        "name": "DiscardReactionMixture",
+        "domain": "waste handling",
+        "description": "Discard the reaction mixture without inferring a quench, disposal destination, or waste-treatment method.",
+        "parameters": {
+          "disposal_method": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Removes the reaction mixture from further synthetic processing."
+        ],
+        "hardware_roles": [
+          "reaction vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "2ced64c96fbb2a115477ff1abee1505eb4ff30d6cd34bf104051556ab710b829"
+      },
+      "MonitorByTimedAnalysis": {
+        "name": "MonitorByTimedAnalysis",
+        "domain": "analytical monitoring",
+        "description": "Perform analytical monitoring using the stated method at the source-reported times and record the analytical observation. Preserve the timing schedule verbatim; do not infer a timing origin or sampling protocol. The reported observation is not a synthesis action.",
+        "parameters": {
+          "method": {
+            "type": "string",
+            "required": true
+          },
+          "reported_times": {
+            "type": "string",
+            "required": true
+          },
+          "time_reference": {
+            "type": "string",
+            "required": true
+          },
+          "sampling_protocol": {
+            "type": "string",
+            "required": true
+          },
+          "reported_observation": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Records timed analytical monitoring and its reported observation."
+        ],
+        "hardware_roles": [
+          "reaction vessel",
+          "analytical instrument"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "740d1decb7c90fa66e84322b86657c6dcdef56164b54c1a2740af81009fe075c"
+      },
+      "ObserveMixtureAppearance": {
+        "name": "ObserveMixtureAppearance",
+        "domain": "observation",
+        "description": "Record the reported visual appearance of the mixture as an observation, without inferring a chemical transformation.",
+        "parameters": {
+          "appearance": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Records mixture appearance without changing material inventory."
+        ],
+        "hardware_roles": [
+          "observed vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "12492d432be66a3ab7a6b7143b490cd431f7051aa89c6e5510f6e913eb012cea"
+      },
+      "PlaceVesselInHeatingBath": {
+        "name": "PlaceVesselInHeatingBath",
+        "domain": "thermal handling",
+        "description": "Place the reaction vessel in the specified heating bath at its reported temperature. This does not establish an internal mixture temperature or an unreported heating duration.",
+        "parameters": {
+          "bath_type": {
+            "type": "string",
+            "required": true
+          },
+          "bath_temperature": {
+            "type": "quantity",
+            "required": true,
+            "unit": "°C",
+            "dimension": "temperature"
+          }
+        },
+        "effects": [
+          "Places the reaction vessel in thermal contact with the specified bath."
+        ],
+        "hardware_roles": [
+          "reaction vessel",
+          "heating bath"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "667895ffb2caadb50aa21685c7c8f0453cffcb647d17b7ac145e3830c5463bff"
+      },
+      "SelectReactionVessel": {
+        "name": "SelectReactionVessel",
+        "domain": "reaction",
+        "description": "Select a reaction vessel of the stated type and capacity. Retain the source annotation without interpreting it as an apparatus specification.",
+        "parameters": {
+          "vessel_type": {
+            "type": "string",
+            "required": true
+          },
+          "capacity": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mL",
+            "dimension": "volume"
+          },
+          "source_annotation": {
+            "type": "string",
+            "required": false
+          }
+        },
+        "effects": [
+          "Establishes the reaction vessel type and capacity."
+        ],
+        "hardware_roles": [
+          "reaction vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "2ac9ecbc74a53126998be28e8f914f79f404294c50606e30b0aa73ba94e398a0"
+      }
+    },
+    "xdl_profile": "mosaic-xdl/1"
+  },
+  "notes": {
+    "domain": "chemistry.extended/1",
+    "findings": [
+      {
+        "code": "OMITTED_MONITORING",
+        "quote": "LC/MS taken at 1, 2 and 4 hours indicated reaction was not progressing.",
+        "message": "The plan omits the explicitly reported LC/MS monitoring at 1, 2 and 4 hours. Preserve this timed monitoring as an unmapped action; it does not establish an explicit heating duration or sampling protocol.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-8fdcadcf8d694b72a4ad9ff8119e3e79",
+          "source_sha256": "281656676954d66e0c35cd8101d6a081cd349890e92cd0ca09806effdbd53683",
+          "start": 360,
+          "end": 431,
+          "quote": "LC/MS taken at 1, 2 and 4 hours indicated reaction was not progressing."
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "100 mL round-bottomed flask (t=g)",
+        "kind": "reaction vessel",
+        "identity": null,
+        "scope": "Single round-bottomed flask with stated 100 mL nominal capacity; t=g is reported but not defined.",
+        "evidence": {
+          "source_id": "ord-8fdcadcf8d694b72a4ad9ff8119e3e79",
+          "source_sha256": "281656676954d66e0c35cd8101d6a081cd349890e92cd0ca09806effdbd53683",
+          "start": 5,
+          "end": 38,
+          "quote": "100 mL round-bottomed flask (t=g)"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "oil bath at 85 °C",
+        "kind": "heating bath",
+        "identity": null,
+        "scope": "Flask was placed in this oil bath; 85 °C is the stated bath temperature, not explicitly the reaction-mixture temperature.",
+        "evidence": {
+          "source_id": "ord-8fdcadcf8d694b72a4ad9ff8119e3e79",
+          "source_sha256": "281656676954d66e0c35cd8101d6a081cd349890e92cd0ca09806effdbd53683",
+          "start": 340,
+          "end": 357,
+          "quote": "oil bath at 85 °C"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "LC/MS",
+        "kind": "LC/MS analytical system",
+        "identity": null,
+        "scope": "Used for reaction-progress analysis at 1, 2, and 4 hours; no instrument, LC column, or separation conditions are specified.",
+        "evidence": {
+          "source_id": "ord-8fdcadcf8d694b72a4ad9ff8119e3e79",
+          "source_sha256": "281656676954d66e0c35cd8101d6a081cd349890e92cd0ca09806effdbd53683",
+          "start": 360,
+          "end": 365,
+          "quote": "LC/MS"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-8fdcadcf8d694b72a4ad9ff8119e3e79",
+        "source_sha256": "281656676954d66e0c35cd8101d6a081cd349890e92cd0ca09806effdbd53683",
+        "start": 43,
+        "end": 98,
+        "quote": "biphenyl-2-yldicyclohexylphosphine (0.024 g, 0.07 mmol)"
+      },
+      {
+        "source_id": "ord-8fdcadcf8d694b72a4ad9ff8119e3e79",
+        "source_sha256": "281656676954d66e0c35cd8101d6a081cd349890e92cd0ca09806effdbd53683",
+        "start": 100,
+        "end": 145,
+        "quote": "methyl 2-bromoisonicotinate (.1 g, 0.46 mmol)"
+      },
+      {
+        "source_id": "ord-8fdcadcf8d694b72a4ad9ff8119e3e79",
+        "source_sha256": "281656676954d66e0c35cd8101d6a081cd349890e92cd0ca09806effdbd53683",
+        "start": 151,
+        "end": 196,
+        "quote": "4-fluoro-N-methylaniline (0.070 g, 0.56 mmol)"
+      },
+      {
+        "source_id": "ord-8fdcadcf8d694b72a4ad9ff8119e3e79",
+        "source_sha256": "281656676954d66e0c35cd8101d6a081cd349890e92cd0ca09806effdbd53683",
+        "start": 197,
+        "end": 214,
+        "quote": "in toluene (3 mL)"
+      },
+      {
+        "source_id": "ord-8fdcadcf8d694b72a4ad9ff8119e3e79",
+        "source_sha256": "281656676954d66e0c35cd8101d6a081cd349890e92cd0ca09806effdbd53683",
+        "start": 244,
+        "end": 272,
+        "quote": "Pd2dba3 (0.021 g, 0.02 mmol)"
+      },
+      {
+        "source_id": "ord-8fdcadcf8d694b72a4ad9ff8119e3e79",
+        "source_sha256": "281656676954d66e0c35cd8101d6a081cd349890e92cd0ca09806effdbd53683",
+        "start": 277,
+        "end": 316,
+        "quote": "CS2CO3 (0.211 g, 0.65 mmol) were added."
+      },
+      {
+        "source_id": "ord-8fdcadcf8d694b72a4ad9ff8119e3e79",
+        "source_sha256": "281656676954d66e0c35cd8101d6a081cd349890e92cd0ca09806effdbd53683",
+        "start": 317,
+        "end": 358,
+        "quote": "Flask was placed in an oil bath at 85 °C."
+      }
+    ],
+    "repair": {
+      "accepted": true,
+      "patch": [
+        {
+          "op": "add",
+          "path": "/unmapped_actions/-",
+          "value": {
+            "evidence": "LC/MS taken at 1, 2 and 4 hours indicated reaction was not progressing.",
+            "reason": "LC/MS monitoring at the stated times is not represented by an allowed operation. No sampling protocol is specified."
+          }
+        }
+      ]
+    },
+    "apparatus_unknowns": [
+      "Round-bottomed flask manufacturer, material, joint size, and the meaning of \"t=g\" are not specified.",
+      "Oil-bath manufacturer, heater/controller type, temperature-control accuracy, and reaction-mixture temperature are not specified.",
+      "LC/MS manufacturer, model, LC column, mobile phases, flow rate, and MS conditions are not specified."
+    ],
+    "completion": {
+      "agent_called": true,
+      "attempts": 2,
+      "model": "gpt-6.1-sol",
+      "extension_operations": [
+        "AddMeasuredMaterial",
+        "DiscardReactionMixture",
+        "MonitorByTimedAnalysis",
+        "ObserveMixtureAppearance",
+        "PlaceVesselInHeatingBath",
+        "SelectReactionVessel"
+      ],
+      "expression_profile": "mosaic-xdl/1",
+      "execution_supported": false
+    }
+  },
+  "raw_id": "ord-8fdcadcf8d694b72a4ad9ff8119e3e79"
+}

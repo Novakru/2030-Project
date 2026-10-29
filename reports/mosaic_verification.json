@@ -1,14 +1,14 @@
 {
   "passed": true,
-  "positives_checked": 25,
-  "negatives_checked": 83,
-  "upstream_ord_records_checked": 300,
+  "positives_checked": 120,
+  "negatives_checked": 85,
+  "upstream_ord_records_checked": 220,
   "risk_counts": {
     "A1": 10,
     "A2": 10,
     "A5": 10,
     "C1": 10,
-    "C4": 3,
+    "C4": 5,
     "C6": 10,
     "D1": 10,
     "D3": 10,
@@ -16,37 +16,39 @@
   },
   "mechanisms": {
     "A1": {
-      "A1.active_fill_fraction": 5,
-      "A1.cumulative_overfill": 1,
-      "A1.single_add_overfill": 4
+      "A1.active_fill_fraction": 4,
+      "A1.single_add_overfill": 5,
+      "A1.cumulative_overfill": 1
     },
     "A2": {
       "A2.above_controller_range": 10
     },
     "A5": {
+      "A5.missing_controller": 3,
       "A5.incompatible_bound_capability": 3,
       "A5.unresolved_binding": 2,
-      "A5.missing_controller": 3,
       "A5.missing_filter": 2
     },
     "C1": {
       "C1.solvent_family_substitution": 10
     },
     "C4": {
-      "C4.excess_reagent": 1,
-      "C4.depleted_reagent": 2
+      "C4.excess_reagent": 2,
+      "C4.depleted_reagent": 3
     },
     "C6": {
-      "C6.extended_heatchill": 5,
-      "C6.extended_atmosphere": 1,
-      "C6.extended_stir": 4
+      "C6.extended_heatchill": 3,
+      "C6.extended_stir": 2,
+      "C6.extended_wait": 2,
+      "C6.extended_atmosphere": 3
     },
     "D1": {
       "D1.move_step": 10
     },
     "D3": {
-      "D3.undefined_vessel": 5,
-      "D3.undefined_reagent": 5
+      "D3.undefined_vessel": 4,
+      "D3.undefined_reagent": 4,
+      "D3.undefined_to_vessel": 2
     },
     "D4": {
       "D4.nonpositive_quantity": 5,

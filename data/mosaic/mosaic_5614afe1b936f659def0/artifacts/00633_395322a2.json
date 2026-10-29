@@ -1,0 +1,337 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "SyringeAddSolutionToPreloadedVial",
+        "stage": "reaction",
+        "vessel": "capped microwave vial",
+        "evidence": "A solution of (R)-8-chloro-4-methyl-2-phenyl-2,3,4,5-tetrahydropyrido[3,2-f][1,4]oxazepine (5.00 mg, 0.02 mmol) and 4-(3-methyl-1H-1,2,4-triazol-1-yl)aniline (3.17 mg, 0.02 mmol) in DME (.5 mL) was added via a syringe to a capped microwave vial containing PALLADIUM(II) ACETATE (0.409 mg, 1.82 µmol), XANTPHOS (1.053 mg, 1.82 µmol) and CESIUM CARBONATE (8.89 mg, 0.03 mmol) under an argon atmosphere.",
+        "parameters": {
+          "solute_one": {
+            "value": "(R)-8-chloro-4-methyl-2-phenyl-2,3,4,5-tetrahydropyrido[3,2-f][1,4]oxazepine",
+            "evidence": "(R)-8-chloro-4-methyl-2-phenyl-2,3,4,5-tetrahydropyrido[3,2-f][1,4]oxazepine"
+          },
+          "solute_one_mass": {
+            "value": 5.0,
+            "unit": "mg",
+            "evidence": "5.00 mg"
+          },
+          "solute_one_amount": {
+            "value": 0.02,
+            "unit": "mmol",
+            "evidence": "0.02 mmol"
+          },
+          "solute_two": {
+            "value": "4-(3-methyl-1H-1,2,4-triazol-1-yl)aniline",
+            "evidence": "4-(3-methyl-1H-1,2,4-triazol-1-yl)aniline"
+          },
+          "solute_two_mass": {
+            "value": 3.17,
+            "unit": "mg",
+            "evidence": "3.17 mg"
+          },
+          "solute_two_amount": {
+            "value": 0.02,
+            "unit": "mmol",
+            "evidence": "0.02 mmol"
+          },
+          "solvent": {
+            "value": "DME",
+            "evidence": "DME"
+          },
+          "solvent_volume": {
+            "value": 0.5,
+            "unit": "mL",
+            "evidence": ".5 mL"
+          },
+          "delivery_device": {
+            "value": "syringe",
+            "evidence": "syringe"
+          },
+          "receiving_vessel": {
+            "value": "capped microwave vial",
+            "evidence": "capped microwave vial"
+          },
+          "preloaded_material_one": {
+            "value": "PALLADIUM(II) ACETATE",
+            "evidence": "PALLADIUM(II) ACETATE"
+          },
+          "preloaded_material_one_mass": {
+            "value": 0.409,
+            "unit": "mg",
+            "evidence": "0.409 mg"
+          },
+          "preloaded_material_one_amount": {
+            "value": 1.82,
+            "unit": "µmol",
+            "evidence": "1.82 µmol"
+          },
+          "preloaded_material_two": {
+            "value": "XANTPHOS",
+            "evidence": "XANTPHOS"
+          },
+          "preloaded_material_two_mass": {
+            "value": 1.053,
+            "unit": "mg",
+            "evidence": "1.053 mg"
+          },
+          "preloaded_material_two_amount": {
+            "value": 1.82,
+            "unit": "µmol",
+            "evidence": "1.82 µmol"
+          },
+          "preloaded_material_three": {
+            "value": "CESIUM CARBONATE",
+            "evidence": "CESIUM CARBONATE"
+          },
+          "preloaded_material_three_mass": {
+            "value": 8.89,
+            "unit": "mg",
+            "evidence": "8.89 mg"
+          },
+          "preloaded_material_three_amount": {
+            "value": 0.03,
+            "unit": "mmol",
+            "evidence": "0.03 mmol"
+          },
+          "atmosphere": {
+            "value": "under an argon atmosphere",
+            "evidence": "under an argon atmosphere"
+          },
+          "addition_duration": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "was added via a syringe",
+            "raw": null
+          }
+        }
+      },
+      {
+        "op": "MicrowaveHeat",
+        "stage": "reaction",
+        "vessel": "capped microwave vial",
+        "evidence": "The resulting mixture was heated to 100°C in a microwavwe apparatus for 1 h",
+        "parameters": {
+          "temperature": {
+            "value": 100,
+            "unit": "°C",
+            "evidence": "100°C"
+          },
+          "duration": {
+            "value": 1,
+            "unit": "h",
+            "evidence": "1 h"
+          },
+          "apparatus": {
+            "value": "microwavwe apparatus",
+            "evidence": "microwavwe apparatus"
+          }
+        }
+      },
+      {
+        "op": "AnalyzeByLcms",
+        "stage": "reaction",
+        "evidence": "analyzed by LCMS. No product.",
+        "parameters": {
+          "method": {
+            "value": "LCMS",
+            "evidence": "LCMS"
+          },
+          "reported_observation": {
+            "value": "No product.",
+            "evidence": "No product."
+          }
+        }
+      }
+    ],
+    "definitions": {
+      "SyringeAddSolutionToPreloadedVial": {
+        "name": "SyringeAddSolutionToPreloadedVial",
+        "domain": "reaction",
+        "description": "Introduce a solution of two specified solutes in a specified solvent by syringe into a vial already containing three specified materials. The receiving-vessel closure and atmosphere are reported context, not instructions to establish the atmosphere or a claim about how the capped vial was accessed. Solute and preloaded-material masses and substance amounts describe the same respective material portions; solvent volume is not asserted to be total solution volume.",
+        "parameters": {
+          "solute_one": {
+            "type": "string",
+            "required": true
+          },
+          "solute_one_mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "solute_one_amount": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mmol",
+            "dimension": "amount_of_substance"
+          },
+          "solute_two": {
+            "type": "string",
+            "required": true
+          },
+          "solute_two_mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "solute_two_amount": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mmol",
+            "dimension": "amount_of_substance"
+          },
+          "solvent": {
+            "type": "string",
+            "required": true
+          },
+          "solvent_volume": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mL",
+            "dimension": "volume"
+          },
+          "delivery_device": {
+            "type": "string",
+            "required": true
+          },
+          "receiving_vessel": {
+            "type": "string",
+            "required": true
+          },
+          "preloaded_material_one": {
+            "type": "string",
+            "required": true
+          },
+          "preloaded_material_one_mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "preloaded_material_one_amount": {
+            "type": "quantity",
+            "required": true,
+            "unit": "µmol",
+            "dimension": "amount_of_substance"
+          },
+          "preloaded_material_two": {
+            "type": "string",
+            "required": true
+          },
+          "preloaded_material_two_mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "preloaded_material_two_amount": {
+            "type": "quantity",
+            "required": true,
+            "unit": "µmol",
+            "dimension": "amount_of_substance"
+          },
+          "preloaded_material_three": {
+            "type": "string",
+            "required": true
+          },
+          "preloaded_material_three_mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "preloaded_material_three_amount": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mmol",
+            "dimension": "amount_of_substance"
+          },
+          "atmosphere": {
+            "type": "string",
+            "required": true
+          },
+          "addition_duration": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "time"
+          }
+        },
+        "effects": [
+          "Introduces the specified solution into the preloaded receiving vial."
+        ],
+        "hardware_roles": [
+          "syringe delivery device",
+          "receiving microwave vial"
+        ]
+      },
+      "MicrowaveHeat": {
+        "name": "MicrowaveHeat",
+        "domain": "reaction",
+        "description": "Heat a mixture in a microwave apparatus to the reported temperature for the reported duration, without inferring microwave power, ramp time, stirring, or pressure.",
+        "parameters": {
+          "temperature": {
+            "type": "quantity",
+            "required": true,
+            "unit": "°C",
+            "dimension": "temperature"
+          },
+          "duration": {
+            "type": "quantity",
+            "required": true,
+            "unit": "h",
+            "dimension": "time"
+          },
+          "apparatus": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Subjects the reaction mixture to microwave heating under the reported temperature and duration conditions."
+        ],
+        "hardware_roles": [
+          "microwave heating apparatus",
+          "reaction vessel"
+        ]
+      },
+      "AnalyzeByLcms": {
+        "name": "AnalyzeByLcms",
+        "domain": "analysis",
+        "description": "Analyze reaction material by liquid chromatography–mass spectrometry and retain the reported observation as analytical data, not as a synthesis action or an inferred quantitative outcome. Sampling and analytical operating conditions are not specified.",
+        "parameters": {
+          "method": {
+            "type": "string",
+            "required": true
+          },
+          "reported_observation": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Records LCMS analysis and its reported observation."
+        ],
+        "hardware_roles": [
+          "liquid chromatography–mass spectrometry instrument"
+        ]
+      }
+    },
+    "uncertainties": []
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "total_tokens": 4466,
+    "completion_tokens": 2717,
+    "prompt_tokens": 1749,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1746,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 163
+    }
+  },
+  "cache_key": "b7dff05fb03cf0d8334d61ea86ba015ae7a62ce1e8b7080b0a6d476a97413654"
+}

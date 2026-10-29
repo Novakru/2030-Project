@@ -1,0 +1,863 @@
+{
+  "protocol": {
+    "id": "pos_31892db8bbd04de79164da0921726b58",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-31892db8bbd04de79164da0921726b58",
+    "raw_sha256": "560bb2750a9ee5dd7ea9d4ab4bc32160c63bc974fd1f978f93101b4f6d2c623b",
+    "source_text": "In a 40mL vial (t=g) was 5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile (88 mg, 0.38 mmol), [Reactants], and cesium carbonate (135 mg, 0.41 mmol) in DMA (0.5 mL) ([VOLUME]),Pd2(dba)3 (17.24 mg, 0.02 mmol) and (9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine) (21.79 mg, 0.04 mmol) were added.  to give a brown suspension. The vial was filled with N2,  150C microwave for 30 min. LCMS showed completion.  added DMF(3 mL), filtered through celite. concentrated. The residue was washed with EtOAc and water, MeoH to give about 55mg light brown solid  ",
+    "text_sha256": "bcee4e6d13422b99abf693f8d5188365b783b90125a63e59640c9527c47d1b53",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 88,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r002",
+        "name": "cesium carbonate",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 135,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r003",
+        "name": "DMA",
+        "smiles": null,
+        "role": "SOLVENT",
+        "amount": {
+          "value": 0.5,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r004",
+        "name": "Pd2(dba)3",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 17.24,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r005",
+        "name": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 21.79,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r006",
+        "name": "DMF",
+        "smiles": null,
+        "role": "WORKUP",
+        "amount": {
+          "value": 3,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "UseVessel",
+        "vessel": "reactor",
+        "parameters": {
+          "vessel_type": {
+            "value": "vial",
+            "evidence": "In a 40mL vial (t=g)"
+          },
+          "capacity": {
+            "value": 40,
+            "unit": "mL",
+            "evidence": "40mL"
+          }
+        },
+        "meta": {
+          "evidence": "In a 40mL vial (t=g)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s001"
+      },
+      {
+        "op": "AddMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile",
+            "evidence": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile"
+          },
+          "amount": {
+            "value": 88,
+            "unit": "mg",
+            "evidence": "88 mg"
+          },
+          "additional_amount": {
+            "value": 0.38,
+            "unit": "mmol",
+            "evidence": "0.38 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile (88 mg, 0.38 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s002"
+      },
+      {
+        "op": "AddMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "status": "ambiguous",
+            "marker": "__AMBIGUOUS__",
+            "evidence": "[Reactants]",
+            "raw": "[Reactants]"
+          },
+          "amount": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "[Reactants]",
+            "raw": null
+          }
+        },
+        "meta": {
+          "evidence": "[Reactants]",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s003"
+      },
+      {
+        "op": "AddMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "cesium carbonate",
+            "evidence": "cesium carbonate"
+          },
+          "amount": {
+            "value": 135,
+            "unit": "mg",
+            "evidence": "135 mg"
+          },
+          "additional_amount": {
+            "value": 0.41,
+            "unit": "mmol",
+            "evidence": "0.41 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "cesium carbonate (135 mg, 0.41 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s004"
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r003",
+        "amount": {
+          "value": 0.5,
+          "unit": "mL"
+        },
+        "id": "s005",
+        "meta": {
+          "evidence": "in DMA (0.5 mL)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "DMA",
+          "amount_source": "procedure_text"
+        },
+        "source_quantities": [
+          {
+            "value": 0.5,
+            "unit": "mL",
+            "quote": "0.5 mL",
+            "printed_rounding_half_unit": 0.05,
+            "source_segment": "0.5 mL"
+          }
+        ]
+      },
+      {
+        "op": "AddMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "Pd2(dba)3",
+            "evidence": "Pd2(dba)3"
+          },
+          "amount": {
+            "value": 17.24,
+            "unit": "mg",
+            "evidence": "17.24 mg"
+          },
+          "additional_amount": {
+            "value": 0.02,
+            "unit": "mmol",
+            "evidence": "0.02 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "Pd2(dba)3 (17.24 mg, 0.02 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s006"
+      },
+      {
+        "op": "AddMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)",
+            "evidence": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)"
+          },
+          "amount": {
+            "value": 21.79,
+            "unit": "mg",
+            "evidence": "21.79 mg"
+          },
+          "additional_amount": {
+            "value": 0.04,
+            "unit": "mmol",
+            "evidence": "0.04 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine) (21.79 mg, 0.04 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s007"
+      },
+      {
+        "op": "FillWithGas",
+        "vessel": "reactor",
+        "parameters": {
+          "gas": {
+            "value": "N2",
+            "evidence": "N2"
+          },
+          "duration": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "The vial was filled with N2",
+            "raw": null
+          }
+        },
+        "meta": {
+          "evidence": "The vial was filled with N2",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Atmosphere"
+        },
+        "id": "s008"
+      },
+      {
+        "op": "MicrowaveHeat",
+        "vessel": "reactor",
+        "parameters": {
+          "temperature": {
+            "value": 150,
+            "unit": "C",
+            "evidence": "150C"
+          },
+          "duration": {
+            "value": 30,
+            "unit": "min",
+            "evidence": "30 min"
+          }
+        },
+        "meta": {
+          "evidence": "150C microwave for 30 min",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "HeatChill"
+        },
+        "id": "s009"
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r006",
+        "amount": {
+          "value": 3,
+          "unit": "mL"
+        },
+        "id": "s010",
+        "meta": {
+          "evidence": "added DMF(3 mL)",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "source_alias": "DMF",
+          "amount_source": "procedure_text"
+        },
+        "source_quantities": [
+          {
+            "value": 3.0,
+            "unit": "mL",
+            "quote": "3 mL",
+            "printed_rounding_half_unit": 0.5,
+            "source_segment": "3 mL"
+          }
+        ]
+      },
+      {
+        "op": "FilterThroughMedium",
+        "vessel": "reactor",
+        "parameters": {
+          "medium": {
+            "value": "celite",
+            "evidence": "celite"
+          },
+          "retained_fraction": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "filtered through celite",
+            "raw": null
+          }
+        },
+        "meta": {
+          "evidence": "filtered through celite",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Filter"
+        },
+        "id": "s011"
+      },
+      {
+        "op": "Evaporate",
+        "id": "s012",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "concentrated",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "WashMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "material": {
+            "value": "residue",
+            "evidence": "The residue was washed with EtOAc and water, MeoH"
+          },
+          "wash_media": {
+            "value": "EtOAc and water, MeoH",
+            "evidence": "EtOAc and water, MeoH"
+          },
+          "amounts": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "The residue was washed with EtOAc and water, MeoH",
+            "raw": null
+          },
+          "wash_count": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "The residue was washed with EtOAc and water, MeoH",
+            "raw": null
+          },
+          "sequence_or_combination": {
+            "status": "ambiguous",
+            "marker": "__AMBIGUOUS__",
+            "evidence": "EtOAc and water, MeoH",
+            "raw": "EtOAc and water, MeoH"
+          }
+        },
+        "meta": {
+          "evidence": "The residue was washed with EtOAc and water, MeoH",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s013"
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {
+        "type": "NITROGEN",
+        "basis": "procedure_text"
+      },
+      "reflux": false,
+      "source_context_evidence": [],
+      "initial_material_state": "unknown_unless_reported"
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "bcee4e6d13422b99abf693f8d5188365b783b90125a63e59640c9527c47d1b53",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 1430,
+        "prompt_tokens": 860,
+        "total_tokens": 2290,
+        "prompt_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 336
+        }
+      },
+      "cache_key": "6f82422ad4f11025ee4537efeb2b95092eeea695ed90b6115181345bef67e051",
+      "unresolved": [
+        "The [Reactants] placeholder does not identify the additional reactant or its amount.",
+        "The [VOLUME] placeholder is unresolved; DMA has a separately explicit volume of 0.5 mL.",
+        "The filtration does not explicitly identify which fraction was retained.",
+        "Concentration conditions are unspecified.",
+        "The residue-washing description gives no solvent amounts, separation method, or clear grouping of the EtOAc, water, and MeoH washes."
+      ],
+      "unmapped_actions": [],
+      "uncertainties": [
+        {
+          "evidence": "(t=g)",
+          "description": "The vessel annotation is unresolved; no additional vessel property is inferred."
+        },
+        {
+          "evidence": "[Reactants]",
+          "description": "Additional reaction component identity, number of components, and amounts are unresolved."
+        },
+        {
+          "evidence": "([VOLUME])",
+          "description": "An unresolved volume placeholder follows the explicitly reported DMA volume of 0.5 mL."
+        },
+        {
+          "evidence": "to give a brown suspension",
+          "description": "Reported observation after charging, not an additional synthesis action."
+        },
+        {
+          "evidence": "LCMS showed completion.",
+          "description": "Reported analytical observation after microwave heating; sampling and analytical operating details are not reported."
+        },
+        {
+          "evidence": "filtered through celite",
+          "description": "The retained fraction and filtration apparatus are not explicitly reported."
+        },
+        {
+          "evidence": "The residue was washed with EtOAc and water, MeoH",
+          "description": "Wash quantities, counts, duration, and whether the listed media were used separately or together are not resolved."
+        },
+        {
+          "evidence": "to give about 55mg light brown solid",
+          "description": "Reported product observation: approximately 55 mg of light brown solid. This is not a charging amount or an additional isolation action."
+        }
+      ],
+      "completion": "source_grounded_extension",
+      "source_observations": []
+    },
+    "operation_definitions": {
+      "AddMaterial": {
+        "name": "AddMaterial",
+        "domain": "material handling",
+        "description": "Introduce a material into the vessel, preserving separately reported measures of the same charge. An unresolved reagent placeholder remains unresolved and does not specify a substitute.",
+        "parameters": {
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "amount": {
+            "type": "quantity",
+            "required": true
+          },
+          "additional_amount": {
+            "type": "quantity",
+            "required": false
+          }
+        },
+        "effects": [
+          "Introduces the specified material charge into the vessel."
+        ],
+        "hardware_roles": [
+          "receiving vessel",
+          "material addition equipment"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "f482f8a10e1775cc5fe419074bafd7b37c50fc77fcdc7c6102f4360b0308c5f7"
+      },
+      "FillWithGas": {
+        "name": "FillWithGas",
+        "domain": "atmosphere handling",
+        "description": "Fill the vessel with the stated gas without inferring evacuation, purge cycles, flow rate, pressure, or sealing.",
+        "parameters": {
+          "gas": {
+            "type": "string",
+            "required": true
+          },
+          "duration": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "time"
+          }
+        },
+        "effects": [
+          "Introduces gas into the vessel atmosphere."
+        ],
+        "hardware_roles": [
+          "gas supply",
+          "reaction vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "c104237b38578685ad301e667ed81b886a0a167fa1201327d0e9cd58e0f2b673"
+      },
+      "FilterThroughMedium": {
+        "name": "FilterThroughMedium",
+        "domain": "workup",
+        "description": "Pass material through the specified filtration medium. The retained fraction is left unresolved when not explicitly reported.",
+        "parameters": {
+          "medium": {
+            "type": "string",
+            "required": true
+          },
+          "retained_fraction": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Separates material by passage through a filtration medium."
+        ],
+        "hardware_roles": [
+          "filtration apparatus",
+          "filtration medium",
+          "receiving vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "a3899e767785d86b6bc7e6a06e88d0412734ef76fd2d891bb2e212999232898d"
+      },
+      "MicrowaveHeat": {
+        "name": "MicrowaveHeat",
+        "domain": "thermal processing",
+        "description": "Heat the vessel contents using microwave energy at the reported temperature for the reported duration, without inferring power, pressure, ramp, or stirring.",
+        "parameters": {
+          "temperature": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "temperature"
+          },
+          "duration": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "time"
+          }
+        },
+        "effects": [
+          "Applies microwave heating to the vessel contents."
+        ],
+        "hardware_roles": [
+          "microwave heating apparatus",
+          "reaction vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "488510cd732f9d969ec63aa12bd2cb91034baa353da2b9a35aa007a12cc4c73f"
+      },
+      "UseVessel": {
+        "name": "UseVessel",
+        "domain": "reaction",
+        "description": "Use a vessel of the stated type and capacity to contain the subsequent material charges; no closure or pressure rating is implied.",
+        "parameters": {
+          "vessel_type": {
+            "type": "string",
+            "required": true
+          },
+          "capacity": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "volume"
+          }
+        },
+        "effects": [
+          "Establishes the vessel used for subsequent operations."
+        ],
+        "hardware_roles": [
+          "reaction vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "f6a882621d237fde2fadb4d72329bfdeaed117872c28e6919f0897a5f7c98770"
+      },
+      "WashMaterial": {
+        "name": "WashMaterial",
+        "domain": "workup",
+        "description": "Wash the stated material using the listed media. Preserve their reported order without inferring separate washes, mixing, phase selection, or a separation method where the source does not resolve these details.",
+        "parameters": {
+          "material": {
+            "type": "string",
+            "required": true
+          },
+          "wash_media": {
+            "type": "string",
+            "required": true
+          },
+          "amounts": {
+            "type": "string",
+            "required": true
+          },
+          "wash_count": {
+            "type": "integer",
+            "required": true
+          },
+          "sequence_or_combination": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Contacts the material with the reported washing media."
+        ],
+        "hardware_roles": [
+          "washing vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "2f9cbb14c42d838a0e0db181f848e1ce9c37d7092e29d0d574a80b101b54e948"
+      }
+    },
+    "xdl_profile": "mosaic-xdl/1"
+  },
+  "notes": {
+    "domain": "chemistry.extended/1",
+    "findings": [
+      {
+        "code": "UNMAPPED_HEATING_METHOD",
+        "quote": "150C microwave for 30 min",
+        "message": "Temperature and duration are captured, but microwave heating is only present in evidence. Preserve this condition in unmapped_actions because HeatChill has no heating-method field.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-31892db8bbd04de79164da0921726b58",
+          "source_sha256": "5c41a96b1c6f48cbe44b3ce30891eb95e2b772f0a6cb8152eb3bcfa4861f0c69",
+          "start": 383,
+          "end": 408,
+          "quote": "150C microwave for 30 min"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "UNMAPPED_FILTRATION_MEDIUM",
+        "quote": "filtered through celite",
+        "message": "The Filter step captures filtration, but the specified Celite medium is only present in evidence. Preserve it in unmapped_actions because Filter has no filtration-medium field.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-31892db8bbd04de79164da0921726b58",
+          "source_sha256": "5c41a96b1c6f48cbe44b3ce30891eb95e2b772f0a6cb8152eb3bcfa4861f0c69",
+          "start": 452,
+          "end": 475,
+          "quote": "filtered through celite"
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "40mL vial",
+        "kind": "vial",
+        "identity": null,
+        "scope": "reaction vessel; stated 40 mL is the vial's nominal volume, not the reaction-mixture volume",
+        "evidence": {
+          "source_id": "ord-31892db8bbd04de79164da0921726b58",
+          "source_sha256": "5c41a96b1c6f48cbe44b3ce30891eb95e2b772f0a6cb8152eb3bcfa4861f0c69",
+          "start": 5,
+          "end": 14,
+          "quote": "40mL vial"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "150C microwave",
+        "kind": "microwave reactor",
+        "identity": null,
+        "scope": "microwave heating operation at stated 150 C for 30 min; model, vessel compatibility, and whether 150 C is a setpoint or measured sample temperature are not specified",
+        "evidence": {
+          "source_id": "ord-31892db8bbd04de79164da0921726b58",
+          "source_sha256": "5c41a96b1c6f48cbe44b3ce30891eb95e2b772f0a6cb8152eb3bcfa4861f0c69",
+          "start": 383,
+          "end": 397,
+          "quote": "150C microwave"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "filtered through celite",
+        "kind": "filtration separation",
+        "identity": "Celite",
+        "scope": "filtration step using Celite as the stated filtration medium; no filter hardware is specified",
+        "evidence": {
+          "source_id": "ord-31892db8bbd04de79164da0921726b58",
+          "source_sha256": "5c41a96b1c6f48cbe44b3ce30891eb95e2b772f0a6cb8152eb3bcfa4861f0c69",
+          "start": 452,
+          "end": 475,
+          "quote": "filtered through celite"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-31892db8bbd04de79164da0921726b58",
+        "source_sha256": "5c41a96b1c6f48cbe44b3ce30891eb95e2b772f0a6cb8152eb3bcfa4861f0c69",
+        "start": 25,
+        "end": 113,
+        "quote": "5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile (88 mg, 0.38 mmol)"
+      },
+      {
+        "source_id": "ord-31892db8bbd04de79164da0921726b58",
+        "source_sha256": "5c41a96b1c6f48cbe44b3ce30891eb95e2b772f0a6cb8152eb3bcfa4861f0c69",
+        "start": 132,
+        "end": 168,
+        "quote": "cesium carbonate (135 mg, 0.41 mmol)"
+      },
+      {
+        "source_id": "ord-31892db8bbd04de79164da0921726b58",
+        "source_sha256": "5c41a96b1c6f48cbe44b3ce30891eb95e2b772f0a6cb8152eb3bcfa4861f0c69",
+        "start": 169,
+        "end": 184,
+        "quote": "in DMA (0.5 mL)"
+      },
+      {
+        "source_id": "ord-31892db8bbd04de79164da0921726b58",
+        "source_sha256": "5c41a96b1c6f48cbe44b3ce30891eb95e2b772f0a6cb8152eb3bcfa4861f0c69",
+        "start": 196,
+        "end": 227,
+        "quote": "Pd2(dba)3 (17.24 mg, 0.02 mmol)"
+      },
+      {
+        "source_id": "ord-31892db8bbd04de79164da0921726b58",
+        "source_sha256": "5c41a96b1c6f48cbe44b3ce30891eb95e2b772f0a6cb8152eb3bcfa4861f0c69",
+        "start": 232,
+        "end": 311,
+        "quote": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine) (21.79 mg, 0.04 mmol)"
+      },
+      {
+        "source_id": "ord-31892db8bbd04de79164da0921726b58",
+        "source_sha256": "5c41a96b1c6f48cbe44b3ce30891eb95e2b772f0a6cb8152eb3bcfa4861f0c69",
+        "start": 353,
+        "end": 380,
+        "quote": "The vial was filled with N2"
+      },
+      {
+        "source_id": "ord-31892db8bbd04de79164da0921726b58",
+        "source_sha256": "5c41a96b1c6f48cbe44b3ce30891eb95e2b772f0a6cb8152eb3bcfa4861f0c69",
+        "start": 383,
+        "end": 408,
+        "quote": "150C microwave for 30 min"
+      },
+      {
+        "source_id": "ord-31892db8bbd04de79164da0921726b58",
+        "source_sha256": "5c41a96b1c6f48cbe44b3ce30891eb95e2b772f0a6cb8152eb3bcfa4861f0c69",
+        "start": 435,
+        "end": 450,
+        "quote": "added DMF(3 mL)"
+      },
+      {
+        "source_id": "ord-31892db8bbd04de79164da0921726b58",
+        "source_sha256": "5c41a96b1c6f48cbe44b3ce30891eb95e2b772f0a6cb8152eb3bcfa4861f0c69",
+        "start": 452,
+        "end": 475,
+        "quote": "filtered through celite"
+      },
+      {
+        "source_id": "ord-31892db8bbd04de79164da0921726b58",
+        "source_sha256": "5c41a96b1c6f48cbe44b3ce30891eb95e2b772f0a6cb8152eb3bcfa4861f0c69",
+        "start": 477,
+        "end": 489,
+        "quote": "concentrated"
+      }
+    ],
+    "repair": {
+      "accepted": true,
+      "patch": [
+        {
+          "op": "add",
+          "path": "/unmapped_actions/-",
+          "value": {
+            "evidence": "150C microwave for 30 min",
+            "reason": "Microwave heating is explicitly specified. Temperature and duration are mapped to HeatChill, but its allowed fields cannot represent the heating method."
+          }
+        },
+        {
+          "op": "add",
+          "path": "/unmapped_actions/-",
+          "value": {
+            "evidence": "filtered through celite",
+            "reason": "Filtration through Celite is explicitly specified. Filtration is mapped to Filter, but its allowed fields cannot represent the filtration medium."
+          }
+        }
+      ]
+    },
+    "apparatus_unknowns": [
+      "The microwave reactor manufacturer, model, power, pressure capability, and temperature-control basis are not specified.",
+      "The total reaction-mixture volume is not stated; DMA (0.5 mL) is a solvent addition volume, not necessarily the total volume in the 40 mL vial.",
+      "No specific filtration apparatus (for example, funnel, filter paper, cartridge, or pad dimensions) is described."
+    ],
+    "completion": {
+      "agent_called": true,
+      "attempts": 1,
+      "model": "gpt-6.1-sol",
+      "extension_operations": [
+        "AddMaterial",
+        "FillWithGas",
+        "FilterThroughMedium",
+        "MicrowaveHeat",
+        "UseVessel",
+        "WashMaterial"
+      ],
+      "expression_profile": "mosaic-xdl/1",
+      "execution_supported": false
+    }
+  },
+  "raw_id": "ord-31892db8bbd04de79164da0921726b58"
+}

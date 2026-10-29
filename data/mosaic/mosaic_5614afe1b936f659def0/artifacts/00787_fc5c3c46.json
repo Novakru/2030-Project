@@ -1,0 +1,591 @@
+{
+  "protocol": {
+    "id": "pos_2de77de369ef42f8b910f9e83130f454",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-2de77de369ef42f8b910f9e83130f454",
+    "raw_sha256": "be01237fa87922efff7e0c955b6f80e84f45e241be5aed2b17ec93d91075d144",
+    "source_text": "All chemicals were mixed in a 50 mL round bottom flask. The solids were degassed and placed under nitrogen. Toluene was added and the mixture was stirred at 100°C for 24 h. Cooled and filtered. The filtrate was concentrated under vacuum. Crude product was mainly starting material but some product had been formed. The product was purified by silica gel chromatography using 1-4% methanol/DCM. Product was slightly more polar than starting material bromide. There was obtained 230 mg of the desired product as a solid. HNMR and LC MS ok.  ",
+    "text_sha256": "a584f95347ff5c1017f9847eb0b1783326db6e18f1dc045c59bfb3cd44b95864",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "Toluene",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": null,
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "MixMaterials",
+        "vessel": "reactor",
+        "parameters": {
+          "materials": {
+            "value": "All chemicals",
+            "evidence": "All chemicals were mixed in a 50 mL round bottom flask."
+          },
+          "vessel_type": {
+            "value": "round bottom flask",
+            "evidence": "50 mL round bottom flask"
+          },
+          "vessel_capacity": {
+            "value": 50,
+            "unit": "mL",
+            "evidence": "50 mL round bottom flask"
+          },
+          "mixing_method": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "All chemicals were mixed in a 50 mL round bottom flask.",
+            "raw": null
+          }
+        },
+        "meta": {
+          "evidence": "All chemicals were mixed in a 50 mL round bottom flask.",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Stir"
+        },
+        "id": "s001"
+      },
+      {
+        "op": "Degas",
+        "vessel": "reactor",
+        "parameters": {
+          "material": {
+            "value": "The solids",
+            "evidence": "The solids were degassed"
+          },
+          "method": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "The solids were degassed",
+            "raw": null
+          },
+          "duration": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "The solids were degassed",
+            "raw": null
+          }
+        },
+        "meta": {
+          "evidence": "The solids were degassed",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s002"
+      },
+      {
+        "op": "EstablishGasAtmosphere",
+        "vessel": "reactor",
+        "parameters": {
+          "gas": {
+            "value": "nitrogen",
+            "evidence": "placed under nitrogen"
+          },
+          "method": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "placed under nitrogen",
+            "raw": null
+          }
+        },
+        "meta": {
+          "evidence": "placed under nitrogen",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Atmosphere"
+        },
+        "id": "s003"
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r001",
+        "id": "s004",
+        "meta": {
+          "evidence": "Toluene was added",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "Toluene",
+          "amount_source": "unknown"
+        },
+        "missing_parameters": {
+          "amount": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "Toluene was added",
+            "raw": null
+          }
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 100,
+        "duration_s": 86400,
+        "stir": true,
+        "id": "s005",
+        "meta": {
+          "evidence": "the mixture was stirred at 100°C for 24 h.",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "id": "s006",
+        "meta": {
+          "evidence": "Cooled",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        },
+        "missing_parameters": {
+          "temp_C": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "Cooled",
+            "raw": null
+          }
+        }
+      },
+      {
+        "op": "Filter",
+        "keep": "filtrate",
+        "id": "s007",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "filtered. The filtrate was concentrated under vacuum.",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "VacuumConcentrate",
+        "vessel": "reactor",
+        "parameters": {
+          "material": {
+            "value": "The filtrate",
+            "evidence": "The filtrate was concentrated under vacuum."
+          },
+          "pressure_condition": {
+            "value": "under vacuum",
+            "evidence": "The filtrate was concentrated under vacuum."
+          },
+          "pressure": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "The filtrate was concentrated under vacuum.",
+            "raw": null
+          }
+        },
+        "meta": {
+          "evidence": "The filtrate was concentrated under vacuum.",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Evaporate"
+        },
+        "id": "s008"
+      },
+      {
+        "op": "ChromatographicPurification",
+        "parameters": {
+          "material": {
+            "value": "The product",
+            "evidence": "The product was purified by silica gel chromatography using 1-4% methanol/DCM."
+          },
+          "method": {
+            "value": "chromatography",
+            "evidence": "silica gel chromatography"
+          },
+          "stationary_phase": {
+            "value": "silica gel",
+            "evidence": "silica gel chromatography"
+          },
+          "eluent": {
+            "value": "1-4% methanol/DCM",
+            "evidence": "using 1-4% methanol/DCM"
+          }
+        },
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The product was purified by silica gel chromatography using 1-4% methanol/DCM.",
+          "stage": "purification",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Purify"
+        },
+        "id": "s009"
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {
+        "type": "NITROGEN",
+        "basis": "procedure_text"
+      },
+      "reflux": false,
+      "source_context_evidence": [],
+      "initial_material_state": "unknown_unless_reported"
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "a584f95347ff5c1017f9847eb0b1783326db6e18f1dc045c59bfb3cd44b95864",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "prompt_tokens": 763,
+        "completion_tokens": 722,
+        "total_tokens": 1485,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 145
+        }
+      },
+      "cache_key": "245395d91ad1c793992455c4cc8884877109fd47921651902d4340a97077e8d6",
+      "unresolved": [
+        "The identities, quantities, and individual additions of the initially mixed chemicals are not specified.",
+        "The degassing method and duration are not specified.",
+        "The amount of Toluene added is not specified.",
+        "The cooling target temperature and duration are not specified.",
+        "The vacuum pressure, temperature, and duration of concentration are not specified.",
+        "Chromatography specifies silica gel and 1-4% methanol/DCM, but no solvent amounts or percentage basis.",
+        "s001: duration unspecified",
+        "s003: addition amount unspecified",
+        "s005: temperature unspecified"
+      ],
+      "unmapped_actions": [],
+      "uncertainties": [
+        "The identities and amounts of the initially mixed chemicals are not reported.",
+        "The amount of Toluene is not reported.",
+        "The cooling endpoint and duration are not reported.",
+        "The percentage basis and elution schedule for 1-4% methanol/DCM are not reported.",
+        "The reported crude composition, relative polarity, 230 mg solid product recovery, and HNMR and LC MS assessments are observations, not additional synthesis actions."
+      ],
+      "completion": "source_grounded_extension",
+      "source_observations": []
+    },
+    "operation_definitions": {
+      "ChromatographicPurification": {
+        "name": "ChromatographicPurification",
+        "domain": "purification",
+        "description": "Purify material chromatographically using the stated stationary phase and eluent composition, without assuming column dimensions, elution volume, or gradient scheduling.",
+        "parameters": {
+          "material": {
+            "type": "string",
+            "required": true
+          },
+          "method": {
+            "type": "string",
+            "required": true
+          },
+          "stationary_phase": {
+            "type": "string",
+            "required": true
+          },
+          "eluent": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Material is subjected to chromatographic separation."
+        ],
+        "hardware_roles": [
+          "chromatography apparatus"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "a43f0aa1d465f4565c67608529b403287df0c5a09c2f9c1dd94d615e6b7ea702"
+      },
+      "Degas": {
+        "name": "Degas",
+        "domain": "reaction",
+        "description": "Remove gas from the stated material without assuming a degassing technique or operating conditions.",
+        "parameters": {
+          "material": {
+            "type": "string",
+            "required": true
+          },
+          "method": {
+            "type": "string",
+            "required": true
+          },
+          "duration": {
+            "type": "quantity",
+            "required": true,
+            "unit": "s",
+            "dimension": "time"
+          }
+        },
+        "effects": [
+          "Gas is removed from the stated material."
+        ],
+        "hardware_roles": [
+          "material-containing vessel",
+          "degassing apparatus"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "213617980f77229337975a0a2c495b5a3192b0580a3334844ce93eda5168d4d1"
+      },
+      "EstablishGasAtmosphere": {
+        "name": "EstablishGasAtmosphere",
+        "domain": "reaction",
+        "description": "Place the vessel contents under the stated gas atmosphere without assuming purging, evacuation cycles, or a gas-delivery arrangement.",
+        "parameters": {
+          "gas": {
+            "type": "string",
+            "required": true
+          },
+          "method": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "The contents are placed under the stated gas atmosphere."
+        ],
+        "hardware_roles": [
+          "reaction vessel",
+          "gas supply"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "ee813983bcd9b23ad6cc5c83d3943580511f3ca2597a2eafcef8a89444e273a5"
+      },
+      "MixMaterials": {
+        "name": "MixMaterials",
+        "domain": "reaction",
+        "description": "Physically mix the stated materials in the specified vessel without assuming a stirring mechanism.",
+        "parameters": {
+          "materials": {
+            "type": "string",
+            "required": true
+          },
+          "vessel_type": {
+            "type": "string",
+            "required": true
+          },
+          "vessel_capacity": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mL",
+            "dimension": "volume"
+          },
+          "mixing_method": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Materials are physically mixed in the stated vessel."
+        ],
+        "hardware_roles": [
+          "mixing vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "ee6266d53b8a61a1e6de0483ac57feac7bd747a7065c711da0df1d1d4e9ceb54"
+      },
+      "VacuumConcentrate": {
+        "name": "VacuumConcentrate",
+        "domain": "workup",
+        "description": "Concentrate the stated material by removing volatile components under vacuum without assuming complete dryness or a particular apparatus.",
+        "parameters": {
+          "material": {
+            "type": "string",
+            "required": true
+          },
+          "pressure_condition": {
+            "type": "string",
+            "required": true
+          },
+          "pressure": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mbar",
+            "dimension": "pressure"
+          }
+        },
+        "effects": [
+          "Volatile material is removed under vacuum to concentrate the retained material."
+        ],
+        "hardware_roles": [
+          "concentration vessel",
+          "vacuum source"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "3e053733ab25d3a4ce55c122ca074c0d0a1ff4fbfd7ee759e81e46b204a8d024"
+      }
+    },
+    "xdl_profile": "mosaic-xdl/1"
+  },
+  "notes": {
+    "domain": "chemistry.extended/1",
+    "findings": [],
+    "apparatus_proposals": [
+      {
+        "quote": "50 mL round bottom flask",
+        "kind": "vessel",
+        "identity": "round-bottom flask",
+        "scope": "50 mL flask capacity; reaction mixture vessel",
+        "evidence": {
+          "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+          "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+          "start": 30,
+          "end": 54,
+          "quote": "50 mL round bottom flask"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "filtered",
+        "kind": "separation_apparatus",
+        "identity": "filtration apparatus",
+        "scope": "used after cooling; apparatus type not specified",
+        "evidence": {
+          "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+          "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+          "start": 184,
+          "end": 192,
+          "quote": "filtered"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "concentrated under vacuum",
+        "kind": "separation_apparatus",
+        "identity": "vacuum concentration apparatus",
+        "scope": "used to concentrate the filtrate; apparatus type not specified",
+        "evidence": {
+          "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+          "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+          "start": 211,
+          "end": 236,
+          "quote": "concentrated under vacuum"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "silica gel chromatography",
+        "kind": "separation_apparatus",
+        "identity": "silica gel chromatography apparatus",
+        "scope": "purification using 1-4% methanol/DCM",
+        "evidence": {
+          "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+          "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+          "start": 343,
+          "end": 368,
+          "quote": "silica gel chromatography"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+        "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+        "start": 0,
+        "end": 55,
+        "quote": "All chemicals were mixed in a 50 mL round bottom flask."
+      },
+      {
+        "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+        "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+        "start": 85,
+        "end": 106,
+        "quote": "placed under nitrogen"
+      },
+      {
+        "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+        "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+        "start": 108,
+        "end": 125,
+        "quote": "Toluene was added"
+      },
+      {
+        "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+        "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+        "start": 130,
+        "end": 172,
+        "quote": "the mixture was stirred at 100°C for 24 h."
+      },
+      {
+        "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+        "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+        "start": 173,
+        "end": 179,
+        "quote": "Cooled"
+      },
+      {
+        "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+        "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+        "start": 184,
+        "end": 237,
+        "quote": "filtered. The filtrate was concentrated under vacuum."
+      },
+      {
+        "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+        "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+        "start": 194,
+        "end": 237,
+        "quote": "The filtrate was concentrated under vacuum."
+      },
+      {
+        "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+        "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+        "start": 315,
+        "end": 393,
+        "quote": "The product was purified by silica gel chromatography using 1-4% methanol/DCM."
+      }
+    ],
+    "repair": {
+      "accepted": false,
+      "patch": []
+    },
+    "apparatus_unknowns": [
+      "The nitrogen delivery or inert-atmosphere apparatus is not specified.",
+      "The stirring device and heating apparatus are not specified; 100°C is the stated mixture temperature, not a heater setpoint.",
+      "The filtration setup is not specified.",
+      "The vacuum concentration setup is not specified.",
+      "The chromatography format and column dimensions are not specified."
+    ],
+    "completion": {
+      "agent_called": true,
+      "attempts": 1,
+      "model": "gpt-6.1-sol",
+      "extension_operations": [
+        "ChromatographicPurification",
+        "Degas",
+        "EstablishGasAtmosphere",
+        "MixMaterials",
+        "VacuumConcentrate"
+      ],
+      "expression_profile": "mosaic-xdl/1",
+      "execution_supported": false
+    }
+  },
+  "raw_id": "ord-2de77de369ef42f8b910f9e83130f454"
+}

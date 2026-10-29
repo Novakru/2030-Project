@@ -1,0 +1,368 @@
+{
+  "id": "mosaic_pos_caf291debc6d17dfafc1",
+  "source": {
+    "dataset_id": "ord_dataset-89b083710e2d441aa0040c361d63359f",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-89b083710e2d441aa0040c361d63359f.parquet",
+    "file_sha256": "a5ecfacfb95aba7398314bab3fd724950f181955b9ff42572a998a2a9e6be9d4",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": "https://science.sciencemag.org/content/345/6195/437",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/89/ord_dataset-89b083710e2d441aa0040c361d63359f.parquet"
+  },
+  "raw_id": "ord-0b453c3805b0490c9fffb6fb51128e7a",
+  "raw_sha256": "afa80de53584324ed467887f30f75149a091b7291ce82a3d29bf916b23481b07",
+  "source_text": "Prior to irradiation, the reaction mixture was degassed by bubbling argon for 20 minutes",
+  "text_sha256": "6dc9f478bbee96680b874d92bfea4334a580c0aaf0ad1512b4da259298e073e4",
+  "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+  "reagents": [],
+  "steps": [
+    {
+      "op": "Atmosphere",
+      "vessel": "reactor",
+      "gas": "argon",
+      "mode": "purge",
+      "duration_s": 1200,
+      "id": "s001",
+      "meta": {
+        "evidence": "the reaction mixture was degassed by bubbling argon for 20 minutes",
+        "stage": "reaction",
+        "source_contract": "text-only/1"
+      }
+    },
+    {
+      "op": "Irradiate",
+      "vessel": "reactor",
+      "id": "s002",
+      "meta": {
+        "evidence": "irradiation",
+        "stage": "reaction",
+        "source_contract": "text-only/1"
+      },
+      "missing_parameters": {
+        "duration_s": {
+          "status": "not_reported",
+          "marker": "__NOT_REPORTED__",
+          "evidence": "irradiation",
+          "raw": null
+        }
+      }
+    }
+  ],
+  "context": {
+    "pressure_control": "UNKNOWN",
+    "atmosphere": {
+      "type": "ARGON",
+      "basis": "procedure_text"
+    },
+    "reflux": false,
+    "source_context_evidence": [],
+    "initial_material_state": "unknown_unless_reported",
+    "source_context_events": []
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "input_contract": "text-only/1",
+    "procedure_sha256": "6dc9f478bbee96680b874d92bfea4334a580c0aaf0ad1512b4da259298e073e4",
+    "model": "gpt-6.1-sol",
+    "usage": {
+      "prompt_tokens": 658,
+      "total_tokens": 875,
+      "completion_tokens": 217,
+      "prompt_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 108
+      }
+    },
+    "cache_key": "7971c8b1222fa06282cdf4335f17e08570c00c7379068eb03beaea52c7c827f0",
+    "unresolved": [
+      "Irradiation is referenced, but its duration and wavelength are not specified.",
+      "s002: duration unspecified"
+    ],
+    "unmapped_actions": [],
+    "source_observations": [],
+    "analytical_observations": []
+  },
+  "xdl_profile": "mosaic-xdl/1",
+  "operation_definitions": {},
+  "reference_metadata": {
+    "reaction_smiles": "CC(C)(C)OC(=O)NC(CCC(=O)Oc1ccccc1)C(=O)O.[Br]C1=CC=C(C(C)=O)C=C1>>CC(=O)C1=CC=C(C(CCC(=O)Oc2ccccc2)NC(=O)OC(C)(C)C)C=C1",
+    "reaction_class": "decarboxylative sp3–sp2 cross-coupling",
+    "yield_percent": 77.0,
+    "yield_evidence": {
+      "measurements": [
+        {
+          "analysis_key": "weight",
+          "percentage": 77.0,
+          "source_path": "/outcomes/0/products/0/measurements/4",
+          "valid": true
+        }
+      ],
+      "policy": "unique_target_unique_percentage_v1",
+      "selection": "explicit_desired_product",
+      "status": "selected",
+      "target_count": 1,
+      "target_source_path": "/outcomes/0/products/0"
+    },
+    "authority": "reference_only_not_process_input"
+  },
+  "hardware": {
+    "config_id": "source_aware_provisional_v2",
+    "nodes": {
+      "reactor": {
+        "id": "chemputer_reactor_template",
+        "category": "vessel",
+        "params": {
+          "capacity_mL": null,
+          "T_min_C": null,
+          "T_max_C": null,
+          "pressure_max_bar": null
+        },
+        "wetted_materials": null,
+        "ports": [
+          "top",
+          "bottom",
+          "gas",
+          "jacket"
+        ],
+        "source_url": "https://croningroup.gitlab.io/chemputer/xdl/standard/full_steps_specification.html",
+        "verified": false,
+        "verification": {
+          "status": "template_only",
+          "human_verified": false
+        },
+        "binding_basis": "unresolved_source_apparatus"
+      },
+      "heater": {
+        "id": "ika_rct_basic_25008259",
+        "category": "heater_stirrer",
+        "params": {
+          "T_min_C": null,
+          "T_max_C": 310,
+          "rpm_min": 50,
+          "rpm_max": 1500
+        },
+        "parameter_scope": "Heating-plate setpoint maximum, not guaranteed liquid temperature; minimum depends on ambient/self-heating.",
+        "wetted_materials": [],
+        "ports": [],
+        "source_url": "https://www.ika.com/en/Products-LabEq/Magnetic-Stirrers-pg188/RCT-basic-25008259/Technical-Data-cptd.html",
+        "verified": false,
+        "verification": {
+          "status": "source_reviewed",
+          "human_verified": false
+        },
+        "binding_basis": "proposed_analysis_configuration",
+        "note": "Proposed analysis controller; source does not identify this model as the original equipment."
+      },
+      "light": {
+        "id": "chemputer_light_template",
+        "category": "light_source",
+        "params": {
+          "wavelength_min_nm": null,
+          "wavelength_max_nm": null,
+          "power_max_W": null
+        },
+        "wetted_materials": [],
+        "ports": [],
+        "source_url": "https://croningroup.gitlab.io/chemputer/xdl/standard/full_steps_specification.html#irradiate",
+        "verified": false,
+        "verification": {
+          "status": "template_only",
+          "human_verified": false
+        }
+      }
+    },
+    "edges": [
+      [
+        "reactor",
+        "heater"
+      ],
+      [
+        "reactor",
+        "light"
+      ]
+    ],
+    "bindings": {
+      "heater": "heater"
+    },
+    "estimated_liquid_lower_bound_mL": 0,
+    "verification_status": "human_review_pending",
+    "source_issues": [],
+    "binding_scope": "Source-reported vessels; unspecified automation remains a proposed analysis configuration. Edges are provisional.",
+    "inventory_scope": "Sum of stated Add volumes, not peak vessel occupancy or inferred solvent volume."
+  },
+  "crosscheck": {
+    "checks": {
+      "text_only_extraction": true,
+      "literal_steps_grounded": true,
+      "amount_comparison_is_independent": false
+    },
+    "quantity_checks": [],
+    "conflicts": [],
+    "missing": [
+      "independent_quantity_evidence_incomplete",
+      "Irradiation is referenced, but its duration and wavelength are not specified.",
+      "s002: duration unspecified"
+    ],
+    "reference_comparison": {
+      "authority": "comparison_only_never_process_input",
+      "checks": {},
+      "component_checks": [
+        {
+          "reference_id": "r1",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        },
+        {
+          "reference_id": "r2",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        },
+        {
+          "reference_id": "r3",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        },
+        {
+          "reference_id": "r4",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        },
+        {
+          "reference_id": "r5",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        },
+        {
+          "reference_id": "r6",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        },
+        {
+          "reference_id": "r7",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        }
+      ],
+      "conflicts": [],
+      "missing": [
+        "reference_temperature_not_comparable",
+        "reference_duration_not_comparable"
+      ]
+    },
+    "tier": "silver",
+    "gold_blockers": [
+      "independent_quantity_review_pending",
+      "hardware_human_verification_pending",
+      "manual_protocol_review_pending"
+    ]
+  },
+  "xdl": "<Synthesis xmlns:mx=\"urn:mosaic:xdl:extensions:1\" mx:profile=\"mosaic-xdl/1\">\n  <Metadata description=\"Source-grounded extended XDL representation; hardware execution is not certified.\">\n    <mx:Data>\n      <mx:Object>\n        <mx:Field name=\"context\">\n          <mx:Object>\n            <mx:Field name=\"atmosphere\">\n              <mx:Object>\n                <mx:Field name=\"basis\">\n                  <mx:String>procedure_text</mx:String>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>ARGON</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"initial_material_state\">\n              <mx:String>unknown_unless_reported</mx:String>\n            </mx:Field>\n            <mx:Field name=\"pressure_control\">\n              <mx:String>UNKNOWN</mx:String>\n            </mx:Field>\n            <mx:Field name=\"reflux\">\n              <mx:Boolean>false</mx:Boolean>\n            </mx:Field>\n            <mx:Field name=\"source_context_events\">\n              <mx:Array/>\n            </mx:Field>\n            <mx:Field name=\"source_context_evidence\">\n              <mx:Array/>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"representation_scope\">\n          <mx:String>supplied_text_operations; source experimental completeness is not independently certified</mx:String>\n        </mx:Field>\n        <mx:Field name=\"source_text\">\n          <mx:String>Prior to irradiation, the reaction mixture was degassed by bubbling argon for 20 minutes</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Data>\n  </Metadata>\n  <Hardware>\n    <mx:Data>\n      <mx:Object>\n        <mx:Field name=\"binding_scope\">\n          <mx:String>Source-reported vessels; unspecified automation remains a proposed analysis configuration. Edges are provisional.</mx:String>\n        </mx:Field>\n        <mx:Field name=\"bindings\">\n          <mx:Object>\n            <mx:Field name=\"heater\">\n              <mx:String>heater</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"config_id\">\n          <mx:String>source_aware_provisional_v2</mx:String>\n        </mx:Field>\n        <mx:Field name=\"edges\">\n          <mx:Array>\n            <mx:Item>\n              <mx:Array>\n                <mx:Item>\n                  <mx:String>reactor</mx:String>\n                </mx:Item>\n                <mx:Item>\n                  <mx:String>heater</mx:String>\n                </mx:Item>\n              </mx:Array>\n            </mx:Item>\n            <mx:Item>\n              <mx:Array>\n                <mx:Item>\n                  <mx:String>reactor</mx:String>\n                </mx:Item>\n                <mx:Item>\n                  <mx:String>light</mx:String>\n                </mx:Item>\n              </mx:Array>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"estimated_liquid_lower_bound_mL\">\n          <mx:Number>0</mx:Number>\n        </mx:Field>\n        <mx:Field name=\"inventory_scope\">\n          <mx:String>Sum of stated Add volumes, not peak vessel occupancy or inferred solvent volume.</mx:String>\n        </mx:Field>\n        <mx:Field name=\"nodes\">\n          <mx:Object>\n            <mx:Field name=\"heater\">\n              <mx:Object>\n                <mx:Field name=\"binding_basis\">\n                  <mx:String>proposed_analysis_configuration</mx:String>\n                </mx:Field>\n                <mx:Field name=\"category\">\n                  <mx:String>heater_stirrer</mx:String>\n                </mx:Field>\n                <mx:Field name=\"id\">\n                  <mx:String>ika_rct_basic_25008259</mx:String>\n                </mx:Field>\n                <mx:Field name=\"note\">\n                  <mx:String>Proposed analysis controller; source does not identify this model as the original equipment.</mx:String>\n                </mx:Field>\n                <mx:Field name=\"parameter_scope\">\n                  <mx:String>Heating-plate setpoint maximum, not guaranteed liquid temperature; minimum depends on ambient/self-heating.</mx:String>\n                </mx:Field>\n                <mx:Field name=\"params\">\n                  <mx:Object>\n                    <mx:Field name=\"T_max_C\">\n                      <mx:Number>310</mx:Number>\n                    </mx:Field>\n                    <mx:Field name=\"T_min_C\">\n                      <mx:Null/>\n                    </mx:Field>\n                    <mx:Field name=\"rpm_max\">\n                      <mx:Number>1500</mx:Number>\n                    </mx:Field>\n                    <mx:Field name=\"rpm_min\">\n                      <mx:Number>50</mx:Number>\n                    </mx:Field>\n                  </mx:Object>\n                </mx:Field>\n                <mx:Field name=\"ports\">\n                  <mx:Array/>\n                </mx:Field>\n                <mx:Field name=\"source_url\">\n                  <mx:String>https://www.ika.com/en/Products-LabEq/Magnetic-Stirrers-pg188/RCT-basic-25008259/Technical-Data-cptd.html</mx:String>\n                </mx:Field>\n                <mx:Field name=\"verification\">\n                  <mx:Object>\n                    <mx:Field name=\"human_verified\">\n                      <mx:Boolean>false</mx:Boolean>\n                    </mx:Field>\n                    <mx:Field name=\"status\">\n                      <mx:String>source_reviewed</mx:String>\n                    </mx:Field>\n                  </mx:Object>\n                </mx:Field>\n                <mx:Field name=\"verified\">\n                  <mx:Boolean>false</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"wetted_materials\">\n                  <mx:Array/>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"light\">\n              <mx:Object>\n                <mx:Field name=\"category\">\n                  <mx:String>light_source</mx:String>\n                </mx:Field>\n                <mx:Field name=\"id\">\n                  <mx:String>chemputer_light_template</mx:String>\n                </mx:Field>\n                <mx:Field name=\"params\">\n                  <mx:Object>\n                    <mx:Field name=\"power_max_W\">\n                      <mx:Null/>\n                    </mx:Field>\n                    <mx:Field name=\"wavelength_max_nm\">\n                      <mx:Null/>\n                    </mx:Field>\n                    <mx:Field name=\"wavelength_min_nm\">\n                      <mx:Null/>\n                    </mx:Field>\n                  </mx:Object>\n                </mx:Field>\n                <mx:Field name=\"ports\">\n                  <mx:Array/>\n                </mx:Field>\n                <mx:Field name=\"source_url\">\n                  <mx:String>https://croningroup.gitlab.io/chemputer/xdl/standard/full_steps_specification.html#irradiate</mx:String>\n                </mx:Field>\n                <mx:Field name=\"verification\">\n                  <mx:Object>\n                    <mx:Field name=\"human_verified\">\n                      <mx:Boolean>false</mx:Boolean>\n                    </mx:Field>\n                    <mx:Field name=\"status\">\n                      <mx:String>template_only</mx:String>\n                    </mx:Field>\n                  </mx:Object>\n                </mx:Field>\n                <mx:Field name=\"verified\">\n                  <mx:Boolean>false</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"wetted_materials\">\n                  <mx:Array/>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"reactor\">\n              <mx:Object>\n                <mx:Field name=\"binding_basis\">\n                  <mx:String>unresolved_source_apparatus</mx:String>\n                </mx:Field>\n                <mx:Field name=\"category\">\n                  <mx:String>vessel</mx:String>\n                </mx:Field>\n                <mx:Field name=\"id\">\n                  <mx:String>chemputer_reactor_template</mx:String>\n                </mx:Field>\n                <mx:Field name=\"params\">\n                  <mx:Object>\n                    <mx:Field name=\"T_max_C\">\n                      <mx:Null/>\n                    </mx:Field>\n                    <mx:Field name=\"T_min_C\">\n                      <mx:Null/>\n                    </mx:Field>\n                    <mx:Field name=\"capacity_mL\">\n                      <mx:Null/>\n                    </mx:Field>\n                    <mx:Field name=\"pressure_max_bar\">\n                      <mx:Null/>\n                    </mx:Field>\n                  </mx:Object>\n                </mx:Field>\n                <mx:Field name=\"ports\">\n                  <mx:Array>\n                    <mx:Item>\n                      <mx:String>top</mx:String>\n                    </mx:Item>\n                    <mx:Item>\n                      <mx:String>bottom</mx:String>\n                    </mx:Item>\n                    <mx:Item>\n                      <mx:String>gas</mx:String>\n                    </mx:Item>\n                    <mx:Item>\n                      <mx:String>jacket</mx:String>\n                    </mx:Item>\n                  </mx:Array>\n                </mx:Field>\n                <mx:Field name=\"source_url\">\n                  <mx:String>https://croningroup.gitlab.io/chemputer/xdl/standard/full_steps_specification.html</mx:String>\n                </mx:Field>\n                <mx:Field name=\"verification\">\n                  <mx:Object>\n                    <mx:Field name=\"human_verified\">\n                      <mx:Boolean>false</mx:Boolean>\n                    </mx:Field>\n                    <mx:Field name=\"status\">\n                      <mx:String>template_only</mx:String>\n                    </mx:Field>\n                  </mx:Object>\n                </mx:Field>\n                <mx:Field name=\"verified\">\n                  <mx:Boolean>false</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"wetted_materials\">\n                  <mx:Null/>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"source_issues\">\n          <mx:Array/>\n        </mx:Field>\n        <mx:Field name=\"verification_status\">\n          <mx:String>human_review_pending</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Data>\n  </Hardware>\n  <Reagents>\n    <mx:Data>\n      <mx:Array/>\n    </mx:Data>\n  </Reagents>\n  <mx:OperationDefinitions/>\n  <Procedure>\n    <mx:Step operation=\"Atmosphere\" id=\"s001\">\n      <mx:Object>\n        <mx:Field name=\"duration_s\">\n          <mx:Number>1200</mx:Number>\n        </mx:Field>\n        <mx:Field name=\"gas\">\n          <mx:String>argon</mx:String>\n        </mx:Field>\n        <mx:Field name=\"id\">\n          <mx:String>s001</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>the reaction mixture was degassed by bubbling argon for 20 minutes</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"mode\">\n          <mx:String>purge</mx:String>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>Atmosphere</mx:String>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"Irradiate\" id=\"s002\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s002</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>irradiation</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"missing_parameters\">\n          <mx:Object>\n            <mx:Field name=\"duration_s\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>irradiation</mx:String>\n                </mx:Field>\n                <mx:Field name=\"marker\">\n                  <mx:String>__NOT_REPORTED__</mx:String>\n                </mx:Field>\n                <mx:Field name=\"raw\">\n                  <mx:Null/>\n                </mx:Field>\n                <mx:Field name=\"status\">\n                  <mx:String>not_reported</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>Irradiate</mx:String>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n  </Procedure>\n</Synthesis>\n",
+  "canonical_sha1": "a912255936f0cbd5e531640df80cd2de7abc6479",
+  "quality": {
+    "tier": "silver",
+    "source_grounded": true,
+    "source_input_contract": "text-only/1",
+    "outcome_annotation_scope": "reference_metadata_only",
+    "xdl_profile": "mosaic-xdl/1",
+    "xdl_profile_schema_passed": true,
+    "official_platform_compiled": false,
+    "symbolic_violations": [],
+    "unknown_constraints": [
+      {
+        "rule": "initial_state",
+        "reason": "initial_material_state_not_reported"
+      },
+      {
+        "rule": "A1",
+        "step": 0,
+        "reason": "unverified_or_missing_capacity"
+      },
+      {
+        "rule": "source_parameter",
+        "step": 1,
+        "step_id": "s002",
+        "parameter": "duration_s",
+        "reason": "missing_source_parameter",
+        "status": "not_reported"
+      },
+      {
+        "rule": "A1",
+        "step": 1,
+        "reason": "unverified_or_missing_capacity"
+      }
+    ],
+    "manual_review": "pending",
+    "hardware_verification": "pending",
+    "full_feasibility_certified": false,
+    "representation_complete": true,
+    "parameters_complete": false,
+    "missing_parameters": [
+      {
+        "step_id": "s002",
+        "parameter": "duration_s",
+        "status": "not_reported",
+        "marker": "__NOT_REPORTED__",
+        "evidence": "irradiation",
+        "raw": null
+      }
+    ],
+    "execution_ready": false,
+    "conversion_status": "represented_with_missing_parameters",
+    "extension_operations": [],
+    "risk_assessment_scope": "Implemented rules only; unknown parameters and extension effects produce abstentions."
+  },
+  "mosaic": {
+    "schema": "mosaic.ir/2",
+    "run_id": "mosaic_5614afe1b936f659def0",
+    "domain": "chemistry.extended/1",
+    "findings": [
+      {
+        "code": "GAS_INTRODUCTION_MODE",
+        "quote": "degassed by bubbling argon for 20 minutes",
+        "message": "The source specifies bubbling argon through the reaction mixture. The generic mode 'purge' does not preserve this explicit physical action.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-0b453c3805b0490c9fffb6fb51128e7a",
+          "source_sha256": "65789bfd92176816edee716b9c8ef669cd25359faf3819a5a5315f5186c6e096",
+          "start": 47,
+          "end": 88,
+          "quote": "degassed by bubbling argon for 20 minutes"
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [],
+    "evidence_spans": [
+      {
+        "source_id": "ord-0b453c3805b0490c9fffb6fb51128e7a",
+        "source_sha256": "65789bfd92176816edee716b9c8ef669cd25359faf3819a5a5315f5186c6e096",
+        "start": 22,
+        "end": 88,
+        "quote": "the reaction mixture was degassed by bubbling argon for 20 minutes"
+      },
+      {
+        "source_id": "ord-0b453c3805b0490c9fffb6fb51128e7a",
+        "source_sha256": "65789bfd92176816edee716b9c8ef669cd25359faf3819a5a5315f5186c6e096",
+        "start": 9,
+        "end": 20,
+        "quote": "irradiation"
+      }
+    ],
+    "repair": {
+      "accepted": false,
+      "errors": [
+        "step 0: unsupported atmosphere mode"
+      ]
+    },
+    "apparatus_unknowns": [],
+    "completion": {
+      "agent_called": false,
+      "attempts": 0,
+      "extension_operations": []
+    }
+  },
+  "split_group": "acyclic_product:"
+}

@@ -1,0 +1,59 @@
+{
+  "data": {
+    "proposals": [
+      {
+        "risk": "dispensing-volume error",
+        "patch": [
+          {
+            "op": "replace",
+            "path": "/steps/1/parameters/addition_volume",
+            "value": {
+              "value": 80,
+              "unit": "µL",
+              "evidence": "80 µL per well"
+            }
+          }
+        ],
+        "rationale": "Hypothesis: applying the source-plate per-well volume during 1536-well dispensing could overload assay wells and compromise downstream readout."
+      },
+      {
+        "risk": "plate-routing error",
+        "patch": [
+          {
+            "op": "replace",
+            "path": "/steps/1/parameters/destination_plate",
+            "value": {
+              "value": "384-\nwell source plate",
+              "evidence": "384-\nwell source plate"
+            }
+          }
+        ],
+        "rationale": "Hypothesis: routing the nanoliter dosing operation to the source plate rather than the 1536-well destination could prevent intended assay-plate assembly."
+      },
+      {
+        "risk": "automation-loss",
+        "patch": [
+          {
+            "op": "remove",
+            "path": "/steps/1/parameters/liquid_handler"
+          }
+        ],
+        "rationale": "Hypothesis: absence of the specified Mosquito HTS liquid handler could reduce the reliability of 200 nL dispensing into the 1536-well plate."
+      }
+    ]
+  },
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "completion_tokens": 686,
+    "prompt_tokens": 1094,
+    "total_tokens": 1780,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 1091,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 451
+    }
+  },
+  "cache_key": "48a8968eabdc77eeb9479e16d12a3ac44e1e62f2ece9c791d8b974592a8ef75c"
+}

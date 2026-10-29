@@ -491,6 +491,7 @@ def main():
     h4 { font-size: 1.05rem !important; }
     [data-testid="stCaptionContainer"], [data-testid="stCaptionContainer"] p { color: #52645c; }
     code { overflow-wrap: anywhere; }
+    [data-testid="stTextArea"] textarea:disabled { -webkit-text-fill-color: #263b34 !important; color: #263b34 !important; opacity: 1 !important; }
     :focus-visible { outline: 2px solid #216858; outline-offset: 2px; }
     ::selection { background: #c5e3d8; color: #183a33; }
     [data-testid="stMainBlockContainer"] { padding-top: 4.5rem; max-width: 1280px; }

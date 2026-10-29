@@ -1,0 +1,260 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "General procedure B was applied to 2-methyl-7-(trimethylsilyl)quinoline (215 mg, 1.00mmol).",
+        "parameters": {
+          "reagent": {
+            "value": "2-methyl-7-(trimethylsilyl)quinoline",
+            "evidence": "2-methyl-7-(trimethylsilyl)quinoline"
+          },
+          "alias": {
+            "value": "2-methyl-7-(trimethylsilyl)quinoline",
+            "evidence": "2-methyl-7-(trimethylsilyl)quinoline"
+          },
+          "mass": {
+            "value": 215,
+            "unit": "mg",
+            "evidence": "215 mg"
+          },
+          "amount_of_substance": {
+            "value": 1,
+            "unit": "mmol",
+            "evidence": "1.00mmol"
+          },
+          "referenced_procedure": {
+            "value": "General procedure B",
+            "evidence": "General procedure B"
+          }
+        }
+      },
+      {
+        "op": "StirAtTemperature",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "The reaction was stirred at room temperature for 72hours",
+        "parameters": {
+          "duration": {
+            "value": 72,
+            "unit": "hours",
+            "evidence": "72hours"
+          },
+          "temperature": {
+            "status": "qualitative",
+            "marker": "__QUALITATIVE__",
+            "evidence": "room temperature",
+            "raw": "room temperature"
+          }
+        }
+      },
+      {
+        "op": "RemoveVolatiles",
+        "vessel": "reactor",
+        "stage": "workup",
+        "evidence": "Volatiles were removed under reduced pressure",
+        "parameters": {
+          "material_removed": {
+            "value": "Volatiles",
+            "evidence": "Volatiles"
+          },
+          "pressure_condition": {
+            "status": "qualitative",
+            "marker": "__QUALITATIVE__",
+            "evidence": "under reduced pressure",
+            "raw": "under reduced pressure"
+          }
+        }
+      },
+      {
+        "op": "GradientFlashChromatography",
+        "vessel": "reactor",
+        "stage": "purification",
+        "evidence": "the remaining residue was purified by silica  gel  flash-column  chromatography  with  gradient  elution  of  MeOH/DCM  from  0.5 -12.5%  over  25 column   volumes",
+        "parameters": {
+          "feed": {
+            "value": "the remaining residue",
+            "evidence": "the remaining residue"
+          },
+          "method": {
+            "value": "silica  gel  flash-column  chromatography",
+            "evidence": "silica  gel  flash-column  chromatography"
+          },
+          "stationary_phase": {
+            "value": "silica  gel",
+            "evidence": "silica  gel"
+          },
+          "elution_mode": {
+            "value": "gradient  elution",
+            "evidence": "gradient  elution"
+          },
+          "eluent": {
+            "value": "MeOH/DCM",
+            "evidence": "MeOH/DCM"
+          },
+          "gradient_range": {
+            "value": "0.5 -12.5%",
+            "evidence": "from  0.5 -12.5%"
+          },
+          "elution_volume": {
+            "value": 25,
+            "unit": "column volumes",
+            "evidence": "25 column   volumes"
+          }
+        }
+      }
+    ],
+    "definitions": {
+      "ChargeMaterial": {
+        "name": "ChargeMaterial",
+        "domain": "reaction",
+        "description": "Introduce an identified material into the reaction vessel, retaining its reported mass and amount of substance. A referenced procedure records context but does not supply its absent constituent operations.",
+        "parameters": {
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "alias": {
+            "type": "string",
+            "required": false
+          },
+          "mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "amount_of_substance": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mmol",
+            "dimension": "amount_of_substance"
+          },
+          "referenced_procedure": {
+            "type": "reference",
+            "required": false
+          }
+        },
+        "effects": [
+          "Introduces the reported material inventory into the reaction vessel."
+        ],
+        "hardware_roles": [
+          "reaction vessel"
+        ]
+      },
+      "StirAtTemperature": {
+        "name": "StirAtTemperature",
+        "domain": "reaction",
+        "description": "Agitate the reaction for the reported duration under the stated temperature condition, retaining qualitative temperatures without assigning numerical values.",
+        "parameters": {
+          "duration": {
+            "type": "quantity",
+            "required": true,
+            "unit": "hours",
+            "dimension": "time"
+          },
+          "temperature": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Agitates the reaction for the stated duration under the specified temperature condition."
+        ],
+        "hardware_roles": [
+          "reaction vessel",
+          "stirring apparatus"
+        ]
+      },
+      "RemoveVolatiles": {
+        "name": "RemoveVolatiles",
+        "domain": "workup",
+        "description": "Remove volatile material by evaporation under the reported pressure condition, without assigning unreported numerical pressure, temperature or duration.",
+        "parameters": {
+          "material_removed": {
+            "type": "string",
+            "required": true
+          },
+          "pressure_condition": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Removes volatile material from the vessel contents."
+        ],
+        "hardware_roles": [
+          "evaporation vessel",
+          "pressure-control apparatus"
+        ]
+      },
+      "GradientFlashChromatography": {
+        "name": "GradientFlashChromatography",
+        "domain": "purification",
+        "description": "Separate the feed by flash-column chromatography on the specified stationary phase using the stated eluent gradient across the reported number of column volumes. The gradient range retains its literal percentage notation without inferring the percentage basis.",
+        "parameters": {
+          "feed": {
+            "type": "string",
+            "required": true
+          },
+          "method": {
+            "type": "string",
+            "required": true
+          },
+          "stationary_phase": {
+            "type": "string",
+            "required": true
+          },
+          "elution_mode": {
+            "type": "string",
+            "required": true
+          },
+          "eluent": {
+            "type": "string",
+            "required": true
+          },
+          "gradient_range": {
+            "type": "string",
+            "required": true
+          },
+          "elution_volume": {
+            "type": "quantity",
+            "required": true,
+            "unit": "column volumes"
+          }
+        },
+        "effects": [
+          "Chromatographically separates components of the feed."
+        ],
+        "hardware_roles": [
+          "flash chromatography column",
+          "eluent delivery apparatus",
+          "fraction collection apparatus"
+        ]
+      }
+    },
+    "uncertainties": [
+      "General procedure B is referenced but absent; its constituent operations, additional reagents, quantities and conditions cannot be reconstructed.",
+      "Room temperature and reduced pressure are qualitative; numerical temperature and pressure are not reported.",
+      "The chromatography percentage basis is not explicitly reported.",
+      "The 85:10:5 ratio by GC-MS is a reported observation, not an additional synthesis action.",
+      "The reported isolation of only the major 2-methyl-4-(4,4,5,5-tetramethyl-[1,3,2]dioxaborolan-2-yl)-7-(trimethylsilyl)quinoline product as a white solid (231 mg, 68%) and its melting point of 110–111 °C are product observations, not additional synthesis actions."
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 1994,
+    "prompt_tokens": 3574,
+    "total_tokens": 5568,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 3571,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 137
+    }
+  },
+  "cache_key": "714a35dea717fa4b5d94485c2b20f7b333af2f925eda24f93f84679ef1eccad9"
+}

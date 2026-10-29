@@ -1,0 +1,51 @@
+{
+  "data": {
+    "proposals": [
+      {
+        "risk": "Insufficient thermal residence time may reduce conversion; uncalibrated hypothesis.",
+        "patch": [
+          {
+            "op": "replace",
+            "path": "/steps/11/parameters/duration/value",
+            "value": 120
+          }
+        ],
+        "rationale": "This reuses the recorded 2-minute duration in place of the 12-hour heating hold, testing a shortened-reaction-time failure mechanism."
+      },
+      {
+        "risk": "Loss of vessel closure may compromise the intended sealed reaction environment; uncalibrated hypothesis.",
+        "patch": [
+          {
+            "op": "remove",
+            "path": "/steps/9"
+          }
+        ],
+        "rationale": "Deleting the pressure-cap operation creates a closure-loss counterfactual without changing reagent identities, quantities, or reported analysis."
+      },
+      {
+        "risk": "Loss of reactor-to-heating-block connection may prevent the intended heat-transfer configuration; uncalibrated hypothesis.",
+        "patch": [
+          {
+            "op": "remove",
+            "path": "/hardware/edges/1"
+          }
+        ],
+        "rationale": "This deletes the existing reactor–aluminum-block connection, representing a thermal-contact/configuration failure distinct from changing the programmed heating duration."
+      }
+    ]
+  },
+  "model": "gpt-5.6-terra",
+  "usage": {
+    "completion_tokens": 1531,
+    "prompt_tokens": 3671,
+    "total_tokens": 5202,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 3668,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1313
+    }
+  },
+  "cache_key": "a6b0eea7bf94722ec4d4a44c6720df210bcae0fd5e4a60acf2902b130cab36b3"
+}

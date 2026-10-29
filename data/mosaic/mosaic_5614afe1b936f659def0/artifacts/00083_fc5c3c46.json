@@ -1,0 +1,173 @@
+{
+  "protocol": {
+    "id": "pos_ord-001c0b7f789d41b48e325967a9941ad6",
+    "raw_id": "ord-001c0b7f789d41b48e325967a9941ad6",
+    "raw_sha256": "c300a21f2dcd16e9cf09a088ae4afeaf4320565b64d41ec870ca0de3e3b71efd",
+    "source": {
+      "dataset_id": "ord_dataset-46ff9a32d9e04016b9380b1b1ef949c3",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-46ff9a32d9e04016b9380b1b1ef949c3.parquet",
+      "file_sha256": "c70258c876c6c2feb32f58b5a0609d2641ff1af48e1ed6b8b76cf6cd31f1e088",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": null,
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/46/ord_dataset-46ff9a32d9e04016b9380b1b1ef949c3.parquet"
+    },
+    "source_text": "These solutions were added to a 384-\nwell source plate (80 µL per well). The Mosquito HTS liquid handling robot was used to dose\neach of these solutions (200 nL each) into a 1536-well plate.",
+    "text_sha256": "35801cd6f0e546123fb2fb891744a79f1ef2cb91630485899d8a45ebd8b4740c",
+    "reagents": [],
+    "steps": [
+      {
+        "op": "AddToPlateWells",
+        "parameters": {
+          "material": {
+            "value": "These solutions",
+            "evidence": "These solutions"
+          },
+          "destination_plate": {
+            "value": "384-\nwell source plate",
+            "evidence": "384-\nwell source plate"
+          },
+          "plate_well_count": {
+            "value": 384,
+            "evidence": "384-\nwell source plate"
+          },
+          "addition_volume": {
+            "value": 80,
+            "unit": "µL",
+            "evidence": "80 µL per well"
+          },
+          "volume_basis": {
+            "value": "per well",
+            "evidence": "80 µL per well"
+          }
+        },
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "These solutions were added to a 384-\nwell source plate (80 µL per well).",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s001"
+      },
+      {
+        "op": "AddToPlateWells",
+        "parameters": {
+          "material": {
+            "value": "each of these solutions",
+            "evidence": "each of these solutions"
+          },
+          "destination_plate": {
+            "value": "1536-well plate",
+            "evidence": "1536-well plate"
+          },
+          "plate_well_count": {
+            "value": 1536,
+            "evidence": "1536-well plate"
+          },
+          "addition_volume": {
+            "value": 200,
+            "unit": "nL",
+            "evidence": "200 nL each"
+          },
+          "volume_basis": {
+            "value": "each",
+            "evidence": "200 nL each"
+          },
+          "liquid_handler": {
+            "value": "Mosquito HTS liquid handling robot",
+            "evidence": "Mosquito HTS liquid handling robot"
+          }
+        },
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "The Mosquito HTS liquid handling robot was used to dose\neach of these solutions (200 nL each) into a 1536-well plate.",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s002"
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {},
+      "reflux": false,
+      "source_context_evidence": [],
+      "initial_material_state": "unknown_unless_reported"
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "unresolved": [],
+      "unmapped_actions": [],
+      "uncertainties": [
+        "The identities and compositions of the referenced solutions are not supplied in the source excerpt.",
+        "Occupied wells, well-to-well mapping, and total numbers of additions are not reported.",
+        "The dispensing apparatus for the initial source-plate addition is not reported."
+      ],
+      "completion": "source_grounded_extension",
+      "source_observations": []
+    },
+    "operation_definitions": {
+      "AddToPlateWells": {
+        "name": "AddToPlateWells",
+        "domain": "liquid_handling",
+        "description": "Add liquid material into multiwell plate wells at the reported volume and distribution basis, using a specified liquid handler when reported. Plate well count denotes capacity, not the number of occupied wells or additions. The volume basis distinguishes an amount per well from an amount for each solution.",
+        "parameters": {
+          "material": {
+            "type": "string",
+            "required": true
+          },
+          "destination_plate": {
+            "type": "string",
+            "required": true
+          },
+          "plate_well_count": {
+            "type": "integer",
+            "required": true
+          },
+          "addition_volume": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "volume"
+          },
+          "volume_basis": {
+            "type": "string",
+            "required": true
+          },
+          "liquid_handler": {
+            "type": "string",
+            "required": false
+          }
+        },
+        "effects": [
+          "Introduces liquid material into destination plate wells according to the specified volume and distribution basis."
+        ],
+        "hardware_roles": [
+          "destination multiwell plate",
+          "liquid dispensing device"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "87c9e81f4ae501c73caceae6a76cf9af426f223164dd027512adb635c09da797"
+      }
+    },
+    "xdl_profile": "mosaic-xdl/1"
+  },
+  "notes": {
+    "domain": "chemistry.extended/1",
+    "core_expression_error": "Evidence validation failed: Representation normalization failed: Expanded representation failed source evidence: step 0: transferred amount must be a literal source volume; step 1: transferred amount must be a literal source volume",
+    "completion": {
+      "agent_called": true,
+      "attempts": 2,
+      "model": "gpt-6.1-sol",
+      "extension_operations": [
+        "AddToPlateWells"
+      ],
+      "expression_profile": "mosaic-xdl/1",
+      "execution_supported": false
+    }
+  },
+  "raw_id": "ord-001c0b7f789d41b48e325967a9941ad6"
+}

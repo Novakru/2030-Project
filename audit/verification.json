@@ -1,38 +1,81 @@
 {
-  "verified_at": "2026-10-27T06:29:17.913062+00:00",
-  "run_id": "mosaic_572818a211a243d3e7c3",
-  "database": "audit/data/text_reviews.sqlite3",
+  "verified_at": "2026-10-29T03:31:30.572480+00:00",
+  "run_id": "mosaic_5614afe1b936f659def0",
+  "database": "audit/data/extended_reviews.sqlite3",
   "statistics": {
-    "pending": 383,
+    "pending": 305,
     "accepted": 0,
     "rejected": 0,
-    "total": 383
+    "total": 305
   },
+  "idempotent_publication": {
+    "inserted": 0,
+    "skipped": 305
+  },
+  "export": {
+    "directory": "audit/exports/review_20261029T032851_200573Z",
+    "records": 10,
+    "timestamped": true,
+    "pending_records_unchanged": true
+  },
+  "missing_parents": 0,
+  "review_events": 0,
+  "source_json_modified_by_web": false,
+  "database_snapshots_match_frozen_sources": true,
+  "used_extension_contracts_registered": 845,
+  "code_revision_matches_manifest": true,
+  "legacy_databases_preserved": [
+    {
+      "database": "audit/data/text_reviews.sqlite3",
+      "statistics": {
+        "pending": 383,
+        "accepted": 0,
+        "rejected": 0,
+        "total": 383
+      },
+      "review_events": 0
+    },
+    {
+      "database": "audit/data/mosaic.sqlite3",
+      "statistics": {
+        "pending": 366,
+        "accepted": 0,
+        "rejected": 0,
+        "total": 366
+      },
+      "review_events": 0
+    }
+  ],
   "main_tests": {
-    "passed": 413,
+    "passed": 525,
     "skipped": 1,
     "deselected": 2,
-    "deselected_reason": "Two separate quantity quota acceptance tests; both explicitly fail in dataset_tests.log"
+    "deselected_reason": "Quantity acceptance tests run separately; positive quota passes, per-risk quota fails."
+  },
+  "dataset_tests": {
+    "passed": 5,
+    "failed": 1,
+    "failing_test": "test_quota_ten_examples_for_each_of_twenty_risks"
   },
   "quota_tests": {
-    "passed": 0,
-    "failed": 2,
-    "reason": "25/100 positive text conversions; risk coverage incomplete"
+    "passed": 1,
+    "failed": 1,
+    "reason": "120/100 positive text conversions passed; 12 risk categories remain below 10."
   },
   "audit_tests": {
-    "passed": 40
+    "passed": 42
   },
   "dataset_verification": {
     "passed": true,
-    "positives_checked": 25,
-    "negatives_checked": 83,
-    "upstream_ord_records_checked": 300,
+    "positives_checked": 120,
+    "negatives_checked": 85,
+    "upstream_ord_records_checked": 220,
     "risk_counts": {
       "A1": 10,
       "A2": 10,
       "A5": 10,
       "C1": 10,
-      "C4": 3,
+      "C4": 5,
       "C6": 10,
       "D1": 10,
       "D3": 10,
@@ -40,37 +83,39 @@
     },
     "mechanisms": {
       "A1": {
-        "A1.active_fill_fraction": 5,
-        "A1.cumulative_overfill": 1,
-        "A1.single_add_overfill": 4
+        "A1.active_fill_fraction": 4,
+        "A1.single_add_overfill": 5,
+        "A1.cumulative_overfill": 1
       },
       "A2": {
         "A2.above_controller_range": 10
       },
       "A5": {
+        "A5.missing_controller": 3,
         "A5.incompatible_bound_capability": 3,
         "A5.unresolved_binding": 2,
-        "A5.missing_controller": 3,
         "A5.missing_filter": 2
       },
       "C1": {
         "C1.solvent_family_substitution": 10
       },
       "C4": {
-        "C4.excess_reagent": 1,
-        "C4.depleted_reagent": 2
+        "C4.excess_reagent": 2,
+        "C4.depleted_reagent": 3
       },
       "C6": {
-        "C6.extended_heatchill": 5,
-        "C6.extended_atmosphere": 1,
-        "C6.extended_stir": 4
+        "C6.extended_heatchill": 3,
+        "C6.extended_stir": 2,
+        "C6.extended_wait": 2,
+        "C6.extended_atmosphere": 3
       },
       "D1": {
         "D1.move_step": 10
       },
       "D3": {
-        "D3.undefined_vessel": 5,
-        "D3.undefined_reagent": 5
+        "D3.undefined_vessel": 4,
+        "D3.undefined_reagent": 4,
+        "D3.undefined_to_vessel": 2
       },
       "D4": {
         "D4.nonpositive_quantity": 5,
@@ -82,21 +127,23 @@
   },
   "replay": {
     "passed": true,
-    "run_id": "mosaic_572818a211a243d3e7c3",
-    "files_compared": 117,
+    "run_id": "mosaic_5614afe1b936f659def0",
+    "files_compared": 214,
     "byte_identical": true,
     "changed_files": [],
     "http_blocked": true,
     "new_model_calls": 0,
-    "cumulative_run_model_calls": 6
+    "cumulative_run_model_calls": 0
   },
   "browser": {
     "passed": true,
-    "negative_queue": 83,
+    "negative_queue": 85,
     "paging": true,
     "A5_focus": true,
     "literal_positive_text": true,
-    "incomplete_queue": 275,
+    "incomplete_queue": 100,
+    "extension_definition_focus": true,
+    "source_missing_marker_focus": true,
     "incomplete_text": true,
     "help": true,
     "mobile_overflow": {
@@ -105,18 +152,6 @@
     },
     "page_errors": [],
     "actual_decisions_submitted": 0,
-    "A5_record_id": "mosaic_neg_A5_0392fe1615863148"
-  },
-  "export": {
-    "directory": "audit\\exports\\review_20261027T062917_800975Z",
-    "records": 10,
-    "timestamped": true
-  },
-  "idempotent_publication": {
-    "inserted": 0,
-    "skipped": 383
-  },
-  "missing_parents": 0,
-  "review_events": 0,
-  "source_json_modified_by_web": false
+    "A5_record_id": "mosaic_neg_A5_0136bea2dbac0eaa"
+  }
 }

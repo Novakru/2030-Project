@@ -1,0 +1,1002 @@
+{
+  "id": "mosaic_pos_5d4df61c31f93418bb15",
+  "source": {
+    "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+    "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+  },
+  "raw_id": "ord-2de77de369ef42f8b910f9e83130f454",
+  "raw_sha256": "be01237fa87922efff7e0c955b6f80e84f45e241be5aed2b17ec93d91075d144",
+  "source_text": "All chemicals were mixed in a 50 mL round bottom flask. The solids were degassed and placed under nitrogen. Toluene was added and the mixture was stirred at 100°C for 24 h. Cooled and filtered. The filtrate was concentrated under vacuum. Crude product was mainly starting material but some product had been formed. The product was purified by silica gel chromatography using 1-4% methanol/DCM. Product was slightly more polar than starting material bromide. There was obtained 230 mg of the desired product as a solid. HNMR and LC MS ok.  ",
+  "text_sha256": "a584f95347ff5c1017f9847eb0b1783326db6e18f1dc045c59bfb3cd44b95864",
+  "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+  "reagents": [
+    {
+      "id": "r001",
+      "name": "Toluene",
+      "smiles": null,
+      "role": "REAGENT",
+      "amount": null,
+      "source_path": null,
+      "identity_basis": "literal_procedure_name"
+    }
+  ],
+  "steps": [
+    {
+      "op": "MixMaterials",
+      "vessel": "reactor",
+      "parameters": {
+        "materials": {
+          "value": "All chemicals",
+          "evidence": "All chemicals were mixed in a 50 mL round bottom flask."
+        },
+        "vessel_type": {
+          "value": "round bottom flask",
+          "evidence": "50 mL round bottom flask"
+        },
+        "vessel_capacity": {
+          "value": 50,
+          "unit": "mL",
+          "evidence": "50 mL round bottom flask"
+        },
+        "mixing_method": {
+          "status": "not_reported",
+          "marker": "__NOT_REPORTED__",
+          "evidence": "All chemicals were mixed in a 50 mL round bottom flask.",
+          "raw": null
+        }
+      },
+      "meta": {
+        "evidence": "All chemicals were mixed in a 50 mL round bottom flask.",
+        "stage": "reaction",
+        "source_contract": "text-only/1",
+        "operation_expression": "declarative_extension",
+        "refined_core_proposal": "Stir"
+      },
+      "id": "s001"
+    },
+    {
+      "op": "Degas",
+      "vessel": "reactor",
+      "parameters": {
+        "material": {
+          "value": "The solids",
+          "evidence": "The solids were degassed"
+        },
+        "method": {
+          "status": "not_reported",
+          "marker": "__NOT_REPORTED__",
+          "evidence": "The solids were degassed",
+          "raw": null
+        },
+        "duration": {
+          "status": "not_reported",
+          "marker": "__NOT_REPORTED__",
+          "evidence": "The solids were degassed",
+          "raw": null
+        }
+      },
+      "meta": {
+        "evidence": "The solids were degassed",
+        "stage": "reaction",
+        "source_contract": "text-only/1",
+        "operation_expression": "declarative_extension"
+      },
+      "id": "s002"
+    },
+    {
+      "op": "EstablishGasAtmosphere",
+      "vessel": "reactor",
+      "parameters": {
+        "gas": {
+          "value": "nitrogen",
+          "evidence": "placed under nitrogen"
+        },
+        "method": {
+          "status": "not_reported",
+          "marker": "__NOT_REPORTED__",
+          "evidence": "placed under nitrogen",
+          "raw": null
+        }
+      },
+      "meta": {
+        "evidence": "placed under nitrogen",
+        "stage": "reaction",
+        "source_contract": "text-only/1",
+        "operation_expression": "declarative_extension",
+        "refined_core_proposal": "Atmosphere"
+      },
+      "id": "s003"
+    },
+    {
+      "op": "Add",
+      "vessel": "reactor",
+      "reagent": "r001",
+      "id": "s004",
+      "meta": {
+        "evidence": "Toluene was added",
+        "stage": "reaction",
+        "source_contract": "text-only/1",
+        "source_alias": "Toluene",
+        "amount_source": "unknown"
+      },
+      "missing_parameters": {
+        "amount": {
+          "status": "not_reported",
+          "marker": "__NOT_REPORTED__",
+          "evidence": "Toluene was added",
+          "raw": null
+        }
+      }
+    },
+    {
+      "op": "HeatChill",
+      "vessel": "reactor",
+      "temp_C": 100,
+      "duration_s": 86400,
+      "stir": true,
+      "id": "s005",
+      "meta": {
+        "evidence": "the mixture was stirred at 100°C for 24 h.",
+        "stage": "reaction",
+        "source_contract": "text-only/1"
+      }
+    },
+    {
+      "op": "HeatChill",
+      "vessel": "reactor",
+      "id": "s006",
+      "meta": {
+        "evidence": "Cooled",
+        "stage": "workup",
+        "source_contract": "text-only/1"
+      },
+      "missing_parameters": {
+        "temp_C": {
+          "status": "not_reported",
+          "marker": "__NOT_REPORTED__",
+          "evidence": "Cooled",
+          "raw": null
+        }
+      }
+    },
+    {
+      "op": "Filter",
+      "keep": "filtrate",
+      "id": "s007",
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "filtered. The filtrate was concentrated under vacuum.",
+        "stage": "workup",
+        "source_contract": "text-only/1"
+      }
+    },
+    {
+      "op": "VacuumConcentrate",
+      "vessel": "reactor",
+      "parameters": {
+        "material": {
+          "value": "The filtrate",
+          "evidence": "The filtrate was concentrated under vacuum."
+        },
+        "pressure_condition": {
+          "value": "under vacuum",
+          "evidence": "The filtrate was concentrated under vacuum."
+        },
+        "pressure": {
+          "status": "not_reported",
+          "marker": "__NOT_REPORTED__",
+          "evidence": "The filtrate was concentrated under vacuum.",
+          "raw": null
+        }
+      },
+      "meta": {
+        "evidence": "The filtrate was concentrated under vacuum.",
+        "stage": "workup",
+        "source_contract": "text-only/1",
+        "operation_expression": "declarative_extension",
+        "refined_core_proposal": "Evaporate"
+      },
+      "id": "s008"
+    },
+    {
+      "op": "ChromatographicPurification",
+      "parameters": {
+        "material": {
+          "value": "The product",
+          "evidence": "The product was purified by silica gel chromatography using 1-4% methanol/DCM."
+        },
+        "method": {
+          "value": "chromatography",
+          "evidence": "silica gel chromatography"
+        },
+        "stationary_phase": {
+          "value": "silica gel",
+          "evidence": "silica gel chromatography"
+        },
+        "eluent": {
+          "value": "1-4% methanol/DCM",
+          "evidence": "using 1-4% methanol/DCM"
+        }
+      },
+      "vessel": "reactor",
+      "meta": {
+        "evidence": "The product was purified by silica gel chromatography using 1-4% methanol/DCM.",
+        "stage": "purification",
+        "source_contract": "text-only/1",
+        "operation_expression": "declarative_extension",
+        "refined_core_proposal": "Purify"
+      },
+      "id": "s009"
+    }
+  ],
+  "context": {
+    "pressure_control": "UNKNOWN",
+    "atmosphere": {
+      "type": "NITROGEN",
+      "basis": "procedure_text"
+    },
+    "reflux": false,
+    "source_context_evidence": [],
+    "initial_material_state": "unknown_unless_reported",
+    "source_context_events": []
+  },
+  "extraction": {
+    "method": "llm_evidence_constrained",
+    "input_contract": "text-only/1",
+    "procedure_sha256": "a584f95347ff5c1017f9847eb0b1783326db6e18f1dc045c59bfb3cd44b95864",
+    "model": "gpt-6.1-sol",
+    "usage": {
+      "prompt_tokens": 763,
+      "completion_tokens": 722,
+      "total_tokens": 1485,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 145
+      }
+    },
+    "cache_key": "245395d91ad1c793992455c4cc8884877109fd47921651902d4340a97077e8d6",
+    "unresolved": [
+      "The identities, quantities, and individual additions of the initially mixed chemicals are not specified.",
+      "The degassing method and duration are not specified.",
+      "The amount of Toluene added is not specified.",
+      "The cooling target temperature and duration are not specified.",
+      "The vacuum pressure, temperature, and duration of concentration are not specified.",
+      "Chromatography specifies silica gel and 1-4% methanol/DCM, but no solvent amounts or percentage basis.",
+      "s001: duration unspecified",
+      "s003: addition amount unspecified",
+      "s005: temperature unspecified"
+    ],
+    "unmapped_actions": [],
+    "uncertainties": [
+      "The identities and amounts of the initially mixed chemicals are not reported.",
+      "The amount of Toluene is not reported.",
+      "The cooling endpoint and duration are not reported.",
+      "The percentage basis and elution schedule for 1-4% methanol/DCM are not reported.",
+      "The reported crude composition, relative polarity, 230 mg solid product recovery, and HNMR and LC MS assessments are observations, not additional synthesis actions."
+    ],
+    "completion": "source_grounded_extension",
+    "source_observations": [],
+    "analytical_observations": []
+  },
+  "operation_definitions": {
+    "ChromatographicPurification": {
+      "name": "ChromatographicPurification",
+      "domain": "purification",
+      "description": "Purify material chromatographically using the stated stationary phase and eluent composition, without assuming column dimensions, elution volume, or gradient scheduling.",
+      "parameters": {
+        "material": {
+          "type": "string",
+          "required": true
+        },
+        "method": {
+          "type": "string",
+          "required": true
+        },
+        "stationary_phase": {
+          "type": "string",
+          "required": true
+        },
+        "eluent": {
+          "type": "string",
+          "required": true
+        }
+      },
+      "effects": [
+        "Material is subjected to chromatographic separation."
+      ],
+      "hardware_roles": [
+        "chromatography apparatus"
+      ],
+      "execution_supported": false,
+      "representation_status": "admitted",
+      "semantic_sha256": "a43f0aa1d465f4565c67608529b403287df0c5a09c2f9c1dd94d615e6b7ea702"
+    },
+    "Degas": {
+      "name": "Degas",
+      "domain": "reaction",
+      "description": "Remove gas from the stated material without assuming a degassing technique or operating conditions.",
+      "parameters": {
+        "material": {
+          "type": "string",
+          "required": true
+        },
+        "method": {
+          "type": "string",
+          "required": true
+        },
+        "duration": {
+          "type": "quantity",
+          "required": true,
+          "unit": "s",
+          "dimension": "time"
+        }
+      },
+      "effects": [
+        "Gas is removed from the stated material."
+      ],
+      "hardware_roles": [
+        "material-containing vessel",
+        "degassing apparatus"
+      ],
+      "execution_supported": false,
+      "representation_status": "admitted",
+      "semantic_sha256": "213617980f77229337975a0a2c495b5a3192b0580a3334844ce93eda5168d4d1"
+    },
+    "EstablishGasAtmosphere": {
+      "name": "EstablishGasAtmosphere",
+      "domain": "reaction",
+      "description": "Place the vessel contents under the stated gas atmosphere without assuming purging, evacuation cycles, or a gas-delivery arrangement.",
+      "parameters": {
+        "gas": {
+          "type": "string",
+          "required": true
+        },
+        "method": {
+          "type": "string",
+          "required": true
+        }
+      },
+      "effects": [
+        "The contents are placed under the stated gas atmosphere."
+      ],
+      "hardware_roles": [
+        "reaction vessel",
+        "gas supply"
+      ],
+      "execution_supported": false,
+      "representation_status": "admitted",
+      "semantic_sha256": "ee813983bcd9b23ad6cc5c83d3943580511f3ca2597a2eafcef8a89444e273a5"
+    },
+    "MixMaterials": {
+      "name": "MixMaterials",
+      "domain": "reaction",
+      "description": "Physically mix the stated materials in the specified vessel without assuming a stirring mechanism.",
+      "parameters": {
+        "materials": {
+          "type": "string",
+          "required": true
+        },
+        "vessel_type": {
+          "type": "string",
+          "required": true
+        },
+        "vessel_capacity": {
+          "type": "quantity",
+          "required": true,
+          "unit": "mL",
+          "dimension": "volume"
+        },
+        "mixing_method": {
+          "type": "string",
+          "required": true
+        }
+      },
+      "effects": [
+        "Materials are physically mixed in the stated vessel."
+      ],
+      "hardware_roles": [
+        "mixing vessel"
+      ],
+      "execution_supported": false,
+      "representation_status": "admitted",
+      "semantic_sha256": "ee6266d53b8a61a1e6de0483ac57feac7bd747a7065c711da0df1d1d4e9ceb54"
+    },
+    "VacuumConcentrate": {
+      "name": "VacuumConcentrate",
+      "domain": "workup",
+      "description": "Concentrate the stated material by removing volatile components under vacuum without assuming complete dryness or a particular apparatus.",
+      "parameters": {
+        "material": {
+          "type": "string",
+          "required": true
+        },
+        "pressure_condition": {
+          "type": "string",
+          "required": true
+        },
+        "pressure": {
+          "type": "quantity",
+          "required": true,
+          "unit": "mbar",
+          "dimension": "pressure"
+        }
+      },
+      "effects": [
+        "Volatile material is removed under vacuum to concentrate the retained material."
+      ],
+      "hardware_roles": [
+        "concentration vessel",
+        "vacuum source"
+      ],
+      "execution_supported": false,
+      "representation_status": "admitted",
+      "semantic_sha256": "3e053733ab25d3a4ce55c122ca074c0d0a1ff4fbfd7ee759e81e46b204a8d024"
+    }
+  },
+  "xdl_profile": "mosaic-xdl/1",
+  "reference_metadata": {
+    "reaction_smiles": "CC(C)(C)OC(=O)NC1CCNCC1.COC(=O)C1=CC(=CC=C1)Br>>CC(C)(C)OC(=O)NC1CCN(CC1)C2=CC=CC(=C2)C(=O)OC",
+    "reaction_class": "1.3.1 [N-arylation with Ar-X] Bromo Buchwald-Hartwig amination",
+    "yield_percent": 13.76,
+    "yield_evidence": {
+      "measurements": [
+        {
+          "analysis_key": null,
+          "percentage": 13.76,
+          "source_path": "/outcomes/0/products/0/measurements/0",
+          "valid": true
+        }
+      ],
+      "policy": "unique_target_unique_percentage_v1",
+      "selection": "explicit_desired_product",
+      "status": "selected",
+      "target_count": 1,
+      "target_source_path": "/outcomes/0/products/0"
+    },
+    "authority": "reference_only_not_process_input"
+  },
+  "hardware": {
+    "config_id": "source_aware_provisional_v2",
+    "nodes": {
+      "reactor": {
+        "category": "vessel",
+        "apparatus_kind": "round_bottom_flask",
+        "description": "50 mL round bottom flask",
+        "params": {
+          "capacity_mL": 50.0
+        },
+        "capacity_scope": "single_reaction_vessel",
+        "wetted_materials": null,
+        "ports": [],
+        "model": null,
+        "verified": false,
+        "binding_basis": "source_reported",
+        "source_url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+        "source_parameters": [
+          "capacity_mL"
+        ],
+        "source_evidence": [
+          {
+            "source_url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+            "raw_sha256": "be01237fa87922efff7e0c955b6f80e84f45e241be5aed2b17ec93d91075d144",
+            "locator": "/steps/0/meta/evidence",
+            "value": "All chemicals were mixed in a 50 mL round bottom flask."
+          }
+        ],
+        "verification": {
+          "status": "source_reported",
+          "human_verified": false
+        },
+        "note": "Procedure-reported facts; no manufacturer rating, flow capability or port topology inferred.",
+        "source_fact_sha256": "ac3320f6ed4e233f3eb6c2ef485a7513807c4f00d617b996c8575e6e1aeca619",
+        "id": "source_apparatus_ac3320f6ed4e233f"
+      },
+      "heater": {
+        "id": "ika_rct_basic_25008259",
+        "category": "heater_stirrer",
+        "params": {
+          "T_min_C": null,
+          "T_max_C": 310,
+          "rpm_min": 50,
+          "rpm_max": 1500
+        },
+        "parameter_scope": "Heating-plate setpoint maximum, not guaranteed liquid temperature; minimum depends on ambient/self-heating.",
+        "wetted_materials": [],
+        "ports": [],
+        "source_url": "https://www.ika.com/en/Products-LabEq/Magnetic-Stirrers-pg188/RCT-basic-25008259/Technical-Data-cptd.html",
+        "verified": false,
+        "verification": {
+          "status": "source_reviewed",
+          "human_verified": false
+        },
+        "binding_basis": "proposed_analysis_configuration",
+        "note": "Proposed analysis controller; source does not identify this model as the original equipment."
+      },
+      "filter": {
+        "id": "chemputer_filter_template",
+        "category": "filter",
+        "params": {
+          "capacity_mL": null
+        },
+        "wetted_materials": null,
+        "ports": [
+          "top",
+          "filtrate"
+        ],
+        "source_url": "https://croningroup.gitlab.io/chemputer/xdl/standard/full_steps_specification.html#filter",
+        "verified": false,
+        "verification": {
+          "status": "template_only",
+          "human_verified": false
+        }
+      },
+      "filtrate": {
+        "category": "vessel",
+        "params": {},
+        "verified": false
+      }
+    },
+    "edges": [
+      [
+        "reactor",
+        "heater"
+      ],
+      [
+        "reactor",
+        "filter"
+      ],
+      [
+        "reactor",
+        "filtrate"
+      ]
+    ],
+    "bindings": {
+      "heater": "heater"
+    },
+    "estimated_liquid_lower_bound_mL": 0,
+    "verification_status": "human_review_pending",
+    "source_issues": [],
+    "binding_scope": "Source-reported vessels; unspecified automation remains a proposed analysis configuration. Edges are provisional.",
+    "inventory_scope": "Sum of stated Add volumes, not peak vessel occupancy or inferred solvent volume."
+  },
+  "crosscheck": {
+    "checks": {
+      "text_only_extraction": true,
+      "literal_steps_grounded": true,
+      "amount_comparison_is_independent": false
+    },
+    "quantity_checks": [
+      {
+        "reagent": "r001",
+        "alias": "Toluene",
+        "expected": null,
+        "measurements": [],
+        "status": "unknown",
+        "basis": "no_adjacent_quantity",
+        "step_id": "s004",
+        "comparison": "text_extraction_vs_independent_literal_parser"
+      }
+    ],
+    "conflicts": [],
+    "missing": [
+      "independent_quantity_evidence_incomplete",
+      "The identities, quantities, and individual additions of the initially mixed chemicals are not specified.",
+      "The degassing method and duration are not specified.",
+      "The amount of Toluene added is not specified.",
+      "The cooling target temperature and duration are not specified.",
+      "The vacuum pressure, temperature, and duration of concentration are not specified.",
+      "Chromatography specifies silica gel and 1-4% methanol/DCM, but no solvent amounts or percentage basis.",
+      "s001: duration unspecified",
+      "s003: addition amount unspecified",
+      "s005: temperature unspecified"
+    ],
+    "reference_comparison": {
+      "authority": "comparison_only_never_process_input",
+      "checks": {
+        "temperature_match": true
+      },
+      "component_checks": [
+        {
+          "reference_id": "r1",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        },
+        {
+          "reference_id": "r2",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        },
+        {
+          "reference_id": "r3",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        },
+        {
+          "reference_id": "r4",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        },
+        {
+          "reference_id": "r5",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        },
+        {
+          "reference_id": "r6",
+          "status": "unknown",
+          "reason": "literal_name_alignment_unavailable"
+        }
+      ],
+      "conflicts": [],
+      "missing": []
+    },
+    "tier": "silver",
+    "gold_blockers": [
+      "independent_quantity_review_pending",
+      "hardware_human_verification_pending",
+      "manual_protocol_review_pending"
+    ]
+  },
+  "xdl": "<Synthesis xmlns:mx=\"urn:mosaic:xdl:extensions:1\" mx:profile=\"mosaic-xdl/1\">\n  <Metadata description=\"Source-grounded extended XDL representation; hardware execution is not certified.\">\n    <mx:Data>\n      <mx:Object>\n        <mx:Field name=\"context\">\n          <mx:Object>\n            <mx:Field name=\"atmosphere\">\n              <mx:Object>\n                <mx:Field name=\"basis\">\n                  <mx:String>procedure_text</mx:String>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>NITROGEN</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"initial_material_state\">\n              <mx:String>unknown_unless_reported</mx:String>\n            </mx:Field>\n            <mx:Field name=\"pressure_control\">\n              <mx:String>UNKNOWN</mx:String>\n            </mx:Field>\n            <mx:Field name=\"reflux\">\n              <mx:Boolean>false</mx:Boolean>\n            </mx:Field>\n            <mx:Field name=\"source_context_events\">\n              <mx:Array/>\n            </mx:Field>\n            <mx:Field name=\"source_context_evidence\">\n              <mx:Array/>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"representation_scope\">\n          <mx:String>supplied_text_operations; source experimental completeness is not independently certified</mx:String>\n        </mx:Field>\n        <mx:Field name=\"source_text\">\n          <mx:String>All chemicals were mixed in a 50 mL round bottom flask. The solids were degassed and placed under nitrogen. Toluene was added and the mixture was stirred at 100°C for 24 h. Cooled and filtered. The filtrate was concentrated under vacuum. Crude product was mainly starting material but some product had been formed. The product was purified by silica gel chromatography using 1-4% methanol/DCM. Product was slightly more polar than starting material bromide. There was obtained 230 mg of the desired product as a solid. HNMR and LC MS ok.  </mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Data>\n  </Metadata>\n  <Hardware>\n    <mx:Data>\n      <mx:Object>\n        <mx:Field name=\"binding_scope\">\n          <mx:String>Source-reported vessels; unspecified automation remains a proposed analysis configuration. Edges are provisional.</mx:String>\n        </mx:Field>\n        <mx:Field name=\"bindings\">\n          <mx:Object>\n            <mx:Field name=\"heater\">\n              <mx:String>heater</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"config_id\">\n          <mx:String>source_aware_provisional_v2</mx:String>\n        </mx:Field>\n        <mx:Field name=\"edges\">\n          <mx:Array>\n            <mx:Item>\n              <mx:Array>\n                <mx:Item>\n                  <mx:String>reactor</mx:String>\n                </mx:Item>\n                <mx:Item>\n                  <mx:String>heater</mx:String>\n                </mx:Item>\n              </mx:Array>\n            </mx:Item>\n            <mx:Item>\n              <mx:Array>\n                <mx:Item>\n                  <mx:String>reactor</mx:String>\n                </mx:Item>\n                <mx:Item>\n                  <mx:String>filter</mx:String>\n                </mx:Item>\n              </mx:Array>\n            </mx:Item>\n            <mx:Item>\n              <mx:Array>\n                <mx:Item>\n                  <mx:String>reactor</mx:String>\n                </mx:Item>\n                <mx:Item>\n                  <mx:String>filtrate</mx:String>\n                </mx:Item>\n              </mx:Array>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"estimated_liquid_lower_bound_mL\">\n          <mx:Number>0</mx:Number>\n        </mx:Field>\n        <mx:Field name=\"inventory_scope\">\n          <mx:String>Sum of stated Add volumes, not peak vessel occupancy or inferred solvent volume.</mx:String>\n        </mx:Field>\n        <mx:Field name=\"nodes\">\n          <mx:Object>\n            <mx:Field name=\"filter\">\n              <mx:Object>\n                <mx:Field name=\"category\">\n                  <mx:String>filter</mx:String>\n                </mx:Field>\n                <mx:Field name=\"id\">\n                  <mx:String>chemputer_filter_template</mx:String>\n                </mx:Field>\n                <mx:Field name=\"params\">\n                  <mx:Object>\n                    <mx:Field name=\"capacity_mL\">\n                      <mx:Null/>\n                    </mx:Field>\n                  </mx:Object>\n                </mx:Field>\n                <mx:Field name=\"ports\">\n                  <mx:Array>\n                    <mx:Item>\n                      <mx:String>top</mx:String>\n                    </mx:Item>\n                    <mx:Item>\n                      <mx:String>filtrate</mx:String>\n                    </mx:Item>\n                  </mx:Array>\n                </mx:Field>\n                <mx:Field name=\"source_url\">\n                  <mx:String>https://croningroup.gitlab.io/chemputer/xdl/standard/full_steps_specification.html#filter</mx:String>\n                </mx:Field>\n                <mx:Field name=\"verification\">\n                  <mx:Object>\n                    <mx:Field name=\"human_verified\">\n                      <mx:Boolean>false</mx:Boolean>\n                    </mx:Field>\n                    <mx:Field name=\"status\">\n                      <mx:String>template_only</mx:String>\n                    </mx:Field>\n                  </mx:Object>\n                </mx:Field>\n                <mx:Field name=\"verified\">\n                  <mx:Boolean>false</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"wetted_materials\">\n                  <mx:Null/>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"filtrate\">\n              <mx:Object>\n                <mx:Field name=\"category\">\n                  <mx:String>vessel</mx:String>\n                </mx:Field>\n                <mx:Field name=\"params\">\n                  <mx:Object/>\n                </mx:Field>\n                <mx:Field name=\"verified\">\n                  <mx:Boolean>false</mx:Boolean>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"heater\">\n              <mx:Object>\n                <mx:Field name=\"binding_basis\">\n                  <mx:String>proposed_analysis_configuration</mx:String>\n                </mx:Field>\n                <mx:Field name=\"category\">\n                  <mx:String>heater_stirrer</mx:String>\n                </mx:Field>\n                <mx:Field name=\"id\">\n                  <mx:String>ika_rct_basic_25008259</mx:String>\n                </mx:Field>\n                <mx:Field name=\"note\">\n                  <mx:String>Proposed analysis controller; source does not identify this model as the original equipment.</mx:String>\n                </mx:Field>\n                <mx:Field name=\"parameter_scope\">\n                  <mx:String>Heating-plate setpoint maximum, not guaranteed liquid temperature; minimum depends on ambient/self-heating.</mx:String>\n                </mx:Field>\n                <mx:Field name=\"params\">\n                  <mx:Object>\n                    <mx:Field name=\"T_max_C\">\n                      <mx:Number>310</mx:Number>\n                    </mx:Field>\n                    <mx:Field name=\"T_min_C\">\n                      <mx:Null/>\n                    </mx:Field>\n                    <mx:Field name=\"rpm_max\">\n                      <mx:Number>1500</mx:Number>\n                    </mx:Field>\n                    <mx:Field name=\"rpm_min\">\n                      <mx:Number>50</mx:Number>\n                    </mx:Field>\n                  </mx:Object>\n                </mx:Field>\n                <mx:Field name=\"ports\">\n                  <mx:Array/>\n                </mx:Field>\n                <mx:Field name=\"source_url\">\n                  <mx:String>https://www.ika.com/en/Products-LabEq/Magnetic-Stirrers-pg188/RCT-basic-25008259/Technical-Data-cptd.html</mx:String>\n                </mx:Field>\n                <mx:Field name=\"verification\">\n                  <mx:Object>\n                    <mx:Field name=\"human_verified\">\n                      <mx:Boolean>false</mx:Boolean>\n                    </mx:Field>\n                    <mx:Field name=\"status\">\n                      <mx:String>source_reviewed</mx:String>\n                    </mx:Field>\n                  </mx:Object>\n                </mx:Field>\n                <mx:Field name=\"verified\">\n                  <mx:Boolean>false</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"wetted_materials\">\n                  <mx:Array/>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"reactor\">\n              <mx:Object>\n                <mx:Field name=\"apparatus_kind\">\n                  <mx:String>round_bottom_flask</mx:String>\n                </mx:Field>\n                <mx:Field name=\"binding_basis\">\n                  <mx:String>source_reported</mx:String>\n                </mx:Field>\n                <mx:Field name=\"capacity_scope\">\n                  <mx:String>single_reaction_vessel</mx:String>\n                </mx:Field>\n                <mx:Field name=\"category\">\n                  <mx:String>vessel</mx:String>\n                </mx:Field>\n                <mx:Field name=\"description\">\n                  <mx:String>50 mL round bottom flask</mx:String>\n                </mx:Field>\n                <mx:Field name=\"id\">\n                  <mx:String>source_apparatus_ac3320f6ed4e233f</mx:String>\n                </mx:Field>\n                <mx:Field name=\"model\">\n                  <mx:Null/>\n                </mx:Field>\n                <mx:Field name=\"note\">\n                  <mx:String>Procedure-reported facts; no manufacturer rating, flow capability or port topology inferred.</mx:String>\n                </mx:Field>\n                <mx:Field name=\"params\">\n                  <mx:Object>\n                    <mx:Field name=\"capacity_mL\">\n                      <mx:Number>50.0</mx:Number>\n                    </mx:Field>\n                  </mx:Object>\n                </mx:Field>\n                <mx:Field name=\"ports\">\n                  <mx:Array/>\n                </mx:Field>\n                <mx:Field name=\"source_evidence\">\n                  <mx:Array>\n                    <mx:Item>\n                      <mx:Object>\n                        <mx:Field name=\"locator\">\n                          <mx:String>/steps/0/meta/evidence</mx:String>\n                        </mx:Field>\n                        <mx:Field name=\"raw_sha256\">\n                          <mx:String>be01237fa87922efff7e0c955b6f80e84f45e241be5aed2b17ec93d91075d144</mx:String>\n                        </mx:Field>\n                        <mx:Field name=\"source_url\">\n                          <mx:String>https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet</mx:String>\n                        </mx:Field>\n                        <mx:Field name=\"value\">\n                          <mx:String>All chemicals were mixed in a 50 mL round bottom flask.</mx:String>\n                        </mx:Field>\n                      </mx:Object>\n                    </mx:Item>\n                  </mx:Array>\n                </mx:Field>\n                <mx:Field name=\"source_fact_sha256\">\n                  <mx:String>ac3320f6ed4e233f3eb6c2ef485a7513807c4f00d617b996c8575e6e1aeca619</mx:String>\n                </mx:Field>\n                <mx:Field name=\"source_parameters\">\n                  <mx:Array>\n                    <mx:Item>\n                      <mx:String>capacity_mL</mx:String>\n                    </mx:Item>\n                  </mx:Array>\n                </mx:Field>\n                <mx:Field name=\"source_url\">\n                  <mx:String>https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet</mx:String>\n                </mx:Field>\n                <mx:Field name=\"verification\">\n                  <mx:Object>\n                    <mx:Field name=\"human_verified\">\n                      <mx:Boolean>false</mx:Boolean>\n                    </mx:Field>\n                    <mx:Field name=\"status\">\n                      <mx:String>source_reported</mx:String>\n                    </mx:Field>\n                  </mx:Object>\n                </mx:Field>\n                <mx:Field name=\"verified\">\n                  <mx:Boolean>false</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"wetted_materials\">\n                  <mx:Null/>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"source_issues\">\n          <mx:Array/>\n        </mx:Field>\n        <mx:Field name=\"verification_status\">\n          <mx:String>human_review_pending</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Data>\n  </Hardware>\n  <Reagents>\n    <mx:Data>\n      <mx:Array>\n        <mx:Item>\n          <mx:Object>\n            <mx:Field name=\"amount\">\n              <mx:Null/>\n            </mx:Field>\n            <mx:Field name=\"id\">\n              <mx:String>r001</mx:String>\n            </mx:Field>\n            <mx:Field name=\"identity_basis\">\n              <mx:String>literal_procedure_name</mx:String>\n            </mx:Field>\n            <mx:Field name=\"name\">\n              <mx:String>Toluene</mx:String>\n            </mx:Field>\n            <mx:Field name=\"role\">\n              <mx:String>REAGENT</mx:String>\n            </mx:Field>\n            <mx:Field name=\"smiles\">\n              <mx:Null/>\n            </mx:Field>\n            <mx:Field name=\"source_path\">\n              <mx:Null/>\n            </mx:Field>\n          </mx:Object>\n        </mx:Item>\n      </mx:Array>\n    </mx:Data>\n  </Reagents>\n  <mx:OperationDefinitions>\n    <mx:Definition name=\"ChromatographicPurification\" semantic_sha256=\"a43f0aa1d465f4565c67608529b403287df0c5a09c2f9c1dd94d615e6b7ea702\">\n      <mx:Object>\n        <mx:Field name=\"description\">\n          <mx:String>Purify material chromatographically using the stated stationary phase and eluent composition, without assuming column dimensions, elution volume, or gradient scheduling.</mx:String>\n        </mx:Field>\n        <mx:Field name=\"domain\">\n          <mx:String>purification</mx:String>\n        </mx:Field>\n        <mx:Field name=\"effects\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>Material is subjected to chromatographic separation.</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"execution_supported\">\n          <mx:Boolean>false</mx:Boolean>\n        </mx:Field>\n        <mx:Field name=\"hardware_roles\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>chromatography apparatus</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"name\">\n          <mx:String>ChromatographicPurification</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"eluent\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"material\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"method\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"stationary_phase\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"representation_status\">\n          <mx:String>admitted</mx:String>\n        </mx:Field>\n        <mx:Field name=\"semantic_sha256\">\n          <mx:String>a43f0aa1d465f4565c67608529b403287df0c5a09c2f9c1dd94d615e6b7ea702</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Definition>\n    <mx:Definition name=\"Degas\" semantic_sha256=\"213617980f77229337975a0a2c495b5a3192b0580a3334844ce93eda5168d4d1\">\n      <mx:Object>\n        <mx:Field name=\"description\">\n          <mx:String>Remove gas from the stated material without assuming a degassing technique or operating conditions.</mx:String>\n        </mx:Field>\n        <mx:Field name=\"domain\">\n          <mx:String>reaction</mx:String>\n        </mx:Field>\n        <mx:Field name=\"effects\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>Gas is removed from the stated material.</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"execution_supported\">\n          <mx:Boolean>false</mx:Boolean>\n        </mx:Field>\n        <mx:Field name=\"hardware_roles\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>material-containing vessel</mx:String>\n            </mx:Item>\n            <mx:Item>\n              <mx:String>degassing apparatus</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"name\">\n          <mx:String>Degas</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"duration\">\n              <mx:Object>\n                <mx:Field name=\"dimension\">\n                  <mx:String>time</mx:String>\n                </mx:Field>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>quantity</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>s</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"material\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"method\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"representation_status\">\n          <mx:String>admitted</mx:String>\n        </mx:Field>\n        <mx:Field name=\"semantic_sha256\">\n          <mx:String>213617980f77229337975a0a2c495b5a3192b0580a3334844ce93eda5168d4d1</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Definition>\n    <mx:Definition name=\"EstablishGasAtmosphere\" semantic_sha256=\"ee813983bcd9b23ad6cc5c83d3943580511f3ca2597a2eafcef8a89444e273a5\">\n      <mx:Object>\n        <mx:Field name=\"description\">\n          <mx:String>Place the vessel contents under the stated gas atmosphere without assuming purging, evacuation cycles, or a gas-delivery arrangement.</mx:String>\n        </mx:Field>\n        <mx:Field name=\"domain\">\n          <mx:String>reaction</mx:String>\n        </mx:Field>\n        <mx:Field name=\"effects\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>The contents are placed under the stated gas atmosphere.</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"execution_supported\">\n          <mx:Boolean>false</mx:Boolean>\n        </mx:Field>\n        <mx:Field name=\"hardware_roles\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>reaction vessel</mx:String>\n            </mx:Item>\n            <mx:Item>\n              <mx:String>gas supply</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"name\">\n          <mx:String>EstablishGasAtmosphere</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"gas\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"method\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"representation_status\">\n          <mx:String>admitted</mx:String>\n        </mx:Field>\n        <mx:Field name=\"semantic_sha256\">\n          <mx:String>ee813983bcd9b23ad6cc5c83d3943580511f3ca2597a2eafcef8a89444e273a5</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Definition>\n    <mx:Definition name=\"MixMaterials\" semantic_sha256=\"ee6266d53b8a61a1e6de0483ac57feac7bd747a7065c711da0df1d1d4e9ceb54\">\n      <mx:Object>\n        <mx:Field name=\"description\">\n          <mx:String>Physically mix the stated materials in the specified vessel without assuming a stirring mechanism.</mx:String>\n        </mx:Field>\n        <mx:Field name=\"domain\">\n          <mx:String>reaction</mx:String>\n        </mx:Field>\n        <mx:Field name=\"effects\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>Materials are physically mixed in the stated vessel.</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"execution_supported\">\n          <mx:Boolean>false</mx:Boolean>\n        </mx:Field>\n        <mx:Field name=\"hardware_roles\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>mixing vessel</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"name\">\n          <mx:String>MixMaterials</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"materials\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"mixing_method\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"vessel_capacity\">\n              <mx:Object>\n                <mx:Field name=\"dimension\">\n                  <mx:String>volume</mx:String>\n                </mx:Field>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>quantity</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mL</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"vessel_type\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"representation_status\">\n          <mx:String>admitted</mx:String>\n        </mx:Field>\n        <mx:Field name=\"semantic_sha256\">\n          <mx:String>ee6266d53b8a61a1e6de0483ac57feac7bd747a7065c711da0df1d1d4e9ceb54</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Definition>\n    <mx:Definition name=\"VacuumConcentrate\" semantic_sha256=\"3e053733ab25d3a4ce55c122ca074c0d0a1ff4fbfd7ee759e81e46b204a8d024\">\n      <mx:Object>\n        <mx:Field name=\"description\">\n          <mx:String>Concentrate the stated material by removing volatile components under vacuum without assuming complete dryness or a particular apparatus.</mx:String>\n        </mx:Field>\n        <mx:Field name=\"domain\">\n          <mx:String>workup</mx:String>\n        </mx:Field>\n        <mx:Field name=\"effects\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>Volatile material is removed under vacuum to concentrate the retained material.</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"execution_supported\">\n          <mx:Boolean>false</mx:Boolean>\n        </mx:Field>\n        <mx:Field name=\"hardware_roles\">\n          <mx:Array>\n            <mx:Item>\n              <mx:String>concentration vessel</mx:String>\n            </mx:Item>\n            <mx:Item>\n              <mx:String>vacuum source</mx:String>\n            </mx:Item>\n          </mx:Array>\n        </mx:Field>\n        <mx:Field name=\"name\">\n          <mx:String>VacuumConcentrate</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"material\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"pressure\">\n              <mx:Object>\n                <mx:Field name=\"dimension\">\n                  <mx:String>pressure</mx:String>\n                </mx:Field>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>quantity</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mbar</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"pressure_condition\">\n              <mx:Object>\n                <mx:Field name=\"required\">\n                  <mx:Boolean>true</mx:Boolean>\n                </mx:Field>\n                <mx:Field name=\"type\">\n                  <mx:String>string</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"representation_status\">\n          <mx:String>admitted</mx:String>\n        </mx:Field>\n        <mx:Field name=\"semantic_sha256\">\n          <mx:String>3e053733ab25d3a4ce55c122ca074c0d0a1ff4fbfd7ee759e81e46b204a8d024</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Definition>\n  </mx:OperationDefinitions>\n  <Procedure>\n    <mx:Step operation=\"MixMaterials\" id=\"s001\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s001</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>All chemicals were mixed in a 50 mL round bottom flask.</mx:String>\n            </mx:Field>\n            <mx:Field name=\"operation_expression\">\n              <mx:String>declarative_extension</mx:String>\n            </mx:Field>\n            <mx:Field name=\"refined_core_proposal\">\n              <mx:String>Stir</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>MixMaterials</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"materials\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>All chemicals were mixed in a 50 mL round bottom flask.</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>All chemicals</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"mixing_method\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>All chemicals were mixed in a 50 mL round bottom flask.</mx:String>\n                </mx:Field>\n                <mx:Field name=\"marker\">\n                  <mx:String>__NOT_REPORTED__</mx:String>\n                </mx:Field>\n                <mx:Field name=\"raw\">\n                  <mx:Null/>\n                </mx:Field>\n                <mx:Field name=\"status\">\n                  <mx:String>not_reported</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"vessel_capacity\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>50 mL round bottom flask</mx:String>\n                </mx:Field>\n                <mx:Field name=\"unit\">\n                  <mx:String>mL</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:Number>50</mx:Number>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"vessel_type\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>50 mL round bottom flask</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>round bottom flask</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"Degas\" id=\"s002\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s002</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>The solids were degassed</mx:String>\n            </mx:Field>\n            <mx:Field name=\"operation_expression\">\n              <mx:String>declarative_extension</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>Degas</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"duration\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>The solids were degassed</mx:String>\n                </mx:Field>\n                <mx:Field name=\"marker\">\n                  <mx:String>__NOT_REPORTED__</mx:String>\n                </mx:Field>\n                <mx:Field name=\"raw\">\n                  <mx:Null/>\n                </mx:Field>\n                <mx:Field name=\"status\">\n                  <mx:String>not_reported</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"material\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>The solids were degassed</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>The solids</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"method\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>The solids were degassed</mx:String>\n                </mx:Field>\n                <mx:Field name=\"marker\">\n                  <mx:String>__NOT_REPORTED__</mx:String>\n                </mx:Field>\n                <mx:Field name=\"raw\">\n                  <mx:Null/>\n                </mx:Field>\n                <mx:Field name=\"status\">\n                  <mx:String>not_reported</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"EstablishGasAtmosphere\" id=\"s003\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s003</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>placed under nitrogen</mx:String>\n            </mx:Field>\n            <mx:Field name=\"operation_expression\">\n              <mx:String>declarative_extension</mx:String>\n            </mx:Field>\n            <mx:Field name=\"refined_core_proposal\">\n              <mx:String>Atmosphere</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>EstablishGasAtmosphere</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"gas\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>placed under nitrogen</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>nitrogen</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"method\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>placed under nitrogen</mx:String>\n                </mx:Field>\n                <mx:Field name=\"marker\">\n                  <mx:String>__NOT_REPORTED__</mx:String>\n                </mx:Field>\n                <mx:Field name=\"raw\">\n                  <mx:Null/>\n                </mx:Field>\n                <mx:Field name=\"status\">\n                  <mx:String>not_reported</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"Add\" id=\"s004\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s004</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"amount_source\">\n              <mx:String>unknown</mx:String>\n            </mx:Field>\n            <mx:Field name=\"evidence\">\n              <mx:String>Toluene was added</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_alias\">\n              <mx:String>Toluene</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"missing_parameters\">\n          <mx:Object>\n            <mx:Field name=\"amount\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>Toluene was added</mx:String>\n                </mx:Field>\n                <mx:Field name=\"marker\">\n                  <mx:String>__NOT_REPORTED__</mx:String>\n                </mx:Field>\n                <mx:Field name=\"raw\">\n                  <mx:Null/>\n                </mx:Field>\n                <mx:Field name=\"status\">\n                  <mx:String>not_reported</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>Add</mx:String>\n        </mx:Field>\n        <mx:Field name=\"reagent\">\n          <mx:String>r001</mx:String>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"HeatChill\" id=\"s005\">\n      <mx:Object>\n        <mx:Field name=\"duration_s\">\n          <mx:Number>86400</mx:Number>\n        </mx:Field>\n        <mx:Field name=\"id\">\n          <mx:String>s005</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>the mixture was stirred at 100°C for 24 h.</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>reaction</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>HeatChill</mx:String>\n        </mx:Field>\n        <mx:Field name=\"stir\">\n          <mx:Boolean>true</mx:Boolean>\n        </mx:Field>\n        <mx:Field name=\"temp_C\">\n          <mx:Number>100</mx:Number>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"HeatChill\" id=\"s006\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s006</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>Cooled</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>workup</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"missing_parameters\">\n          <mx:Object>\n            <mx:Field name=\"temp_C\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>Cooled</mx:String>\n                </mx:Field>\n                <mx:Field name=\"marker\">\n                  <mx:String>__NOT_REPORTED__</mx:String>\n                </mx:Field>\n                <mx:Field name=\"raw\">\n                  <mx:Null/>\n                </mx:Field>\n                <mx:Field name=\"status\">\n                  <mx:String>not_reported</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>HeatChill</mx:String>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"Filter\" id=\"s007\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s007</mx:String>\n        </mx:Field>\n        <mx:Field name=\"keep\">\n          <mx:String>filtrate</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>filtered. The filtrate was concentrated under vacuum.</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>workup</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>Filter</mx:String>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"VacuumConcentrate\" id=\"s008\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s008</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>The filtrate was concentrated under vacuum.</mx:String>\n            </mx:Field>\n            <mx:Field name=\"operation_expression\">\n              <mx:String>declarative_extension</mx:String>\n            </mx:Field>\n            <mx:Field name=\"refined_core_proposal\">\n              <mx:String>Evaporate</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>workup</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>VacuumConcentrate</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"material\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>The filtrate was concentrated under vacuum.</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>The filtrate</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"pressure\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>The filtrate was concentrated under vacuum.</mx:String>\n                </mx:Field>\n                <mx:Field name=\"marker\">\n                  <mx:String>__NOT_REPORTED__</mx:String>\n                </mx:Field>\n                <mx:Field name=\"raw\">\n                  <mx:Null/>\n                </mx:Field>\n                <mx:Field name=\"status\">\n                  <mx:String>not_reported</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"pressure_condition\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>The filtrate was concentrated under vacuum.</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>under vacuum</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n    <mx:Step operation=\"ChromatographicPurification\" id=\"s009\">\n      <mx:Object>\n        <mx:Field name=\"id\">\n          <mx:String>s009</mx:String>\n        </mx:Field>\n        <mx:Field name=\"meta\">\n          <mx:Object>\n            <mx:Field name=\"evidence\">\n              <mx:String>The product was purified by silica gel chromatography using 1-4% methanol/DCM.</mx:String>\n            </mx:Field>\n            <mx:Field name=\"operation_expression\">\n              <mx:String>declarative_extension</mx:String>\n            </mx:Field>\n            <mx:Field name=\"refined_core_proposal\">\n              <mx:String>Purify</mx:String>\n            </mx:Field>\n            <mx:Field name=\"source_contract\">\n              <mx:String>text-only/1</mx:String>\n            </mx:Field>\n            <mx:Field name=\"stage\">\n              <mx:String>purification</mx:String>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"op\">\n          <mx:String>ChromatographicPurification</mx:String>\n        </mx:Field>\n        <mx:Field name=\"parameters\">\n          <mx:Object>\n            <mx:Field name=\"eluent\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>using 1-4% methanol/DCM</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>1-4% methanol/DCM</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"material\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>The product was purified by silica gel chromatography using 1-4% methanol/DCM.</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>The product</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"method\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>silica gel chromatography</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>chromatography</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n            <mx:Field name=\"stationary_phase\">\n              <mx:Object>\n                <mx:Field name=\"evidence\">\n                  <mx:String>silica gel chromatography</mx:String>\n                </mx:Field>\n                <mx:Field name=\"value\">\n                  <mx:String>silica gel</mx:String>\n                </mx:Field>\n              </mx:Object>\n            </mx:Field>\n          </mx:Object>\n        </mx:Field>\n        <mx:Field name=\"vessel\">\n          <mx:String>reactor</mx:String>\n        </mx:Field>\n      </mx:Object>\n    </mx:Step>\n  </Procedure>\n</Synthesis>\n",
+  "canonical_sha1": "761c84fc7d9b94a2c87b8faa07f36a92f6936c52",
+  "quality": {
+    "tier": "silver",
+    "source_grounded": true,
+    "source_input_contract": "text-only/1",
+    "outcome_annotation_scope": "reference_metadata_only",
+    "xdl_profile": "mosaic-xdl/1",
+    "xdl_profile_schema_passed": true,
+    "official_platform_compiled": false,
+    "symbolic_violations": [],
+    "unknown_constraints": [
+      {
+        "rule": "initial_state",
+        "reason": "initial_material_state_not_reported"
+      },
+      {
+        "rule": "operation_effects",
+        "step": 0,
+        "step_id": "s001",
+        "operation": "MixMaterials",
+        "reason": "extension_effect_semantics_unknown",
+        "vessels": [
+          "reactor"
+        ]
+      },
+      {
+        "rule": "operation_effects",
+        "step": 1,
+        "step_id": "s002",
+        "operation": "Degas",
+        "reason": "extension_effect_semantics_unknown",
+        "vessels": [
+          "reactor"
+        ]
+      },
+      {
+        "rule": "operation_effects",
+        "step": 2,
+        "step_id": "s003",
+        "operation": "EstablishGasAtmosphere",
+        "reason": "extension_effect_semantics_unknown",
+        "vessels": [
+          "reactor"
+        ]
+      },
+      {
+        "rule": "source_parameter",
+        "step": 3,
+        "step_id": "s004",
+        "parameter": "amount",
+        "reason": "missing_source_parameter",
+        "status": "not_reported"
+      },
+      {
+        "rule": "A1",
+        "step": 3,
+        "step_id": "s004",
+        "reason": "inventory_quantity_unknown"
+      },
+      {
+        "rule": "A1",
+        "step": 4,
+        "step_id": "s005",
+        "reason": "inventory_quantity_unknown"
+      },
+      {
+        "rule": "A2",
+        "step": 4,
+        "reason": "sample_to_controller_temperature_mapping_unknown"
+      },
+      {
+        "rule": "B1/B2/B3",
+        "step": 4,
+        "reason": "unknown_or_mixed_solvent_properties"
+      },
+      {
+        "rule": "B2",
+        "step": 4,
+        "reason": "solution_freezing_point_not_established"
+      },
+      {
+        "rule": "source_parameter",
+        "step": 5,
+        "step_id": "s006",
+        "parameter": "temp_C",
+        "reason": "missing_source_parameter",
+        "status": "not_reported"
+      },
+      {
+        "rule": "A1",
+        "step": 5,
+        "step_id": "s006",
+        "reason": "inventory_quantity_unknown"
+      },
+      {
+        "rule": "B1/B2/B3",
+        "step": 5,
+        "reason": "unknown_or_mixed_solvent_properties"
+      },
+      {
+        "rule": "B2",
+        "step": 5,
+        "reason": "solution_freezing_point_not_established"
+      },
+      {
+        "rule": "A1",
+        "step": 6,
+        "step_id": "s007",
+        "reason": "inventory_quantity_unknown"
+      },
+      {
+        "rule": "operation_effects",
+        "step": 7,
+        "step_id": "s008",
+        "operation": "VacuumConcentrate",
+        "reason": "extension_effect_semantics_unknown",
+        "vessels": [
+          "reactor"
+        ]
+      },
+      {
+        "rule": "operation_effects",
+        "step": 8,
+        "step_id": "s009",
+        "operation": "ChromatographicPurification",
+        "reason": "extension_effect_semantics_unknown",
+        "vessels": [
+          "reactor"
+        ]
+      }
+    ],
+    "manual_review": "pending",
+    "hardware_verification": "pending",
+    "full_feasibility_certified": false,
+    "representation_complete": true,
+    "parameters_complete": false,
+    "missing_parameters": [
+      {
+        "step_id": "s004",
+        "parameter": "amount",
+        "status": "not_reported",
+        "marker": "__NOT_REPORTED__",
+        "evidence": "Toluene was added",
+        "raw": null
+      },
+      {
+        "step_id": "s006",
+        "parameter": "temp_C",
+        "status": "not_reported",
+        "marker": "__NOT_REPORTED__",
+        "evidence": "Cooled",
+        "raw": null
+      },
+      {
+        "step_id": "s001",
+        "parameter": "mixing_method",
+        "status": "not_reported",
+        "marker": "__NOT_REPORTED__",
+        "evidence": "All chemicals were mixed in a 50 mL round bottom flask.",
+        "raw": null
+      },
+      {
+        "step_id": "s002",
+        "parameter": "method",
+        "status": "not_reported",
+        "marker": "__NOT_REPORTED__",
+        "evidence": "The solids were degassed",
+        "raw": null
+      },
+      {
+        "step_id": "s002",
+        "parameter": "duration",
+        "status": "not_reported",
+        "marker": "__NOT_REPORTED__",
+        "evidence": "The solids were degassed",
+        "raw": null
+      },
+      {
+        "step_id": "s003",
+        "parameter": "method",
+        "status": "not_reported",
+        "marker": "__NOT_REPORTED__",
+        "evidence": "placed under nitrogen",
+        "raw": null
+      },
+      {
+        "step_id": "s008",
+        "parameter": "pressure",
+        "status": "not_reported",
+        "marker": "__NOT_REPORTED__",
+        "evidence": "The filtrate was concentrated under vacuum.",
+        "raw": null
+      }
+    ],
+    "execution_ready": false,
+    "conversion_status": "represented_with_missing_parameters",
+    "extension_operations": [
+      "ChromatographicPurification",
+      "Degas",
+      "EstablishGasAtmosphere",
+      "MixMaterials",
+      "VacuumConcentrate"
+    ],
+    "risk_assessment_scope": "Implemented rules only; unknown parameters and extension effects produce abstentions."
+  },
+  "mosaic": {
+    "schema": "mosaic.ir/2",
+    "run_id": "mosaic_5614afe1b936f659def0",
+    "domain": "chemistry.extended/1",
+    "findings": [],
+    "apparatus_proposals": [
+      {
+        "quote": "50 mL round bottom flask",
+        "kind": "vessel",
+        "identity": "round-bottom flask",
+        "scope": "50 mL flask capacity; reaction mixture vessel",
+        "evidence": {
+          "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+          "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+          "start": 30,
+          "end": 54,
+          "quote": "50 mL round bottom flask"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "filtered",
+        "kind": "separation_apparatus",
+        "identity": "filtration apparatus",
+        "scope": "used after cooling; apparatus type not specified",
+        "evidence": {
+          "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+          "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+          "start": 184,
+          "end": 192,
+          "quote": "filtered"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "concentrated under vacuum",
+        "kind": "separation_apparatus",
+        "identity": "vacuum concentration apparatus",
+        "scope": "used to concentrate the filtrate; apparatus type not specified",
+        "evidence": {
+          "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+          "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+          "start": 211,
+          "end": 236,
+          "quote": "concentrated under vacuum"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "silica gel chromatography",
+        "kind": "separation_apparatus",
+        "identity": "silica gel chromatography apparatus",
+        "scope": "purification using 1-4% methanol/DCM",
+        "evidence": {
+          "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+          "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+          "start": 343,
+          "end": 368,
+          "quote": "silica gel chromatography"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+        "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+        "start": 0,
+        "end": 55,
+        "quote": "All chemicals were mixed in a 50 mL round bottom flask."
+      },
+      {
+        "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+        "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+        "start": 85,
+        "end": 106,
+        "quote": "placed under nitrogen"
+      },
+      {
+        "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+        "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+        "start": 108,
+        "end": 125,
+        "quote": "Toluene was added"
+      },
+      {
+        "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+        "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+        "start": 130,
+        "end": 172,
+        "quote": "the mixture was stirred at 100°C for 24 h."
+      },
+      {
+        "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+        "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+        "start": 173,
+        "end": 179,
+        "quote": "Cooled"
+      },
+      {
+        "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+        "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+        "start": 184,
+        "end": 237,
+        "quote": "filtered. The filtrate was concentrated under vacuum."
+      },
+      {
+        "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+        "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+        "start": 194,
+        "end": 237,
+        "quote": "The filtrate was concentrated under vacuum."
+      },
+      {
+        "source_id": "ord-2de77de369ef42f8b910f9e83130f454",
+        "source_sha256": "cf5ef3d2a2364aac09d9f4d15ae76fab2e505f07edba1685b258129202ee839c",
+        "start": 315,
+        "end": 393,
+        "quote": "The product was purified by silica gel chromatography using 1-4% methanol/DCM."
+      }
+    ],
+    "repair": {
+      "accepted": false,
+      "patch": []
+    },
+    "apparatus_unknowns": [
+      "The nitrogen delivery or inert-atmosphere apparatus is not specified.",
+      "The stirring device and heating apparatus are not specified; 100°C is the stated mixture temperature, not a heater setpoint.",
+      "The filtration setup is not specified.",
+      "The vacuum concentration setup is not specified.",
+      "The chromatography format and column dimensions are not specified."
+    ],
+    "completion": {
+      "agent_called": true,
+      "attempts": 1,
+      "model": "gpt-6.1-sol",
+      "extension_operations": [
+        "ChromatographicPurification",
+        "Degas",
+        "EstablishGasAtmosphere",
+        "MixMaterials",
+        "VacuumConcentrate"
+      ],
+      "expression_profile": "mosaic-xdl/1",
+      "execution_supported": false
+    }
+  },
+  "split_group": "acyclic_product:"
+}

@@ -1,0 +1,139 @@
+{
+  "protocol": {
+    "id": "pos_0b453c3805b0490c9fffb6fb51128e7a",
+    "source": {
+      "dataset_id": "ord_dataset-89b083710e2d441aa0040c361d63359f",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-89b083710e2d441aa0040c361d63359f.parquet",
+      "file_sha256": "a5ecfacfb95aba7398314bab3fd724950f181955b9ff42572a998a2a9e6be9d4",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://science.sciencemag.org/content/345/6195/437",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/89/ord_dataset-89b083710e2d441aa0040c361d63359f.parquet"
+    },
+    "raw_id": "ord-0b453c3805b0490c9fffb6fb51128e7a",
+    "raw_sha256": "afa80de53584324ed467887f30f75149a091b7291ce82a3d29bf916b23481b07",
+    "source_text": "Prior to irradiation, the reaction mixture was degassed by bubbling argon for 20 minutes",
+    "text_sha256": "6dc9f478bbee96680b874d92bfea4334a580c0aaf0ad1512b4da259298e073e4",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [],
+    "steps": [
+      {
+        "op": "Atmosphere",
+        "vessel": "reactor",
+        "gas": "argon",
+        "mode": "purge",
+        "duration_s": 1200,
+        "id": "s001",
+        "meta": {
+          "evidence": "the reaction mixture was degassed by bubbling argon for 20 minutes",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Irradiate",
+        "vessel": "reactor",
+        "id": "s002",
+        "meta": {
+          "evidence": "irradiation",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        },
+        "missing_parameters": {
+          "duration_s": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "irradiation",
+            "raw": null
+          }
+        }
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {
+        "type": "ARGON",
+        "basis": "procedure_text"
+      },
+      "reflux": false,
+      "source_context_evidence": [],
+      "initial_material_state": "unknown_unless_reported"
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "6dc9f478bbee96680b874d92bfea4334a580c0aaf0ad1512b4da259298e073e4",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "prompt_tokens": 658,
+        "total_tokens": 875,
+        "completion_tokens": 217,
+        "prompt_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 108
+        }
+      },
+      "cache_key": "7971c8b1222fa06282cdf4335f17e08570c00c7379068eb03beaea52c7c827f0",
+      "unresolved": [
+        "Irradiation is referenced, but its duration and wavelength are not specified.",
+        "s002: duration unspecified"
+      ],
+      "unmapped_actions": [],
+      "source_observations": []
+    },
+    "xdl_profile": "mosaic-xdl/1",
+    "operation_definitions": {}
+  },
+  "notes": {
+    "domain": "chemistry.extended/1",
+    "findings": [
+      {
+        "code": "GAS_INTRODUCTION_MODE",
+        "quote": "degassed by bubbling argon for 20 minutes",
+        "message": "The source specifies bubbling argon through the reaction mixture. The generic mode 'purge' does not preserve this explicit physical action.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-0b453c3805b0490c9fffb6fb51128e7a",
+          "source_sha256": "65789bfd92176816edee716b9c8ef669cd25359faf3819a5a5315f5186c6e096",
+          "start": 47,
+          "end": 88,
+          "quote": "degassed by bubbling argon for 20 minutes"
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [],
+    "evidence_spans": [
+      {
+        "source_id": "ord-0b453c3805b0490c9fffb6fb51128e7a",
+        "source_sha256": "65789bfd92176816edee716b9c8ef669cd25359faf3819a5a5315f5186c6e096",
+        "start": 22,
+        "end": 88,
+        "quote": "the reaction mixture was degassed by bubbling argon for 20 minutes"
+      },
+      {
+        "source_id": "ord-0b453c3805b0490c9fffb6fb51128e7a",
+        "source_sha256": "65789bfd92176816edee716b9c8ef669cd25359faf3819a5a5315f5186c6e096",
+        "start": 9,
+        "end": 20,
+        "quote": "irradiation"
+      }
+    ],
+    "repair": {
+      "accepted": false,
+      "errors": [
+        "step 0: unsupported atmosphere mode"
+      ]
+    },
+    "apparatus_unknowns": [],
+    "completion": {
+      "agent_called": false,
+      "attempts": 0,
+      "extension_operations": []
+    }
+  },
+  "raw_id": "ord-0b453c3805b0490c9fffb6fb51128e7a"
+}

@@ -1,0 +1,473 @@
+{
+  "data": {
+    "proposals": [
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_22519796444fc9c9b5fb",
+          "mention_a8eec7a3eb3370d2be5d",
+          "mention_4f2db317ae25aa602fa6",
+          "mention_31c8e2c6c87e50fe2b0c",
+          "mention_e6f2ccec08a9170d6e51",
+          "mention_c8f0f1d4a8b6c8e41039",
+          "mention_6fe2fba671b3c06cf4ff",
+          "mention_5932dddc304f283d680f"
+        ],
+        "name": "Add",
+        "reason": "Each describes one quantified material introduction, already represented by Add. Preserve independently reported mass, substance amount, relative loading, material condition, aliases, and procedure references as source annotations on that same charge, not additional additions. Resolve the receiving vessel from context; do not infer loading reference bases or expand procedure B. The extension contracts differ and are not identical-contract aliases."
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_2383b42c586247e603d7"
+        ],
+        "name": "Evaporate",
+        "reason": "Concentrating the filtrate removes volatile inventory, matching Evaporate. Pressure, temperature, duration, and degree of concentration remain unspecified."
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_ca37a0855bc852b842e3"
+        ],
+        "name": "Filter",
+        "reason": "The subsequent concentration explicitly identifies the filtrate as the retained stream, matching Filter with keep=filtrate. No filter medium or driving method is reported."
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_65eed40d3472d57eefe5"
+        ],
+        "name": "HeatChill",
+        "reason": "Heating at 90 °C for the reported 15 h matches HeatChill's temperature and duration semantics. No ramp, stirring, or hardware setpoint is inferred."
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_9ff57a285d546a4bc224"
+        ],
+        "name": "Stir",
+        "reason": "Stirring for two minutes matches Stir with duration_s=120. Retain room temperature as reported context without inventing a numeric temperature or rpm."
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_8ed353429b63047568dd"
+        ],
+        "name": "Transfer",
+        "reason": "Moving the existing ligand–Pd mixture matches Transfer rather than introduction of a newly quantified reagent. Source vessel, destination vessel, and amount must be resolved from context; the excerpt alone does not provide complete execution parameters."
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_b7c1b56dc6a048ca5145"
+        ],
+        "name": "Wait",
+        "reason": "The reported 16 h interval matches Wait without implying heating or stirring. The 73% conversion is a reported outcome, not a Wait parameter or a prescribed endpoint guard."
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_a6c75e4f543fd535f30c"
+        ],
+        "name": "Atmosphere",
+        "reason": "An argon-filled glove box matches Atmosphere's context-only environment mode. It does not establish that the vessel was purged, evacuated, or refilled."
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_b3b9867f69f30f86060f"
+        ],
+        "name": "Atmosphere",
+        "reason": "Introducing N2 into the vessel atmosphere fits Atmosphere with an explicitly retained backfill establishment mode. Do not substitute purge or EvacuateAndRefill, infer preceding degassing from the extension description, or claim a verified export for backfill."
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_d638e071d2db8fac8b6b",
+          "mention_3db503a09cec2e5a2897",
+          "mention_1c83912a2579e14e65a0"
+        ],
+        "name": "Purify",
+        "reason": "These complete chromatographic purification reports fit opaque terminal Purify. Preserve the reported stationary phase and literal solvent composition in the method description and source annotations, including Pet. Ether (40–60):EtOAc (9:1) and 1–4% methanol/DCM. Do not infer ratio bases, a gradient schedule, apparatus geometry, or successful recovery beyond the report. This semantic reuse does not establish execution readiness."
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_bda7fcdddc2128af08a0"
+        ],
+        "name": "AttemptChromatographicPurification",
+        "reason": "Unlike an ordinary terminal Purify report, this records an unsuccessful chromatography attempt with decomposition. No registered contract explicitly preserves that attempted-processing status and failure outcome; decomposition must not become an intended transformation.",
+        "contract": {
+          "parameters": {
+            "material": {
+              "type": "string",
+              "required": false
+            },
+            "method": {
+              "type": "string",
+              "required": true
+            },
+            "reported_feasibility": {
+              "type": "string",
+              "required": true
+            },
+            "reported_material_behavior": {
+              "type": "string",
+              "required": true
+            }
+          },
+          "effects": [
+            "Records a reported chromatographic purification attempt and its outcome."
+          ],
+          "guards": [
+            "Do not assert successful isolation.",
+            "Treat decomposition as a reported outcome, not an instruction.",
+            "Do not infer column conditions or the extent of the attempt."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_ba8da077aef8068a4967"
+        ],
+        "name": "BathDry",
+        "reason": "HeatChill alone does not express drying, while Evaporate does not retain the specified bath-heating mode. No approved lossless macro with roundtrip witnesses is supplied for this drying action.",
+        "contract": {
+          "parameters": {
+            "vessel": {
+              "type": "identifier",
+              "required": false
+            },
+            "bath": {
+              "type": "string",
+              "required": true
+            },
+            "bath_temperature_C": {
+              "type": "number",
+              "required": true
+            },
+            "duration_s": {
+              "type": "number",
+              "required": true
+            },
+            "pressure_condition": {
+              "type": "string",
+              "required": false
+            }
+          },
+          "effects": [
+            "Subjects the remaining material to bath-heated drying."
+          ],
+          "guards": [
+            "Preserve the reported oil bath, 90 °C, and 30-minute duration.",
+            "Do not equate bath temperature with measured sample temperature.",
+            "Do not inherit reduced pressure from a preceding operation.",
+            "Do not infer complete dryness or residual-solvent content."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_a69791bd96472adf2b6f"
+        ],
+        "name": "SpecifyPurgeGasBubbling",
+        "reason": "Atmosphere can represent the nitrogen purge and its five-minute duration, but its contract does not explicitly retain direct bubbling through the liquid or attachment to an existing purge event. This candidate specifies contact mode without adding a second purge.",
+        "contract": {
+          "parameters": {
+            "purge_event": {
+              "type": "reference",
+              "required": true
+            },
+            "gas": {
+              "type": "string",
+              "required": true
+            },
+            "contact_method": {
+              "type": "string",
+              "required": true
+            }
+          },
+          "effects": [
+            "Specifies direct gas bubbling through the reaction mixture during the referenced purge."
+          ],
+          "guards": [
+            "Associate the five-minute duration with the purge only once.",
+            "Do not create a second gas-contact event.",
+            "Do not infer flow, pressure, or gas-introduction hardware geometry."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_aed04639b43f94d77fff"
+        ],
+        "name": "CapVessel",
+        "reason": "Closing a vessel changes its closure state, an effect absent from Add, Transfer, and Atmosphere. The reported cap does not establish a pressure rating or operating pressure.",
+        "contract": {
+          "parameters": {
+            "vessel": {
+              "type": "identifier",
+              "required": false
+            },
+            "closure": {
+              "type": "string",
+              "required": true
+            }
+          },
+          "effects": [
+            "Closes the vessel with the reported cap."
+          ],
+          "guards": [
+            "Preserve the reported teflon pressure-cap description.",
+            "Do not infer hermeticity, operating pressure, or apparatus pressure rating."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_36a426ed1ea9eea2efef",
+          "mention_6702da49fe1a6cdf583f",
+          "mention_324b3e71362a6b4e5fe8",
+          "mention_49207b514fe234a34ad4"
+        ],
+        "name": "SpecifyChromatographyConditions",
+        "reason": "These phrases constrain the stationary phase and eluent of an associated purification rather than prescribe another separation or physical setup procedure. Purify lacks explicit condition-attachment semantics. The differing extension parameters are not identical-contract aliases.",
+        "contract": {
+          "parameters": {
+            "purification_event": {
+              "type": "reference",
+              "required": true
+            },
+            "stationary_phase": {
+              "type": "string",
+              "required": true
+            },
+            "eluent": {
+              "type": "string",
+              "required": true
+            },
+            "eluent_component": {
+              "type": "string",
+              "required": true
+            },
+            "eluent_carrier": {
+              "type": "string",
+              "required": true
+            },
+            "component_percentage": {
+              "type": "quantity",
+              "unit": "%",
+              "required": true
+            },
+            "percentage_basis": {
+              "type": "string",
+              "required": false
+            }
+          },
+          "effects": [
+            "Constrains the referenced purification to the reported stationary phase and eluent composition."
+          ],
+          "guards": [
+            "Keep each observation's composition attached to its own purification event.",
+            "Do not create a second separation or infer an independent setup action.",
+            "Leave unreported percentage bases unknown.",
+            "Do not infer medium quantities, eluent volumes, apparatus dimensions, or gradient schedules."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_ab5ec5381eb91b8ecb58"
+        ],
+        "name": "ChromatographicElution",
+        "reason": "This extension specifically identifies the elution phase within an existing purification. It remains distinct from whole-process Purify and condition-only attachment; no known operation explicitly represents this linked physical phase.",
+        "contract": {
+          "parameters": {
+            "purification_event": {
+              "type": "reference",
+              "required": true
+            },
+            "stationary_phase": {
+              "type": "string",
+              "required": true
+            },
+            "eluent": {
+              "type": "string",
+              "required": true
+            },
+            "eluent_component": {
+              "type": "string",
+              "required": true
+            },
+            "eluent_carrier": {
+              "type": "string",
+              "required": true
+            },
+            "component_percentage": {
+              "type": "quantity",
+              "unit": "%",
+              "required": true
+            },
+            "percentage_basis": {
+              "type": "string",
+              "required": false
+            }
+          },
+          "effects": [
+            "Represents elution through the specified stationary phase within the referenced purification."
+          ],
+          "guards": [
+            "Do not count this as another chromatographic separation.",
+            "Do not infer percentage basis, flow, eluent volume, fraction selection, or apparatus geometry."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_de06be9de302b1b3761a"
+        ],
+        "name": "CollectChromatographyFractions",
+        "reason": "Selecting and collecting product fractions is distinct from opaque purification and from a generic Transfer, which does not encode fraction selection. No fraction numbers, volumes, pooling instructions, or destination are reported.",
+        "contract": {
+          "parameters": {
+            "fraction_selection": {
+              "type": "string",
+              "required": true
+            },
+            "purification_event": {
+              "type": "reference",
+              "required": false
+            },
+            "destination": {
+              "type": "reference",
+              "required": false
+            }
+          },
+          "effects": [
+            "Collects the explicitly selected chromatography fractions."
+          ],
+          "guards": [
+            "Preserve product fractions as the reported selection.",
+            "Leave destination, fraction identifiers, volumes, and pooling details unknown unless reported."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_04b6f2e0c16e5ed2fb53"
+        ],
+        "name": "SpecifyReactionVesselContext",
+        "reason": "Atmosphere environment mode covers the argon glove-box context but not the combined vessel-type and capacity assertion. This candidate records apparatus context, not an inferred setup, purge, or charging sequence.",
+        "contract": {
+          "parameters": {
+            "vessel": {
+              "type": "identifier",
+              "required": false
+            },
+            "vessel_type": {
+              "type": "string",
+              "required": true
+            },
+            "capacity": {
+              "type": "quantity",
+              "dimension": "volume",
+              "required": true
+            },
+            "environment": {
+              "type": "string",
+              "required": true
+            }
+          },
+          "effects": [
+            "Records the reaction vessel type, reported capacity, and surrounding environment."
+          ],
+          "guards": [
+            "Preserve the reported 5.0 mL microreactor capacity.",
+            "Do not infer flow operation or a pressure rating.",
+            "Do not convert glove-box context into a purge or evacuation.",
+            "Do not duplicate the separate material charge."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_device",
+        "origins": [
+          "mention_a63d056985b8787c72a3",
+          "mention_4e1e736d1dd90b989cee",
+          "mention_9a178c23522eb3962310",
+          "mention_1617d08e84618ddba17a",
+          "mention_f261e3524b6ffc27cc3b",
+          "mention_f6f2699000b701f4f579",
+          "mention_fa1e3f02917cccd68efc"
+        ],
+        "name": "Chromatographic separation apparatus, unspecified format",
+        "family": "chromatography_apparatus",
+        "reason": "These reports support a common chromatography apparatus family, absent from the supplied families. They do not identify column format, dimensions, manufacturer, or model. Silica gel is the stationary-phase material, not a device identity; eluent differences remain event-specific. Family membership establishes neither interchangeability nor verification."
+      },
+      {
+        "action": "cluster_device",
+        "origins": [
+          "mention_c410cd8204bbfa84d03e"
+        ],
+        "name": "Chromatography column",
+        "family": "chromatography_column",
+        "reason": "Column chromatography explicitly supports a column family, unlike the unspecified-format chromatography mentions. No supplied family covers chromatographic columns; filter and separator have different separation semantics. Dimensions, stationary phase, model, and interchangeability remain unknown."
+      },
+      {
+        "action": "cluster_device",
+        "origins": [
+          "mention_1633d390a35a32f8e81e"
+        ],
+        "name": "Chromatography purification system",
+        "family": "chromatography_purification_system",
+        "reason": "The reported ISCO purification supports a chromatography-system family, not a particular column or filter. Preserve the reported brand wording without inferring a manufacturer identity, model, automation mode, or operating capabilities. No interchangeability or verification is established."
+      },
+      {
+        "action": "cluster_device",
+        "origins": [
+          "mention_0a59b5b2e05d15e199db"
+        ],
+        "name": "Vessel cap",
+        "family": "vessel_closure",
+        "reason": "A cap is a vessel closure, not the vial itself, and no existing family represents closures. The evidence supports neither cap material or type nor sealing or pressure capability; membership does not establish compatibility with another vessel."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 18331,
+    "total_tokens": 22472,
+    "completion_tokens": 4141,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 18328,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 175
+    }
+  },
+  "cache_key": "f0076099128ecded0d9fc7ae4d4769dc692ae5909f802c02ba58716b452f6411"
+}

@@ -1,0 +1,462 @@
+{
+  "protocol": {
+    "id": "pos_bb7f6619ebed4436b7a7f09c9d4cd82e",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e",
+    "raw_sha256": "3fe4fe28731d45e1ce978481946a409a434a9851dd70cf659cb5ec305b1d21f8",
+    "source_text": "To a stirred sol of 1-bromo-2-chlorobenzene (0.606 mL, 5.22 mmol) in toluene (10 mL) was added Pd2(dba)3 (0.239 g, 0.26 mmol), BINAP (0.163 g, 0.26 mmol), sodium tert-butoxide (0.753 g, 7.83 mmol) and piperazine (1.350 g, 15.67 mmol) and the resulting sol was heated at 110 °C for 16 h.  Filtered through a celeite pad & crude mixture was purified by column chromatography to afford (DCM:MeOH 90:10) to afford 1-(2-chlorophenyl)piperazine (0.600 g, 58.4 %) as a brown gum.  ",
+    "text_sha256": "0c30f9c27380400297276908758f1823226403d9b2e238c003fa3e6fecd34a7f",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "1-bromo-2-chlorobenzene",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 0.606,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r002",
+        "name": "toluene",
+        "smiles": null,
+        "role": "SOLVENT",
+        "amount": {
+          "value": 10,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r003",
+        "name": "Pd2(dba)3",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 239,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r004",
+        "name": "BINAP",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 163,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r005",
+        "name": "sodium tert-butoxide",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 753,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r006",
+        "name": "piperazine",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 1350,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r001",
+        "amount": {
+          "value": 0.606,
+          "unit": "mL"
+        },
+        "id": "s001",
+        "meta": {
+          "evidence": "1-bromo-2-chlorobenzene (0.606 mL, 5.22 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "1-bromo-2-chlorobenzene",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r002",
+        "amount": {
+          "value": 10,
+          "unit": "mL"
+        },
+        "id": "s002",
+        "meta": {
+          "evidence": "in toluene (10 mL)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "toluene",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Stir",
+        "vessel": "reactor",
+        "id": "s003",
+        "meta": {
+          "evidence": "stirred sol",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        },
+        "missing_parameters": {
+          "duration_s": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "stirred sol",
+            "raw": null
+          }
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r003",
+        "amount": {
+          "value": 239,
+          "unit": "mg"
+        },
+        "id": "s004",
+        "meta": {
+          "evidence": "Pd2(dba)3 (0.239 g, 0.26 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "Pd2(dba)3",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r004",
+        "amount": {
+          "value": 163,
+          "unit": "mg"
+        },
+        "id": "s005",
+        "meta": {
+          "evidence": "BINAP (0.163 g, 0.26 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "BINAP",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r005",
+        "amount": {
+          "value": 753,
+          "unit": "mg"
+        },
+        "id": "s006",
+        "meta": {
+          "evidence": "sodium tert-butoxide (0.753 g, 7.83 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "sodium tert-butoxide",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r006",
+        "amount": {
+          "value": 1350,
+          "unit": "mg"
+        },
+        "id": "s007",
+        "meta": {
+          "evidence": "piperazine (1.350 g, 15.67 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "piperazine",
+          "amount_source": "procedure_text"
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 110,
+        "duration_s": 57600,
+        "id": "s008",
+        "meta": {
+          "evidence": "the resulting sol was heated at 110 °C for 16 h",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Filter",
+        "id": "s009",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "Filtered through a celeite pad",
+          "stage": "workup",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "Purify",
+        "method": "chromatography",
+        "id": "s010",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "crude mixture was purified by column chromatography to afford (DCM:MeOH 90:10)",
+          "stage": "purification",
+          "source_contract": "text-only/1"
+        }
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {},
+      "reflux": false,
+      "source_context_evidence": [],
+      "initial_material_state": "unknown_unless_reported"
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "0c30f9c27380400297276908758f1823226403d9b2e238c003fa3e6fecd34a7f",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 811,
+        "prompt_tokens": 1603,
+        "total_tokens": 2414,
+        "prompt_tokens_details": {
+          "cache_write_tokens": 1600,
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 49
+        }
+      },
+      "cache_key": "c8e32aa0a2a2876f5faa9579f1e0b457b9f8ac660a2159ad4af30ed81b08c6e7",
+      "unresolved": [
+        "s003: duration unspecified"
+      ],
+      "unmapped_actions": [],
+      "source_observations": []
+    },
+    "xdl_profile": "mosaic-xdl/1",
+    "operation_definitions": {}
+  },
+  "notes": {
+    "domain": "chemistry.extended/1",
+    "findings": [
+      {
+        "code": "FILTRATION_MEDIUM_UNREPRESENTED",
+        "quote": "Filtered through a celeite pad",
+        "message": "The Filter step captures filtration but does not preserve the explicitly specified pad medium (source spelling: \"celeite\"). The closed Filter schema has no medium field, so preserve this detail separately.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e",
+          "source_sha256": "d9875a95106847532400789c6667dc8045cc1bcbceb6f90f16788034c2d4c69d",
+          "start": 288,
+          "end": 318,
+          "quote": "Filtered through a celeite pad"
+        },
+        "status": "model_proposal"
+      },
+      {
+        "code": "PURIFICATION_CONDITIONS_OMITTED",
+        "quote": "crude mixture was purified by column chromatography to afford (DCM:MeOH 90:10)",
+        "message": "The purification method omits the column format and the specified DCM:MeOH 90:10 eluent composition.",
+        "severity": "error",
+        "evidence": {
+          "source_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e",
+          "source_sha256": "d9875a95106847532400789c6667dc8045cc1bcbceb6f90f16788034c2d4c69d",
+          "start": 321,
+          "end": 399,
+          "quote": "crude mixture was purified by column chromatography to afford (DCM:MeOH 90:10)"
+        },
+        "status": "model_proposal"
+      }
+    ],
+    "apparatus_proposals": [
+      {
+        "quote": "a stirred sol",
+        "kind": "reaction vessel",
+        "identity": null,
+        "scope": "A vessel is implied by the stirred reaction mixture, but no vessel type, size, material, or manufacturer is stated.",
+        "evidence": {
+          "source_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e",
+          "source_sha256": "d9875a95106847532400789c6667dc8045cc1bcbceb6f90f16788034c2d4c69d",
+          "start": 3,
+          "end": 16,
+          "quote": "a stirred sol"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "heated at 110 °C for 16 h",
+        "kind": "heating condition",
+        "identity": null,
+        "scope": "Reaction-mixture temperature/time condition; no heater, reactor, or setpoint-versus-sample-temperature distinction is provided.",
+        "evidence": {
+          "source_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e",
+          "source_sha256": "d9875a95106847532400789c6667dc8045cc1bcbceb6f90f16788034c2d4c69d",
+          "start": 260,
+          "end": 285,
+          "quote": "heated at 110 °C for 16 h"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "Filtered through a celeite pad",
+        "kind": "filtration apparatus",
+        "identity": "Celite pad",
+        "scope": "Filtration medium/apparatus component; no funnel, filter holder, or other filtration hardware is specified.",
+        "evidence": {
+          "source_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e",
+          "source_sha256": "d9875a95106847532400789c6667dc8045cc1bcbceb6f90f16788034c2d4c69d",
+          "start": 288,
+          "end": 318,
+          "quote": "Filtered through a celeite pad"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "purified by column chromatography",
+        "kind": "separation apparatus",
+        "identity": "column chromatography",
+        "scope": "Chromatographic separation is described; column dimensions, stationary phase, and instrument are not stated.",
+        "evidence": {
+          "source_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e",
+          "source_sha256": "d9875a95106847532400789c6667dc8045cc1bcbceb6f90f16788034c2d4c69d",
+          "start": 339,
+          "end": 372,
+          "quote": "purified by column chromatography"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e",
+        "source_sha256": "d9875a95106847532400789c6667dc8045cc1bcbceb6f90f16788034c2d4c69d",
+        "start": 20,
+        "end": 65,
+        "quote": "1-bromo-2-chlorobenzene (0.606 mL, 5.22 mmol)"
+      },
+      {
+        "source_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e",
+        "source_sha256": "d9875a95106847532400789c6667dc8045cc1bcbceb6f90f16788034c2d4c69d",
+        "start": 66,
+        "end": 84,
+        "quote": "in toluene (10 mL)"
+      },
+      {
+        "source_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e",
+        "source_sha256": "d9875a95106847532400789c6667dc8045cc1bcbceb6f90f16788034c2d4c69d",
+        "start": 5,
+        "end": 16,
+        "quote": "stirred sol"
+      },
+      {
+        "source_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e",
+        "source_sha256": "d9875a95106847532400789c6667dc8045cc1bcbceb6f90f16788034c2d4c69d",
+        "start": 95,
+        "end": 125,
+        "quote": "Pd2(dba)3 (0.239 g, 0.26 mmol)"
+      },
+      {
+        "source_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e",
+        "source_sha256": "d9875a95106847532400789c6667dc8045cc1bcbceb6f90f16788034c2d4c69d",
+        "start": 127,
+        "end": 153,
+        "quote": "BINAP (0.163 g, 0.26 mmol)"
+      },
+      {
+        "source_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e",
+        "source_sha256": "d9875a95106847532400789c6667dc8045cc1bcbceb6f90f16788034c2d4c69d",
+        "start": 155,
+        "end": 196,
+        "quote": "sodium tert-butoxide (0.753 g, 7.83 mmol)"
+      },
+      {
+        "source_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e",
+        "source_sha256": "d9875a95106847532400789c6667dc8045cc1bcbceb6f90f16788034c2d4c69d",
+        "start": 201,
+        "end": 233,
+        "quote": "piperazine (1.350 g, 15.67 mmol)"
+      },
+      {
+        "source_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e",
+        "source_sha256": "d9875a95106847532400789c6667dc8045cc1bcbceb6f90f16788034c2d4c69d",
+        "start": 238,
+        "end": 285,
+        "quote": "the resulting sol was heated at 110 °C for 16 h"
+      },
+      {
+        "source_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e",
+        "source_sha256": "d9875a95106847532400789c6667dc8045cc1bcbceb6f90f16788034c2d4c69d",
+        "start": 288,
+        "end": 318,
+        "quote": "Filtered through a celeite pad"
+      },
+      {
+        "source_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e",
+        "source_sha256": "d9875a95106847532400789c6667dc8045cc1bcbceb6f90f16788034c2d4c69d",
+        "start": 321,
+        "end": 399,
+        "quote": "crude mixture was purified by column chromatography to afford (DCM:MeOH 90:10)"
+      }
+    ],
+    "repair": {
+      "accepted": false,
+      "errors": [
+        "unmapped action needs exact literal evidence"
+      ]
+    },
+    "apparatus_unknowns": [
+      "The reaction vessel type, volume, material, closure, and stirring hardware are not specified.",
+      "No heating apparatus or heater setpoint is stated; 110 °C is reported as the reaction heating condition.",
+      "No flow reactor, microreactor, wells, inserts, plate format, controller, or pressure-rated apparatus is described.",
+      "No chromatography column dimensions, stationary phase, pump/system, or collection apparatus is specified."
+    ],
+    "completion": {
+      "agent_called": false,
+      "attempts": 0,
+      "extension_operations": []
+    }
+  },
+  "raw_id": "ord-bb7f6619ebed4436b7a7f09c9d4cd82e"
+}

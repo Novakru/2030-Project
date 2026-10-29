@@ -1,0 +1,353 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "AddMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "Following general procedure F using tert‐butyl (2‐(trifluoromethyl)benzyl)carbamate (68.8 mg, 0.25 mmol)",
+        "parameters": {
+          "procedure_reference": {
+            "value": "Following general procedure F",
+            "evidence": "Following general procedure F"
+          },
+          "reagent": {
+            "value": "tert‐butyl (2‐(trifluoromethyl)benzyl)carbamate",
+            "evidence": "tert‐butyl (2‐(trifluoromethyl)benzyl)carbamate"
+          },
+          "alias": {
+            "value": "tert‐butyl (2‐(trifluoromethyl)benzyl)carbamate",
+            "evidence": "tert‐butyl (2‐(trifluoromethyl)benzyl)carbamate"
+          },
+          "mass": {
+            "value": 68.8,
+            "unit": "mg",
+            "evidence": "68.8 mg"
+          },
+          "amount": {
+            "value": 0.25,
+            "unit": "mmol",
+            "evidence": "0.25 mmol"
+          }
+        }
+      },
+      {
+        "op": "AddMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "B2pin2 (95 mg, 0.375 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "B2pin2",
+            "evidence": "B2pin2"
+          },
+          "alias": {
+            "value": "B2pin2",
+            "evidence": "B2pin2"
+          },
+          "mass": {
+            "value": 95,
+            "unit": "mg",
+            "evidence": "95 mg"
+          },
+          "amount": {
+            "value": 0.375,
+            "unit": "mmol",
+            "evidence": "0.375 mmol"
+          }
+        }
+      },
+      {
+        "op": "AddMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "[Ir(COD)OMe]2 (2.5 mg, 0.00375 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "[Ir(COD)OMe]2",
+            "evidence": "[Ir(COD)OMe]2"
+          },
+          "alias": {
+            "value": "[Ir(COD)OMe]2",
+            "evidence": "[Ir(COD)OMe]2"
+          },
+          "mass": {
+            "value": 2.5,
+            "unit": "mg",
+            "evidence": "2.5 mg"
+          },
+          "amount": {
+            "value": 0.00375,
+            "unit": "mmol",
+            "evidence": "0.00375 mmol"
+          }
+        }
+      },
+      {
+        "op": "AddMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "dtbpy (2.0 mg, 0.0075 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "dtbpy",
+            "evidence": "dtbpy"
+          },
+          "alias": {
+            "value": "dtbpy",
+            "evidence": "dtbpy"
+          },
+          "mass": {
+            "value": 2.0,
+            "unit": "mg",
+            "evidence": "2.0 mg"
+          },
+          "amount": {
+            "value": 0.0075,
+            "unit": "mmol",
+            "evidence": "0.0075 mmol"
+          }
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "reagent": "THF",
+        "alias": "THF",
+        "amount": {
+          "value": 1.25,
+          "unit": "mL"
+        },
+        "evidence": "in THF (1.25 mL)"
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "temp_C": 50,
+        "duration_s": 72000,
+        "stir": true,
+        "evidence": "The reaction was stirred at 50 °C for 20 hours"
+      },
+      {
+        "op": "Cool",
+        "vessel": "reactor",
+        "stage": "workup",
+        "evidence": "before cooling",
+        "parameters": {
+          "target_temperature": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "before cooling",
+            "raw": null
+          },
+          "duration": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "before cooling",
+            "raw": null
+          },
+          "method": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "before cooling",
+            "raw": null
+          }
+        }
+      },
+      {
+        "op": "Evaporate",
+        "vessel": "reactor",
+        "stage": "workup",
+        "evidence": "the solvents removed"
+      },
+      {
+        "op": "AnalyzeNmr",
+        "stage": "workup",
+        "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane showed 1:1.6 meta:para borylation in 98% yield.",
+        "parameters": {
+          "sample": {
+            "value": "crude",
+            "evidence": "crude"
+          },
+          "method": {
+            "value": "1 H NMR",
+            "evidence": "1 H NMR"
+          },
+          "internal_standard": {
+            "value": "1,2‐dimethoxyethane",
+            "evidence": "1,2‐dimethoxyethane"
+          },
+          "internal_standard_amount": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "using internal standard 1,2‐dimethoxyethane",
+            "raw": null
+          },
+          "observed_ratio": {
+            "value": "1:1.6 meta:para",
+            "evidence": "1:1.6 meta:para"
+          },
+          "observed_transformation": {
+            "value": "borylation",
+            "evidence": "borylation"
+          },
+          "observed_yield": {
+            "value": 98,
+            "unit": "%",
+            "evidence": "98% yield"
+          }
+        }
+      }
+    ],
+    "definitions": {
+      "AddMaterial": {
+        "name": "AddMaterial",
+        "domain": "material_handling",
+        "description": "Introduce a named material into the receiving vessel, retaining reported mass and amount of substance as quantities describing the same addition. An optional procedure reference records source context only and does not expand or execute any unavailable referenced operations.",
+        "parameters": {
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "alias": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "amount": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mmol",
+            "dimension": "amount_of_substance"
+          },
+          "procedure_reference": {
+            "type": "string",
+            "required": false
+          }
+        },
+        "effects": [
+          "Introduces the specified material into the receiving vessel."
+        ],
+        "hardware_roles": [
+          "receiving_vessel"
+        ]
+      },
+      "Cool": {
+        "name": "Cool",
+        "domain": "thermal_control",
+        "description": "Lower the temperature of the vessel contents without assuming a target temperature, cooling method or duration when these are unreported.",
+        "parameters": {
+          "target_temperature": {
+            "type": "quantity",
+            "required": true,
+            "unit": "°C",
+            "dimension": "temperature"
+          },
+          "duration": {
+            "type": "quantity",
+            "required": true,
+            "unit": "s",
+            "dimension": "time"
+          },
+          "method": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Lowers the temperature of the vessel contents."
+        ],
+        "hardware_roles": [
+          "reaction_vessel"
+        ]
+      },
+      "AnalyzeNmr": {
+        "name": "AnalyzeNmr",
+        "domain": "analytical",
+        "description": "Analyze the specified sample by NMR using an internal standard. Observed ratio, transformation and yield are analytical observations, not synthesis actions or claims of isolated product.",
+        "parameters": {
+          "sample": {
+            "type": "string",
+            "required": true
+          },
+          "method": {
+            "type": "string",
+            "required": true
+          },
+          "internal_standard": {
+            "type": "string",
+            "required": true
+          },
+          "internal_standard_amount": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "amount_of_substance"
+          },
+          "observed_ratio": {
+            "type": "string",
+            "required": false
+          },
+          "observed_transformation": {
+            "type": "string",
+            "required": false
+          },
+          "observed_yield": {
+            "type": "quantity",
+            "required": false,
+            "unit": "%",
+            "dimension": "dimensionless"
+          }
+        },
+        "effects": [
+          "Produces analytical observations about the sample without implying product isolation."
+        ],
+        "hardware_roles": [
+          "nmr_spectrometer"
+        ]
+      }
+    },
+    "uncertainties": [
+      {
+        "evidence": "Following general procedure F",
+        "description": "Unresolved referenced procedure: general procedure F is not supplied. Its reference is retained as context on the first addition, but its additional physical operations and conditions remain unmapped and cannot be reconstructed."
+      },
+      {
+        "evidence": "before cooling",
+        "description": "The cooling target temperature, duration and method are not reported."
+      },
+      {
+        "evidence": "the solvents removed",
+        "description": "Solvent-removal apparatus, pressure, temperature and duration are not reported."
+      },
+      {
+        "evidence": "using internal standard 1,2‐dimethoxyethane",
+        "description": "The internal-standard amount and analytical sample preparation are not reported."
+      },
+      {
+        "evidence": "As the para isomer could be characterised from the reaction with 1a the product was not isolated.",
+        "description": "The source explicitly reports no product isolation and refers to characterization from another reaction. No isolation, purification or characterization action from that other reaction is inferred."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "total_tokens": 6871,
+    "completion_tokens": 2652,
+    "prompt_tokens": 4219,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 4216,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 138
+    }
+  },
+  "cache_key": "9c8901e88981b60e37dd8d1b4fa9c37ecab21352acbbbed2fe970bf0141f95b8"
+}

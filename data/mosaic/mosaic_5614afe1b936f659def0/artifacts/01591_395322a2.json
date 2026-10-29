@@ -1,0 +1,361 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "ChargeMaterial",
+        "vessel": "vial",
+        "stage": "reaction",
+        "evidence": "4m (54.5 mg, 0.25 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "4m",
+            "evidence": "4m"
+          },
+          "alias": {
+            "value": "4m",
+            "evidence": "4m"
+          },
+          "mass": {
+            "value": 54.5,
+            "unit": "mg",
+            "evidence": "54.5 mg"
+          },
+          "amount_mmol": {
+            "value": 0.25,
+            "unit": "mmol",
+            "evidence": "0.25 mmol"
+          }
+        }
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "vial",
+        "stage": "reaction",
+        "evidence": "B2pin2 (95.2 mg, 0.375 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "B2pin2",
+            "evidence": "B2pin2"
+          },
+          "alias": {
+            "value": "B2pin2",
+            "evidence": "B2pin2"
+          },
+          "mass": {
+            "value": 95.2,
+            "unit": "mg",
+            "evidence": "95.2 mg"
+          },
+          "amount_mmol": {
+            "value": 0.375,
+            "unit": "mmol",
+            "evidence": "0.375 mmol"
+          }
+        }
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "vial",
+        "stage": "reaction",
+        "evidence": "[Ir(COD)OMe]2 (2.5 mg, 0.00375 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "[Ir(COD)OMe]2",
+            "evidence": "[Ir(COD)OMe]2"
+          },
+          "alias": {
+            "value": "[Ir(COD)OMe]2",
+            "evidence": "[Ir(COD)OMe]2"
+          },
+          "mass": {
+            "value": 2.5,
+            "unit": "mg",
+            "evidence": "2.5 mg"
+          },
+          "amount_mmol": {
+            "value": 0.00375,
+            "unit": "mmol",
+            "evidence": "0.00375 mmol"
+          }
+        }
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "vial",
+        "stage": "reaction",
+        "evidence": "dtbpy (2.0 mg, 0.0075 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "dtbpy",
+            "evidence": "dtbpy"
+          },
+          "alias": {
+            "value": "dtbpy",
+            "evidence": "dtbpy"
+          },
+          "mass": {
+            "value": 2.0,
+            "unit": "mg",
+            "evidence": "2.0 mg"
+          },
+          "amount_mmol": {
+            "value": 0.0075,
+            "unit": "mmol",
+            "evidence": "0.0075 mmol"
+          }
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "vial",
+        "reagent": "THF",
+        "alias": "THF",
+        "amount": {
+          "value": 1.25,
+          "unit": "mL"
+        },
+        "stage": "reaction",
+        "evidence": "in THF (1.25 mL)"
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "vial",
+        "temp_C": 35,
+        "duration_s": 21600,
+        "stir": true,
+        "stage": "reaction",
+        "evidence": "Stirred in vial at 35 °C for 6 hours."
+      },
+      {
+        "op": "AnalyzeCrudeNmr",
+        "stage": "reaction",
+        "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane showed 2:1:0.4 meta:para:di(3,5) borylation (overall meta:para borylation 1.4:1) in 99% yield.",
+        "parameters": {
+          "sample": {
+            "value": "crude",
+            "evidence": "Analysis of crude"
+          },
+          "technique": {
+            "value": "1 H NMR",
+            "evidence": "1 H NMR"
+          },
+          "internal_standard": {
+            "value": "1,2‐dimethoxyethane",
+            "evidence": "using internal standard 1,2‐dimethoxyethane"
+          },
+          "observed_distribution": {
+            "value": "2:1:0.4 meta:para:di(3,5) borylation",
+            "evidence": "2:1:0.4 meta:para:di(3,5) borylation"
+          },
+          "overall_regioselectivity": {
+            "value": "overall meta:para borylation 1.4:1",
+            "evidence": "overall meta:para borylation 1.4:1"
+          },
+          "observed_yield": {
+            "value": 99,
+            "unit": "%",
+            "evidence": "99% yield"
+          }
+        }
+      },
+      {
+        "op": "AttemptChromatographicPurification",
+        "stage": "purification",
+        "evidence": "Purification by silica gel chromatography proved not to be possible, leading to product decomposition.",
+        "parameters": {
+          "method": {
+            "value": "silica gel chromatography",
+            "evidence": "silica gel chromatography"
+          },
+          "reported_feasibility": {
+            "value": "proved not to be possible",
+            "evidence": "proved not to be possible"
+          },
+          "observed_effect": {
+            "value": "product decomposition",
+            "evidence": "leading to product decomposition"
+          }
+        }
+      },
+      {
+        "op": "CharacterizeCrudeByNmr",
+        "stage": "purification",
+        "evidence": "As such, the compounds was characterised from the crude, which contained pinacol borane impurity. By subtracting the resonances for the meta isomer, the NMR data of the para and di(3,5) borylated isomer can be assigned as follows:",
+        "parameters": {
+          "sample": {
+            "value": "crude",
+            "evidence": "characterised from the crude"
+          },
+          "observed_impurity": {
+            "value": "pinacol borane",
+            "evidence": "contained pinacol borane impurity"
+          },
+          "assignment_method": {
+            "value": "subtracting the resonances for the meta isomer",
+            "evidence": "By subtracting the resonances for the meta isomer"
+          },
+          "assignment_targets": {
+            "value": "para and di(3,5) borylated isomer",
+            "evidence": "the NMR data of the para and di(3,5) borylated isomer can be assigned"
+          }
+        }
+      }
+    ],
+    "definitions": {
+      "ChargeMaterial": {
+        "name": "ChargeMaterial",
+        "domain": "reaction",
+        "description": "Introduce one material charge into a vessel, preserving both its reported mass and its reported amount of substance as descriptions of the same charge.",
+        "parameters": {
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "alias": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "amount_mmol": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mmol",
+            "dimension": "amount_of_substance"
+          }
+        },
+        "effects": [
+          "Introduces the specified material into the vessel once."
+        ],
+        "hardware_roles": [
+          "receiving vessel"
+        ]
+      },
+      "AnalyzeCrudeNmr": {
+        "name": "AnalyzeCrudeNmr",
+        "domain": "analytical",
+        "description": "Analyze crude material by NMR using an internal standard and retain the reported distribution, overall regioselectivity and analytical yield as observations, not synthesis actions or isolated yields.",
+        "parameters": {
+          "sample": {
+            "type": "string",
+            "required": true
+          },
+          "technique": {
+            "type": "string",
+            "required": true
+          },
+          "internal_standard": {
+            "type": "string",
+            "required": true
+          },
+          "observed_distribution": {
+            "type": "string",
+            "required": true
+          },
+          "overall_regioselectivity": {
+            "type": "string",
+            "required": true
+          },
+          "observed_yield": {
+            "type": "quantity",
+            "required": true,
+            "unit": "%",
+            "dimension": "dimensionless"
+          }
+        },
+        "effects": [
+          "Records analytical observations without asserting isolation or purification."
+        ],
+        "hardware_roles": [
+          "NMR spectrometer"
+        ]
+      },
+      "AttemptChromatographicPurification": {
+        "name": "AttemptChromatographicPurification",
+        "domain": "purification",
+        "description": "Represent an attempted chromatographic purification together with its reported infeasibility and observed material degradation, without asserting successful separation or recovery.",
+        "parameters": {
+          "method": {
+            "type": "string",
+            "required": true
+          },
+          "reported_feasibility": {
+            "type": "string",
+            "required": true
+          },
+          "observed_effect": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Records the purification attempt and its reported outcome without creating a purified-product state."
+        ],
+        "hardware_roles": [
+          "chromatographic separation apparatus"
+        ]
+      },
+      "CharacterizeCrudeByNmr": {
+        "name": "CharacterizeCrudeByNmr",
+        "domain": "analytical",
+        "description": "Characterize crude material by NMR and assign overlapping components by subtracting resonances of another component. Impurities and assignments remain analytical observations; resonance subtraction does not represent physical removal of material.",
+        "parameters": {
+          "sample": {
+            "type": "string",
+            "required": true
+          },
+          "observed_impurity": {
+            "type": "string",
+            "required": true
+          },
+          "assignment_method": {
+            "type": "string",
+            "required": true
+          },
+          "assignment_targets": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Records crude characterization, impurity presence and the reported signal-assignment method."
+        ],
+        "hardware_roles": [
+          "NMR spectrometer"
+        ]
+      }
+    },
+    "uncertainties": [
+      {
+        "evidence": "Following general procedure F",
+        "description": "General procedure F is not supplied. Its additional operations and conditions cannot be reconstructed."
+      },
+      {
+        "evidence": "Purification by silica gel chromatography proved not to be possible, leading to product decomposition.",
+        "description": "The extent of the chromatography attempt, apparatus, eluent, quantities and operating conditions are not reported."
+      },
+      {
+        "evidence": "the NMR data of the para and di(3,5) borylated isomer can be assigned as follows:",
+        "description": "The referenced NMR assignments are not included in the supplied source."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 3172,
+    "prompt_tokens": 2305,
+    "total_tokens": 5477,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 2302
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 510
+    }
+  },
+  "cache_key": "1180a23f615ce736ee0ca0abae615df70c74234196af0a97add761aa35888c4f"
+}

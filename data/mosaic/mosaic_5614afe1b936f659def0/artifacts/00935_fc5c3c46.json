@@ -1,0 +1,1031 @@
+{
+  "protocol": {
+    "id": "pos_e8afb124e22849efa8a7b81d1a6df258",
+    "source": {
+      "dataset_id": "ord_dataset-99c23cf435dc42f1af884053bc8b11c7",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+      "file_sha256": "59cd8c35e021be300944f8e556b8fd7ec30a6bc32ff36a54be133aad8e44c393",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": null,
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet"
+    },
+    "raw_id": "ord-e8afb124e22849efa8a7b81d1a6df258",
+    "raw_sha256": "baf5fdf38f3eb0d54ec19e2194d0721083f2b26b2b5f3a5f5a8884ec15f75997",
+    "source_text": "In an argon filled glove box, a 5.0 mL wheaton microreactor was charged with [Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%), L1 ligand (2.1 mg, 3.5 mol%), B2pin2 (50.8 mg, 1.0 equiv.), KOtBu (1.0 mg, 4.5 mol%) and dry THF (1.0 mL). The reaction mixture was stirred for 2 minutes at room temperature. To this mixture, phenyl(piperidin-1-yl)methanone (37.8 mg, 0.2 mmol) was added. The microreactor was capped with a teflon pressure cap and placed into pre-heated aluminum block at 80 oC. The reaction mixture was stirred for 12 h. After completion (judged by GC/MS), THF was removed under reduced pressure and chromatographic separation with silica gel (15% ethyl acetate in hexane as eluent) gave the meta-borylated product 4h (42.2 mg, 67%) as white solid. Spectral data are in accordance with the reported data.",
+    "text_sha256": "cb0ceab44302f08f46f2a5a8086da347536e8678a730075012b090a398945613",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "[Ir(cod)(OMe)]2",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 1.98,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r002",
+        "name": "L1 ligand",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 2.1,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r003",
+        "name": "B2pin2",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 50.8,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r004",
+        "name": "KOtBu",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 1.0,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r005",
+        "name": "dry THF",
+        "smiles": null,
+        "role": "SOLVENT",
+        "amount": {
+          "value": 1.0,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r006",
+        "name": "phenyl(piperidin-1-yl)methanone",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 37.8,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "Atmosphere",
+        "vessel": "reactor",
+        "gas": "argon",
+        "mode": "environment",
+        "id": "s001",
+        "meta": {
+          "evidence": "In an argon filled glove box",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "SpecifyReactionVessel",
+        "vessel": "reactor",
+        "parameters": {
+          "vessel_type": {
+            "value": "wheaton microreactor",
+            "evidence": "a 5.0 mL wheaton microreactor"
+          },
+          "capacity": {
+            "value": 5.0,
+            "unit": "mL",
+            "evidence": "a 5.0 mL wheaton microreactor"
+          }
+        },
+        "meta": {
+          "evidence": "a 5.0 mL wheaton microreactor was charged",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s002"
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "[Ir(cod)(OMe)]2",
+            "evidence": "[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%)"
+          },
+          "alias": {
+            "value": "[Ir(cod)(OMe)]2",
+            "evidence": "[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%)"
+          },
+          "mass": {
+            "value": 1.98,
+            "unit": "mg",
+            "evidence": "[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%)"
+          },
+          "molar_loading": {
+            "value": 1.5,
+            "unit": "mol%",
+            "evidence": "[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%)"
+          }
+        },
+        "meta": {
+          "evidence": "[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s003"
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "L1 ligand",
+            "evidence": "L1 ligand (2.1 mg, 3.5 mol%)"
+          },
+          "alias": {
+            "value": "L1 ligand",
+            "evidence": "L1 ligand (2.1 mg, 3.5 mol%)"
+          },
+          "mass": {
+            "value": 2.1,
+            "unit": "mg",
+            "evidence": "L1 ligand (2.1 mg, 3.5 mol%)"
+          },
+          "molar_loading": {
+            "value": 3.5,
+            "unit": "mol%",
+            "evidence": "L1 ligand (2.1 mg, 3.5 mol%)"
+          }
+        },
+        "meta": {
+          "evidence": "L1 ligand (2.1 mg, 3.5 mol%)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s004"
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "B2pin2",
+            "evidence": "B2pin2 (50.8 mg, 1.0 equiv.)"
+          },
+          "alias": {
+            "value": "B2pin2",
+            "evidence": "B2pin2 (50.8 mg, 1.0 equiv.)"
+          },
+          "mass": {
+            "value": 50.8,
+            "unit": "mg",
+            "evidence": "B2pin2 (50.8 mg, 1.0 equiv.)"
+          },
+          "equivalents": {
+            "value": 1.0,
+            "unit": "equiv.",
+            "evidence": "B2pin2 (50.8 mg, 1.0 equiv.)"
+          }
+        },
+        "meta": {
+          "evidence": "B2pin2 (50.8 mg, 1.0 equiv.)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s005"
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "KOtBu",
+            "evidence": "KOtBu (1.0 mg, 4.5 mol%)"
+          },
+          "alias": {
+            "value": "KOtBu",
+            "evidence": "KOtBu (1.0 mg, 4.5 mol%)"
+          },
+          "mass": {
+            "value": 1.0,
+            "unit": "mg",
+            "evidence": "KOtBu (1.0 mg, 4.5 mol%)"
+          },
+          "molar_loading": {
+            "value": 4.5,
+            "unit": "mol%",
+            "evidence": "KOtBu (1.0 mg, 4.5 mol%)"
+          }
+        },
+        "meta": {
+          "evidence": "KOtBu (1.0 mg, 4.5 mol%)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s006"
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r005",
+        "amount": {
+          "value": 1.0,
+          "unit": "mL"
+        },
+        "id": "s007",
+        "meta": {
+          "evidence": "dry THF (1.0 mL)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "dry THF",
+          "amount_source": "procedure_text"
+        },
+        "source_quantities": [
+          {
+            "value": 1.0,
+            "unit": "mL",
+            "quote": "1.0 mL",
+            "printed_rounding_half_unit": 0.05,
+            "source_segment": "1.0 mL"
+          }
+        ]
+      },
+      {
+        "op": "MaintainTemperatureCondition",
+        "vessel": "reactor",
+        "parameters": {
+          "temperature_condition": {
+            "status": "qualitative",
+            "marker": "__QUALITATIVE__",
+            "evidence": "at room temperature",
+            "raw": "room temperature"
+          },
+          "concurrent_action": {
+            "value": "stirred for 2 minutes",
+            "evidence": "The reaction mixture was stirred for 2 minutes at room temperature."
+          }
+        },
+        "meta": {
+          "evidence": "The reaction mixture was stirred for 2 minutes at room temperature.",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s008"
+      },
+      {
+        "op": "Stir",
+        "vessel": "reactor",
+        "duration_s": 120,
+        "id": "s009",
+        "meta": {
+          "evidence": "The reaction mixture was stirred for 2 minutes at room temperature.",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "phenyl(piperidin-1-yl)methanone",
+            "evidence": "phenyl(piperidin-1-yl)methanone (37.8 mg, 0.2 mmol)"
+          },
+          "alias": {
+            "value": "phenyl(piperidin-1-yl)methanone",
+            "evidence": "phenyl(piperidin-1-yl)methanone (37.8 mg, 0.2 mmol)"
+          },
+          "mass": {
+            "value": 37.8,
+            "unit": "mg",
+            "evidence": "phenyl(piperidin-1-yl)methanone (37.8 mg, 0.2 mmol)"
+          },
+          "amount_of_substance": {
+            "value": 0.2,
+            "unit": "mmol",
+            "evidence": "phenyl(piperidin-1-yl)methanone (37.8 mg, 0.2 mmol)"
+          }
+        },
+        "meta": {
+          "evidence": "To this mixture, phenyl(piperidin-1-yl)methanone (37.8 mg, 0.2 mmol) was added.",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s010"
+      },
+      {
+        "op": "CapVessel",
+        "vessel": "reactor",
+        "parameters": {
+          "closure": {
+            "value": "teflon pressure cap",
+            "evidence": "The microreactor was capped with a teflon pressure cap"
+          }
+        },
+        "meta": {
+          "evidence": "The microreactor was capped with a teflon pressure cap",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s011"
+      },
+      {
+        "op": "PlaceInThermalBlock",
+        "vessel": "reactor",
+        "parameters": {
+          "block": {
+            "value": "pre-heated aluminum block",
+            "evidence": "placed into pre-heated aluminum block at 80 oC"
+          },
+          "temperature": {
+            "value": 80,
+            "unit": "oC",
+            "evidence": "placed into pre-heated aluminum block at 80 oC"
+          }
+        },
+        "meta": {
+          "evidence": "placed into pre-heated aluminum block at 80 oC",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s012"
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 80,
+        "duration_s": 43200,
+        "stir": true,
+        "id": "s013",
+        "meta": {
+          "evidence": "placed into pre-heated aluminum block at 80 oC. The reaction mixture was stirred for 12 h.",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "ObserveCompletion",
+        "vessel": "reactor",
+        "parameters": {
+          "method": {
+            "value": "GC/MS",
+            "evidence": "After completion (judged by GC/MS)"
+          },
+          "reported_assessment": {
+            "value": "completion",
+            "evidence": "After completion (judged by GC/MS)"
+          }
+        },
+        "meta": {
+          "evidence": "After completion (judged by GC/MS)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s014"
+      },
+      {
+        "op": "RemoveSolventUnderReducedPressure",
+        "vessel": "reactor",
+        "parameters": {
+          "solvent": {
+            "value": "THF",
+            "evidence": "THF was removed under reduced pressure"
+          },
+          "pressure_condition": {
+            "status": "qualitative",
+            "marker": "__QUALITATIVE__",
+            "evidence": "under reduced pressure",
+            "raw": "reduced pressure"
+          }
+        },
+        "meta": {
+          "evidence": "THF was removed under reduced pressure",
+          "stage": "workup",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Evaporate"
+        },
+        "id": "s015"
+      },
+      {
+        "op": "Purify",
+        "method": "chromatography",
+        "id": "s016",
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "chromatographic separation with silica gel (15% ethyl acetate in hexane as eluent)",
+          "stage": "purification",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "RecordChromatographyConditions",
+        "vessel": "reactor",
+        "parameters": {
+          "stationary_phase": {
+            "value": "silica gel",
+            "evidence": "chromatographic separation with silica gel"
+          },
+          "eluent": {
+            "value": "15% ethyl acetate in hexane",
+            "evidence": "15% ethyl acetate in hexane as eluent"
+          },
+          "eluent_component": {
+            "value": "ethyl acetate",
+            "evidence": "15% ethyl acetate in hexane as eluent"
+          },
+          "eluent_carrier": {
+            "value": "hexane",
+            "evidence": "15% ethyl acetate in hexane as eluent"
+          },
+          "eluent_percentage": {
+            "value": 15,
+            "unit": "%",
+            "evidence": "15% ethyl acetate in hexane as eluent"
+          }
+        },
+        "meta": {
+          "evidence": "chromatographic separation with silica gel (15% ethyl acetate in hexane as eluent)",
+          "stage": "purification",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s017"
+      },
+      {
+        "op": "RecordProductObservation",
+        "parameters": {
+          "product": {
+            "value": "meta-borylated product 4h",
+            "evidence": "gave the meta-borylated product 4h (42.2 mg, 67%) as white solid"
+          },
+          "mass": {
+            "value": 42.2,
+            "unit": "mg",
+            "evidence": "meta-borylated product 4h (42.2 mg, 67%)"
+          },
+          "yield": {
+            "value": 67,
+            "unit": "%",
+            "evidence": "meta-borylated product 4h (42.2 mg, 67%)"
+          },
+          "appearance": {
+            "value": "white solid",
+            "evidence": "as white solid"
+          },
+          "spectral_observation": {
+            "value": "Spectral data are in accordance with the reported data.",
+            "evidence": "Spectral data are in accordance with the reported data."
+          }
+        },
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "gave the meta-borylated product 4h (42.2 mg, 67%) as white solid. Spectral data are in accordance with the reported data.",
+          "stage": "purification",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s018"
+      }
+    ],
+    "context": {
+      "pressure_control": "SEALED",
+      "atmosphere": {
+        "type": "ARGON",
+        "basis": "procedure_text"
+      },
+      "reflux": false,
+      "source_context_evidence": [
+        {
+          "field": "pressure_control",
+          "quote": "capped"
+        }
+      ],
+      "initial_material_state": "unknown_unless_reported"
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "cb0ceab44302f08f46f2a5a8086da347536e8678a730075012b090a398945613",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 1246,
+        "prompt_tokens": 892,
+        "total_tokens": 2138,
+        "prompt_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 173
+        }
+      },
+      "cache_key": "d2d20ca69243c79059dea0cc4d91d495ff5b26e107cebc95ff3171f288ed175d",
+      "unresolved": [
+        "Room temperature is not specified numerically.",
+        "The identity of L1 ligand is not provided beyond that label.",
+        "The duration of aluminum-block preheating is not specified.",
+        "The reduced pressure used to remove THF is not quantified."
+      ],
+      "unmapped_actions": [],
+      "uncertainties": [
+        "Room temperature is qualitative; no numerical temperature is reported for the initial stirring.",
+        "Stirring rates and numerical reduced pressure are not reported.",
+        "The basis of the 15% ethyl acetate eluent composition is not reported.",
+        "The source identifies the ligand only as L1 ligand.",
+        "No cap pressure rating, block preheating duration or detailed GC/MS sampling procedure is reported."
+      ],
+      "completion": "source_grounded_extension",
+      "source_observations": [
+        {
+          "evidence": "The microreactor was capped with a teflon pressure cap",
+          "reason": "Capping a vessel is not represented by an allowed operation."
+        }
+      ]
+    },
+    "operation_definitions": {
+      "CapVessel": {
+        "name": "CapVessel",
+        "domain": "vessel handling",
+        "description": "Close the vessel with the reported cap without inferring a pressure rating or internal pressure.",
+        "parameters": {
+          "closure": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Closes the reaction vessel."
+        ],
+        "hardware_roles": [
+          "reaction vessel",
+          "cap"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "67e4e11b06935fe9e465693a0ae7627f7a8a76d52d4b09733f60e76d29e5fe4d"
+      },
+      "ChargeMaterial": {
+        "name": "ChargeMaterial",
+        "domain": "material addition",
+        "description": "Introduce a named material into the vessel, retaining independently reported mass, amount of substance, molar loading and equivalents without calculating missing quantities.",
+        "parameters": {
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "alias": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "mass"
+          },
+          "amount_of_substance": {
+            "type": "quantity",
+            "required": false,
+            "dimension": "amount of substance"
+          },
+          "molar_loading": {
+            "type": "quantity",
+            "required": false,
+            "unit": "mol%"
+          },
+          "equivalents": {
+            "type": "number",
+            "required": false,
+            "unit": "equiv."
+          }
+        },
+        "effects": [
+          "Adds the named material to the vessel inventory."
+        ],
+        "hardware_roles": [
+          "receiving vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "82d4e192e6d121cfdd71a215f06dd4c12b59781b4fc582143639bfb8f4e0c435"
+      },
+      "MaintainTemperatureCondition": {
+        "name": "MaintainTemperatureCondition",
+        "domain": "thermal conditions",
+        "description": "Keep the vessel contents under the stated temperature condition during the identified concurrent action. A qualitative ambient condition does not imply active heating, cooling or a numerical setpoint. This condition adds no separate elapsed interval.",
+        "parameters": {
+          "temperature_condition": {
+            "type": "string",
+            "required": true
+          },
+          "concurrent_action": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Constrains temperature during the specified concurrent action."
+        ],
+        "hardware_roles": [
+          "reaction vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "42a9f2f1882ba0e8028a7b399628fb4b55909b72ce20d488157e68366a85098e"
+      },
+      "ObserveCompletion": {
+        "name": "ObserveCompletion",
+        "domain": "analytical observation",
+        "description": "Record the reported analytical judgment of completion as an observation, without introducing an additional synthesis action or an unreported sampling procedure.",
+        "parameters": {
+          "method": {
+            "type": "string",
+            "required": true
+          },
+          "reported_assessment": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Records the source-reported analytical assessment without changing material state."
+        ],
+        "hardware_roles": [
+          "analytical instrument"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "dfcdba038e8cc52dbdcb5449f89e0250ffc993c852330a6a734efd26dc749478"
+      },
+      "PlaceInThermalBlock": {
+        "name": "PlaceInThermalBlock",
+        "domain": "thermal handling",
+        "description": "Place the vessel into the reported thermal block at its specified temperature. The preheated state represents prior block heating without inventing its duration or asserting immediate equilibration of the contents.",
+        "parameters": {
+          "block": {
+            "type": "string",
+            "required": true
+          },
+          "temperature": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "temperature"
+          }
+        },
+        "effects": [
+          "Places the vessel in thermal contact with the specified preheated block."
+        ],
+        "hardware_roles": [
+          "reaction vessel",
+          "thermal block"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "1ffc5d2ff284bccf79c0160e0c1cece0f65e077834563786d9fdf71ea761f3cd"
+      },
+      "RecordChromatographyConditions": {
+        "name": "RecordChromatographyConditions",
+        "domain": "purification metadata",
+        "description": "Attach the reported stationary phase and eluent composition to the immediately preceding chromatographic purification. This records conditions of that same physical separation, not an additional purification, solvent addition or apparatus preparation.",
+        "parameters": {
+          "stationary_phase": {
+            "type": "string",
+            "required": true
+          },
+          "eluent": {
+            "type": "string",
+            "required": true
+          },
+          "eluent_component": {
+            "type": "string",
+            "required": true
+          },
+          "eluent_carrier": {
+            "type": "string",
+            "required": true
+          },
+          "eluent_percentage": {
+            "type": "number",
+            "required": true,
+            "unit": "%"
+          }
+        },
+        "effects": [
+          "Records the materials and eluent composition used in the preceding purification without creating another material-processing action."
+        ],
+        "hardware_roles": [
+          "chromatographic separation apparatus"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "9aa8420fe65e39fa05f13be8bc0e37280d21b2d4c9f0912fca1504133bd3a747"
+      },
+      "RecordProductObservation": {
+        "name": "RecordProductObservation",
+        "domain": "product observation",
+        "description": "Record reported product identity, isolated mass, yield, appearance and spectral comparison as observations only, not as synthesis actions or independently verified outcomes.",
+        "parameters": {
+          "product": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "mass"
+          },
+          "yield": {
+            "type": "number",
+            "required": true,
+            "unit": "%"
+          },
+          "appearance": {
+            "type": "string",
+            "required": true
+          },
+          "spectral_observation": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Records source-reported product observations without changing material state."
+        ],
+        "hardware_roles": [],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "6df1e524454d764aaab258286a52825a5c4d32830d68eac95d287f776ec70089"
+      },
+      "RemoveSolventUnderReducedPressure": {
+        "name": "RemoveSolventUnderReducedPressure",
+        "domain": "workup",
+        "description": "Remove the named solvent by evaporation under the reported reduced-pressure condition, without assigning an unreported pressure, temperature, duration or apparatus.",
+        "parameters": {
+          "solvent": {
+            "type": "string",
+            "required": true
+          },
+          "pressure_condition": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Removes the named solvent under reduced pressure."
+        ],
+        "hardware_roles": [
+          "solvent-removal vessel",
+          "reduced-pressure source"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "53688b936ff6b118e42a059ab2b1de1735e78a1dc035e001eb2751ad08845ed5"
+      },
+      "SpecifyReactionVessel": {
+        "name": "SpecifyReactionVessel",
+        "domain": "vessel handling",
+        "description": "Identify the physical container used for charging and reaction by its reported type and capacity, without implying an unreported preparation.",
+        "parameters": {
+          "vessel_type": {
+            "type": "string",
+            "required": true
+          },
+          "capacity": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "volume"
+          }
+        },
+        "effects": [
+          "Identifies the container used for subsequent material handling."
+        ],
+        "hardware_roles": [
+          "reaction vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "d9597327e7aeea4e8e2a0f07640ee120c2c0dcc2683366989475376daa79cedc"
+      }
+    },
+    "xdl_profile": "mosaic-xdl/1"
+  },
+  "notes": {
+    "domain": "chemistry.extended/1",
+    "findings": [],
+    "apparatus_proposals": [
+      {
+        "quote": "argon filled glove box",
+        "kind": "glove box",
+        "identity": null,
+        "scope": "Inert-atmosphere enclosure; no manufacturer or model stated.",
+        "evidence": {
+          "source_id": "ord-e8afb124e22849efa8a7b81d1a6df258",
+          "source_sha256": "a2fdec2c5d964cd5155e8c947a7a6d80160f950473241137423620143dd1d741",
+          "start": 6,
+          "end": 28,
+          "quote": "argon filled glove box"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "5.0 mL wheaton microreactor",
+        "kind": "microreactor vessel",
+        "identity": "Wheaton",
+        "scope": "One 5.0 mL microreactor; this is a single-vessel volume, not a total plate volume.",
+        "evidence": {
+          "source_id": "ord-e8afb124e22849efa8a7b81d1a6df258",
+          "source_sha256": "a2fdec2c5d964cd5155e8c947a7a6d80160f950473241137423620143dd1d741",
+          "start": 32,
+          "end": 59,
+          "quote": "5.0 mL wheaton microreactor"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "teflon pressure cap",
+        "kind": "reactor cap/closure",
+        "identity": null,
+        "scope": "Cap used to close the microreactor; no pressure rating is stated.",
+        "evidence": {
+          "source_id": "ord-e8afb124e22849efa8a7b81d1a6df258",
+          "source_sha256": "a2fdec2c5d964cd5155e8c947a7a6d80160f950473241137423620143dd1d741",
+          "start": 404,
+          "end": 423,
+          "quote": "teflon pressure cap"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "pre-heated aluminum block at 80 oC",
+        "kind": "heating block",
+        "identity": null,
+        "scope": "Aluminum heating block operated/preheated at 80 oC; this is the block temperature, not necessarily the reaction-mixture temperature.",
+        "evidence": {
+          "source_id": "ord-e8afb124e22849efa8a7b81d1a6df258",
+          "source_sha256": "a2fdec2c5d964cd5155e8c947a7a6d80160f950473241137423620143dd1d741",
+          "start": 440,
+          "end": 474,
+          "quote": "pre-heated aluminum block at 80 oC"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "chromatographic separation with silica gel",
+        "kind": "chromatographic separation",
+        "identity": null,
+        "scope": "Silica-gel chromatography used for product purification; no chromatography apparatus or column dimensions are stated.",
+        "evidence": {
+          "source_id": "ord-e8afb124e22849efa8a7b81d1a6df258",
+          "source_sha256": "a2fdec2c5d964cd5155e8c947a7a6d80160f950473241137423620143dd1d741",
+          "start": 598,
+          "end": 640,
+          "quote": "chromatographic separation with silica gel"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-e8afb124e22849efa8a7b81d1a6df258",
+        "source_sha256": "a2fdec2c5d964cd5155e8c947a7a6d80160f950473241137423620143dd1d741",
+        "start": 0,
+        "end": 28,
+        "quote": "In an argon filled glove box"
+      },
+      {
+        "source_id": "ord-e8afb124e22849efa8a7b81d1a6df258",
+        "source_sha256": "a2fdec2c5d964cd5155e8c947a7a6d80160f950473241137423620143dd1d741",
+        "start": 77,
+        "end": 112,
+        "quote": "[Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%)"
+      },
+      {
+        "source_id": "ord-e8afb124e22849efa8a7b81d1a6df258",
+        "source_sha256": "a2fdec2c5d964cd5155e8c947a7a6d80160f950473241137423620143dd1d741",
+        "start": 114,
+        "end": 142,
+        "quote": "L1 ligand (2.1 mg, 3.5 mol%)"
+      },
+      {
+        "source_id": "ord-e8afb124e22849efa8a7b81d1a6df258",
+        "source_sha256": "a2fdec2c5d964cd5155e8c947a7a6d80160f950473241137423620143dd1d741",
+        "start": 144,
+        "end": 172,
+        "quote": "B2pin2 (50.8 mg, 1.0 equiv.)"
+      },
+      {
+        "source_id": "ord-e8afb124e22849efa8a7b81d1a6df258",
+        "source_sha256": "a2fdec2c5d964cd5155e8c947a7a6d80160f950473241137423620143dd1d741",
+        "start": 174,
+        "end": 198,
+        "quote": "KOtBu (1.0 mg, 4.5 mol%)"
+      },
+      {
+        "source_id": "ord-e8afb124e22849efa8a7b81d1a6df258",
+        "source_sha256": "a2fdec2c5d964cd5155e8c947a7a6d80160f950473241137423620143dd1d741",
+        "start": 203,
+        "end": 219,
+        "quote": "dry THF (1.0 mL)"
+      },
+      {
+        "source_id": "ord-e8afb124e22849efa8a7b81d1a6df258",
+        "source_sha256": "a2fdec2c5d964cd5155e8c947a7a6d80160f950473241137423620143dd1d741",
+        "start": 221,
+        "end": 288,
+        "quote": "The reaction mixture was stirred for 2 minutes at room temperature."
+      },
+      {
+        "source_id": "ord-e8afb124e22849efa8a7b81d1a6df258",
+        "source_sha256": "a2fdec2c5d964cd5155e8c947a7a6d80160f950473241137423620143dd1d741",
+        "start": 289,
+        "end": 368,
+        "quote": "To this mixture, phenyl(piperidin-1-yl)methanone (37.8 mg, 0.2 mmol) was added."
+      },
+      {
+        "source_id": "ord-e8afb124e22849efa8a7b81d1a6df258",
+        "source_sha256": "a2fdec2c5d964cd5155e8c947a7a6d80160f950473241137423620143dd1d741",
+        "start": 428,
+        "end": 518,
+        "quote": "placed into pre-heated aluminum block at 80 oC. The reaction mixture was stirred for 12 h."
+      },
+      {
+        "source_id": "ord-e8afb124e22849efa8a7b81d1a6df258",
+        "source_sha256": "a2fdec2c5d964cd5155e8c947a7a6d80160f950473241137423620143dd1d741",
+        "start": 555,
+        "end": 593,
+        "quote": "THF was removed under reduced pressure"
+      },
+      {
+        "source_id": "ord-e8afb124e22849efa8a7b81d1a6df258",
+        "source_sha256": "a2fdec2c5d964cd5155e8c947a7a6d80160f950473241137423620143dd1d741",
+        "start": 598,
+        "end": 680,
+        "quote": "chromatographic separation with silica gel (15% ethyl acetate in hexane as eluent)"
+      }
+    ],
+    "repair": {
+      "accepted": false,
+      "patch": []
+    },
+    "apparatus_unknowns": [
+      "Exact model and construction materials of the Wheaton microreactor are not stated.",
+      "Pressure capability of the teflon pressure cap and microreactor is not stated.",
+      "The actual internal reaction-mixture temperature is not stated; only the aluminum block temperature is given.",
+      "No manufacturer, model, or temperature-control specification is stated for the aluminum block.",
+      "No chromatography column, cartridge, or other separation hardware is specified."
+    ],
+    "completion": {
+      "agent_called": true,
+      "attempts": 3,
+      "model": "gpt-6.1-sol",
+      "extension_operations": [
+        "CapVessel",
+        "ChargeMaterial",
+        "MaintainTemperatureCondition",
+        "ObserveCompletion",
+        "PlaceInThermalBlock",
+        "RecordChromatographyConditions",
+        "RecordProductObservation",
+        "RemoveSolventUnderReducedPressure",
+        "SpecifyReactionVessel"
+      ],
+      "expression_profile": "mosaic-xdl/1",
+      "execution_supported": false
+    }
+  },
+  "raw_id": "ord-e8afb124e22849efa8a7b81d1a6df258"
+}

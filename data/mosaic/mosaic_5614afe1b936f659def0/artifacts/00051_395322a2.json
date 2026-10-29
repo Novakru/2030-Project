@@ -1,0 +1,314 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "5-bromopyridin-3-amine (160 mg, 0.92 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "5-bromopyridin-3-amine",
+            "evidence": "5-bromopyridin-3-amine"
+          },
+          "alias": {
+            "value": "5-bromopyridin-3-amine",
+            "evidence": "5-bromopyridin-3-amine"
+          },
+          "mass": {
+            "value": 160,
+            "unit": "mg",
+            "evidence": "160 mg"
+          },
+          "amount_substance": {
+            "value": 0.92,
+            "unit": "mmol",
+            "evidence": "0.92 mmol"
+          }
+        }
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "morpholine (4028 µl, 46.24 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "morpholine",
+            "evidence": "morpholine"
+          },
+          "alias": {
+            "value": "morpholine",
+            "evidence": "morpholine"
+          },
+          "volume": {
+            "value": 4028,
+            "unit": "µl",
+            "evidence": "4028 µl"
+          },
+          "amount_substance": {
+            "value": 46.24,
+            "unit": "mmol",
+            "evidence": "46.24 mmol"
+          }
+        }
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine) (64.2 mg, 0.11 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)",
+            "evidence": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)"
+          },
+          "alias": {
+            "value": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)",
+            "evidence": "(9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine)"
+          },
+          "mass": {
+            "value": 64.2,
+            "unit": "mg",
+            "evidence": "64.2 mg"
+          },
+          "amount_substance": {
+            "value": 0.11,
+            "unit": "mmol",
+            "evidence": "0.11 mmol"
+          }
+        }
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "cesium carbonate (603 mg, 1.85 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "cesium carbonate",
+            "evidence": "cesium carbonate"
+          },
+          "alias": {
+            "value": "cesium carbonate",
+            "evidence": "cesium carbonate"
+          },
+          "mass": {
+            "value": 603,
+            "unit": "mg",
+            "evidence": "603 mg"
+          },
+          "amount_substance": {
+            "value": 1.85,
+            "unit": "mmol",
+            "evidence": "1.85 mmol"
+          }
+        }
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "diacetoxypalladium (20.76 mg, 0.09 mmol) was added to 5-bromopyridin-3-amine (160 mg, 0.92 mmol), morpholine (4028 µl, 46.24 mmol) (9,9-dimethyl-9H-xanthene-4,5-diyl)bis(diphenylphosphine) (64.2 mg, 0.11 mmol) and cesium carbonate (603 mg, 1.85 mmol).",
+        "parameters": {
+          "reagent": {
+            "value": "diacetoxypalladium",
+            "evidence": "diacetoxypalladium"
+          },
+          "alias": {
+            "value": "diacetoxypalladium",
+            "evidence": "diacetoxypalladium"
+          },
+          "mass": {
+            "value": 20.76,
+            "unit": "mg",
+            "evidence": "20.76 mg"
+          },
+          "amount_substance": {
+            "value": 0.09,
+            "unit": "mmol",
+            "evidence": "0.09 mmol"
+          }
+        }
+      },
+      {
+        "op": "MicrowaveHeat",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "The resulting suspension was stirred at 150 °C for 30 minutes in a microwave.",
+        "parameters": {
+          "temperature": {
+            "value": 150,
+            "unit": "°C",
+            "evidence": "150 °C"
+          },
+          "duration": {
+            "value": 30,
+            "unit": "minutes",
+            "evidence": "30 minutes"
+          },
+          "agitation": {
+            "value": "stirred",
+            "evidence": "stirred"
+          },
+          "heating_apparatus": {
+            "value": "microwave",
+            "evidence": "microwave"
+          },
+          "material_state": {
+            "value": "suspension",
+            "evidence": "suspension"
+          }
+        }
+      },
+      {
+        "op": "ObserveMixture",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "Reaction very messy but some product is visible.",
+        "parameters": {
+          "observation": {
+            "value": "Reaction very messy but some product is visible.",
+            "evidence": "Reaction very messy but some product is visible."
+          }
+        }
+      },
+      {
+        "op": "DiscontinueExperiment",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "Reaction abandoned.",
+        "parameters": {
+          "disposition": {
+            "value": "Reaction abandoned.",
+            "evidence": "Reaction abandoned."
+          }
+        }
+      }
+    ],
+    "definitions": {
+      "ChargeMaterial": {
+        "name": "ChargeMaterial",
+        "domain": "material addition",
+        "description": "Introduce the named material into the vessel, preserving each independently reported mass, volume and amount of substance without deriving an unreported quantity.",
+        "parameters": {
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "alias": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": false,
+            "dimension": "mass"
+          },
+          "volume": {
+            "type": "quantity",
+            "required": false,
+            "dimension": "volume"
+          },
+          "amount_substance": {
+            "type": "quantity",
+            "required": false,
+            "dimension": "amount of substance"
+          }
+        },
+        "effects": [
+          "Adds the specified material to the vessel inventory."
+        ],
+        "hardware_roles": [
+          "receiving vessel",
+          "material addition interface"
+        ]
+      },
+      "MicrowaveHeat": {
+        "name": "MicrowaveHeat",
+        "domain": "reaction heating",
+        "description": "Heat the vessel contents using microwave energy at the reported temperature for the reported duration, with concurrent agitation as explicitly stated. No microwave power, pressure, or apparatus rating is implied.",
+        "parameters": {
+          "temperature": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "temperature"
+          },
+          "duration": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "time"
+          },
+          "agitation": {
+            "type": "string",
+            "required": true
+          },
+          "heating_apparatus": {
+            "type": "string",
+            "required": true
+          },
+          "material_state": {
+            "type": "string",
+            "required": false
+          }
+        },
+        "effects": [
+          "Applies microwave heating for the specified interval.",
+          "Agitates the contents concurrently as reported."
+        ],
+        "hardware_roles": [
+          "reaction vessel",
+          "microwave heating apparatus",
+          "stirring apparatus"
+        ]
+      },
+      "ObserveMixture": {
+        "name": "ObserveMixture",
+        "domain": "observation",
+        "description": "Observe the reaction mixture and retain the reported qualitative assessment without treating it as confirmation of product identity, yield, or successful synthesis.",
+        "parameters": {
+          "observation": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Preserves a qualitative observation without changing the material inventory."
+        ],
+        "hardware_roles": [
+          "reaction vessel"
+        ]
+      },
+      "DiscontinueExperiment": {
+        "name": "DiscontinueExperiment",
+        "domain": "experiment termination",
+        "description": "Discontinue further experimental processing as reported. This does not imply a specific cooling, quenching, disposal, or workup operation.",
+        "parameters": {
+          "disposition": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Ends further experimental processing."
+        ],
+        "hardware_roles": []
+      }
+    },
+    "uncertainties": []
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 2458,
+    "prompt_tokens": 2366,
+    "total_tokens": 4824,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 2363,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 212
+    }
+  },
+  "cache_key": "5364072acbf844f58d34087b4e49bb2255a37f3f538af480a747a8335c861325"
+}

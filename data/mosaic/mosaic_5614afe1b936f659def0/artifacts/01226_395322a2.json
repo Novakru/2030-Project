@@ -1,0 +1,355 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "ChargeSubstrate",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "General procedure B was applied to 2,7-dimethylquinoline (157 mg, 1.00mmol).",
+        "parameters": {
+          "reagent": {
+            "value": "2,7-dimethylquinoline",
+            "evidence": "2,7-dimethylquinoline"
+          },
+          "mass": {
+            "value": 157,
+            "unit": "mg",
+            "evidence": "157 mg"
+          },
+          "amount": {
+            "value": 1,
+            "unit": "mmol",
+            "evidence": "1.00mmol"
+          },
+          "referencedProcedure": {
+            "value": "General procedure B",
+            "evidence": "General procedure B"
+          }
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 25,
+        "duration_s": 259200,
+        "stir": true,
+        "stage": "reaction",
+        "evidence": "The reaction was stirred at room  temperature  (25  °C)  for  72  hours."
+      },
+      {
+        "op": "AnalyticalObservation",
+        "stage": "reaction",
+        "evidence": "Analysis  by  GC-MS  showed  a  95:5  mixture  of  2  monoborylated products.",
+        "parameters": {
+          "method": {
+            "value": "GC-MS",
+            "evidence": "GC-MS"
+          },
+          "observedRatio": {
+            "value": "95:5",
+            "evidence": "95:5"
+          },
+          "productCount": {
+            "value": 2,
+            "evidence": "2  monoborylated products"
+          },
+          "productClass": {
+            "value": "monoborylated products",
+            "evidence": "monoborylated products"
+          }
+        }
+      },
+      {
+        "op": "EvaporateUnderReducedPressure",
+        "vessel": "reactor",
+        "stage": "workup",
+        "evidence": "Volatiles were removed from the reaction under reduced pressure",
+        "parameters": {
+          "removedMaterial": {
+            "value": "Volatiles",
+            "evidence": "Volatiles"
+          },
+          "pressureCondition": {
+            "status": "qualitative",
+            "marker": "__QUALITATIVE__",
+            "evidence": "under reduced pressure",
+            "raw": "under reduced pressure"
+          }
+        }
+      },
+      {
+        "op": "GradientFlashChromatography",
+        "stage": "purification",
+        "evidence": "the remaining residue was purified  by  silica  gel  flash-column  chromatography  with  gradient  elution  of  MeOH/DCM  from  0.5 -12.5% over 25 column volumes",
+        "parameters": {
+          "feed": {
+            "value": "the remaining residue",
+            "evidence": "the remaining residue"
+          },
+          "method": {
+            "value": "silica  gel  flash-column  chromatography",
+            "evidence": "silica  gel  flash-column  chromatography"
+          },
+          "elutionMode": {
+            "value": "gradient  elution",
+            "evidence": "gradient  elution"
+          },
+          "eluent": {
+            "value": "MeOH/DCM",
+            "evidence": "MeOH/DCM"
+          },
+          "gradientStart": {
+            "value": 0.5,
+            "unit": "%",
+            "evidence": "0.5 -12.5%"
+          },
+          "gradientEnd": {
+            "value": 12.5,
+            "unit": "%",
+            "evidence": "0.5 -12.5%"
+          },
+          "gradientVolume": {
+            "value": 25,
+            "unit": "column volumes",
+            "evidence": "25 column volumes"
+          }
+        }
+      },
+      {
+        "op": "ProductCharacterization",
+        "stage": "purification",
+        "evidence": "affording     the major isomer, 2,7-dimethyl-4-(4,4,5,5-tetramethyl-[1,3,2]dioxaborolan-2-yl)quinoline, as an off-white solid (226 mg, 80%); m.p.108 -109 °C",
+        "parameters": {
+          "product": {
+            "value": "2,7-dimethyl-4-(4,4,5,5-tetramethyl-[1,3,2]dioxaborolan-2-yl)quinoline",
+            "evidence": "2,7-dimethyl-4-(4,4,5,5-tetramethyl-[1,3,2]dioxaborolan-2-yl)quinoline"
+          },
+          "isomerQualifier": {
+            "value": "the major isomer",
+            "evidence": "the major isomer"
+          },
+          "appearance": {
+            "value": "off-white solid",
+            "evidence": "off-white solid"
+          },
+          "isolatedMass": {
+            "value": 226,
+            "unit": "mg",
+            "evidence": "226 mg"
+          },
+          "reportedYield": {
+            "value": 80,
+            "unit": "%",
+            "evidence": "80%"
+          },
+          "meltingPointLower": {
+            "value": 108,
+            "unit": "°C",
+            "evidence": "m.p.108 -109 °C"
+          },
+          "meltingPointUpper": {
+            "value": 109,
+            "unit": "°C",
+            "evidence": "m.p.108 -109 °C"
+          }
+        }
+      }
+    ],
+    "definitions": {
+      "ChargeSubstrate": {
+        "name": "ChargeSubstrate",
+        "domain": "reaction",
+        "description": "Introduce the specified substrate charge for a referenced procedure, retaining both reported mass and molar amount without expanding the unavailable procedure.",
+        "parameters": {
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "amount": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mmol",
+            "dimension": "amount of substance"
+          },
+          "referencedProcedure": {
+            "type": "reference",
+            "required": true
+          }
+        },
+        "effects": [
+          "Introduces the reported substrate charge; does not imply any unreported procedure operations."
+        ],
+        "hardware_roles": [
+          "reaction vessel"
+        ]
+      },
+      "AnalyticalObservation": {
+        "name": "AnalyticalObservation",
+        "domain": "analysis",
+        "description": "Represent a reported analytical measurement of product composition as an observation, not a synthesis action.",
+        "parameters": {
+          "method": {
+            "type": "string",
+            "required": true
+          },
+          "observedRatio": {
+            "type": "string",
+            "required": true
+          },
+          "productCount": {
+            "type": "integer",
+            "required": true
+          },
+          "productClass": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Records analytical observations without changing material state."
+        ],
+        "hardware_roles": []
+      },
+      "EvaporateUnderReducedPressure": {
+        "name": "EvaporateUnderReducedPressure",
+        "domain": "workup",
+        "description": "Remove volatile material by evaporation under a qualitatively specified reduced pressure, without assigning an unreported numerical pressure.",
+        "parameters": {
+          "removedMaterial": {
+            "type": "string",
+            "required": true
+          },
+          "pressureCondition": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Removes volatile material from the reaction mixture."
+        ],
+        "hardware_roles": [
+          "evaporation vessel",
+          "reduced-pressure source"
+        ]
+      },
+      "GradientFlashChromatography": {
+        "name": "GradientFlashChromatography",
+        "domain": "purification",
+        "description": "Purify a feed by flash-column chromatography using the stated stationary phase and solvent gradient over the reported number of column volumes. Percentage endpoints retain the source convention without assigning an unreported composition basis.",
+        "parameters": {
+          "feed": {
+            "type": "string",
+            "required": true
+          },
+          "method": {
+            "type": "string",
+            "required": true
+          },
+          "elutionMode": {
+            "type": "string",
+            "required": true
+          },
+          "eluent": {
+            "type": "string",
+            "required": true
+          },
+          "gradientStart": {
+            "type": "number",
+            "required": true,
+            "unit": "%"
+          },
+          "gradientEnd": {
+            "type": "number",
+            "required": true,
+            "unit": "%"
+          },
+          "gradientVolume": {
+            "type": "number",
+            "required": true,
+            "unit": "column volumes"
+          }
+        },
+        "effects": [
+          "Separates the residue by gradient flash-column chromatography."
+        ],
+        "hardware_roles": [
+          "flash chromatography column",
+          "eluent delivery",
+          "fraction collection"
+        ]
+      },
+      "ProductCharacterization": {
+        "name": "ProductCharacterization",
+        "domain": "observation",
+        "description": "Represent reported isolated-product identity, isomer qualifier, appearance, mass, yield and melting range as observations rather than additional synthesis actions.",
+        "parameters": {
+          "product": {
+            "type": "string",
+            "required": true
+          },
+          "isomerQualifier": {
+            "type": "string",
+            "required": true
+          },
+          "appearance": {
+            "type": "string",
+            "required": true
+          },
+          "isolatedMass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "reportedYield": {
+            "type": "number",
+            "required": true,
+            "unit": "%"
+          },
+          "meltingPointLower": {
+            "type": "quantity",
+            "required": true,
+            "unit": "°C",
+            "dimension": "temperature"
+          },
+          "meltingPointUpper": {
+            "type": "quantity",
+            "required": true,
+            "unit": "°C",
+            "dimension": "temperature"
+          }
+        },
+        "effects": [
+          "Records reported product properties without implying additional material processing."
+        ],
+        "hardware_roles": []
+      }
+    },
+    "uncertainties": [
+      "General procedure B is referenced but not supplied; its reagents, operations and conditions cannot be expanded.",
+      "Reduced pressure is reported without a numerical pressure.",
+      "The MeOH/DCM gradient percentage basis is not explicitly stated.",
+      "Column dimensions, absolute eluent volume and fraction-selection details are not reported."
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "total_tokens": 4935,
+    "completion_tokens": 2776,
+    "prompt_tokens": 2159,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 2156,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 290
+    }
+  },
+  "cache_key": "479d5bd292d15868e7231b9bfd9bdd0f2e6f51cb1e4a472a881e372332f930e7"
+}

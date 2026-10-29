@@ -1,0 +1,640 @@
+{
+  "protocol": {
+    "id": "pos_a21d6ec12c02473a98dce7de6b637849",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+    "raw_sha256": "0c3ee7227932b6f4c064c8e818eea8a00fd5cb11e8631e6ec0ee3664a91f8571",
+    "source_text": "diacetoxypalladium (9.34 mg, 0.04 mmol) and RuPhos (0.039 g, 0.08 mmol) were suspended in 1,4 dioxane (5 mL), degassed and stirred at 50 °C for 10 minutes. Then (R)-tert-butyl 3-methylpiperazine-1-carboxylate (0.100 g, 0.50 mmol), 3-bromopyridine (0.040 mL, 0.42 mmol) and cesium carbonate (0.203 g, 0.62 mmol) were added and the reaction mixture was stirred at 100 °C for 16 h. LCMS showed only 5% conversion to desired product.  This was part of a screen and Ruphos, sodium tert-butoxide in toluene gave far better conversion so this was abandoned.  ",
+    "text_sha256": "afb97b7d8fce904dd0ec401016e8f144b59321ac9d49d0539aeea4bae04d5e9e",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "diacetoxypalladium",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 9.34,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r002",
+        "name": "RuPhos",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 39,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r003",
+        "name": "1,4 dioxane",
+        "smiles": null,
+        "role": "SOLVENT",
+        "amount": {
+          "value": 5,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r004",
+        "name": "(R)-tert-butyl 3-methylpiperazine-1-carboxylate",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 100,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r005",
+        "name": "3-bromopyridine",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 0.04,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r006",
+        "name": "cesium carbonate",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 203,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "diacetoxypalladium",
+            "evidence": "diacetoxypalladium"
+          },
+          "alias": {
+            "value": "diacetoxypalladium",
+            "evidence": "diacetoxypalladium"
+          },
+          "mass": {
+            "value": 9.34,
+            "unit": "mg",
+            "evidence": "9.34 mg"
+          },
+          "substance_amount": {
+            "value": 0.04,
+            "unit": "mmol",
+            "evidence": "0.04 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "diacetoxypalladium (9.34 mg, 0.04 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s001"
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "RuPhos",
+            "evidence": "RuPhos"
+          },
+          "alias": {
+            "value": "RuPhos",
+            "evidence": "RuPhos"
+          },
+          "mass": {
+            "value": 0.039,
+            "unit": "g",
+            "evidence": "0.039 g"
+          },
+          "substance_amount": {
+            "value": 0.08,
+            "unit": "mmol",
+            "evidence": "0.08 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "RuPhos (0.039 g, 0.08 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s002"
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r003",
+        "amount": {
+          "value": 5,
+          "unit": "mL"
+        },
+        "id": "s003",
+        "meta": {
+          "evidence": "were suspended in 1,4 dioxane (5 mL)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "1,4 dioxane",
+          "amount_source": "procedure_text"
+        },
+        "source_quantities": [
+          {
+            "value": 5.0,
+            "unit": "mL",
+            "quote": "5 mL",
+            "printed_rounding_half_unit": 0.5,
+            "source_segment": "5 mL"
+          }
+        ]
+      },
+      {
+        "op": "FormSuspension",
+        "vessel": "reactor",
+        "parameters": {
+          "materials": {
+            "value": "diacetoxypalladium (9.34 mg, 0.04 mmol) and RuPhos (0.039 g, 0.08 mmol)",
+            "evidence": "diacetoxypalladium (9.34 mg, 0.04 mmol) and RuPhos (0.039 g, 0.08 mmol)"
+          },
+          "medium": {
+            "value": "1,4 dioxane",
+            "evidence": "1,4 dioxane"
+          }
+        },
+        "meta": {
+          "evidence": "diacetoxypalladium (9.34 mg, 0.04 mmol) and RuPhos (0.039 g, 0.08 mmol) were suspended in 1,4 dioxane (5 mL)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s004"
+      },
+      {
+        "op": "Degas",
+        "vessel": "reactor",
+        "parameters": {
+          "method": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "degassed",
+            "raw": null
+          },
+          "gas": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "degassed",
+            "raw": null
+          },
+          "duration": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "degassed",
+            "raw": null
+          }
+        },
+        "meta": {
+          "evidence": "degassed",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s005"
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 50,
+        "duration_s": 600,
+        "stir": true,
+        "id": "s006",
+        "meta": {
+          "evidence": "stirred at 50 °C for 10 minutes",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "(R)-tert-butyl 3-methylpiperazine-1-carboxylate",
+            "evidence": "(R)-tert-butyl 3-methylpiperazine-1-carboxylate"
+          },
+          "alias": {
+            "value": "(R)-tert-butyl 3-methylpiperazine-1-carboxylate",
+            "evidence": "(R)-tert-butyl 3-methylpiperazine-1-carboxylate"
+          },
+          "mass": {
+            "value": 0.1,
+            "unit": "g",
+            "evidence": "0.100 g"
+          },
+          "substance_amount": {
+            "value": 0.5,
+            "unit": "mmol",
+            "evidence": "0.50 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "Then (R)-tert-butyl 3-methylpiperazine-1-carboxylate (0.100 g, 0.50 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s007"
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "3-bromopyridine",
+            "evidence": "3-bromopyridine"
+          },
+          "alias": {
+            "value": "3-bromopyridine",
+            "evidence": "3-bromopyridine"
+          },
+          "volume": {
+            "value": 0.04,
+            "unit": "mL",
+            "evidence": "0.040 mL"
+          },
+          "substance_amount": {
+            "value": 0.42,
+            "unit": "mmol",
+            "evidence": "0.42 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "3-bromopyridine (0.040 mL, 0.42 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s008"
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "cesium carbonate",
+            "evidence": "cesium carbonate"
+          },
+          "alias": {
+            "value": "cesium carbonate",
+            "evidence": "cesium carbonate"
+          },
+          "mass": {
+            "value": 0.203,
+            "unit": "g",
+            "evidence": "0.203 g"
+          },
+          "substance_amount": {
+            "value": 0.62,
+            "unit": "mmol",
+            "evidence": "0.62 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "cesium carbonate (0.203 g, 0.62 mmol) were added",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s009"
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 100,
+        "duration_s": 57600,
+        "stir": true,
+        "id": "s010",
+        "meta": {
+          "evidence": "the reaction mixture was stirred at 100 °C for 16 h",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "AbandonExperiment",
+        "vessel": "reactor",
+        "parameters": {
+          "disposition": {
+            "value": "abandoned",
+            "evidence": "abandoned"
+          },
+          "termination_method": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "so this was abandoned",
+            "raw": null
+          }
+        },
+        "meta": {
+          "evidence": "so this was abandoned",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s011"
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {},
+      "reflux": false,
+      "source_context_evidence": [],
+      "initial_material_state": "unknown_unless_reported"
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "afb97b7d8fce904dd0ec401016e8f144b59321ac9d49d0539aeea4bae04d5e9e",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 1055,
+        "prompt_tokens": 830,
+        "total_tokens": 1885,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 160
+        }
+      },
+      "cache_key": "31f6bccc6f0f24607db0a80298c76be6808f956dcc51aca988ba3924eb9848f8",
+      "unresolved": [
+        "The degassing method, gas, and duration are unspecified.",
+        "The comparison involving Ruphos, sodium tert-butoxide, and toluene reports a screening result rather than an executable procedure; no quantities or operating conditions are provided."
+      ],
+      "unmapped_actions": [],
+      "uncertainties": [
+        {
+          "evidence": "degassed",
+          "description": "The degassing method, gas identity, and duration are not reported."
+        },
+        {
+          "evidence": "LCMS showed only 5% conversion to desired product.",
+          "description": "Reported analytical observation, not a synthesis action: LCMS showed only 5% conversion to desired product. Sampling and analytical preparation are not specified."
+        },
+        {
+          "evidence": "This was part of a screen and Ruphos, sodium tert-butoxide in toluene gave far better conversion so this was abandoned.",
+          "description": "The screening comparison concerns another condition, not additional charges to this experiment. Its reagent quantities and operating conditions are not reported."
+        },
+        {
+          "evidence": "so this was abandoned",
+          "description": "Abandonment is explicitly retained as cessation of further processing. No physical termination method, cooling, quench, disposal, workup, or purification is reported."
+        }
+      ],
+      "completion": "source_grounded_extension",
+      "source_observations": []
+    },
+    "operation_definitions": {
+      "AbandonExperiment": {
+        "name": "AbandonExperiment",
+        "domain": "experiment_termination",
+        "description": "Discontinue further experimental processing of the current mixture. This cessation does not specify or imply cooling, quenching, disposal, isolation, or any other unreported physical termination method.",
+        "parameters": {
+          "disposition": {
+            "type": "string",
+            "required": true
+          },
+          "termination_method": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Discontinues further processing of the current experiment without specifying a change to the mixture."
+        ],
+        "hardware_roles": [
+          "mixture vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "59946332e6e2682f90470f614c3a41b0632fc2b7bcd0726e9983605dbe0b98fd"
+      },
+      "AddMeasuredMaterial": {
+        "name": "AddMeasuredMaterial",
+        "domain": "material_handling",
+        "description": "Introduce the named material into the receiving vessel, retaining each independently reported mass, volume, and substance amount as measurements of the same charge.",
+        "parameters": {
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "alias": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": false,
+            "dimension": "mass"
+          },
+          "volume": {
+            "type": "quantity",
+            "required": false,
+            "dimension": "volume"
+          },
+          "substance_amount": {
+            "type": "quantity",
+            "required": false,
+            "dimension": "amount_of_substance"
+          }
+        },
+        "effects": [
+          "Introduces the specified material into the receiving vessel."
+        ],
+        "hardware_roles": [
+          "receiving vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "895db17d50d6fb965c1307e8bf2f3352c5c474157320ef095dbdc2c475e5cfac"
+      },
+      "Degas": {
+        "name": "Degas",
+        "domain": "gas_removal",
+        "description": "Remove gas from the vessel contents without inferring an unreported removal method, gas identity, or duration.",
+        "parameters": {
+          "method": {
+            "type": "string",
+            "required": true
+          },
+          "gas": {
+            "type": "string",
+            "required": true
+          },
+          "duration": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "time"
+          }
+        },
+        "effects": [
+          "Removes gas from the vessel contents."
+        ],
+        "hardware_roles": [
+          "mixture vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "48d7ccdcfe786f7a1552fcb6fa5a42e68774de739661295cad3f14e7e35d9097"
+      },
+      "FormSuspension": {
+        "name": "FormSuspension",
+        "domain": "mixture_preparation",
+        "description": "Disperse the already charged materials in the specified liquid medium to form a suspension, without imposing an unreported mixing method or duration.",
+        "parameters": {
+          "materials": {
+            "type": "string",
+            "required": true
+          },
+          "medium": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Disperses the charged materials in the liquid medium."
+        ],
+        "hardware_roles": [
+          "mixture vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "cd2449b77168fc6518553bfa1697b6e2dc52e9ce750e9e9785837b561ba25c73"
+      }
+    },
+    "xdl_profile": "mosaic-xdl/1"
+  },
+  "notes": {
+    "domain": "chemistry.extended/1",
+    "findings": [],
+    "apparatus_proposals": [],
+    "evidence_spans": [
+      {
+        "source_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+        "source_sha256": "7e5d79107d690df6756eb7241c2cffdb451bf2c20902c2b2a2dda3f4fb330d35",
+        "start": 0,
+        "end": 39,
+        "quote": "diacetoxypalladium (9.34 mg, 0.04 mmol)"
+      },
+      {
+        "source_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+        "source_sha256": "7e5d79107d690df6756eb7241c2cffdb451bf2c20902c2b2a2dda3f4fb330d35",
+        "start": 44,
+        "end": 71,
+        "quote": "RuPhos (0.039 g, 0.08 mmol)"
+      },
+      {
+        "source_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+        "source_sha256": "7e5d79107d690df6756eb7241c2cffdb451bf2c20902c2b2a2dda3f4fb330d35",
+        "start": 72,
+        "end": 108,
+        "quote": "were suspended in 1,4 dioxane (5 mL)"
+      },
+      {
+        "source_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+        "source_sha256": "7e5d79107d690df6756eb7241c2cffdb451bf2c20902c2b2a2dda3f4fb330d35",
+        "start": 123,
+        "end": 154,
+        "quote": "stirred at 50 °C for 10 minutes"
+      },
+      {
+        "source_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+        "source_sha256": "7e5d79107d690df6756eb7241c2cffdb451bf2c20902c2b2a2dda3f4fb330d35",
+        "start": 161,
+        "end": 229,
+        "quote": "(R)-tert-butyl 3-methylpiperazine-1-carboxylate (0.100 g, 0.50 mmol)"
+      },
+      {
+        "source_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+        "source_sha256": "7e5d79107d690df6756eb7241c2cffdb451bf2c20902c2b2a2dda3f4fb330d35",
+        "start": 231,
+        "end": 268,
+        "quote": "3-bromopyridine (0.040 mL, 0.42 mmol)"
+      },
+      {
+        "source_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+        "source_sha256": "7e5d79107d690df6756eb7241c2cffdb451bf2c20902c2b2a2dda3f4fb330d35",
+        "start": 273,
+        "end": 321,
+        "quote": "cesium carbonate (0.203 g, 0.62 mmol) were added"
+      },
+      {
+        "source_id": "ord-a21d6ec12c02473a98dce7de6b637849",
+        "source_sha256": "7e5d79107d690df6756eb7241c2cffdb451bf2c20902c2b2a2dda3f4fb330d35",
+        "start": 326,
+        "end": 377,
+        "quote": "the reaction mixture was stirred at 100 °C for 16 h"
+      }
+    ],
+    "repair": {
+      "accepted": false,
+      "patch": []
+    },
+    "apparatus_unknowns": [
+      "Reaction vessel not specified.",
+      "Degassing method/apparatus not specified.",
+      "Stirring apparatus not specified.",
+      "Heating apparatus or temperature controller not specified; 50 °C and 100 °C are reaction temperatures.",
+      "No separation apparatus described."
+    ],
+    "completion": {
+      "agent_called": true,
+      "attempts": 3,
+      "model": "gpt-6.1-sol",
+      "extension_operations": [
+        "AbandonExperiment",
+        "AddMeasuredMaterial",
+        "Degas",
+        "FormSuspension"
+      ],
+      "expression_profile": "mosaic-xdl/1",
+      "execution_supported": false
+    }
+  },
+  "raw_id": "ord-a21d6ec12c02473a98dce7de6b637849"
+}

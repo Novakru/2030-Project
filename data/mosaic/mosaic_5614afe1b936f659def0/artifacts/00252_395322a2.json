@@ -1,0 +1,379 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "PrepareSolution",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "a solution of methyl 5-bromo-2-iodobenzoate (2.1 g, 6.16 mmol) in DME (15 mL)",
+        "parameters": {
+          "solute": {
+            "value": "methyl 5-bromo-2-iodobenzoate",
+            "evidence": "methyl 5-bromo-2-iodobenzoate"
+          },
+          "solute_mass": {
+            "value": 2.1,
+            "unit": "g",
+            "evidence": "2.1 g"
+          },
+          "solute_amount": {
+            "value": 6.16,
+            "unit": "mmol",
+            "evidence": "6.16 mmol"
+          },
+          "solvent": {
+            "value": "DME",
+            "evidence": "DME"
+          },
+          "solvent_volume": {
+            "value": 15,
+            "unit": "mL",
+            "evidence": "15 mL"
+          }
+        }
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "morpholine (0.593 mL, 6.78 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "morpholine",
+            "evidence": "morpholine"
+          },
+          "volume": {
+            "value": 0.593,
+            "unit": "mL",
+            "evidence": "0.593 mL"
+          },
+          "substance_amount": {
+            "value": 6.78,
+            "unit": "mmol",
+            "evidence": "6.78 mmol"
+          }
+        }
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "rac-2,2'-Bis(diphenylphosphino)-1,1'-binaphthyl (0.384 g, 0.62 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "rac-2,2'-Bis(diphenylphosphino)-1,1'-binaphthyl",
+            "evidence": "rac-2,2'-Bis(diphenylphosphino)-1,1'-binaphthyl"
+          },
+          "mass": {
+            "value": 0.384,
+            "unit": "g",
+            "evidence": "0.384 g"
+          },
+          "substance_amount": {
+            "value": 0.62,
+            "unit": "mmol",
+            "evidence": "0.62 mmol"
+          }
+        }
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "Palladium acetate (0.138 g, 0.62 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "Palladium acetate",
+            "evidence": "Palladium acetate"
+          },
+          "mass": {
+            "value": 0.138,
+            "unit": "g",
+            "evidence": "0.138 g"
+          },
+          "substance_amount": {
+            "value": 0.62,
+            "unit": "mmol",
+            "evidence": "0.62 mmol"
+          }
+        }
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "CESIUM CARBONATE (2.81 g, 8.62 mmol) added.",
+        "parameters": {
+          "reagent": {
+            "value": "CESIUM CARBONATE",
+            "evidence": "CESIUM CARBONATE"
+          },
+          "mass": {
+            "value": 2.81,
+            "unit": "g",
+            "evidence": "2.81 g"
+          },
+          "substance_amount": {
+            "value": 8.62,
+            "unit": "mmol",
+            "evidence": "8.62 mmol"
+          }
+        }
+      },
+      {
+        "op": "MicrowaveHeat",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "The mixture was heated in the microwave oven for 1h.",
+        "parameters": {
+          "apparatus": {
+            "value": "microwave oven",
+            "evidence": "microwave oven"
+          },
+          "duration": {
+            "value": 1,
+            "unit": "h",
+            "evidence": "1h"
+          },
+          "temperature": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "The mixture was heated in the microwave oven for 1h.",
+            "raw": null
+          }
+        }
+      },
+      {
+        "op": "Evaporate",
+        "vessel": "reactor",
+        "stage": "workup",
+        "evidence": "The solvent was evaporated"
+      },
+      {
+        "op": "LoadChromatographyColumn",
+        "vessel": "reactor",
+        "stage": "purification",
+        "evidence": "the crude product was added to a silica gel column",
+        "parameters": {
+          "material": {
+            "value": "crude product",
+            "evidence": "crude product"
+          },
+          "destination": {
+            "value": "silica gel column",
+            "evidence": "silica gel column"
+          },
+          "stationary_phase": {
+            "value": "silica gel",
+            "evidence": "silica gel"
+          },
+          "loading_amount": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "the crude product was added to a silica gel column",
+            "raw": null
+          }
+        }
+      },
+      {
+        "op": "RunColumnChromatography",
+        "vessel": "silica gel column",
+        "stage": "purification",
+        "evidence": "a silica gel column, 0-25% EtOAc in heptane",
+        "parameters": {
+          "stationary_phase": {
+            "value": "silica gel",
+            "evidence": "silica gel"
+          },
+          "eluent_component": {
+            "value": "EtOAc",
+            "evidence": "EtOAc"
+          },
+          "carrier_solvent": {
+            "value": "heptane",
+            "evidence": "heptane"
+          },
+          "eluent_composition_range": {
+            "value": "0-25%",
+            "evidence": "0-25%"
+          }
+        }
+      }
+    ],
+    "definitions": {
+      "PrepareSolution": {
+        "name": "PrepareSolution",
+        "domain": "reaction",
+        "description": "Prepare the specified solute in the specified solvent, retaining both the reported mass and substance amount of the solute.",
+        "parameters": {
+          "solute": {
+            "type": "string",
+            "required": true
+          },
+          "solute_mass": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "mass"
+          },
+          "solute_amount": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "amount of substance"
+          },
+          "solvent": {
+            "type": "string",
+            "required": true
+          },
+          "solvent_volume": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "volume"
+          }
+        },
+        "effects": [
+          "Establishes the reported solution in the reaction vessel."
+        ],
+        "hardware_roles": [
+          "reaction vessel"
+        ]
+      },
+      "AddMeasuredMaterial": {
+        "name": "AddMeasuredMaterial",
+        "domain": "reaction",
+        "description": "Add a named material to the vessel, preserving its reported substance amount and its independently reported mass or volume.",
+        "parameters": {
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": false,
+            "dimension": "mass"
+          },
+          "volume": {
+            "type": "quantity",
+            "required": false,
+            "dimension": "volume"
+          },
+          "substance_amount": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "amount of substance"
+          }
+        },
+        "effects": [
+          "Introduces the specified material into the vessel."
+        ],
+        "hardware_roles": [
+          "reaction vessel",
+          "material addition interface"
+        ]
+      },
+      "MicrowaveHeat": {
+        "name": "MicrowaveHeat",
+        "domain": "reaction",
+        "description": "Heat the vessel contents using a microwave oven for the specified duration, without inferring an unreported temperature or microwave power.",
+        "parameters": {
+          "apparatus": {
+            "type": "string",
+            "required": true
+          },
+          "duration": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "time"
+          },
+          "temperature": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "temperature"
+          }
+        },
+        "effects": [
+          "Applies microwave heating to the reaction mixture for the reported duration."
+        ],
+        "hardware_roles": [
+          "reaction vessel",
+          "microwave oven"
+        ]
+      },
+      "LoadChromatographyColumn": {
+        "name": "LoadChromatographyColumn",
+        "domain": "purification",
+        "description": "Physically introduce the specified material onto the destination chromatography column containing the specified stationary phase.",
+        "parameters": {
+          "material": {
+            "type": "string",
+            "required": true
+          },
+          "destination": {
+            "type": "string",
+            "required": true
+          },
+          "stationary_phase": {
+            "type": "string",
+            "required": true
+          },
+          "loading_amount": {
+            "type": "quantity",
+            "required": true
+          }
+        },
+        "effects": [
+          "Places the crude material on the chromatography column."
+        ],
+        "hardware_roles": [
+          "source vessel",
+          "chromatography column"
+        ]
+      },
+      "RunColumnChromatography": {
+        "name": "RunColumnChromatography",
+        "domain": "purification",
+        "description": "Perform column chromatography using the specified stationary phase and solvent composition range. The reported range does not specify a gradient schedule or percentage basis.",
+        "parameters": {
+          "stationary_phase": {
+            "type": "string",
+            "required": true
+          },
+          "eluent_component": {
+            "type": "string",
+            "required": true
+          },
+          "carrier_solvent": {
+            "type": "string",
+            "required": true
+          },
+          "eluent_composition_range": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Elutes the loaded material through the chromatography stationary phase."
+        ],
+        "hardware_roles": [
+          "chromatography column",
+          "eluent supply",
+          "eluate collection"
+        ]
+      }
+    },
+    "uncertainties": []
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "total_tokens": 5222,
+    "completion_tokens": 2739,
+    "prompt_tokens": 2483,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 2480,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 210
+    }
+  },
+  "cache_key": "681570bdcc8e89b87d8b058fcab31cfdad7440ebc084ed16001a8ac7af38584e"
+}

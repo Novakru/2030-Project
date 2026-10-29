@@ -1,0 +1,111 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "Add",
+        "reagent": "Ni(cod)2",
+        "alias": "Ni(cod)2",
+        "vessel": "separate_plate",
+        "evidence": "pre-ligate Ni(cod)2 and phosphine ligand in dioxane for 15 minutes in a separate plate",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "phosphine ligand",
+        "alias": "phosphine ligand",
+        "vessel": "separate_plate",
+        "evidence": "pre-ligate Ni(cod)2 and phosphine ligand in dioxane for 15 minutes in a separate plate",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "reagent": "dioxane",
+        "alias": "dioxane",
+        "vessel": "separate_plate",
+        "evidence": "pre-ligate Ni(cod)2 and phosphine ligand in dioxane for 15 minutes in a separate plate",
+        "stage": "reaction"
+      },
+      {
+        "op": "Preligate",
+        "vessel": "separate_plate",
+        "evidence": "pre-ligate Ni(cod)2 and phosphine ligand in dioxane for 15 minutes in a separate plate",
+        "stage": "reaction",
+        "parameters": {
+          "metal_precursor": {
+            "value": "Ni(cod)2",
+            "evidence": "Ni(cod)2"
+          },
+          "ligand": {
+            "value": "phosphine ligand",
+            "evidence": "phosphine ligand"
+          },
+          "solvent": {
+            "value": "dioxane",
+            "evidence": "dioxane"
+          },
+          "duration": {
+            "value": 15,
+            "unit": "minutes",
+            "evidence": "15 minutes"
+          },
+          "container": {
+            "value": "separate plate",
+            "evidence": "separate plate"
+          }
+        }
+      }
+    ],
+    "definitions": {
+      "Preligate": {
+        "name": "Preligate",
+        "domain": "reaction",
+        "description": "Maintain contact between the introduced metal precursor and ligand in the specified solvent and container for the specified pre-ligation period. No agitation, temperature, or successful complex formation is implied.",
+        "parameters": {
+          "metal_precursor": {
+            "type": "string",
+            "required": true
+          },
+          "ligand": {
+            "type": "string",
+            "required": true
+          },
+          "solvent": {
+            "type": "string",
+            "required": true
+          },
+          "duration": {
+            "type": "quantity",
+            "required": true,
+            "unit": "minutes",
+            "dimension": "time"
+          },
+          "container": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Maintains contact between the metal precursor and ligand in solvent for the specified pre-ligation period."
+        ],
+        "hardware_roles": [
+          "Pre-ligation container"
+        ]
+      }
+    },
+    "uncertainties": []
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 2353,
+    "total_tokens": 3186,
+    "completion_tokens": 833,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 2350,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 119
+    }
+  },
+  "cache_key": "9b6a660511a201a0d7b5698bfc16cf5a1a9966d84f145056b150bb4cc54316bd"
+}

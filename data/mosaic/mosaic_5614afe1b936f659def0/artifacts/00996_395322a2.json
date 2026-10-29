@@ -1,0 +1,259 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "2,2,2‐trifluoro‐N‐(3‐(2‐methoxyphenyl)propyl)acetamide (65.3 mg, 0.25 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "2,2,2‐trifluoro‐N‐(3‐(2‐methoxyphenyl)propyl)acetamide",
+            "evidence": "2,2,2‐trifluoro‐N‐(3‐(2‐methoxyphenyl)propyl)acetamide"
+          },
+          "alias": {
+            "value": "2,2,2‐trifluoro‐N‐(3‐(2‐methoxyphenyl)propyl)acetamide",
+            "evidence": "2,2,2‐trifluoro‐N‐(3‐(2‐methoxyphenyl)propyl)acetamide"
+          },
+          "mass": {
+            "value": 65.3,
+            "unit": "mg",
+            "evidence": "65.3 mg"
+          },
+          "amount_of_substance": {
+            "value": 0.25,
+            "unit": "mmol",
+            "evidence": "0.25 mmol"
+          }
+        }
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "B2pin2 (127 mg, 0.50 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "B2pin2",
+            "evidence": "B2pin2"
+          },
+          "alias": {
+            "value": "B2pin2",
+            "evidence": "B2pin2"
+          },
+          "mass": {
+            "value": 127,
+            "unit": "mg",
+            "evidence": "127 mg"
+          },
+          "amount_of_substance": {
+            "value": 0.5,
+            "unit": "mmol",
+            "evidence": "0.50 mmol"
+          }
+        }
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "[Ir(COD)OMe]2 (2.5 mg, 0.00375 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "[Ir(COD)OMe]2",
+            "evidence": "[Ir(COD)OMe]2"
+          },
+          "alias": {
+            "value": "[Ir(COD)OMe]2",
+            "evidence": "[Ir(COD)OMe]2"
+          },
+          "mass": {
+            "value": 2.5,
+            "unit": "mg",
+            "evidence": "2.5 mg"
+          },
+          "amount_of_substance": {
+            "value": 0.00375,
+            "unit": "mmol",
+            "evidence": "0.00375 mmol"
+          }
+        }
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "dtbpy (2.0 mg, 0.0075 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "dtbpy",
+            "evidence": "dtbpy"
+          },
+          "alias": {
+            "value": "dtbpy",
+            "evidence": "dtbpy"
+          },
+          "mass": {
+            "value": 2.0,
+            "unit": "mg",
+            "evidence": "2.0 mg"
+          },
+          "amount_of_substance": {
+            "value": 0.0075,
+            "unit": "mmol",
+            "evidence": "0.0075 mmol"
+          }
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "reagent": "THF",
+        "alias": "THF",
+        "amount": {
+          "value": 1.25,
+          "unit": "mL"
+        },
+        "evidence": "in THF (1.25 mL)"
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "temp_C": 70,
+        "duration_s": 72000,
+        "stir": true,
+        "evidence": "The reaction was stirred at 70 °C for 20 hours"
+      },
+      {
+        "op": "Cool",
+        "vessel": "reactor",
+        "stage": "workup",
+        "evidence": "before cooling",
+        "parameters": {
+          "target_temperature": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "before cooling",
+            "raw": null
+          },
+          "duration": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "before cooling",
+            "raw": null
+          }
+        }
+      },
+      {
+        "op": "Evaporate",
+        "vessel": "reactor",
+        "stage": "workup",
+        "evidence": "the solventsremoved"
+      }
+    ],
+    "definitions": {
+      "ChargeMaterial": {
+        "name": "ChargeMaterial",
+        "domain": "material_handling",
+        "description": "Introduce a named material into a vessel, preserving its literal reagent and alias names and both reported mass and amount of substance as specifications of the same charge.",
+        "parameters": {
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "alias": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "amount_of_substance": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mmol",
+            "dimension": "amount_of_substance"
+          }
+        },
+        "effects": [
+          "Introduces the specified material into the receiving vessel."
+        ],
+        "hardware_roles": [
+          "receiving vessel"
+        ]
+      },
+      "Cool": {
+        "name": "Cool",
+        "domain": "temperature_control",
+        "description": "Lower the temperature of the vessel contents without assuming an unreported endpoint, cooling method, or duration.",
+        "parameters": {
+          "target_temperature": {
+            "type": "quantity",
+            "required": true,
+            "unit": "°C",
+            "dimension": "temperature"
+          },
+          "duration": {
+            "type": "quantity",
+            "required": true,
+            "unit": "s",
+            "dimension": "time"
+          }
+        },
+        "effects": [
+          "Lowers the temperature of the vessel contents."
+        ],
+        "hardware_roles": [
+          "reaction vessel"
+        ]
+      }
+    },
+    "uncertainties": [
+      {
+        "kind": "unmapped_action",
+        "evidence": "Following general procedure F",
+        "reason": "The referenced procedure is not supplied, so its physical operations cannot be identified.",
+        "relative_order": "Before the explicitly reported material charges.",
+        "unmapped_actions": [
+          {
+            "evidence": "Following general procedure F",
+            "reason": "The referenced procedure is not supplied, so its physical operations cannot be identified."
+          }
+        ]
+      },
+      {
+        "kind": "unspecified_removal_conditions",
+        "evidence": "the solventsremoved",
+        "description": "Solvent removal is represented by Evaporate. The source does not report its method, temperature, pressure, or duration."
+      },
+      {
+        "kind": "reported_analytical_observation",
+        "evidence": "Analysis of crude 1 H NMR using internalstandard 1,2‐dimethoxyethane showed 1:2.0 meta:para borylation in 91% yield.",
+        "description": "This is an analytical observation, not a synthesis action or an isolated-product yield. The internal-standard quantity and analytical sample preparation are not reported.",
+        "method": "crude 1 H NMR",
+        "internal_standard": "1,2‐dimethoxyethane",
+        "reported_regioisomer_ratio": "1:2.0 meta:para",
+        "reported_yield": "91%"
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 2080,
+    "prompt_tokens": 3681,
+    "total_tokens": 5761,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 3678,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 162
+    }
+  },
+  "cache_key": "bb060798f40968a974eb3b44fe2c96f84ce9dc626138bd29c80a32d8036ed1e9"
+}

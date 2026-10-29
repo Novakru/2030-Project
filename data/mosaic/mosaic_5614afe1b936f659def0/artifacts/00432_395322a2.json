@@ -1,0 +1,382 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "ChargeMeasuredMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "dimethyl 5-bromoisophthalate",
+            "evidence": "dimethyl 5-bromoisophthalate"
+          },
+          "alias": {
+            "value": "dimethyl 5-bromoisophthalate",
+            "evidence": "dimethyl 5-bromoisophthalate"
+          },
+          "mass": {
+            "value": 10,
+            "unit": "g",
+            "evidence": "10 g"
+          },
+          "molar_amount": {
+            "value": 36.62,
+            "unit": "mmol",
+            "evidence": "36.62 mmol"
+          }
+        },
+        "evidence": "To a solution of dimethyl 5-bromoisophthalate (10 g, 36.62 mmol) in toluene (100 mL)",
+        "stage": "reaction"
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "toluene",
+        "alias": "toluene",
+        "amount": {
+          "value": 100,
+          "unit": "mL"
+        },
+        "evidence": "in toluene (100 mL)",
+        "stage": "reaction"
+      },
+      {
+        "op": "ChargeMeasuredMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "BINAP",
+            "evidence": "BINAP"
+          },
+          "alias": {
+            "value": "BINAP",
+            "evidence": "BINAP"
+          },
+          "mass": {
+            "value": 2.5,
+            "unit": "g",
+            "evidence": "2.5 g"
+          },
+          "molar_amount": {
+            "value": 4.01,
+            "unit": "mmol",
+            "evidence": "4.01 mmol"
+          }
+        },
+        "evidence": "BINAP (2.5 g, 4.01 mmol)",
+        "stage": "reaction"
+      },
+      {
+        "op": "ChargeMeasuredMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "morpholine",
+            "evidence": "morpholine"
+          },
+          "alias": {
+            "value": "morpholine",
+            "evidence": "morpholine"
+          },
+          "mass": {
+            "value": 4.4,
+            "unit": "g",
+            "evidence": "4.4 g"
+          },
+          "molar_amount": {
+            "value": 50.5,
+            "unit": "mmol",
+            "evidence": "50.50 mmol"
+          }
+        },
+        "evidence": "morpholine (4.4 g, 50.50 mmol)",
+        "stage": "reaction"
+      },
+      {
+        "op": "ChargeMeasuredMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "CESIUM CARBONATE",
+            "evidence": "CESIUM CARBONATE"
+          },
+          "alias": {
+            "value": "CESIUM CARBONATE",
+            "evidence": "CESIUM CARBONATE"
+          },
+          "mass": {
+            "value": 18,
+            "unit": "g",
+            "evidence": "18 g"
+          },
+          "molar_amount": {
+            "value": 55.25,
+            "unit": "mmol",
+            "evidence": "55.25 mmol"
+          }
+        },
+        "evidence": "CESIUM CARBONATE (18 g, 55.25 mmol)",
+        "stage": "reaction"
+      },
+      {
+        "op": "ChargeMeasuredMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "PALLADIUM(II) ACETATE",
+            "evidence": "PALLADIUM(II) ACETATE"
+          },
+          "alias": {
+            "value": "PALLADIUM(II) ACETATE",
+            "evidence": "PALLADIUM(II) ACETATE"
+          },
+          "mass": {
+            "value": 0.9,
+            "unit": "g",
+            "evidence": "0.9 g"
+          },
+          "molar_amount": {
+            "value": 4.01,
+            "unit": "mmol",
+            "evidence": "4.01 mmol"
+          }
+        },
+        "evidence": "PALLADIUM(II) ACETATE (0.9 g, 4.01 mmol) added.",
+        "stage": "reaction"
+      },
+      {
+        "op": "RefluxUnderAtmosphere",
+        "vessel": "reactor",
+        "parameters": {
+          "thermal_condition": {
+            "value": "reflux",
+            "evidence": "heated to reflux"
+          },
+          "duration": {
+            "value": 14,
+            "unit": "h",
+            "evidence": "14h"
+          },
+          "atmosphere": {
+            "value": "under inert atm",
+            "evidence": "under inert atm"
+          },
+          "gas_identity": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "under inert atm",
+            "raw": null
+          },
+          "atmosphere_establishment_method": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "under inert atm",
+            "raw": null
+          },
+          "temperature": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "heated to reflux",
+            "raw": null
+          }
+        },
+        "evidence": "The solution was heated to reflux under inert atm for 14h.",
+        "stage": "reaction"
+      },
+      {
+        "op": "Filter",
+        "vessel": "reactor",
+        "keep": "filtrate",
+        "evidence": "The silvent was filtered and the filtrate was concentrated.",
+        "stage": "workup"
+      },
+      {
+        "op": "Evaporate",
+        "vessel": "reactor",
+        "evidence": "the filtrate was concentrated",
+        "stage": "workup"
+      },
+      {
+        "op": "Purify",
+        "method": "chromatography",
+        "vessel": "reactor",
+        "evidence": "The residue was purified by column chropmatography (Hep:EA) 1:1",
+        "stage": "purification"
+      },
+      {
+        "op": "EluteColumn",
+        "vessel": "reactor",
+        "parameters": {
+          "material": {
+            "value": "residue",
+            "evidence": "The residue was purified"
+          },
+          "column_method": {
+            "value": "column chropmatography",
+            "evidence": "column chropmatography"
+          },
+          "eluent": {
+            "value": "Hep:EA",
+            "evidence": "(Hep:EA)"
+          },
+          "eluent_ratio": {
+            "value": "1:1",
+            "evidence": "(Hep:EA) 1:1"
+          },
+          "ratio_basis": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "(Hep:EA) 1:1",
+            "raw": null
+          },
+          "stationary_phase": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "column chropmatography (Hep:EA) 1:1",
+            "raw": null
+          }
+        },
+        "evidence": "The residue was purified by column chropmatography (Hep:EA) 1:1",
+        "stage": "purification"
+      }
+    ],
+    "definitions": {
+      "ChargeMeasuredMaterial": {
+        "name": "ChargeMeasuredMaterial",
+        "domain": "material_handling",
+        "description": "Introduce a named material into the receiving vessel, retaining both its reported mass and molar amount as independent source measurements.",
+        "parameters": {
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "alias": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "g",
+            "dimension": "mass"
+          },
+          "molar_amount": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mmol",
+            "dimension": "amount_of_substance"
+          }
+        },
+        "effects": [
+          "Introduces the specified material into the receiving vessel."
+        ],
+        "hardware_roles": [
+          "receiving vessel"
+        ]
+      },
+      "RefluxUnderAtmosphere": {
+        "name": "RefluxUnderAtmosphere",
+        "domain": "reaction",
+        "description": "Heat the vessel contents to reflux and maintain reflux for the reported duration under the concurrently specified atmosphere. No numerical temperature, gas identity, or atmosphere-establishment method is inferred.",
+        "parameters": {
+          "thermal_condition": {
+            "type": "string",
+            "required": true
+          },
+          "duration": {
+            "type": "quantity",
+            "required": true,
+            "unit": "h",
+            "dimension": "time"
+          },
+          "atmosphere": {
+            "type": "string",
+            "required": true
+          },
+          "gas_identity": {
+            "type": "string",
+            "required": true
+          },
+          "atmosphere_establishment_method": {
+            "type": "string",
+            "required": true
+          },
+          "temperature": {
+            "type": "quantity",
+            "required": true,
+            "unit": "°C",
+            "dimension": "temperature"
+          }
+        },
+        "effects": [
+          "Heats and maintains the contents at reflux under the stated atmospheric condition."
+        ],
+        "hardware_roles": [
+          "reaction vessel",
+          "heating source",
+          "reflux condensation",
+          "atmosphere control"
+        ]
+      },
+      "EluteColumn": {
+        "name": "EluteColumn",
+        "domain": "purification",
+        "description": "Pass the reported eluent mixture through the chromatography column containing the specified material. This is the elution component of the preceding purification, not an additional purification run; the reported mixture ratio is retained without inferring its basis.",
+        "parameters": {
+          "material": {
+            "type": "string",
+            "required": true
+          },
+          "column_method": {
+            "type": "string",
+            "required": true
+          },
+          "eluent": {
+            "type": "string",
+            "required": true
+          },
+          "eluent_ratio": {
+            "type": "string",
+            "required": true
+          },
+          "ratio_basis": {
+            "type": "string",
+            "required": true
+          },
+          "stationary_phase": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Elutes components of the material through the column as part of the stated purification."
+        ],
+        "hardware_roles": [
+          "chromatography column",
+          "eluent supply",
+          "eluate collection"
+        ]
+      }
+    },
+    "uncertainties": [
+      "The inert gas identity and atmosphere-establishment method are not reported.",
+      "The reflux temperature is not numerically reported.",
+      "Filtration apparatus and concentration conditions are not reported.",
+      "Hep and EA are retained literally; their expanded identities, the eluent ratio basis, stationary phase, and column dimensions are not explicitly reported.",
+      "The source reports dimethyl 5-morpholinoisophthalate (8.00 g, 78 %) as a product outcome observation, not an additional synthesis action."
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 2616,
+    "prompt_tokens": 4609,
+    "total_tokens": 7225,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 4606,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 194
+    }
+  },
+  "cache_key": "ad8b555bce521d4d8995314b994e9cb7da645dca5afdc44c208c7ccec78ffde0"
+}

@@ -1,0 +1,126 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "AddToPlateWells",
+        "evidence": "These solutions were added to a 384-\nwell source plate (80 µL per well).",
+        "stage": "reaction",
+        "parameters": {
+          "material": {
+            "value": "These solutions",
+            "evidence": "These solutions"
+          },
+          "destination_plate": {
+            "value": "384-\nwell source plate",
+            "evidence": "384-\nwell source plate"
+          },
+          "plate_well_count": {
+            "value": 384,
+            "evidence": "384-\nwell source plate"
+          },
+          "addition_volume": {
+            "value": 80,
+            "unit": "µL",
+            "evidence": "80 µL per well"
+          },
+          "volume_basis": {
+            "value": "per well",
+            "evidence": "80 µL per well"
+          }
+        }
+      },
+      {
+        "op": "AddToPlateWells",
+        "evidence": "The Mosquito HTS liquid handling robot was used to dose\neach of these solutions (200 nL each) into a 1536-well plate.",
+        "stage": "reaction",
+        "parameters": {
+          "material": {
+            "value": "each of these solutions",
+            "evidence": "each of these solutions"
+          },
+          "destination_plate": {
+            "value": "1536-well plate",
+            "evidence": "1536-well plate"
+          },
+          "plate_well_count": {
+            "value": 1536,
+            "evidence": "1536-well plate"
+          },
+          "addition_volume": {
+            "value": 200,
+            "unit": "nL",
+            "evidence": "200 nL each"
+          },
+          "volume_basis": {
+            "value": "each",
+            "evidence": "200 nL each"
+          },
+          "liquid_handler": {
+            "value": "Mosquito HTS liquid handling robot",
+            "evidence": "Mosquito HTS liquid handling robot"
+          }
+        }
+      }
+    ],
+    "definitions": {
+      "AddToPlateWells": {
+        "name": "AddToPlateWells",
+        "domain": "liquid_handling",
+        "description": "Add liquid material into multiwell plate wells at the reported volume and distribution basis, using a specified liquid handler when reported. Plate well count denotes capacity, not the number of occupied wells or additions. The volume basis distinguishes an amount per well from an amount for each solution.",
+        "parameters": {
+          "material": {
+            "type": "string",
+            "required": true
+          },
+          "destination_plate": {
+            "type": "string",
+            "required": true
+          },
+          "plate_well_count": {
+            "type": "integer",
+            "required": true
+          },
+          "addition_volume": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "volume"
+          },
+          "volume_basis": {
+            "type": "string",
+            "required": true
+          },
+          "liquid_handler": {
+            "type": "string",
+            "required": false
+          }
+        },
+        "effects": [
+          "Introduces liquid material into destination plate wells according to the specified volume and distribution basis."
+        ],
+        "hardware_roles": [
+          "destination multiwell plate",
+          "liquid dispensing device"
+        ]
+      }
+    },
+    "uncertainties": [
+      "The identities and compositions of the referenced solutions are not supplied in the source excerpt.",
+      "Occupied wells, well-to-well mapping, and total numbers of additions are not reported.",
+      "The dispensing apparatus for the initial source-plate addition is not reported."
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 2280,
+    "total_tokens": 3346,
+    "completion_tokens": 1066,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 2277,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 241
+    }
+  },
+  "cache_key": "2c3491b584c8158b1ae0286d016346c64c5c63ff01405094db067b3edb1835cf"
+}

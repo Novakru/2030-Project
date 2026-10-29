@@ -1,0 +1,258 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "General  procedure  B  was  applied to  2-methylquinoline-7-carbonitrile  (168  mg,  1.00mmol).",
+        "parameters": {
+          "reagent": {
+            "value": "2-methylquinoline-7-carbonitrile",
+            "evidence": "2-methylquinoline-7-carbonitrile"
+          },
+          "alias": {
+            "value": "2-methylquinoline-7-carbonitrile",
+            "evidence": "2-methylquinoline-7-carbonitrile"
+          },
+          "mass": {
+            "value": 168,
+            "unit": "mg",
+            "evidence": "168  mg"
+          },
+          "substance_amount": {
+            "value": 1,
+            "unit": "mmol",
+            "evidence": "1.00mmol"
+          },
+          "referenced_procedure": {
+            "value": "General  procedure  B",
+            "evidence": "General  procedure  B"
+          }
+        }
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 25,
+        "duration_s": 172800,
+        "stir": true,
+        "evidence": "The  reaction was stirred at room temperature (25 °C) for 48 hours",
+        "stage": "reaction"
+      },
+      {
+        "op": "RecordObservation",
+        "stage": "reaction",
+        "evidence": "affording a 95:5 mixture of monoborylated products.",
+        "parameters": {
+          "observation": {
+            "value": "affording a 95:5 mixture of monoborylated products.",
+            "evidence": "affording a 95:5 mixture of monoborylated products."
+          }
+        }
+      },
+      {
+        "op": "EvaporateUnderReducedPressure",
+        "vessel": "reactor",
+        "stage": "workup",
+        "evidence": "Volatiles were removed under reduced pressure",
+        "parameters": {
+          "material_removed": {
+            "value": "Volatiles",
+            "evidence": "Volatiles"
+          },
+          "pressure_condition": {
+            "value": "under reduced pressure",
+            "evidence": "under reduced pressure"
+          },
+          "pressure": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "under reduced pressure",
+            "raw": null
+          }
+        }
+      },
+      {
+        "op": "Recrystallize",
+        "vessel": "reactor",
+        "stage": "purification",
+        "evidence": "the remaining residue was purified by recrystallisation from    acetonitrile",
+        "parameters": {
+          "material": {
+            "value": "the remaining residue",
+            "evidence": "the remaining residue"
+          },
+          "method": {
+            "value": "recrystallisation",
+            "evidence": "recrystallisation"
+          },
+          "solvent": {
+            "value": "acetonitrile",
+            "evidence": "acetonitrile"
+          },
+          "solvent_amount": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "recrystallisation from    acetonitrile",
+            "raw": null
+          }
+        }
+      },
+      {
+        "op": "RecordObservation",
+        "stage": "purification",
+        "evidence": "affording    only    2-methyl-4-(4,4,5,5-tetramethyl-[1,3,2]dioxaborolan-2-yl)quinoline-7-carbonitrileas a white solid (252 mg, 86%); m.p.149 -150 °C;",
+        "parameters": {
+          "observation": {
+            "value": "affording    only    2-methyl-4-(4,4,5,5-tetramethyl-[1,3,2]dioxaborolan-2-yl)quinoline-7-carbonitrileas a white solid (252 mg, 86%); m.p.149 -150 °C;",
+            "evidence": "affording    only    2-methyl-4-(4,4,5,5-tetramethyl-[1,3,2]dioxaborolan-2-yl)quinoline-7-carbonitrileas a white solid (252 mg, 86%); m.p.149 -150 °C;"
+          }
+        }
+      }
+    ],
+    "definitions": {
+      "ChargeMaterial": {
+        "name": "ChargeMaterial",
+        "domain": "reaction",
+        "description": "Introduce an identified material with independently reported mass and substance amount. A referenced procedure records provenance without expanding its unavailable constituent operations.",
+        "parameters": {
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "alias": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "substance_amount": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mmol",
+            "dimension": "amount_of_substance"
+          },
+          "referenced_procedure": {
+            "type": "reference",
+            "required": false
+          }
+        },
+        "effects": [
+          "Introduces the specified material into the reaction inventory."
+        ],
+        "hardware_roles": [
+          "reaction vessel"
+        ]
+      },
+      "RecordObservation": {
+        "name": "RecordObservation",
+        "domain": "observation",
+        "description": "Record a reported analytical result or product property without asserting a physical synthesis action.",
+        "parameters": {
+          "observation": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Preserves a reported observation without changing material state."
+        ],
+        "hardware_roles": []
+      },
+      "EvaporateUnderReducedPressure": {
+        "name": "EvaporateUnderReducedPressure",
+        "domain": "workup",
+        "description": "Remove volatile material by evaporation under reported reduced pressure without assigning an unreported numerical pressure, temperature, duration, or apparatus.",
+        "parameters": {
+          "material_removed": {
+            "type": "string",
+            "required": true
+          },
+          "pressure_condition": {
+            "type": "string",
+            "required": true
+          },
+          "pressure": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "pressure"
+          }
+        },
+        "effects": [
+          "Removes volatile inventory and leaves the remaining residue."
+        ],
+        "hardware_roles": [
+          "evaporation vessel",
+          "reduced-pressure source"
+        ]
+      },
+      "Recrystallize": {
+        "name": "Recrystallize",
+        "domain": "purification",
+        "description": "Purify material by recrystallization from the specified solvent without assuming dissolution, cooling, collection, washing, or drying conditions.",
+        "parameters": {
+          "material": {
+            "type": "string",
+            "required": true
+          },
+          "method": {
+            "type": "string",
+            "required": true
+          },
+          "solvent": {
+            "type": "string",
+            "required": true
+          },
+          "solvent_amount": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "volume"
+          }
+        },
+        "effects": [
+          "Subjects the remaining material to recrystallization purification."
+        ],
+        "hardware_roles": [
+          "recrystallization vessel"
+        ]
+      }
+    },
+    "uncertainties": [
+      {
+        "evidence": "General  procedure  B  was  applied",
+        "description": "General procedure B is not supplied. Its additional reagents, quantities, apparatus, conditions, and constituent operations cannot be reconstructed."
+      },
+      {
+        "evidence": "The  reaction was stirred at room temperature (25 °C) for 48 hours",
+        "description": "The temperature is explicitly described as room temperature and quantified as 25 °C. Stirring rate is not reported."
+      },
+      {
+        "evidence": "Volatiles were removed under reduced pressure",
+        "description": "Numerical pressure, evaporation temperature, and evaporation duration are not reported."
+      },
+      {
+        "evidence": "the remaining residue was purified by recrystallisation from    acetonitrile",
+        "description": "Solvent quantity and recrystallization conditions are not reported."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 3882,
+    "total_tokens": 5917,
+    "completion_tokens": 2035,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 3879,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 93
+    }
+  },
+  "cache_key": "7db4ba4a200a73471955aeb2170f1f810b2157d7cc96e99ac880eb01a2efa166"
+}

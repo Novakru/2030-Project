@@ -1,0 +1,649 @@
+{
+  "data": {
+    "proposals": [
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_058c05df0484114ca703",
+          "mention_85b05892388c67b0a339"
+        ],
+        "name": "Filter",
+        "reason": "The supplied contracts match registered Filter. Preserve celite as through where reported; keep and vessel remain unresolved, so these observations do not establish executable instances."
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_696ac5a69d11c09f40c5"
+        ],
+        "name": "HeatChill",
+        "reason": "The registered temperature constraint represents 110 °C for 172800 seconds. Concurrent stirring remains a separate effect, not something HeatChill supplies."
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_d588ed2843f30edf0d14"
+        ],
+        "name": "Purify",
+        "reason": "The identical supplied contract represents whole-process chromatographic purification. Silica and eluent composition require separate condition attachment; Purify alone does not encode those details."
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_e727c783b2c90e3c27b2"
+        ],
+        "name": "Stir",
+        "reason": "The supplied contract matches Stir and the reported duration is 120 seconds. Room temperature remains qualitative context; no numerical temperature or stirring speed is inferred."
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_97ef8e6bbf1cccc1e5c1"
+        ],
+        "name": "Wait",
+        "reason": "Wait represents the reported 57600-second elapsed interval, not an additional physical treatment or the reported 81% conversion result."
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_c65456e0bbaec8eb75e9"
+        ],
+        "name": "Add",
+        "reason": "The supplied contract is identical to Add. Preserve the reported diacetoxypalladium quantities; the isolated quotation does not resolve a destination vessel or independently establish execution."
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_9fd259c335e2282c6d56"
+        ],
+        "name": "Atmosphere",
+        "reason": "Argon-filled glove-box context matches Atmosphere with environment mode, which is metadata rather than an inferred purge or evacuation."
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_c902f2c3ad6cc30d7ef3"
+        ],
+        "name": "Evaporate",
+        "reason": "Concentration matches registered volatile removal. Pressure, temperature, duration, and degree of concentration remain unspecified."
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_22c8aa3edfc96eb683f0"
+        ],
+        "name": "EvacuateAndBackfill",
+        "reason": "Atmosphere supports evacuation/refill but requires gas identity, absent here. A candidate preserves the ordered actions without inventing gas or cycles; the extension's required gas field cannot be populated from this evidence.",
+        "contract": {
+          "parameters": {
+            "vessel": {
+              "type": "identifier",
+              "required": false
+            },
+            "gas": {
+              "type": "string",
+              "required": false
+            }
+          },
+          "effects": [
+            "Evacuates the vessel atmosphere and subsequently backfills the vessel with gas."
+          ],
+          "guards": [
+            "Preserve evacuation before backfilling.",
+            "Do not infer gas identity, pressure, duration, or repeated cycle count."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_75ba0710ba7ce07b5714",
+          "mention_065cdac2481d6e57ed5d",
+          "mention_f348ba818365c89657af",
+          "mention_46a1f19ccb539552e9a8"
+        ],
+        "name": "EvaporateSolventUnderQualitativePressure",
+        "reason": "All four describe THF removal under reduced pressure. Evaporate lacks named-solvent selection and qualitative pressure fields. Differing extension requirements prevent identical-contract aliases; no numerical pressure is reported.",
+        "contract": {
+          "parameters": {
+            "vessel": {
+              "type": "identifier",
+              "required": false
+            },
+            "solvent": {
+              "type": "string",
+              "required": true
+            },
+            "pressure_condition": {
+              "type": "string",
+              "required": true
+            }
+          },
+          "effects": [
+            "Removes the specified solvent by evaporation under the reported qualitative pressure condition."
+          ],
+          "guards": [
+            "Preserve THF and reduced-pressure wording.",
+            "Do not assign numerical pressure, temperature, duration, or apparatus type."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_d55a3339026918518beb"
+        ],
+        "name": "EvaporateAndRecordResidue",
+        "reason": "Evaporate supplies volatile removal but not residue-observation recording. The extension requires unreported operating conditions; the reported 1 g is an observation, not a commanded endpoint.",
+        "contract": {
+          "parameters": {
+            "vessel": {
+              "type": "identifier",
+              "required": false
+            },
+            "reported_residue_description": {
+              "type": "string",
+              "required": true
+            },
+            "reported_residue_mass": {
+              "type": "quantity",
+              "dimension": "mass",
+              "required": true
+            }
+          },
+          "effects": [
+            "Removes volatile material by evaporation.",
+            "Records the reported residue description and mass."
+          ],
+          "guards": [
+            "Do not prescribe the reported residue mass as a stopping target.",
+            "Leave temperature, pressure, and duration unknown."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_3d5ea77518478ffcbeab"
+        ],
+        "name": "RecordAnalyticalObservation",
+        "reason": "The existing non-executable candidate records analytical findings without performing an analysis. It accommodates method TLC and the reported interpretation; AnalyzeReactionMaterial would additionally imply obtaining analytical information."
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_2f4ed6251f8c38a8a574",
+          "mention_3631e2338866598ba86c"
+        ],
+        "name": "FillVesselWithGas",
+        "reason": "Both quotations describe nitrogen filling without a specified atmosphere-establishment method. Atmosphere requires mode; the supplied extensions require absent pressure or duration and are not identical-contract aliases.",
+        "contract": {
+          "parameters": {
+            "vessel": {
+              "type": "identifier",
+              "required": false
+            },
+            "gas": {
+              "type": "string",
+              "required": true
+            }
+          },
+          "effects": [
+            "Introduces the reported gas into the vessel atmosphere by filling."
+          ],
+          "guards": [
+            "Preserve nitrogen identity and filling wording.",
+            "Do not infer evacuation, purge cycles, flow, pressure, duration, or sealing."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_12ecfc1dc41b977ec1a9",
+          "mention_74110d7bdb4c0fdaa13e"
+        ],
+        "name": "FilterWithoutSpecifiedRetainedStream",
+        "reason": "Both describe filtration with unresolved retained stream; celite is specified only in the second. Filter requires keep, so an executable Filter instance cannot be formed without choosing an unsupported stream.",
+        "contract": {
+          "parameters": {
+            "vessel": {
+              "type": "identifier",
+              "required": false
+            },
+            "medium": {
+              "type": "string",
+              "required": false
+            }
+          },
+          "effects": [
+            "Passes the mixture through filtration without selecting which resulting stream proceeds."
+          ],
+          "guards": [
+            "Preserve medium identity where reported.",
+            "Do not infer retained stream, receiving vessel, or filtration driving method."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_b93818560547d33fccb6",
+          "mention_1afde68fe866e9b5e79c"
+        ],
+        "name": "FlashChromatographicPurification",
+        "reason": "Both describe whole-process flash chromatography, not merely elution. Purify lacks explicit stationary-phase, ordered ratio, and result fields. Their different extension requirements preclude identical-contract aliases.",
+        "contract": {
+          "parameters": {
+            "vessel": {
+              "type": "identifier",
+              "required": false
+            },
+            "method": {
+              "type": "string",
+              "required": true
+            },
+            "stationary_phase": {
+              "type": "string",
+              "required": false
+            },
+            "stationary_phase_mass": {
+              "type": "quantity",
+              "dimension": "mass",
+              "required": false
+            },
+            "ordered_eluent_components": {
+              "type": "array",
+              "required": true
+            },
+            "eluent_ratio": {
+              "type": "string",
+              "required": true
+            },
+            "ratio_basis": {
+              "type": "string",
+              "required": false
+            },
+            "reported_product": {
+              "type": "string",
+              "required": false
+            },
+            "reported_product_mass": {
+              "type": "quantity",
+              "dimension": "mass",
+              "required": false
+            },
+            "reported_yield": {
+              "type": "quantity",
+              "unit": "%",
+              "required": false
+            },
+            "reported_appearance": {
+              "type": "string",
+              "required": false
+            }
+          },
+          "effects": [
+            "Separates material by flash chromatography under the reported conditions.",
+            "Retains reported product properties as observations where supplied."
+          ],
+          "guards": [
+            "Keep each observation's conditions and results separate.",
+            "Preserve eluent component order, ratios, and literal designations.",
+            "Do not infer ratio basis, stationary phase where absent, flow, or column geometry.",
+            "Do not treat reported product properties as commanded outcomes."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_61ad2e7470487b107b2d"
+        ],
+        "name": "FormSuspension",
+        "reason": "Add does not establish a suspended state, Stir does not guarantee it, and DissolveMaterials has a different endpoint. The required extension method is unreported; no known-operation macro preserves this endpoint without assumptions.",
+        "contract": {
+          "parameters": {
+            "vessel": {
+              "type": "identifier",
+              "required": false
+            },
+            "medium": {
+              "type": "string",
+              "required": true
+            },
+            "reported_medium_volume": {
+              "type": "quantity",
+              "dimension": "volume",
+              "required": false
+            },
+            "method": {
+              "type": "string",
+              "required": false
+            }
+          },
+          "effects": [
+            "Forms a suspension of the charged materials in the reported liquid medium."
+          ],
+          "guards": [
+            "Preserve dioxane and the reported 3 mL.",
+            "Do not create a duplicate medium addition.",
+            "Do not infer agitation technique or duration."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_6184e7f9beceedbc2739"
+        ],
+        "name": "GradientChromatographicElution",
+        "reason": "Unlike whole-process Purify or condition-only attachment, this describes a linked physical elution phase with changing composition and a relative volume. Existing ChromatographicElution contracts do not explicitly retain gradient progression.",
+        "contract": {
+          "parameters": {
+            "purification_event": {
+              "type": "reference",
+              "required": true
+            },
+            "eluent": {
+              "type": "string",
+              "required": true
+            },
+            "gradient_range": {
+              "type": "string",
+              "required": true
+            },
+            "gradient_volume": {
+              "type": "quantity",
+              "unit": "column volumes",
+              "required": true
+            }
+          },
+          "effects": [
+            "Passes changing eluent composition through the column during the referenced purification."
+          ],
+          "guards": [
+            "Preserve MeOH/DCM, 0.5–12.5%, and 25 column volumes.",
+            "Do not infer percentage basis, absolute volume, flow, or a more detailed gradient schedule.",
+            "Do not count this phase as a second purification."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_b001926a5bb9ce9418b1"
+        ],
+        "name": "HeatAndStirConcurrently",
+        "reason": "HeatChill and Stir supply component effects but no approved macro establishes their concurrency with qualitative overnight timing. DoseThenStir is sequential and has a different inventory effect.",
+        "contract": {
+          "parameters": {
+            "vessel": {
+              "type": "identifier",
+              "required": false
+            },
+            "temp_C": {
+              "type": "number",
+              "required": true
+            },
+            "rpm": {
+              "type": "number",
+              "required": true
+            },
+            "reported_duration": {
+              "type": "string",
+              "required": true
+            }
+          },
+          "effects": [
+            "Applies heating and stirring concurrently for the reported interval."
+          ],
+          "guards": [
+            "Preserve 100 °C, 450 rpm, and overnight.",
+            "Do not assign numerical seconds to overnight.",
+            "Do not replace concurrency with a sequential expansion."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_83463104e16224e0f9b9"
+        ],
+        "name": "HeatAtReflux",
+        "reason": "HeatChill requires a numerical temperature and does not specify reflux condensation. Neither numerical temperature nor overnight duration can be inferred from this report.",
+        "contract": {
+          "parameters": {
+            "vessel": {
+              "type": "identifier",
+              "required": false
+            },
+            "thermal_condition": {
+              "type": "string",
+              "required": true
+            },
+            "reported_duration": {
+              "type": "string",
+              "required": true
+            }
+          },
+          "effects": [
+            "Heats the mixture under reflux for the reported interval."
+          ],
+          "guards": [
+            "Preserve reflux and overnight literally.",
+            "Do not infer temperature, numerical duration, solvent boiling point, or apparatus model."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_17154d49fd351913b528"
+        ],
+        "name": "BathDry",
+        "reason": "Existing non-executable BathDry represents oil-bath drying independently of sample temperature and pressure. Map the reported bath condition to 90 °C and duration to 5400 seconds, without importing its earlier observation's 30-minute duration."
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_73e936baf081a3f8aa38"
+        ],
+        "name": "HeatInBath",
+        "reason": "HeatChill alone loses the reported oil-bath mode, while BathDry would add an unreported drying effect. No approved macro preserves bath heating and qualitative overnight timing.",
+        "contract": {
+          "parameters": {
+            "vessel": {
+              "type": "identifier",
+              "required": false
+            },
+            "bath": {
+              "type": "string",
+              "required": true
+            },
+            "reported_temperature_C": {
+              "type": "number",
+              "required": true
+            },
+            "temperature_scope": {
+              "type": "string",
+              "required": true
+            },
+            "reported_duration": {
+              "type": "string",
+              "required": true
+            }
+          },
+          "effects": [
+            "Heats the reaction using the reported bath under the reported conditions."
+          ],
+          "guards": [
+            "Preserve oil bath, 90 °C, and overnight.",
+            "Retain the reported temperature wording without asserting measured sample temperature.",
+            "Do not infer numerical duration, drying, or pressure."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_f3cebbbc2ffabff81dad",
+          "mention_ee496bf92f8689cf2a9f"
+        ],
+        "name": "HeatInBlockWithConcurrentStirring",
+        "reason": "Both quotations specify vessel placement in a preheated block and a 12-hour stirring interval. HeatChill would conflate the 80 °C block condition with sample temperature; SetHeatingBlockTemperature alone omits placement and concurrent processing.",
+        "contract": {
+          "parameters": {
+            "vessel": {
+              "type": "identifier",
+              "required": false
+            },
+            "block": {
+              "type": "string",
+              "required": true
+            },
+            "block_condition": {
+              "type": "string",
+              "required": true
+            },
+            "block_temperature_C": {
+              "type": "number",
+              "required": true
+            },
+            "duration_s": {
+              "type": "number",
+              "required": true
+            },
+            "concurrent_condition": {
+              "type": "string",
+              "required": true
+            }
+          },
+          "effects": [
+            "Places the vessel in thermal contact with the reported preheated block.",
+            "Maintains the reported block-heating and stirring interval."
+          ],
+          "guards": [
+            "Preserve aluminum block, preheated state, 80 °C, and 43200 seconds.",
+            "Do not equate block temperature with sample temperature.",
+            "Do not infer stirring speed, preheating duration, or internal pressure."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      },
+      {
+        "action": "cluster_device",
+        "origins": [
+          "mention_6961f431ccd0b5923682",
+          "mention_c300e626f048f25c5bf3",
+          "mention_04d62e12f327538f8570"
+        ],
+        "name": "HeatingBlock",
+        "family": "heating_block",
+        "reason": "All explicitly describe heating blocks and fit the existing family. Preserve the reported aluminum and 80 °C block condition; membership establishes neither sample temperature, stirring capability, nor interchangeability."
+      },
+      {
+        "action": "cluster_device",
+        "origins": [
+          "mention_0477b0e918694b367edc",
+          "mention_fa953e48616d7da39bd0"
+        ],
+        "name": "GloveBox",
+        "family": "glove_box",
+        "reason": "Both explicitly identify argon-filled glove boxes, absent from current families. This candidate family classifies enclosure type only; no manufacturer, model, purge method, or interchangeability is established."
+      },
+      {
+        "action": "cluster_device",
+        "origins": [
+          "mention_f6492d2166a04c30d821",
+          "mention_be130b041b17487c713d"
+        ],
+        "name": "HeatingBath",
+        "family": "heating_bath",
+        "reason": "Both explicitly identify oil baths. CirculatingBath would infer an unreported circulation mode. Keep 105 °C and 85 °C attached to their respective baths, not samples; family membership does not establish interchangeability."
+      },
+      {
+        "action": "cluster_device",
+        "origins": [
+          "mention_d335246b25536dfc1e59"
+        ],
+        "name": "HeaterShaker",
+        "family": "heater_shaker",
+        "reason": "The reported heater-shaker is not evidence of a magnetic hotplate stirrer. A candidate family preserves the stated hardware mode without inferring agitation mechanism, manufacturer, model, or interchangeable equipment."
+      },
+      {
+        "action": "reuse",
+        "origins": [
+          "mention_e2ce80ca3ecaf88468c9"
+        ],
+        "name": "HeatChill",
+        "reason": "Despite its device label, the evidence reports heating at 130 °C for 18000 seconds and identifies no apparatus. Reuse the thermal operation semantics rather than inventing a heater family or heater setpoint."
+      },
+      {
+        "action": "cluster_operation",
+        "origins": [
+          "mention_33b55db1a555624f0f0f"
+        ],
+        "name": "MaintainGasFlowDuringAddition",
+        "reason": "The evidence establishes nitrogen-flow context, not a particular flow controller. Atmosphere does not explicitly retain flow concurrent with referenced additions; a device-family assignment would infer unreported hardware.",
+        "contract": {
+          "parameters": {
+            "gas": {
+              "type": "string",
+              "required": true
+            },
+            "associated_additions": {
+              "type": "array",
+              "required": true
+            }
+          },
+          "effects": [
+            "Maintains the reported gas-flow condition during the associated material additions."
+          ],
+          "guards": [
+            "Preserve nitrogen identity and association with the reported additions.",
+            "Do not infer flow rate, controller identity, gas-contact geometry, purge duration, or evacuation."
+          ],
+          "execution_supported": false,
+          "representation_status": "candidate"
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 25726,
+    "total_tokens": 30492,
+    "completion_tokens": 4766,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 25723,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 159
+    }
+  },
+  "cache_key": "5bb0f9bd12cdb7e41ec59881d921611a503d606d3a8f7250ad2ba37cd9bf6d03"
+}

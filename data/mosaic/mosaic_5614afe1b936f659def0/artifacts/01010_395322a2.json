@@ -1,0 +1,315 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "AddQuantifiedReagent",
+        "stage": "reaction",
+        "evidence": "2-methoxythiophene (4j, 114.2 mg, 1.00 mmol, 1.00 equiv)",
+        "parameters": {
+          "reagent": {
+            "value": "2-methoxythiophene",
+            "evidence": "2-methoxythiophene"
+          },
+          "sourceLabel": {
+            "value": "4j",
+            "evidence": "4j"
+          },
+          "mass": {
+            "value": 114.2,
+            "unit": "mg",
+            "evidence": "114.2 mg"
+          },
+          "amountOfSubstance": {
+            "value": 1.0,
+            "unit": "mmol",
+            "evidence": "1.00 mmol"
+          },
+          "equivalents": {
+            "value": 1.0,
+            "unit": "equiv",
+            "evidence": "1.00 equiv"
+          }
+        }
+      },
+      {
+        "op": "AddQuantifiedReagent",
+        "stage": "reaction",
+        "evidence": "catBH (240 mg, 2.00 mmol, 2.00 equiv)",
+        "parameters": {
+          "reagent": {
+            "value": "catBH",
+            "evidence": "catBH"
+          },
+          "mass": {
+            "value": 240,
+            "unit": "mg",
+            "evidence": "240 mg"
+          },
+          "amountOfSubstance": {
+            "value": 2.0,
+            "unit": "mmol",
+            "evidence": "2.00 mmol"
+          },
+          "equivalents": {
+            "value": 2.0,
+            "unit": "equiv",
+            "evidence": "2.00 equiv"
+          }
+        }
+      },
+      {
+        "op": "AddQuantifiedReagent",
+        "stage": "reaction",
+        "evidence": "N,N,4-trimethylaniline (1f, 13.5 mg, 0.10 mmol, 0.10 equiv)",
+        "parameters": {
+          "reagent": {
+            "value": "N,N,4-trimethylaniline",
+            "evidence": "N,N,4-trimethylaniline"
+          },
+          "sourceLabel": {
+            "value": "1f",
+            "evidence": "1f"
+          },
+          "mass": {
+            "value": 13.5,
+            "unit": "mg",
+            "evidence": "13.5 mg"
+          },
+          "amountOfSubstance": {
+            "value": 0.1,
+            "unit": "mmol",
+            "evidence": "0.10 mmol"
+          },
+          "equivalents": {
+            "value": 0.1,
+            "unit": "equiv",
+            "evidence": "0.10 equiv"
+          }
+        }
+      },
+      {
+        "op": "AddQuantifiedReagent",
+        "stage": "reaction",
+        "evidence": "norbornene (94.0 mg, 1.00 mmol, 1.00 equiv)",
+        "parameters": {
+          "reagent": {
+            "value": "norbornene",
+            "evidence": "norbornene"
+          },
+          "mass": {
+            "value": 94.0,
+            "unit": "mg",
+            "evidence": "94.0 mg"
+          },
+          "amountOfSubstance": {
+            "value": 1.0,
+            "unit": "mmol",
+            "evidence": "1.00 mmol"
+          },
+          "equivalents": {
+            "value": 1.0,
+            "unit": "equiv",
+            "evidence": "1.00 equiv"
+          }
+        }
+      },
+      {
+        "op": "AddQuantifiedReagent",
+        "stage": "reaction",
+        "evidence": "B(C6F5)3 (51.2 mg, 0.10 mmol, 0.10 equiv) according to GP 3",
+        "parameters": {
+          "reagent": {
+            "value": "B(C6F5)3",
+            "evidence": "B(C6F5)3"
+          },
+          "mass": {
+            "value": 51.2,
+            "unit": "mg",
+            "evidence": "51.2 mg"
+          },
+          "amountOfSubstance": {
+            "value": 0.1,
+            "unit": "mmol",
+            "evidence": "0.10 mmol"
+          },
+          "equivalents": {
+            "value": 0.1,
+            "unit": "equiv",
+            "evidence": "0.10 equiv"
+          },
+          "preparationProcedureReference": {
+            "value": "GP 3",
+            "evidence": "according to GP 3"
+          }
+        }
+      },
+      {
+        "op": "FlashColumnChromatography",
+        "stage": "purification",
+        "evidence": "purified by flash column chromatography using cyclohexane/EtOAc/Et3N (30/1/1) as eluent",
+        "parameters": {
+          "method": {
+            "value": "flash column chromatography",
+            "evidence": "flash column chromatography"
+          },
+          "eluent": {
+            "value": "cyclohexane/EtOAc/Et3N",
+            "evidence": "cyclohexane/EtOAc/Et3N"
+          },
+          "eluentRatio": {
+            "value": "30/1/1",
+            "evidence": "30/1/1"
+          },
+          "ratioBasis": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "cyclohexane/EtOAc/Et3N (30/1/1)",
+            "raw": null
+          },
+          "eluentAmount": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "using cyclohexane/EtOAc/Et3N (30/1/1) as eluent",
+            "raw": null
+          }
+        }
+      }
+    ],
+    "definitions": {
+      "AddQuantifiedReagent": {
+        "name": "AddQuantifiedReagent",
+        "domain": "reaction",
+        "description": "Introduce the specified reagent into the preparation, retaining its reported mass, amount of substance, equivalents, and optional source label. An optional preparation procedure reference records the external procedure governing the overall preparation; it does not supply or enact its missing operations. Step order preserves reagent listing order without asserting a measured charging sequence.",
+        "parameters": {
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "sourceLabel": {
+            "type": "string",
+            "required": false
+          },
+          "mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "amountOfSubstance": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mmol",
+            "dimension": "amount_of_substance"
+          },
+          "equivalents": {
+            "type": "number",
+            "required": true,
+            "unit": "equiv",
+            "dimension": "dimensionless"
+          },
+          "preparationProcedureReference": {
+            "type": "reference",
+            "required": false
+          }
+        },
+        "effects": [
+          "Introduces the reported reagent quantity into the preparation."
+        ],
+        "hardware_roles": [
+          "reaction vessel"
+        ]
+      },
+      "FlashColumnChromatography": {
+        "name": "FlashColumnChromatography",
+        "domain": "purification",
+        "description": "Separate material by flash column chromatography using the specified eluent mixture and reported component ratio. This represents one chromatographic purification without assuming a stationary phase, ratio basis, eluent quantity, or operating conditions.",
+        "parameters": {
+          "method": {
+            "type": "string",
+            "required": true
+          },
+          "eluent": {
+            "type": "string",
+            "required": true
+          },
+          "eluentRatio": {
+            "type": "string",
+            "required": true
+          },
+          "ratioBasis": {
+            "type": "string",
+            "required": true
+          },
+          "eluentAmount": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "volume"
+          }
+        },
+        "effects": [
+          "Separates material by elution through a flash chromatography column."
+        ],
+        "hardware_roles": [
+          "chromatography column"
+        ]
+      }
+    },
+    "uncertainties": [
+      {
+        "type": "unmapped_action",
+        "evidence": "according to GP 3",
+        "reason": "The referenced procedure is absent, so its physical operations cannot be mapped.",
+        "description": "The reference is retained in the preparation parameters. Reaction conditions, physical operations, and any workup specified by GP 3 remain unresolved; the listed steps do not reconstruct them."
+      },
+      {
+        "type": "charging_order_not_reported",
+        "evidence": "Prepared from 2-methoxythiophene (4j, 114.2 mg, 1.00 mmol, 1.00 equiv), catBH (240 mg, 2.00 mmol, 2.00 equiv), N,N,4-trimethylaniline (1f, 13.5 mg, 0.10 mmol, 0.10 equiv), norbornene (94.0 mg, 1.00 mmol, 1.00 equiv), and B(C6F5)3 (51.2 mg, 0.10 mmol, 0.10 equiv) according to GP 3.",
+        "description": "Reagent steps preserve source listing order; the excerpt does not establish the physical charging sequence or identify the apparatus."
+      },
+      {
+        "type": "purification_details_not_reported",
+        "evidence": "purified by flash column chromatography using cyclohexane/EtOAc/Et3N (30/1/1) as eluent",
+        "description": "Stationary phase, column dimensions, eluent quantity, ratio basis, operating conditions, and fraction collection details are not reported."
+      },
+      {
+        "type": "reported_product_observation",
+        "evidence": "to afford 6j[S5] (96.8 mg, 40%) as a colorless liquid.",
+        "description": "Reported product identity, isolated mass, yield, and appearance are observations, not additional synthesis actions.",
+        "observations": {
+          "productLabel": {
+            "value": "6j[S5]",
+            "evidence": "6j[S5]"
+          },
+          "mass": {
+            "value": 96.8,
+            "unit": "mg",
+            "evidence": "96.8 mg"
+          },
+          "yield": {
+            "value": 40,
+            "unit": "%",
+            "evidence": "40%"
+          },
+          "appearance": {
+            "value": "colorless liquid",
+            "evidence": "colorless liquid"
+          }
+        }
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 2579,
+    "prompt_tokens": 4297,
+    "total_tokens": 6876,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 4294,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 323
+    }
+  },
+  "cache_key": "e66f1dd1441daf005b242fc14191eb7d7a0d186d5b6c33e6e00ea1c3dfe00870"
+}

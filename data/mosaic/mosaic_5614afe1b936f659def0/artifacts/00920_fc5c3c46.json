@@ -1,0 +1,697 @@
+{
+  "protocol": {
+    "id": "pos_cf737b8f3d9340aca6130b04f75e7c21",
+    "source": {
+      "dataset_id": "ord_dataset-00005539a1e04c809a9a78647bea649c",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet",
+      "file_sha256": "5326c1f79ef6a71e6b2a91cbd07cd8521049427df79307686c7c4f44eb16b53a",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": "https://chemrxiv.org/engage/chemrxiv/article-details/60c9e3f37792a23bfdb2d471",
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet"
+    },
+    "raw_id": "ord-cf737b8f3d9340aca6130b04f75e7c21",
+    "raw_sha256": "433874d6b7562929c950672a040f2336b9135cbef7fb00072f9a470eea90e76f",
+    "source_text": "In a reaction vial, 1,4-dibromobenzene (0.373 g, 1.58 mmol), methyl 2-(piperazin-1-yl)acetate (0.100 g, 0.63 mmol), CS2CO3 (0.309 g, 0.95 mmol), and BINAP (0.024 g, 0.04 mmol) were taken up in 1,4-dioxane (1.5 ml). Argon was bubbled through the solution for 1 minute. Pd2(dba)3 (0.012 g, 0.01 mmol) was added, followed by additional purging with argon. The vial was capped and placed on the heater-shaker. The reaction was stirred (450 rpm) at 100 °C overnight.  LC/MS at this point did not indicate any formation of the dp. Experiment not progressed.  ",
+    "text_sha256": "15cff72f3765d0b2c07afaa4409e3c358566eb8e140db17a4a21058dea1b38e5",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "1,4-dibromobenzene",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 373,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r002",
+        "name": "methyl 2-(piperazin-1-yl)acetate",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 100,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r003",
+        "name": "CS2CO3",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 309,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r004",
+        "name": "BINAP",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 24,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r005",
+        "name": "1,4-dioxane",
+        "smiles": null,
+        "role": "SOLVENT",
+        "amount": {
+          "value": 1.5,
+          "unit": "mL"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      },
+      {
+        "id": "r006",
+        "name": "Pd2(dba)3",
+        "smiles": null,
+        "role": "REAGENT",
+        "amount": {
+          "value": 12,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "vessel_type": {
+            "value": "reaction vial",
+            "evidence": "reaction vial"
+          },
+          "reagent": {
+            "value": "1,4-dibromobenzene",
+            "evidence": "1,4-dibromobenzene"
+          },
+          "alias": {
+            "value": "1,4-dibromobenzene",
+            "evidence": "1,4-dibromobenzene"
+          },
+          "mass": {
+            "value": 0.373,
+            "unit": "g",
+            "evidence": "0.373 g"
+          },
+          "amount_substance": {
+            "value": 1.58,
+            "unit": "mmol",
+            "evidence": "1.58 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "In a reaction vial, 1,4-dibromobenzene (0.373 g, 1.58 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s001"
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "methyl 2-(piperazin-1-yl)acetate",
+            "evidence": "methyl 2-(piperazin-1-yl)acetate"
+          },
+          "alias": {
+            "value": "methyl 2-(piperazin-1-yl)acetate",
+            "evidence": "methyl 2-(piperazin-1-yl)acetate"
+          },
+          "mass": {
+            "value": 0.1,
+            "unit": "g",
+            "evidence": "0.100 g"
+          },
+          "amount_substance": {
+            "value": 0.63,
+            "unit": "mmol",
+            "evidence": "0.63 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "methyl 2-(piperazin-1-yl)acetate (0.100 g, 0.63 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s002"
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "CS2CO3",
+            "evidence": "CS2CO3"
+          },
+          "alias": {
+            "value": "CS2CO3",
+            "evidence": "CS2CO3"
+          },
+          "mass": {
+            "value": 0.309,
+            "unit": "g",
+            "evidence": "0.309 g"
+          },
+          "amount_substance": {
+            "value": 0.95,
+            "unit": "mmol",
+            "evidence": "0.95 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "CS2CO3 (0.309 g, 0.95 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s003"
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "BINAP",
+            "evidence": "BINAP"
+          },
+          "alias": {
+            "value": "BINAP",
+            "evidence": "BINAP"
+          },
+          "mass": {
+            "value": 0.024,
+            "unit": "g",
+            "evidence": "0.024 g"
+          },
+          "amount_substance": {
+            "value": 0.04,
+            "unit": "mmol",
+            "evidence": "0.04 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "BINAP (0.024 g, 0.04 mmol)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s004"
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "r005",
+        "amount": {
+          "value": 1.5,
+          "unit": "mL"
+        },
+        "id": "s005",
+        "meta": {
+          "evidence": "were taken up in 1,4-dioxane (1.5 ml)",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "source_alias": "1,4-dioxane",
+          "amount_source": "procedure_text"
+        },
+        "source_quantities": [
+          {
+            "value": 1.5,
+            "unit": "mL",
+            "quote": "1.5 ml",
+            "printed_rounding_half_unit": 0.05,
+            "source_segment": "1.5 ml"
+          }
+        ]
+      },
+      {
+        "op": "Atmosphere",
+        "vessel": "reactor",
+        "gas": "argon",
+        "mode": "purge",
+        "duration_s": 60,
+        "id": "s006",
+        "meta": {
+          "evidence": "Argon was bubbled through the solution for 1 minute.",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "parameters": {
+          "reagent": {
+            "value": "Pd2(dba)3",
+            "evidence": "Pd2(dba)3"
+          },
+          "alias": {
+            "value": "Pd2(dba)3",
+            "evidence": "Pd2(dba)3"
+          },
+          "mass": {
+            "value": 0.012,
+            "unit": "g",
+            "evidence": "0.012 g"
+          },
+          "amount_substance": {
+            "value": 0.01,
+            "unit": "mmol",
+            "evidence": "0.01 mmol"
+          }
+        },
+        "meta": {
+          "evidence": "Pd2(dba)3 (0.012 g, 0.01 mmol) was added",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s007"
+      },
+      {
+        "op": "Atmosphere",
+        "vessel": "reactor",
+        "gas": "argon",
+        "mode": "purge",
+        "id": "s008",
+        "meta": {
+          "evidence": "followed by additional purging with argon",
+          "stage": "reaction",
+          "source_contract": "text-only/1"
+        }
+      },
+      {
+        "op": "CapVessel",
+        "vessel": "reactor",
+        "parameters": {},
+        "meta": {
+          "evidence": "The vial was capped",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s009"
+      },
+      {
+        "op": "PlaceOnEquipment",
+        "vessel": "reactor",
+        "parameters": {
+          "equipment": {
+            "value": "heater-shaker",
+            "evidence": "heater-shaker"
+          }
+        },
+        "meta": {
+          "evidence": "placed on the heater-shaker",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s010"
+      },
+      {
+        "op": "HeatAndStir",
+        "vessel": "reactor",
+        "parameters": {
+          "temperature": {
+            "value": 100,
+            "unit": "°C",
+            "evidence": "100 °C"
+          },
+          "stirring_speed": {
+            "value": 450,
+            "unit": "rpm",
+            "evidence": "450 rpm"
+          },
+          "concurrent_condition": {
+            "value": "stirred",
+            "evidence": "stirred"
+          },
+          "duration": {
+            "status": "qualitative",
+            "marker": "__QUALITATIVE__",
+            "evidence": "overnight",
+            "raw": "overnight"
+          }
+        },
+        "meta": {
+          "evidence": "The reaction was stirred (450 rpm) at 100 °C overnight.",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "HeatChill"
+        },
+        "id": "s011"
+      }
+    ],
+    "context": {
+      "pressure_control": "SEALED",
+      "atmosphere": {
+        "type": "ARGON",
+        "basis": "procedure_text"
+      },
+      "reflux": false,
+      "source_context_evidence": [
+        {
+          "field": "pressure_control",
+          "quote": "capped"
+        }
+      ],
+      "initial_material_state": "unknown_unless_reported"
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "15cff72f3765d0b2c07afaa4409e3c358566eb8e140db17a4a21058dea1b38e5",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "total_tokens": 1934,
+        "prompt_tokens": 831,
+        "completion_tokens": 1103,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 150
+        }
+      },
+      "cache_key": "8c1a0ee5a35d5a7f8c90d60f82c784c52b8c651fb85dc595b09187d29d323a75",
+      "unresolved": [
+        "The duration of the additional argon purge is not specified.",
+        "The heating and stirring duration is stated only as overnight; no numeric duration is specified."
+      ],
+      "unmapped_actions": [],
+      "uncertainties": [
+        {
+          "type": "qualitative_duration",
+          "evidence": "overnight",
+          "description": "No numeric duration is reported for heating and stirring."
+        },
+        {
+          "type": "unreported_condition",
+          "evidence": "followed by additional purging with argon",
+          "description": "The duration and delivery method of the additional purge are not reported."
+        },
+        {
+          "type": "analytical_observation",
+          "evidence": "LC/MS at this point did not indicate any formation of the dp.",
+          "description": "This is a reported analytical observation, not a synthesis action. The source does not expand dp."
+        },
+        {
+          "type": "procedure_status",
+          "evidence": "Experiment not progressed.",
+          "description": "The experiment was not progressed; no subsequent experimental actions are reported."
+        }
+      ],
+      "completion": "source_grounded_extension",
+      "source_observations": [
+        {
+          "evidence": "The vial was capped",
+          "reason": "Capping is not represented by an allowed operation."
+        }
+      ]
+    },
+    "operation_definitions": {
+      "CapVessel": {
+        "name": "CapVessel",
+        "domain": "reaction",
+        "description": "Fit a cap to the vessel without assuming a seal rating or pressure capability.",
+        "parameters": {},
+        "effects": [
+          "Closes the vessel with a cap."
+        ],
+        "hardware_roles": [
+          "reaction vessel",
+          "cap"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "5a2a8c8f8d8e78930ea153e1a5570f164d24ee1564b3aad2197fb75c2e3ab309"
+      },
+      "ChargeMaterial": {
+        "name": "ChargeMaterial",
+        "domain": "reaction",
+        "description": "Introduce the specified material into the vessel, retaining mass and amount of substance as constraints on the same charge. The alias identifies the same material. An optional vessel type records the reported apparatus.",
+        "parameters": {
+          "vessel_type": {
+            "type": "string",
+            "required": false
+          },
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "alias": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "g",
+            "dimension": "mass"
+          },
+          "amount_substance": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mmol",
+            "dimension": "amount_of_substance"
+          }
+        },
+        "effects": [
+          "Introduces the specified material into the vessel."
+        ],
+        "hardware_roles": [
+          "receiving vessel"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "5064d915ec0f4e2b9af52af3f60742e722cae01d59a51da9f6a331b584dc35ce"
+      },
+      "HeatAndStir": {
+        "name": "HeatAndStir",
+        "domain": "reaction",
+        "description": "Heat the vessel contents at the specified temperature while concurrently stirring at the specified speed for the reported duration. Preserve qualitative duration without assigning a numeric time and retain the literal concurrent-condition wording.",
+        "parameters": {
+          "temperature": {
+            "type": "quantity",
+            "required": true,
+            "unit": "°C",
+            "dimension": "temperature"
+          },
+          "stirring_speed": {
+            "type": "quantity",
+            "required": true,
+            "unit": "rpm",
+            "dimension": "rotational_frequency"
+          },
+          "concurrent_condition": {
+            "type": "string",
+            "required": true
+          },
+          "duration": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "time"
+          }
+        },
+        "effects": [
+          "Applies heating and stirring concurrently for the reported duration."
+        ],
+        "hardware_roles": [
+          "reaction vessel",
+          "heating equipment",
+          "stirring equipment"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "80d2a2162bdca1e7f476469a718f4ce4695d58f3ee388ef936acafc942bf2395"
+      },
+      "PlaceOnEquipment": {
+        "name": "PlaceOnEquipment",
+        "domain": "reaction",
+        "description": "Physically place the vessel on the specified equipment without transferring its contents.",
+        "parameters": {
+          "equipment": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Positions the vessel on the specified equipment."
+        ],
+        "hardware_roles": [
+          "reaction vessel",
+          "supporting equipment"
+        ],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "2443b9a7273e5b2cd554aa41c36dc80212b36f6fe41ad720327feb396650611f"
+      }
+    },
+    "xdl_profile": "mosaic-xdl/1"
+  },
+  "notes": {
+    "domain": "chemistry.extended/1",
+    "findings": [],
+    "apparatus_proposals": [
+      {
+        "quote": "reaction vial",
+        "kind": "vial",
+        "identity": null,
+        "scope": "Reaction vessel; no size, manufacturer, material, pressure rating, or closure specification stated.",
+        "evidence": {
+          "source_id": "ord-cf737b8f3d9340aca6130b04f75e7c21",
+          "source_sha256": "6bc3d0910e0aee80a5271668d0cc539ba847cf98ccc5dfe04ec7a2349d25c892",
+          "start": 5,
+          "end": 18,
+          "quote": "reaction vial"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "The vial was capped",
+        "kind": "closure",
+        "identity": null,
+        "scope": "Cap applied to the reaction vial; cap type and sealing/pressure capability not stated.",
+        "evidence": {
+          "source_id": "ord-cf737b8f3d9340aca6130b04f75e7c21",
+          "source_sha256": "6bc3d0910e0aee80a5271668d0cc539ba847cf98ccc5dfe04ec7a2349d25c892",
+          "start": 353,
+          "end": 372,
+          "quote": "The vial was capped"
+        },
+        "status": "not_a_verified_binding"
+      },
+      {
+        "quote": "heater-shaker",
+        "kind": "heater-shaker",
+        "identity": null,
+        "scope": "Instrument used to heat and stir the capped vial; manufacturer/model and setpoint-versus-sample-temperature distinction not stated.",
+        "evidence": {
+          "source_id": "ord-cf737b8f3d9340aca6130b04f75e7c21",
+          "source_sha256": "6bc3d0910e0aee80a5271668d0cc539ba847cf98ccc5dfe04ec7a2349d25c892",
+          "start": 391,
+          "end": 404,
+          "quote": "heater-shaker"
+        },
+        "status": "not_a_verified_binding"
+      }
+    ],
+    "evidence_spans": [
+      {
+        "source_id": "ord-cf737b8f3d9340aca6130b04f75e7c21",
+        "source_sha256": "6bc3d0910e0aee80a5271668d0cc539ba847cf98ccc5dfe04ec7a2349d25c892",
+        "start": 20,
+        "end": 59,
+        "quote": "1,4-dibromobenzene (0.373 g, 1.58 mmol)"
+      },
+      {
+        "source_id": "ord-cf737b8f3d9340aca6130b04f75e7c21",
+        "source_sha256": "6bc3d0910e0aee80a5271668d0cc539ba847cf98ccc5dfe04ec7a2349d25c892",
+        "start": 61,
+        "end": 114,
+        "quote": "methyl 2-(piperazin-1-yl)acetate (0.100 g, 0.63 mmol)"
+      },
+      {
+        "source_id": "ord-cf737b8f3d9340aca6130b04f75e7c21",
+        "source_sha256": "6bc3d0910e0aee80a5271668d0cc539ba847cf98ccc5dfe04ec7a2349d25c892",
+        "start": 116,
+        "end": 143,
+        "quote": "CS2CO3 (0.309 g, 0.95 mmol)"
+      },
+      {
+        "source_id": "ord-cf737b8f3d9340aca6130b04f75e7c21",
+        "source_sha256": "6bc3d0910e0aee80a5271668d0cc539ba847cf98ccc5dfe04ec7a2349d25c892",
+        "start": 149,
+        "end": 175,
+        "quote": "BINAP (0.024 g, 0.04 mmol)"
+      },
+      {
+        "source_id": "ord-cf737b8f3d9340aca6130b04f75e7c21",
+        "source_sha256": "6bc3d0910e0aee80a5271668d0cc539ba847cf98ccc5dfe04ec7a2349d25c892",
+        "start": 176,
+        "end": 213,
+        "quote": "were taken up in 1,4-dioxane (1.5 ml)"
+      },
+      {
+        "source_id": "ord-cf737b8f3d9340aca6130b04f75e7c21",
+        "source_sha256": "6bc3d0910e0aee80a5271668d0cc539ba847cf98ccc5dfe04ec7a2349d25c892",
+        "start": 215,
+        "end": 267,
+        "quote": "Argon was bubbled through the solution for 1 minute."
+      },
+      {
+        "source_id": "ord-cf737b8f3d9340aca6130b04f75e7c21",
+        "source_sha256": "6bc3d0910e0aee80a5271668d0cc539ba847cf98ccc5dfe04ec7a2349d25c892",
+        "start": 268,
+        "end": 308,
+        "quote": "Pd2(dba)3 (0.012 g, 0.01 mmol) was added"
+      },
+      {
+        "source_id": "ord-cf737b8f3d9340aca6130b04f75e7c21",
+        "source_sha256": "6bc3d0910e0aee80a5271668d0cc539ba847cf98ccc5dfe04ec7a2349d25c892",
+        "start": 310,
+        "end": 351,
+        "quote": "followed by additional purging with argon"
+      },
+      {
+        "source_id": "ord-cf737b8f3d9340aca6130b04f75e7c21",
+        "source_sha256": "6bc3d0910e0aee80a5271668d0cc539ba847cf98ccc5dfe04ec7a2349d25c892",
+        "start": 406,
+        "end": 461,
+        "quote": "The reaction was stirred (450 rpm) at 100 °C overnight."
+      }
+    ],
+    "repair": {
+      "accepted": false,
+      "patch": []
+    },
+    "apparatus_unknowns": [
+      "The stated 100 °C is described as the reaction temperature; it is not explicitly identified as the heater-shaker setpoint or a measured sample temperature.",
+      "The 1.5 ml volume is solvent charged to one reaction vial, not a stated vial capacity.",
+      "No specific argon delivery apparatus, flow controller, or bubbling device is described.",
+      "No LC/MS instrument, autosampler vial, separation apparatus, or chromatographic hardware is described."
+    ],
+    "completion": {
+      "agent_called": true,
+      "attempts": 3,
+      "model": "gpt-6.1-sol",
+      "extension_operations": [
+        "CapVessel",
+        "ChargeMaterial",
+        "HeatAndStir",
+        "PlaceOnEquipment"
+      ],
+      "expression_profile": "mosaic-xdl/1",
+      "execution_supported": false
+    }
+  },
+  "raw_id": "ord-cf737b8f3d9340aca6130b04f75e7c21"
+}

@@ -1,0 +1,309 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "4c (72.3 mg, 0.25 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "4c",
+            "evidence": "4c"
+          },
+          "alias": {
+            "value": "4c",
+            "evidence": "4c"
+          },
+          "mass": {
+            "value": 72.3,
+            "unit": "mg",
+            "evidence": "72.3 mg"
+          },
+          "substance_amount": {
+            "value": 0.25,
+            "unit": "mmol",
+            "evidence": "0.25 mmol"
+          }
+        }
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "B2pin2 (127 mg, 0.50 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "B2pin2",
+            "evidence": "B2pin2"
+          },
+          "alias": {
+            "value": "B2pin2",
+            "evidence": "B2pin2"
+          },
+          "mass": {
+            "value": 127,
+            "unit": "mg",
+            "evidence": "127 mg"
+          },
+          "substance_amount": {
+            "value": 0.5,
+            "unit": "mmol",
+            "evidence": "0.50 mmol"
+          }
+        }
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "[Ir(COD)OMe]2 (2.5 mg, 0.00375 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "[Ir(COD)OMe]2",
+            "evidence": "[Ir(COD)OMe]2"
+          },
+          "alias": {
+            "value": "[Ir(COD)OMe]2",
+            "evidence": "[Ir(COD)OMe]2"
+          },
+          "mass": {
+            "value": 2.5,
+            "unit": "mg",
+            "evidence": "2.5 mg"
+          },
+          "substance_amount": {
+            "value": 0.00375,
+            "unit": "mmol",
+            "evidence": "0.00375 mmol"
+          }
+        }
+      },
+      {
+        "op": "AddMeasuredMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "dtbpy (2.0 mg, 0.0075 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "dtbpy",
+            "evidence": "dtbpy"
+          },
+          "alias": {
+            "value": "dtbpy",
+            "evidence": "dtbpy"
+          },
+          "mass": {
+            "value": 2.0,
+            "unit": "mg",
+            "evidence": "2.0 mg"
+          },
+          "substance_amount": {
+            "value": 0.0075,
+            "unit": "mmol",
+            "evidence": "0.0075 mmol"
+          }
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "reagent": "THF",
+        "amount": {
+          "value": 1.25,
+          "unit": "mL"
+        },
+        "evidence": "in THF (1.25 mL)",
+        "stage": "reaction",
+        "alias": "THF"
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "temp_C": 50,
+        "duration_s": 72000,
+        "stir": true,
+        "evidence": "Stirred in vial at 50 °C for 20 hours.",
+        "stage": "reaction"
+      },
+      {
+        "op": "AnalyzeByNmr",
+        "stage": "reaction",
+        "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane showed 1.4:1 meta:para borylation in 99% yield.",
+        "parameters": {
+          "sample": {
+            "value": "crude",
+            "evidence": "crude"
+          },
+          "method": {
+            "value": "1 H NMR",
+            "evidence": "1 H NMR"
+          },
+          "internal_standard": {
+            "value": "1,2‐dimethoxyethane",
+            "evidence": "1,2‐dimethoxyethane"
+          },
+          "internal_standard_amount": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "using internal standard 1,2‐dimethoxyethane",
+            "raw": null
+          },
+          "observed_regioisomer_ratio": {
+            "value": "1.4:1 meta:para",
+            "evidence": "1.4:1 meta:para"
+          },
+          "observed_yield": {
+            "value": 99,
+            "unit": "%",
+            "evidence": "99% yield"
+          }
+        }
+      },
+      {
+        "op": "Purify",
+        "method": "silica gel chromatography (10% EtOAc in Petroleum Ether 40‐60 o C)",
+        "vessel": "reactor",
+        "evidence": "The crude product was purified by silica gel chromatography (10% EtOAc in Petroleum Ether 40‐60 o C)",
+        "stage": "purification"
+      }
+    ],
+    "definitions": {
+      "AddMeasuredMaterial": {
+        "name": "AddMeasuredMaterial",
+        "domain": "reaction",
+        "description": "Introduce one material charge into the reaction vessel, retaining both its reported mass and its reported amount of substance as measurements of the same charge, not separate additions.",
+        "parameters": {
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "alias": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "substance_amount": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mmol",
+            "dimension": "amount of substance"
+          }
+        },
+        "effects": [
+          "Introduces the specified material into the reaction vessel."
+        ],
+        "hardware_roles": [
+          "reaction vessel"
+        ]
+      },
+      "AnalyzeByNmr": {
+        "name": "AnalyzeByNmr",
+        "domain": "analysis",
+        "description": "Analyze a sample by NMR using the specified internal standard. Ratio and yield parameters are reported analytical observations, not synthesis targets or inferred outcomes. No unreported sample preparation or standard quantity is implied.",
+        "parameters": {
+          "sample": {
+            "type": "string",
+            "required": true
+          },
+          "method": {
+            "type": "string",
+            "required": true
+          },
+          "internal_standard": {
+            "type": "string",
+            "required": true
+          },
+          "internal_standard_amount": {
+            "type": "quantity",
+            "required": true,
+            "dimension": "amount of material"
+          },
+          "observed_regioisomer_ratio": {
+            "type": "string",
+            "required": true
+          },
+          "observed_yield": {
+            "type": "quantity",
+            "required": true,
+            "unit": "%",
+            "dimension": "dimensionless"
+          }
+        },
+        "effects": [
+          "Produces an analytical measurement of the crude sample.",
+          "Records the reported regioisomer ratio and analytical yield as observations."
+        ],
+        "hardware_roles": [
+          "NMR spectrometer"
+        ]
+      }
+    },
+    "uncertainties": [
+      {
+        "type": "missing_referenced_procedure",
+        "evidence": "Following general procedure F",
+        "description": "General procedure F is not supplied. Any additional operations or conditions in that procedure cannot be reconstructed."
+      },
+      {
+        "type": "vessel_description",
+        "evidence": "Stirred in vial at 50 °C for 20 hours.",
+        "description": "The retained logical vessel identifier reactor denotes the vial reported in the source. Vial capacity, closure and stirring rate are not reported.",
+        "reported_vessel": "vial"
+      },
+      {
+        "type": "unreported_purification_details",
+        "evidence": "silica gel chromatography (10% EtOAc in Petroleum Ether 40‐60 o C)",
+        "description": "The eluent percentage basis, eluent volume, silica quantity, column dimensions and fraction collection details are not reported. The petroleum ether designation is retained literally and is not interpreted as an operating temperature."
+      },
+      {
+        "type": "reported_product_observation",
+        "evidence": "gave the title compound (as a 1.3:1 mixture of meta:para ratio, as determined by 1 H NMR) as a white solid (94 mg, 0.23 mmol, 90%).",
+        "description": "Reported isolated-product properties are observations, not additional synthesis actions.",
+        "observations": {
+          "identity": "the title compound",
+          "regioisomer_ratio": "1.3:1",
+          "ratio_order": "meta:para",
+          "method": "1 H NMR",
+          "appearance": "white solid",
+          "mass": {
+            "value": 94,
+            "unit": "mg"
+          },
+          "substance_amount": {
+            "value": 0.23,
+            "unit": "mmol"
+          },
+          "isolated_yield": {
+            "value": 90,
+            "unit": "%"
+          }
+        }
+      },
+      {
+        "type": "analytical_assignment_note",
+        "evidence": "By subtracting the resonances for the meta isomer, the NMR data of the para isomer can be assigned as follows:",
+        "description": "This describes analytical interpretation rather than a physical synthesis operation. No subsequent NMR data are included in the supplied source."
+      }
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "total_tokens": 6791,
+    "completion_tokens": 2214,
+    "prompt_tokens": 4577,
+    "prompt_tokens_details": {
+      "cache_write_tokens": 4574,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 86
+    }
+  },
+  "cache_key": "a6cabf9c300c30dc621f2033a936c0f7daeb20fc55bf6ace77cf83ffbfe28a39"
+}

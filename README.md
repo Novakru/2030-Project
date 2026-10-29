@@ -18,11 +18,11 @@ python -m venv .venv
 $env:PYTHONPATH = "$PWD/src"
 $env:PYTHONIOENCODING = 'utf-8'
 ./.venv/Scripts/python.exe -m protocol_risk api-check
-./.venv/Scripts/python.exe -m mosaic extract path/to/procedure.txt --model extractor=gpt-6.1-sol --model critic=gpt-6.1-sol
-./.venv/Scripts/python.exe -m mosaic run --positives 100 --per-risk 10 --source-limit 300 --llm-perturbations 6 --max-calls 1600 --workers 6 --model extractor=gpt-6.1-sol --model critic=gpt-6.1-sol --model library_curator=gpt-6.1-sol
+./.venv/Scripts/python.exe -m mosaic extract path/to/procedure.txt --model extractor=gpt-6.1-sol --model critic=gpt-6.1-sol --model operation_expander=gpt-6.1-sol
+./.venv/Scripts/python.exe -m mosaic run --positives 120 --per-risk 10 --source-limit 300 --llm-perturbations 6 --max-calls 1600 --workers 16 --model extractor=gpt-6.1-sol --model critic=gpt-6.1-sol --model operation_expander=gpt-6.1-sol --model library_curator=gpt-6.1-sol
 ```
 
-`.env` 提供 `api_key`、`base_url`、`model`，格式见 [.env.example](.env.example)。默认角色使用配置模型；`--model ROLE=MODEL` 可指定 `extractor`、`critic`、`apparatus_mapper`、`perturber`、`library_curator`。连通性检查包含真实 nonce 请求和随机无效密钥对照，见 `reports/api_connectivity.json`；网关返回名称不是独立模型身份认证。
+`.env` 提供 `api_key`、`base_url`、`model`，格式见 [.env.example](.env.example)。默认角色使用配置模型；`--model ROLE=MODEL` 可指定 `extractor`、`critic`、`operation_expander`、`apparatus_mapper`、`perturber`、`library_curator`。连通性检查包含真实 nonce 请求和随机无效密钥对照，见 `reports/api_connectivity.json`；网关返回名称不是独立模型身份认证。
 
 `extract` 接受文件或目录，兼容 `.txt`、`.md`、包含 `procedure`／`text` 的单记录 JSON、数组 JSON 和 JSONL。`run --input PATH` 可以从这些文本构造数据集；省略时读取 ORD 的原始 `procedure_details`，不会用结构化字段合成替代文本。原文没有写出的条件保持未知，不能凭 ORD 补全。
 
@@ -54,6 +54,8 @@ src/mosaic/              # 唯一的数据集编排入口
   engine.py              # build / resume、选择来源、领域适配
   agents.py              # 有界角色调用、模型配置、重放记录
   chemistry.py           # 提取、批评、器材映射、领域校验
+  extended_chemistry.py  # 默认扩展语言领域：动作表达与设备执行支持分开
+  completion.py          # 有界 operation_expander，补充合同和来源参数标记
   evidence.py            # 原文定位、逐字引文、内容哈希
   registry.py            # 库版本、观察、候选操作、无损别名、覆盖求解
   catalog.py             # 器材和原子操作统计与最小集证据
@@ -93,9 +95,9 @@ data/
 
 所有生产提取只读取文本，不要求 ORD 提供物料或加料顺序。批评角色只能提出带原文证据的修复，程序决定是否接受。microreactor、孔板单孔容量、来源加热块保留适用范围，未知额定参数继续为未知。
 
-领域可通过 `Runtime(domain=…, records=…)` 注入：领域负责提取、验证、扰动、库和来源，核心负责版本与持久化。当前以批式化学为主；光化学扩展示例要求来源中实际存在 `Irradiate`，流动、电化学、微波和动态条件仍需独立适配。
+领域可通过 `Runtime(domain=…, records=…)` 注入：领域负责提取、验证、扰动、库和来源，核心负责版本与持久化。当前以化学原文为主；默认扩展语言允许声明微波、流动等新动作及参数，生物／材料合同有接口测试。相应设备执行器和领域专用风险规则仍需独立适配。
 
-库维护自动登记有引文的器材观察和未映射动作候选；需先检查现有原语能否表达，候选不自动成为可执行原语。未知型号不自动合并，操作别名要求完整契约一致。最小覆盖只针对有证据的需求矩阵；缺少额定范围时报告未覆盖，不宣称已得到通用最小器材集或原子操作集。
+库维护自动登记有引文的器材观察和动作合同；先复用已有操作，无法表达时自动准入扩展表示，并在单独的 `atomic_operations.json` 统计。声明式合同不自动成为设备执行器。未知型号不自动合并，操作别名要求完整契约一致。最小覆盖只针对有证据的需求矩阵；当前扩展合同仍有同义、细粒度差异，尚未证明最小器材集或原子操作集。
 
 扰动先检查前置条件，再校验实际修改。改多个步骤、修改器材额定参数或篡改来源均被拒绝。机制由真实修改和规则确定，数值变化不能自报新机制。soft 保留未校准假设；B2/B3 条件场景、B5 原文片段和原生 D2 单输入依赖分别统计，不能当作独立 ORD 失败实验。
 
@@ -111,4 +113,4 @@ data/
 ./.venv/Scripts/python.exe scripts/report_dataset.py <run_dir>
 ```
 
-真实批次验收读取当前清单；手写控制只在 `tests/chemistry_fixtures.py` 作夹具，不计入交付数量。当前代码与数据一致性检查 413 项通过、1 项 SDK 测试跳过；两项数量验收明确失败：300 条原文中仅 25 条通过转换，83 条风险候选尚未覆盖全部类别。完整 `pytest -q` 因此会显示这两项失败，不能理解为已达 100 条／每类 10 条。383 条记录已进入审计平台，其中 275 条是待补全记录。
+真实批次验收读取当前清单；手写控制只在 `tests/chemistry_fixtures.py` 作夹具，不计入交付数量。当前代码与数据一致性检查 525 项通过、1 项 SDK 测试跳过；独立数据集验收 5 项通过、1 项风险配额失败。220 条真实原文产生 120 条正例和 85 条风险候选，其中 98 条正例显式标记原文缺参，不因此隔离。100 条工具未完成记录另列，合计 305 条进入审计平台，均未代替专家审核。100 条正例指标已达到，20 类风险各 10 条仍未达到，完整 `pytest -q` 会如实显示该失败。

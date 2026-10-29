@@ -1,0 +1,439 @@
+{
+  "data": {
+    "steps": [
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "N‐(3‐(2‐chlorophenyl)propyl)‐2,2,2‐trifluoroacetamide (66.4 mg, 0.25 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "N‐(3‐(2‐chlorophenyl)propyl)‐2,2,2‐trifluoroacetamide",
+            "evidence": "N‐(3‐(2‐chlorophenyl)propyl)‐2,2,2‐trifluoroacetamide"
+          },
+          "alias": {
+            "value": "N‐(3‐(2‐chlorophenyl)propyl)‐2,2,2‐trifluoroacetamide",
+            "evidence": "N‐(3‐(2‐chlorophenyl)propyl)‐2,2,2‐trifluoroacetamide"
+          },
+          "mass": {
+            "value": 66.4,
+            "unit": "mg",
+            "evidence": "66.4 mg"
+          },
+          "substanceAmount": {
+            "value": 0.25,
+            "unit": "mmol",
+            "evidence": "0.25 mmol"
+          }
+        }
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "B2pin2 (127 mg, 0.50 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "B2pin2",
+            "evidence": "B2pin2"
+          },
+          "alias": {
+            "value": "B2pin2",
+            "evidence": "B2pin2"
+          },
+          "mass": {
+            "value": 127,
+            "unit": "mg",
+            "evidence": "127 mg"
+          },
+          "substanceAmount": {
+            "value": 0.5,
+            "unit": "mmol",
+            "evidence": "0.50 mmol"
+          }
+        }
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "[Ir(COD)OMe]2 (2.5 mg, 0.00375 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "[Ir(COD)OMe]2",
+            "evidence": "[Ir(COD)OMe]2"
+          },
+          "alias": {
+            "value": "[Ir(COD)OMe]2",
+            "evidence": "[Ir(COD)OMe]2"
+          },
+          "mass": {
+            "value": 2.5,
+            "unit": "mg",
+            "evidence": "2.5 mg"
+          },
+          "substanceAmount": {
+            "value": 0.00375,
+            "unit": "mmol",
+            "evidence": "0.00375 mmol"
+          }
+        }
+      },
+      {
+        "op": "ChargeMaterial",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "evidence": "1a (3.8 mg, 0.0075 mmol)",
+        "parameters": {
+          "reagent": {
+            "value": "1a",
+            "evidence": "1a"
+          },
+          "alias": {
+            "value": "1a",
+            "evidence": "1a"
+          },
+          "mass": {
+            "value": 3.8,
+            "unit": "mg",
+            "evidence": "3.8 mg"
+          },
+          "substanceAmount": {
+            "value": 0.0075,
+            "unit": "mmol",
+            "evidence": "0.0075 mmol"
+          }
+        }
+      },
+      {
+        "op": "Add",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "reagent": "THF",
+        "alias": "THF",
+        "amount": {
+          "value": 1.25,
+          "unit": "mL"
+        },
+        "evidence": "in THF (1.25 mL)"
+      },
+      {
+        "op": "HeatChill",
+        "vessel": "reactor",
+        "stage": "reaction",
+        "temp_C": 50,
+        "duration_s": 72000,
+        "stir": true,
+        "evidence": "The reaction was stirred at 50 °C for 20 hours"
+      },
+      {
+        "op": "Cool",
+        "vessel": "reactor",
+        "stage": "workup",
+        "evidence": "before cooling",
+        "parameters": {
+          "targetTemperature": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "before cooling",
+            "raw": null
+          },
+          "duration": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "before cooling",
+            "raw": null
+          }
+        }
+      },
+      {
+        "op": "Evaporate",
+        "vessel": "reactor",
+        "stage": "workup",
+        "evidence": "the solvents removed"
+      },
+      {
+        "op": "ObserveNmr",
+        "stage": "workup",
+        "evidence": "Analysis of crude 1 H NMR using internal standard 1,2‐dimethoxyethane showed 10:78:10 dimeta:meta:para borylation in 98% yield.",
+        "parameters": {
+          "sample": {
+            "value": "crude",
+            "evidence": "Analysis of crude"
+          },
+          "technique": {
+            "value": "1 H NMR",
+            "evidence": "1 H NMR"
+          },
+          "internalStandard": {
+            "value": "1,2‐dimethoxyethane",
+            "evidence": "internal standard 1,2‐dimethoxyethane"
+          },
+          "reportedResult": {
+            "value": "10:78:10 dimeta:meta:para borylation in 98% yield",
+            "evidence": "10:78:10 dimeta:meta:para borylation in 98% yield"
+          }
+        }
+      },
+      {
+        "op": "SilicaGelChromatography",
+        "stage": "purification",
+        "evidence": "The crude product was purified by silica gel chromatography (Pet. Ether (40‐60):EtOAc (19:1‐9:1)",
+        "parameters": {
+          "method": {
+            "value": "silica gel chromatography",
+            "evidence": "silica gel chromatography"
+          },
+          "stationaryPhase": {
+            "value": "silica gel",
+            "evidence": "silica gel chromatography"
+          },
+          "firstEluent": {
+            "value": "Pet. Ether",
+            "evidence": "Pet. Ether (40‐60)"
+          },
+          "firstEluentGrade": {
+            "value": "40‐60",
+            "evidence": "Pet. Ether (40‐60)"
+          },
+          "secondEluent": {
+            "value": "EtOAc",
+            "evidence": "EtOAc"
+          },
+          "eluentRatioRange": {
+            "value": "19:1‐9:1",
+            "evidence": "19:1‐9:1"
+          }
+        }
+      },
+      {
+        "op": "RecordProductObservation",
+        "stage": "purification",
+        "evidence": "to give the title compound (as a 7:78:10 mixture of dimeta:meta:para ratio, as determined by 1 H NMR) as a colourless oil (97.1 mg, 0.24 mmol, 97%*).",
+        "parameters": {
+          "product": {
+            "value": "the title compound",
+            "evidence": "the title compound"
+          },
+          "appearance": {
+            "value": "colourless oil",
+            "evidence": "colourless oil"
+          },
+          "mass": {
+            "value": 97.1,
+            "unit": "mg",
+            "evidence": "97.1 mg"
+          },
+          "substanceAmount": {
+            "value": 0.24,
+            "unit": "mmol",
+            "evidence": "0.24 mmol"
+          },
+          "reportedYield": {
+            "value": "97%*",
+            "evidence": "97%*"
+          },
+          "composition": {
+            "value": "7:78:10 mixture of dimeta:meta:para ratio",
+            "evidence": "7:78:10 mixture of dimeta:meta:para ratio"
+          },
+          "characterizationMethod": {
+            "value": "1 H NMR",
+            "evidence": "as determined by 1 H NMR"
+          }
+        }
+      }
+    ],
+    "definitions": {
+      "ChargeMaterial": {
+        "name": "ChargeMaterial",
+        "domain": "reaction",
+        "description": "Introduce a named material into the reaction vessel, retaining independently reported mass and amount of substance without deriving either from the other.",
+        "parameters": {
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "alias": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "substanceAmount": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mmol",
+            "dimension": "amount_of_substance"
+          }
+        },
+        "effects": [
+          "Adds the specified material to the vessel inventory."
+        ],
+        "hardware_roles": [
+          "reaction vessel"
+        ]
+      },
+      "Cool": {
+        "name": "Cool",
+        "domain": "workup",
+        "description": "Allow or cause the reaction mixture to decrease in temperature without assuming a cooling method, endpoint or duration.",
+        "parameters": {
+          "targetTemperature": {
+            "type": "quantity",
+            "required": true,
+            "unit": "°C",
+            "dimension": "temperature"
+          },
+          "duration": {
+            "type": "quantity",
+            "required": true,
+            "unit": "s",
+            "dimension": "time"
+          }
+        },
+        "effects": [
+          "Decreases the reaction mixture temperature toward an unspecified endpoint."
+        ],
+        "hardware_roles": [
+          "reaction vessel"
+        ]
+      },
+      "ObserveNmr": {
+        "name": "ObserveNmr",
+        "domain": "analysis",
+        "description": "Analyze a sample by NMR using the reported internal standard and retain the reported analytical result as an observation, not a synthesis outcome instruction.",
+        "parameters": {
+          "sample": {
+            "type": "string",
+            "required": true
+          },
+          "technique": {
+            "type": "string",
+            "required": true
+          },
+          "internalStandard": {
+            "type": "string",
+            "required": true
+          },
+          "reportedResult": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Records an analytical observation without specifying changes to the reaction inventory."
+        ],
+        "hardware_roles": [
+          "NMR spectrometer"
+        ]
+      },
+      "SilicaGelChromatography": {
+        "name": "SilicaGelChromatography",
+        "domain": "purification",
+        "description": "Purify crude material by silica gel chromatography using the stated eluent identities, petroleum ether grade and eluent ratio range; no column geometry, solvent volume or gradient schedule is inferred.",
+        "parameters": {
+          "method": {
+            "type": "string",
+            "required": true
+          },
+          "stationaryPhase": {
+            "type": "string",
+            "required": true
+          },
+          "firstEluent": {
+            "type": "string",
+            "required": true
+          },
+          "firstEluentGrade": {
+            "type": "string",
+            "required": true
+          },
+          "secondEluent": {
+            "type": "string",
+            "required": true
+          },
+          "eluentRatioRange": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Separates crude material chromatographically."
+        ],
+        "hardware_roles": [
+          "chromatography apparatus"
+        ]
+      },
+      "RecordProductObservation": {
+        "name": "RecordProductObservation",
+        "domain": "observation",
+        "description": "Record reported measurements and characterization of isolated material without instructing additional synthesis, isolation or measurement operations.",
+        "parameters": {
+          "product": {
+            "type": "string",
+            "required": true
+          },
+          "appearance": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "substanceAmount": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mmol",
+            "dimension": "amount_of_substance"
+          },
+          "reportedYield": {
+            "type": "string",
+            "required": true
+          },
+          "composition": {
+            "type": "string",
+            "required": true
+          },
+          "characterizationMethod": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Retains reported product properties as observations only."
+        ],
+        "hardware_roles": []
+      }
+    },
+    "uncertainties": [
+      "The source references general procedure F but does not supply it; additional operations and conditions cannot be reconstructed.",
+      "The identity of 1a is not supplied beyond its literal label.",
+      "Cooling endpoint, duration and method are not reported.",
+      "Solvent-removal temperature, pressure, duration and apparatus are not reported.",
+      "Chromatography eluent quantities, ratio basis, gradient schedule and apparatus dimensions are not reported.",
+      "The asterisk attached to the reported isolated yield is not explained in the supplied source."
+    ]
+  },
+  "model": "gpt-6.1-sol",
+  "usage": {
+    "completion_tokens": 3363,
+    "prompt_tokens": 2549,
+    "total_tokens": 5912,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 2546
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 177
+    }
+  },
+  "cache_key": "595c3c744461d5522d401729266bca26201bb5fea3f2cee695199fccdda2c20e"
+}

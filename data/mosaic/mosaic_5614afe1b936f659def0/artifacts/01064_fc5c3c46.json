@@ -1,0 +1,429 @@
+{
+  "protocol": {
+    "id": "pos_c01bd39f2b97423a8a4ebcc7c6123050",
+    "source": {
+      "dataset_id": "ord_dataset-99c23cf435dc42f1af884053bc8b11c7",
+      "db": "ORD",
+      "file": "data/upstream/ord/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+      "file_sha256": "59cd8c35e021be300944f8e556b8fd7ec30a6bc32ff36a54be133aad8e44c393",
+      "license": "CC-BY-SA-4.0",
+      "publication_url": null,
+      "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet"
+    },
+    "raw_id": "ord-c01bd39f2b97423a8a4ebcc7c6123050",
+    "raw_sha256": "e2159bb33c6dbc37202af45f798baa0ffd45e102c62e7c56ab3ea43590af71f3",
+    "source_text": "Application of general procedure B with 7-chloro-2-methylquinoline (177 mg. 1.00mmol)for 68 h afforded 73:27  mixture  of 13g:14gat  93%  conversion,  as  determined  by 1H  NMR  spectrum  analysis  of  the  crude mixture.  Purification  of  the  crude  mixture,  as  above,  afforded 7-chloro-2-methyl-5-(4,4,5,5-tetramethyl-[1,3,2]dioxaborolan-2-yl)quinoline as  a  white  crystalline  solid  (30mg, 10%)and 7-chloro-2-methyl-4-(4,4,5,5-tetramethyl-[1,3,2]dioxaborolan-2-yl)quinolineas  white crystalline solid (200mg, 66%).",
+    "text_sha256": "27c5fdbc5cb3e510c30b01f27b87c2c30fbac1540465752eb3ea7691e8718b7e",
+    "representation_scope": "supplied_text_operations; source experimental completeness is not independently certified",
+    "reagents": [
+      {
+        "id": "r001",
+        "name": "7-chloro-2-methylquinoline",
+        "smiles": null,
+        "role": "REACTANT",
+        "amount": {
+          "value": 177,
+          "unit": "mg"
+        },
+        "source_path": null,
+        "identity_basis": "literal_procedure_name"
+      }
+    ],
+    "steps": [
+      {
+        "op": "ReactByReferencedProcedure",
+        "parameters": {
+          "procedure_reference": {
+            "value": "general procedure B",
+            "evidence": "general procedure B"
+          },
+          "reagent": {
+            "value": "7-chloro-2-methylquinoline",
+            "evidence": "7-chloro-2-methylquinoline"
+          },
+          "alias": {
+            "value": "7-chloro-2-methylquinoline",
+            "evidence": "7-chloro-2-methylquinoline"
+          },
+          "mass": {
+            "value": 177,
+            "unit": "mg",
+            "evidence": "177 mg."
+          },
+          "substance_amount": {
+            "value": 1,
+            "unit": "mmol",
+            "evidence": "1.00mmol"
+          },
+          "duration": {
+            "value": 68,
+            "unit": "h",
+            "evidence": "for 68 h"
+          },
+          "procedure_details": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "Application of general procedure B",
+            "raw": null
+          }
+        },
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "Application of general procedure B with 7-chloro-2-methylquinoline (177 mg. 1.00mmol)for 68 h",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension",
+          "refined_core_proposal": "Add"
+        },
+        "id": "s001"
+      },
+      {
+        "op": "RecordCrudeAnalysis",
+        "parameters": {
+          "sample": {
+            "value": "crude mixture",
+            "evidence": "crude mixture"
+          },
+          "analysis": {
+            "value": "1H  NMR  spectrum  analysis",
+            "evidence": "1H  NMR  spectrum  analysis"
+          },
+          "component_labels": {
+            "value": "13g:14g",
+            "evidence": "13g:14g"
+          },
+          "component_ratio": {
+            "value": "73:27",
+            "evidence": "73:27"
+          },
+          "conversion": {
+            "value": 93,
+            "unit": "%",
+            "evidence": "93%  conversion"
+          }
+        },
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "afforded 73:27  mixture  of 13g:14gat  93%  conversion,  as  determined  by 1H  NMR  spectrum  analysis  of  the  crude mixture.",
+          "stage": "reaction",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s002"
+      },
+      {
+        "op": "PurifyByReferencedProcedure",
+        "parameters": {
+          "material": {
+            "value": "crude  mixture",
+            "evidence": "crude  mixture"
+          },
+          "procedure_reference": {
+            "value": "as  above",
+            "evidence": "as  above"
+          },
+          "method": {
+            "status": "not_reported",
+            "marker": "__NOT_REPORTED__",
+            "evidence": "Purification  of  the  crude  mixture,  as  above,",
+            "raw": null
+          }
+        },
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "Purification  of  the  crude  mixture,  as  above,",
+          "stage": "purification",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s003"
+      },
+      {
+        "op": "RecordIsolatedProduct",
+        "parameters": {
+          "product": {
+            "value": "7-chloro-2-methyl-5-(4,4,5,5-tetramethyl-[1,3,2]dioxaborolan-2-yl)quinoline",
+            "evidence": "7-chloro-2-methyl-5-(4,4,5,5-tetramethyl-[1,3,2]dioxaborolan-2-yl)quinoline"
+          },
+          "appearance": {
+            "value": "white  crystalline  solid",
+            "evidence": "white  crystalline  solid"
+          },
+          "mass": {
+            "value": 30,
+            "unit": "mg",
+            "evidence": "30mg"
+          },
+          "yield": {
+            "value": 10,
+            "unit": "%",
+            "evidence": "10%"
+          }
+        },
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "afforded 7-chloro-2-methyl-5-(4,4,5,5-tetramethyl-[1,3,2]dioxaborolan-2-yl)quinoline as  a  white  crystalline  solid  (30mg, 10%)",
+          "stage": "purification",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s004"
+      },
+      {
+        "op": "RecordIsolatedProduct",
+        "parameters": {
+          "product": {
+            "value": "7-chloro-2-methyl-4-(4,4,5,5-tetramethyl-[1,3,2]dioxaborolan-2-yl)quinoline",
+            "evidence": "7-chloro-2-methyl-4-(4,4,5,5-tetramethyl-[1,3,2]dioxaborolan-2-yl)quinoline"
+          },
+          "appearance": {
+            "value": "white crystalline solid",
+            "evidence": "white crystalline solid"
+          },
+          "mass": {
+            "value": 200,
+            "unit": "mg",
+            "evidence": "200mg"
+          },
+          "yield": {
+            "value": 66,
+            "unit": "%",
+            "evidence": "66%"
+          }
+        },
+        "vessel": "reactor",
+        "meta": {
+          "evidence": "7-chloro-2-methyl-4-(4,4,5,5-tetramethyl-[1,3,2]dioxaborolan-2-yl)quinolineas  white crystalline solid (200mg, 66%).",
+          "stage": "purification",
+          "source_contract": "text-only/1",
+          "operation_expression": "declarative_extension"
+        },
+        "id": "s005"
+      }
+    ],
+    "context": {
+      "pressure_control": "UNKNOWN",
+      "atmosphere": {},
+      "reflux": false,
+      "source_context_evidence": [],
+      "initial_material_state": "unknown_unless_reported"
+    },
+    "extraction": {
+      "method": "llm_evidence_constrained",
+      "input_contract": "text-only/1",
+      "procedure_sha256": "27c5fdbc5cb3e510c30b01f27b87c2c30fbac1540465752eb3ea7691e8718b7e",
+      "model": "gpt-6.1-sol",
+      "usage": {
+        "completion_tokens": 532,
+        "prompt_tokens": 849,
+        "total_tokens": 1381,
+        "prompt_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 192
+        }
+      },
+      "cache_key": "9206b2ff4e5626a42f7e0f1eb5b4338d8a1487d819432269014ac6bd5694d128",
+      "unresolved": [
+        "General procedure B is referenced but not provided; its operations, additional reagents, equipment, and conditions cannot be extracted.",
+        "The stated 68 h duration cannot be assigned to a specific operation because general procedure B is unavailable.",
+        "Purification is described only as 'as above'; the purification method and conditions are not provided."
+      ],
+      "unmapped_actions": [],
+      "uncertainties": [
+        "General procedure B is referenced but not supplied; other reagents, apparatus, reaction conditions and intervening workup actions cannot be reconstructed.",
+        "The purification reference 'as  above' is unresolved; purification method and operating parameters are not supplied.",
+        "The supplied passage does not explicitly assign the labels 13g and 14g to the two named isolated products."
+      ],
+      "completion": "source_grounded_extension",
+      "source_observations": []
+    },
+    "operation_definitions": {
+      "PurifyByReferencedProcedure": {
+        "name": "PurifyByReferencedProcedure",
+        "domain": "purification",
+        "description": "Purify the specified material using a source-referenced purification procedure. An unavailable method remains explicitly unreported; no chromatography, solvent, apparatus or separation conditions are inferred.",
+        "parameters": {
+          "material": {
+            "type": "string",
+            "required": true
+          },
+          "procedure_reference": {
+            "type": "reference",
+            "required": true
+          },
+          "method": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Subjects the crude material to the referenced purification without specifying an unavailable method."
+        ],
+        "hardware_roles": [],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "3229122fa33b1ce52fa892c46bc9b66596aae366dd13214c6dc277fc379576e7"
+      },
+      "ReactByReferencedProcedure": {
+        "name": "ReactByReferencedProcedure",
+        "domain": "reaction",
+        "description": "Use the specified reagent at the reported mass and substance amount in a reaction conducted according to a referenced procedure for the stated duration. This expresses reagent introduction and reaction together without inventing the unavailable procedure's conditions or apparatus.",
+        "parameters": {
+          "procedure_reference": {
+            "type": "reference",
+            "required": true
+          },
+          "reagent": {
+            "type": "string",
+            "required": true
+          },
+          "alias": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "substance_amount": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mmol",
+            "dimension": "amount_of_substance"
+          },
+          "duration": {
+            "type": "quantity",
+            "required": true,
+            "unit": "h",
+            "dimension": "time"
+          },
+          "procedure_details": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "effects": [
+          "Introduces the specified substrate into the referenced reaction.",
+          "Subjects the reaction mixture to the referenced procedure for the reported duration without asserting an outcome."
+        ],
+        "hardware_roles": [],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "bee74699e16a6f1d1430ec2f1463acb29db1fe71597a561cb159eb9d7e207a40"
+      },
+      "RecordCrudeAnalysis": {
+        "name": "RecordCrudeAnalysis",
+        "domain": "observation",
+        "description": "Record a reported analytical observation of a crude mixture, including component labels, ratio and conversion. This is an observation record, not an additional synthesis action.",
+        "parameters": {
+          "sample": {
+            "type": "string",
+            "required": true
+          },
+          "analysis": {
+            "type": "string",
+            "required": true
+          },
+          "component_labels": {
+            "type": "string",
+            "required": true
+          },
+          "component_ratio": {
+            "type": "string",
+            "required": true
+          },
+          "conversion": {
+            "type": "quantity",
+            "required": true,
+            "unit": "%",
+            "dimension": "dimensionless"
+          }
+        },
+        "effects": [
+          "Records source-reported crude-mixture analytical results without changing material state."
+        ],
+        "hardware_roles": [],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "acce817ffa60b8ffae0c660f6c5349f7c4c22de00db5d4805f1fc90e7b0fbad5"
+      },
+      "RecordIsolatedProduct": {
+        "name": "RecordIsolatedProduct",
+        "domain": "observation",
+        "description": "Record the reported identity, appearance, isolated mass and yield of a product. This records product properties and does not introduce an additional isolation or crystallization action.",
+        "parameters": {
+          "product": {
+            "type": "string",
+            "required": true
+          },
+          "appearance": {
+            "type": "string",
+            "required": true
+          },
+          "mass": {
+            "type": "quantity",
+            "required": true,
+            "unit": "mg",
+            "dimension": "mass"
+          },
+          "yield": {
+            "type": "quantity",
+            "required": true,
+            "unit": "%",
+            "dimension": "dimensionless"
+          }
+        },
+        "effects": [
+          "Records source-reported isolated-product properties without changing material state."
+        ],
+        "hardware_roles": [],
+        "execution_supported": false,
+        "representation_status": "admitted",
+        "semantic_sha256": "9b4adad8083bfa6b86d9c989663292ad9aedb98fc0b53c255f60ce6129e72f0a"
+      }
+    },
+    "xdl_profile": "mosaic-xdl/1"
+  },
+  "notes": {
+    "domain": "chemistry.extended/1",
+    "findings": [],
+    "apparatus_proposals": [],
+    "evidence_spans": [
+      {
+        "source_id": "ord-c01bd39f2b97423a8a4ebcc7c6123050",
+        "source_sha256": "d445c4acfaf885718b3498ed33036387e3c6286cc2b61daa6aaaec73d7cea40c",
+        "start": 35,
+        "end": 85,
+        "quote": "with 7-chloro-2-methylquinoline (177 mg. 1.00mmol)"
+      }
+    ],
+    "repair": {
+      "accepted": false,
+      "patch": []
+    },
+    "apparatus_unknowns": [
+      "General procedure B is referenced but not provided, so any apparatus used is unspecified.",
+      "Purification is referenced as \"as above\" but the separation apparatus is not described in the supplied text.",
+      "1H NMR spectrum analysis is described, but no NMR instrument or sample vessel is identified."
+    ],
+    "completion": {
+      "agent_called": true,
+      "attempts": 1,
+      "model": "gpt-6.1-sol",
+      "extension_operations": [
+        "PurifyByReferencedProcedure",
+        "ReactByReferencedProcedure",
+        "RecordCrudeAnalysis",
+        "RecordIsolatedProduct"
+      ],
+      "expression_profile": "mosaic-xdl/1",
+      "execution_supported": false
+    }
+  },
+  "raw_id": "ord-c01bd39f2b97423a8a4ebcc7c6123050"
+}
