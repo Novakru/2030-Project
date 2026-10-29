@@ -103,9 +103,17 @@ class ChemistryDomain:
             snapshot = self.registry().snapshot
             policy = self.curation_policy()
             active = trusted_representations(snapshot, policy=policy)
+            from .proposal_mappings import resolve_proposal
+            alias_traces = {}
+            def normalize_plan(proposed):
+                resolved, traces = resolve_proposal(proposed, self.registry(), core_only=True)
+                expanded = expand_plan(resolved, snapshot, source=raw, policy=policy)
+                alias_traces.clear()
+                alias_traces.update({trace["quote"]: trace for trace in traces.values()})
+                return expanded
             plan, provenance = text_plan(raw, runner.extraction_client(),
                 representations=active if active["aliases"] or active["macros"] else None,
-                normalizer=lambda proposed: expand_plan(proposed, snapshot, source=raw, policy=policy))
+                normalizer=normalize_plan)
             if critique:
                 try:
                     response = runner.model_call("critic", CRITIC_PROMPT, {"source": source_text, "plan": plan})
@@ -142,6 +150,8 @@ class ChemistryDomain:
             protocol = build_ir(raw, plan, provenance)
             for step in protocol["steps"]:
                 quote = step.get("meta", {}).get("evidence")
+                if quote in alias_traces and alias_traces[quote]["internal_operation"] == step["op"]:
+                    step.setdefault("meta", {})["source_expression"] = copy.deepcopy(alias_traces[quote])
                 if quote:
                     notes["evidence_spans"].append(SourceSpan.locate(raw["id"], source_text, quote).to_dict())
             if mapping:

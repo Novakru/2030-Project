@@ -25,6 +25,9 @@ and optional vessel. Core steps retain the supplied core extraction field names.
 Add uses literal reagent and alias names with an optional explicit amount={value:number,unit:mL|mg|mmol}.
 Core numeric fields are temp_C,duration_s,rpm,pressure_mbar,wavelength_nm; omit missing values.
 Other core fields follow the supplied core contracts and proposed steps.
+Registered expressions in operation_mappings may also be used, without redefining
+their concepts. Retain literal evidence and parameters; contextual mixing aliases
+need object_role=material_or_contents when that is what the text describes.
 For a physical action without a faithful core representation, reuse an existing
 extension definition or define a semantic CamelCase operation. Extension steps
 have parameters={name:{value:scalar,evidence:EXACT source substring,unit:optionalstr}
@@ -429,7 +432,11 @@ def complete(source_document, protocol, registry, runner):
         response = runner.model_call("operation_expander", SYSTEM, request)
         previous = copy.deepcopy(response.get("data"))
         try:
-            result = _normalize(source, base, previous, existing, pending)
+            from .proposal_mappings import resolve_proposal
+            resolved, traces = resolve_proposal(previous, registry)
+            result = _normalize(source, base, resolved, existing, pending)
+            for index, trace in traces.items():
+                result["steps"][index].setdefault("meta", {})["source_expression"] = trace
         except (ValueError, TypeError, KeyError, IndexError) as error:
             errors = [str(error)[:1500]]
             continue

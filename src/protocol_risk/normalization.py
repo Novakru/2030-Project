@@ -104,6 +104,14 @@ def _context_matches(guard, protocol, step):
 
 def _mapping(protocol, step, definitions, mappings, operations):
     source_name = step.get("op", "")
+    trace = step.get("meta", {}).get("source_expression", {})
+    if trace:
+        contextual = {**step, "meta": {**step.get("meta", {}), "object_role": trace.get("object_role")}}
+        matching = [rule for rule in mappings.get("aliases", []) if rule.get("id") == trace.get("mapping_id")
+                    and _text(trace.get("expression")) in {_text(word) for word in rule.get("expressions", [])}
+                    and _context_matches(rule.get("context"), protocol, contextual)]
+        if len(matching) == 1:
+            return matching[0]
     definition = definitions.get(source_name, {})
     contract_hash = definition.get("semantic_sha256")
     exact = mappings.get("contracts", {}).get(contract_hash)
