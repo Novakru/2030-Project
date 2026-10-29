@@ -1,69 +1,25 @@
 {
-  "verified_at": "2026-10-29T03:31:30.572480+00:00",
-  "run_id": "mosaic_5614afe1b936f659def0",
-  "database": "audit/data/extended_reviews.sqlite3",
+  "verified_at": "2026-10-29T05:02:02.929117+00:00",
+  "run_id": "mosaic_687f724a4364163d16be",
+  "database": "audit/data/canonical_reviews.sqlite3",
   "statistics": {
     "pending": 305,
     "accepted": 0,
     "rejected": 0,
     "total": 305
   },
-  "idempotent_publication": {
-    "inserted": 0,
-    "skipped": 305
-  },
-  "export": {
-    "directory": "audit/exports/review_20261029T032851_200573Z",
-    "records": 10,
-    "timestamped": true,
-    "pending_records_unchanged": true
-  },
-  "missing_parents": 0,
-  "review_events": 0,
-  "source_json_modified_by_web": false,
-  "database_snapshots_match_frozen_sources": true,
-  "used_extension_contracts_registered": 845,
-  "code_revision_matches_manifest": true,
-  "legacy_databases_preserved": [
-    {
-      "database": "audit/data/text_reviews.sqlite3",
-      "statistics": {
-        "pending": 383,
-        "accepted": 0,
-        "rejected": 0,
-        "total": 383
-      },
-      "review_events": 0
-    },
-    {
-      "database": "audit/data/mosaic.sqlite3",
-      "statistics": {
-        "pending": 366,
-        "accepted": 0,
-        "rejected": 0,
-        "total": 366
-      },
-      "review_events": 0
-    }
-  ],
   "main_tests": {
-    "passed": 525,
+    "passed": 598,
     "skipped": 1,
-    "deselected": 2,
-    "deselected_reason": "Quantity acceptance tests run separately; positive quota passes, per-risk quota fails."
+    "deselected": 2
   },
   "dataset_tests": {
     "passed": 5,
     "failed": 1,
     "failing_test": "test_quota_ten_examples_for_each_of_twenty_risks"
   },
-  "quota_tests": {
-    "passed": 1,
-    "failed": 1,
-    "reason": "120/100 positive text conversions passed; 12 risk categories remain below 10."
-  },
   "audit_tests": {
-    "passed": 42
+    "passed": 43
   },
   "dataset_verification": {
     "passed": true,
@@ -127,8 +83,8 @@
   },
   "replay": {
     "passed": true,
-    "run_id": "mosaic_5614afe1b936f659def0",
-    "files_compared": 214,
+    "run_id": "mosaic_687f724a4364163d16be",
+    "files_compared": 216,
     "byte_identical": true,
     "changed_files": [],
     "http_blocked": true,
@@ -142,7 +98,7 @@
     "A5_focus": true,
     "literal_positive_text": true,
     "incomplete_queue": 100,
-    "extension_definition_focus": true,
+    "canonical_definition_focus": true,
     "source_missing_marker_focus": true,
     "incomplete_text": true,
     "help": true,
@@ -153,5 +109,118 @@
     "page_errors": [],
     "actual_decisions_submitted": 0,
     "A5_record_id": "mosaic_neg_A5_0136bea2dbac0eaa"
+  },
+  "export": {
+    "directory": "audit/exports/review_20261029T050201_873138Z",
+    "records": 10,
+    "timestamped": true,
+    "pending_records_unchanged": true
+  },
+  "idempotent_publication": {
+    "inserted": 0,
+    "skipped": 305
+  },
+  "missing_parents": 0,
+  "review_events": 0,
+  "source_json_modified_by_web": false,
+  "database_snapshots_match_frozen_sources": true,
+  "code_revision_matches_manifest": true,
+  "maximum_contract_versions_per_canonical_id": 1,
+  "legacy_databases_preserved": [
+    {
+      "database": "audit/data/mosaic.sqlite3",
+      "statistics": {
+        "pending": 366,
+        "accepted": 0,
+        "rejected": 0,
+        "total": 366
+      }
+    },
+    {
+      "database": "audit/data/text_reviews.sqlite3",
+      "statistics": {
+        "pending": 383,
+        "accepted": 0,
+        "rejected": 0,
+        "total": 383
+      }
+    },
+    {
+      "database": "audit/data/extended_reviews.sqlite3",
+      "statistics": {
+        "pending": 305,
+        "accepted": 0,
+        "rejected": 0,
+        "total": 305
+      }
+    },
+    {
+      "preserved_database": "audit/data/canonical_reviews_a4dd74eec73363ee4e27_20261029T045851Z.sqlite3"
+    }
+  ],
+  "canonical_migration": {
+    "schema": "mosaic.canonical-migration/1",
+    "source_run_id": "mosaic_5614afe1b936f659def0",
+    "parents_normalized_first": 120,
+    "negative_interventions_replayed": 85,
+    "risk_violations_and_unknowns_unchanged": true,
+    "no_llm_calls": true,
+    "canonical_operations": 48,
+    "legacy_names": 204,
+    "canonical_usage": {
+      "Add": 634,
+      "Heat": 31,
+      "RecordObservation": 15,
+      "RecordDisposition": 9,
+      "Contact": 1,
+      "Wait": 6,
+      "Aspirate": 1,
+      "Transfer": 5,
+      "Atmosphere": 75,
+      "Irradiate": 1,
+      "ConfigureVessel": 32,
+      "Mix": 111,
+      "Seal": 34,
+      "SetTemperature": 100,
+      "Position": 31,
+      "HoldTemperature": 2,
+      "RecordAnalysis": 21,
+      "SpecifyThermalCondition": 11,
+      "Analyze": 17,
+      "SpecifyAtmosphere": 3,
+      "RecordChargeProperties": 14,
+      "Discard": 12,
+      "Evacuate": 1,
+      "RecordCompletion": 32,
+      "Evaporate": 66,
+      "Dry": 6,
+      "RecordProduct": 42,
+      "Monitor": 9,
+      "SpecifyChromatography": 14,
+      "Purify": 46,
+      "Suspend": 5,
+      "Filter": 14,
+      "Elute": 3,
+      "Dissolve": 11,
+      "Chromatograph": 20,
+      "Degas": 5,
+      "StopReaction": 6,
+      "Cool": 17,
+      "Wash": 3,
+      "ReferenceProcedure": 13,
+      "Recrystallize": 1,
+      "Adsorb": 1,
+      "RemoveMaterial": 1,
+      "Collect": 1,
+      "Measure": 3,
+      "Load": 1
+    },
+    "classifications": {
+      "parameter_variant": 649,
+      "observation": 174,
+      "synonym": 505,
+      "independent": 6,
+      "composition": 153
+    }
   }
 }

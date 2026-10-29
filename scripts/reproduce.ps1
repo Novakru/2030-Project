@@ -3,7 +3,7 @@ param(
     [switch]$Fetch,
     [switch]$Offline,
     [switch]$Publish,
-    [string]$Database = 'audit/data/extended_reviews.sqlite3',
+    [string]$Database = 'audit/data/canonical_reviews.sqlite3',
     [int]$Positives = 100,
     [int]$PerRisk = 10,
     [int]$SourceLimit = 300,

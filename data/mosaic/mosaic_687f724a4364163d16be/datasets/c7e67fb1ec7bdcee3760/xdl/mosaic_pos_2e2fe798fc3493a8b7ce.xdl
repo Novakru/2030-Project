@@ -1,0 +1,4177 @@
+<Synthesis xmlns:mx="urn:mosaic:xdl:extensions:1" mx:profile="mosaic-canonical/1">
+  <Metadata>
+    <mx:Data>
+      <mx:Object>
+        <mx:Field name="context">
+          <mx:Object>
+            <mx:Field name="atmosphere">
+              <mx:Object/>
+            </mx:Field>
+            <mx:Field name="initial_material_state">
+              <mx:String>unknown_unless_reported</mx:String>
+            </mx:Field>
+            <mx:Field name="pressure_control">
+              <mx:String>UNKNOWN</mx:String>
+            </mx:Field>
+            <mx:Field name="reflux">
+              <mx:Boolean>false</mx:Boolean>
+            </mx:Field>
+            <mx:Field name="source_context_events">
+              <mx:Array/>
+            </mx:Field>
+            <mx:Field name="source_context_evidence">
+              <mx:Array/>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="normalization">
+          <mx:Object>
+            <mx:Field name="groups">
+              <mx:Object>
+                <mx:Field name="composition:s009">
+                  <mx:Object>
+                    <mx:Field name="member_ids">
+                      <mx:Array>
+                        <mx:Item>
+                          <mx:String>s009</mx:String>
+                        </mx:Item>
+                        <mx:Item>
+                          <mx:String>s009__mix</mx:String>
+                        </mx:Item>
+                      </mx:Array>
+                    </mx:Field>
+                    <mx:Field name="parameter_bindings">
+                      <mx:Object/>
+                    </mx:Field>
+                    <mx:Field name="source_operation">
+                      <mx:String>HeatChill</mx:String>
+                    </mx:Field>
+                    <mx:Field name="source_step_id">
+                      <mx:String>s009</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="mapping_rules">
+              <mx:Object>
+                <mx:Field name="Add:">
+                  <mx:Object>
+                    <mx:Field name="contract_hash">
+                      <mx:Null/>
+                    </mx:Field>
+                    <mx:Field name="expression">
+                      <mx:String>Add</mx:String>
+                    </mx:Field>
+                    <mx:Field name="mapping">
+                      <mx:Object>
+                        <mx:Field name="classification">
+                          <mx:String>synonym</mx:String>
+                        </mx:Field>
+                        <mx:Field name="defaults">
+                          <mx:Object/>
+                        </mx:Field>
+                        <mx:Field name="expressions">
+                          <mx:Array>
+                            <mx:Item>
+                              <mx:String>Add</mx:String>
+                            </mx:Item>
+                            <mx:Item>
+                              <mx:String>add</mx:String>
+                            </mx:Item>
+                            <mx:Item>
+                              <mx:String>charge</mx:String>
+                            </mx:Item>
+                            <mx:Item>
+                              <mx:String>加入</mx:String>
+                            </mx:Item>
+                            <mx:Item>
+                              <mx:String>投料</mx:String>
+                            </mx:Item>
+                          </mx:Array>
+                        </mx:Field>
+                        <mx:Field name="id">
+                          <mx:String>alias.add</mx:String>
+                        </mx:Field>
+                        <mx:Field name="operation_id">
+                          <mx:String>op.add</mx:String>
+                        </mx:Field>
+                        <mx:Field name="parameter_map">
+                          <mx:Object/>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="ChargeMaterial:aa6b62d776751033d8e71882587e35884711dac701138d60c380aae7f2a2f789">
+                  <mx:Object>
+                    <mx:Field name="contract_hash">
+                      <mx:String>aa6b62d776751033d8e71882587e35884711dac701138d60c380aae7f2a2f789</mx:String>
+                    </mx:Field>
+                    <mx:Field name="expression">
+                      <mx:String>ChargeMaterial</mx:String>
+                    </mx:Field>
+                    <mx:Field name="mapping">
+                      <mx:Object>
+                        <mx:Field name="classification">
+                          <mx:String>parameter_variant</mx:String>
+                        </mx:Field>
+                        <mx:Field name="defaults">
+                          <mx:Object/>
+                        </mx:Field>
+                        <mx:Field name="id">
+                          <mx:String>contract:aa6b62d776751033d8e71882587e35884711dac701138d60c380aae7f2a2f789</mx:String>
+                        </mx:Field>
+                        <mx:Field name="legacy_name">
+                          <mx:String>ChargeMaterial</mx:String>
+                        </mx:Field>
+                        <mx:Field name="operation_id">
+                          <mx:String>op.add</mx:String>
+                        </mx:Field>
+                        <mx:Field name="parameter_map">
+                          <mx:Object>
+                            <mx:Field name="alias">
+                              <mx:String>alias</mx:String>
+                            </mx:Field>
+                            <mx:Field name="amount">
+                              <mx:String>amount</mx:String>
+                            </mx:Field>
+                            <mx:Field name="reagent">
+                              <mx:String>reagent</mx:String>
+                            </mx:Field>
+                            <mx:Field name="substance_amount">
+                              <mx:String>substance_amount</mx:String>
+                            </mx:Field>
+                          </mx:Object>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="ExamineAnalyticalResult:9727c81e20736b1a38dfc47d919e484711827f37e645b570a34316e10180574c">
+                  <mx:Object>
+                    <mx:Field name="contract_hash">
+                      <mx:String>9727c81e20736b1a38dfc47d919e484711827f37e645b570a34316e10180574c</mx:String>
+                    </mx:Field>
+                    <mx:Field name="expression">
+                      <mx:String>ExamineAnalyticalResult</mx:String>
+                    </mx:Field>
+                    <mx:Field name="mapping">
+                      <mx:Object>
+                        <mx:Field name="classification">
+                          <mx:String>observation</mx:String>
+                        </mx:Field>
+                        <mx:Field name="defaults">
+                          <mx:Object/>
+                        </mx:Field>
+                        <mx:Field name="id">
+                          <mx:String>contract:9727c81e20736b1a38dfc47d919e484711827f37e645b570a34316e10180574c</mx:String>
+                        </mx:Field>
+                        <mx:Field name="legacy_name">
+                          <mx:String>ExamineAnalyticalResult</mx:String>
+                        </mx:Field>
+                        <mx:Field name="operation_id">
+                          <mx:String>obs.analysis</mx:String>
+                        </mx:Field>
+                        <mx:Field name="parameter_map">
+                          <mx:Object>
+                            <mx:Field name="method">
+                              <mx:String>method</mx:String>
+                            </mx:Field>
+                            <mx:Field name="reported_result">
+                              <mx:String>results.observation</mx:String>
+                            </mx:Field>
+                          </mx:Object>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="HeatChill:">
+                  <mx:Object>
+                    <mx:Field name="contract_hash">
+                      <mx:Null/>
+                    </mx:Field>
+                    <mx:Field name="expression">
+                      <mx:String>HeatChill</mx:String>
+                    </mx:Field>
+                    <mx:Field name="mapping">
+                      <mx:Object>
+                        <mx:Field name="classification">
+                          <mx:String>synonym</mx:String>
+                        </mx:Field>
+                        <mx:Field name="defaults">
+                          <mx:Object/>
+                        </mx:Field>
+                        <mx:Field name="expressions">
+                          <mx:Array>
+                            <mx:Item>
+                              <mx:String>HeatChill</mx:String>
+                            </mx:Item>
+                          </mx:Array>
+                        </mx:Field>
+                        <mx:Field name="id">
+                          <mx:String>alias.legacy.heat_chill</mx:String>
+                        </mx:Field>
+                        <mx:Field name="operation_id">
+                          <mx:String>op.temperature</mx:String>
+                        </mx:Field>
+                        <mx:Field name="parameter_map">
+                          <mx:Object/>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="InspectMixture:cf9ee8aa83fc662ded0b5bfd1043cedb11cdaa811c37c7f3d068e8ed3ed5c131">
+                  <mx:Object>
+                    <mx:Field name="contract_hash">
+                      <mx:String>cf9ee8aa83fc662ded0b5bfd1043cedb11cdaa811c37c7f3d068e8ed3ed5c131</mx:String>
+                    </mx:Field>
+                    <mx:Field name="expression">
+                      <mx:String>InspectMixture</mx:String>
+                    </mx:Field>
+                    <mx:Field name="mapping">
+                      <mx:Object>
+                        <mx:Field name="classification">
+                          <mx:String>observation</mx:String>
+                        </mx:Field>
+                        <mx:Field name="defaults">
+                          <mx:Object/>
+                        </mx:Field>
+                        <mx:Field name="id">
+                          <mx:String>contract:cf9ee8aa83fc662ded0b5bfd1043cedb11cdaa811c37c7f3d068e8ed3ed5c131</mx:String>
+                        </mx:Field>
+                        <mx:Field name="legacy_name">
+                          <mx:String>InspectMixture</mx:String>
+                        </mx:Field>
+                        <mx:Field name="operation_id">
+                          <mx:String>obs.observation</mx:String>
+                        </mx:Field>
+                        <mx:Field name="parameter_map">
+                          <mx:Object>
+                            <mx:Field name="appearance">
+                              <mx:String>results.appearance</mx:String>
+                            </mx:Field>
+                          </mx:Object>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="SpecifyVessel:d6f605c3dbc1443cd0605a95c8e6da460179163eb3649ee3b882d61612f614e5">
+                  <mx:Object>
+                    <mx:Field name="contract_hash">
+                      <mx:String>d6f605c3dbc1443cd0605a95c8e6da460179163eb3649ee3b882d61612f614e5</mx:String>
+                    </mx:Field>
+                    <mx:Field name="expression">
+                      <mx:String>SpecifyVessel</mx:String>
+                    </mx:Field>
+                    <mx:Field name="mapping">
+                      <mx:Object>
+                        <mx:Field name="classification">
+                          <mx:String>parameter_variant</mx:String>
+                        </mx:Field>
+                        <mx:Field name="defaults">
+                          <mx:Object/>
+                        </mx:Field>
+                        <mx:Field name="id">
+                          <mx:String>contract:d6f605c3dbc1443cd0605a95c8e6da460179163eb3649ee3b882d61612f614e5</mx:String>
+                        </mx:Field>
+                        <mx:Field name="legacy_name">
+                          <mx:String>SpecifyVessel</mx:String>
+                        </mx:Field>
+                        <mx:Field name="operation_id">
+                          <mx:String>op.configure_vessel</mx:String>
+                        </mx:Field>
+                        <mx:Field name="parameter_map">
+                          <mx:Object>
+                            <mx:Field name="annotation">
+                              <mx:String>annotation</mx:String>
+                            </mx:Field>
+                            <mx:Field name="capacity">
+                              <mx:String>capacity</mx:String>
+                            </mx:Field>
+                            <mx:Field name="vessel_type">
+                              <mx:String>vessel_type</mx:String>
+                            </mx:Field>
+                          </mx:Object>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="mappings_revision">
+              <mx:String>4ddc644d03e2337b9bc79c51e5725a915f25b2b93102cf39794a1f2cf1f17c54</mx:String>
+            </mx:Field>
+            <mx:Field name="schema">
+              <mx:String>mosaic.normalization/1</mx:String>
+            </mx:Field>
+            <mx:Field name="source_had_definitions">
+              <mx:Boolean>true</mx:Boolean>
+            </mx:Field>
+            <mx:Field name="source_had_temporal_relations">
+              <mx:Boolean>false</mx:Boolean>
+            </mx:Field>
+            <mx:Field name="source_operation_definitions">
+              <mx:Object>
+                <mx:Field name="ChargeMaterial">
+                  <mx:Object>
+                    <mx:Field name="description">
+                      <mx:String>Introduce the specified material into the vessel, retaining independently reported mass or volume and substance amount. A placeholder identifies an unresolved source entry, not a resolved chemical identity.</mx:String>
+                    </mx:Field>
+                    <mx:Field name="domain">
+                      <mx:String>reaction</mx:String>
+                    </mx:Field>
+                    <mx:Field name="effects">
+                      <mx:Array>
+                        <mx:Item>
+                          <mx:String>Adds the stated material to the vessel.</mx:String>
+                        </mx:Item>
+                        <mx:Item>
+                          <mx:String>Preserves all independently reported charge quantities without calculating missing values.</mx:String>
+                        </mx:Item>
+                      </mx:Array>
+                    </mx:Field>
+                    <mx:Field name="execution_supported">
+                      <mx:Boolean>false</mx:Boolean>
+                    </mx:Field>
+                    <mx:Field name="hardware_roles">
+                      <mx:Array>
+                        <mx:Item>
+                          <mx:String>receiving vessel</mx:String>
+                        </mx:Item>
+                      </mx:Array>
+                    </mx:Field>
+                    <mx:Field name="name">
+                      <mx:String>ChargeMaterial</mx:String>
+                    </mx:Field>
+                    <mx:Field name="parameters">
+                      <mx:Object>
+                        <mx:Field name="alias">
+                          <mx:Object>
+                            <mx:Field name="required">
+                              <mx:Boolean>true</mx:Boolean>
+                            </mx:Field>
+                            <mx:Field name="type">
+                              <mx:String>string</mx:String>
+                            </mx:Field>
+                          </mx:Object>
+                        </mx:Field>
+                        <mx:Field name="amount">
+                          <mx:Object>
+                            <mx:Field name="required">
+                              <mx:Boolean>true</mx:Boolean>
+                            </mx:Field>
+                            <mx:Field name="type">
+                              <mx:String>quantity</mx:String>
+                            </mx:Field>
+                          </mx:Object>
+                        </mx:Field>
+                        <mx:Field name="reagent">
+                          <mx:Object>
+                            <mx:Field name="required">
+                              <mx:Boolean>true</mx:Boolean>
+                            </mx:Field>
+                            <mx:Field name="type">
+                              <mx:String>string</mx:String>
+                            </mx:Field>
+                          </mx:Object>
+                        </mx:Field>
+                        <mx:Field name="substance_amount">
+                          <mx:Object>
+                            <mx:Field name="dimension">
+                              <mx:String>amount of substance</mx:String>
+                            </mx:Field>
+                            <mx:Field name="required">
+                              <mx:Boolean>false</mx:Boolean>
+                            </mx:Field>
+                            <mx:Field name="type">
+                              <mx:String>quantity</mx:String>
+                            </mx:Field>
+                          </mx:Object>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                    <mx:Field name="representation_status">
+                      <mx:String>admitted</mx:String>
+                    </mx:Field>
+                    <mx:Field name="semantic_sha256">
+                      <mx:String>aa6b62d776751033d8e71882587e35884711dac701138d60c380aae7f2a2f789</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="ExamineAnalyticalResult">
+                  <mx:Object>
+                    <mx:Field name="description">
+                      <mx:String>Examine the result from the stated analytical method and retain the reported interpretation verbatim. This does not specify unreported sampling, sample preparation, instrument conditions, or confirmed product identity.</mx:String>
+                    </mx:Field>
+                    <mx:Field name="domain">
+                      <mx:String>observation</mx:String>
+                    </mx:Field>
+                    <mx:Field name="effects">
+                      <mx:Array>
+                        <mx:Item>
+                          <mx:String>Records an analytical observation without asserting isolation or confirmed synthesis.</mx:String>
+                        </mx:Item>
+                      </mx:Array>
+                    </mx:Field>
+                    <mx:Field name="execution_supported">
+                      <mx:Boolean>false</mx:Boolean>
+                    </mx:Field>
+                    <mx:Field name="hardware_roles">
+                      <mx:Array>
+                        <mx:Item>
+                          <mx:String>analytical readout</mx:String>
+                        </mx:Item>
+                      </mx:Array>
+                    </mx:Field>
+                    <mx:Field name="name">
+                      <mx:String>ExamineAnalyticalResult</mx:String>
+                    </mx:Field>
+                    <mx:Field name="parameters">
+                      <mx:Object>
+                        <mx:Field name="method">
+                          <mx:Object>
+                            <mx:Field name="required">
+                              <mx:Boolean>true</mx:Boolean>
+                            </mx:Field>
+                            <mx:Field name="type">
+                              <mx:String>string</mx:String>
+                            </mx:Field>
+                          </mx:Object>
+                        </mx:Field>
+                        <mx:Field name="reported_result">
+                          <mx:Object>
+                            <mx:Field name="required">
+                              <mx:Boolean>true</mx:Boolean>
+                            </mx:Field>
+                            <mx:Field name="type">
+                              <mx:String>string</mx:String>
+                            </mx:Field>
+                          </mx:Object>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                    <mx:Field name="representation_status">
+                      <mx:String>admitted</mx:String>
+                    </mx:Field>
+                    <mx:Field name="semantic_sha256">
+                      <mx:String>9727c81e20736b1a38dfc47d919e484711827f37e645b570a34316e10180574c</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="InspectMixture">
+                  <mx:Object>
+                    <mx:Field name="description">
+                      <mx:String>Visually inspect the mixture and record its reported appearance without treating the appearance as an additional synthesis operation or an inferred outcome.</mx:String>
+                    </mx:Field>
+                    <mx:Field name="domain">
+                      <mx:String>observation</mx:String>
+                    </mx:Field>
+                    <mx:Field name="effects">
+                      <mx:Array>
+                        <mx:Item>
+                          <mx:String>Records a qualitative mixture observation without changing material inventory.</mx:String>
+                        </mx:Item>
+                      </mx:Array>
+                    </mx:Field>
+                    <mx:Field name="execution_supported">
+                      <mx:Boolean>false</mx:Boolean>
+                    </mx:Field>
+                    <mx:Field name="hardware_roles">
+                      <mx:Array>
+                        <mx:Item>
+                          <mx:String>observed vessel</mx:String>
+                        </mx:Item>
+                      </mx:Array>
+                    </mx:Field>
+                    <mx:Field name="name">
+                      <mx:String>InspectMixture</mx:String>
+                    </mx:Field>
+                    <mx:Field name="parameters">
+                      <mx:Object>
+                        <mx:Field name="appearance">
+                          <mx:Object>
+                            <mx:Field name="required">
+                              <mx:Boolean>true</mx:Boolean>
+                            </mx:Field>
+                            <mx:Field name="type">
+                              <mx:String>string</mx:String>
+                            </mx:Field>
+                          </mx:Object>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                    <mx:Field name="representation_status">
+                      <mx:String>admitted</mx:String>
+                    </mx:Field>
+                    <mx:Field name="semantic_sha256">
+                      <mx:String>cf9ee8aa83fc662ded0b5bfd1043cedb11cdaa811c37c7f3d068e8ed3ed5c131</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="SpecifyVessel">
+                  <mx:Object>
+                    <mx:Field name="description">
+                      <mx:String>Use a vessel of the stated physical type and capacity for the subsequent charge. Preserve uninterpreted vessel annotations without assigning a physical meaning.</mx:String>
+                    </mx:Field>
+                    <mx:Field name="domain">
+                      <mx:String>reaction</mx:String>
+                    </mx:Field>
+                    <mx:Field name="effects">
+                      <mx:Array>
+                        <mx:Item>
+                          <mx:String>Establishes the vessel type and capacity without inferring closure, atmosphere, or pressure rating.</mx:String>
+                        </mx:Item>
+                      </mx:Array>
+                    </mx:Field>
+                    <mx:Field name="execution_supported">
+                      <mx:Boolean>false</mx:Boolean>
+                    </mx:Field>
+                    <mx:Field name="hardware_roles">
+                      <mx:Array>
+                        <mx:Item>
+                          <mx:String>reaction vessel</mx:String>
+                        </mx:Item>
+                      </mx:Array>
+                    </mx:Field>
+                    <mx:Field name="name">
+                      <mx:String>SpecifyVessel</mx:String>
+                    </mx:Field>
+                    <mx:Field name="parameters">
+                      <mx:Object>
+                        <mx:Field name="annotation">
+                          <mx:Object>
+                            <mx:Field name="required">
+                              <mx:Boolean>false</mx:Boolean>
+                            </mx:Field>
+                            <mx:Field name="type">
+                              <mx:String>string</mx:String>
+                            </mx:Field>
+                          </mx:Object>
+                        </mx:Field>
+                        <mx:Field name="capacity">
+                          <mx:Object>
+                            <mx:Field name="dimension">
+                              <mx:String>volume</mx:String>
+                            </mx:Field>
+                            <mx:Field name="required">
+                              <mx:Boolean>true</mx:Boolean>
+                            </mx:Field>
+                            <mx:Field name="type">
+                              <mx:String>quantity</mx:String>
+                            </mx:Field>
+                          </mx:Object>
+                        </mx:Field>
+                        <mx:Field name="vessel_type">
+                          <mx:Object>
+                            <mx:Field name="required">
+                              <mx:Boolean>true</mx:Boolean>
+                            </mx:Field>
+                            <mx:Field name="type">
+                              <mx:String>string</mx:String>
+                            </mx:Field>
+                          </mx:Object>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                    <mx:Field name="representation_status">
+                      <mx:String>admitted</mx:String>
+                    </mx:Field>
+                    <mx:Field name="semantic_sha256">
+                      <mx:String>d6f605c3dbc1443cd0605a95c8e6da460179163eb3649ee3b882d61612f614e5</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="source_xdl_profile">
+              <mx:String>mosaic-xdl/1</mx:String>
+            </mx:Field>
+            <mx:Field name="unresolved">
+              <mx:Array/>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="representation_scope">
+          <mx:String>supplied_text_operations; source experimental completeness is not independently certified</mx:String>
+        </mx:Field>
+        <mx:Field name="source_text">
+          <mx:String>In a 25 mL round-bottomed flask (t=g) was 5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile (40 mg, 0.17 mmol), Pd2(dba)3 (7.84 mg, 8.56 µmol), and [Reactants] in DMA (1.5 mL) ([VOLUME]) to give a black suspension.[Reactants] and N-(5-amino-2-methylphenyl)acetamide (28.1 mg, 0.17 mmol) were added.  stirred at 110C for 2 days. TLC showed major is SM, small amount of product was formed/  did not workup  LCMS showed 349 mass ??  </mx:String>
+        </mx:Field>
+        <mx:Field name="temporal_relations">
+          <mx:Array>
+            <mx:Item>
+              <mx:Object>
+                <mx:Field name="from">
+                  <mx:String>s009</mx:String>
+                </mx:Field>
+                <mx:Field name="group_id">
+                  <mx:String>composition:s009</mx:String>
+                </mx:Field>
+                <mx:Field name="relation">
+                  <mx:String>same_interval</mx:String>
+                </mx:Field>
+                <mx:Field name="to">
+                  <mx:String>s009__mix</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+      </mx:Object>
+    </mx:Data>
+  </Metadata>
+  <Hardware>
+    <mx:Data>
+      <mx:Object>
+        <mx:Field name="binding_scope">
+          <mx:String>Source-reported vessels; unspecified automation remains a proposed analysis configuration. Edges are provisional.</mx:String>
+        </mx:Field>
+        <mx:Field name="bindings">
+          <mx:Object>
+            <mx:Field name="heater">
+              <mx:String>heater</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="config_id">
+          <mx:String>source_aware_provisional_v2</mx:String>
+        </mx:Field>
+        <mx:Field name="edges">
+          <mx:Array>
+            <mx:Item>
+              <mx:Array>
+                <mx:Item>
+                  <mx:String>reactor</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>heater</mx:String>
+                </mx:Item>
+              </mx:Array>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="estimated_liquid_lower_bound_mL">
+          <mx:Number>1.5</mx:Number>
+        </mx:Field>
+        <mx:Field name="inventory_scope">
+          <mx:String>Sum of stated Add volumes, not peak vessel occupancy or inferred solvent volume.</mx:String>
+        </mx:Field>
+        <mx:Field name="nodes">
+          <mx:Object>
+            <mx:Field name="heater">
+              <mx:Object>
+                <mx:Field name="apparatus_kind">
+                  <mx:String>HotplateStirrer</mx:String>
+                </mx:Field>
+                <mx:Field name="binding_basis">
+                  <mx:String>proposed_analysis_configuration</mx:String>
+                </mx:Field>
+                <mx:Field name="category">
+                  <mx:String>ThermalControl</mx:String>
+                </mx:Field>
+                <mx:Field name="category_id">
+                  <mx:String>equipment.thermal_control</mx:String>
+                </mx:Field>
+                <mx:Field name="configuration">
+                  <mx:Object>
+                    <mx:Field name="profile_id">
+                      <mx:String>ika_rct_basic_25008259</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="id">
+                  <mx:String>ika_rct_basic_25008259</mx:String>
+                </mx:Field>
+                <mx:Field name="normalization">
+                  <mx:Object>
+                    <mx:Field name="added_configuration_keys">
+                      <mx:Array>
+                        <mx:Item>
+                          <mx:String>profile_id</mx:String>
+                        </mx:Item>
+                      </mx:Array>
+                    </mx:Field>
+                    <mx:Field name="basis">
+                      <mx:String>catalog_profile</mx:String>
+                    </mx:Field>
+                    <mx:Field name="canonical_identity">
+                      <mx:Object>
+                        <mx:Field name="apparatus_kind">
+                          <mx:String>HotplateStirrer</mx:String>
+                        </mx:Field>
+                        <mx:Field name="category">
+                          <mx:String>ThermalControl</mx:String>
+                        </mx:Field>
+                        <mx:Field name="category_id">
+                          <mx:String>equipment.thermal_control</mx:String>
+                        </mx:Field>
+                        <mx:Field name="subtype_id">
+                          <mx:String>equipment.hotplate_stirrer</mx:String>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                    <mx:Field name="configuration_present">
+                      <mx:Boolean>false</mx:Boolean>
+                    </mx:Field>
+                    <mx:Field name="mapping_id">
+                      <mx:String>equipment.identity.equipment.hotplate_stirrer</mx:String>
+                    </mx:Field>
+                    <mx:Field name="original_names">
+                      <mx:Object>
+                        <mx:Field name="category">
+                          <mx:String>heater_stirrer</mx:String>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                    <mx:Field name="reasons">
+                      <mx:Array/>
+                    </mx:Field>
+                    <mx:Field name="schema">
+                      <mx:String>mosaic.equipment-normalization/1</mx:String>
+                    </mx:Field>
+                    <mx:Field name="status">
+                      <mx:String>resolved</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="note">
+                  <mx:String>Proposed analysis controller; source does not identify this model as the original equipment.</mx:String>
+                </mx:Field>
+                <mx:Field name="parameter_scope">
+                  <mx:String>Heating-plate setpoint maximum, not guaranteed liquid temperature; minimum depends on ambient/self-heating.</mx:String>
+                </mx:Field>
+                <mx:Field name="params">
+                  <mx:Object>
+                    <mx:Field name="T_max_C">
+                      <mx:Number>310</mx:Number>
+                    </mx:Field>
+                    <mx:Field name="T_min_C">
+                      <mx:Null/>
+                    </mx:Field>
+                    <mx:Field name="rpm_max">
+                      <mx:Number>1500</mx:Number>
+                    </mx:Field>
+                    <mx:Field name="rpm_min">
+                      <mx:Number>50</mx:Number>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="ports">
+                  <mx:Array/>
+                </mx:Field>
+                <mx:Field name="source_url">
+                  <mx:String>https://www.ika.com/en/Products-LabEq/Magnetic-Stirrers-pg188/RCT-basic-25008259/Technical-Data-cptd.html</mx:String>
+                </mx:Field>
+                <mx:Field name="subtype_id">
+                  <mx:String>equipment.hotplate_stirrer</mx:String>
+                </mx:Field>
+                <mx:Field name="verification">
+                  <mx:Object>
+                    <mx:Field name="human_verified">
+                      <mx:Boolean>false</mx:Boolean>
+                    </mx:Field>
+                    <mx:Field name="status">
+                      <mx:String>source_reviewed</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="verified">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="wetted_materials">
+                  <mx:Array/>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reactor">
+              <mx:Object>
+                <mx:Field name="apparatus_kind">
+                  <mx:String>RoundBottomFlask</mx:String>
+                </mx:Field>
+                <mx:Field name="binding_basis">
+                  <mx:String>source_reported</mx:String>
+                </mx:Field>
+                <mx:Field name="capacity_scope">
+                  <mx:String>single_reaction_vessel</mx:String>
+                </mx:Field>
+                <mx:Field name="category">
+                  <mx:String>ReactionContainer</mx:String>
+                </mx:Field>
+                <mx:Field name="category_id">
+                  <mx:String>equipment.reaction_container</mx:String>
+                </mx:Field>
+                <mx:Field name="configuration">
+                  <mx:Object>
+                    <mx:Field name="model">
+                      <mx:Null/>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="description">
+                  <mx:String>25 mL round-bottomed flask</mx:String>
+                </mx:Field>
+                <mx:Field name="id">
+                  <mx:String>source_apparatus_d25c525763421d92</mx:String>
+                </mx:Field>
+                <mx:Field name="normalization">
+                  <mx:Object>
+                    <mx:Field name="added_configuration_keys">
+                      <mx:Array>
+                        <mx:Item>
+                          <mx:String>model</mx:String>
+                        </mx:Item>
+                      </mx:Array>
+                    </mx:Field>
+                    <mx:Field name="basis">
+                      <mx:String>exact_alias</mx:String>
+                    </mx:Field>
+                    <mx:Field name="canonical_identity">
+                      <mx:Object>
+                        <mx:Field name="apparatus_kind">
+                          <mx:String>RoundBottomFlask</mx:String>
+                        </mx:Field>
+                        <mx:Field name="category">
+                          <mx:String>ReactionContainer</mx:String>
+                        </mx:Field>
+                        <mx:Field name="category_id">
+                          <mx:String>equipment.reaction_container</mx:String>
+                        </mx:Field>
+                        <mx:Field name="subtype_id">
+                          <mx:String>equipment.round_bottom_flask</mx:String>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                    <mx:Field name="configuration_present">
+                      <mx:Boolean>false</mx:Boolean>
+                    </mx:Field>
+                    <mx:Field name="mapping_id">
+                      <mx:String>equipment.identity.equipment.round_bottom_flask</mx:String>
+                    </mx:Field>
+                    <mx:Field name="original_names">
+                      <mx:Object>
+                        <mx:Field name="apparatus_kind">
+                          <mx:String>round_bottom_flask</mx:String>
+                        </mx:Field>
+                        <mx:Field name="category">
+                          <mx:String>vessel</mx:String>
+                        </mx:Field>
+                        <mx:Field name="model">
+                          <mx:Null/>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                    <mx:Field name="reasons">
+                      <mx:Array/>
+                    </mx:Field>
+                    <mx:Field name="schema">
+                      <mx:String>mosaic.equipment-normalization/1</mx:String>
+                    </mx:Field>
+                    <mx:Field name="status">
+                      <mx:String>resolved</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="note">
+                  <mx:String>Procedure-reported facts; no manufacturer rating, flow capability or port topology inferred.</mx:String>
+                </mx:Field>
+                <mx:Field name="params">
+                  <mx:Object>
+                    <mx:Field name="capacity_mL">
+                      <mx:Number>25.0</mx:Number>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="ports">
+                  <mx:Array/>
+                </mx:Field>
+                <mx:Field name="source_evidence">
+                  <mx:Array>
+                    <mx:Item>
+                      <mx:Object>
+                        <mx:Field name="locator">
+                          <mx:String>/steps/0/meta/evidence</mx:String>
+                        </mx:Field>
+                        <mx:Field name="raw_sha256">
+                          <mx:String>d8c7d635f6710682a8cf9e56e36d356b0eccb543e38149afd39fb4f5135d32b8</mx:String>
+                        </mx:Field>
+                        <mx:Field name="source_url">
+                          <mx:String>https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet</mx:String>
+                        </mx:Field>
+                        <mx:Field name="value">
+                          <mx:String>In a 25 mL round-bottomed flask (t=g)</mx:String>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Item>
+                  </mx:Array>
+                </mx:Field>
+                <mx:Field name="source_fact_sha256">
+                  <mx:String>d25c525763421d925b8b6798967890354380029f54b599df0215a6eb0f23d95a</mx:String>
+                </mx:Field>
+                <mx:Field name="source_parameters">
+                  <mx:Array>
+                    <mx:Item>
+                      <mx:String>capacity_mL</mx:String>
+                    </mx:Item>
+                  </mx:Array>
+                </mx:Field>
+                <mx:Field name="source_url">
+                  <mx:String>https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.parquet</mx:String>
+                </mx:Field>
+                <mx:Field name="subtype_id">
+                  <mx:String>equipment.round_bottom_flask</mx:String>
+                </mx:Field>
+                <mx:Field name="verification">
+                  <mx:Object>
+                    <mx:Field name="human_verified">
+                      <mx:Boolean>false</mx:Boolean>
+                    </mx:Field>
+                    <mx:Field name="status">
+                      <mx:String>source_reported</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="verified">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="wetted_materials">
+                  <mx:Null/>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="source_issues">
+          <mx:Array/>
+        </mx:Field>
+        <mx:Field name="verification_status">
+          <mx:String>human_review_pending</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Data>
+  </Hardware>
+  <Reagents>
+    <mx:Data>
+      <mx:Array>
+        <mx:Item>
+          <mx:Object>
+            <mx:Field name="amount">
+              <mx:Object>
+                <mx:Field name="unit">
+                  <mx:String>mg</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>40</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="id">
+              <mx:String>r001</mx:String>
+            </mx:Field>
+            <mx:Field name="identity_basis">
+              <mx:String>literal_procedure_name</mx:String>
+            </mx:Field>
+            <mx:Field name="name">
+              <mx:String>5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile</mx:String>
+            </mx:Field>
+            <mx:Field name="role">
+              <mx:String>REAGENT</mx:String>
+            </mx:Field>
+            <mx:Field name="smiles">
+              <mx:Null/>
+            </mx:Field>
+            <mx:Field name="source_path">
+              <mx:Null/>
+            </mx:Field>
+          </mx:Object>
+        </mx:Item>
+        <mx:Item>
+          <mx:Object>
+            <mx:Field name="amount">
+              <mx:Object>
+                <mx:Field name="unit">
+                  <mx:String>mg</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>7.84</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="id">
+              <mx:String>r002</mx:String>
+            </mx:Field>
+            <mx:Field name="identity_basis">
+              <mx:String>literal_procedure_name</mx:String>
+            </mx:Field>
+            <mx:Field name="name">
+              <mx:String>Pd2(dba)3</mx:String>
+            </mx:Field>
+            <mx:Field name="role">
+              <mx:String>REAGENT</mx:String>
+            </mx:Field>
+            <mx:Field name="smiles">
+              <mx:Null/>
+            </mx:Field>
+            <mx:Field name="source_path">
+              <mx:Null/>
+            </mx:Field>
+          </mx:Object>
+        </mx:Item>
+        <mx:Item>
+          <mx:Object>
+            <mx:Field name="amount">
+              <mx:Object>
+                <mx:Field name="unit">
+                  <mx:String>mL</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>1.5</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="id">
+              <mx:String>r003</mx:String>
+            </mx:Field>
+            <mx:Field name="identity_basis">
+              <mx:String>literal_procedure_name</mx:String>
+            </mx:Field>
+            <mx:Field name="name">
+              <mx:String>DMA</mx:String>
+            </mx:Field>
+            <mx:Field name="role">
+              <mx:String>SOLVENT</mx:String>
+            </mx:Field>
+            <mx:Field name="smiles">
+              <mx:Null/>
+            </mx:Field>
+            <mx:Field name="source_path">
+              <mx:Null/>
+            </mx:Field>
+          </mx:Object>
+        </mx:Item>
+        <mx:Item>
+          <mx:Object>
+            <mx:Field name="amount">
+              <mx:Object>
+                <mx:Field name="unit">
+                  <mx:String>mg</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>28.1</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="id">
+              <mx:String>r004</mx:String>
+            </mx:Field>
+            <mx:Field name="identity_basis">
+              <mx:String>literal_procedure_name</mx:String>
+            </mx:Field>
+            <mx:Field name="name">
+              <mx:String>N-(5-amino-2-methylphenyl)acetamide</mx:String>
+            </mx:Field>
+            <mx:Field name="role">
+              <mx:String>REAGENT</mx:String>
+            </mx:Field>
+            <mx:Field name="smiles">
+              <mx:Null/>
+            </mx:Field>
+            <mx:Field name="source_path">
+              <mx:Null/>
+            </mx:Field>
+          </mx:Object>
+        </mx:Item>
+      </mx:Array>
+    </mx:Data>
+  </Reagents>
+  <mx:OperationDefinitions>
+    <mx:Definition name="Add" semantic_sha256="a86c5eb32a94741b6b8ca5983167a616bd001c86d36984136e46b5bff3a00093">
+      <mx:Object>
+        <mx:Field name="capabilities">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>material_delivery</mx:String>
+            </mx:Item>
+            <mx:Item>
+              <mx:String>material_containment</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="contract_sha256">
+          <mx:String>a86c5eb32a94741b6b8ca5983167a616bd001c86d36984136e46b5bff3a00093</mx:String>
+        </mx:Field>
+        <mx:Field name="description">
+          <mx:String>Introduce material into a destination once. Independent mass, volume and molar readings describe the same portion, not extra additions.</mx:String>
+        </mx:Field>
+        <mx:Field name="domain">
+          <mx:String>general</mx:String>
+        </mx:Field>
+        <mx:Field name="effects">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>Introduces the reported portion into the destination inventory once.</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="id">
+          <mx:String>op.add</mx:String>
+        </mx:Field>
+        <mx:Field name="kind">
+          <mx:String>action</mx:String>
+        </mx:Field>
+        <mx:Field name="name">
+          <mx:String>Add</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="addition_order">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="alias">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="amount">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>material_amount</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="amounts">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="apparatus">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>reference</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="components">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="concentration">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>concentration</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="conditions">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="configuration">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Reported object configuration; does not imply equipment ratings or an additional setup action.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="distribution">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="duration_s">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>time</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="equivalents">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>relative_amount</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="formulation">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="initial_contents">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="mass">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>mass</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="method">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="rate">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>flow_rate</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reagent">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="relative_loading">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>relative_amount</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reported_parameters">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Source facts retained when no narrower parameter is established; never supplies missing facts.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="role">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="source_context">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Reported provenance and contextual statements; no implied process action.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="substance_amount">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>amount_of_substance</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="vessel">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>reference</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="volume">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>volume</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="preconditions">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>Material and destination may be unknown but must not be invented.</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="semantic_sha256">
+          <mx:String>a86c5eb32a94741b6b8ca5983167a616bd001c86d36984136e46b5bff3a00093</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Definition>
+    <mx:Definition name="ConfigureVessel" semantic_sha256="bb183373fc3853adef65d51b5837aeefd94b4740ea485cd5c3ae03d4d4af9d96">
+      <mx:Object>
+        <mx:Field name="capabilities">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>material_containment</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="contract_sha256">
+          <mx:String>bb183373fc3853adef65d51b5837aeefd94b4740ea485cd5c3ae03d4d4af9d96</mx:String>
+        </mx:Field>
+        <mx:Field name="description">
+          <mx:String>Specify or prepare the vessel and environment exactly as reported; do not infer physical drying or purging.</mx:String>
+        </mx:Field>
+        <mx:Field name="domain">
+          <mx:String>general</mx:String>
+        </mx:Field>
+        <mx:Field name="effects">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>Establishes reported vessel configuration and initial context.</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="id">
+          <mx:String>op.configure_vessel</mx:String>
+        </mx:Field>
+        <mx:Field name="kind">
+          <mx:String>action</mx:String>
+        </mx:Field>
+        <mx:Field name="name">
+          <mx:String>ConfigureVessel</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="annotation">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="apparatus">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>reference</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="capacity">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>volume</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="condition">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="conditions">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="configuration">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Reported object configuration; does not imply equipment ratings or an additional setup action.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="drying_method">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="duration_s">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>time</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="environment">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="location">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="method">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reported_parameters">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Source facts retained when no narrower parameter is established; never supplies missing facts.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="source_context">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Reported provenance and contextual statements; no implied process action.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="vessel">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>reference</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="vessel_type">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="preconditions">
+          <mx:Array/>
+        </mx:Field>
+        <mx:Field name="semantic_sha256">
+          <mx:String>bb183373fc3853adef65d51b5837aeefd94b4740ea485cd5c3ae03d4d4af9d96</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Definition>
+    <mx:Definition name="Mix" semantic_sha256="b6836f4424f7491d1762c099d1b514130ea66f4bdc5175cf8bc137b0c28e6898">
+      <mx:Object>
+        <mx:Field name="capabilities">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>agitation.{method}</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="contract_sha256">
+          <mx:String>b6836f4424f7491d1762c099d1b514130ea66f4bdc5175cf8bc137b0c28e6898</mx:String>
+        </mx:Field>
+        <mx:Field name="description">
+          <mx:String>Agitate materials using the stated mechanism. Stirring, shaking and vortexing remain distinct method values.</mx:String>
+        </mx:Field>
+        <mx:Field name="domain">
+          <mx:String>general</mx:String>
+        </mx:Field>
+        <mx:Field name="effects">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>Agitates contents without implying material addition or successful dissolution.</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="id">
+          <mx:String>op.mix</mx:String>
+        </mx:Field>
+        <mx:Field name="kind">
+          <mx:String>action</mx:String>
+        </mx:Field>
+        <mx:Field name="name">
+          <mx:String>Mix</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="apparatus">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>reference</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="conditions">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="configuration">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Reported object configuration; does not imply equipment ratings or an additional setup action.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="duration_s">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>time</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="materials">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="method">
+              <mx:Object>
+                <mx:Field name="known_values">
+                  <mx:Array>
+                    <mx:Item>
+                      <mx:String>stir</mx:String>
+                    </mx:Item>
+                    <mx:Item>
+                      <mx:String>shake</mx:String>
+                    </mx:Item>
+                    <mx:Item>
+                      <mx:String>vortex</mx:String>
+                    </mx:Item>
+                  </mx:Array>
+                </mx:Field>
+                <mx:Field name="open_vocabulary">
+                  <mx:Boolean>true</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reported_parameters">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Source facts retained when no narrower parameter is established; never supplies missing facts.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="rpm">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>rotational_frequency</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="source_context">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Reported provenance and contextual statements; no implied process action.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="temp_C">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>temperature</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="temperature">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>temperature</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="temperature_condition">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="vessel">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>reference</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="preconditions">
+          <mx:Array/>
+        </mx:Field>
+        <mx:Field name="semantic_sha256">
+          <mx:String>b6836f4424f7491d1762c099d1b514130ea66f4bdc5175cf8bc137b0c28e6898</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Definition>
+    <mx:Definition name="RecordAnalysis" semantic_sha256="62a7f9dc18d3341b92b4baa69925d6ad7d07464cb1c203f8d0e7a9bcd2a830d0">
+      <mx:Object>
+        <mx:Field name="capabilities">
+          <mx:Array/>
+        </mx:Field>
+        <mx:Field name="contract_sha256">
+          <mx:String>62a7f9dc18d3341b92b4baa69925d6ad7d07464cb1c203f8d0e7a9bcd2a830d0</mx:String>
+        </mx:Field>
+        <mx:Field name="description">
+          <mx:String>Retain reported analytical findings without asserting acquisition or sample preparation.</mx:String>
+        </mx:Field>
+        <mx:Field name="domain">
+          <mx:String>general</mx:String>
+        </mx:Field>
+        <mx:Field name="effects">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>Adds analytical metadata; no material addition or analysis acquisition.</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="id">
+          <mx:String>obs.analysis</mx:String>
+        </mx:Field>
+        <mx:Field name="kind">
+          <mx:String>observation</mx:String>
+        </mx:Field>
+        <mx:Field name="name">
+          <mx:String>RecordAnalysis</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="apparatus">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>reference</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="conditions">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="configuration">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Reported object configuration; does not imply equipment ratings or an additional setup action.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="duration_s">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>time</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="internal_standard">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="internal_standard_amount">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>material_amount</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="method">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="observation_type">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reported_parameters">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Source facts retained when no narrower parameter is established; never supplies missing facts.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="results">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="sample">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="source_context">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Reported provenance and contextual statements; no implied process action.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="vessel">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>reference</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="preconditions">
+          <mx:Array/>
+        </mx:Field>
+        <mx:Field name="semantic_sha256">
+          <mx:String>62a7f9dc18d3341b92b4baa69925d6ad7d07464cb1c203f8d0e7a9bcd2a830d0</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Definition>
+    <mx:Definition name="RecordObservation" semantic_sha256="876d0b88ca184579c5ef490b4e7d7fcdb289323682d97213f3d722fa979632c6">
+      <mx:Object>
+        <mx:Field name="capabilities">
+          <mx:Array/>
+        </mx:Field>
+        <mx:Field name="contract_sha256">
+          <mx:String>876d0b88ca184579c5ef490b4e7d7fcdb289323682d97213f3d722fa979632c6</mx:String>
+        </mx:Field>
+        <mx:Field name="description">
+          <mx:String>Retain a reported observation without commanding it as a physical process.</mx:String>
+        </mx:Field>
+        <mx:Field name="domain">
+          <mx:String>general</mx:String>
+        </mx:Field>
+        <mx:Field name="effects">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>Adds observation metadata; no physical-state effect.</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="id">
+          <mx:String>obs.observation</mx:String>
+        </mx:Field>
+        <mx:Field name="kind">
+          <mx:String>observation</mx:String>
+        </mx:Field>
+        <mx:Field name="name">
+          <mx:String>RecordObservation</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="apparatus">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>reference</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="conditions">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="configuration">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Reported object configuration; does not imply equipment ratings or an additional setup action.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="duration_s">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>time</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="method">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="observation">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="observation_type">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reported_parameters">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Source facts retained when no narrower parameter is established; never supplies missing facts.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="results">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="source_context">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Reported provenance and contextual statements; no implied process action.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="vessel">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>reference</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="preconditions">
+          <mx:Array/>
+        </mx:Field>
+        <mx:Field name="semantic_sha256">
+          <mx:String>876d0b88ca184579c5ef490b4e7d7fcdb289323682d97213f3d722fa979632c6</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Definition>
+    <mx:Definition name="SetTemperature" semantic_sha256="e63fb55bdca782402c6a90b21b2fcfb6051d442cb24b0455e763f58d12dc34e3">
+      <mx:Object>
+        <mx:Field name="capabilities">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>thermal_control</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="contract_sha256">
+          <mx:String>e63fb55bdca782402c6a90b21b2fcfb6051d442cb24b0455e763f58d12dc34e3</mx:String>
+        </mx:Field>
+        <mx:Field name="description">
+          <mx:String>Apply a stated thermal condition when a direction of temperature change is not established.</mx:String>
+        </mx:Field>
+        <mx:Field name="domain">
+          <mx:String>general</mx:String>
+        </mx:Field>
+        <mx:Field name="effects">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>Changes the explicitly targeted thermal condition; apparatus and sample temperatures remain distinct.</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="id">
+          <mx:String>op.temperature</mx:String>
+        </mx:Field>
+        <mx:Field name="kind">
+          <mx:String>action</mx:String>
+        </mx:Field>
+        <mx:Field name="name">
+          <mx:String>SetTemperature</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="apparatus">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>reference</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="conditions">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="configuration">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Reported object configuration; does not imply equipment ratings or an additional setup action.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="duration_s">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>time</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="method">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="ramp">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reported_parameters">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Source facts retained when no narrower parameter is established; never supplies missing facts.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="rpm">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>rotational_frequency</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="source_context">
+              <mx:Object>
+                <mx:Field name="description">
+                  <mx:String>Reported provenance and contextual statements; no implied process action.</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>object</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="stir">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>boolean</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="temp_C">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>temperature</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="temperature">
+              <mx:Object>
+                <mx:Field name="dimension">
+                  <mx:String>temperature</mx:String>
+                </mx:Field>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>quantity</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="temperature_scale">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="temperature_subject">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="thermal_condition">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>string</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="vessel">
+              <mx:Object>
+                <mx:Field name="required">
+                  <mx:Boolean>false</mx:Boolean>
+                </mx:Field>
+                <mx:Field name="type">
+                  <mx:String>reference</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="preconditions">
+          <mx:Array/>
+        </mx:Field>
+        <mx:Field name="semantic_sha256">
+          <mx:String>e63fb55bdca782402c6a90b21b2fcfb6051d442cb24b0455e763f58d12dc34e3</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Definition>
+  </mx:OperationDefinitions>
+  <Procedure>
+    <mx:Step id="s001" operation="ConfigureVessel">
+      <mx:Object>
+        <mx:Field name="id">
+          <mx:String>s001</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>In a 25 mL round-bottomed flask (t=g)</mx:String>
+            </mx:Field>
+            <mx:Field name="operation_expression">
+              <mx:String>declarative_extension</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="normalization">
+          <mx:Object>
+            <mx:Field name="analysis_kind">
+              <mx:String>opaque</mx:String>
+            </mx:Field>
+            <mx:Field name="classification">
+              <mx:String>parameter_variant</mx:String>
+            </mx:Field>
+            <mx:Field name="generated_parameters">
+              <mx:Array/>
+            </mx:Field>
+            <mx:Field name="mapping_id">
+              <mx:String>contract:d6f605c3dbc1443cd0605a95c8e6da460179163eb3649ee3b882d61612f614e5</mx:String>
+            </mx:Field>
+            <mx:Field name="original_field_names">
+              <mx:Array>
+                <mx:Item>
+                  <mx:String>id</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>meta</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>op</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>parameters</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>vessel</mx:String>
+                </mx:Item>
+              </mx:Array>
+            </mx:Field>
+            <mx:Field name="parameter_bindings">
+              <mx:Object>
+                <mx:Field name="annotation">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/annotation</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="capacity">
+                  <mx:Object>
+                    <mx:Field name="conversion">
+                      <mx:Object>
+                        <mx:Field name="scale">
+                          <mx:Number>1</mx:Number>
+                        </mx:Field>
+                        <mx:Field name="source_had_unit">
+                          <mx:Boolean>true</mx:Boolean>
+                        </mx:Field>
+                        <mx:Field name="source_numeric_type">
+                          <mx:String>int</mx:String>
+                        </mx:Field>
+                        <mx:Field name="source_unit">
+                          <mx:String>mL</mx:String>
+                        </mx:Field>
+                        <mx:Field name="unit">
+                          <mx:String>mL</mx:String>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/capacity</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="vessel_type">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/vessel_type</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="source_had_parameters">
+              <mx:Boolean>true</mx:Boolean>
+            </mx:Field>
+            <mx:Field name="source_operation">
+              <mx:String>SpecifyVessel</mx:String>
+            </mx:Field>
+            <mx:Field name="status">
+              <mx:String>resolved</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>ConfigureVessel</mx:String>
+        </mx:Field>
+        <mx:Field name="operation_id">
+          <mx:String>op.configure_vessel</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="annotation">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>(t=g)</mx:String>
+                </mx:Field>
+                <mx:Field name="marker">
+                  <mx:String>__AMBIGUOUS__</mx:String>
+                </mx:Field>
+                <mx:Field name="raw">
+                  <mx:String>(t=g)</mx:String>
+                </mx:Field>
+                <mx:Field name="status">
+                  <mx:String>ambiguous</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="capacity">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>25 mL</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>mL</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>25</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="vessel_type">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>round-bottomed flask</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>round-bottomed flask</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>reactor</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+    <mx:Step id="s002" operation="Add">
+      <mx:Object>
+        <mx:Field name="id">
+          <mx:String>s002</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile (40 mg, 0.17 mmol)</mx:String>
+            </mx:Field>
+            <mx:Field name="operation_expression">
+              <mx:String>declarative_extension</mx:String>
+            </mx:Field>
+            <mx:Field name="refined_core_proposal">
+              <mx:String>Add</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="normalization">
+          <mx:Object>
+            <mx:Field name="analysis_kind">
+              <mx:String>opaque</mx:String>
+            </mx:Field>
+            <mx:Field name="classification">
+              <mx:String>parameter_variant</mx:String>
+            </mx:Field>
+            <mx:Field name="generated_parameters">
+              <mx:Array/>
+            </mx:Field>
+            <mx:Field name="mapping_id">
+              <mx:String>contract:aa6b62d776751033d8e71882587e35884711dac701138d60c380aae7f2a2f789</mx:String>
+            </mx:Field>
+            <mx:Field name="original_field_names">
+              <mx:Array>
+                <mx:Item>
+                  <mx:String>id</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>meta</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>op</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>parameters</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>vessel</mx:String>
+                </mx:Item>
+              </mx:Array>
+            </mx:Field>
+            <mx:Field name="parameter_bindings">
+              <mx:Object>
+                <mx:Field name="alias">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/alias</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="amount">
+                  <mx:Object>
+                    <mx:Field name="conversion">
+                      <mx:Object>
+                        <mx:Field name="scale">
+                          <mx:Number>1</mx:Number>
+                        </mx:Field>
+                        <mx:Field name="source_had_unit">
+                          <mx:Boolean>true</mx:Boolean>
+                        </mx:Field>
+                        <mx:Field name="source_numeric_type">
+                          <mx:String>int</mx:String>
+                        </mx:Field>
+                        <mx:Field name="source_unit">
+                          <mx:String>mg</mx:String>
+                        </mx:Field>
+                        <mx:Field name="unit">
+                          <mx:String>mg</mx:String>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/amount</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="reagent">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/reagent</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="substance_amount">
+                  <mx:Object>
+                    <mx:Field name="conversion">
+                      <mx:Object>
+                        <mx:Field name="scale">
+                          <mx:Number>1</mx:Number>
+                        </mx:Field>
+                        <mx:Field name="source_had_unit">
+                          <mx:Boolean>true</mx:Boolean>
+                        </mx:Field>
+                        <mx:Field name="source_numeric_type">
+                          <mx:String>float</mx:String>
+                        </mx:Field>
+                        <mx:Field name="source_unit">
+                          <mx:String>mmol</mx:String>
+                        </mx:Field>
+                        <mx:Field name="unit">
+                          <mx:String>mmol</mx:String>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/substance_amount</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="source_had_parameters">
+              <mx:Boolean>true</mx:Boolean>
+            </mx:Field>
+            <mx:Field name="source_operation">
+              <mx:String>ChargeMaterial</mx:String>
+            </mx:Field>
+            <mx:Field name="status">
+              <mx:String>resolved</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>Add</mx:String>
+        </mx:Field>
+        <mx:Field name="operation_id">
+          <mx:String>op.add</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="alias">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="amount">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>40 mg</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>mg</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>40</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reagent">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>5-chloro-7-(cyclopropylamino)pyrazolo[1,5-a]pyrimidine-3-carbonitrile</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="substance_amount">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>0.17 mmol</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>mmol</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>0.17</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>reactor</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+    <mx:Step id="s003" operation="Add">
+      <mx:Object>
+        <mx:Field name="id">
+          <mx:String>s003</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>Pd2(dba)3 (7.84 mg, 8.56 µmol)</mx:String>
+            </mx:Field>
+            <mx:Field name="operation_expression">
+              <mx:String>declarative_extension</mx:String>
+            </mx:Field>
+            <mx:Field name="refined_core_proposal">
+              <mx:String>Add</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="normalization">
+          <mx:Object>
+            <mx:Field name="analysis_kind">
+              <mx:String>opaque</mx:String>
+            </mx:Field>
+            <mx:Field name="classification">
+              <mx:String>parameter_variant</mx:String>
+            </mx:Field>
+            <mx:Field name="generated_parameters">
+              <mx:Array/>
+            </mx:Field>
+            <mx:Field name="mapping_id">
+              <mx:String>contract:aa6b62d776751033d8e71882587e35884711dac701138d60c380aae7f2a2f789</mx:String>
+            </mx:Field>
+            <mx:Field name="original_field_names">
+              <mx:Array>
+                <mx:Item>
+                  <mx:String>id</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>meta</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>op</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>parameters</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>vessel</mx:String>
+                </mx:Item>
+              </mx:Array>
+            </mx:Field>
+            <mx:Field name="parameter_bindings">
+              <mx:Object>
+                <mx:Field name="alias">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/alias</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="amount">
+                  <mx:Object>
+                    <mx:Field name="conversion">
+                      <mx:Object>
+                        <mx:Field name="scale">
+                          <mx:Number>1</mx:Number>
+                        </mx:Field>
+                        <mx:Field name="source_had_unit">
+                          <mx:Boolean>true</mx:Boolean>
+                        </mx:Field>
+                        <mx:Field name="source_numeric_type">
+                          <mx:String>float</mx:String>
+                        </mx:Field>
+                        <mx:Field name="source_unit">
+                          <mx:String>mg</mx:String>
+                        </mx:Field>
+                        <mx:Field name="unit">
+                          <mx:String>mg</mx:String>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/amount</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="reagent">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/reagent</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="substance_amount">
+                  <mx:Object>
+                    <mx:Field name="conversion">
+                      <mx:Object>
+                        <mx:Field name="scale">
+                          <mx:Number>0.001</mx:Number>
+                        </mx:Field>
+                        <mx:Field name="source_had_unit">
+                          <mx:Boolean>true</mx:Boolean>
+                        </mx:Field>
+                        <mx:Field name="source_numeric_type">
+                          <mx:String>float</mx:String>
+                        </mx:Field>
+                        <mx:Field name="source_unit">
+                          <mx:String>µmol</mx:String>
+                        </mx:Field>
+                        <mx:Field name="unit">
+                          <mx:String>mmol</mx:String>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/substance_amount</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="source_had_parameters">
+              <mx:Boolean>true</mx:Boolean>
+            </mx:Field>
+            <mx:Field name="source_operation">
+              <mx:String>ChargeMaterial</mx:String>
+            </mx:Field>
+            <mx:Field name="status">
+              <mx:String>resolved</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>Add</mx:String>
+        </mx:Field>
+        <mx:Field name="operation_id">
+          <mx:String>op.add</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="alias">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>Pd2(dba)3</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>Pd2(dba)3</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="amount">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>7.84 mg</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>mg</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>7.84</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reagent">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>Pd2(dba)3</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>Pd2(dba)3</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="substance_amount">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>8.56 µmol</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>mmol</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>0.00856</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>reactor</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+    <mx:Step id="s004" operation="Add">
+      <mx:Object>
+        <mx:Field name="id">
+          <mx:String>s004</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>and [Reactants] in DMA</mx:String>
+            </mx:Field>
+            <mx:Field name="operation_expression">
+              <mx:String>declarative_extension</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="normalization">
+          <mx:Object>
+            <mx:Field name="analysis_kind">
+              <mx:String>opaque</mx:String>
+            </mx:Field>
+            <mx:Field name="classification">
+              <mx:String>parameter_variant</mx:String>
+            </mx:Field>
+            <mx:Field name="generated_parameters">
+              <mx:Array/>
+            </mx:Field>
+            <mx:Field name="mapping_id">
+              <mx:String>contract:aa6b62d776751033d8e71882587e35884711dac701138d60c380aae7f2a2f789</mx:String>
+            </mx:Field>
+            <mx:Field name="original_field_names">
+              <mx:Array>
+                <mx:Item>
+                  <mx:String>id</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>meta</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>op</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>parameters</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>vessel</mx:String>
+                </mx:Item>
+              </mx:Array>
+            </mx:Field>
+            <mx:Field name="parameter_bindings">
+              <mx:Object>
+                <mx:Field name="alias">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/alias</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="amount">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/amount</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="reagent">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/reagent</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="source_had_parameters">
+              <mx:Boolean>true</mx:Boolean>
+            </mx:Field>
+            <mx:Field name="source_operation">
+              <mx:String>ChargeMaterial</mx:String>
+            </mx:Field>
+            <mx:Field name="status">
+              <mx:String>resolved</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>Add</mx:String>
+        </mx:Field>
+        <mx:Field name="operation_id">
+          <mx:String>op.add</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="alias">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>[Reactants]</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>[Reactants]</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="amount">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>and [Reactants] in DMA</mx:String>
+                </mx:Field>
+                <mx:Field name="marker">
+                  <mx:String>__NOT_REPORTED__</mx:String>
+                </mx:Field>
+                <mx:Field name="raw">
+                  <mx:Null/>
+                </mx:Field>
+                <mx:Field name="status">
+                  <mx:String>not_reported</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reagent">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>[Reactants]</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>[Reactants]</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>reactor</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+    <mx:Step id="s005" operation="Add">
+      <mx:Object>
+        <mx:Field name="amount">
+          <mx:Object>
+            <mx:Field name="unit">
+              <mx:String>mL</mx:String>
+            </mx:Field>
+            <mx:Field name="value">
+              <mx:Number>1.5</mx:Number>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="id">
+          <mx:String>s005</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="amount_source">
+              <mx:String>procedure_text</mx:String>
+            </mx:Field>
+            <mx:Field name="evidence">
+              <mx:String>in DMA (1.5 mL)</mx:String>
+            </mx:Field>
+            <mx:Field name="source_alias">
+              <mx:String>DMA</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="normalization">
+          <mx:Object>
+            <mx:Field name="analysis_kind">
+              <mx:String>legacy_core</mx:String>
+            </mx:Field>
+            <mx:Field name="classification">
+              <mx:String>synonym</mx:String>
+            </mx:Field>
+            <mx:Field name="generated_parameters">
+              <mx:Array/>
+            </mx:Field>
+            <mx:Field name="mapping_id">
+              <mx:String>alias.add</mx:String>
+            </mx:Field>
+            <mx:Field name="original_field_names">
+              <mx:Array>
+                <mx:Item>
+                  <mx:String>amount</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>id</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>meta</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>op</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>reagent</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>source_quantities</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>vessel</mx:String>
+                </mx:Item>
+              </mx:Array>
+            </mx:Field>
+            <mx:Field name="parameter_bindings">
+              <mx:Object/>
+            </mx:Field>
+            <mx:Field name="source_had_parameters">
+              <mx:Boolean>false</mx:Boolean>
+            </mx:Field>
+            <mx:Field name="source_operation">
+              <mx:String>Add</mx:String>
+            </mx:Field>
+            <mx:Field name="status">
+              <mx:String>resolved</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>Add</mx:String>
+        </mx:Field>
+        <mx:Field name="operation_id">
+          <mx:String>op.add</mx:String>
+        </mx:Field>
+        <mx:Field name="reagent">
+          <mx:String>r003</mx:String>
+        </mx:Field>
+        <mx:Field name="source_quantities">
+          <mx:Array>
+            <mx:Item>
+              <mx:Object>
+                <mx:Field name="printed_rounding_half_unit">
+                  <mx:Number>0.05</mx:Number>
+                </mx:Field>
+                <mx:Field name="quote">
+                  <mx:String>1.5 mL</mx:String>
+                </mx:Field>
+                <mx:Field name="source_segment">
+                  <mx:String>1.5 mL</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>mL</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>1.5</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>reactor</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+    <mx:Step id="s006" operation="RecordObservation">
+      <mx:Object>
+        <mx:Field name="id">
+          <mx:String>s006</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>to give a black suspension.</mx:String>
+            </mx:Field>
+            <mx:Field name="operation_expression">
+              <mx:String>declarative_extension</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="normalization">
+          <mx:Object>
+            <mx:Field name="analysis_kind">
+              <mx:String>opaque</mx:String>
+            </mx:Field>
+            <mx:Field name="classification">
+              <mx:String>observation</mx:String>
+            </mx:Field>
+            <mx:Field name="generated_parameters">
+              <mx:Array/>
+            </mx:Field>
+            <mx:Field name="mapping_id">
+              <mx:String>contract:cf9ee8aa83fc662ded0b5bfd1043cedb11cdaa811c37c7f3d068e8ed3ed5c131</mx:String>
+            </mx:Field>
+            <mx:Field name="original_field_names">
+              <mx:Array>
+                <mx:Item>
+                  <mx:String>id</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>meta</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>op</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>parameters</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>vessel</mx:String>
+                </mx:Item>
+              </mx:Array>
+            </mx:Field>
+            <mx:Field name="parameter_bindings">
+              <mx:Object>
+                <mx:Field name="appearance">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/results/appearance</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="source_had_parameters">
+              <mx:Boolean>true</mx:Boolean>
+            </mx:Field>
+            <mx:Field name="source_operation">
+              <mx:String>InspectMixture</mx:String>
+            </mx:Field>
+            <mx:Field name="status">
+              <mx:String>resolved</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>RecordObservation</mx:String>
+        </mx:Field>
+        <mx:Field name="operation_id">
+          <mx:String>obs.observation</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="results">
+              <mx:Object>
+                <mx:Field name="appearance">
+                  <mx:Object>
+                    <mx:Field name="evidence">
+                      <mx:String>black suspension</mx:String>
+                    </mx:Field>
+                    <mx:Field name="value">
+                      <mx:String>black suspension</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>reactor</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+    <mx:Step id="s007" operation="Add">
+      <mx:Object>
+        <mx:Field name="id">
+          <mx:String>s007</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>[Reactants] and N-(5-amino-2-methylphenyl)acetamide (28.1 mg, 0.17 mmol) were added.</mx:String>
+            </mx:Field>
+            <mx:Field name="operation_expression">
+              <mx:String>declarative_extension</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="normalization">
+          <mx:Object>
+            <mx:Field name="analysis_kind">
+              <mx:String>opaque</mx:String>
+            </mx:Field>
+            <mx:Field name="classification">
+              <mx:String>parameter_variant</mx:String>
+            </mx:Field>
+            <mx:Field name="generated_parameters">
+              <mx:Array/>
+            </mx:Field>
+            <mx:Field name="mapping_id">
+              <mx:String>contract:aa6b62d776751033d8e71882587e35884711dac701138d60c380aae7f2a2f789</mx:String>
+            </mx:Field>
+            <mx:Field name="original_field_names">
+              <mx:Array>
+                <mx:Item>
+                  <mx:String>id</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>meta</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>op</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>parameters</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>vessel</mx:String>
+                </mx:Item>
+              </mx:Array>
+            </mx:Field>
+            <mx:Field name="parameter_bindings">
+              <mx:Object>
+                <mx:Field name="alias">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/alias</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="amount">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/amount</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="reagent">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/reagent</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="source_had_parameters">
+              <mx:Boolean>true</mx:Boolean>
+            </mx:Field>
+            <mx:Field name="source_operation">
+              <mx:String>ChargeMaterial</mx:String>
+            </mx:Field>
+            <mx:Field name="status">
+              <mx:String>resolved</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>Add</mx:String>
+        </mx:Field>
+        <mx:Field name="operation_id">
+          <mx:String>op.add</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="alias">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>[Reactants]</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>[Reactants]</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="amount">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>[Reactants] and N-(5-amino-2-methylphenyl)acetamide (28.1 mg, 0.17 mmol) were added.</mx:String>
+                </mx:Field>
+                <mx:Field name="marker">
+                  <mx:String>__NOT_REPORTED__</mx:String>
+                </mx:Field>
+                <mx:Field name="raw">
+                  <mx:Null/>
+                </mx:Field>
+                <mx:Field name="status">
+                  <mx:String>not_reported</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reagent">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>[Reactants]</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>[Reactants]</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>reactor</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+    <mx:Step id="s008" operation="Add">
+      <mx:Object>
+        <mx:Field name="id">
+          <mx:String>s008</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>N-(5-amino-2-methylphenyl)acetamide (28.1 mg, 0.17 mmol) were added.</mx:String>
+            </mx:Field>
+            <mx:Field name="operation_expression">
+              <mx:String>declarative_extension</mx:String>
+            </mx:Field>
+            <mx:Field name="refined_core_proposal">
+              <mx:String>Add</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="normalization">
+          <mx:Object>
+            <mx:Field name="analysis_kind">
+              <mx:String>opaque</mx:String>
+            </mx:Field>
+            <mx:Field name="classification">
+              <mx:String>parameter_variant</mx:String>
+            </mx:Field>
+            <mx:Field name="generated_parameters">
+              <mx:Array/>
+            </mx:Field>
+            <mx:Field name="mapping_id">
+              <mx:String>contract:aa6b62d776751033d8e71882587e35884711dac701138d60c380aae7f2a2f789</mx:String>
+            </mx:Field>
+            <mx:Field name="original_field_names">
+              <mx:Array>
+                <mx:Item>
+                  <mx:String>id</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>meta</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>op</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>parameters</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>vessel</mx:String>
+                </mx:Item>
+              </mx:Array>
+            </mx:Field>
+            <mx:Field name="parameter_bindings">
+              <mx:Object>
+                <mx:Field name="alias">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/alias</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="amount">
+                  <mx:Object>
+                    <mx:Field name="conversion">
+                      <mx:Object>
+                        <mx:Field name="scale">
+                          <mx:Number>1</mx:Number>
+                        </mx:Field>
+                        <mx:Field name="source_had_unit">
+                          <mx:Boolean>true</mx:Boolean>
+                        </mx:Field>
+                        <mx:Field name="source_numeric_type">
+                          <mx:String>float</mx:String>
+                        </mx:Field>
+                        <mx:Field name="source_unit">
+                          <mx:String>mg</mx:String>
+                        </mx:Field>
+                        <mx:Field name="unit">
+                          <mx:String>mg</mx:String>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/amount</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="reagent">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/reagent</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="substance_amount">
+                  <mx:Object>
+                    <mx:Field name="conversion">
+                      <mx:Object>
+                        <mx:Field name="scale">
+                          <mx:Number>1</mx:Number>
+                        </mx:Field>
+                        <mx:Field name="source_had_unit">
+                          <mx:Boolean>true</mx:Boolean>
+                        </mx:Field>
+                        <mx:Field name="source_numeric_type">
+                          <mx:String>float</mx:String>
+                        </mx:Field>
+                        <mx:Field name="source_unit">
+                          <mx:String>mmol</mx:String>
+                        </mx:Field>
+                        <mx:Field name="unit">
+                          <mx:String>mmol</mx:String>
+                        </mx:Field>
+                      </mx:Object>
+                    </mx:Field>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/substance_amount</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="source_had_parameters">
+              <mx:Boolean>true</mx:Boolean>
+            </mx:Field>
+            <mx:Field name="source_operation">
+              <mx:String>ChargeMaterial</mx:String>
+            </mx:Field>
+            <mx:Field name="status">
+              <mx:String>resolved</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>Add</mx:String>
+        </mx:Field>
+        <mx:Field name="operation_id">
+          <mx:String>op.add</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="alias">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>N-(5-amino-2-methylphenyl)acetamide</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>N-(5-amino-2-methylphenyl)acetamide</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="amount">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>28.1 mg</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>mg</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>28.1</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="reagent">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>N-(5-amino-2-methylphenyl)acetamide</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>N-(5-amino-2-methylphenyl)acetamide</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="substance_amount">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>0.17 mmol</mx:String>
+                </mx:Field>
+                <mx:Field name="unit">
+                  <mx:String>mmol</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:Number>0.17</mx:Number>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>reactor</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+    <mx:Step id="s009" operation="SetTemperature">
+      <mx:Object>
+        <mx:Field name="duration_s">
+          <mx:Number>172800</mx:Number>
+        </mx:Field>
+        <mx:Field name="id">
+          <mx:String>s009</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>stirred at 110C for 2 days.</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="normalization">
+          <mx:Object>
+            <mx:Field name="analysis_kind">
+              <mx:String>legacy_core</mx:String>
+            </mx:Field>
+            <mx:Field name="classification">
+              <mx:String>composition</mx:String>
+            </mx:Field>
+            <mx:Field name="generated_parameters">
+              <mx:Array/>
+            </mx:Field>
+            <mx:Field name="group_id">
+              <mx:String>composition:s009</mx:String>
+            </mx:Field>
+            <mx:Field name="mapping_id">
+              <mx:String>alias.legacy.heat_chill:temperature</mx:String>
+            </mx:Field>
+            <mx:Field name="member_key">
+              <mx:String>temperature</mx:String>
+            </mx:Field>
+            <mx:Field name="original_field_names">
+              <mx:Array>
+                <mx:Item>
+                  <mx:String>duration_s</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>id</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>meta</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>op</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>requires</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>stir</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>temp_C</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>vessel</mx:String>
+                </mx:Item>
+              </mx:Array>
+            </mx:Field>
+            <mx:Field name="parameter_bindings">
+              <mx:Object/>
+            </mx:Field>
+            <mx:Field name="source_had_parameters">
+              <mx:Boolean>false</mx:Boolean>
+            </mx:Field>
+            <mx:Field name="source_operation">
+              <mx:String>HeatChill</mx:String>
+            </mx:Field>
+            <mx:Field name="status">
+              <mx:String>resolved</mx:String>
+            </mx:Field>
+            <mx:Field name="synthetic_member">
+              <mx:Boolean>false</mx:Boolean>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>SetTemperature</mx:String>
+        </mx:Field>
+        <mx:Field name="operation_id">
+          <mx:String>op.temperature</mx:String>
+        </mx:Field>
+        <mx:Field name="requires">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>s005</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="stir">
+          <mx:Boolean>true</mx:Boolean>
+        </mx:Field>
+        <mx:Field name="temp_C">
+          <mx:Number>110</mx:Number>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>reactor</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+    <mx:Step id="s009__mix" operation="Mix">
+      <mx:Object>
+        <mx:Field name="id">
+          <mx:String>s009__mix</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>stirred at 110C for 2 days.</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="normalization">
+          <mx:Object>
+            <mx:Field name="analysis_kind">
+              <mx:String>legacy_core</mx:String>
+            </mx:Field>
+            <mx:Field name="classification">
+              <mx:String>composition</mx:String>
+            </mx:Field>
+            <mx:Field name="generated_parameters">
+              <mx:Array>
+                <mx:Item>
+                  <mx:String>method</mx:String>
+                </mx:Item>
+              </mx:Array>
+            </mx:Field>
+            <mx:Field name="group_id">
+              <mx:String>composition:s009</mx:String>
+            </mx:Field>
+            <mx:Field name="mapping_id">
+              <mx:String>alias.legacy.heat_chill:mix</mx:String>
+            </mx:Field>
+            <mx:Field name="member_key">
+              <mx:String>mix</mx:String>
+            </mx:Field>
+            <mx:Field name="original_field_names">
+              <mx:Array>
+                <mx:Item>
+                  <mx:String>id</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>meta</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>op</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>parameters</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>requires</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>vessel</mx:String>
+                </mx:Item>
+              </mx:Array>
+            </mx:Field>
+            <mx:Field name="parameter_bindings">
+              <mx:Object/>
+            </mx:Field>
+            <mx:Field name="source_had_parameters">
+              <mx:Boolean>true</mx:Boolean>
+            </mx:Field>
+            <mx:Field name="source_operation">
+              <mx:String>HeatChill</mx:String>
+            </mx:Field>
+            <mx:Field name="status">
+              <mx:String>resolved</mx:String>
+            </mx:Field>
+            <mx:Field name="synthetic_member">
+              <mx:Boolean>true</mx:Boolean>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>Mix</mx:String>
+        </mx:Field>
+        <mx:Field name="operation_id">
+          <mx:String>op.mix</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="method">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>stirred at 110C for 2 days.</mx:String>
+                </mx:Field>
+                <mx:Field name="origin">
+                  <mx:String>declared_mapping</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>stir</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="requires">
+          <mx:Array>
+            <mx:Item>
+              <mx:String>s005</mx:String>
+            </mx:Item>
+          </mx:Array>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>reactor</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+    <mx:Step id="s010" operation="RecordAnalysis">
+      <mx:Object>
+        <mx:Field name="id">
+          <mx:String>s010</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>TLC showed major is SM, small amount of product was formed/</mx:String>
+            </mx:Field>
+            <mx:Field name="operation_expression">
+              <mx:String>declarative_extension</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="normalization">
+          <mx:Object>
+            <mx:Field name="analysis_kind">
+              <mx:String>opaque</mx:String>
+            </mx:Field>
+            <mx:Field name="classification">
+              <mx:String>observation</mx:String>
+            </mx:Field>
+            <mx:Field name="generated_parameters">
+              <mx:Array/>
+            </mx:Field>
+            <mx:Field name="mapping_id">
+              <mx:String>contract:9727c81e20736b1a38dfc47d919e484711827f37e645b570a34316e10180574c</mx:String>
+            </mx:Field>
+            <mx:Field name="original_field_names">
+              <mx:Array>
+                <mx:Item>
+                  <mx:String>id</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>meta</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>op</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>parameters</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>vessel</mx:String>
+                </mx:Item>
+              </mx:Array>
+            </mx:Field>
+            <mx:Field name="parameter_bindings">
+              <mx:Object>
+                <mx:Field name="method">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/method</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="reported_result">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/results/observation</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="source_had_parameters">
+              <mx:Boolean>true</mx:Boolean>
+            </mx:Field>
+            <mx:Field name="source_operation">
+              <mx:String>ExamineAnalyticalResult</mx:String>
+            </mx:Field>
+            <mx:Field name="status">
+              <mx:String>resolved</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>RecordAnalysis</mx:String>
+        </mx:Field>
+        <mx:Field name="operation_id">
+          <mx:String>obs.analysis</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="method">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>TLC</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>TLC</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="results">
+              <mx:Object>
+                <mx:Field name="observation">
+                  <mx:Object>
+                    <mx:Field name="evidence">
+                      <mx:String>major is SM, small amount of product was formed/</mx:String>
+                    </mx:Field>
+                    <mx:Field name="value">
+                      <mx:String>major is SM, small amount of product was formed/</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>reactor</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+    <mx:Step id="s011" operation="RecordAnalysis">
+      <mx:Object>
+        <mx:Field name="id">
+          <mx:String>s011</mx:String>
+        </mx:Field>
+        <mx:Field name="meta">
+          <mx:Object>
+            <mx:Field name="evidence">
+              <mx:String>LCMS showed 349 mass ??</mx:String>
+            </mx:Field>
+            <mx:Field name="operation_expression">
+              <mx:String>declarative_extension</mx:String>
+            </mx:Field>
+            <mx:Field name="source_contract">
+              <mx:String>text-only/1</mx:String>
+            </mx:Field>
+            <mx:Field name="stage">
+              <mx:String>reaction</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="normalization">
+          <mx:Object>
+            <mx:Field name="analysis_kind">
+              <mx:String>opaque</mx:String>
+            </mx:Field>
+            <mx:Field name="classification">
+              <mx:String>observation</mx:String>
+            </mx:Field>
+            <mx:Field name="generated_parameters">
+              <mx:Array/>
+            </mx:Field>
+            <mx:Field name="mapping_id">
+              <mx:String>contract:9727c81e20736b1a38dfc47d919e484711827f37e645b570a34316e10180574c</mx:String>
+            </mx:Field>
+            <mx:Field name="original_field_names">
+              <mx:Array>
+                <mx:Item>
+                  <mx:String>id</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>meta</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>op</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>parameters</mx:String>
+                </mx:Item>
+                <mx:Item>
+                  <mx:String>vessel</mx:String>
+                </mx:Item>
+              </mx:Array>
+            </mx:Field>
+            <mx:Field name="parameter_bindings">
+              <mx:Object>
+                <mx:Field name="method">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/method</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+                <mx:Field name="reported_result">
+                  <mx:Object>
+                    <mx:Field name="path">
+                      <mx:String>/parameters/results/observation</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="source_had_parameters">
+              <mx:Boolean>true</mx:Boolean>
+            </mx:Field>
+            <mx:Field name="source_operation">
+              <mx:String>ExamineAnalyticalResult</mx:String>
+            </mx:Field>
+            <mx:Field name="status">
+              <mx:String>resolved</mx:String>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="op">
+          <mx:String>RecordAnalysis</mx:String>
+        </mx:Field>
+        <mx:Field name="operation_id">
+          <mx:String>obs.analysis</mx:String>
+        </mx:Field>
+        <mx:Field name="parameters">
+          <mx:Object>
+            <mx:Field name="method">
+              <mx:Object>
+                <mx:Field name="evidence">
+                  <mx:String>LCMS</mx:String>
+                </mx:Field>
+                <mx:Field name="value">
+                  <mx:String>LCMS</mx:String>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+            <mx:Field name="results">
+              <mx:Object>
+                <mx:Field name="observation">
+                  <mx:Object>
+                    <mx:Field name="evidence">
+                      <mx:String>349 mass ??</mx:String>
+                    </mx:Field>
+                    <mx:Field name="value">
+                      <mx:String>349 mass ??</mx:String>
+                    </mx:Field>
+                  </mx:Object>
+                </mx:Field>
+              </mx:Object>
+            </mx:Field>
+          </mx:Object>
+        </mx:Field>
+        <mx:Field name="vessel">
+          <mx:String>reactor</mx:String>
+        </mx:Field>
+      </mx:Object>
+    </mx:Step>
+  </Procedure>
+</Synthesis>

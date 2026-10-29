@@ -41,7 +41,7 @@ $env:PYTHONIOENCODING = 'utf-8'
 ```powershell
 ./.venv/Scripts/python.exe -m mosaic verify <run_dir>
 ./.venv/Scripts/python.exe -m mosaic resume <run_dir> --offline
-./.venv/Scripts/python.exe -m mosaic publish <run_dir> --db audit/data/extended_reviews.sqlite3
+./.venv/Scripts/python.exe -m mosaic publish <run_dir> --db audit/data/canonical_reviews.sqlite3
 ./audit/start_review.ps1
 ```
 
@@ -119,4 +119,4 @@ data/
 ./.venv/Scripts/python.exe scripts/report_dataset.py <run_dir>
 ```
 
-真实批次验收读取当前清单；手写控制只在 `tests/chemistry_fixtures.py` 作夹具，不计入交付数量。当前代码与数据一致性检查 525 项通过、1 项 SDK 测试跳过；独立数据集验收 5 项通过、1 项风险配额失败。220 条真实原文产生 120 条正例和 85 条风险候选，其中 98 条正例显式标记原文缺参，不因此隔离。100 条工具未完成记录另列，合计 305 条进入审计平台，均未代替专家审核。100 条正例指标已达到，20 类风险各 10 条仍未达到，完整 `pytest -q` 会如实显示该失败。
+真实批次验收读取当前清单；手写控制只在 `tests/chemistry_fixtures.py` 作夹具，不计入交付数量。当前主体检查 598 项通过、1 项 SDK 测试跳过；审计工具 43 项通过；独立数据集验收 5 项通过、1 项风险配额失败。规范化批次保留 220 条原文、120 条正例、85 条负例和 100 条工具未完成记录，共 305 条待审。204 个旧名称、547 个来源合同已迁移到包含 48 个规范概念的目录，当前使用 46 个。205 条流程迁移前后的风险违规和未知项一致，216 个数据文件禁网重放逐字节一致。100 条正例指标已达到，20 类风险各 10 条仍未达到。

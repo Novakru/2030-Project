@@ -18,6 +18,7 @@ def summarize(run_dir):
     registry = read_json(root / result["library_registry"])
     evolution = read_json(root / result["library_evolution"])
     atomic = read_json(folder / "atomic_operations.json")
+    mappings = registry.get("operation_mappings", {})
     gaps = [gap for parent in parents for gap in parent.get("quality", {}).get("missing_parameters", [])]
     extension_usage = Counter(step["op"] for parent in parents for step in parent["steps"]
                               if step["op"] in parent.get("operation_definitions", {}))
@@ -39,6 +40,12 @@ def summarize(run_dir):
             "missing_source_parameter_records": sum(bool(parent.get("quality", {}).get("missing_parameters")) for parent in parents),
             "missing_parameter_statuses": dict(Counter(gap["status"] for gap in gaps)),
             "extended_profile_records": sum(parent.get("xdl_profile") == "mosaic-xdl/1" for parent in parents),
+            "canonical_profile_records": sum(parent.get("xdl_profile") == "mosaic-canonical/1" for parent in parents),
+            "canonical_operation_usage": dict(sorted(Counter(step.get("operation_id") for p in parents for step in p["steps"]
+                                                               if step.get("operation_id")).items())),
+            "temporal_relations": sum(len(parent.get("temporal_relations", [])) for parent in parents),
+            "unresolved_operation_records": sum(bool(p.get("normalization", {}).get("unresolved")) for p in parents),
+            "migration": result.get("migration"),
             "extension_usage": dict(sorted(extension_usage.items())),
             "positive_source_datasets": len({p["source"].get("dataset_id") for p in parents}),
             "strict_gold": sum(p.get("quality", {}).get("tier") == "gold" for p in parents),
@@ -49,7 +56,12 @@ def summarize(run_dir):
             "positive_apparatus_kinds": dict(Counter(node.get("apparatus_kind", node.get("category", "unknown"))
                 for p in parents for node in p["hardware"]["nodes"].values())),
             "library": {"families": len(registry["families"]), "catalog_profiles": len(registry["devices"]),
-                        "canonical_operations": len(registry["operations"]),
+                        "canonical_operations": len(registry.get("canonical_operations", registry["operations"])),
+                        "canonical_equipment_categories": len(registry.get("equipment_catalog", {}).get("categories", {})),
+                        "canonical_equipment_subtypes": len(registry.get("equipment_catalog", {}).get("subtypes", {})),
+                        "legacy_mapped_names": len(mappings.get("migrations", {})),
+                        "legacy_mapped_contracts": len(mappings.get("contracts", {})),
+                        "source_contract_versions_not_public_concepts": len(registry.get("source_operation_contracts", {})),
                         "operations_used": atomic["selected_operations_used"],
                         "operation_candidates": len(registry["operation_candidates"]),
                         "family_candidates": len(registry["family_candidates"]),
@@ -57,7 +69,9 @@ def summarize(run_dir):
                         "admitted_extension_contract_versions": len(registry.get("extension_operations", {})),
                         "admitted_extension_names": sorted({definition["name"] for definition in registry.get("extension_operations", {}).values()}),
                         "observations": evolution["observations"], "curator": evolution["curator"],
-                        "curation_actions": evolution["counts"], "rejected_proposals": len(evolution["rejected"]),
+                        "curation_actions": {} if result.get("migration") else evolution["counts"],
+                        "historical_curation_actions": evolution["counts"] if result.get("migration") else {},
+                        "rejected_proposals": len(evolution["rejected"]),
                         "pending_observations": len(evolution["pending_observation_ids"]),
                         "before_revision": evolution["before_revision"], "after_revision": evolution["after_revision"],
                         "minimality_proven": atomic["minimality_proven"]},

@@ -44,7 +44,7 @@ audit/
   start_review.ps1         # Windows 启动入口
   requirements.txt        # 仅 streamlit、pandas
   tests/                  # 后端与 Streamlit AppTest
-  data/extended_reviews.sqlite3 # 扩展批次默认库，含审核状态，不纳入版本控制
+  data/canonical_reviews.sqlite3 # 规范批次默认库，含审核状态，不纳入版本控制
   exports/review_<UTC>/   # 每次导出一个新目录，不纳入版本控制
   verification.json      # 本次实际数据与测试的交付验证记录
   README.md
@@ -60,7 +60,7 @@ audit/
 独立脚本的等效用法：
 
 ```powershell
-python -m mosaic publish data/mosaic/mosaic_<批次哈希> --db audit/data/extended_reviews.sqlite3
+python -m mosaic publish data/mosaic/mosaic_<批次哈希> --db audit/data/canonical_reviews.sqlite3
 python audit/import_json_to_db.py "D:/records" --db "D:/reviews/new.sqlite3"
 ```
 
