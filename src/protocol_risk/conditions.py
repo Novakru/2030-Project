@@ -81,6 +81,9 @@ class SuccessIndex:
         return count
 
     def match(self, protocol):
+        from .normalization import analysis_protocol, is_normalized
+        if is_normalized(protocol):
+            protocol = analysis_protocol(protocol)
         return self.db.execute("SELECT reaction_id FROM success WHERE signature = ?", (protocol_key(protocol),)).fetchone()
 
     def close(self):

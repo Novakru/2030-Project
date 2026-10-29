@@ -25,6 +25,9 @@ def _leaves(value, prefix=""):
 
 def assess_intervention(parent, child):
     """Check actual semantic edits, never trust a declared fault count."""
+    from protocol_risk.normalization import analysis_protocol, is_normalized
+    if is_normalized(parent) or is_normalized(child):
+        return assess_intervention(analysis_protocol(parent), analysis_protocol(child))
     operational = {"steps", "reagents", "hardware", "context", "initial_contents"}
     derived = {"quality", "crosscheck", "xdl", "canonical_sha1"}
     for key in set(parent) | set(child):
@@ -114,6 +117,9 @@ def assess_intervention(parent, child):
 
 def fault_instances(protocol, violations):
     """Group repeated downstream reports of the same corrupted constraint object."""
+    from protocol_risk.normalization import analysis_protocol, is_normalized
+    if is_normalized(protocol):
+        return fault_instances(analysis_protocol(protocol), violations)
     steps = {s["id"]: s for s in protocol["steps"]}
     instances = set()
     for entry in violations:
@@ -317,6 +323,16 @@ def model_proposals(parent, runner):
 
 
 def generate(parents, raw_records, *, per_risk=12, success_index=None, runner=None, llm_limit=0):
+    from protocol_risk.normalization import analysis_protocol, is_normalized
+    if any(is_normalized(parent) for parent in parents):
+        if not all(is_normalized(parent) for parent in parents):
+            raise ValueError("A mutation batch must use one naming standard")
+        from .canonical import finalize_negative
+        projected = [analysis_protocol(parent) for parent in parents]
+        samples, report = generate(projected, raw_records, per_risk=per_risk,
+                                   success_index=success_index, runner=runner, llm_limit=llm_limit)
+        by_id = {parent["id"]: parent for parent in parents}
+        return [finalize_negative(sample, by_id[sample["parent_id"]]) for sample in samples], report
     references = corpus_reference(raw_records)
     pools, rejected, seen = defaultdict(list), Counter(), set()
     known_risks = set(load_library("risks.yaml")["risks"])

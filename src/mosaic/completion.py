@@ -418,7 +418,9 @@ def complete(source_document, protocol, registry, runner):
                "proposed_protocol": {"steps": proposed, "unmapped_actions": pending},
                "core_contracts": load_library("primitives.yaml")["operations"],
                "core_fields": {name: sorted(fields) for name, fields in STEP_FIELDS.items()},
-               "extension_definitions": list(existing.values())}
+               "extension_definitions": list(existing.values()),
+               "canonical_operations": load_library("atomic_operations.yaml")["operations"],
+               "operation_mappings": load_library("operation_mappings.yaml").get("aliases", [])}
     errors, previous = [], None
     for attempt in range(3):
         request = copy.deepcopy(payload)

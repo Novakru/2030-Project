@@ -6,7 +6,7 @@ from pathlib import Path
 from mosaic import BuildSpec, Runtime, build, resume
 from mosaic.audit_bridge import publish
 from mosaic.registry import Registry
-from protocol_risk.extensions import read_extended_xdl
+from protocol_risk.canonical_xdl import read_canonical_xdl
 from protocol_risk.io import digest, read_json, read_jsonl
 
 
@@ -49,18 +49,20 @@ def test_default_pipeline_admits_new_atomic_expression_and_missing_source_parame
     root = Path(result["run_dir"])
     protocol = list(read_jsonl(root / result["review_bundle"]["positives"]))[0]
     assert result["positives"] == 1 and result["failures"] == 0
-    assert [step["op"] for step in protocol["steps"]] == ["Add", "Stir", "Dry"]
+    assert [step["op"] for step in protocol["steps"]] == ["Add", "Mix", "Dry"]
+    assert protocol["steps"][1]["parameters"]["method"]["value"] == "stir"
     assert protocol["quality"]["representation_complete"]
     assert not protocol["quality"]["parameters_complete"]
     assert not protocol["quality"]["execution_ready"]
     assert protocol["steps"][0]["missing_parameters"]["amount"]["marker"] == "__NOT_REPORTED__"
     assert protocol["steps"][1]["missing_parameters"]["duration_s"]["raw"] == "overnight"
     assert "__NOT_REPORTED__" in protocol["xdl"] and "__QUALITATIVE__" in protocol["xdl"]
-    assert read_extended_xdl(protocol["xdl"])["steps"] == protocol["steps"]
+    assert read_canonical_xdl(protocol["xdl"])["steps"] == protocol["steps"]
     registry = Registry(read_json(root / result["library_registry"]))
-    definition = next(iter(registry.snapshot["extension_operations"].values()))
+    definition = next(iter(registry.snapshot["source_operation_contracts"].values()))
     assert definition["name"] == "Dry" and definition["representation_status"] == "admitted"
     assert definition["execution_supported"] is False and definition["evidence"]
+    assert not registry.snapshot["extension_operations"]
     assert publish(root, tmp_path / "reviews.sqlite3")["inserted"] == 1
     before = {p.name: p.read_bytes() for p in (root / Path(result["review_bundle"]["positives"]).parent).rglob("*") if p.is_file()}
     again = resume(root, offline=True)

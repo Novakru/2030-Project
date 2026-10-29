@@ -1,5 +1,6 @@
 """Versioned operation inventory and conditional apparatus candidate groups."""
 from collections import Counter
+import copy
 from protocol_risk.io import digest, load_library
 from .equipment import check_substitution, classify_equipment, equipment_groups
 from .registry import minimum_cover
@@ -16,6 +17,31 @@ def _snapshot(registry):
 
 def equipment_inventory(parents, registry=None):
     """Describe families separately from profiles and evidence-scoped substitutions."""
+    from protocol_risk.normalization import analysis_protocol, is_normalized
+    if parents and all(is_normalized(parent) for parent in parents):
+        result = equipment_inventory([analysis_protocol(parent) for parent in parents], registry)
+        nodes = {(p["id"], key): node for p in parents for key, node in p.get("hardware", {}).get("nodes", {}).items()}
+        for binding in result["record_bindings"]:
+            node = nodes[(binding["record_id"], binding["node_id"])]
+            binding.update({key: node.get(key) for key in ("category_id", "subtype_id", "category", "apparatus_kind")})
+        result["canonical_catalog"] = load_library("equipment.yaml")
+        result["mapping_library"] = "equipment_mappings.yaml"
+        from protocol_risk.equipment_normalization import conditional_substitutes
+        profiles = _snapshot(registry).get("devices", [])
+        profiles = list(profiles.values()) if isinstance(profiles, dict) else profiles
+        by_id = {profile["id"]: profile for profile in profiles}
+        comparisons, witnesses = [], []
+        for demand in result["requirements"]:
+            for candidate in conditional_substitutes(demand["requirement"], profiles):
+                identifier = candidate["candidate_id"]
+                comparisons.append({"demand_id": demand["id"], "catalog_id": identifier, **candidate})
+                source = by_id[identifier].get("source_url")
+                witnesses.append({"requirement": demand["id"], "device": identifier,
+                                  "known": candidate["status"] == "compatible", "evidence_ids": [source] if source else []})
+        result.update(substitutions=comparisons,
+                      cover=minimum_cover([demand["id"] for demand in result["requirements"]], witnesses),
+                      unknown_witnesses=sum(not witness["known"] for witness in witnesses))
+        return result
     snapshot = _snapshot(registry)
     families = snapshot.get("families", load_library("equipment_families.yaml")["families"])
     observations = list(snapshot.get("observations", []))
@@ -77,6 +103,18 @@ def equipment_inventory(parents, registry=None):
 
 
 def atomic_inventory(positives, snapshots, registry=None):
+    from protocol_risk.normalization import is_normalized
+    if positives and all(is_normalized(parent) for parent in positives):
+        definitions = copy.deepcopy(_snapshot(registry).get("canonical_operations") or load_library("atomic_operations.yaml")["operations"])
+        definitions.update({contract["id"]: contract for parent in positives for contract in parent.get("operation_definitions", {}).values()})
+        usage = Counter(step["operation_id"] for parent in positives for step in parent["steps"])
+        return {"schema": "mosaic.canonical-inventory/1", "candidate_operations": len(definitions),
+                "selected_operations_used": len(usage), "selected_steps": sum(usage.values()),
+                "operations": {identifier: {**contract, "selected_steps": usage[identifier]}
+                               for identifier, contract in definitions.items()},
+                "mapping_library": "operation_mappings.yaml", "unregistered_operations": {},
+                "minimality_proven": False,
+                "policy": "Stable semantic IDs; aliases and migration records do not create operation contracts. Coverage is not a universal minimality proof."}
     library = _snapshot(registry)
     definitions = library["operations"]
     used = Counter(s["op"] for p in positives for s in p["steps"])

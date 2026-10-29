@@ -1,0 +1,40 @@
+schema: mosaic.equipment/1
+policy:
+  identity: Stable IDs identify concepts; names are display labels, not contracts.
+  facts: Capabilities describe intended use, never missing individual ratings or verified source facts.
+  configuration: Model and manufacturer belong to instance configuration; numerical configuration remains in params with its original scope and evidence.
+  compatibility: hardware.yaml retains existing cited model facts and equipment_families.yaml retains legacy analysis groups; these files define canonical names.
+categories:
+  equipment.reaction_container: {name: ReactionContainer, legacy_category: vessel}
+  equipment.thermal_control: {name: ThermalControl, legacy_category: heater}
+  equipment.mixing: {name: MixingEquipment, legacy_category: mixer}
+  equipment.filtration: {name: FiltrationEquipment, legacy_category: filter}
+  equipment.phase_separation: {name: PhaseSeparationEquipment, legacy_category: separator}
+  equipment.evaporation: {name: EvaporationEquipment, legacy_category: rotavap}
+  equipment.liquid_handling: {name: LiquidHandlingEquipment, legacy_category: pump}
+  equipment.routing: {name: RoutingEquipment, legacy_category: valve}
+  equipment.irradiation: {name: IrradiationEquipment, legacy_category: light_source}
+  equipment.chromatography: {name: ChromatographyEquipment, legacy_category: column}
+subtypes:
+  equipment.vial: {name: Vial, category_id: equipment.reaction_container, legacy_kind: vial, capabilities: [material_containment]}
+  equipment.flask: {name: Flask, category_id: equipment.reaction_container, legacy_kind: flask, capabilities: [material_containment], note: Geometry remains unspecified.}
+  equipment.round_bottom_flask: {name: RoundBottomFlask, category_id: equipment.reaction_container, legacy_kind: round_bottom_flask, capabilities: [material_containment]}
+  equipment.microreactor: {name: Microreactor, category_id: equipment.reaction_container, legacy_kind: microreactor, capabilities: [material_containment], note: Does not establish flow mode, channel geometry, pressure rating or capacity.}
+  equipment.well_plate: {name: WellPlate, category_id: equipment.reaction_container, legacy_kind: well_plate, capabilities: [material_containment, well_addressing]}
+  equipment.storage_bottle: {name: StorageBottle, category_id: equipment.reaction_container, legacy_kind: storage_bottle, capabilities: [material_containment]}
+  equipment.batch_reactor: {name: BatchReactor, category_id: equipment.reaction_container, legacy_kind: batch_reactor, capabilities: [material_containment]}
+  equipment.heating_block: {name: HeatingBlock, category_id: equipment.thermal_control, legacy_kind: heating_block, legacy_category: heater, capabilities: [thermal.heating]}
+  equipment.hotplate_stirrer: {name: HotplateStirrer, category_id: equipment.thermal_control, legacy_kind: hotplate_stirrer, legacy_category: heater_stirrer, capabilities: [thermal.heating, agitation.stir]}
+  equipment.circulating_bath: {name: CirculatingBath, category_id: equipment.thermal_control, legacy_kind: circulating_bath, legacy_category: chiller, capabilities: [thermal.heating, thermal.cooling]}
+  equipment.magnetic_stirrer: {name: MagneticStirrer, category_id: equipment.mixing, legacy_kind: magnetic_stirrer, capabilities: [agitation.stir]}
+  equipment.orbital_shaker: {name: OrbitalShaker, category_id: equipment.mixing, legacy_kind: orbital_shaker, capabilities: [agitation.shake]}
+  equipment.vortex_mixer: {name: VortexMixer, category_id: equipment.mixing, legacy_kind: vortex_mixer, capabilities: [agitation.vortex]}
+  equipment.filter: {name: Filter, category_id: equipment.filtration, legacy_kind: filter, capabilities: [filtration]}
+  equipment.separator: {name: PhaseSeparator, category_id: equipment.phase_separation, legacy_kind: separator, capabilities: [phase_separation]}
+  equipment.rotary_evaporator: {name: RotaryEvaporator, category_id: equipment.evaporation, legacy_kind: rotavap, capabilities: [evaporation]}
+  equipment.pump: {name: Pump, category_id: equipment.liquid_handling, legacy_kind: pump, capabilities: [liquid_transfer]}
+  equipment.syringe_pump: {name: SyringePump, category_id: equipment.liquid_handling, legacy_kind: syringe_pump, capabilities: [liquid_transfer]}
+  equipment.valve: {name: Valve, category_id: equipment.routing, legacy_kind: valve, capabilities: [material_routing]}
+  equipment.rotary_valve: {name: RotaryValve, category_id: equipment.routing, legacy_kind: rotary_valve, capabilities: [material_routing]}
+  equipment.light_source: {name: LightSource, category_id: equipment.irradiation, legacy_kind: light_source, capabilities: [optical_irradiation]}
+  equipment.chromatography_column: {name: ChromatographyColumn, category_id: equipment.chromatography, legacy_kind: column, capabilities: [chromatography]}

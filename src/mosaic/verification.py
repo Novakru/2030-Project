@@ -57,18 +57,27 @@ def verify_dataset(run_dir, *, upstream=True):
             if digest(raw["raw"]) != parent["raw_sha256"] or upstream and raw["id"] in ord_ids and upstream_hashes.get(raw["id"]) != parent["raw_sha256"]:
                 raise ValueError("Raw source snapshot or upstream hash mismatch")
             document = text_document(raw)
-            if parent.get("xdl_profile") == "mosaic-xdl/1":
+            if parent.get("xdl_profile") in {"mosaic-xdl/1", "mosaic-canonical/1"}:
                 from protocol_risk.extensions import read_extended_xdl, validate_extension_step
                 from protocol_risk.missing import annotate_missing
-                decoded = read_extended_xdl(parent["xdl"])
+                from protocol_risk.normalization import analysis_protocol, is_normalized, validate_normalized
+                represented = analysis_protocol(parent) if is_normalized(parent) else parent
+                if is_normalized(parent):
+                    from protocol_risk.canonical_xdl import read_canonical_xdl
+                    validate_normalized(parent)
+                    decoded = read_canonical_xdl(parent["xdl"])
+                    if decoded["hardware"] != parent["hardware"] or decoded["normalization"] != parent["normalization"]:
+                        raise ValueError("Canonical XML lost identity or migration provenance")
+                else:
+                    decoded = read_extended_xdl(parent["xdl"])
                 if decoded["steps"] != parent["steps"] or decoded["operation_definitions"] != parent.get("operation_definitions", {}):
                     raise ValueError("Extended XDL roundtrip lost operation or parameter data")
-                checked = annotate_missing(copy.deepcopy(parent))
-                if checked["steps"] != parent["steps"]:
+                checked = annotate_missing(copy.deepcopy(represented))
+                if checked["steps"] != represented["steps"]:
                     raise ValueError("Source-missing parameter annotations are stale")
-                for step in parent["steps"]:
-                    if step["op"] in parent.get("operation_definitions", {}):
-                        validate_extension_step(step, parent["operation_definitions"][step["op"]], source=document["procedure"])
+                for step in represented["steps"]:
+                    if step["op"] in represented.get("operation_definitions", {}):
+                        validate_extension_step(step, represented["operation_definitions"][step["op"]], source=document["procedure"])
             if (parent.get("source_text") != document["procedure"] or parent.get("text_sha256") != document["text_sha256"]
                     or parent.get("extraction", {}).get("input_contract") != "text-only/1"):
                 raise ValueError("Text-only input contract or verbatim source snapshot mismatch")

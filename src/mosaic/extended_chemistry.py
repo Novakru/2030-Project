@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import copy
 
-from protocol_risk.io import digest
+from protocol_risk.io import digest, load_library
 from protocol_risk.validation import prepare_protocol, split_group
 
 from .chemistry import ChemistryDomain
@@ -37,6 +37,11 @@ class ExtendedChemistryDomain(ChemistryDomain):
         protocol = copy.deepcopy(extracted["protocol"])
         protocol["id"] = "mosaic_pos_" + digest({"raw": raw["raw_sha256"], "protocol": protocol, "run": run_id})[:20]
         prepared = prepare_protocol(protocol, raw, extended=True)
+        from .canonical import finalize_protocol
+        snapshot = self.registry().snapshot
+        prepared = finalize_protocol(prepared, vocabulary={
+            "operations": snapshot.get("canonical_operations") or load_library("atomic_operations.yaml")["operations"],
+            "mappings": snapshot.get("operation_mappings") or load_library("operation_mappings.yaml")})
         prepared["mosaic"] = {"schema": "mosaic.ir/2", "run_id": run_id, **extracted["notes"]}
         prepared["split_group"] = split_group(prepared)
         return prepared

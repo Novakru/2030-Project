@@ -18,6 +18,9 @@ ACTION_NAMES = {"Add": "加料", "AddSolid": "加入固体", "Stir": "搅拌", "
                 "HeatChill": "控温", "HeatChillToTemp": "调整温度", "Atmosphere": "气氛",
                 "Evaporate": "蒸发", "Transfer": "转移", "Separate": "分液", "RunColumn": "过柱",
                 "Repeat": "循环", "Wait": "等待", "Filter": "过滤", "Dry": "干燥"}
+ACTION_NAMES.update(Mix="混合", Heat="加热", Cool="冷却", SetTemperature="控温",
+                    Position="放置", HoldTemperature="保持温度", Chromatograph="色谱分离",
+                    RecordProduct="记录产物", RecordObservation="记录观察")
 FIELD_NAMES = {"amount": "用量", "value": "数值", "unit": "单位", "temp_C": "温度 (°C)",
                "controller_setpoint_C": "控制器设定 (°C)", "duration_s": "时间 (s)",
                "rpm": "转速 (rpm)", "reagent": "原料引用", "name": "名称", "smiles": "SMILES",
@@ -191,7 +194,7 @@ def review_points(record, parent=None):
             point["title"] = f"器材 · {'删除' if op == 'remove' else '改动'} {node_id}"
             # Show the explicit heat request before the engine's generic Stir dependency.
             preferred = next((s for s in steps if s["_id"] in point["step_ids"] and
-                              s.get("op") in ("HeatChill", "HeatChillToTemp") and
+                              s.get("op") in ("HeatChill", "HeatChillToTemp", "SetTemperature", "Heat", "Cool") and
                               (s.get("temp_C") is not None or s.get("temp") is not None)), None)
             if preferred and "A5" in codes:
                 point["preferred_step_id"] = preferred["_id"]
@@ -214,9 +217,10 @@ def review_points(record, parent=None):
     for step in steps:
         definition = as_dict(definitions.get(step.get("op")))
         if definition:
-            points.append({"key": "extension:" + step["_id"], "title": "扩展操作 · " + str(step["op"]),
+            prefix = "规范操作 · " if field(record, "normalization") else "扩展操作 · "
+            points.append({"key": "extension:" + step["_id"], "title": prefix + str(step["op"]),
                 "step_ids": [step["_id"]], "changes": [], "evidence": [definition],
-                "note": "核对新操作的语义与参数是否忠实表达原文：" + str(definition.get("description", "")), "priority": 0})
+                "note": "核对操作语义、具体方式和参数是否忠实表达原文：" + str(definition.get("description", "")), "priority": 0})
         gaps = dict(as_dict(step.get("missing_parameters")))
         gaps.update({key: value for key, value in as_dict(step.get("parameters")).items()
                      if isinstance(value, dict) and "marker" in value})
@@ -300,7 +304,7 @@ def step_summary(step, record):
     op = str(step.get("op", step.get("action", step.get("type", "步骤"))))
     title = ACTION_NAMES.get(op, op)
     if op in as_dict(field(record, "operation_definitions")):
-        title = "扩展 · " + title
+        title = ("规范 · " if field(record, "normalization") else "扩展 · ") + title
     reagent = step.get("reagent")
     reagents = field(record, "reagents", [])
     item = next((r for r in reagents if isinstance(r, dict) and r.get("id") == reagent), {}) if isinstance(reagents, list) else {}

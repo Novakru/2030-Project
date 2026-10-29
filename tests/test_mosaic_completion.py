@@ -131,8 +131,17 @@ def test_every_agent_input_is_text_derived_and_invariant_to_ord_poisoning():
     complete(document, base(), {}, runner)
     serialized = json.dumps(runner.calls)
     assert "poisoned_ORD" not in serialized and "POISON" not in serialized
-    assert "yield_percent" not in serialized and "components" not in serialized
+    # Schema parameter names may include components or reported yields. Actual
+    # ORD fields must not enter the source or proposal, and poisoning them must
+    # not change any model request.
+    for section in ("source", "proposed_protocol"):
+        assert "yield_percent" not in runner.calls[0][1][section]
+        assert "components" not in runner.calls[0][1][section]
     assert runner.calls[0][1]["source"] == {"id": document["id"], "procedure": TEXT}
+    clean = {key: value for key, value in document.items() if key not in {"components", "yield_percent", "reaction_smiles"}}
+    clean_runner = Runner([proposal()])
+    complete(clean, base(), {}, clean_runner)
+    assert clean_runner.calls == runner.calls
 
 
 def test_all_extension_source_works_without_any_strict_ir():

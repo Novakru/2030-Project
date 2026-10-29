@@ -21,6 +21,9 @@ def _value(number, unit):
 
 
 def export_xdl(protocol):
+    from .canonical_xdl import PROFILE as CANONICAL_PROFILE, export_canonical_xdl
+    if protocol.get("xdl_profile") == CANONICAL_PROFILE:
+        return export_canonical_xdl(protocol)
     from .extensions import PROFILE as EXTENDED_PROFILE, export_extended_xdl
     if protocol.get("xdl_profile") == EXTENDED_PROFILE:
         return export_extended_xdl(protocol)
@@ -143,6 +146,9 @@ def validate_xdl(xml):
     if doc.getroottree().docinfo.doctype:
         raise ValueError("DOCTYPE is not allowed")
     profile = doc.get("{" + EXTENDED_NS + "}profile")
+    from .canonical_xdl import PROFILE as CANONICAL_PROFILE, validate_canonical_xdl
+    if profile == CANONICAL_PROFILE:
+        return validate_canonical_xdl(xml)
     if profile is not None or EXTENDED_NS in doc.nsmap.values():
         if profile != EXTENDED_PROFILE:
             raise ValueError("Unknown or missing MOSAIC XDL profile")
@@ -154,6 +160,29 @@ def validate_xdl(xml):
 
 def canonical_hash(protocol):
     # Provenance/comments/IDs do not make otherwise identical protocols unique.
+    from .normalization import is_normalized, semantic_contract_hash
+    if is_normalized(protocol):
+        positions = {step["id"]: index for index, step in enumerate(protocol["steps"])}
+        def semantics(value):
+            if isinstance(value, list):
+                return [semantics(item) for item in value]
+            if isinstance(value, dict):
+                return {key: semantics(item) for key, item in value.items()
+                        if key not in {"meta", "normalization", "evidence", "origins", "source", "raw", "op"}}
+            return value
+        steps = []
+        for step in protocol["steps"]:
+            item = semantics(step)
+            item.pop("id", None)
+            if "requires" in item:
+                item["requires"] = [positions.get(ref, ref) for ref in item["requires"]]
+            steps.append(item)
+        contracts = {definition["id"]: semantic_contract_hash(definition)
+                     for definition in protocol.get("operation_definitions", {}).values()}
+        return digest({"steps": steps, "contracts": contracts,
+                       "context": {key: protocol.get("context", {}).get(key) for key in
+                                   ("reflux", "pressure_control", "pure_solvent", "ignition_source")},
+                       "initial_contents": protocol.get("initial_contents", {})}, "sha1")
     clean = copy.deepcopy(protocol)
     from .extensions import PROFILE as EXTENDED_PROFILE, definition_semantic_hash
     extended = clean.get("xdl_profile") == EXTENDED_PROFILE

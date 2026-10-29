@@ -130,7 +130,10 @@ def _admit_parent(parent, raw):
 
 
 def _observations(protocol, document, registry):
-    """The curator receives quoted observations, never the reference measurements."""
+    """The curator receives quoted observations, never reference measurements."""
+    from protocol_risk.normalization import analysis_protocol, is_normalized
+    if is_normalized(protocol):
+        protocol = analysis_protocol(protocol)
     text, source_id = document["procedure"], document["id"]
     observations = []
     for step in protocol.get("steps", []):
@@ -386,6 +389,9 @@ def build(spec: BuildSpec, *, runtime=None):
 def resume(run_dir, *, offline=False, client_factory=None, runtime=None):
     run_dir = Path(run_dir).resolve()
     manifest = read_json(run_dir / "manifest.json")
+    if manifest["request"].get("migration"):
+        from .migration import migrate
+        return migrate(replay_run=run_dir)
     spec = BuildSpec(output_dir=str(run_dir.parent), **manifest["request"]["spec"])
     stored = RunStore(run_dir, manifest["request"])
     source_batch = stored.find("program/sources", manifest["request"]["sources"])

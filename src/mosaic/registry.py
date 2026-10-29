@@ -62,11 +62,17 @@ class Registry:
             "observations": [], "operation_candidates": [], "aliases": {}, "changes": [],
             "families": families}
         self.snapshot = copy.deepcopy(self.snapshot)
+        if snapshot is None:
+            self.snapshot.update(canonical_operations=load_library("atomic_operations.yaml")["operations"],
+                                 operation_mappings=load_library("operation_mappings.yaml"),
+                                 equipment_catalog=load_library("equipment.yaml"),
+                                 equipment_mappings=load_library("equipment_mappings.yaml"))
         # Older frozen runs remain readable. These are separate from the
         # executable operation contracts and manufacturer/model profiles.
         for key, default in (("operation_candidates", []), ("representation_candidates", []),
                              ("representations", {}), ("families", {}),
                              ("extension_operations", {}),
+                             ("source_operation_contracts", {}),
                              ("family_candidates", []), ("operation_observations", [])):
             self.snapshot.setdefault(key, default)
 
@@ -85,7 +91,10 @@ class Registry:
             for citation in evidence:
                 validate_span(citation, sources)
             action = change.get("action")
-            if action == "observe_device":
+            if action in {"admit_canonical_operation", "map_canonical_expression"}:
+                from .vocabulary import evolve_canonical
+                evolve_canonical(next_snapshot, change)
+            elif action == "observe_device":
                 observation = copy.deepcopy(change["device"])
                 if observation.get("verified") is True:
                     raise ValueError("An automatic observation cannot declare human verification")
@@ -104,10 +113,11 @@ class Registry:
                 from protocol_risk.extensions import normalize_definition
                 definition = normalize_definition(change["name"], change["definition"])
                 identifier = definition["semantic_sha256"]
-                known = next_snapshot["extension_operations"].get(identifier)
+                target = "source_operation_contracts" if next_snapshot.get("canonical_operations") else "extension_operations"
+                known = next_snapshot[target].get(identifier)
                 if known is None:
                     known = {**definition, "evidence": [], "origins": []}
-                    next_snapshot["extension_operations"][identifier] = known
+                    next_snapshot[target][identifier] = known
                 # Versions with different contracts coexist. Only an identical
                 # full definition can merge evidence automatically.
                 for key, values in (("evidence", evidence), ("origins", change.get("origins", []))):

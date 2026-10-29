@@ -24,6 +24,9 @@ def _positive(value):
 
 def source_fact_hash(node):
     """Bind provisional source claims to their values and citation; edits expire evidence."""
+    if node.get("normalization"):
+        from .equipment_normalization import analysis_node
+        node = analysis_node(node)
     return digest({k: node.get(k) for k in ("apparatus_kind", "params", "capacity_scope",
                    "wetted_materials", "source_parameters", "source_evidence")})
 

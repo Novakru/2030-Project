@@ -1,0 +1,76 @@
+schema: mosaic.equipment-mappings/1
+policy: Exact normalized aliases select identity only. They never add ratings, capabilities, operation mode, topology or a substitution approval.
+normalization: Unicode NFKC, case folding, and removal of whitespace, underscores and hyphens; no fuzzy similarity.
+aliases:
+  equipment.vial: [vial, reaction_vial, screw_cap_vial, 小瓶, 反应小瓶]
+  equipment.flask: [flask, reaction_flask, 烧瓶]
+  equipment.round_bottom_flask: [round-bottom flask, round-bottomed flask, RBF, 圆底烧瓶]
+  equipment.microreactor: [microreactor, micro_reactor, micro-reactor, 微反应器, 微型反应器]
+  equipment.well_plate: [well_plate, microplate, microwell_plate, 微孔板]
+  equipment.storage_bottle: [storage_bottle, laboratory_bottle, 试剂瓶, 实验室储液瓶]
+  equipment.batch_reactor: [batch_reactor, 间歇反应器]
+  equipment.heating_block: [heating_block, heater_block, heat_block, 加热模块, 加热块]
+  equipment.hotplate_stirrer: [hotplate_stirrer, heater_stirrer, magnetic_hotplate_stirrer, 加热磁力搅拌器]
+  equipment.circulating_bath: [circulating_bath, refrigerated_circulator, chiller, 循环浴, 冷热循环器]
+  equipment.magnetic_stirrer: [magnetic stirrer, 磁力搅拌器]
+  equipment.orbital_shaker: [orbital shaker, orbital_shaker, 轨道振荡器]
+  equipment.vortex_mixer: [vortex mixer, vortex_mixer, 涡旋振荡器]
+  equipment.filter: [filter, filter_funnel, gravity_filter, 过滤器, 过滤漏斗]
+  equipment.separator: [separator, separating_funnel, separatory_funnel, 分液漏斗]
+  equipment.rotary_evaporator: [rotavap, rotary_evaporator, 旋转蒸发仪]
+  equipment.pump: [pump, 泵]
+  equipment.syringe_pump: [syringe_pump, 注射泵]
+  equipment.valve: [valve, 阀]
+  equipment.rotary_valve: [rotary_valve, 旋转阀]
+  equipment.light_source: [light_source, irradiation_source, 光源]
+  equipment.chromatography_column: [chromatography_column, 色谱柱]
+contextual_aliases:
+  - {alias: column, category_id: equipment.chromatography, subtype_id: equipment.chromatography_column}
+category_aliases:
+  equipment.reaction_container: [vessel, reaction_container, 反应容器]
+  equipment.thermal_control: [heater, heater_stirrer, chiller, thermal_control, 温控设备]
+  equipment.mixing: [mixer, mixing_equipment, 混合设备]
+  equipment.filtration: [filter, filtration_equipment, 过滤设备]
+  equipment.phase_separation: [separator, phase_separation_equipment, 分相设备]
+  equipment.evaporation: [rotavap, evaporation_equipment, 蒸发设备]
+  equipment.liquid_handling: [pump, liquid_handling_equipment, 液体输送设备]
+  equipment.routing: [valve, routing_equipment, 流路切换设备]
+  equipment.irradiation: [light_source, irradiation_equipment, 光照设备]
+  equipment.chromatography: [column, chromatography_equipment, 色谱设备]
+category_subtypes:
+  heater_stirrer: equipment.hotplate_stirrer
+  column: equipment.chromatography_column
+  light_source: equipment.light_source
+profile_subtypes:
+  corning_3730_coc_1536: equipment.well_plate
+  ika_rct_basic_25008259: equipment.hotplate_stirrer
+  ika_cmag_hs7_digital_3487000: equipment.hotplate_stirrer
+  julabo_corio_cd200f: equipment.circulating_bath
+  julabo_corio_cp200f: equipment.circulating_bath
+  tricontinent_c3000_10010: equipment.syringe_pump
+  tricontinent_c24000_10028: equipment.syringe_pump
+  tricontinent_c3000mp_10095_valve: equipment.rotary_valve
+  tricontinent_c3000mp_10114_valve: equipment.rotary_valve
+  duran_youtility_125: equipment.storage_bottle
+  duran_youtility_250: equipment.storage_bottle
+  duran_youtility_500: equipment.storage_bottle
+  duran_youtility_1000: equipment.storage_bottle
+  pyrex_rb_4320a_50: equipment.round_bottom_flask
+  duran_separator_250_glass_key: equipment.separator
+  duran_filter_funnel_250mm: equipment.filter
+  buchi_r300_b305: equipment.rotary_evaporator
+  buchi_r300_b301: equipment.rotary_evaporator
+  chemputer_reactor_template: equipment.batch_reactor
+  chemputer_separator_template: equipment.separator
+  chemputer_filter_template: equipment.filter
+  chemputer_light_template: equipment.light_source
+substitution_rules:
+  - id: equipment.same_subtype
+    relation: same_subtype
+    note: Identity is only candidate retrieval; every supplied functional demand is still checked.
+  - id: equipment.batch_container_alternative
+    relation: conditional
+    subtypes: [equipment.vial, equipment.flask, equipment.round_bottom_flask, equipment.batch_reactor]
+    required_demands: [capacity_scope, wetted_materials]
+    any_demands: [capacity_mL, working_volume_mL]
+    note: Scoped to explicit supplied demands, never universal equivalence. Microreactors and plates are excluded.

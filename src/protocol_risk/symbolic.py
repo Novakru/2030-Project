@@ -24,6 +24,9 @@ class Result:
 
 
 def hardware_evidence(node):
+    if node.get("normalization"):
+        from .equipment_normalization import analysis_node
+        node = analysis_node(node)
     if node.get("verified") is True:
         return "human_verified"
     verification = node.get("verification", {})
@@ -100,6 +103,9 @@ def concentrated_sulfuric(reagent):
 
 
 def evaluate(protocol, properties=None):
+    from .normalization import analysis_protocol, is_normalized
+    if is_normalized(protocol):
+        return evaluate(analysis_protocol(protocol), properties)
     properties = properties or load_library("properties.yaml")
     result = Result()
     reagents = {r["id"]: r for r in protocol.get("reagents", [])}

@@ -42,6 +42,9 @@ def main(argv=None):
     to_db = commands.add_parser("publish", help="Explicitly import one frozen batch into SQLite")
     to_db.add_argument("run_dir", type=Path)
     to_db.add_argument("--db", type=Path, required=True)
+    migration = commands.add_parser("normalize", help="Migrate a frozen batch to canonical vocabulary and replay its faults")
+    migration.add_argument("run_dir", type=Path)
+    migration.add_argument("--output-dir", type=Path)
     args = parser.parse_args(argv)
     if args.command in ("run", "extract"):
         models = {}
@@ -72,6 +75,9 @@ def main(argv=None):
         else:
             from .verification import verify_dataset
             result = verify_dataset(args.run_dir)
+    elif args.command == "normalize":
+        from .migration import migrate
+        result = migrate(args.run_dir, output_dir=args.output_dir)
     else:
         result = publish(args.run_dir, args.db)
     print(json.dumps(result, ensure_ascii=False, indent=2))

@@ -8,6 +8,8 @@
 
 默认启用[自动扩展 XDL](docs/EXTENDED_XDL.md)：agent 可新增有类型、有原文证据的原子操作；缺参用 `__NOT_REPORTED__` 等标识，可以作为完整表达的 silver 记录。动作表达、参数完整性和设备执行支持分别记录。原受限路径可显式选择 `--domain chemistry.batch/2`。
 
+保存前统一采用[规范概念与表述映射](docs/CANONICAL_VOCABULARY.md)：稳定操作 ID、规范器材类别／子型与具体参数分别保存。204 个旧名称、547 个合同版本已有精确迁移，未知表述不强配。别名与条件替换分别维护，父流程归一后再生成扰动。默认导出自描述的 `mosaic-canonical/1` XML。
+
 ## 安装与运行
 
 Python 3.10+，在项目根目录执行：
@@ -66,6 +68,10 @@ src/mosaic/              # 唯一的数据集编排入口
   audit_bridge.py        # 冻结批次 → SQLite，显式单向发布
 src/protocol_risk/       # 化学规则、来源解析器和获取工具
 libraries/
+  atomic_operations.yaml # 公共规范操作、参数、前置条件与效果
+  operation_mappings.yaml # 表述、上下文、组合及旧合同迁移
+  equipment.yaml         # 公共规范类别、标准子型与配置规则
+  equipment_mappings.yaml # 器材别名、型号归属与条件替换
   hardware.yaml          # 器材库
   primitives.yaml        # 独立原子操作库，含状态作用与风险语义
   risks.yaml             # 独立风险类别库

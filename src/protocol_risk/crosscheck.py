@@ -79,6 +79,9 @@ def _reference_comparison(protocol, raw):
 
 
 def crosscheck(protocol, raw):
+    from .normalization import analysis_protocol, is_normalized
+    if is_normalized(protocol):
+        return crosscheck(analysis_protocol(protocol), raw)
     conflicts, missing, quantity_checks = [], [], []
     checks = {"text_only_extraction": protocol.get("extraction", {}).get("input_contract") == "text-only/1"}
     reagents = {reagent["id"]: reagent for reagent in protocol.get("reagents", [])}

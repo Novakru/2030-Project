@@ -14,11 +14,11 @@ python -m venv audit/.venv
 ./audit/start_review.ps1
 ```
 
-打开 <http://localhost:8501> 后，已有默认数据库会自动连接，直接进入逐条批改。优先使用 `audit/data/extended_reviews.sqlite3`，否则依次尝试旧 `text_reviews.sqlite3`、`mosaic.sqlite3` 和 `reviews.sqlite3`。也可在侧边栏打开其他库或首次导入。当前数量以数据库进度和 `data/mosaic/current.json` 指向的清单为准。启动脚本默认监听本机；端口占用时可指定 `./audit/start_review.ps1 -Port 8502`。
+打开 <http://localhost:8501> 后，已有默认数据库会自动连接，直接进入逐条批改。优先使用 `audit/data/canonical_reviews.sqlite3`，否则依次尝试旧 `extended_reviews.sqlite3`、`text_reviews.sqlite3`、`mosaic.sqlite3` 和 `reviews.sqlite3`。也可在侧边栏打开其他库或首次导入。当前数量以数据库进度和 `data/mosaic/current.json` 指向的清单为准。启动脚本默认监听本机；端口占用时可指定 `./audit/start_review.ps1 -Port 8502`。
 
 每条记录保存完整 `source_text`，在「对照实验原文」展开查看，不依赖来源 JSON 继续存在。`reference_metadata` 的 ORD 注释仅供比较。扩展批次的新动作有 `operation_definitions`，原文缺参采用显式标识；动作表达完整的记录可计入正例。`extraction_candidates.jsonl` 仅保存工具未完成的格式、证据或动作覆盖问题，识别为「其他记录」，供专家检查。
 
-当前扩展批次已导入 120 条 pos、85 条 neg 和 100 条工具未完成记录，共 305 条待审。98 条 pos 含原文缺参标记；「核对位置」可选择扩展操作合同或来源参数，直接定位相关步骤。表达完整不代表参数齐全或设备执行已验证；旧数据库另存，不与本批同步。
+规范化批次包含 120 条 pos、85 条 neg 和 100 条工具未完成记录，共 305 条。98 条 pos 含原文缺参标记；「核对位置」可选择规范操作合同或来源参数，直接定位相关步骤。原始表述在「原文表述与规范映射」中保留。表达完整不代表参数齐全或设备执行已验证；旧数据库另存，不与本批同步。
 
 侧边栏「使用帮助」会在新标签页打开基本操作说明，也可直接访问 <http://localhost:8501/?help=1>。关闭帮助页即可回到原审核位置。
 
