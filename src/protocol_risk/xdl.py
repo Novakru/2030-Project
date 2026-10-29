@@ -168,7 +168,7 @@ def canonical_hash(protocol):
                 return [semantics(item) for item in value]
             if isinstance(value, dict):
                 return {key: semantics(item) for key, item in value.items()
-                        if key not in {"meta", "normalization", "evidence", "origins", "source", "raw", "op"}}
+                        if key not in {"meta", "normalization", "evidence", "origins", "source", "op"}}
             return value
         steps = []
         for step in protocol["steps"]:
@@ -179,9 +179,11 @@ def canonical_hash(protocol):
             steps.append(item)
         contracts = {definition["id"]: semantic_contract_hash(definition)
                      for definition in protocol.get("operation_definitions", {}).values()}
-        return digest({"steps": steps, "contracts": contracts,
-                       "context": {key: protocol.get("context", {}).get(key) for key in
-                                   ("reflux", "pressure_control", "pure_solvent", "ignition_source")},
+        relations = [{key: positions.get(value, value) if key in {"from", "to"} else semantics(value)
+                      for key, value in relation.items() if key != "group_id"}
+                     for relation in protocol.get("temporal_relations", [])]
+        return digest({"steps": steps, "contracts": contracts, "temporal_relations": relations,
+                       "context": semantics(protocol.get("context", {})),
                        "initial_contents": protocol.get("initial_contents", {})}, "sha1")
     clean = copy.deepcopy(protocol)
     from .extensions import PROFILE as EXTENDED_PROFILE, definition_semantic_hash

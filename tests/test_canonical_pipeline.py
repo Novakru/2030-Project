@@ -120,3 +120,17 @@ def test_canonical_xml_rejects_dtd_and_contract_tampering():
         validate_xdl('<!DOCTYPE Synthesis [<!ENTITY x "unsafe">]>' + parent["xdl"])
     with pytest.raises(ValueError, match="modified canonical contract"):
         validate_xdl(parent["xdl"].replace('semantic_sha256="', 'semantic_sha256="bad', 1))
+
+
+def test_qualitative_conditions_and_temporal_relations_remain_semantically_distinct():
+    source = example()
+    source["steps"] = [{"id": "s1", "op": "HeatChill", "temp_C": 70, "stir": True,
+                        "missing_parameters": {"duration_s": {"status": "qualitative", "marker": "__QUALITATIVE__",
+                                                             "raw": "overnight", "evidence": "overnight"}}}]
+    original = finalize_protocol(source)
+    changed = copy.deepcopy(original)
+    changed["steps"][0]["missing_parameters"]["duration_s"]["raw"] = "several days"
+    assert canonical_hash(changed) != canonical_hash(original)
+    changed = copy.deepcopy(original)
+    changed["temporal_relations"][0]["relation"] = "before"
+    assert canonical_hash(changed) != canonical_hash(original)
