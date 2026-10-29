@@ -47,6 +47,8 @@ $env:PYTHONIOENCODING = 'utf-8'
 
 `verify` 核对产物、上游 ORD、产率、器材引用、父子补丁、单次语义修改及目标风险；`--artifacts-only` 只核对冻结产物。`resume --offline` 重用保存的模型和程序阶段，不访问模型；代码、来源或库变化时拒绝续跑，应重新 `run`。离线重放不等于从空缓存重新推理。
 
+当前冻结批次 `mosaic_2edad1d69a9a536aa513` 对应代码提交 `d0ee1b7`。之后清除了未被生产流程调用的旧 Jev 训练模块及模型；严格重放此批次请使用该提交，当前代码仍可验证和审核冻结产物。原始需求文档保存在 [历史说明](docs/history/README.md)，不作为当前实现规范。
+
 打开 <http://localhost:8501> 逐条审核。首次导入可用网页上传或路径输入，随后只需打开 SQLite。发布不创建人工决定，也不覆盖已有 ID 或审核状态。JSON 与数据库不自动同步。审核后 JSON 由导出功能统一生成，每次使用独立时间戳目录。详见 [audit/README.md](audit/README.md)。
 
 ## 文件与职责
