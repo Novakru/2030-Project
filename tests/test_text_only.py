@@ -5,6 +5,7 @@ import json
 import pytest
 
 from mosaic.chemistry import ChemistryDomain
+from mosaic.canonical import finalize_protocol
 from mosaic.protocol.extract import build_ir, text_plan, text_source, validate_evidence, uncovered_actions
 from mosaic.protocol.crosscheck import quantities_in_text
 from mosaic.protocol.amounts import local_measurements
@@ -70,7 +71,7 @@ def test_admitted_library_composition_is_used_by_source_extractor():
     assert "DoseThenStir" in runner.client_prompt["representations"]["macros"]
     assert [step["op"] for step in prepared["steps"]] == ["Add", "Stir"]
     assert prepared["steps"][1]["duration_s"] == 60
-    assert "DoseThenStir" not in prepared["xdl"]
+    assert "DoseThenStir" not in finalize_protocol(prepared)["xdl"]
 
 
 def test_bounded_repair_includes_failed_proposal_without_reference_fields():
@@ -120,7 +121,8 @@ def test_every_extraction_role_sees_only_literal_text_and_proposed_plan():
     result = ChemistryDomain().extract(record(), runner)
     assert runner.client.prompts == [{"procedure": TEXT}]
     assert set(runner.roles[0][1]) == {"source", "plan"}
-    assert runner.roles[1][1] == {"source": TEXT}
+    assert runner.roles[1][1]["source"] == TEXT
+    assert set(runner.roles[1][1]) == {"source", "equipment_catalog", "equipment_aliases"}
     serialized = json.dumps([runner.client.prompts, runner.roles])
     assert "ord_component" not in serialized and "ARGON" not in serialized
     assert result["protocol"]["reagents"][0]["smiles"] is None
@@ -132,7 +134,7 @@ def test_removing_or_poisoning_ord_fields_cannot_change_operations_hardware_or_x
                 "conditions": {"flow": {"details": "poison"}}, "atmosphere": {"type": "NITROGEN"},
                 "temperature": {"value": -100}, "duration": {"value": 100000},
                 "yield_percent": None, "reaction_smiles": "poison"}]
-    prepared = [prepare_protocol(build_ir(row, copy.deepcopy(PLAN), {}), row) for row in variants]
+    prepared = [finalize_protocol(prepare_protocol(build_ir(row, copy.deepcopy(PLAN), {}), row)) for row in variants]
     for field in ("steps", "reagents", "context", "hardware", "xdl", "canonical_sha1"):
         assert prepared[0][field] == prepared[1][field] == prepared[2][field]
     assert prepared[0]["hardware"]["nodes"]["reactor"]["params"]["capacity_mL"] == 5
@@ -145,7 +147,8 @@ def test_plain_text_needs_no_ord_metadata_or_outcome_to_produce_xdl():
     raw = {"id": "plain", "procedure": TEXT, "source": {"db": "TEXT", "url": "file:///experiment.txt"}}
     plan, _ = text_plan(raw, Client())
     prepared = prepare_protocol(build_ir(raw, plan, {}), raw)
-    assert 'operation="Add"' in prepared["xdl"] and 'operation="HeatChill"' in prepared["xdl"]
+    xml = finalize_protocol(prepared)["xdl"]
+    assert "<Add " in xml and "<HeatChill " in xml
     assert prepared["quality"]["source_input_contract"] == "text-only/1"
     assert "yield_percent" not in prepared
 
@@ -165,6 +168,25 @@ def test_amount_cannot_be_borrowed_from_a_different_literal_reagent():
     plan = {"steps": [{"op": "Add", "reagent": "water", "alias": "water", "amount": {"value": 7, "unit": "mL"},
                        "evidence": raw["procedure"]}]}
     assert any("adjacent" in error for error in validate_evidence(raw, plan))
+
+
+def test_base_extractor_keeps_independent_mass_and_molar_amount_without_another_agent():
+    text = "Salt (18 mg, 1 mmol) was added to a vial."
+    raw = {"id": "dual_amount", "procedure": text}
+    plan = {"steps": [{"op": "Add", "reagent": "Salt", "amount": {"value": 18, "unit": "mg"}, "evidence": text}]}
+    built = build_ir(raw, plan, {})
+    assert {(q["value"], q["unit"]) for q in built["steps"][0]["source_quantities"]} == {(18, "mg"), (1, "mmol")}
+    record = finalize_protocol(prepare_protocol(built, raw))
+    assert 'mass="18 mg"' in record["xdl"] and 'amount="1 mmol"' in record["xdl"]
+
+
+def test_explicit_source_label_does_not_allow_an_unrelated_reagents_quantity():
+    text = "Add named reagent (X: 2 mg, 1 mmol) and water (3 mL)."
+    plan = {"steps": [{"op": "Add", "reagent": "named reagent", "alias": "X", "evidence": text,
+                       "amount": {"value": 2, "unit": "mg"}}]}
+    assert not validate_evidence({"procedure": text}, plan)
+    plan["steps"][0]["alias"] = "water"
+    assert validate_evidence({"procedure": text}, plan)
 
 
 def test_alias_cannot_relabel_another_reagents_explicit_quantity():

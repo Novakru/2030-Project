@@ -34,11 +34,13 @@ python -m venv .venv
 | `critic` | 核对遗漏、虚构和顺序，提出有证据的修复 |
 | `operation_expander` | 补充未表达动作；复用规范概念，必要时提出声明式操作合同 |
 | `apparatus_mapper` | 识别来源器材、配置及适用范围，不猜型号或额定参数 |
-| `library_curator` | 汇总观察，提出规范概念、别名、组合或器材分组修订 |
+| `library_curator` | 维护操作合同、器材子型、别名及条件替换规则，通过确定性检查后形成新库版本 |
 
 程序负责表述归一、单位转换、合同校验、来源检查、XDL 编解码和版本记录。未知表达不强配；缺失参数用 `__NOT_REPORTED__`，定性描述用 `__QUALITATIVE__`，歧义用 `__AMBIGUOUS__`，保留原文。操作表达、参数完整性和设备执行支持分别记录。
 
-新操作与映射必须通过来源、合同及往返见证检查。器材目前自动登记观察、归入已有族或形成新族候选；新规范器材子型和替换规则仍需受控维护。最终 XDL 使用自描述的 `mosaic-canonical/1` 扩展，新增语义不自动获得 Chemputer 执行支持。
+操作和器材均经过“观察 → 提案 → 来源与合同检查 → 实际见证检查 → 新库版本 → 当前批次重新绑定”。新增别名不创建新的概念或合同版本。替换规则单独维护，仍需核对具体配置，缺少物理事实时保持 unknown。下一批可通过 `--registry` 继承已准入的库。
+
+XDL 使用普通 `Synthesis / Hardware / Reagents / Parameters / Procedure` 元素和操作属性。聚类、规范 ID、来源和合同保存在 JSON，XML 不携带私有类型树或聚类结果。扩展只增加具体操作、属性和器材类型，声明在 `xdl_extensions.json`；未赋值参数使用标准 `Parameter`。新增表示不自动获得 Chemputer 执行支持。
 
 ## 输出与重放
 
@@ -56,6 +58,7 @@ atomic_operations.json    # 本次规范操作使用统计
 equipment_inventory.json # 器材观察与能力要求
 library_registry.json     # 可传入下一次转换的库快照
 library_evolution.json    # 库维护建议与准入结果
+xdl_extensions.json       # XML 之外的扩展声明与步骤绑定
 ```
 
 ```powershell
@@ -65,6 +68,12 @@ library_evolution.json    # 库维护建议与准入结果
 ```
 
 代码、来源、库或配置改变时，严格重放拒绝续跑，需要重新转换。离线重放使用冻结的模型回执，不等于重新推理。失败来源保留原文和原因，不以编造参数换取转换通过。
+
+5 条化学原文试验输入见 [chemistry_pilot](examples/chemistry_pilot/README.md)：
+
+```powershell
+./.venv/Scripts/python.exe -m mosaic extract examples/chemistry_pilot/sources.json --workers 2 --max-calls 90
+```
 
 ## 人工检查（可选）
 
@@ -81,7 +90,6 @@ library_evolution.json    # 库维护建议与准入结果
 src/mosaic/          # 五个角色、编排、库演化、证据和持久化
   protocol/          # 文本参数解析、规范表示、器材归一和 XDL 编解码
 libraries/           # 四份公共规范库及提取表示的内部定义
-schemas/             # XDL 标准子集的内部校验
 examples/            # 最小使用示例
 scripts/             # 重放检查和转换启动脚本
 tests/              # 仅覆盖当前转换、库维护和审核功能
@@ -94,3 +102,10 @@ docs/               # 当前架构和语言说明
 ```
 
 测试使用明确的模型替身，不依赖真实 API、旧数据集或官方平台 SDK。设计见 [架构](docs/ARCHITECTURE.md)、[规范词汇](docs/CANONICAL_VOCABULARY.md)及[扩展语言](docs/EXTENDED_XDL.md)。
+
+## 固定版本迭代
+
+1. 用已有模型回执和接口测试修复程序，提交后冻结代码、库及配置。
+2. 固定版本运行完整的 5 条文本，运行中不修改代码，结束后统一分析。
+3. 新操作、新器材仅通过智能体提案、程序验证和版本化库准入；不按样例添加提取分支。
+4. 来源缺参保留标识；模型格式问题有限重试；程序缺陷记录到下一轮。失败记录与成功记录一起送审，不能以修改输入、编造参数或逐样例改代码换取通过。

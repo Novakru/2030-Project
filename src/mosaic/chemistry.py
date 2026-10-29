@@ -33,6 +33,18 @@ Distinguish one-well volume from total plate volume, sample temperature from hea
 Never infer an exact manufacturer model, pressure rating, flow capability or wetted material from a generic name.
 These are source-grounded mapping proposals, not equipment certification. Do not add a default flask or hotplate."""
 
+MAPPING_PROMPT += """
+Also include role: reaction_container|auxiliary, category_id: known canonical category ID or null,
+and parameters:{} on each mention. identity is the EXACT source apparatus name,
+not a guessed model. If only an operation implies apparatus, use kind as its generic
+class, identity:null, and scope:operation_requirement; no capacity or rating is implied.
+Find all relevant pipettes, stirrers, sealers, centrifuges, evaporators, Schlenk
+glassware and environment-control equipment, not just the main reaction vessel.
+An optional capacity_mL parameter must be {value:number_in_mL,evidence:exact_quote}
+with a vessel capacity immediately preceding the apparatus name. Do not convert a
+dose, well count, geometry or model number into vessel capacity.
+"""
+
 
 class ChemistryDomain:
     name = "chemistry.batch/2"
@@ -135,17 +147,24 @@ class ChemistryDomain:
                 if quote:
                     notes["evidence_spans"].append(SourceSpan.locate(raw["id"], source_text, quote).to_dict())
             if mapping:
-                try:
-                    response = runner.model_call("apparatus_mapper", MAPPING_PROMPT, {"source": source_text})
-                    proposal = response["data"]
-                    if not isinstance(proposal, dict) or not isinstance(proposal.get("mentions", []), list):
-                        raise ValueError("Invalid apparatus proposal")
-                    for mention in proposal.get("mentions", []):
-                        if not isinstance(mention, dict):
-                            raise ValueError("Apparatus mention must be an object")
-                        span = SourceSpan.locate(raw["id"], source_text, mention.get("quote")).to_dict()
-                        notes["apparatus_proposals"].append({**mention, "evidence": span, "status": "not_a_verified_binding"})
-                    notes["apparatus_unknowns"] = proposal.get("unknowns", [])
-                except (ValueError, RuntimeError, KeyError, TypeError) as error:
-                    notes["apparatus_unknowns"] = ["Mapping specialist proposal rejected: " + type(error).__name__]
+                self.map_apparatus(raw, runner, notes)
         return {"protocol": protocol, "notes": notes, "raw_id": raw["id"]}
+
+    def map_apparatus(self, raw, runner, notes):
+        source_text = raw["procedure"]
+        snapshot = self.registry().snapshot
+        try:
+            response = runner.model_call("apparatus_mapper", MAPPING_PROMPT, {"source": source_text,
+                "equipment_catalog": snapshot.get("equipment_catalog", {}),
+                "equipment_aliases": snapshot.get("equipment_mappings", {}).get("aliases", {})})
+            proposal = response["data"]
+            if not isinstance(proposal, dict) or not isinstance(proposal.get("mentions", []), list):
+                raise ValueError("Invalid apparatus proposal")
+            for mention in proposal.get("mentions", []):
+                if not isinstance(mention, dict):
+                    raise ValueError("Apparatus mention must be an object")
+                span = SourceSpan.locate(raw["id"], source_text, mention.get("quote")).to_dict()
+                notes["apparatus_proposals"].append({**mention, "evidence": span, "status": "not_a_verified_binding"})
+            notes["apparatus_unknowns"] = proposal.get("unknowns", [])
+        except (ValueError, RuntimeError, KeyError, TypeError) as error:
+            notes["apparatus_unknowns"] = ["Mapping specialist proposal rejected: " + type(error).__name__]

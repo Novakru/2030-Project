@@ -165,7 +165,8 @@ def validate_evidence(record, plan):
             reagent = step.get("reagent")
             if not isinstance(alias, str) or not alias or alias not in evidence or not isinstance(reagent, str) or reagent not in evidence:
                 errors.append(f"step {index}: reagent and alias must occur literally in evidence")
-            if alias != reagent:
+            from .amounts import explicit_alias
+            if not explicit_alias(evidence, reagent, alias):
                 errors.append(f"step {index}: reagent and alias must be the same literal name; identity alignment cannot borrow another reagent's quantity")
             amount = step.get("amount")
             if amount is not None:
@@ -249,6 +250,11 @@ def build_ir(record, plan, provenance):
             step["reagent"] = by_name[key]
             step["meta"]["source_alias"] = step.pop("alias", name)
             step["meta"]["amount_source"] = "procedure_text" if step.get("amount") else "unknown"
+            from .amounts import local_measurements
+            quantities, _ = local_measurements(step["meta"]["evidence"], step["meta"]["source_alias"])
+            if quantities:
+                step["source_quantities"] = [{"value": q["value"], "unit": q["unit"], "evidence": q["quote"]}
+                                              for q in quantities]
             if not step.get("amount"):
                 unresolved.append(f"{step['id']}: addition amount unspecified")
         if step["op"] in ("Stir", "Wait", "Irradiate") and "duration_s" not in step:

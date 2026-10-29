@@ -1,11 +1,25 @@
-# MOSAIC 扩展 XDL
+# XDL 导出与扩展
 
-最终导出格式为 `mosaic-canonical/1`，扩展命名空间为 `urn:mosaic:xdl:extensions:1`。保留 `Synthesis / Metadata / Hardware / Reagents / Procedure`，内嵌实际使用的规范合同、器材、试剂、参数、来源证据和组合时间关系。
+XML 保持 XDL 的元素／属性语法。聚类和规范化属于内部分析，不进入 XDL 文件。
 
-模型可以提出新动作的声明式合同，必须附原文、参数类型、状态效果及器材角色。程序先尝试复用现有规范概念；只有确有新语义、通过合同与见证检查时才新增。模型不能注入执行代码。
+```xml
+<Synthesis>
+  <Hardware><Component id="reactor" type="microreactor"/></Hardware>
+  <Reagents><Reagent name="water" role="solvent"/></Reagents>
+  <Parameters><Parameter id="p_mix_time__NOT_REPORTED__" type="time"/></Parameters>
+  <Procedure>
+    <Add reagent="water" vessel="reactor" volume="1 mL"/>
+    <Stir vessel="reactor" time="p_mix_time__NOT_REPORTED__"/>
+  </Procedure>
+</Synthesis>
+```
 
-参数缺失使用 `__NOT_REPORTED__`，定性使用 `__QUALITATIVE__`，歧义使用 `__AMBIGUOUS__`；保存状态、原文及证据。缺参不等于动作遗漏，参数完整性与表达完整性分别标注。
+内部的 Mix(method=stir/shake/vortex) 分别导出为 Stir、Shake、Vortex；Heat 与同步搅拌可重新生成 HeatChill(stir=true)。操作族、composition 分组、operation_id、原始措辞和合同均保留在 `records.jsonl`。具体试剂名称直接写入 XML，不只输出内部试剂编号。
 
-XML 使用封闭的类型节点保证往返。读取时拒绝 DTD、外部实体、重复合同、合同哈希不一致和未知结构。器材连接和额定参数依然需要独立核对。
+每条记录的 `xdl_extensions` 声明使用的非标准步骤／属性和器材类型；`xdl_bindings` 连接 XML 步骤位置与内部步骤。运行目录的 `xdl_extensions.json` 汇总这些旁文件信息。扩展声明不嵌入 XML，不包含执行代码。`libraries/xdl_steps.yaml` 维护标准步骤属性，表示合同仍由四份公共词汇文件维护。
 
-内部保留标准 XDL 子集和早期有类型扩展的编解码器，供提取中间表示与来源合同适配使用。最终文件不宣称可以被官方 Chemputer 直接编译或执行；执行适配属于后续独立工作。
+缺失／定性／歧义参数生成带对应标识的未赋值 Parameter；其原始措辞留在 JSON 中。导出不会凭空填数、把微反应器认作连续流或修复错误设备引用。器材配置与额定值在来源 JSON 和器材库中维护。
+
+验证器检查章节、声明的操作和属性、标识唯一性与引用，拒绝 DTD、外部实体和私有 XML 结构。重放对照冻结 JSON 重新生成 XML，核对文件和扩展声明；XML 不承担来源数据库的无损序列化职责。
+
+结构依据：[XDL 文件结构](https://croningroup.gitlab.io/chemputer/xdl/standard/xdl_file_structure.html)、[标准步骤](https://croningroup.gitlab.io/chemputer/xdl/standard/full_steps_specification.html)、[参数](https://croningroup.gitlab.io/chemputer/xdl/standard/parameters.html)。结构检查不等于通过官方平台编译；新增操作仍需执行适配，物理可行性保留专家审核。

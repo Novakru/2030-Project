@@ -15,6 +15,8 @@ flowchart TD
   U --> L
   L --> V[验证后形成新库版本]
   V --> R[针对相关来源进行一次有界重试]
+  V --> B[成功流程重新绑定新器材词汇]
+  B --> O
   O --> A[可选人工审核]
 ```
 
@@ -25,10 +27,11 @@ flowchart TD
 - `engine.py`：并行处理独立来源、预算、冻结快照、库维护后的有限重试，以及离线重放。
 - `chemistry.py`、`completion.py`：模型建议和逐字段来源验证；模型不生成或执行 Python 代码。
 - `proposal_mappings.py`、`canonical.py`：登记表述先解析，再校验，最后保存统一规范名称。
-- `registry.py`、`evolution.py`、`vocabulary.py`：版本化库与有证据的变更准入。
-- `protocol/`：文本用量、规范合同、器材归一、组合时序及 XDL 无损编解码。
+- `registry.py`、`evolution.py`、`vocabulary.py`、`equipment_evolution.py`：版本化库与有证据的操作／器材变更准入；提案有一次验证反馈修复机会。
+- `apparatus_mapping.py`：绑定原文器材，将明确来源与操作隐含需求分开，不赋予推测的额定参数。
+- `protocol/`：文本用量、规范合同、器材归一和组合时序；`xdl_document.py` 单独生成普通 XDL，分析数据保留在 JSON。
 - `store.py`：原子写入和哈希链；凭据不进入回执。
-- `verification.py`：从冻结来源核对输出、证据、指纹和 XML 往返。
+- `verification.py`：从冻结来源核对输出、证据、指纹、XML 再生成和旁文件。
 - `audit/`：可选的人工结果检查，不参与模型推理或转换事实生成。
 
 来源中的缺参保留状态；工具遗漏动作、产生无依据参数或非法合同则记录为未完成。物理安全、设备驱动和官方平台编译不由这套表示工具认证。

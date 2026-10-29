@@ -169,6 +169,10 @@ def convert(spec: ConversionSpec, *, runtime=None):
             except (ValueError, RuntimeError, KeyError, TypeError) as error:
                 retried.append({"raw_id": raw["id"], "status": "still_unresolved", "error": str(error)[:600]})
     maintenance["report"]["bounded_retries"] = retried
+    if evolved.revision != registry.revision:
+        from .canonical import finalize_protocol, registry_vocabulary
+        converted = runner.program("evolved_vocabulary_binding", {"records": digest(converted), "registry": evolved.revision},
+            lambda: [finalize_protocol(record, vocabulary=registry_vocabulary(evolved)) for record in converted])
     for protocol in converted:
         protocol.setdefault("mosaic", {}).update(registry_revision=registry.revision, observation_revision=evolved.revision)
     if any(file_digest(paths[k]) != v for k, v in library_files.items()) or _code_revision(domain) != request["code_revision"]:
@@ -185,6 +189,9 @@ def convert(spec: ConversionSpec, *, runtime=None):
             atomic_bytes(path, payload)
         store.track_file("xdl/" + protocol["id"], relative)
     inventories = domain.inventories(converted, snapshots, evolved.snapshot) if hasattr(domain, "inventories") else {}
+    inventories["xdl_extensions"] = {"schema": "mosaic.xdl-sidecars/1", "records": {
+        record["id"]: {"extensions": record["xdl_extensions"], "bindings": record["xdl_bindings"]}
+        for record in converted}}
     inventories.update(library_registry=evolved.snapshot, library_evolution=maintenance["report"])
     for name, value in inventories.items():
         atomic_json(store.root / (name + ".json"), value)
@@ -256,6 +263,9 @@ def _observations(protocol, document, registry):
         if isinstance(quote, str) and quote and quote in text:
             observations.append({"kind": "operation", "name": step["op"],
                 "contract": registry.snapshot["operations"].get(step["op"]),
+                "witness": {"steps": [copy.deepcopy(step)], "operation_definitions":
+                    {step["op"]: copy.deepcopy(protocol["operation_definitions"][step["op"]])}
+                    if step["op"] in protocol.get("operation_definitions", {}) else {}},
                 **({"extension_definition": protocol["operation_definitions"][step["op"]]}
                    if step["op"] in protocol.get("operation_definitions", {}) else {}),
                 "evidence": [SourceSpan.locate(source_id, text, quote).to_dict()]})

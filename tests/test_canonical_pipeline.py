@@ -4,7 +4,7 @@ import copy
 import pytest
 
 from mosaic.canonical import finalize_protocol
-from mosaic.protocol.canonical_xdl import read_canonical_xdl
+from mosaic.protocol.xdl_document import read_document
 from mosaic.protocol.io import load_library
 from mosaic.protocol.normalization import analysis_protocol, normalize_protocol, semantic_contract_hash
 from mosaic.protocol.xdl import canonical_hash, export_xdl, validate_xdl
@@ -37,10 +37,11 @@ def test_canonical_xml_preserves_evidence_equipment_and_mappings_after_json_roun
     import json
     serialized = json.loads(json.dumps(parent, sort_keys=True))
     assert export_xdl(serialized) == parent["xdl"]
-    decoded = read_canonical_xdl(parent["xdl"])
-    for key in ("steps", "hardware", "normalization", "operation_definitions"):
-        assert decoded[key] == parent[key]
-    assert validate_xdl(parent["xdl"])
+    decoded = read_document(parent["xdl"], extensions=parent["xdl_extensions"])
+    assert decoded["steps"][0]["op"] == "Add"
+    assert decoded["hardware"][0]["type"] == "microreactor"
+    assert "normalization" not in parent["xdl"] and "semantic_sha256" not in parent["xdl"]
+    assert validate_xdl(parent["xdl"], extensions=parent["xdl_extensions"])
     assert parent["hardware"]["nodes"]["v1"]["subtype_id"] == "equipment.microreactor"
 
 
@@ -92,8 +93,8 @@ def test_canonical_xml_rejects_dtd_and_contract_tampering():
     parent = finalize_protocol(example())
     with pytest.raises(ValueError):
         validate_xdl('<!DOCTYPE Synthesis [<!ENTITY x "unsafe">]>' + parent["xdl"])
-    with pytest.raises(ValueError, match="modified canonical contract"):
-        validate_xdl(parent["xdl"].replace('semantic_sha256="', 'semantic_sha256="bad', 1))
+    with pytest.raises(ValueError, match="Undefined XDL reference"):
+        validate_xdl(parent["xdl"].replace('vessel="v1"', 'vessel="missing"'))
 
 
 def test_qualitative_conditions_and_temporal_relations_remain_semantically_distinct():

@@ -1,8 +1,9 @@
-"""Normalize source expressions and export a self-contained XDL representation."""
+"""Normalize source expressions and export conventional XDL with JSON sidecars."""
 
 from mosaic.protocol.normalization import normalize_protocol, validate_normalized
 from mosaic.protocol.io import load_library
-from mosaic.protocol.xdl import canonical_hash, export_xdl, validate_xdl
+from mosaic.protocol.xdl import canonical_hash
+from mosaic.protocol.xdl_document import PROFILE, compile_document
 
 
 def registry_vocabulary(registry):
@@ -15,14 +16,19 @@ def registry_vocabulary(registry):
 
 def finalize_protocol(protocol, *, vocabulary=None):
     result = normalize_protocol(protocol, vocabulary=vocabulary)
+    if vocabulary and "hardware" in result:
+        from .protocol.equipment_normalization import normalize_equipment
+        result["hardware"] = normalize_equipment(result["hardware"], catalog=vocabulary.get("equipment"),
+                                                  mappings=vocabulary.get("equipment_mappings"))
     validate_normalized(result)
     if result.get("normalization", {}).get("unresolved"):
         raise ValueError("Unresolved canonical concepts require library evolution")
-    result["xdl_profile"] = "mosaic-canonical/1"
-    result.pop("xdl", None)
-    result["xdl"] = export_xdl(result)
-    validate_xdl(result["xdl"])
+    result["xdl_profile"] = PROFILE
+    document = compile_document(result)
+    result["xdl"] = document["xml"]
+    result["xdl_extensions"] = document["extensions"]
+    result["xdl_bindings"] = document["bindings"]
     result["canonical_sha1"] = canonical_hash(result)
     result.setdefault("quality", {}).update(naming_standard="mosaic-canonical/1",
-        xdl_profile="mosaic-canonical/1", canonical_names_checked=True)
+        xdl_profile=PROFILE, xdl_profile_schema_passed=True, canonical_names_checked=True)
     return result

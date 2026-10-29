@@ -3,13 +3,35 @@ import copy
 
 from mosaic.protocol.extract import OPERATIONS, STEP_FIELDS
 from mosaic.protocol.io import load_library
-from mosaic.protocol.normalization import _context_matches, _convert, _unit_conversion
+from mosaic.protocol.normalization import _context_matches, _convert, _unit_conversion, semantic_contract_hash
 
 _CORE = {"op.add": "Add", "op.mix": "Stir", "op.heat": "HeatChill", "op.cool": "HeatChill",
          "op.temperature": "HeatChill", "op.wait": "Wait", "op.transfer": "Transfer",
          "op.filter": "Filter", "op.separate": "Separate", "op.evaporate": "Evaporate",
          "op.irradiate": "Irradiate", "op.atmosphere": "Atmosphere", "op.purify": "Purify"}
 _UNITS = {"temp_C": "C", "duration_s": "s", "rpm": "rpm", "pressure_mbar": "mbar", "wavelength_nm": "nm"}
+
+
+def _core_fields(step):
+    """Accept equivalent typed containers without changing any reported value."""
+    result = copy.deepcopy(step)
+    if step.get("op") not in OPERATIONS:
+        return result
+    for key, item in step.get("parameters", {}).items():
+        key = {"material": "reagent", "temperature": "temp_C", "duration": "duration_s"}.get(key, key)
+        if isinstance(item, dict) and "value" in item:
+            item = ({k: item[k] for k in ("value", "unit") if k in item}
+                    if key == "amount" else item["value"])
+        if key in result and result[key] != item:
+            raise ValueError("Conflicting core parameter containers: " + key)
+        result[key] = copy.deepcopy(item)
+    result.pop("parameters", None)
+    amount = result.get("amount")
+    if isinstance(amount, dict) and "value" in amount:
+        result["amount"] = _convert(amount, _unit_conversion(amount, {}, {}))
+    if result.get("op") == "Atmosphere":
+        result["gas"] = {"N2": "nitrogen", "Ar": "argon"}.get(result.get("gas"), result.get("gas"))
+    return result
 
 
 def resolve_proposal(proposal, registry, *, core_only=False):
@@ -24,14 +46,29 @@ def resolve_proposal(proposal, registry, *, core_only=False):
     snapshot = registry.snapshot if hasattr(registry, "snapshot") else registry or {}
     operations = snapshot.get("canonical_operations") or load_library("atomic_operations.yaml")["operations"]
     mappings = snapshot.get("operation_mappings") or load_library("operation_mappings.yaml")
+    source_names = {item.get("name", key) for field in ("extension_operations", "source_operation_contracts", "operation_definitions")
+                    for key, item in snapshot.get(field, {}).items() if isinstance(item, dict)}
     for index, step in enumerate(output["steps"]):
+        if isinstance(step, dict) and step.get("op") in OPERATIONS:
+            step = _core_fields(step)
+            output["steps"][index] = step
+            allowed = STEP_FIELDS[step["op"]] | {"op", "evidence", "stage", "vessel"}
+            if step["op"] == "Add":
+                allowed |= {"additional_amounts", "reported_amounts"}
+            if set(step) <= allowed:
+                continue
         expression = step.get("op") if isinstance(step, dict) else None
-        if not isinstance(expression, str) or expression in OPERATIONS:
+        if not isinstance(expression, str):
             continue
         probe = {**step, "meta": {"object_role": step.get("object_role")}}
         candidates = [rule for rule in mappings.get("aliases", [])
                       if expression.strip().casefold() in {word.strip().casefold() for word in rule.get("expressions", [])}
                       and _context_matches(rule.get("context"), {}, probe)]
+        canonical = [(key, item) for key, item in operations.items()
+                     if item.get("name") == expression and item.get("kind") == "action"]
+        if not candidates and len(canonical) == 1 and expression not in output.get("definitions", {}) and expression not in source_names:
+            identifier, contract = canonical[0]
+            candidates = [{"id": "canonical:" + identifier, "expressions": [expression], "operation_id": identifier}]
         if len(candidates) != 1:
             continue
         rule = candidates[0]
@@ -42,6 +79,8 @@ def resolve_proposal(proposal, registry, *, core_only=False):
             raise ValueError("Alias parameters must be an object")
         trace = {"expression": expression, "mapping_id": rule["id"],
                  "object_role": step.get("object_role"), "parameter_evidence": {}}
+        if rule["id"].startswith("canonical:"):
+            trace.update(canonical_id=rule["operation_id"], canonical_contract_sha256=semantic_contract_hash(contract))
         legacy = _CORE.get(rule["operation_id"])
         if rule.get("composition"):
             if rule["id"] != "alias.heat_and_stir":
@@ -75,6 +114,9 @@ def resolve_proposal(proposal, registry, *, core_only=False):
             # It never becomes another public operation or an instrument executor.
             adapter = "Mapped" + contract["name"]
             parameters = copy.deepcopy(step.get("parameters", {}))
+            for key, item in parameters.items():
+                if isinstance(item, str):
+                    parameters[key] = {"value": item, "evidence": step.get("evidence", "")}
             for key, value in step.items():
                 if key in {"op", "parameters", "evidence", "stage", "vessel", "object_role"}:
                     continue

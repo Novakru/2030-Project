@@ -1,7 +1,7 @@
 """Validate a conversion against its own frozen sources and XDL contracts."""
 from pathlib import Path
 
-from .protocol.canonical_xdl import read_canonical_xdl
+from .protocol.xdl_document import compile_document, read_document
 from .protocol.crosscheck import crosscheck
 from .protocol.io import digest, read_json, read_jsonl
 from .protocol.xdl import canonical_hash, export_xdl
@@ -34,10 +34,10 @@ def verify_conversion(run_dir):
                 raise ValueError("XDL or semantic fingerprint differs")
             if (root / "xdl" / (record["id"] + ".xdl")).read_text(encoding="utf-8") != record["xdl"]:
                 raise ValueError("XDL file differs from record")
-            decoded = read_canonical_xdl(record["xdl"])
-            for key in ("steps", "hardware", "reagents", "normalization", "operation_definitions", "temporal_relations"):
-                if decoded.get(key) != record.get(key):
-                    raise ValueError("XDL roundtrip differs: " + key)
+            document = compile_document(record)
+            if document["extensions"] != record["xdl_extensions"] or document["bindings"] != record["xdl_bindings"]:
+                raise ValueError("XDL sidecar differs")
+            read_document(record["xdl"], extensions=record["xdl_extensions"])
         except (ValueError, KeyError, TypeError) as error:
             issues.append({"record_id": record.get("id"), "error": str(error)})
     attempted = [r["raw_id"] for r in records] + [f["raw_id"] for f in failures]

@@ -91,7 +91,10 @@ class Registry:
             for citation in evidence:
                 validate_span(citation, sources)
             action = change.get("action")
-            if action in {"admit_canonical_operation", "map_canonical_expression"}:
+            if action in {"admit_equipment_subtype", "map_equipment_alias", "admit_equipment_substitution"}:
+                from .equipment_evolution import evolve_equipment
+                evolve_equipment(next_snapshot, change)
+            elif action in {"admit_canonical_operation", "map_canonical_expression"}:
                 from .vocabulary import evolve_canonical
                 evolve_canonical(next_snapshot, change)
             elif action == "observe_device":

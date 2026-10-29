@@ -19,6 +19,9 @@ def _normalize(text):
 
 def _after_alias(text):
     text = text.lstrip()
+    if text.startswith(":"):
+        # Explicit source labels such as reagent (1a: 2.0 g, 14 mmol).
+        return text[1:].split(")", 1)[0]
     if text.startswith("("):
         depth = 0
         for i, character in enumerate(text):
@@ -29,6 +32,13 @@ def _after_alias(text):
     # Only an adjacent quantity is accepted. Do not borrow the next reagent's dose.
     match = re.match(rf"^({NUMBER}\s*{UNIT})(?!\w)", text, re.I)
     return match[0] if match else ""
+
+
+def explicit_alias(evidence, reagent, alias):
+    """Different names align only when the source explicitly declares the label."""
+    if not isinstance(reagent, str) or not isinstance(alias, str):
+        return False
+    return reagent == alias or bool(re.search(re.escape(reagent) + r"\s*\(\s*" + re.escape(alias) + r"\s*:", evidence))
 
 
 def local_measurements(evidence, alias):

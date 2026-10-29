@@ -106,6 +106,12 @@ def _mapping(protocol, step, definitions, mappings, operations):
     source_name = step.get("op", "")
     trace = step.get("meta", {}).get("source_expression", {})
     if trace:
+        contract = operations.get(trace.get("canonical_id"), {})
+        if (contract and trace.get("expression") == contract.get("name")
+                and trace.get("canonical_contract_sha256") == semantic_contract_hash(contract)
+                and source_name == trace.get("internal_operation")
+                and source_name == "Mapped" + contract["name"]):
+            return {"id": trace["mapping_id"], "operation_id": trace["canonical_id"], "classification": "canonical"}
         contextual = {**step, "meta": {**step.get("meta", {}), "object_role": trace.get("object_role")}}
         matching = [rule for rule in mappings.get("aliases", []) if rule.get("id") == trace.get("mapping_id")
                     and _text(trace.get("expression")) in {_text(word) for word in rule.get("expressions", [])}
@@ -220,6 +226,8 @@ def _unit_conversion(value, conversion, specification):
     if not isinstance(value, dict) or not isinstance(value.get("value"), (int, float)) or isinstance(value["value"], bool):
         return conversion
     unit = value.get("unit", specification.get("unit"))
+    if unit == "g" and specification.get("dimension") not in {None, "mass"}:
+        return conversion  # Relative centrifugal force is not a mass conversion.
     if "scale" in conversion or "offset" in conversion or unit not in _UNITS:
         return conversion
     target, scale = _UNITS[unit]

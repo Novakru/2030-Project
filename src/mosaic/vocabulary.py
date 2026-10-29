@@ -44,6 +44,21 @@ def evolve_canonical(snapshot, change):
         raise ValueError("An existing mapping ID cannot be silently overwritten")
     if not known:
         mappings["aliases"].append(mapping)
+    # Bind new source contract versions explicitly. A familiar spelling alone
+    # cannot override an older contract-specific migration.
+    for definition in change.get("source_contracts", []):
+        from .protocol.extensions import normalize_definition
+        definition = normalize_definition(definition["name"], definition)
+        if definition["semantic_sha256"] not in snapshot.get("source_operation_contracts", {}):
+            raise ValueError("Mapping cites an unobserved source contract")
+        if definition["name"] not in mapping["expressions"]:
+            raise ValueError("Contract mapping must explicitly include its source expression")
+        exact = {key: copy.deepcopy(value) for key, value in mapping.items() if key not in {"id", "expressions", "context"}}
+        exact.update(legacy_name=definition["name"], classification=exact.get("classification", "parameter_variant"))
+        previous = mappings.setdefault("contracts", {}).get(definition["semantic_sha256"])
+        if previous and previous != exact:
+            raise ValueError("A source contract already has a different semantic mapping")
+        mappings["contracts"][definition["semantic_sha256"]] = exact
     # Witnesses exercise the same deterministic module used by extraction.
     # This certifies representation roundtrip only; scientific semantics remain
     # silver and visible to human review.

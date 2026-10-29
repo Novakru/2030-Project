@@ -6,8 +6,8 @@ import pytest
 from lxml import etree
 
 from mosaic.protocol.extensions import (
-    MISSING_MARKERS, NS, PROFILE, definition_semantic_hash, export_extended_xdl,
-    normalize_definition, read_extended_xdl, validate_extended_xdl,
+    MISSING_MARKERS, PROFILE, definition_semantic_hash,
+    normalize_definition,
     validate_extension_step,
 )
 from mosaic.protocol.xdl import canonical_hash, export_xdl, validate_xdl
@@ -47,13 +47,6 @@ def protocol():
         "reagents": [{"id": "r001", "name": "water", "smiles": None}],
         "context": {},
     }
-
-
-def test_xml_bytes_are_stable_after_database_json_key_canonicalization():
-    original = protocol()
-    original["context"] = {"z_last": True, "a_first": {"z": 3, "a": 1}}
-    reloaded = json.loads(json.dumps(original, sort_keys=True))
-    assert export_extended_xdl(original).encode("utf-8") == export_extended_xdl(reloaded).encode("utf-8")
 
 
 def test_automatic_contract_admission_is_separate_from_execution():
@@ -172,87 +165,6 @@ def test_bool_requires_an_explicit_boolean_instead_of_inventing_a_condition():
     candidate["parameters"]["enabled"]["evidence"] = "under vacuum"
     with pytest.raises(ValueError, match="Boolean"):
         validate_extension_step(candidate, contract, "under vacuum")
-
-
-def test_extended_xdl_roundtrip_is_lossless_and_self_describing():
-    record = protocol()
-    record["initial_contents"] = {"reactor": [{"reagent": "r001", "amount": None}]}
-    record["context"] = {"pressure_control": "SEALED"}
-    record["representation_scope"] = "source text operations"
-    xml = export_xdl(record)
-    root = etree.fromstring(xml.encode())
-    assert root.tag == "Synthesis"
-    assert root.get("{" + NS + "}profile") == PROFILE
-    assert [child.tag for child in root] == ["Metadata", "Hardware", "Reagents", "{" + NS + "}OperationDefinitions", "Procedure"]
-    assert "__QUALITATIVE__" in xml and "overnight" in xml and "phase_washed" in xml
-    assert "initial_contents" in xml and "SEALED" in xml and "source text operations" in xml
-    assert read_extended_xdl(xml) == {"steps": record["steps"], "operation_definitions": record["operation_definitions"]}
-    assert validate_xdl(xml) and validate_extended_xdl(xml)
-    assert "duration_s" not in record["steps"][1]
-
-
-def test_xdl_validation_checks_representation_without_rejecting_negative_source_changes():
-    record = protocol()
-    record["steps"][0]["parameters"]["amount"]["value"] = 500
-    assert validate_xdl(export_xdl(record))
-    with pytest.raises(ValueError, match="Numeric"):
-        validate_extension_step(record["steps"][0], record["operation_definitions"]["Wash"], SOURCE)
-
-
-def test_normalize_does_not_change_raw_definitions_during_xml_roundtrip():
-    record = protocol()
-    record["operation_definitions"]["Wash"] = definition()
-    restored = read_extended_xdl(export_extended_xdl(record))
-    assert restored["operation_definitions"] == record["operation_definitions"]
-
-
-@pytest.mark.parametrize("alter", [
-    lambda root: root.set("unsafe", "true"),
-    lambda root: root.set("{" + NS + "}profile", "other-profile"),
-    lambda root: root.remove(root.find("Hardware")),
-    lambda root: etree.SubElement(root.find("Procedure"), "RunPython", code="arbitrary"),
-    lambda root: root.find("Procedure")[0].set("operation", "DryPhase"),
-    lambda root: root.find("Procedure")[0].append(etree.Element("{" + NS + "}Execute")),
-    lambda root: root.find("{" + NS + "}OperationDefinitions")[0].set("semantic_sha256", "fake"),
-    lambda root: root.find("Procedure").append(copy.deepcopy(root.find("Procedure")[0])),
-    lambda root: root.find("Procedure")[0][0].append(copy.deepcopy(root.find("Procedure")[0][0][0])),
-])
-def test_extended_xml_rejects_unknown_grammar_tampered_contracts_and_duplicates(alter):
-    root = etree.fromstring(export_extended_xdl(protocol()).encode())
-    alter(root)
-    with pytest.raises(ValueError):
-        validate_extended_xdl(etree.tostring(root, encoding="unicode"))
-
-
-def test_missing_or_unknown_profile_cannot_bypass_mosaic_validation():
-    xml = export_extended_xdl(protocol())
-    root = etree.fromstring(xml.encode())
-    del root.attrib["{" + NS + "}profile"]
-    with pytest.raises(ValueError, match="profile"):
-        validate_xdl(etree.tostring(root, encoding="unicode"))
-    with pytest.raises(ValueError, match="DOCTYPE"):
-        validate_xdl('<!DOCTYPE Synthesis [<!ENTITY e SYSTEM "file:///secret">]>' + xml)
-    candidate = protocol()
-    candidate["xdl_profile"] = "mosaic-xdl/unimplemented"
-    with pytest.raises(ValueError, match="Unknown MOSAIC XDL profile"):
-        export_xdl(candidate)
-    candidate.pop("xdl_profile")
-    with pytest.raises(ValueError, match="profile"):
-        export_xdl(candidate)
-
-
-def test_core_missing_parameter_cannot_coexist_with_an_invented_numeric_default():
-    record = protocol()
-    record["steps"][1]["duration_s"] = 43200
-    with pytest.raises(ValueError, match="both known and missing"):
-        export_xdl(record)
-
-
-def test_unknown_extended_operation_needs_an_embedded_definition():
-    record = protocol()
-    record["operation_definitions"] = {}
-    with pytest.raises(ValueError, match="no embedded contract"):
-        export_xdl(record)
 
 
 def test_extended_canonical_hash_ignores_evidence_and_retains_unknowns_and_contracts():

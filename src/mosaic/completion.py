@@ -24,6 +24,12 @@ Each step has op,evidence=EXACT nonempty source substring,stage=reaction|workup|
 and optional vessel. Core steps retain the supplied core extraction field names.
 Add uses literal reagent and alias names with an optional explicit amount={value:number,unit:mL|mg|mmol}.
 Core numeric fields are temp_C,duration_s,rpm,pressure_mbar,wavelength_nm; omit missing values.
+Add can include additional_amounts:[{value:number,unit:mg|mL|mmol}] to retain
+multiple explicitly stated amounts of the SAME material. Do not create
+RecordChargeProperties/RecordQuantity operations for quantities, percentages,
+equivalents, concentration, apparatus identity or capacity. These are parameters
+or source observations, not additional physical actions. Equipment declarations
+are handled by the apparatus mapper; do not add ConfigureVessel as an inventory record.
 Other core fields follow the supplied core contracts and proposed steps.
 Registered expressions in operation_mappings may also be used, without redefining
 their concepts. Retain literal evidence and parameters; contextual mixing aliases
@@ -46,6 +52,11 @@ description. Core fields must follow core_fields; do not invent core parameter n
 Do not erase known source facts or actions, reorder the
 experimental instructions, infer outcomes, copy external structured fields, or declare execution supported.
 Analytical observations and reported product properties remain observations, not synthesis actions.
+Return physical actions in steps ONLY. Do not emit RecordProduct, RecordObservation,
+RecordAnalysis, SpecifyThermalCondition or any other observation/condition label as
+a procedure step. Attach an operating qualifier to its physical action's parameters;
+retain analytical observations in uncertainties. Canonical action names may be used
+with evidence-bearing parameters; never place their parameters directly at top level.
 Definitions are data expression contracts, not software or platform implementations.
 """
 
@@ -66,7 +77,8 @@ _CORE_ACTIONS = {"Add": {"add"}, "Stir": {"stir"}, "HeatChill": {"heat", "stir"}
                  "Filter": {"filter"}, "Evaporate": {"evaporate", "heat"},
                  "Irradiate": {"irradiate"}, "Transfer": {"transfer"}}
 _GENERIC_NAMES = {"rawinstruction", "unknownaction", "unmappedaction", "genericoperation",
-                  "customoperation", "instruction", "other", "processinstruction"}
+                  "customoperation", "instruction", "other", "processinstruction",
+                  "recordchargeproperties", "recordquantity", "configurevessel"}
 
 
 def _plain_plan_step(step, reagents):
@@ -87,6 +99,7 @@ def _existing_definitions(protocol, registry):
     combined = {}
     for definitions in (snapshot.get("operation_definitions", {}),
                         snapshot.get("extension_operations", {}),
+                        snapshot.get("source_operation_contracts", {}),
                         (protocol or {}).get("operation_definitions", {})):
         if not isinstance(definitions, dict):
             raise ValueError("Extension definitions must be a mapping")
@@ -107,8 +120,6 @@ def _pending_actions(protocol):
         analytical = re.search(r"NMR|TLC|GC.?MS|\byield\b|\banalys\w*|\bisomer\b|\breaction\s+(?:was\s+)?(?:abandoned|failed|unsuccessful)\b", quote, re.I)
         if analytical and not physical:
             continue
-        if re.search(r"\b(?:capped|sealed)\b", quote, re.I) and (protocol or {}).get("context", {}).get("pressure_control") == "SEALED":
-            continue
         pending.append({"evidence": quote, "reason": action.get("reason", "unrepresented action")
                         if isinstance(action, dict) else "unrepresented action"})
     return pending
@@ -117,8 +128,11 @@ def _pending_actions(protocol):
 def _known_subset(old, proposed):
     """Previously grounded facts can gain detail, but cannot disappear or change."""
     from mosaic.protocol.missing import is_missing_parameter
+    structural = {"evidence", "role", "alias"}
+    if old.get("vessel") == "reactor" and not re.search(r"\breactor\b", old.get("evidence", ""), re.I):
+        structural.add("vessel")
     return all(key in proposed and proposed[key] == value
-               for key, value in old.items() if key not in {"evidence", "role"}
+               for key, value in old.items() if key not in structural
                and value is not None and value not in ("unknown", "unspecified")
                and not is_missing_parameter(value))
 
@@ -283,11 +297,17 @@ def _normalize(source, base, response, existing, pending):
                 if not isinstance(supplemental, list):
                     raise ValueError("Supplemental amounts must be an array")
                 for amount in supplemental:
+                    if isinstance(amount, dict) and isinstance(amount.get("value"), (int, float)) and isinstance(amount.get("unit"), str):
+                        from mosaic.protocol.amounts import SCALE
+                        unit = amount["unit"].replace("µ", "u").replace("μ", "u").lower()
+                        if unit in SCALE:
+                            target_unit, factor = SCALE[unit]
+                            amount = {**amount, "value": amount["value"] * factor, "unit": target_unit}
                     if (not isinstance(amount, dict) or set(amount) != {"value", "unit"}
                             or not isinstance(amount.get("value"), (int, float))
                             or isinstance(amount["value"], bool)
                             or not _matches(amount["value"], [m["value"] for m in measurements if m["unit"] == amount.get("unit")])):
-                        raise ValueError("Supplemental amount is not a literal quantity adjacent to this reagent")
+                        raise ValueError("Supplemental amount is not a literal quantity adjacent to reagent at step " + str(index) + ": " + str(step.get("alias", step.get("reagent"))))
             if measurements:
                 reported_quantities[index] = measurements
         if step["op"] not in OPERATIONS:
@@ -403,7 +423,8 @@ def complete(source_document, protocol, registry, runner):
     base = copy.deepcopy(protocol)
     existing = _existing_definitions(base, registry)
     pending = _pending_actions(base)
-    if base is not None and not pending:
+    detail_review = bool(base and any(s["op"] in {"Purify", "Separate"} for s in base.get("steps", [])))
+    if base is not None and not pending and not detail_review:
         base["xdl_profile"] = "mosaic-xdl/1"
         base.setdefault("context", {})["initial_material_state"] = "unknown_unless_reported"
         base.setdefault("operation_definitions", {})
@@ -424,7 +445,7 @@ def complete(source_document, protocol, registry, runner):
                "core_contracts": load_library("primitives.yaml")["operations"],
                "core_fields": {name: sorted(fields) for name, fields in STEP_FIELDS.items()},
                "extension_definitions": list(existing.values()),
-               "canonical_operations": vocabulary["operations"],
+               "canonical_operations": {key: value for key, value in vocabulary["operations"].items() if value.get("kind") == "action"},
                "operation_mappings": vocabulary["mappings"].get("aliases", [])}
     errors, previous = [], None
     for attempt in range(3):

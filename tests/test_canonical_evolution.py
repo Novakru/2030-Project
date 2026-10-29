@@ -73,3 +73,26 @@ def test_a_familiar_display_name_does_not_justify_a_new_concept():
     proposal["contract"]["name"] = "Mix"
     with pytest.raises(ValueError, match="existing canonical ID"):
         apply(Registry(), proposal)
+
+
+def test_new_source_contract_for_an_existing_name_needs_exact_mapping_and_real_witness():
+    from mosaic.protocol.extensions import normalize_definition
+    from mosaic.protocol.normalization import analysis_protocol
+    text = "Dry the solid under vacuum."
+    definition = normalize_definition("Dry", {"description": "Remove solvent from isolated material.",
+        "parameters": {"condition": {"type": "string", "required": True}}, "effects": ["solvent_removed"]})
+    evidence = [SourceSpan.locate("dry", text, text).to_dict()]
+    registry = Registry()
+    registry = registry.evolve([{"action": "admit_extension_operation", "name": "Dry", "definition": definition,
+        "evidence": evidence}], expected_revision=registry.revision, sources={"dry": text})
+    original = {"steps": [{"id": "s1", "op": "Dry", "parameters": {"condition": {"value": "vacuum", "evidence": text}}}],
+                "operation_definitions": {"Dry": definition}}
+    mapping = {"id": "alias.dry_condition", "expressions": ["Dry"], "operation_id": "op.dry", "parameter_map": {}}
+    change = {"action": "map_canonical_expression", "mapping": mapping, "source_contracts": [definition],
+              "witnesses": [original], "evidence": evidence}
+    evolved = registry.evolve([change], expected_revision=registry.revision, sources={"dry": text})
+    result = normalize_protocol(original, vocabulary={"operations": evolved.snapshot["canonical_operations"],
+                                                     "mappings": evolved.snapshot["operation_mappings"]})
+    assert not result["normalization"]["unresolved"]
+    assert analysis_protocol(result) == original
+    assert len(evolved.snapshot["canonical_operations"]) == len(registry.snapshot["canonical_operations"])

@@ -2,36 +2,20 @@
 from __future__ import annotations
 
 import copy
-from lxml import etree
 
 from .extensions import PROFILE
 from .io import digest, load_library
 
 
 def export_xdl(protocol):
-    from .canonical_xdl import PROFILE as CANONICAL, export_canonical_xdl
-    from .extensions import export_extended_xdl
-    profile = protocol.get("xdl_profile")
-    if profile == CANONICAL:
-        return export_canonical_xdl(protocol)
-    if profile == PROFILE:
-        return export_extended_xdl(protocol)
-    raise ValueError("Unknown MOSAIC XDL profile: " + str(profile))
+    from .xdl_document import compile_document
+    return compile_document(protocol)["xml"]
 
 
-def validate_xdl(xml):
-    from .canonical_xdl import PROFILE as CANONICAL, validate_canonical_xdl
-    from .extensions import NS, validate_extended_xdl
-    parser = etree.XMLParser(resolve_entities=False, no_network=True)
-    doc = etree.fromstring(xml.encode("utf-8"), parser)
-    if doc.getroottree().docinfo.doctype:
-        raise ValueError("DOCTYPE is not allowed")
-    profile = doc.get("{" + NS + "}profile")
-    if profile == CANONICAL:
-        return validate_canonical_xdl(xml)
-    if profile == PROFILE:
-        return validate_extended_xdl(xml)
-    raise ValueError("Unknown or missing MOSAIC XDL profile")
+def validate_xdl(xml, *, extensions=None):
+    from .xdl_document import read_document
+    read_document(xml, extensions=extensions)
+    return True
 
 
 def canonical_hash(protocol):

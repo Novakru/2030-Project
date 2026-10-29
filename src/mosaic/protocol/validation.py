@@ -4,7 +4,7 @@ import copy
 import re
 from .crosscheck import crosscheck
 from .extract import text_source
-from .xdl import PROFILE, bind_hardware, canonical_hash, export_xdl, validate_xdl
+from .xdl import PROFILE, bind_hardware, canonical_hash
 
 def annotate_dependencies(protocol):
     reagent_roles = {r["id"]: r.get("role") for r in protocol["reagents"]}
@@ -79,13 +79,10 @@ def prepare_protocol(protocol, raw, devices=None):
     from .missing import annotate_missing
     annotate_missing(protocol)
     protocol["xdl_profile"] = PROFILE
-    xml = export_xdl(protocol)
-    validate_xdl(xml)
-    protocol["xdl"] = xml
     protocol["canonical_sha1"] = canonical_hash(protocol)
     protocol["quality"] = {"tier": "silver", "source_grounded": True, "source_input_contract": "text-only/1",
                            "outcome_annotation_scope": "reference_metadata_only",
-                           "xdl_profile": protocol.get("xdl_profile", PROFILE), "xdl_profile_schema_passed": True,
+                           "xdl_profile": protocol.get("xdl_profile", PROFILE), "xdl_profile_schema_passed": False,
                            "unknown_constraints": [], "manual_review": "pending",
                            "hardware_verification": "pending", "full_feasibility_certified": False}
     gaps = [{"step_id": step["id"], "parameter": key, **value}

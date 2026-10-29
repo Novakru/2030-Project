@@ -1,0 +1,27 @@
+schema: mosaic.xdl-step-catalog/1
+source: https://croningroup.gitlab.io/chemputer/xdl/standard/full_steps_specification.html
+scope: XML syntax and declared properties only; platform execution is not certified.
+steps:
+  Add: {required: [vessel, reagent], properties: [vessel, reagent, volume, mass, amount, dropwise, time, stir, stir_speed, viscous, purpose]}
+  Transfer: {required: [from_vessel, to_vessel], properties: [from_vessel, to_vessel, volume, amount, time, viscous, rinsing_solvent, rinsing_volume, rinsing_repeats, solid]}
+  Stir: {required: [vessel, time], properties: [vessel, time, stir_speed, continue_stirring, purpose]}
+  StartStir: {required: [vessel], properties: [vessel, stir_speed, purpose]}
+  StopStir: {required: [vessel], properties: [vessel]}
+  HeatChill: {required: [vessel, temp, time], properties: [vessel, temp, time, stir, stir_speed, purpose]}
+  HeatChillToTemp: {required: [vessel, temp], properties: [vessel, temp, active, continue_heatchill, stir, stir_speed, purpose]}
+  StartHeatChill: {required: [vessel, temp], properties: [vessel, temp, purpose]}
+  StopHeatChill: {required: [vessel], properties: [vessel]}
+  Wait: {required: [time], properties: [time]}
+  Purge: {required: [vessel], properties: [vessel, gas, time, pressure, flow_rate]}
+  EvacuateAndRefill: {required: [vessel], properties: [vessel, gas, repeats]}
+  Filter: {required: [vessel], properties: [vessel, filtrate_vessel, stir, stir_speed, temp, continue_heatchill, volume]}
+  FilterThrough: {required: [from_vessel, to_vessel, through], properties: [from_vessel, to_vessel, through, eluting_solvent, eluting_volume, eluting_repeats, residence_time]}
+  Separate: {required: [purpose, product_phase, from_vessel, separation_vessel, to_vessel], properties: [purpose, product_phase, from_vessel, separation_vessel, to_vessel, waste_phase_to_vessel, solvent, solvent_volume, through, repeats, stir_time, stir_speed, settling_time]}
+  Dry: {required: [vessel], properties: [vessel, time, pressure, temp, continue_heatchill]}
+  Evaporate: {required: [vessel], properties: [vessel, time, pressure, temp, stir_speed]}
+  Irradiate: {required: [vessel, time], properties: [vessel, time, wavelength, color, temp, stir, stir_speed, LED_power, LED_intensity, cooling_power]}
+  RunColumn: {required: [from_vessel, to_vessel, column], properties: [from_vessel, to_vessel, column]}
+  Dissolve: {required: [vessel, solvent], properties: [vessel, solvent, volume, amount, temp, time, stir_speed]}
+  WashSolid: {required: [vessel, solvent, volume], properties: [vessel, solvent, volume, filtrate_vessel, temp, stir, stir_speed, time, repeats]}
+  Crystallize: {required: [vessel], properties: [vessel, ramp_time, ramp_temp]}
+  Precipitate: {required: [vessel], properties: [vessel, temp, time, stir_speed, reagent, volume, amount, add_time]}

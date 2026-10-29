@@ -19,12 +19,14 @@ class ExtendedChemistryDomain(ChemistryDomain):
             raise ValueError("Structured reconstruction is disabled; extraction requires procedure text")
         notes, protocol = {"domain": self.name}, None
         try:
-            extracted = super().extract(raw, runner, use_model=True, critique=critique, mapping=mapping)
+            extracted = super().extract(raw, runner, use_model=True, critique=critique, mapping=False)
             protocol, notes = extracted["protocol"], extracted["notes"]
         except ValueError as error:
             # A failed core-only expression is useful diagnostic context, never
             # a reason to discard a physical action from the extended language.
             notes["core_expression_error"] = str(error)[:1000]
+        if mapping:
+            self.map_apparatus(raw, runner, notes)
         result = complete(raw, protocol, self.registry(), runner)
         notes["completion"] = result["notes"]
         return {"protocol": result["protocol"], "notes": notes, "raw_id": raw["id"]}
@@ -33,6 +35,8 @@ class ExtendedChemistryDomain(ChemistryDomain):
         protocol = copy.deepcopy(extracted["protocol"])
         protocol["id"] = "mosaic_pos_" + digest({"raw": raw["raw_sha256"], "protocol": protocol, "run": run_id})[:20]
         prepared = prepare_protocol(protocol, raw)
+        from .apparatus_mapping import bind_mentions
+        prepared = bind_mentions(prepared, extracted["notes"].get("apparatus_proposals", []), raw, self.registry())
         from .canonical import finalize_protocol, registry_vocabulary
         prepared = finalize_protocol(prepared, vocabulary=registry_vocabulary(self.registry()))
         prepared["mosaic"] = {"schema": "mosaic.ir/2", "run_id": run_id, **extracted["notes"]}

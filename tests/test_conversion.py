@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 
 from mosaic import ConversionSpec, Runtime, convert, resume
-from mosaic.protocol.canonical_xdl import read_canonical_xdl
+from mosaic.protocol.xdl_document import read_document
 from mosaic.protocol.io import read_json, read_jsonl
 from mosaic.sources import load_text_sources
 from mosaic.verification import verify_conversion
@@ -54,7 +54,7 @@ def test_conversion_grows_expression_preserves_gaps_and_replays_without_http(tmp
     assert [step["op"] for step in record["steps"]] == ["Add", "Mix", "Dry"]
     assert record["source_text"] == TEXT
     assert "__NOT_REPORTED__" in record["xdl"] and "__QUALITATIVE__" in record["xdl"]
-    assert read_canonical_xdl(record["xdl"])["steps"] == record["steps"]
+    assert [s["op"] for s in read_document(record["xdl"], extensions=record["xdl_extensions"])["steps"]] == ["Add", "Stir", "Dry"]
     assert verify_conversion(root)["passed"]
     before = {p.relative_to(root): p.read_bytes() for p in root.rglob("*") if p.is_file() and "artifacts" not in p.parts and p.name != "manifest.json"}
     monkeypatch.setattr("requests.sessions.Session.request", lambda *a, **k: pytest.fail("HTTP during offline replay"))

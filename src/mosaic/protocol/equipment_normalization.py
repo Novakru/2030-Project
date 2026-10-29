@@ -97,7 +97,11 @@ def _classify(node, catalog, mappings):
 def _normalize_node(node, catalog, mappings):
     output = copy.deepcopy(node)
     if output.get("normalization", {}).get("schema") == SCHEMA:
-        return output
+        recipe = output["normalization"]
+        if recipe.get("status") != "unresolved" or recipe.get("canonical_identity") != {field: output.get(field) for field in _IDENTITY}:
+            return output
+        output = analysis_node(output, catalog=catalog)
+        output.pop("normalization", None)
     if not isinstance(output.get("configuration", {}), dict):
         raise ValueError("Equipment configuration must be an object")
     original_names = {field: copy.deepcopy(output[field]) for field in _NAMES if field in output}
