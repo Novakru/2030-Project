@@ -3,8 +3,7 @@ import copy
 
 import pytest
 
-from protocol_risk.missing import annotate_missing, is_missing_parameter, missing_parameter
-from protocol_risk.symbolic import evaluate
+from mosaic.protocol.missing import annotate_missing, is_missing_parameter, missing_parameter
 
 
 def protocol(*steps, text=None):
@@ -30,16 +29,6 @@ def addition(value=None, *, id="add", vessel="reactor"):
     if value is not None:
         fields["amount"] = {"value": value, "unit": "mL"}
     return step("Add", "Ethanol was added." if value is None else f"ethanol ({value} mL) was added.", **fields)
-
-
-def test_unreported_initial_contents_are_unknown_rather_than_proven_empty():
-    p = protocol(step("Transfer", "The stock was transferred.", from_vessel="reactor", to_vessel="product",
-                      amount={"value": 1, "unit": "mL"}))
-    assert "D1" in evaluate(p).risks
-    p["context"] = {"initial_material_state": "unknown_unless_reported"}
-    result = evaluate(p)
-    assert "D1" not in result.risks
-    assert any(item["reason"] == "initial_material_state_not_reported" for item in result.unknowns)
 
 
 def test_missing_factory_validates_status_and_literal_qualifier():
@@ -123,18 +112,6 @@ def test_missing_parameter_evidence_must_belong_to_the_record():
         annotate_missing(protocol(step("Wait", "Waited overnight."), text="A different procedure."))
 
 
-def test_known_values_are_unchanged_and_cannot_be_overridden_by_gap_entries():
-    record = protocol(addition(0))
-    before = copy.deepcopy(record)
-    annotate_missing(record)
-    assert record == before
-    assert evaluate(record).risks == ["D4"]
-    record["steps"][0]["missing_parameters"] = {"amount": missing_parameter(record["source_text"])}
-    with pytest.raises(ValueError, match="known amount"):
-        annotate_missing(record)
-    assert "D4" in evaluate(record).risks
-
-
 def test_extended_operation_parameter_envelopes_are_not_duplicated():
     record = protocol(step("Dry", "Dried overnight.", parameters={
         "duration_s": missing_parameter("Dried overnight.", "qualitative", "overnight")
@@ -142,65 +119,3 @@ def test_extended_operation_parameter_envelopes_are_not_duplicated():
     before = copy.deepcopy(record)
     annotate_missing(record)
     assert record == before
-
-
-def test_unquantified_addition_yields_unknown_quantity_and_not_d4():
-    record = annotate_missing(protocol(addition()))
-    result = evaluate(record)
-    assert result.risks == []
-    assert any(item.get("parameter") == "amount" for item in result.unknowns)
-    assert any(item["rule"] == "A1" and item["reason"] == "inventory_quantity_unknown" for item in result.unknowns)
-
-
-def test_known_overfill_is_still_proved_with_another_unquantified_addition():
-    result = evaluate(annotate_missing(protocol(addition(id="unknown"), addition(11, id="known"))))
-    assert result.risks == ["A1"]
-    assert any(item["rule_id"] == "A1.capacity" for item in result.violations)
-
-
-def test_transfer_without_quantity_propagates_unknown_to_both_vessels():
-    record = protocol(addition(8),
-        step("Transfer", "Transferred the solution.", id="move_unknown", from_vessel="reactor", to_vessel="product"),
-        step("Transfer", "Transferred 6 mL.", id="move_known", from_vessel="reactor", to_vessel="product", amount={"value": 6, "unit": "mL"}),
-        step("Stir", "Stirred for 1 min.", id="mix", vessel="product", duration_s=60))
-    result = evaluate(annotate_missing(record))
-    assert result.risks == []
-    assert any(item["reason"] == "transfer_quantity_unknown" for item in result.unknowns)
-    assert any(item["rule"] == "A1" and item.get("step_id") == "mix" for item in result.unknowns)
-
-
-@pytest.mark.parametrize("fields", [{}, {"from_vessel": "reactor"}, {"to_vessel": "product"}])
-def test_transfer_missing_references_abstains_without_key_error_or_d3(fields):
-    result = evaluate(annotate_missing(protocol(step("Transfer", "Transferred the solution.", **fields))))
-    assert result.risks == []
-    assert any(item.get("parameter") in ("from_vessel", "to_vessel") for item in result.unknowns)
-
-
-def test_an_explicit_undeclared_transfer_vessel_still_triggers_d3():
-    result = evaluate(protocol(step("Transfer", "Transferred the solution.", from_vessel="not_declared", to_vessel="product")))
-    assert result.risks == ["D3"]
-
-
-def test_opaque_extension_invalidates_state_instead_of_behaving_as_a_noop():
-    record = protocol(addition(8), step("Wash", "Washed the contents.", id="wash", parameters={"vessel": {"value": "reactor", "evidence": "contents"}}),
-                      addition(4, id="new_add"), step("Stir", "Stirred for 1 min.", id="mix", duration_s=60))
-    record["operation_definitions"] = {"Wash": {"effects": ["phase_composition_changed"]}}
-    result = evaluate(record)
-    assert result.risks == []
-    assert any(item["reason"] == "extension_effect_semantics_unknown" and item["vessels"] == ["reactor"] for item in result.unknowns)
-    assert any(item["rule"] == "A1" and item.get("step_id") == "mix" for item in result.unknowns)
-
-
-def test_opaque_extension_keeps_previously_proved_violations():
-    record = protocol(addition(11), step("Wash", "Washed the contents.", id="wash", vessel="reactor"))
-    record["operation_definitions"] = {"Wash": {}}
-    result = evaluate(record)
-    assert result.risks == ["A1"]
-    assert result.violations[0]["values"]["step_id"] == "add"
-
-
-@pytest.mark.parametrize("value", [False, float("nan"), float("inf"), "__NOT_REPORTED__"])
-def test_invalid_reported_quantities_do_not_turn_into_unknown_source_gaps(value):
-    record = protocol(addition(1))
-    record["steps"][0]["amount"]["value"] = value
-    assert evaluate(record).risks == ["D4"]

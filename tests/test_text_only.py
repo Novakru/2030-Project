@@ -5,10 +5,10 @@ import json
 import pytest
 
 from mosaic.chemistry import ChemistryDomain
-from protocol_risk.extract import build_ir, text_plan, text_source, validate_evidence, uncovered_actions
-from protocol_risk.crosscheck import quantities_in_text
-from protocol_risk.amounts import local_measurements
-from protocol_risk.validation import prepare_protocol
+from mosaic.protocol.extract import build_ir, text_plan, text_source, validate_evidence, uncovered_actions
+from mosaic.protocol.crosscheck import quantities_in_text
+from mosaic.protocol.amounts import local_measurements
+from mosaic.protocol.validation import prepare_protocol
 
 
 TEXT = "A 5 mL microreactor was charged with water (1 mL). Heat at 20 C for 1 hour."
@@ -53,7 +53,7 @@ class Runner:
         return {"data": data}
 
 
-def test_admitted_library_composition_is_used_by_real_domain_interface():
+def test_admitted_library_composition_is_used_by_source_extractor():
     from tests.test_mosaic_representation import SOURCE, admitted_registry, plan
 
     runner = Runner()
@@ -66,10 +66,11 @@ def test_admitted_library_composition_is_used_by_real_domain_interface():
     raw = {"id": "literal_composition", "procedure": SOURCE, "raw_sha256": "test-source",
            "source": {"db": "TEXT", "url": "https://example.invalid/literal"}}
     extracted = domain.extract(raw, runner)
-    prepared = domain.validate(extracted, raw, "test-run")
+    prepared = prepare_protocol(extracted["protocol"], raw)
     assert "DoseThenStir" in runner.client_prompt["representations"]["macros"]
     assert [step["op"] for step in prepared["steps"]] == ["Add", "Stir"]
-    assert 'time="60 s"' in prepared["xdl"] and "DoseThenStir" not in prepared["xdl"]
+    assert prepared["steps"][1]["duration_s"] == 60
+    assert "DoseThenStir" not in prepared["xdl"]
 
 
 def test_bounded_repair_includes_failed_proposal_without_reference_fields():
@@ -135,9 +136,8 @@ def test_removing_or_poisoning_ord_fields_cannot_change_operations_hardware_or_x
     for field in ("steps", "reagents", "context", "hardware", "xdl", "canonical_sha1"):
         assert prepared[0][field] == prepared[1][field] == prepared[2][field]
     assert prepared[0]["hardware"]["nodes"]["reactor"]["params"]["capacity_mL"] == 5
-    assert prepared[0]["crosscheck"]["reference_comparison"]["conflicts"]
+    assert prepared[0]["crosscheck"] == prepared[1]["crosscheck"] == prepared[2]["crosscheck"]
     assert not prepared[0]["crosscheck"]["conflicts"]
-    assert "source_reference_disagreement_requires_review" in prepared[0]["crosscheck"]["gold_blockers"]
     assert "inert_required" not in prepared[0]["context"]
 
 
@@ -145,7 +145,7 @@ def test_plain_text_needs_no_ord_metadata_or_outcome_to_produce_xdl():
     raw = {"id": "plain", "procedure": TEXT, "source": {"db": "TEXT", "url": "file:///experiment.txt"}}
     plan, _ = text_plan(raw, Client())
     prepared = prepare_protocol(build_ir(raw, plan, {}), raw)
-    assert "<Add" in prepared["xdl"] and "<HeatChill" in prepared["xdl"]
+    assert 'operation="Add"' in prepared["xdl"] and 'operation="HeatChill"' in prepared["xdl"]
     assert prepared["quality"]["source_input_contract"] == "text-only/1"
     assert "yield_percent" not in prepared
 
@@ -156,8 +156,8 @@ def test_unknown_text_quantity_is_never_borrowed_from_ord():
     plan = {"steps": [{"op": "Add", "reagent": "water", "evidence": "Add water."}]}
     protocol = build_ir(raw, plan, {})
     assert "amount" not in protocol["steps"][0]
-    with pytest.raises(ValueError, match="unknown source parameters"):
-        prepare_protocol(protocol, raw)
+    prepared = prepare_protocol(protocol, raw)
+    assert prepared["steps"][0]["missing_parameters"]["amount"]["marker"] == "__NOT_REPORTED__"
 
 
 def test_amount_cannot_be_borrowed_from_a_different_literal_reagent():
@@ -189,13 +189,6 @@ def test_omitted_physical_actions_are_retained_for_library_evolution():
         prepare_protocol(protocol, raw)
 
 
-def test_short_text_is_eligible_without_structured_fallback():
-    domain = ChemistryDomain()
-    assert domain.eligible({"procedure": "Add water (1 mL)."})
-    with pytest.raises(ValueError, match="Structured reconstruction is disabled"):
-        domain.extract(record(), Runner(), use_model=False)
-
-
 @pytest.mark.parametrize("text,dimension,value", [
     ("for 2 days", "duration_s", 172800), ("dose 200 nL", "mL", .0002),
     ("80 µL per well", "mL", .08), ("10 μg", "mg", .01),
@@ -216,12 +209,6 @@ def test_missing_action_quote_is_not_truncated_at_a_decimal_point():
     pending = uncovered_actions(text, {"steps": []})
     assert pending[0]["evidence"] == "The salt (1.98 mg) was added."
     assert pending[1]["evidence"] == "The product was dried for 0.5 hours."
-
-
-def test_microwave_vial_name_does_not_imply_microwave_irradiation():
-    domain = ChemistryDomain()
-    assert domain.eligible({"procedure": "Water (1 mL) was added to a microwave vial."})
-    assert not domain.eligible({"procedure": "Water (1 mL) was heated under microwave irradiation."})
 
 
 @pytest.mark.parametrize("article", ["a", "an"])

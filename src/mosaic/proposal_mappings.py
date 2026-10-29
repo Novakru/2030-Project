@@ -1,9 +1,9 @@
 """Resolve registered model expressions before the internal extraction grammar."""
 import copy
 
-from protocol_risk.extract import OPERATIONS, STEP_FIELDS
-from protocol_risk.io import load_library
-from protocol_risk.normalization import _context_matches, _convert, _unit_conversion
+from mosaic.protocol.extract import OPERATIONS, STEP_FIELDS
+from mosaic.protocol.io import load_library
+from mosaic.protocol.normalization import _context_matches, _convert, _unit_conversion
 
 _CORE = {"op.add": "Add", "op.mix": "Stir", "op.heat": "HeatChill", "op.cool": "HeatChill",
          "op.temperature": "HeatChill", "op.wait": "Wait", "op.transfer": "Transfer",

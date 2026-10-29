@@ -4,7 +4,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from typing import Any
 
-from protocol_risk.io import digest
+from mosaic.protocol.io import digest
 
 
 @dataclass(frozen=True)

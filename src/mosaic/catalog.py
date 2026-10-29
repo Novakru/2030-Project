@@ -1,7 +1,7 @@
 """Versioned operation inventory and conditional apparatus candidate groups."""
 from collections import Counter
 import copy
-from protocol_risk.io import digest, load_library
+from mosaic.protocol.io import digest, load_library
 from .equipment import check_substitution, classify_equipment, equipment_groups
 from .registry import minimum_cover
 
@@ -17,7 +17,7 @@ def _snapshot(registry):
 
 def equipment_inventory(parents, registry=None):
     """Describe families separately from profiles and evidence-scoped substitutions."""
-    from protocol_risk.normalization import analysis_protocol, is_normalized
+    from mosaic.protocol.normalization import analysis_protocol, is_normalized
     if parents and all(is_normalized(parent) for parent in parents):
         result = equipment_inventory([analysis_protocol(parent) for parent in parents], registry)
         nodes = {(p["id"], key): node for p in parents for key, node in p.get("hardware", {}).get("nodes", {}).items()}
@@ -28,7 +28,7 @@ def equipment_inventory(parents, registry=None):
         equipment_mappings = _snapshot(registry).get("equipment_mappings") or load_library("equipment_mappings.yaml")
         result["canonical_catalog"] = equipment
         result["mapping_library"] = "equipment_mappings.yaml"
-        from protocol_risk.equipment_normalization import conditional_substitutes
+        from mosaic.protocol.equipment_normalization import conditional_substitutes
         profiles = _snapshot(registry).get("devices", [])
         profiles = list(profiles.values()) if isinstance(profiles, dict) else profiles
         by_id = {profile["id"]: profile for profile in profiles}
@@ -105,7 +105,7 @@ def equipment_inventory(parents, registry=None):
 
 
 def atomic_inventory(positives, snapshots, registry=None):
-    from protocol_risk.normalization import is_normalized
+    from mosaic.protocol.normalization import is_normalized
     if positives and all(is_normalized(parent) for parent in positives):
         definitions = copy.deepcopy(_snapshot(registry).get("canonical_operations") or load_library("atomic_operations.yaml")["operations"])
         definitions.update({contract["id"]: contract for parent in positives for contract in parent.get("operation_definitions", {}).values()})
@@ -131,7 +131,7 @@ def atomic_inventory(positives, snapshots, registry=None):
         elsewhere = set().union(*(v for k, v in fields.items() if k != op))
         operations[op] = {"selected_steps": used[op], "context_only_steps": context_only[op],
             "snapshot_steps": extracted[op], "required": spec.get("required", []), "optional": spec.get("optional", []),
-            "fields_unique_in_current_registry": sorted(fields[op] - elsewhere), "risk_checks": spec.get("risks", []),
+            "fields_unique_in_current_registry": sorted(fields[op] - elsewhere),
             "state_distinction": spec.get("reason"), "export_mapping": spec.get("xdl_steps", []),
             "domain": spec.get("domain"), "status": spec.get("status"),
             "reduction_status": "retain_pending_lossless_proof" if used[op] else "defer_removal_broader_source_coverage_needed"}
@@ -143,7 +143,7 @@ def atomic_inventory(positives, snapshots, registry=None):
         missing = [key for key in spec.get("requires", []) if aliases.get(key, key) not in all_fields]
         macros[name] = {"expansion": spec["expansion"], "requires": spec.get("requires", []),
                        "parameters_without_primitive_field": missing, "status": "draft_not_proven_lossless",
-                       "gate": "Preserve source parameters, state effects, endpoints and apparatus context; replay risk checks before admission."}
+                       "gate": "Preserve source parameters, state effects, endpoints and apparatus context; verify source fidelity before admission."}
     return {"library_version": library.get("version", library.get("schema")), "registry_revision": digest(library),
             "candidate_operations": len(definitions),
             "selected_operations_used": sum(bool(used[op]) for op in definitions),

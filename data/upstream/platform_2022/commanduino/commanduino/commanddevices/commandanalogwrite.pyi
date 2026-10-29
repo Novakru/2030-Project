@@ -1,6 +1,0 @@
-from .commanddevice import CommandDevice
-
-class CommandAnalogWrite(CommandDevice):
-    def __init__(self): ...
-    def set_pwm_value(self, value: int) -> None: ...
-

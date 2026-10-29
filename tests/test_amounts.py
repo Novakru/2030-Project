@@ -1,6 +1,6 @@
 import pytest
 
-from protocol_risk.amounts import local_measurements, verify_amount
+from mosaic.protocol.amounts import local_measurements, verify_amount
 
 
 @pytest.mark.parametrize("evidence,alias,expected", [
@@ -17,10 +17,10 @@ def test_wrong_structured_amounts_are_rejected(value):
     assert verify_amount({"id": "r1"}, {"value": value, "unit": "mL"}, "THF (1 mL)", "THF")["status"] == "conflict"
 
 
-def test_mass_to_moles_uses_molecular_weight_and_reports_the_basis():
+def test_structure_metadata_cannot_supply_an_unreported_mole_quantity():
     result = verify_amount({"id": "r1", "smiles": "CCO"}, {"value": 1, "unit": "mmol"}, "ethanol (46.07 mg)", "ethanol")
-    assert result["status"] == "matched"
-    assert "molecular_weight" in result["comparable_quantities"][0]["basis"]
+    assert result["status"] == "unknown"
+    assert result["comparable_quantities"] == []
 
 
 @pytest.mark.parametrize("text,alias", [("catalysts (2 umol)", "catalysts"), ("THF (1 mL), later THF (2 mL)", "THF"), ("THF and water (1 mL)", "THF"), ("ligand (1.5 mol%)", "ligand"), ("sodium chloride (10-30 mg)", "sodium chloride")])
@@ -33,12 +33,13 @@ def test_conflicting_mass_and_moles_do_not_cherry_pick_the_matching_number():
     assert result["status"] == "conflict"
 
 
-def test_coarse_printed_moles_do_not_override_a_precise_consistent_mass():
+def test_coarse_moles_are_not_confirmed_by_inferred_molecular_weight():
     result = verify_amount({"id": "r", "smiles": "CCO"}, {"value": 0.025, "unit": "mmol"},
                            "ethanol (1.152 mg, 0.03 mmol)", "ethanol")
-    assert result["status"] == "matched"
-    assert not result["comparable_quantities"][1]["within_tolerance"]
-    assert result["comparable_quantities"][1]["compatible_with_printed_rounding"]
+    assert result["status"] == "unknown"
+    assert len(result["comparable_quantities"]) == 1
+    assert not result["comparable_quantities"][0]["within_tolerance"]
+    assert result["comparable_quantities"][0]["compatible_with_printed_rounding"]
 
 
 def test_coarse_printing_alone_is_unknown_instead_of_a_fabricated_confirmation():

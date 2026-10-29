@@ -2,14 +2,11 @@
 from __future__ import annotations
 
 import copy
-import re
 
 import jsonpatch
 from jsonpointer import JsonPointerException
 
-from protocol_risk.extract import build_ir, text_plan, text_source, validate_evidence
-from protocol_risk.io import digest
-from protocol_risk.validation import prepare_protocol, split_group
+from mosaic.protocol.extract import build_ir, text_plan, text_source, validate_evidence
 
 from .evidence import SourceSpan
 
@@ -39,7 +36,6 @@ These are source-grounded mapping proposals, not equipment certification. Do not
 
 class ChemistryDomain:
     name = "chemistry.batch/2"
-    allowed_special_conditions = set()
 
     def registry(self):
         from .registry import Registry
@@ -52,7 +48,7 @@ class ChemistryDomain:
 
     def curation_policy(self):
         from .evolution import CurationPolicy
-        from protocol_risk.io import load_library
+        from mosaic.protocol.io import load_library
         # A composition of implemented primitives; it adds no new atomic action.
         template = {"contract": {"parameters": {"vessel": "identifier", "reagent": "literal_name",
                      "amount": "quantity", "duration_s": "positive_time"},
@@ -69,31 +65,15 @@ class ChemistryDomain:
                 "equipment_inventory": equipment_inventory(parents, registry=registry_snapshot)}
 
     def library_paths(self):
-        from protocol_risk.io import ROOT
-        from .supplements import source_paths
-        return (sorted((ROOT / "libraries").glob("*.yaml")) + sorted((ROOT / "schemas").glob("*.xsd"))
-                + [ROOT / "requirements.lock.txt", ROOT / "pyproject.toml"] + source_paths())
+        from mosaic.protocol.io import ROOT
+        return (sorted((ROOT / "libraries").glob("*.yaml"))
+                + [ROOT / "requirements.lock.txt", ROOT / "pyproject.toml"])
 
-    def supplements(self, run_id, per_risk):
-        from .supplements import build_supplements
-        return build_supplements(run_id, per_risk)
-
-    def _scope(self, raw):
-        text = raw.get("procedure") or ""
-        patterns = {"flow": r"\b(?:continuous[- ]flow|flow reactor|microfluidic)\b",
-                    "electrochemistry": r"\b(?:electrochem\w*|electroly[sz]\w*)\b",
-                    "illumination": r"\b(?:irradiat\w*|photochem\w*|LED light)\b",
-                    "microwave": r"\b(?:microwaved|microwave[- ]assisted)\b|\bmicrowave\s+(?:irradiation|heating)\b|\b(?:under|via|using)\s+microwaves?\b(?!\s+(?:vial|tube|vessel))"}
-        unsupported = [key for key, pattern in patterns.items()
-                       if key not in self.allowed_special_conditions and re.search(pattern, text, re.I)]
-        if unsupported:
-            raise ValueError("Domain requires an extension for: " + ", ".join(unsupported))
 
     def extract(self, raw, runner, *, use_model=True, critique=True, mapping=True):
         if not use_model:
             raise ValueError("Structured reconstruction is disabled; extraction requires procedure text")
         raw = text_source(raw)
-        self._scope(raw)
         source_text = raw["procedure"]
         notes = {"domain": self.name, "findings": [], "apparatus_proposals": [], "evidence_spans": []}
         if use_model:
@@ -169,46 +149,3 @@ class ChemistryDomain:
                 except (ValueError, RuntimeError, KeyError, TypeError) as error:
                     notes["apparatus_unknowns"] = ["Mapping specialist proposal rejected: " + type(error).__name__]
         return {"protocol": protocol, "notes": notes, "raw_id": raw["id"]}
-
-    def validate(self, extracted, raw, run_id):
-        protocol = copy.deepcopy(extracted["protocol"])
-        protocol["id"] = "mosaic_pos_" + digest({"raw": raw["raw_sha256"], "protocol": protocol, "run": run_id})[:20]
-        # The established chemistry checks are retained as a domain implementation.
-        # The runner, paths, specialist calls and dataset contract are owned by MOSAIC.
-        prepared = prepare_protocol(protocol, raw)
-        prepared["mosaic"] = {"schema": "mosaic.ir/1", "run_id": run_id, **extracted["notes"]}
-        prepared["split_group"] = split_group(prepared)
-        return prepared
-
-    def eligible(self, raw):
-        try:
-            self._scope(raw)
-        except ValueError:
-            return False
-        return self.text_ready(raw)
-
-    def text_ready(self, raw):
-        return isinstance(raw.get("procedure"), str) and bool(raw["procedure"].strip())
-
-    def mutate(self, parents, runner, *, per_risk, llm_limit):
-        from protocol_risk.conditions import SuccessIndex
-        from protocol_risk.ingest import read_raw
-        from .mutations import generate
-        from .canonical import registry_vocabulary
-        index = SuccessIndex(runner.store.root / "success_conditions.sqlite")
-        try:
-            index.build(read_raw())
-            return generate(parents, read_raw(), per_risk=per_risk, success_index=index, runner=runner,
-                            llm_limit=llm_limit, vocabulary=registry_vocabulary(self.registry()))
-        finally:
-            index.close()
-
-
-class PhotochemistryDomain(ChemistryDomain):
-    name = "chemistry.photochemistry/2"
-    allowed_special_conditions = {"illumination"}
-
-    def validate(self, extracted, raw, run_id):
-        if not any(s["op"] == "Irradiate" for s in extracted["protocol"]["steps"]):
-            raise ValueError("Photochemistry requires an explicit source-grounded irradiation operation")
-        return super().validate(extracted, raw, run_id)

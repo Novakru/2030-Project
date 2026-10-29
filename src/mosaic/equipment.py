@@ -14,7 +14,7 @@ import math
 import re
 from urllib.parse import urlsplit
 
-from protocol_risk.io import digest, load_library
+from mosaic.protocol.io import digest, load_library
 
 
 def _families(families):

@@ -2,8 +2,8 @@
 import copy
 import re
 
-from protocol_risk.io import digest
-from protocol_risk.normalization import analysis_protocol, normalize_protocol, semantic_contract_hash
+from mosaic.protocol.io import digest
+from mosaic.protocol.normalization import analysis_protocol, normalize_protocol, semantic_contract_hash
 
 
 def evolve_canonical(snapshot, change):

@@ -5,7 +5,7 @@ import copy
 import json
 from pathlib import Path
 
-from protocol_risk.io import digest
+from mosaic.protocol.io import digest
 
 
 def text_document(record):

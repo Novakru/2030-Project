@@ -5,12 +5,12 @@ import json
 import pytest
 from lxml import etree
 
-from protocol_risk.extensions import (
+from mosaic.protocol.extensions import (
     MISSING_MARKERS, NS, PROFILE, definition_semantic_hash, export_extended_xdl,
     normalize_definition, read_extended_xdl, validate_extended_xdl,
     validate_extension_step,
 )
-from protocol_risk.xdl import canonical_hash, export_xdl, validate_xdl
+from mosaic.protocol.xdl import canonical_hash, export_xdl, validate_xdl
 
 
 SOURCE = "Wash the organic phase with 2000 uL water. Stir overnight."
@@ -224,7 +224,7 @@ def test_extended_xml_rejects_unknown_grammar_tampered_contracts_and_duplicates(
         validate_extended_xdl(etree.tostring(root, encoding="unicode"))
 
 
-def test_missing_or_unknown_profile_cannot_bypass_strict_standard_validation():
+def test_missing_or_unknown_profile_cannot_bypass_mosaic_validation():
     xml = export_extended_xdl(protocol())
     root = etree.fromstring(xml.encode())
     del root.attrib["{" + NS + "}profile"]
@@ -234,7 +234,10 @@ def test_missing_or_unknown_profile_cannot_bypass_strict_standard_validation():
         validate_xdl('<!DOCTYPE Synthesis [<!ENTITY e SYSTEM "file:///secret">]>' + xml)
     candidate = protocol()
     candidate["xdl_profile"] = "mosaic-xdl/unimplemented"
-    with pytest.raises(ValueError, match="Unknown XDL profile"):
+    with pytest.raises(ValueError, match="Unknown MOSAIC XDL profile"):
+        export_xdl(candidate)
+    candidate.pop("xdl_profile")
+    with pytest.raises(ValueError, match="profile"):
         export_xdl(candidate)
 
 
@@ -249,18 +252,6 @@ def test_unknown_extended_operation_needs_an_embedded_definition():
     record = protocol()
     record["operation_definitions"] = {}
     with pytest.raises(ValueError, match="no embedded contract"):
-        export_xdl(record)
-
-
-def test_standard_xdl_remains_strict_and_preserves_its_original_mapping():
-    record = {"hardware": {"nodes": {"reactor": {"category": "vessel"}}}, "reagents": [], "context": {},
-        "steps": [{"id": "s001", "op": "Wait", "duration_s": 60}]}
-    xml = export_xdl(record)
-    assert "<Wait time=\"60 s\"/>" in xml
-    assert NS not in xml and "mx:" not in xml
-    assert validate_xdl(xml)
-    record["steps"][0].pop("duration_s")
-    with pytest.raises(KeyError):
         export_xdl(record)
 
 

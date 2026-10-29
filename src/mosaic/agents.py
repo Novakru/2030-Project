@@ -4,8 +4,8 @@ from __future__ import annotations
 from collections import Counter
 from threading import RLock
 
-from protocol_risk.api import Client, settings
-from protocol_risk.io import digest
+from mosaic.protocol.api import Client, settings
+from mosaic.protocol.io import digest
 
 
 class MissingReplay(ValueError):

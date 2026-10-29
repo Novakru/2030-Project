@@ -3,8 +3,8 @@ from __future__ import annotations
 
 import copy
 
-from protocol_risk.io import digest
-from protocol_risk.validation import prepare_protocol, split_group
+from mosaic.protocol.io import digest
+from mosaic.protocol.validation import prepare_protocol
 
 from .chemistry import ChemistryDomain
 from .completion import complete
@@ -13,10 +13,6 @@ from .completion import complete
 class ExtendedChemistryDomain(ChemistryDomain):
     name = "chemistry.extended/1"
 
-    def _scope(self, raw):
-        # A source operation need not have an instrument executor to be represented.
-        # Execution availability is a separate, explicit property of its contract.
-        return None
 
     def extract(self, raw, runner, *, use_model=True, critique=True, mapping=True):
         if not use_model:
@@ -36,9 +32,8 @@ class ExtendedChemistryDomain(ChemistryDomain):
     def validate(self, extracted, raw, run_id):
         protocol = copy.deepcopy(extracted["protocol"])
         protocol["id"] = "mosaic_pos_" + digest({"raw": raw["raw_sha256"], "protocol": protocol, "run": run_id})[:20]
-        prepared = prepare_protocol(protocol, raw, extended=True)
+        prepared = prepare_protocol(protocol, raw)
         from .canonical import finalize_protocol, registry_vocabulary
         prepared = finalize_protocol(prepared, vocabulary=registry_vocabulary(self.registry()))
         prepared["mosaic"] = {"schema": "mosaic.ir/2", "run_id": run_id, **extracted["notes"]}
-        prepared["split_group"] = split_group(prepared)
         return prepared

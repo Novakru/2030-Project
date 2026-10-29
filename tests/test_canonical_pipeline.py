@@ -1,17 +1,13 @@
 """Public XML, semantic identity and fault replay through canonical vocabulary."""
 import copy
 
-import jsonpatch
 import pytest
 
-from mosaic.canonical import finalize_negative, finalize_protocol, registry_vocabulary
-from mosaic.mutations import assess_intervention
-from protocol_risk.canonical_xdl import read_canonical_xdl
-from protocol_risk.io import load_library
-from protocol_risk.mutation_rules import make_negative
-from protocol_risk.normalization import analysis_protocol, normalize_protocol, semantic_contract_hash
-from protocol_risk.symbolic import evaluate
-from protocol_risk.xdl import canonical_hash, export_xdl, validate_xdl
+from mosaic.canonical import finalize_protocol
+from mosaic.protocol.canonical_xdl import read_canonical_xdl
+from mosaic.protocol.io import load_library
+from mosaic.protocol.normalization import analysis_protocol, normalize_protocol, semantic_contract_hash
+from mosaic.protocol.xdl import canonical_hash, export_xdl, validate_xdl
 
 
 def example():
@@ -69,19 +65,6 @@ def test_display_rename_and_new_alias_do_not_version_contract():
     assert validate_xdl(export_xdl(renamed))
 
 
-def test_intentional_negative_keeps_error_and_replays_against_canonical_parent():
-    parent = finalize_protocol(example())
-    child = copy.deepcopy(parent)
-    child["steps"][0]["amount"]["value"] = 3
-    sample = make_negative(parent, child, "A1", {"precondition": "known capacity"})
-    assert sample is not None
-    assert sample["protocol"]["steps"][0]["amount"]["value"] == 3
-    assert evaluate(sample["protocol"]).risks == ["A1"]
-    assert assess_intervention(parent, sample["protocol"])["field"] == "/amount/value"
-    assert jsonpatch.apply_patch(parent, sample["diff"]) == sample["protocol"]
-    assert validate_xdl(sample["xdl"])
-
-
 def test_unknown_contract_reusing_known_name_is_not_silently_merged():
     source = example()
     source["steps"][0]["op"] = "ChargeMaterial"
@@ -91,15 +74,6 @@ def test_unknown_contract_reusing_known_name_is_not_silently_merged():
     assert normalized["normalization"]["unresolved"]
     with pytest.raises(ValueError, match="library evolution"):
         finalize_protocol(source)
-
-
-def test_changed_mixing_method_does_not_reuse_stirring_equipment_checks():
-    source = example()
-    source["steps"] = [{"id": "mix", "op": "Stir", "vessel": "v1", "duration_s": 30}]
-    normalized = normalize_protocol(source)
-    normalized["steps"][0]["parameters"]["method"]["value"] = "vortex"
-    assert analysis_protocol(normalized)["steps"][0]["op"] == "Mix"
-    assert any(item["rule"] == "operation_effects" for item in evaluate(normalized).unknowns)
 
 
 def test_quantity_units_normalize_and_inverse_reads_current_value():
@@ -134,18 +108,3 @@ def test_qualitative_conditions_and_temporal_relations_remain_semantically_disti
     changed = copy.deepcopy(original)
     changed["temporal_relations"][0]["relation"] = "before"
     assert canonical_hash(changed) != canonical_hash(original)
-
-
-def test_registry_equipment_vocabulary_is_used_for_parents_and_perturbed_children():
-    from mosaic.registry import Registry
-    vocabulary = registry_vocabulary(Registry())
-    vocabulary = copy.deepcopy(vocabulary)
-    category = vocabulary["equipment"]["subtypes"]["equipment.microreactor"]["category_id"]
-    vocabulary["equipment"]["categories"][category]["name"] = "ReactionVesselDisplay"
-    parent = finalize_protocol(example(), vocabulary=vocabulary)
-    assert parent["hardware"]["nodes"]["v1"]["category"] == "ReactionVesselDisplay"
-    child = analysis_protocol(parent)
-    child["steps"][0]["amount"]["value"] = 3
-    sample = finalize_negative({"protocol": child}, parent, vocabulary=vocabulary)
-    assert sample["protocol"]["hardware"]["nodes"]["v1"]["category"] == "ReactionVesselDisplay"
-    assert evaluate(sample["protocol"]).risks == ["A1"]

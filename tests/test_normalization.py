@@ -3,7 +3,7 @@ import copy
 
 import pytest
 
-from protocol_risk.normalization import (
+from mosaic.protocol.normalization import (
     analysis_protocol, is_normalized, normalize_protocol, semantic_contract_hash,
     validate_normalized,
 )

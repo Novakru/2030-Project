@@ -6,28 +6,22 @@ import sqlite3
 from typing import Dict, Optional
 
 APP_ID = 0x52564131  # RVA1
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 STATUSES = ("pending", "accepted", "rejected")
 EFFECTIVE_TIER = "CASE WHEN status = 'accepted' THEN 'gold' ELSE tier END"
 _DATA_DIR = Path(__file__).resolve().parent / "data"
-DEFAULT_DB = _DATA_DIR / next((name for name in ("canonical_reviews.sqlite3", "extended_reviews.sqlite3", "text_reviews.sqlite3", "mosaic.sqlite3")
-                              if (_DATA_DIR / name).is_file()), "reviews.sqlite3")
+DEFAULT_DB = _DATA_DIR / "reviews.sqlite3"
 
 SCHEMA = """
 CREATE TABLE records (
     record_id TEXT PRIMARY KEY, raw_json TEXT NOT NULL, raw_sha256 TEXT NOT NULL,
-    tier TEXT NOT NULL, record_type TEXT NOT NULL, parent_id TEXT NOT NULL DEFAULT '',
+    tier TEXT NOT NULL, record_type TEXT NOT NULL,
     has_gold_blockers INTEGER NOT NULL CHECK(has_gold_blockers IN (0,1)),
-    symbolic_violations TEXT NOT NULL, has_symbolic_violations INTEGER NOT NULL,
     status TEXT NOT NULL DEFAULT 'pending' CHECK(status IN ('pending','accepted','rejected')),
     reviewer TEXT, reviewed_at TEXT, comment TEXT NOT NULL DEFAULT '',
     source_file TEXT NOT NULL, imported_at TEXT NOT NULL, revision INTEGER NOT NULL DEFAULT 0,
     CHECK ((status='pending' AND reviewer IS NULL AND reviewed_at IS NULL) OR
            (status!='pending' AND reviewer IS NOT NULL AND reviewed_at IS NOT NULL))
-);
-CREATE TABLE record_risks (
-    record_id TEXT NOT NULL REFERENCES records(record_id), risk TEXT NOT NULL,
-    PRIMARY KEY(record_id,risk)
 );
 CREATE TABLE review_events (
     event_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -38,7 +32,6 @@ CREATE TABLE review_events (
     previous_comment TEXT NOT NULL, revision INTEGER NOT NULL
 );
 CREATE INDEX records_filter ON records(status,record_type,tier);
-CREATE INDEX risks_filter ON record_risks(risk);
 """
 
 
@@ -97,8 +90,7 @@ def _where(filters: Optional[Dict] = None):
     filters = filters or {}
     clauses, params = [], []
     for key, column in (("status", "status"), ("record_type", "record_type"),
-                        ("tier", EFFECTIVE_TIER), ("has_gold_blockers", "has_gold_blockers"),
-                        ("has_symbolic_violations", "has_symbolic_violations")):
+                        ("tier", EFFECTIVE_TIER), ("has_gold_blockers", "has_gold_blockers")):
         value = filters.get(key)
         if value is not None and value != "":
             if key == "status" and value == "reviewed":
@@ -106,13 +98,10 @@ def _where(filters: Optional[Dict] = None):
             else:
                 clauses.append(f"({column}) = ?")
                 params.append(value)
-    if filters.get("risk"):
-        clauses.append("EXISTS (SELECT 1 FROM record_risks r WHERE r.record_id=records.record_id AND r.risk=?)")
-        params.append(filters["risk"])
     if filters.get("search"):
         value = str(filters["search"]).replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
-        clauses.append("(record_id LIKE ? ESCAPE '\\' OR parent_id LIKE ? ESCAPE '\\')")
-        params.extend(["%" + value + "%"] * 2)
+        clauses.append("record_id LIKE ? ESCAPE '\\'")
+        params.append("%" + value + "%")
     if "record_ids" in filters:
         ids = list(filters["record_ids"])
         clauses.append("record_id IN (" + ",".join("?" for _ in ids) + ")" if ids else "0")
@@ -123,17 +112,15 @@ def _where(filters: Optional[Dict] = None):
 def query_records(path, filters=None, sort="record_id", descending=False, include_raw=False):
     order = {"record_id": "record_id", "tier": EFFECTIVE_TIER, "status": "status",
              "reviewed_at": "reviewed_at", "record_type": "record_type",
-             "has_gold_blockers": "has_gold_blockers",
-             "has_symbolic_violations": "has_symbolic_violations"}
+             "has_gold_blockers": "has_gold_blockers"}
     if sort not in order:
         raise ValueError("不支持的排序字段")
     columns = ("records.*" if include_raw else
-               "record_id,tier,record_type,parent_id,has_gold_blockers,symbolic_violations,"
-               "has_symbolic_violations,status,reviewer,reviewed_at,comment,source_file,imported_at,revision")
+               "record_id,tier,record_type,has_gold_blockers,status,reviewer,reviewed_at,"
+               "comment,source_file,imported_at,revision")
     where, params = _where(filters)
-    sql = (f"SELECT {columns}, {EFFECTIVE_TIER} AS effective_tier, "
-           "(SELECT group_concat(risk, ', ') FROM record_risks r WHERE r.record_id=records.record_id) AS risks "
-           f"FROM records{where} ORDER BY {order[sort]} {'DESC' if descending else 'ASC'}, record_id")
+    sql = (f"SELECT {columns}, {EFFECTIVE_TIER} AS effective_tier FROM records{where} "
+           f"ORDER BY {order[sort]} {'DESC' if descending else 'ASC'}, record_id")
     with connect(path, readonly=True) as conn:
         return [dict(row) for row in conn.execute(sql, params)]
 
@@ -157,7 +144,6 @@ def filter_options(path):
     with connect(path, readonly=True) as conn:
         return {
             "tiers": [r[0] for r in conn.execute(f"SELECT DISTINCT {EFFECTIVE_TIER} FROM records ORDER BY 1")],
-            "risks": [r[0] for r in conn.execute("SELECT DISTINCT risk FROM record_risks ORDER BY risk")],
         }
 
 

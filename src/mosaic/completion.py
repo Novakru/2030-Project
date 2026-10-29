@@ -8,8 +8,8 @@ from __future__ import annotations
 import copy
 import re
 
-from protocol_risk.extract import OPERATIONS, STEP_FIELDS, build_ir, uncovered_actions, validate_evidence
-from protocol_risk.io import load_library
+from mosaic.protocol.extract import OPERATIONS, STEP_FIELDS, build_ir, uncovered_actions, validate_evidence
+from mosaic.protocol.io import load_library
 
 
 SYSTEM = """Complete a source-grounded experimental procedure as declarative extended XDL.
@@ -82,7 +82,7 @@ def _plain_plan_step(step, reagents):
 
 
 def _existing_definitions(protocol, registry):
-    from protocol_risk.extensions import normalize_definition
+    from mosaic.protocol.extensions import normalize_definition
     snapshot = registry.snapshot if hasattr(registry, "snapshot") else registry or {}
     combined = {}
     for definitions in (snapshot.get("operation_definitions", {}),
@@ -116,7 +116,7 @@ def _pending_actions(protocol):
 
 def _known_subset(old, proposed):
     """Previously grounded facts can gain detail, but cannot disappear or change."""
-    from protocol_risk.missing import is_missing_parameter
+    from mosaic.protocol.missing import is_missing_parameter
     return all(key in proposed and proposed[key] == value
                for key, value in old.items() if key not in {"evidence", "role"}
                and value is not None and value not in ("unknown", "unspecified")
@@ -125,7 +125,7 @@ def _known_subset(old, proposed):
 
 def _preserves_facts_in_extension(old, proposed):
     """Permit a better action classification while retaining every source fact."""
-    from protocol_risk.crosscheck import _matches
+    from mosaic.protocol.crosscheck import _matches
     quote, previous = proposed.get("evidence", ""), old.get("evidence", "")
     if not quote or not previous or not (previous in quote or quote in previous):
         return False
@@ -180,7 +180,7 @@ def _extension_actions(name, definition):
 
 
 def _check_extension_missing(step, definition):
-    from protocol_risk.crosscheck import quantities_in_text
+    from mosaic.protocol.crosscheck import quantities_in_text
     dimensions = {"volume": "mL", "mass": "mg", "amount": "mmol", "substance": "mmol",
                   "time": "duration_s", "duration": "duration_s", "temperature": "temp_C",
                   "pressure": "pressure_mbar", "wavelength": "wavelength_nm", "speed": "rpm"}
@@ -243,8 +243,8 @@ def _ordered_offsets(source, steps):
 
 
 def _normalize(source, base, response, existing, pending):
-    from protocol_risk.extensions import normalize_definition, validate_extension_step
-    from protocol_risk.missing import annotate_missing
+    from mosaic.protocol.extensions import normalize_definition, validate_extension_step
+    from mosaic.protocol.missing import annotate_missing
     if not isinstance(response, dict) or not isinstance(response.get("steps"), list) or not response["steps"]:
         raise ValueError("Operation completion requires a nonempty complete steps array")
     if not isinstance(response.get("definitions", {}), dict) or not isinstance(response.get("uncertainties", []), list):
@@ -275,8 +275,8 @@ def _normalize(source, base, response, existing, pending):
         if "vessel" in step and (not isinstance(step["vessel"], str) or not step["vessel"]):
             raise ValueError("A vessel identifier must be a nonempty string")
         if step["op"] == "Add":
-            from protocol_risk.amounts import local_measurements
-            from protocol_risk.crosscheck import _matches
+            from mosaic.protocol.amounts import local_measurements
+            from mosaic.protocol.crosscheck import _matches
             measurements, _ = local_measurements(evidence, step.get("alias", step.get("reagent")))
             for key in ("reported_amounts", "additional_amounts"):
                 supplemental = step.pop(key, [])
@@ -326,7 +326,7 @@ def _normalize(source, base, response, existing, pending):
         # procedure is valid for this declarative profile.
         from .sources import text_document
         document = text_document(source)
-        from protocol_risk.extract import _text_context
+        from mosaic.protocol.extract import _text_context
         rebuilt = {"id": "pos_" + document["id"], "raw_id": document["id"], "raw_sha256": document["raw_sha256"],
                    "source": document["source"], "source_text": document["procedure"], "text_sha256": document["text_sha256"],
                    "reagents": [], "steps": [], "context": _text_context(document["procedure"], []),
@@ -397,7 +397,7 @@ def complete(source_document, protocol, registry, runner):
     invented facts or uncovered instructions make conversion fail. The caller
     owns persistence, registry evolution, symbolic checks and human review.
     """
-    from protocol_risk.missing import annotate_missing
+    from mosaic.protocol.missing import annotate_missing
     from .sources import text_document
     source = text_document(source_document)
     base = copy.deepcopy(protocol)

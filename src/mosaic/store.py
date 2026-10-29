@@ -11,7 +11,7 @@ import time
 from functools import wraps
 from threading import RLock
 
-from protocol_risk.io import digest, read_json
+from mosaic.protocol.io import digest, read_json
 
 
 def atomic_json(path, value):

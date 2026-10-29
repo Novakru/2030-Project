@@ -6,7 +6,7 @@ from mosaic.catalog import atomic_inventory, equipment_inventory
 from mosaic.equipment import check_substitution, classify_equipment, equipment_groups
 from mosaic.evidence import SourceSpan
 from mosaic.registry import Registry
-from protocol_risk.io import load_library
+from mosaic.protocol.io import load_library
 
 
 def cited_vial(**changes):

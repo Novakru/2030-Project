@@ -54,9 +54,8 @@ def json_bytes(rows):
 
 def csv_bytes(rows):
     stream = io.StringIO(newline="")
-    columns = ["record_id", "record_type", "parent_id", "risks", "tier", "effective_tier",
-               "has_gold_blockers", "symbolic_violations", "status", "reviewer", "reviewed_at",
-               "comment", "revision", "source_file", "imported_at"]
+    columns = ["record_id", "record_type", "tier", "effective_tier", "has_gold_blockers",
+               "status", "reviewer", "reviewed_at", "comment", "revision", "source_file", "imported_at"]
     writer = csv.DictWriter(stream, fieldnames=columns, extrasaction="ignore")
     writer.writeheader()
     for row in rows:
@@ -132,18 +131,15 @@ def main():
     parser.add_argument("--output", default=str(DEFAULT_EXPORT), help="父目录；自动创建带 UTC 时间戳的子目录")
     parser.add_argument("--mode", choices=("single", "split"), default="single")
     parser.add_argument("--status", choices=("all", "pending", "accepted", "rejected", "reviewed"), default="all")
-    parser.add_argument("--kind", choices=("positive", "negative", "other"))
+    parser.add_argument("--kind", choices=("positive", "other"))
     parser.add_argument("--tier")
-    parser.add_argument("--risk")
     parser.add_argument("--search")
     parser.add_argument("--blockers", choices=("yes", "no"))
-    parser.add_argument("--symbolic", choices=("yes", "no"))
     parser.add_argument("--no-csv", action="store_true")
     args = parser.parse_args()
     filters = {"status": None if args.status == "all" else args.status,
-               "record_type": args.kind, "tier": args.tier, "risk": args.risk, "search": args.search,
-               "has_gold_blockers": None if args.blockers is None else int(args.blockers == "yes"),
-               "has_symbolic_violations": None if args.symbolic is None else int(args.symbolic == "yes")}
+               "record_type": args.kind, "tier": args.tier, "search": args.search,
+               "has_gold_blockers": None if args.blockers is None else int(args.blockers == "yes")}
     try:
         run = export_database(args.db, args.output, args.mode, filters, not args.no_csv)
     except (ValueError, OSError, sqlite3.Error) as exc:

@@ -11,7 +11,7 @@ import re
 from collections import Counter, defaultdict, deque
 from dataclasses import dataclass, field
 
-from protocol_risk.io import digest
+from mosaic.protocol.io import digest
 from .evidence import validate_span
 
 
@@ -323,7 +323,7 @@ def maintain_library(registry, observations, *, sources, runner, domain):
         actions.append({"action": change["action"], "origins": [observation["observation_id"]],
                         "evidence": observation["evidence"], "status": "source_reported"})
         if observation.get("extension_definition"):
-            from protocol_risk.extensions import normalize_definition
+            from mosaic.protocol.extensions import normalize_definition
             try:
                 definition = normalize_definition(observation["name"], observation["extension_definition"])
                 changes.append({"action": "admit_extension_operation", "name": observation["name"],

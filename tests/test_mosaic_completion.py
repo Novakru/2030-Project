@@ -5,9 +5,9 @@ import json
 import pytest
 
 from mosaic.completion import complete
-from protocol_risk.extract import build_ir
-from protocol_risk.extensions import normalize_definition
-from protocol_risk.missing import missing_parameter
+from mosaic.protocol.extract import build_ir
+from mosaic.protocol.extensions import normalize_definition
+from mosaic.protocol.missing import missing_parameter
 
 
 TEXT = "water (1 mL) was added. The solid was washed with water (2 mL), then dried under vacuum."

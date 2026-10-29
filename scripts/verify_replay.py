@@ -1,4 +1,4 @@
-"""Verify byte-identical dataset replay while all requests HTTP calls are blocked."""
+"""Verify byte-identical conversion output replay while all requests HTTP calls are blocked."""
 import argparse
 import hashlib
 import json
@@ -9,15 +9,18 @@ from mosaic.engine import resume
 
 
 def snapshot(root):
-    return {str(path.relative_to(root)): hashlib.sha256(path.read_bytes()).hexdigest()
-            for path in (root / "datasets").rglob("*") if path.is_file()}
+    manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
+    paths = {event["artifact"] for event in manifest["events"]
+             if event["stage"].startswith(("output/", "xdl/", "library/"))}
+    return {relative: hashlib.sha256((root / relative).read_bytes()).hexdigest()
+            for relative in sorted(paths)}
 
 
 def verify_replay(run_dir):
     root = Path(run_dir).resolve()
     before = snapshot(root)
     if not before:
-        raise ValueError("Run has no frozen dataset to replay")
+        raise ValueError("Run has no frozen conversion outputs to replay")
     with patch("requests.sessions.Session.request", side_effect=AssertionError("HTTP blocked during replay")):
         result = resume(root, offline=True)
     after = snapshot(root)

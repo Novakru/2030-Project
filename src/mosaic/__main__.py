@@ -1,87 +1,60 @@
-"""python -m mosaic run/resume/verify/publish."""
+"""Command-line entry for text-to-XDL conversion and review."""
 import argparse
 import json
 from pathlib import Path
 
-from protocol_risk.io import read_json
-
-from .audit_bridge import publish
-from .engine import BuildSpec, Runtime, build, resume
-from .store import RunStore
+from .engine import ConversionSpec, ROLES, Runtime, convert, resume
 from .sources import load_text_sources
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(prog="mosaic")
+    parser = argparse.ArgumentParser(prog="mosaic", description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
-    run = commands.add_parser("run", help="Build a dataset exclusively from literal source procedures")
-    extract = commands.add_parser("extract", help="Convert .txt/.md/JSON literal procedures into XDL review records")
+    extract = commands.add_parser("extract", help="Convert literal .txt/.md/JSON/JSONL experimental procedures")
     extract.add_argument("paths", nargs="+", type=Path)
-    run.add_argument("--input", action="append", type=Path, help="Text files/directories; defaults to ORD procedure text")
-    run.add_argument("--positives", type=int, default=100)
-    run.add_argument("--per-risk", type=int, default=10)
-    run.add_argument("--source-limit", type=int, default=0, help="Maximum distinct text attempts; 0 = four times target")
-    run.add_argument("--llm-perturbations", type=int, default=4)
-    run.add_argument("--include-reference-supplements", action="store_true", help="Explicitly add separately labelled SOP/native-XDL references")
-    for command in (run, extract):
-        command.add_argument("--output-dir", default="data/mosaic")
-        command.add_argument("--domain", default="chemistry.extended/1")
-        command.add_argument("--registry", type=Path, help="Frozen library_registry.json from a previous run")
-        command.add_argument("--no-curation", action="store_true", help="Keep deterministic observations without calling the library curator")
-        command.add_argument("--max-calls", type=int, default=500)
-        command.add_argument("--workers", type=int, default=4)
-        command.add_argument("--model", action="append", default=[], metavar="ROLE=MODEL")
-        command.add_argument("--offline", action="store_true")
-        command.add_argument("--publish-db", type=Path)
-    again = commands.add_parser("resume", help="Resume the same pinned run; --offline only reuses saved model responses")
+    extract.add_argument("--output-dir", default="outputs")
+    extract.add_argument("--registry", type=Path, help="library_registry.json from a previous conversion")
+    extract.add_argument("--no-curation", action="store_true")
+    extract.add_argument("--max-calls", type=int, default=100)
+    extract.add_argument("--workers", type=int, default=4)
+    extract.add_argument("--model", action="append", default=[], metavar="ROLE=MODEL")
+    extract.add_argument("--publish-db", type=Path)
+    again = commands.add_parser("resume", help="Resume an unchanged conversion, optionally without HTTP")
     again.add_argument("run_dir", type=Path)
     again.add_argument("--offline", action="store_true")
-    check = commands.add_parser("verify", help="Verify artifacts, source pins and single-intervention replay")
+    check = commands.add_parser("verify", help="Verify frozen sources, evidence and XDL roundtrips")
     check.add_argument("run_dir", type=Path)
-    check.add_argument("--artifacts-only", action="store_true")
-    to_db = commands.add_parser("publish", help="Explicitly import one frozen batch into SQLite")
-    to_db.add_argument("run_dir", type=Path)
-    to_db.add_argument("--db", type=Path, required=True)
-    migration = commands.add_parser("normalize", help="Migrate a frozen batch to canonical vocabulary and replay its faults")
-    migration.add_argument("run_dir", type=Path)
-    migration.add_argument("--output-dir", type=Path)
+    review = commands.add_parser("publish", help="Import conversion results into the optional review database")
+    review.add_argument("run_dir", type=Path)
+    review.add_argument("--db", type=Path, required=True)
+    commands.add_parser("api-check", help="Check configured API with a nonce and invalid-key control")
     args = parser.parse_args(argv)
-    if args.command in ("run", "extract"):
+    if args.command == "extract":
         models = {}
         for value in args.model:
             role, separator, model = value.partition("=")
-            if not separator or role not in ("extractor", "critic", "apparatus_mapper", "perturber", "library_curator", "operation_expander") or not model:
-                parser.error("--model requires extractor|critic|apparatus_mapper|perturber|library_curator|operation_expander=MODEL")
+            if not separator or role not in ROLES or not model:
+                parser.error("--model requires ROLE=MODEL; roles: " + ", ".join(ROLES))
             models[role] = model
-        inputs = args.paths if args.command == "extract" else args.input
-        records = load_text_sources(inputs) if inputs else None
-        positives = len(records) if args.command == "extract" else args.positives
-        spec = BuildSpec(output_dir=args.output_dir, domain=args.domain, positives=positives,
-                         per_risk=args.per_risk if args.command == "run" else 0,
-                         source_limit=args.source_limit if args.command == "run" else len(records),
-                         llm_perturbations=args.llm_perturbations if args.command == "run" else 0,
-                         registry_path=str(args.registry) if args.registry else None, curate=not args.no_curation,
-                         include_reference_supplements=args.command == "run" and args.include_reference_supplements,
-                         max_calls=args.max_calls, workers=args.workers, models=models)
-        result = build(spec, runtime=Runtime(records=records, offline=args.offline, progress=lambda row: print(json.dumps(row), flush=True)))
+        result = convert(ConversionSpec(output_dir=args.output_dir, registry_path=str(args.registry) if args.registry else None,
+            curate=not args.no_curation, max_calls=args.max_calls, workers=args.workers, models=models),
+            runtime=Runtime(records=load_text_sources(args.paths)))
         if args.publish_db:
-            result["audit_publication"] = publish(result["run_dir"], args.publish_db)
+            from .audit_bridge import publish
+            result["publication"] = publish(result["run_dir"], args.publish_db)
     elif args.command == "resume":
         result = resume(args.run_dir, offline=args.offline)
     elif args.command == "verify":
-        if args.artifacts_only:
-            manifest = read_json(args.run_dir / "manifest.json")
-            result = {"passed": RunStore(args.run_dir, manifest["request"]).verify(), "run_dir": str(args.run_dir)}
-        else:
-            from .verification import verify_dataset
-            result = verify_dataset(args.run_dir)
-    elif args.command == "normalize":
-        from .migration import migrate
-        result = migrate(args.run_dir, output_dir=args.output_dir)
-    else:
+        from .verification import verify_conversion
+        result = verify_conversion(args.run_dir)
+    elif args.command == "publish":
+        from .audit_bridge import publish
         result = publish(args.run_dir, args.db)
+    else:
+        from .protocol.api import probe
+        result = probe()
     print(json.dumps(result, ensure_ascii=False, indent=2))
-    return 0 if result.get("passed", True) else 1
+    return 1 if result.get("passed") is False else 2 if result.get("failures", 0) else 0
 
 
 if __name__ == "__main__":

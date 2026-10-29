@@ -72,7 +72,7 @@ def scan_files(paths):
 
 def import_documents(database, documents, record_type="auto", *, reject_changed=False):
     """All documents commit together. Existing IDs are always skipped, even if changed."""
-    if record_type not in ("auto", "positive", "negative", "other"):
+    if record_type not in ("auto", "positive", "other"):
         raise ValueError("不支持的记录类型")
     db.init_database(database)
     report = {"files": 0, "inserted": 0, "skipped": 0, "changed_duplicates": []}
@@ -99,14 +99,10 @@ def import_documents(database, documents, record_type="auto", *, reject_changed=
                 fields = index_fields(record)
                 if record_type != "auto":
                     fields["record_type"] = record_type
-                conn.execute("INSERT INTO records (record_id,raw_json,raw_sha256,tier,record_type,parent_id,"
-                             "has_gold_blockers,symbolic_violations,has_symbolic_violations,source_file,imported_at) "
-                             "VALUES (?,?,?,?,?,?,?,?,?,?,?)",
-                             (record_id, raw, digest, fields["tier"], fields["record_type"], fields["parent_id"],
-                              fields["has_gold_blockers"], fields["symbolic_violations"],
-                              fields["has_symbolic_violations"], str(source), db.utc_now()))
-                conn.executemany("INSERT INTO record_risks(record_id,risk) VALUES (?,?)",
-                                 [(record_id, risk) for risk in fields["risk_codes"]])
+                conn.execute("INSERT INTO records (record_id,raw_json,raw_sha256,tier,record_type,"
+                             "has_gold_blockers,source_file,imported_at) VALUES (?,?,?,?,?,?,?,?)",
+                             (record_id, raw, digest, fields["tier"], fields["record_type"],
+                              fields["has_gold_blockers"], str(source), db.utc_now()))
                 report["inserted"] += 1
     return report
 
@@ -121,7 +117,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("paths", nargs="+", help="JSON、JSONL 文件或递归扫描的目录")
     parser.add_argument("--db", default=str(db.DEFAULT_DB))
-    parser.add_argument("--kind", choices=("auto", "positive", "negative", "other"), default="auto")
+    parser.add_argument("--kind", choices=("auto", "positive", "other"), default="auto")
     args = parser.parse_args()
     try:
         report = import_paths(args.db, args.paths, args.kind)

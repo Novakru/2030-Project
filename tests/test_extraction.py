@@ -1,24 +1,9 @@
 import pytest
 
-from protocol_risk.api import Client, parse_json, settings
-from protocol_risk.crosscheck import quantities_in_text
-from protocol_risk.extract import validate_evidence
-from protocol_risk.ingest import environment_atmosphere, quantity
-from protocol_risk.xdl import validate_xdl
-
-
-@pytest.mark.parametrize("unit,value,expected", [("LITER", 0.001, {"value": 1, "unit": "mL"}),
-                                                  ("MICROLITER", 20, {"value": 0.02, "unit": "mL"}),
-                                                  ("NANOMOLE", 100, {"value": 0.0001, "unit": "mmol"}),
-                                                  ("HOUR", 2, {"value": 7200, "unit": "s"}),
-                                                  ("KELVIN", 273.15, {"value": 0, "unit": "°C"})])
-def test_unit_normalization(unit, value, expected):
-    assert quantity({"units": unit, "value": value}) == expected
-
-
-@pytest.mark.parametrize("value", ["NaN", "Infinity", "nonsense"])
-def test_invalid_numbers_are_not_silently_normalized(value):
-    assert quantity({"units": "CELSIUS", "value": value}) is None
+from mosaic.protocol.api import parse_json, settings
+from mosaic.protocol.crosscheck import quantities_in_text
+from mosaic.protocol.extract import validate_evidence
+from mosaic.protocol.xdl import validate_xdl
 
 
 def test_fabricated_source_evidence_is_rejected():
@@ -33,7 +18,7 @@ def test_undeclared_initial_reagent_is_not_accepted_without_literal_text():
 
 
 def test_workup_reuse_of_source_solvent_never_copies_the_initial_amount():
-    from protocol_risk.extract import build_ir
+    from mosaic.protocol.extract import build_ir
     raw = {"id": "fixture", "procedure": "Add 1 mL water. Wash with 5 mL water.",
            "components": [{"id": "r1", "name": "water", "smiles": "O", "role": "SOLVENT",
                            "amount": {"value": 1, "unit": "mL"}, "source_path": "/inputs/water"}],
@@ -75,9 +60,3 @@ def test_fenced_json_and_xml_external_entities():
     assert parse_json('```json\n{"ok":true}\n```') == {"ok": True}
     with pytest.raises(ValueError, match="DOCTYPE"):
         validate_xdl('<!DOCTYPE Synthesis [<!ENTITY e SYSTEM "file:///secret">]><Synthesis/>')
-
-
-def test_glovebox_gas_is_only_reconstructed_when_explicitly_named():
-    assert environment_atmosphere({"environment": {"type": "GLOVE_BOX", "details": "N2 glovebox"}})["type"] == "NITROGEN"
-    assert environment_atmosphere({"environment": {"type": "GLOVE_BOX"}}) is None
-    assert environment_atmosphere({"environment": {"type": "FUME_HOOD", "details": "nitrogen cylinder nearby"}}) is None

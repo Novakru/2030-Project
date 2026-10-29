@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import copy
 
-from protocol_risk.io import digest
+from mosaic.protocol.io import digest
 
 
 def _snapshot(registry):
@@ -16,7 +16,7 @@ def trusted_representations(snapshot, *, policy=None, allowed_operations=None):
     The default supported backend is the text-to-XDL chemistry implementation.
     Another domain must explicitly supply its supported primitive names.
     """
-    from protocol_risk.extract import OPERATIONS
+    from mosaic.protocol.extract import OPERATIONS
 
     snapshot = _snapshot(snapshot)
     allowed = set(OPERATIONS if allowed_operations is None else allowed_operations)
@@ -84,7 +84,7 @@ def expand_plan(plan, snapshot, *, source=None, policy=None, allowed_operations=
     ``source`` optionally performs the final chemistry evidence check here; the
     extraction caller must otherwise run its domain validator after expansion.
     """
-    from protocol_risk.extract import OPERATIONS, validate_evidence
+    from mosaic.protocol.extract import OPERATIONS, validate_evidence
 
     snapshot = _snapshot(snapshot)
     trusted = trusted_representations(snapshot, policy=policy, allowed_operations=allowed_operations)

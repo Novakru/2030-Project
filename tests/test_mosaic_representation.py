@@ -7,7 +7,7 @@ from mosaic.evolution import CurationPolicy
 from mosaic.chemistry import ChemistryDomain
 from mosaic.registry import Registry
 from mosaic.representation import expand_plan, trusted_representations
-from protocol_risk.io import digest
+from mosaic.protocol.io import digest
 
 
 SOURCE = "water (1 mL) was added and stirred for 60 s."

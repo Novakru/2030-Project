@@ -4,7 +4,7 @@ from __future__ import annotations
 import copy
 from collections import defaultdict
 
-from protocol_risk.io import ROOT, digest, load_library
+from mosaic.protocol.io import ROOT, digest, load_library
 from .evidence import validate_span
 
 
@@ -58,7 +58,7 @@ class Registry:
         self.snapshot = copy.deepcopy(snapshot) if snapshot is not None else {
             "schema": "mosaic.registry/1", "devices": load_library("hardware.yaml")["devices"],
             "operations": load_library("primitives.yaml")["operations"],
-            "macros": load_library("macros.yaml")["macros"], "risks": load_library("risks.yaml")["risks"],
+            "macros": load_library("macros.yaml")["macros"],
             "observations": [], "operation_candidates": [], "aliases": {}, "changes": [],
             "families": families}
         self.snapshot = copy.deepcopy(self.snapshot)
@@ -110,7 +110,7 @@ class Registry:
                 if proposal not in next_snapshot["operation_candidates"]:
                     next_snapshot["operation_candidates"].append(proposal)
             elif action == "admit_extension_operation":
-                from protocol_risk.extensions import normalize_definition
+                from mosaic.protocol.extensions import normalize_definition
                 definition = normalize_definition(change["name"], change["definition"])
                 identifier = definition["semantic_sha256"]
                 target = "source_operation_contracts" if next_snapshot.get("canonical_operations") else "extension_operations"

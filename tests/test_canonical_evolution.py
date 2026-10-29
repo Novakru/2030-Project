@@ -1,12 +1,10 @@
 """Canonical concepts evolve separately from expression mappings and execution."""
-import copy
 
 import pytest
 
-from mosaic.canonical import finalize_negative, finalize_protocol
 from mosaic.evidence import SourceSpan
 from mosaic.registry import Registry
-from protocol_risk.normalization import normalize_protocol, semantic_contract_hash
+from mosaic.protocol.normalization import normalize_protocol, semantic_contract_hash
 
 
 TEXT = "centrifuge the sample for 30 seconds"
@@ -75,14 +73,3 @@ def test_a_familiar_display_name_does_not_justify_a_new_concept():
     proposal["contract"]["name"] = "Mix"
     with pytest.raises(ValueError, match="existing canonical ID"):
         apply(Registry(), proposal)
-
-
-def test_new_concepts_keep_pinned_mappings_when_children_are_finalized():
-    registry = apply(Registry(), change())
-    vocabulary = {"operations": registry.snapshot["canonical_operations"], "mappings": registry.snapshot["operation_mappings"]}
-    parent = finalize_protocol(witness(), vocabulary=vocabulary)
-    source_child = copy.deepcopy(witness())
-    source_child["steps"][0]["parameters"]["duration_s"]["value"] = -10
-    sample = finalize_negative({"protocol": source_child}, parent)
-    assert sample["protocol"]["steps"][0]["op"] == "Centrifuge"
-    assert sample["protocol"]["steps"][0]["parameters"]["duration_s"]["value"] == -10

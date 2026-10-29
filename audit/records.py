@@ -35,41 +35,18 @@ def list_values(value: Any) -> List:
     return value if isinstance(value, list) else [value]
 
 
-def risk_codes(record: Dict) -> List[str]:
-    label = as_dict(record.get("label"))
-    audit = as_dict(record.get("audit"))
-    values = list_values(label.get("risk_l2")) + list_values(audit.get("child_risks"))
-    values += list_values(as_dict(record.get("mutation")).get("risk"))
-    return sorted({str(v) for v in values if isinstance(v, (str, int))})
-
-
 def kind(record: Dict) -> str:
-    explicit = record.get("record_type", record.get("kind", ""))
-    if explicit in ("positive", "pos"):
-        return "positive"
-    if explicit in ("negative", "neg"):
-        return "negative"
-    record_id = str(record.get("id", ""))
-    if record_id.startswith("neg_") or risk_codes(record) or record.get("parent_id"):
-        return "negative"
-    if record_id.startswith("pos_"):
-        return "positive"
-    return "other"
+    return "other" if record.get("record_type") == "other" else "positive"
 
 
 def index_fields(record: Dict) -> Dict:
     q = quality(record)
     cross = as_dict(field(record, "crosscheck"))
     blockers = list_values(cross.get("gold_blockers")) + list_values(q.get("gold_blockers"))
-    symbolic = list_values(q.get("symbolic_violations"))
     tier = q.get("tier") or cross.get("tier") or "unrated"
     return {
         "tier": str(tier), "record_type": kind(record),
-        "parent_id": str(record.get("parent_id") or ""),
         "has_gold_blockers": int(bool(blockers)),
-        "symbolic_violations": json.dumps(symbolic, ensure_ascii=False),
-        "has_symbolic_violations": int(bool(symbolic)),
-        "risk_codes": risk_codes(record),
     }
 
 

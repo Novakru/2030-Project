@@ -1,124 +1,96 @@
 # MOSAIC
 
-**Multi-agent Orchestration for Source-grounded Actions, Instruments and Constraints**：从真实来源提取流程、映射器材、构造可重放的风险扰动，并把冻结批次送入人工审核。工作分支 `refactor/mosaic` 从 `main@7a960ed` 创建。
+MOSAIC 将**实验流程纯文本转换为有来源证据的规范 XDL**。当前仓库专注迭代这套智能体，不再包含风险负例基准、模型训练、ORD 下载、SOP 补样或官方平台编译工具。
 
-设计目标见 [docs/MOSAIC.md](docs/MOSAIC.md)，ACRA 论文与固定版本代码研究见 [docs/research/acra.md](docs/research/acra.md)。来源事实、建议配置、模型假设和人工决定分别保存；候选不自动成为经过实验认证的 gold。
+## 使用
 
-当前生产路径为 **纯文本 → 有证据的操作计划 → XDL**。ORD 的物料、条件和器材结构字段不参与生成，只在 `reference_metadata` 和独立比较中保留。旧批次 140 条中有 125 条属于结构化重建，不能再用作纯文本提取的数量证明。本轮验收见 [TEXT_FIRST.md](docs/TEXT_FIRST.md)，新批次数量和局限见 [质量报告](reports/mosaic_quality.md)。
-
-默认启用[自动扩展 XDL](docs/EXTENDED_XDL.md)：agent 可新增有类型、有原文证据的原子操作；缺参用 `__NOT_REPORTED__` 等标识，可以作为完整表达的 silver 记录。动作表达、参数完整性和设备执行支持分别记录。原受限路径可显式选择 `--domain chemistry.batch/2`。
-
-保存前统一采用[规范概念与表述映射](docs/CANONICAL_VOCABULARY.md)：稳定操作 ID、规范器材类别／子型与具体参数分别保存。204 个旧名称、547 个合同版本已有精确迁移，未知表述不强配。别名与条件替换分别维护，父流程归一后再生成扰动。默认导出自描述的 `mosaic-canonical/1` XML。
-
-## 安装与运行
-
-Python 3.10+，在项目根目录执行：
+Python 3.10+：
 
 ```powershell
 python -m venv .venv
 ./.venv/Scripts/python.exe -m pip install -r requirements.lock.txt
-$env:PYTHONPATH = "$PWD/src"
-$env:PYTHONIOENCODING = 'utf-8'
-./.venv/Scripts/python.exe -m protocol_risk api-check
-./.venv/Scripts/python.exe -m mosaic extract path/to/procedure.txt --model extractor=gpt-6.1-sol --model critic=gpt-6.1-sol --model operation_expander=gpt-6.1-sol
-./.venv/Scripts/python.exe -m mosaic run --positives 120 --per-risk 10 --source-limit 300 --llm-perturbations 6 --max-calls 1600 --workers 16 --model extractor=gpt-6.1-sol --model critic=gpt-6.1-sol --model operation_expander=gpt-6.1-sol --model library_curator=gpt-6.1-sol
+./.venv/Scripts/python.exe -m pip install -e . --no-deps
+./.venv/Scripts/python.exe -m mosaic api-check
+./.venv/Scripts/python.exe -m mosaic extract examples/procedure.txt
 ```
 
-`.env` 提供 `api_key`、`base_url`、`model`，格式见 [.env.example](.env.example)。默认角色使用配置模型；`--model ROLE=MODEL` 可指定 `extractor`、`critic`、`operation_expander`、`apparatus_mapper`、`perturber`、`library_curator`。连通性检查包含真实 nonce 请求和随机无效密钥对照，见 `reports/api_connectivity.json`；网关返回名称不是独立模型身份认证。
+在 `.env` 中填写 `api_key`、`base_url`、`model`，格式见 [.env.example](.env.example)。检查接口使用随机 nonce 和无效密钥对照；网关返回的模型名称不构成独立身份认证。密钥不写入转换记录。
 
-`extract` 接受文件或目录，兼容 `.txt`、`.md`、包含 `procedure`／`text` 的单记录 JSON、数组 JSON 和 JSONL。`run --input PATH` 可以从这些文本构造数据集；省略时读取 ORD 的原始 `procedure_details`，不会用结构化字段合成替代文本。原文没有写出的条件保持未知，不能凭 ORD 补全。
-
-`--max-calls` 限制 completion 调用次数，HTTP 仍有有限重试；`--workers` 默认 4，按固定顺序收集结果。校验失败来源进入 `quarantined.jsonl`，完整原文和部分提取另存 `extraction_candidates.jsonl` 供审核，明确不计正例。数量或覆盖不足时批次为 `partial`，不会用别的来源形式凑数。SOP／作者 XDL 补充只能显式加 `--include-reference-supplements`，单独统计。
-
-每批输出 `library_registry.json`、`library_evolution.json`、`atomic_operations.json` 和 `equipment_inventory.json`。使用 `--registry PATH/TO/library_registry.json` 将已冻结的上一版库作为下一批输入。curator 归纳候选，程序验证来源和合同；同义别名、有证书的组合可参与后续提取，未支持的新操作不能直接执行。`--no-curation` 可只保存观察。器材族、具体型号、来源观察分开；同族只提供替代候选，容量、材料、温度作用范围、接口等需求仍须逐项满足。
-
-来源位于 `data/raw/reactions.parquet`、`data/upstream/` 及相应锁文件。缺少 ORD 文件时先运行 `python -m protocol_risk fetch`、`python -m protocol_risk ingest`；作者 XDL 可用 `collect-chemputer` 恢复。SOP 使用锁文件中已下载并验证的来源，不可获取的候选不参与构造。
-
-## 检查、重放和审核
-
-`data/mosaic/current.json` 指向最新批次。下面的 `<run_dir>` 为 `data/mosaic/mosaic_…`：
+输入必须显式提供，支持 `.txt`、`.md`、含 `procedure` 或 `text` 的 JSON 单记录／数组，以及 JSONL，也可提供目录。JSON 的其他结构字段不用于补全实验事实。例子是明确标注的演示文本，不计实验数据。
 
 ```powershell
-./.venv/Scripts/python.exe -m mosaic verify <run_dir>
-./.venv/Scripts/python.exe -m mosaic resume <run_dir> --offline
-./.venv/Scripts/python.exe -m mosaic publish <run_dir> --db audit/data/canonical_reviews.sqlite3
+./.venv/Scripts/python.exe -m mosaic extract path/to/procedures --output-dir outputs --workers 4 --max-calls 100
+./.venv/Scripts/python.exe -m mosaic extract procedure.txt --registry outputs/mosaic_<hash>/library_registry.json
+./.venv/Scripts/python.exe -m mosaic extract procedure.txt --model extractor=your-model --model critic=your-model
+```
+
+`--no-curation` 可暂不调用库维护角色。默认读取 `.env` 的模型，各角色也可用 `--model ROLE=MODEL` 单独配置。预算限制 completion 调用次数，HTTP 有有限重试。
+
+## 智能体与确定性检查
+
+| 角色 | 职责 |
+|---|---|
+| `extractor` | 提取动作、物料、参数和顺序，附逐字原文证据 |
+| `critic` | 核对遗漏、虚构和顺序，提出有证据的修复 |
+| `operation_expander` | 补充未表达动作；复用规范概念，必要时提出声明式操作合同 |
+| `apparatus_mapper` | 识别来源器材、配置及适用范围，不猜型号或额定参数 |
+| `library_curator` | 汇总观察，提出规范概念、别名、组合或器材分组修订 |
+
+程序负责表述归一、单位转换、合同校验、来源检查、XDL 编解码和版本记录。未知表达不强配；缺失参数用 `__NOT_REPORTED__`，定性描述用 `__QUALITATIVE__`，歧义用 `__AMBIGUOUS__`，保留原文。操作表达、参数完整性和设备执行支持分别记录。
+
+新操作与映射必须通过来源、合同及往返见证检查。器材目前自动登记观察、归入已有族或形成新族候选；新规范器材子型和替换规则仍需受控维护。最终 XDL 使用自描述的 `mosaic-canonical/1` 扩展，新增语义不自动获得 Chemputer 执行支持。
+
+## 输出与重放
+
+每次转换写入独立的 `outputs/mosaic_<hash>/`：
+
+```text
+manifest.json             # 固定输入、代码、库和模型配置的版本
+records.jsonl             # 转换成功的完整记录
+sources.jsonl             # 原始文本和来源快照
+candidates.jsonl           # 工具未完成的转换，供核对
+failures.jsonl             # 未完成原因
+xdl/                      # 每条转换的 XDL 文件
+artifacts/                # 模型、程序阶段及证据回执
+atomic_operations.json    # 本次规范操作使用统计
+equipment_inventory.json # 器材观察与能力要求
+library_registry.json     # 可传入下一次转换的库快照
+library_evolution.json    # 库维护建议与准入结果
+```
+
+```powershell
+./.venv/Scripts/python.exe -m mosaic verify outputs/mosaic_<hash>
+./.venv/Scripts/python.exe -m mosaic resume outputs/mosaic_<hash> --offline
+./.venv/Scripts/python.exe scripts/verify_replay.py outputs/mosaic_<hash>
+```
+
+代码、来源、库或配置改变时，严格重放拒绝续跑，需要重新转换。离线重放使用冻结的模型回执，不等于重新推理。失败来源保留原文和原因，不以编造参数换取转换通过。
+
+## 人工检查（可选）
+
+[审核网页](audit/README.md) 专门检查转换结果：逐条翻页，对照原文、参数、器材与 XDL。网页只写 SQLite，显式导出时才合并审核结果；不与源 JSON 同步。
+
+```powershell
+./.venv/Scripts/python.exe -m mosaic publish outputs/mosaic_<hash> --db audit/data/reviews.sqlite3
 ./audit/start_review.ps1
 ```
 
-`verify` 核对产物、上游 ORD、产率、器材引用、父子补丁、单次语义修改及目标风险；`--artifacts-only` 只核对冻结产物。`resume --offline` 重用保存的模型和程序阶段，不访问模型；代码、来源或库变化时拒绝续跑，应重新 `run`。离线重放不等于从空缓存重新推理。
-
-当前冻结批次 `mosaic_2edad1d69a9a536aa513` 对应代码提交 `d0ee1b7`。之后清除了未被生产流程调用的旧 Jev 训练模块及模型；严格重放此批次请使用该提交，当前代码仍可验证和审核冻结产物。原始需求文档保存在 [历史说明](docs/history/README.md)，不作为当前实现规范。
-
-打开 <http://localhost:8501> 逐条审核。首次导入可用网页上传或路径输入，随后只需打开 SQLite。发布不创建人工决定，也不覆盖已有 ID 或审核状态。JSON 与数据库不自动同步。审核后 JSON 由导出功能统一生成，每次使用独立时间戳目录。详见 [audit/README.md](audit/README.md)。
-
-## 文件与职责
+## 结构与测试
 
 ```text
-src/mosaic/              # 唯一的数据集编排入口
-  engine.py              # build / resume、选择来源、领域适配
-  agents.py              # 有界角色调用、模型配置、重放记录
-  chemistry.py           # 提取、批评、器材映射、领域校验
-  extended_chemistry.py  # 默认扩展语言领域：动作表达与设备执行支持分开
-  completion.py          # 有界 operation_expander，补充合同和来源参数标记
-  evidence.py            # 原文定位、逐字引文、内容哈希
-  registry.py            # 库版本、观察、候选操作、无损别名、覆盖求解
-  catalog.py             # 器材和原子操作统计与最小集证据
-  mutations.py           # 程序／模型扰动、语义约束、机制选择
-  supplements.py         # SOP 片段、条件场景、原生 XDL 依赖契约
-  verification.py        # 来源与扰动重放检查
-  store.py               # 原子写入、不可变阶段产物、哈希链
-  audit_bridge.py        # 冻结批次 → SQLite，显式单向发布
-src/protocol_risk/       # 化学规则、来源解析器和获取工具
-libraries/
-  atomic_operations.yaml # 公共规范操作、参数、前置条件与效果
-  operation_mappings.yaml # 表述、上下文、组合及旧合同迁移
-  equipment.yaml         # 公共规范类别、标准子型与配置规则
-  equipment_mappings.yaml # 器材别名、型号归属与条件替换
-  hardware.yaml          # 器材库
-  primitives.yaml        # 独立原子操作库，含状态作用与风险语义
-  risks.yaml             # 独立风险类别库
-  macros.yaml            # 尚待证明无损的宏候选
-audit/                   # 独立 Streamlit / pandas / sqlite3 审核工具
-tests/                   # 行为与真实批次验收
-data/
-  raw/                   # 规范化 ORD 来源归档
-  upstream/              # 锁定原始资料
-  mosaic/
-    current.json
-    mosaic_<hash>/
-      manifest.json      # 本批次唯一清单
-      artifacts/         # 来源、模型响应、提取、校验、库维护
-      datasets/<hash>/
-        raw.jsonl
-        positives.jsonl
-        negatives.jsonl
-        quarantined.jsonl
-        extraction_candidates.jsonl # 未完成提取，供专家定位缺口，不计正例
-        xdl/             # 逐条 XDL
-        atomic_operations.json
-        equipment_inventory.json
-        library_registry.json
-        library_evolution.json
+src/mosaic/          # 五个角色、编排、库演化、证据和持久化
+  protocol/          # 文本参数解析、规范表示、器材归一和 XDL 编解码
+libraries/           # 四份公共规范库及提取表示的内部定义
+schemas/             # XDL 标准子集的内部校验
+examples/            # 最小使用示例
+scripts/             # 重放检查和转换启动脚本
+tests/              # 仅覆盖当前转换、库维护和审核功能
+audit/              # 可选的转换结果审核工具
+docs/               # 当前架构和语言说明
 ```
-
-所有生产提取只读取文本，不要求 ORD 提供物料或加料顺序。批评角色只能提出带原文证据的修复，程序决定是否接受。microreactor、孔板单孔容量、来源加热块保留适用范围，未知额定参数继续为未知。
-
-领域可通过 `Runtime(domain=…, records=…)` 注入：领域负责提取、验证、扰动、库和来源，核心负责版本与持久化。当前以化学原文为主；默认扩展语言允许声明微波、流动等新动作及参数，生物／材料合同有接口测试。相应设备执行器和领域专用风险规则仍需独立适配。
-
-库维护自动登记有引文的器材观察和动作合同；先复用已有操作，无法表达时自动准入扩展表示，并在单独的 `atomic_operations.json` 统计。声明式合同不自动成为设备执行器。未知型号不自动合并，操作别名要求完整契约一致。最小覆盖只针对有证据的需求矩阵；当前扩展合同仍有同义、细粒度差异，尚未证明最小器材集或原子操作集。
-
-扰动先检查前置条件，再校验实际修改。改多个步骤、修改器材额定参数或篡改来源均被拒绝。机制由真实修改和规则确定，数值变化不能自报新机制。soft 保留未校准假设；B2/B3 条件场景、B5 原文片段和原生 D2 单输入依赖分别统计，不能当作独立 ORD 失败实验。
-
-旧全局 `build`、批量 `extract`、`build-sop` 等入口及旧派生数据已移除。官方平台编译兼容性暂不纳入主流程；静态 XDL 导出和真实设备执行是不同验收。
-
-## 测试
 
 ```powershell
-./.venv/Scripts/python.exe -m pytest -q -k 'not quota'
-./.venv/Scripts/python.exe -m pytest -q tests/test_dataset.py -k quota
-./audit/.venv/Scripts/python.exe -m unittest discover -s audit/tests -q
-./.venv/Scripts/python.exe scripts/verify_replay.py <run_dir> --output reports/mosaic_replay.json
-./.venv/Scripts/python.exe scripts/report_dataset.py <run_dir>
+./.venv/Scripts/python.exe -m pytest -q
 ```
 
-真实批次验收读取当前清单；手写控制只在 `tests/chemistry_fixtures.py` 作夹具，不计入交付数量。当前主体检查 608 项通过、1 项 SDK 测试跳过；审计工具 43 项通过；独立数据集验收 5 项通过、1 项风险配额失败。规范化批次保留 220 条原文、120 条正例、85 条负例和 100 条工具未完成记录，共 305 条待审。204 个旧名称、547 个来源合同已迁移到包含 48 个规范概念的目录，当前使用 46 个。205 条流程迁移前后的风险违规和未知项一致，216 个数据文件禁网重放逐字节一致。100 条正例指标已达到，20 类风险各 10 条仍未达到。
+测试使用明确的模型替身，不依赖真实 API、旧数据集或官方平台 SDK。设计见 [架构](docs/ARCHITECTURE.md)、[规范词汇](docs/CANONICAL_VOCABULARY.md)及[扩展语言](docs/EXTENDED_XDL.md)。

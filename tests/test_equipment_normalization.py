@@ -3,12 +3,11 @@ import copy
 
 import pytest
 
-from protocol_risk.apparatus import source_fact_hash
-from protocol_risk.equipment_normalization import (
+from mosaic.protocol.apparatus import source_fact_hash
+from mosaic.protocol.equipment_normalization import (
     analysis_equipment, analysis_node, conditional_substitutes, normalize_equipment,
 )
-from protocol_risk.io import load_library
-from protocol_risk.symbolic import evaluate
+from mosaic.protocol.io import load_library
 
 
 def hardware(node):
@@ -146,21 +145,6 @@ def test_canonical_identity_edits_expire_old_source_evidence(field, value):
     node = normalize_equipment(hardware(source_microreactor()))["nodes"]["reactor"]
     node[field] = value
     assert "source_fact_sha256" not in analysis_node(node)
-
-
-def test_names_do_not_change_symbolic_capacity_risk_or_its_evidence():
-    original = {"hardware": hardware(source_microreactor()), "reagents": [{"id": "r", "name": "water"}],
-                "steps": [{"id": "s1", "op": "Add", "vessel": "reactor", "reagent": "r",
-                           "amount": {"value": 8, "unit": "mL"}, "meta": {"stage": "reaction"}}]}
-    expected = evaluate(original)
-    canonical = copy.deepcopy(original)
-    canonical["hardware"] = normalize_equipment(original["hardware"])
-    projected = copy.deepcopy(canonical)
-    projected["hardware"] = analysis_equipment(canonical["hardware"])
-    actual = evaluate(projected)
-    assert actual.violations == expected.violations
-    assert actual.unknowns == expected.unknowns
-    assert "A1" in actual.risks
 
 
 def candidate(kind="round_bottom_flask", **changes):

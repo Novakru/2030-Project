@@ -2,7 +2,7 @@
 from pathlib import Path
 import sys
 
-from protocol_risk.io import ROOT, read_json
+from mosaic.protocol.io import ROOT, read_json
 
 from .store import RunStore
 
@@ -21,7 +21,7 @@ def publish(run_dir, database):
     if not bundle:
         raise ValueError("Run has no completed review bundle")
     files = []
-    for key in ("positives", "negatives", "candidates"):
+    for key in ("records", "candidates"):
         if not bundle.get(key):
             continue
         path = (run_dir / bundle[key]).resolve()

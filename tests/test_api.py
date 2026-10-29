@@ -1,6 +1,6 @@
 import pytest
 
-from protocol_risk.api import Client, settings
+from mosaic.protocol.api import Client, settings
 
 
 class Reply:
@@ -28,7 +28,7 @@ def test_gateway_minimal_request_does_not_include_unsupported_options(monkeypatc
         captured.update(kwargs)
         return Reply('{"ok":true}')
 
-    monkeypatch.setattr("protocol_risk.api.requests.post", post)
+    monkeypatch.setattr("mosaic.protocol.api.requests.post", post)
     client.complete("system", "prompt", cache=False)
     assert set(captured["json"]) == {"model", "messages"}
     assert captured["headers"]["Authorization"] == "Bearer test-only"
