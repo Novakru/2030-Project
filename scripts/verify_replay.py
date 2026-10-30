@@ -11,7 +11,7 @@ from mosaic.engine import resume
 def snapshot(root):
     manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
     paths = {event["artifact"] for event in manifest["events"]
-             if event["stage"].startswith(("output/", "xdl/", "library/"))}
+             if event["stage"].startswith(("output/", "xdl/", "sidecar/", "library/", "evaluation"))}
     return {relative: hashlib.sha256((root / relative).read_bytes()).hexdigest()
             for relative in sorted(paths)}
 

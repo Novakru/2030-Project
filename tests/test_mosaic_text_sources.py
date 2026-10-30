@@ -52,3 +52,14 @@ def test_ord_json_retains_original_snapshot_but_only_notes_are_extraction_input(
     assert record["raw"] == row
     assert record["procedure"] == row["notes"]["procedure_details"]
     assert not {"raw", "inputs", "conditions"} & text_document(record).keys()
+
+
+def test_origin_license_and_dataset_survive_without_importing_reference_values(tmp_path):
+    path = tmp_path / "source.json"
+    path.write_text(json.dumps({"id": "source", "procedure": "Stir for 60 s.", "source": {
+        "db": "ORD", "dataset_id": "origin_dataset", "license": "CC-BY-SA-4.0", "doi": "10.example/source",
+        "temperature": 999}, "conditions": {"temperature": 999}}), encoding="utf-8")
+    record = load_text_sources([path])[0]
+    assert record["source"]["license"] == "CC-BY-SA-4.0" and record["source"]["db"] == "ORD"
+    assert record["source"]["input_file_sha256"]
+    assert "temperature" not in text_document(record)["source"]

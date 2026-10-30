@@ -69,15 +69,21 @@ def step_rows(record: Dict) -> List[Dict]:
         vessel = step.get("vessel", step.get("to_vessel", ""))
         node = as_dict(nodes.get(str(vessel)))
         capacity = as_dict(node.get("params")).get("capacity_mL", node.get("capacity_mL"))
-        amount = step.get("amount", step.get("volume", step.get("mass", "")))
-        amount = (f"{amount.get('value', '')} {amount.get('unit', '')}"
-                  if isinstance(amount, dict) else str(amount))
+        amounts = []
+        for key in ("mass", "volume", "amount", "relative_loading", "equivalents", "concentration"):
+            value = step.get(key)
+            if value is not None:
+                amounts.append(f"{value.get('value', '')} {value.get('unit', '')}" if isinstance(value, dict) else str(value))
+        amount = "; ".join(amounts)
+        config = as_dict(as_dict(node.get("configuration")).get("properties"))
+        capacities = [item.get("value", {}) for item in config.values() if isinstance(item, dict) and item.get("attribute") in {"capacity", "nominal_volume"}]
+        reported_capacity = "; ".join(f"{v.get('value', '')} {v.get('unit', '')}" for v in capacities)
         rows.append({
             "step_id": step.get("step_id", step.get("id", str(index + 1))),
             "action": step.get("op", step.get("action", step.get("type", ""))),
             "reagent": names.get(str(step.get("reagent")), step.get("reagent", "")),
-            "amount": amount, "vessel": str(vessel), "capacity_mL": capacity,
-            "temp_C": step.get("temp_C"), "duration_s": step.get("duration_s"),
+            "amount": amount, "vessel": str(vessel), "capacity": reported_capacity or capacity,
+            "temperature": step.get("temp", step.get("temp_C")), "duration": step.get("time", step.get("duration_s")),
             "evidence": as_dict(step.get("meta")).get("evidence", ""),
         })
     return rows

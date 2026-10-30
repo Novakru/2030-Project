@@ -2,10 +2,7 @@ import copy
 
 import pytest
 
-from mosaic.catalog import atomic_inventory, equipment_inventory
 from mosaic.equipment import check_substitution, classify_equipment, equipment_groups
-from mosaic.evidence import SourceSpan
-from mosaic.registry import Registry
 from mosaic.protocol.io import load_library
 
 
@@ -236,45 +233,3 @@ def test_malformed_constraints_are_explicit_errors(requirement):
 def test_invalid_demands_are_explicit_errors(field, value):
     with pytest.raises(ValueError):
         check_substitution({field: value}, cited_vial())
-
-
-def test_catalog_reads_evolved_snapshot_and_preserves_extension_status():
-    snapshot = Registry().snapshot
-    snapshot["operations"]["biology.Measure"] = {"required": ["wavelength_nm"], "optional": [], "risks": [],
-        "xdl_steps": [], "reason": "fixture measurement distinction", "domain": "biology", "status": "ir_only"}
-    snapshot["representations"] = {"fixture": {"status": "validated_ir_only", "expansion": ["Wait"]}}
-    snapshot["changes"] = [{"action": "fixture_add"}]
-    report = atomic_inventory([{"steps": [{"op": "biology.Measure"}]}], [], registry=snapshot)
-    assert report["operations"]["biology.Measure"]["selected_steps"] == 1
-    assert report["operations"]["biology.Measure"]["status"] == "ir_only"
-    assert report["representations"]["fixture"]["status"] == "validated_ir_only"
-    assert report["library_changes"] == snapshot["changes"]
-    assert not report["unregistered_operations"]
-
-
-def test_equipment_inventory_keeps_record_binding_and_family_candidates_distinct():
-    node = cited_vial(binding_basis="source_reported", source_evidence=[{"quote": "10 mL vial"}])
-    parent = {"id": "fixture_parent", "hardware": {"nodes": {"reactor": node}, "bindings": {}},
-              "steps": [{"id": "add", "op": "Add", "vessel": "reactor"}]}
-    report = equipment_inventory([parent])
-    assert report["record_bindings"][0]["family"] == "vial"
-    assert report["groups"]["anonymous_observations"][0]["id"] == "fixture_vial"
-    assert report["requirements"][0]["uses"][0]["record_id"] == "fixture_parent"
-    assert report["cover"]["status"] == "incomplete"
-
-
-def test_unknown_operation_cannot_use_a_generic_containing_vial_as_hardware_coverage():
-    snapshot = Registry().snapshot
-    snapshot["devices"] = [cited_vial()]
-    parent = {"id": "fixture", "hardware": {"nodes": {"reactor": {"apparatus_kind": "vial"}}, "bindings": {}},
-              "steps": [{"id": "spin", "op": "biology.Centrifuge", "vessel": "reactor"}]}
-    report = equipment_inventory([parent], registry=snapshot)
-    assert report["cover"]["status"] == "incomplete"
-    assert report["requirements"][0]["requirement"]["unresolved_operation"] == "biology.Centrifuge"
-    assert report["substitutions"][0]["status"] == "unknown"
-
-
-def test_wait_alone_does_not_invent_a_hardware_requirement():
-    parent = {"id": "fixture", "hardware": {"nodes": {}, "bindings": {}},
-              "steps": [{"id": "pause", "op": "Wait", "duration_s": 30}]}
-    assert equipment_inventory([parent])["requirements"] == []

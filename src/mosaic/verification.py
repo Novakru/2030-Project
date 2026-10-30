@@ -1,10 +1,11 @@
 """Validate a conversion against its own frozen sources and XDL contracts."""
 from pathlib import Path
 
-from .protocol.xdl_document import compile_document, read_document
-from .protocol.crosscheck import crosscheck
+from .evaluation import check_conservation
+from .fact_binding import bind_facts
+from .facts import validate_facts
+from .registry import Registry
 from .protocol.io import digest, read_json, read_jsonl
-from .protocol.xdl import canonical_hash, export_xdl
 from .store import RunStore
 
 
@@ -17,6 +18,7 @@ def verify_conversion(run_dir):
     records = list(read_jsonl(root / result["review_bundle"]["records"]))
     failures = list(read_jsonl(root / "failures.jsonl"))
     candidates = list(read_jsonl(root / result["review_bundle"]["candidates"]))
+    registry = Registry(read_json(root / "library_registry.json"))
     issues, seen = [], set()
     for record in records:
         try:
@@ -28,16 +30,20 @@ def verify_conversion(run_dir):
                 raise ValueError("Converted source differs from snapshot")
             if source.get("raw") is not None and digest(source["raw"]) != source["raw_sha256"]:
                 raise ValueError("Source snapshot hash differs")
-            if crosscheck(record, source) != record["crosscheck"]:
-                raise ValueError("Literal-source checks changed")
-            if export_xdl(record) != record["xdl"] or canonical_hash(record) != record["canonical_sha1"]:
-                raise ValueError("XDL or semantic fingerprint differs")
+            facts = validate_facts(record["facts"], source["procedure"])
+            bindings = bind_facts(facts, registry.snapshot)
+            if bindings != record["bindings"] or record["compiled"]["xml"] != record["xdl"]:
+                raise ValueError("Facts binding or XDL artifact differs")
+            check = check_conservation(facts, bindings, record["compiled"])
+            if not check["passed"] or check != record["compilation_check"]:
+                raise ValueError("Actual XDL loses facts, references or apparatus identity")
             if (root / "xdl" / (record["id"] + ".xdl")).read_text(encoding="utf-8") != record["xdl"]:
                 raise ValueError("XDL file differs from record")
-            document = compile_document(record)
-            if document["extensions"] != record["xdl_extensions"] or document["bindings"] != record["xdl_bindings"]:
-                raise ValueError("XDL sidecar differs")
-            read_document(record["xdl"], extensions=record["xdl_extensions"])
+            sidecar = read_json(root / "xdl" / (record["id"] + ".json"))
+            expected_sidecar = {"record_id": record["id"], "text_sha256": record["text_sha256"],
+                                **{k: v for k, v in record["compiled"].items() if k != "xml"}}
+            if sidecar != expected_sidecar:
+                raise ValueError("XDL configuration/extension sidecar differs from record")
         except (ValueError, KeyError, TypeError) as error:
             issues.append({"record_id": record.get("id"), "error": str(error)})
     attempted = [r["raw_id"] for r in records] + [f["raw_id"] for f in failures]

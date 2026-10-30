@@ -3,11 +3,15 @@ import copy
 
 import pytest
 
-from mosaic.protocol.apparatus import source_fact_hash
 from mosaic.protocol.equipment_normalization import (
     analysis_equipment, analysis_node, conditional_substitutes, normalize_equipment,
 )
-from mosaic.protocol.io import load_library
+from mosaic.protocol.io import digest, load_library
+
+
+def source_fact_hash(node):
+    return digest({key: node.get(key) for key in ("apparatus_kind", "params", "capacity_scope",
+                   "wetted_materials", "source_parameters", "source_evidence")})
 
 
 def hardware(node):

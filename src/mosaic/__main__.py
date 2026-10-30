@@ -15,8 +15,9 @@ def main(argv=None):
     extract.add_argument("--output-dir", default="outputs")
     extract.add_argument("--registry", type=Path, help="library_registry.json from a previous conversion")
     extract.add_argument("--no-curation", action="store_true")
-    extract.add_argument("--max-calls", type=int, default=100)
-    extract.add_argument("--workers", type=int, default=4)
+    extract.add_argument("--max-calls", type=int, help="Default: 3 per source + 2 for the whole batch")
+    extract.add_argument("--max-seconds", type=int, default=900)
+    extract.add_argument("--workers", type=int, default=3)
     extract.add_argument("--model", action="append", default=[], metavar="ROLE=MODEL")
     extract.add_argument("--publish-db", type=Path)
     again = commands.add_parser("resume", help="Resume an unchanged conversion, optionally without HTTP")
@@ -24,6 +25,10 @@ def main(argv=None):
     again.add_argument("--offline", action="store_true")
     check = commands.add_parser("verify", help="Verify frozen sources, evidence and XDL roundtrips")
     check.add_argument("run_dir", type=Path)
+    evaluate = commands.add_parser("evaluate", help="Score actual XDL conservation and optional expert fact references")
+    evaluate.add_argument("run_dir", type=Path)
+    evaluate.add_argument("--reference", type=Path, action="append", default=[])
+    evaluate.add_argument("--output", type=Path)
     review = commands.add_parser("publish", help="Import conversion results into the optional review database")
     review.add_argument("run_dir", type=Path)
     review.add_argument("--db", type=Path, required=True)
@@ -37,7 +42,7 @@ def main(argv=None):
                 parser.error("--model requires ROLE=MODEL; roles: " + ", ".join(ROLES))
             models[role] = model
         result = convert(ConversionSpec(output_dir=args.output_dir, registry_path=str(args.registry) if args.registry else None,
-            curate=not args.no_curation, max_calls=args.max_calls, workers=args.workers, models=models),
+            curate=not args.no_curation, max_calls=args.max_calls, max_seconds=args.max_seconds, workers=args.workers, models=models),
             runtime=Runtime(records=load_text_sources(args.paths)))
         if args.publish_db:
             from .audit_bridge import publish
@@ -50,6 +55,14 @@ def main(argv=None):
     elif args.command == "publish":
         from .audit_bridge import publish
         result = publish(args.run_dir, args.db)
+    elif args.command == "evaluate":
+        from datetime import datetime, timezone
+        from .evaluation import evaluate_run
+        from .store import atomic_json
+        result = evaluate_run(args.run_dir, args.reference)
+        output = args.output or Path("outputs/reports") / (args.run_dir.name + "_" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ") + ".json")
+        atomic_json(output, result)
+        result["report"] = str(output.resolve())
     else:
         from .protocol.api import probe
         result = probe()

@@ -11,32 +11,19 @@ from mosaic.sources import load_text_sources
 from mosaic.verification import verify_conversion
 
 
-TEXT = "Water was added to a 10 mL vial. The mixture was stirred overnight. The solid was dried under vacuum."
-CORE = [{"op": "Add", "reagent": "Water", "alias": "Water", "evidence": "Water was added to a 10 mL vial."},
-        {"op": "Stir", "evidence": "The mixture was stirred overnight."}]
-DRY = {"op": "Dry", "evidence": "The solid was dried under vacuum.", "stage": "workup", "parameters": {
-    "condition": {"value": "vacuum", "evidence": "The solid was dried under vacuum."},
-    "duration_s": {"status": "not_reported", "marker": "__NOT_REPORTED__", "raw": None,
-                   "evidence": "The solid was dried under vacuum."}}}
+from tests.facts_fixture import TEXT, graph
+from mosaic.fact_extraction import EXTRACT, VERIFY
 
 
 class Model:
     def complete(self, system, prompt, cache=True):
-        if system.startswith("Extract an entire"):
-            data = {"steps": CORE, "unmapped_actions": [{"evidence": DRY["evidence"], "reason": "drying"}]}
-        elif system.startswith("Complete a source-grounded"):
-            data = {"steps": CORE + [DRY], "definitions": {"Dry": {
-                "domain": "chemistry", "description": "Dry an isolated solid under stated conditions",
-                "parameters": {"condition": {"type": "string", "required": True},
-                               "duration_s": {"type": "number", "unit": "s", "required": True}},
-                "effects": ["solvent_removed_from_solid"], "hardware_roles": ["vacuum_drying"]}}}
-        elif "independent source-fidelity critic" in system:
-            data = {"findings": [], "patch": []}
-        elif "apparatus-mapping specialist" in system:
-            data = {"mentions": [], "unknowns": []}
+        if system == EXTRACT:
+            data = graph()
+        elif system == VERIFY:
+            data = {"issues": []}
         else:
             data = {"proposals": []}
-        return {"data": copy.deepcopy(data), "model": "explicit-test-double"}
+        return {"data": data, "model": "explicit-test-double"}
 
 
 def convert_text(tmp_path, text=TEXT, **options):
@@ -51,10 +38,11 @@ def test_conversion_grows_expression_preserves_gaps_and_replays_without_http(tmp
     assert result["converted"] == 1 and result["failures"] == 0
     root = Path(result["run_dir"])
     record = next(read_jsonl(root / "records.jsonl"))
-    assert [step["op"] for step in record["steps"]] == ["Add", "Mix", "Dry"]
+    assert [step["op"] for step in record["steps"]] == ["Add", "Stir"]
     assert record["source_text"] == TEXT
-    assert "__NOT_REPORTED__" in record["xdl"] and "__QUALITATIVE__" in record["xdl"]
-    assert [s["op"] for s in read_document(record["xdl"], extensions=record["xdl_extensions"])["steps"]] == ["Add", "Stir", "Dry"]
+    assert "__QUALITATIVE__" in record["xdl"] and "room temperature" in record["xdl"]
+    assert result["model_calls"] == 2
+    assert [s["op"] for s in read_document(record["xdl"], extensions=record["xdl_extensions"])["steps"]] == ["Add", "Stir"]
     assert verify_conversion(root)["passed"]
     before = {p.relative_to(root): p.read_bytes() for p in root.rglob("*") if p.is_file() and "artifacts" not in p.parts and p.name != "manifest.json"}
     monkeypatch.setattr("requests.sessions.Session.request", lambda *a, **k: pytest.fail("HTTP during offline replay"))
@@ -80,6 +68,6 @@ def test_conversion_requires_explicit_text_instead_of_an_implicit_database(tmp_p
 
 def test_code_or_source_change_cannot_silently_reuse_frozen_run(tmp_path, monkeypatch):
     result = convert_text(tmp_path)
-    monkeypatch.setattr("mosaic.engine._code_revision", lambda _: "changed-code")
+    monkeypatch.setattr("mosaic.engine._code_revision", lambda _=None: "changed-code")
     with pytest.raises(ValueError, match="Cannot resume after code"):
         resume(result["run_dir"], offline=True)

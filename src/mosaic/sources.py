@@ -7,15 +7,17 @@ from pathlib import Path
 
 from mosaic.protocol.io import digest
 
+PROVENANCE_FIELDS = {"db", "url", "dataset_id", "dataset_name", "publication_url", "doi", "patent", "path", "document_name",
+    "file", "file_sha256", "input_file_sha256", "license", "reaction_id", "row_index", "row_server_url",
+    "repository_revision_observed", "row_server_revision_verified", "reaction_payload_sha256", "procedure_sha256", "text_field"}
+
 
 def text_document(record):
     """Drop reference measurements before any extraction implementation sees them."""
     text = record.get("procedure")
     if not isinstance(text, str) or not text.strip():
         raise ValueError("A nonempty verbatim experimental procedure is required")
-    allowed = {"db", "url", "dataset_id", "publication_url", "doi", "path", "document_name",
-               "file", "file_sha256", "license"}
-    source = {key: copy.deepcopy(value) for key, value in record.get("source", {}).items() if key in allowed}
+    source = {key: copy.deepcopy(value) for key, value in record.get("source", {}).items() if key in PROVENANCE_FIELDS}
     return {"id": record["id"], "procedure": text, "source": source,
             "raw_sha256": record.get("raw_sha256") or digest({"text": text}),
             "text_sha256": digest(text.encode("utf-8"))}
@@ -57,9 +59,12 @@ def load_text_sources(paths):
                 raise ValueError("Duplicate or invalid source identifier: " + str(identifier))
             seen.add(identifier)
             raw = {"text": text} if path.suffix.lower() in {".txt", ".md"} else copy.deepcopy(row)
-            records.append({"id": identifier, "procedure": text, "raw": raw, "raw_sha256": digest(raw),
-                            "source": {"db": "TEXT", "url": path.as_uri(), "document_name": path.name,
-                                       "file_sha256": digest(path.read_bytes()), "path": str(path)}})
+            upstream = row.get("source") if isinstance(row.get("source"), dict) else {}
+            provenance = {key: copy.deepcopy(value) for key, value in upstream.items() if key in PROVENANCE_FIELDS}
+            source = {"db": "TEXT", "url": path.as_uri(), **provenance, "document_name": path.name,
+                      "input_file_sha256": digest(path.read_bytes()), "path": str(path)}
+            source.setdefault("file_sha256", source["input_file_sha256"])
+            records.append({"id": identifier, "procedure": text, "raw": raw, "raw_sha256": digest(raw), "source": source})
     if not records:
         raise ValueError("No text documents found")
     return records

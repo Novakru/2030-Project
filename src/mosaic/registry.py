@@ -4,7 +4,7 @@ from __future__ import annotations
 import copy
 from collections import defaultdict
 
-from mosaic.protocol.io import ROOT, digest, load_library
+from mosaic.protocol.io import digest, load_library
 from .evidence import validate_span
 
 
@@ -51,39 +51,24 @@ def minimum_cover(requirements, witnesses):
 
 
 class Registry:
-    """A run pins a snapshot; proposals do not silently modify the domain vocabulary."""
+    """Evidence-checked transactions over four public semantic catalogs."""
     def __init__(self, snapshot=None):
-        family_path = ROOT / "libraries/equipment_families.yaml"
-        families = load_library("equipment_families.yaml").get("families", {}) if snapshot is None and family_path.exists() else {}
         self.snapshot = copy.deepcopy(snapshot) if snapshot is not None else {
-            "schema": "mosaic.registry/1", "devices": load_library("hardware.yaml")["devices"],
-            "operations": load_library("primitives.yaml")["operations"],
-            "macros": load_library("macros.yaml")["macros"],
-            "observations": [], "operation_candidates": [], "aliases": {}, "changes": [],
-            "families": families}
-        self.snapshot = copy.deepcopy(self.snapshot)
-        if snapshot is None:
-            self.snapshot.update(canonical_operations=load_library("atomic_operations.yaml")["operations"],
-                                 operation_mappings=load_library("operation_mappings.yaml"),
-                                 equipment_catalog=load_library("equipment.yaml"),
-                                 equipment_mappings=load_library("equipment_mappings.yaml"))
-        # Older frozen runs remain readable. These are separate from the
-        # executable operation contracts and manufacturer/model profiles.
-        for key, default in (("operation_candidates", []), ("representation_candidates", []),
-                             ("representations", {}), ("families", {}),
-                             ("extension_operations", {}),
-                             ("source_operation_contracts", {}),
-                             ("family_candidates", []), ("operation_observations", [])):
-            self.snapshot.setdefault(key, default)
+            "schema": "mosaic.registry/2", "devices": load_library("hardware.yaml")["devices"],
+            "canonical_operations": load_library("atomic_operations.yaml")["operations"],
+            "operation_mappings": load_library("operation_mappings.yaml"),
+            "equipment_catalog": load_library("equipment.yaml"),
+            "equipment_mappings": load_library("equipment_mappings.yaml"),
+            "observations": [], "changes": []}
 
     @property
     def revision(self):
         return digest(self.snapshot)
 
-    def evolve(self, changes, *, expected_revision, sources, policy=None):
+    def evolve(self, changes, *, expected_revision, sources):
         if expected_revision != self.revision:
             raise ValueError("Registry revision conflict")
-        next_snapshot = copy.deepcopy(self.snapshot)
+        snapshot = copy.deepcopy(self.snapshot)
         for change in changes:
             evidence = change.get("evidence", [])
             if not evidence:
@@ -91,130 +76,26 @@ class Registry:
             for citation in evidence:
                 validate_span(citation, sources)
             action = change.get("action")
-            if action in {"admit_equipment_subtype", "map_equipment_alias", "admit_equipment_substitution"}:
+            if action == "admit_fact_expression":
+                from .fact_evolution import admit_expression
+                admit_expression(snapshot, change)
+            elif action in {"admit_equipment_subtype", "map_equipment_alias", "admit_equipment_substitution"}:
                 from .equipment_evolution import evolve_equipment
-                evolve_equipment(next_snapshot, change)
-            elif action in {"admit_canonical_operation", "map_canonical_expression"}:
-                from .vocabulary import evolve_canonical
-                evolve_canonical(next_snapshot, change)
+                evolve_equipment(snapshot, change)
             elif action == "observe_device":
                 observation = copy.deepcopy(change["device"])
-                if observation.get("verified") is True:
+                if observation.get("verified"):
                     raise ValueError("An automatic observation cannot declare human verification")
                 observation.update(evidence=evidence, status="source_reported", verified=False)
                 observation["observation_id"] = "obs_" + digest(observation)[:20]
-                if not any(o["observation_id"] == observation["observation_id"] for o in next_snapshot["observations"]):
-                    next_snapshot["observations"].append(observation)
-            elif action == "propose_operation":
-                if not change.get("counterexample"):
-                    raise ValueError("New operation proposals need an existing-representation counterexample")
-                proposal = {"name": change["name"], "evidence": evidence, "counterexample": change["counterexample"],
-                            "status": "candidate_not_executable", "automatic_core_admission": False}
-                if proposal not in next_snapshot["operation_candidates"]:
-                    next_snapshot["operation_candidates"].append(proposal)
-            elif action == "admit_extension_operation":
-                from mosaic.protocol.extensions import normalize_definition
-                definition = normalize_definition(change["name"], change["definition"])
-                identifier = definition["semantic_sha256"]
-                target = "source_operation_contracts" if next_snapshot.get("canonical_operations") else "extension_operations"
-                known = next_snapshot[target].get(identifier)
-                if known is None:
-                    known = {**definition, "evidence": [], "origins": []}
-                    next_snapshot[target][identifier] = known
-                # Versions with different contracts coexist. Only an identical
-                # full definition can merge evidence automatically.
-                for key, values in (("evidence", evidence), ("origins", change.get("origins", []))):
-                    for value in values:
-                        if value not in known[key]:
-                            known[key].append(copy.deepcopy(value))
-            elif action == "observe_operation":
-                observation = copy.deepcopy(change["observation"])
-                if observation.get("verified") or observation.get("executable"):
-                    raise ValueError("Operation observations cannot declare verified execution")
-                observation.update(evidence=evidence, status="source_reported")
-                observation.setdefault("observation_id", "op_observation_" + digest(observation)[:20])
-                self._merge_candidate(next_snapshot["operation_observations"], observation, "observation_id")
-            elif action == "cluster_operation":
-                proposal = copy.deepcopy(change["proposal"])
-                if not proposal.get("name") or not proposal.get("domain") or not proposal.get("origins"):
-                    raise ValueError("Operation clusters need a domain, semantic name and origins")
-                if proposal.get("verified") or proposal.get("executable"):
-                    raise ValueError("A semantic cluster cannot declare verified execution")
-                identity = {k: proposal.get(k) for k in ("domain", "name", "contract")}
-                identity["name"] = " ".join(str(identity["name"]).split()).casefold()
-                proposal.update(candidate_id="op_candidate_" + digest(identity)[:20],
-                                evidence=evidence, status="candidate_not_executable",
-                                automatic_core_admission=False)
-                self._merge_candidate(next_snapshot["operation_candidates"], proposal, "candidate_id")
-            elif action in ("propose_macro", "admit_macro"):
-                proposal = copy.deepcopy(change["proposal"])
-                proposal["candidate_id"] = "representation_" + digest({
-                    k: proposal.get(k) for k in ("domain", "name", "contract", "expansion", "parameter_mapping")})[:20]
-                proposal.update(evidence=evidence, status="candidate_not_executable")
-                if action == "admit_macro":
-                    if policy is None:
-                        raise ValueError("Macro admission requires a domain representation verifier")
-                    certificate = policy.verify_macro(proposal, next_snapshot)
-                    if not isinstance(certificate, dict) or certificate.get("lossless") is not True:
-                        raise ValueError("Macro representation has no lossless domain certificate")
-                    proposal.update(status="admitted_representation", certificate=certificate)
-                    next_snapshot["representations"][proposal["candidate_id"]] = proposal
-                else:
-                    self._merge_candidate(next_snapshot["representation_candidates"], proposal, "candidate_id")
-            elif action in ("cluster_device_family", "propose_device_family"):
-                family = copy.deepcopy(change["family"])
-                if not family.get("id") or not family.get("origins"):
-                    raise ValueError("Device families need an identifier and observation origins")
-                if any(key in family for key in ("params", "verified", "manufacturer", "model")):
-                    raise ValueError("Device clustering cannot manufacture model facts")
-                family.update(evidence=evidence, status="classification_only",
-                              substitution_requires="operation_requirements_and_known_profile_facts")
-                if action == "cluster_device_family":
-                    known = next_snapshot["families"].get(family["id"])
-                    if known is None:
-                        raise ValueError("Automatic classification requires a declared equipment family")
-                    for key in ("origins", "evidence"):
-                        known.setdefault(key, [])
-                        for item in family[key]:
-                            if item not in known[key]:
-                                known[key].append(item)
-                else:
-                    self._merge_candidate(next_snapshot["family_candidates"], family, "id")
-            elif action == "alias_identical_operation":
-                left, right = change["from"], change["to"]
-                operations = next_snapshot["operations"]
-                if left == right or left not in operations or right not in operations or operations[left] != operations[right]:
-                    raise ValueError("Automatic operation alias requires an identical full contract")
-                cursor, visited = right, {left}
-                while cursor in next_snapshot["aliases"]:
-                    if cursor in visited:
-                        raise ValueError("Operation aliases cannot form a cycle")
-                    visited.add(cursor)
-                    cursor = next_snapshot["aliases"][cursor]
-                if cursor in visited:
-                    raise ValueError("Operation aliases cannot form a cycle")
-                next_snapshot["aliases"][left] = right
+                if observation not in snapshot["observations"]:
+                    snapshot["observations"].append(observation)
             else:
                 raise ValueError("Unsupported registry action")
             receipt = {"action": action, "change_sha256": digest(change), "evidence": evidence}
-            if receipt not in next_snapshot["changes"]:
-                next_snapshot["changes"].append(receipt)
-        return Registry(next_snapshot)
-
-    @staticmethod
-    def _merge_candidate(candidates, proposal, identifier):
-        """Aggregate equal semantic proposals without erasing original evidence."""
-        previous = next((item for item in candidates if item.get(identifier) == proposal[identifier]), None)
-        if previous is None:
-            candidates.append(proposal)
-            return
-        for key in ("origins", "evidence", "counterexamples"):
-            if key not in proposal:
-                continue
-            previous.setdefault(key, [])
-            for item in proposal.get(key, []):
-                if item not in previous[key]:
-                    previous[key].append(item)
+            if receipt not in snapshot["changes"]:
+                snapshot["changes"].append(receipt)
+        return Registry(snapshot)
 
     def compact_device_observations(self):
         """Merge evidence only for exact identified models and identical declared facts."""

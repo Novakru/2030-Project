@@ -1,41 +1,36 @@
-# 当前架构
+# Facts 架构
 
-公共入口是 `mosaic extract`，Python 入口是 `convert(ConversionSpec(...), runtime=Runtime(records=...))`。输入为显式提供的实验流程原文，输出为带证据的规范流程和 XDL。
+公共接口为 convert(ConversionSpec(...), runtime=Runtime(records=...))，命令行为 mosaic extract。领域合同 experimental.facts/1 不限制化学操作枚举；生物、材料的新语义可以进入同一事实合同和库演化流程。
 
 ```mermaid
 flowchart TD
-  T[实验流程文本] --> E[提取 extractor]
-  E --> C[原文复核 critic]
-  C --> M[器材观察 apparatus_mapper]
-  M --> X[操作补充 operation_expander]
-  X --> N[确定性归一、来源及合同检查]
-  N --> O[规范流程与 XDL]
-  N --> U[未完成记录和原因]
-  O --> L[库维护 library_curator]
-  U --> L
-  L --> V[验证后形成新库版本]
-  V --> R[针对相关来源进行一次有界重试]
-  V --> B[成功流程重新绑定新器材词汇]
-  B --> O
-  O --> A[可选人工审核]
+  T[冻结原文和版本] --> E[extractor 一次]
+  E --> F[严格 Facts 类型、引用和证据；立即落盘]
+  F --> V[verifier 一次]
+  V --> R[必要时一次共享修复]
+  V --> B[确定性绑定]
+  R --> B
+  B --> U[未知提及]
+  U --> L[整批最多两次库维护]
+  L --> B2[重新绑定相同 Facts]
+  B --> C[XDL 编译]
+  B2 --> C
+  C --> Q[独立解析 XML；检查损失和无依据新增]
+  Q --> A[silver 审计包和分项评价]
+  F --> X[失败也保留已有事实及原文]
+  Q --> X
 ```
 
-提取失败时，扩展角色仍可从原文重新表达动作。覆盖检查使用启发式动作识别与模型复核；不能据此声称已经证明完整动作覆盖。
+facts.py 用 Pydantic 严格区分 quantity、text、reference、missing。打印数值以字符串保存，比较使用 Decimal。事实具有 subject、event、attribute、scope、evidence。重复片段必须定位到具体出现位置；数量及对应单位必须出现在引用片段中。不存在的设备和引用不能由编译器修复。
 
-## 职责
+fact_extraction.py 只发送纯文本、合同及核查所需事实。格式修复发生在事实首次接纳前；语义修复使用局部 JSON Patch，不能改动无关对象。二者共用一次预算。核查失败时，已通过结构检查的事实仍保存在程序回执和候选中，也能提供库观察。
 
-- `engine.py`：并行处理独立来源、预算、冻结快照、库维护后的有限重试，以及离线重放。
-- `chemistry.py`、`completion.py`：模型建议和逐字段来源验证；模型不生成或执行 Python 代码。
-- `proposal_mappings.py`、`canonical.py`：登记表述先解析，再校验，最后保存统一规范名称。
-- `registry.py`、`evolution.py`、`vocabulary.py`、`equipment_evolution.py`：版本化库与有证据的操作／器材变更准入；提案有一次验证反馈修复机会。
-- `apparatus_mapping.py`：绑定原文器材，将明确来源与操作隐含需求分开，不赋予推测的额定参数。
-- `protocol/`：文本用量、规范合同、器材归一和组合时序；`xdl_document.py` 单独生成普通 XDL，分析数据保留在 JSON。
-- `store.py`：原子写入和哈希链；凭据不进入回执。
-- `verification.py`：从冻结来源核对输出、证据、指纹、XML 再生成和旁文件。
-- `audit/`：可选的人工结果检查，不参与模型推理或转换事实生成。
+fact_binding.py 只做登记表达的精确归一。fact_evolution.py 提出已有概念对照、反例与合同，通过 Registry.evolve 事务准入。类别、子型、别名及替换分别验证；实例额定值不能进入语义合同。库改变只触发重新绑定，不触发重新生成事实。
 
-来源中的缺参保留状态；工具遗漏动作、产生无依据参数或非法合同则记录为未完成。物理安全、设备驱动和官方平台编译不由这套表示工具认证。
+fact_xdl.py 编译常规元素／属性，将配置、证据及规范 ID 放在配套 JSON。已验证的热控和搅拌同步有原生降级；其他并发控制流明确失败。新操作的必需参数缺失时生成未赋值 Parameter，不生成执行器。
 
-领域实现可通过 `Runtime(domain=...)` 注入。核心编排只要求提取、验证、库和统计接口；领域解析、物理语义及执行能力需要各领域独立实现。目前主要实现化学流程。
+evaluation.py 独立读实际 XML；位置账本必须与物料、容器、属性、范围、值、动作、类型相符。额外添加的 Wait、温度、试剂或配置也会被拒绝。参考评分另外检查规范操作和子型 ID，避免原文动作提对、最终映射却选错。模型一致不能提供真值。
 
-多角色分工参考了 [ACRA](https://github.com/croningp/acra) 的提取、消歧和复核设计；本项目独立维护来源证据、规范词汇和表示合同，没有复制其完整硬件执行系统。
+engine.py 固定源码／提示、输入、库、模型配置、依赖版本、评价文件和预算，逐来源运行、批末维护库后编译汇总。store.py 提供原子写入、不可变回执和哈希链；verification.py 做离线产物与编译保真核对。
+
+未实施的部分：专家标注集、自动提示优化、专家经验检索、任意并发／循环的完整调度、新操作执行器。DSPy／GEPA、LangExtract 等暂作设计参考，未引入第二套运行时编排。工程转换率和科学准确率分别报告。

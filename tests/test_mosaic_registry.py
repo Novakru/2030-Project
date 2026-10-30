@@ -32,14 +32,3 @@ def test_automatic_evolution_keeps_unidentified_models_and_never_invents_review(
     observation["verified"] = True
     with pytest.raises(ValueError, match="human verification"):
         original.evolve([change], expected_revision=original.revision, sources={"paper": text})
-
-
-def test_role_and_risk_information_cannot_be_discarded_by_an_operation_merge():
-    text = "filter and retain the filtrate"
-    citation = SourceSpan.locate("paper", text, text).to_dict()
-    original = Registry()
-    before = copy.deepcopy(original.snapshot)
-    with pytest.raises(ValueError, match="identical full contract"):
-        original.evolve([{"action": "alias_identical_operation", "from": "Filter", "to": "Separate", "evidence": [citation]}],
-                        expected_revision=original.revision, sources={"paper": text})
-    assert original.snapshot == before

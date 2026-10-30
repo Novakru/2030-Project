@@ -46,10 +46,11 @@ def main():
             except (ValueError, OSError, sqlite3.Error) as error:
                 st.error(str(error))
     database = st.session_state.get("database")
-    if database is None and db.DEFAULT_DB.exists():
+    initial_database = Path(os.environ.get("MOSAIC_REVIEW_DB", str(db.DEFAULT_DB))).expanduser()
+    if database is None and initial_database.exists():
         try:
-            db.validate_database(db.DEFAULT_DB)
-            database = str(db.DEFAULT_DB)
+            db.validate_database(initial_database)
+            database = str(initial_database.resolve())
             st.session_state.database = database
         except (ValueError, sqlite3.Error):
             pass
@@ -120,6 +121,12 @@ def main():
         st.code(source or "记录未携带原文", language=None, wrap_lines=True)
         with st.expander("来源与提取记录"):
             st.json({key: converted.get(key) for key in ("source", "extraction", "mosaic")})
+        findings = as_dict(converted.get("extraction")).get("audit", converted.get("audit", {})).get("issues", [])
+        if findings:
+            st.subheader("模型核查待确认项")
+            for issue in findings:
+                st.warning(str(issue.get("kind", "")) + "：" + str(issue.get("reason", "")))
+                st.code(issue.get("quote", ""), language=None, wrap_lines=True)
     with right:
         st.subheader("规范流程")
         st.dataframe(pd.DataFrame(step_rows(record)), hide_index=True, use_container_width=True)
@@ -128,7 +135,11 @@ def main():
         with st.expander("器材类别、子型与配置"):
             st.json(converted.get("hardware", {}))
         with st.expander("规范操作合同与表述映射"):
-            st.json({key: converted.get(key) for key in ("operation_definitions", "normalization", "temporal_relations")})
+            st.json(converted.get("bindings", {}))
+        with st.expander("逐项事实、绑定与原文位置"):
+            st.json(converted.get("facts", {}))
+        with st.expander("实际 XDL 事实保留核对"):
+            st.json(converted.get("compilation_check", {}))
     with st.expander("XDL 文件"):
         xml = field(record, "xdl", "")
         st.code(xml, language="xml")

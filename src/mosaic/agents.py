@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from collections import Counter
 from threading import RLock
+import time
 
 from mosaic.protocol.api import Client, settings
 from mosaic.protocol.io import digest
@@ -17,7 +18,7 @@ class CallBudgetExceeded(ValueError):
 
 
 class AgentRunner:
-    def __init__(self, store, *, models=None, max_calls=60, offline=False, client_factory=None):
+    def __init__(self, store, *, models=None, max_calls=60, offline=False, client_factory=None, max_seconds=900):
         self.store = store
         self.models = models or {}
         self.max_calls, self.offline = max_calls, offline
@@ -25,6 +26,7 @@ class AgentRunner:
         self.calls = sum(e["engine"] in ("llm", "llm_failed") for e in store.manifest["events"])
         self.replayed = Counter()
         self._lock, self._requests = RLock(), {}
+        self.deadline = time.monotonic() + max_seconds
 
     def _request_lock(self, key):
         with self._lock:
@@ -55,15 +57,26 @@ class AgentRunner:
         with self._lock:
             if self.calls >= self.max_calls:
                 raise CallBudgetExceeded("Run model-call budget exhausted")
+            if time.monotonic() >= self.deadline:
+                raise CallBudgetExceeded("Batch wall-clock budget exhausted")
             self.calls += 1
             attempt = self.calls
         try:
-            response = self.client_factory(model).complete(system, json.dumps(payload, ensure_ascii=False), cache=True)
+            started = time.monotonic()
+            client = self.client_factory(model)
+            if isinstance(client, Client):
+                client.deadline = self.deadline
+                client.retries = 2
+            response = client.complete(system, json.dumps(payload, ensure_ascii=False), cache=True)
         except Exception as error:
-            self.store.save("failed/" + role, {**request, "attempt": attempt}, {"error_class": type(error).__name__}, engine="llm_failed", model=model)
+            self.store.save("failed/" + role, {**request, "attempt": attempt}, {"error_class": type(error).__name__,
+                "transport_attempts": getattr(locals().get("client"), "transport_attempts", 0),
+                "elapsed_seconds": round(time.monotonic() - started, 3)}, engine="llm_failed", model=model)
             raise
         result = {"data": response["data"], "model": response.get("model"),
-                  "usage": response.get("usage", {}), "cache_key": response.get("cache_key")}
+                  "usage": response.get("usage", {}), "cache_key": response.get("cache_key"),
+                  "transport_attempts": 0 if response.get("cache_hit") else response.get("transport_attempts", 0),
+                  "elapsed_seconds": round(time.monotonic() - started, 3)}
         cached = response.get("cache_hit", False)
         if cached:
             with self._lock:

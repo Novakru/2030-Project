@@ -50,6 +50,8 @@ class Client:
         self.config = config or settings()
         self.timeout = timeout
         self.retries = retries
+        self.deadline = None
+        self.transport_attempts = 0
         base = self.config["base_url"].rstrip("/")
         self.endpoint = base if base.endswith("/chat/completions") else base + "/chat/completions"
 
@@ -57,11 +59,15 @@ class Client:
         # Some gateways reject max_tokens / temperature. Use the minimal protocol.
         body = {"model": self.config["model"], "messages": messages}
         for attempt in range(self.retries):
+            remaining = self.deadline - time.monotonic() if self.deadline is not None else self.timeout
+            if remaining <= 0:
+                raise RuntimeError("API wall-clock budget exhausted")
+            self.transport_attempts += 1
             try:
                 response = requests.post(
                     self.endpoint, json=body,
                     headers={"Authorization": "Bearer " + (key or self.config["api_key"])},
-                    timeout=self.timeout,
+                    timeout=min(self.timeout, remaining),
                 )
             except requests.RequestException as error:
                 if attempt + 1 == self.retries:
@@ -87,8 +93,13 @@ class Client:
         content = data["choices"][0]["message"]["content"]
         if self.config["api_key"] in content:
             raise ValueError("Rejected response containing credentials")
-        result = {"data": parse_json(content), "model": data.get("model"),
+        try:
+            parsed = parse_json(content)
+        except (ValueError, TypeError):
+            parsed = {"invalid_json_text": content}
+        result = {"data": parsed, "model": data.get("model"),
                   "usage": data.get("usage", {}), "cache_key": cache_key}
+        result["transport_attempts"] = self.transport_attempts
         if cache:
             write_json(path, result)
         return {**result, "cache_hit": False}

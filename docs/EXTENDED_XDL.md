@@ -1,25 +1,13 @@
-# XDL 导出与扩展
+# XDL 与配套数据
 
-XML 保持 XDL 的元素／属性语法。聚类和规范化属于内部分析，不进入 XDL 文件。
+XML 使用普通 XDL 元素和属性。规范 ID、聚类、来源、事实树和合同不进入 XML。新操作可用专业步骤名和声明属性扩展；Stir、Shake、Vortex 保留混合方式差异。
 
-```xml
-<Synthesis>
-  <Hardware><Component id="reactor" type="microreactor"/></Hardware>
-  <Reagents><Reagent name="water" role="solvent"/></Reagents>
-  <Parameters><Parameter id="p_mix_time__NOT_REPORTED__" type="time"/></Parameters>
-  <Procedure>
-    <Add reagent="water" vessel="reactor" volume="1 mL"/>
-    <Stir vessel="reactor" time="p_mix_time__NOT_REPORTED__"/>
-  </Procedure>
-</Synthesis>
-```
+同一投料的质量和物质的量同时写入 Add 的 mass、amount，不通过分子量补数。并列加料取一个合法线性次序，但 participant_order=unspecified 留在 Facts，不把次序当作唯一答案。明确同步的 Heat 和 Stir 合为 HeatChill(stir=true)，共享时长只执行一次。
 
-内部的 Mix(method=stir/shake/vortex) 分别导出为 Stir、Shake、Vortex；Heat 与同步搅拌可重新生成 HeatChill(stir=true)。操作族、composition 分组、operation_id、原始措辞和合同均保留在 `records.jsonl`。具体试剂名称直接写入 XML，不只输出内部试剂编号。
+缺参、定性和歧义使用未赋值 Parameter；定性原文另外保留。nominal_volume 等器材配置保存在按 Component ID 绑定的外部 hardware_config。microreactor 保持具体类型，不推断连续流、压力或几何信息。
 
-每条记录的 `xdl_extensions` 声明使用的非标准步骤／属性和器材类型；`xdl_bindings` 连接 XML 步骤位置与内部步骤。运行目录的 `xdl_extensions.json` 汇总这些旁文件信息。扩展声明不嵌入 XML，不包含执行代码。`libraries/xdl_steps.yaml` 维护标准步骤属性，表示合同仍由四份公共词汇文件维护。
+每个 xdl/<id>.xdl 配有同名 .json，保存扩展声明、硬件配置、事件和事实位置、关系及观察。相同内容也在 records.jsonl 中供数据库导入。复制扩展 XDL 时应带上配套 JSON。
 
-缺失／定性／歧义参数生成带对应标识的未赋值 Parameter；其原始措辞留在 JSON 中。导出不会凭空填数、把微反应器认作连续流或修复错误设备引用。器材配置与额定值在来源 JSON 和器材库中维护。
+读取器独立检查章节、声明、标识和引用，拒绝 DTD、外部实体和私有类型树。保真检查读取实际属性，既检测遗漏，也检测无依据新增。未实现的并发降级保留事实并报错，复杂异步和循环尚未实现。
 
-验证器检查章节、声明的操作和属性、标识唯一性与引用，拒绝 DTD、外部实体和私有 XML 结构。重放对照冻结 JSON 重新生成 XML，核对文件和扩展声明；XML 不承担来源数据库的无损序列化职责。
-
-结构依据：[XDL 文件结构](https://croningroup.gitlab.io/chemputer/xdl/standard/xdl_file_structure.html)、[标准步骤](https://croningroup.gitlab.io/chemputer/xdl/standard/full_steps_specification.html)、[参数](https://croningroup.gitlab.io/chemputer/xdl/standard/parameters.html)。结构检查不等于通过官方平台编译；新增操作仍需执行适配，物理可行性保留专家审核。
+结构依据：[XDL 文件结构](https://croningroup.gitlab.io/chemputer/xdl/standard/xdl_file_structure.html)、[标准步骤](https://croningroup.gitlab.io/chemputer/xdl/standard/full_steps_specification.html)、[参数](https://croningroup.gitlab.io/chemputer/xdl/standard/parameters.html)。本地结构和事实检查不等于官方平台编译、实验可行性或设备执行认证。

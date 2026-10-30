@@ -1,0 +1,67 @@
+{
+  "schema": "mosaic.source-selection/1",
+  "acquired_at": "2026-10-30T03:06:03.340713+00:00",
+  "repository_revision_observed": "b6c89761dacf809d4082acbdbebe72042a08db91",
+  "selection_seed": "mosaic-facts-v1-isolated-20261030:",
+  "rule": "First qualifying literal note among first five rows of five unseen USPTO-grants configs; initial hash ordering, then replace one unavailable (HTTP 502) config with another unseen config. Eligible length 300..5000 characters. No extraction scores used.",
+  "excluded_dataset_ids": [
+    "ord_dataset-00005539a1e04c809a9a78647bea649c",
+    "ord_dataset-35a5a513f1dd44a3a97c88da99f81a00",
+    "ord_dataset-3b5db90e337942ea886b8f5bc5e3aa72",
+    "ord_dataset-46ff9a32d9e04016b9380b1b1ef949c3",
+    "ord_dataset-5415f83da68e4797856ddd330dda5c61",
+    "ord_dataset-5c9a10329a8a48968d18879a48bb8ab2",
+    "ord_dataset-5e8318f0dda04b398c14f4c3adfeb32c",
+    "ord_dataset-7d8f5fd922d4497d91cb81489b052746",
+    "ord_dataset-89b083710e2d441aa0040c361d63359f",
+    "ord_dataset-99c23cf435dc42f1af884053bc8b11c7",
+    "ord_dataset-feaf1b793c6d408aaec1cac7cc3ceadc"
+  ],
+  "requests": [
+    {
+      "config": "ord_dataset-bd77aaca65a9d5ef4cbc3f2808115f28",
+      "url": "https://datasets-server.huggingface.co/rows?dataset=open-reaction-database/ord-data&config=ord_dataset-bd77aaca65a9d5ef4cbc3f2808115f28&split=train&offset=0&length=5",
+      "response_sha256": "cc39cde1c19ed7e301872208d779416d7563fa8b574b7d15cde321dd9a9f50f4"
+    },
+    {
+      "config": "ord_dataset-f2718cd03ad7dd73fef23ea3c79f2c95",
+      "url": "https://datasets-server.huggingface.co/rows?dataset=open-reaction-database/ord-data&config=ord_dataset-f2718cd03ad7dd73fef23ea3c79f2c95&split=train&offset=0&length=5",
+      "response_sha256": "fb54dab720d9af89c2f1439b49156fb23bd70f8ad8df36e99a61aa834ce9944d"
+    },
+    {
+      "config": "ord_dataset-ed85599810a968b103e70c8b6f0aa3b0",
+      "url": "https://datasets-server.huggingface.co/rows?dataset=open-reaction-database/ord-data&config=ord_dataset-ed85599810a968b103e70c8b6f0aa3b0&split=train&offset=0&length=5",
+      "response_sha256": "fde6cd8e666997f0b81a9719564164c6cfbcb66aa09d8c9a265fad0e64425789"
+    },
+    {
+      "config": "ord_dataset-8709a7a6729268b0ea8055fd8ab6ec2c",
+      "url": "https://datasets-server.huggingface.co/rows?dataset=open-reaction-database/ord-data&config=ord_dataset-8709a7a6729268b0ea8055fd8ab6ec2c&split=train&offset=0&length=5",
+      "response_sha256": "f28a9dd5cbf604fb783acfa299009109d6b4355c80ef7b648142bc5ce8dbf620"
+    },
+    {
+      "config": "ord_dataset-166e12c0a91ded488db9e3129c1ad034",
+      "url": "https://datasets-server.huggingface.co/rows?dataset=open-reaction-database/ord-data&config=ord_dataset-166e12c0a91ded488db9e3129c1ad034&split=train&offset=0&length=5",
+      "response_sha256": "d2b58d86d057f459e9c4703cc94f92f57b05f5965a12be59a35405774a52d929"
+    }
+  ],
+  "source_ids": [
+    "ord-0eefa53de79e45e78ff547734006edb6",
+    "ord-158931abc49c434a86a39a133b41a3f5",
+    "ord-e37c8de956f142e4847689cfe2cae743",
+    "ord-8a5039f60afa42afa6418534e0bb4e31",
+    "ord-8841b6b409c7485da9c83fc3053ea8a7"
+  ],
+  "source_hashes": {
+    "ord-0eefa53de79e45e78ff547734006edb6": "4f69d462f5f00060f4bebfa03e0e8a4e4bb0d6f75850fc7399a065735470d416",
+    "ord-158931abc49c434a86a39a133b41a3f5": "ce5a00d284be27c1cb61e0ff2d66df4e0610685e22673a88dba7142e48d7fde8",
+    "ord-e37c8de956f142e4847689cfe2cae743": "d59dac8806c1192662a75b72ceada40d4bc9e97e0269404caf0af11cb1a4bc81",
+    "ord-8a5039f60afa42afa6418534e0bb4e31": "dca7dc74cb3abbfcb47556d7366ffe610ba05dff19f2ea39aab76c3b6ad2fa94",
+    "ord-8841b6b409c7485da9c83fc3053ea8a7": "1bc48ce315db8998890032730b5bd1e3d1df7fbc235fa6eab11c462535c46519"
+  },
+  "reference_status": "No expert reference; new-source-group engineering validation, not a gold accuracy benchmark.",
+  "original_publication_isolation_verified": false,
+  "publication_limit": "Provenance identifies a shared USPTO release; distinct original patents are not certified.",
+  "input_contract": "Literal Reaction.notes.procedure_details only. No structured experiment fields used.",
+  "schema_source": "https://github.com/open-reaction-database/ord-schema/blob/main/proto/ord-schema/proto/reaction.proto",
+  "row_server_revision_verified": false
+}

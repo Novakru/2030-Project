@@ -1,7 +1,7 @@
 param(
     [Parameter(Mandatory = $true)][string[]]$InputPaths,
     [string]$OutputDirectory = "outputs",
-    [int]$MaxCalls = 100
+    [int]$MaxCalls = 0
 )
 $ErrorActionPreference = 'Stop'
 $taskRoot = Split-Path -Parent $PSScriptRoot
@@ -10,6 +10,8 @@ if (-not (Test-Path -LiteralPath $taskPython)) { throw 'Create .venv and install
 $taskPreviousPythonPath = $env:PYTHONPATH
 try {
     $env:PYTHONPATH = Join-Path $taskRoot 'src'
-    & $taskPython -m mosaic extract @InputPaths --output-dir $OutputDirectory --max-calls $MaxCalls
+    $taskBudget = @()
+    if ($MaxCalls -gt 0) { $taskBudget = @('--max-calls', $MaxCalls) }
+    & $taskPython -m mosaic extract @InputPaths --output-dir $OutputDirectory @taskBudget
     if ($LASTEXITCODE -ne 0) { throw 'Conversion did not complete for all inputs; inspect failures.jsonl.' }
 } finally { $env:PYTHONPATH = $taskPreviousPythonPath }
