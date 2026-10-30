@@ -1,0 +1,991 @@
+{
+  "schema": "mosaic.evaluation-reference-draft/1",
+  "reference_id": "microreactor_reference_draft",
+  "status": "draft_unreviewed",
+  "is_gold": false,
+  "annotation_origin": "assistant_prepared_from_literal_source_without_new_model_API_calls",
+  "coverage_status": "draft_core_facts_not_exhaustive",
+  "source_id": "ord-8a61495c860141f1a8046698b9543528",
+  "source_path": "../../examples/chemistry_pilot/sources.json",
+  "source_sha256": "d2080c1404f471c56d491716580b2202873ecd3e808a97a73487a836ce8db15f",
+  "source_hash_scheme": "sha256_utf8_text",
+  "offset_unit": "unicode_codepoints",
+  "interval_convention": "start_inclusive_end_exclusive",
+  "source_attribution": {
+    "dataset_id": "ord_dataset-99c23cf435dc42f1af884053bc8b11c7",
+    "dataset_name": "Borylation dataset from Roche",
+    "db": "ORD",
+    "file": "data/upstream/ord/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+    "file_sha256": "59cd8c35e021be300944f8e556b8fd7ec30a6bc32ff36a54be133aad8e44c393",
+    "license": "CC-BY-SA-4.0",
+    "publication_url": null,
+    "reaction_id": "ord-8a61495c860141f1a8046698b9543528",
+    "url": "https://huggingface.co/datasets/open-reaction-database/ord-data/resolve/b6c89761dacf809d4082acbdbebe72042a08db91/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet"
+  },
+  "entities": [
+    {
+      "entity_id": "reactor",
+      "kind": "equipment",
+      "source_surface": "wheaton microreactor"
+    },
+    {
+      "entity_id": "glovebox",
+      "kind": "equipment",
+      "source_surface": "argon filled glove box"
+    },
+    {
+      "entity_id": "heater",
+      "kind": "equipment",
+      "source_surface": "pre-heated aluminum block"
+    },
+    {
+      "entity_id": "cap",
+      "kind": "equipment",
+      "source_surface": "teflon pressure cap"
+    },
+    {
+      "entity_id": "ir",
+      "kind": "material",
+      "source_surface": "[Ir(cod)(OMe)]2"
+    },
+    {
+      "entity_id": "ligand",
+      "kind": "material",
+      "source_surface": "L1 ligand"
+    },
+    {
+      "entity_id": "b2pin2",
+      "kind": "material",
+      "source_surface": "B2pin2"
+    },
+    {
+      "entity_id": "base",
+      "kind": "material",
+      "source_surface": "KOtBu"
+    },
+    {
+      "entity_id": "solvent",
+      "kind": "material",
+      "source_surface": "dry THF"
+    },
+    {
+      "entity_id": "benzamide",
+      "kind": "material",
+      "source_surface": "benzamide"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "charge",
+      "action_surface": "charged with",
+      "participant_ids": [
+        "ir",
+        "ligand",
+        "b2pin2",
+        "base",
+        "solvent"
+      ],
+      "vessel_id": "reactor",
+      "evidence_ids": [
+        "s028"
+      ],
+      "participant_order": "unspecified"
+    },
+    {
+      "event_id": "mix",
+      "action_surface": "stirred",
+      "vessel_id": "reactor",
+      "evidence_ids": [
+        "s029"
+      ]
+    },
+    {
+      "event_id": "add_benzamide",
+      "action_surface": "added",
+      "participant_ids": [
+        "benzamide"
+      ],
+      "vessel_id": "reactor",
+      "evidence_ids": [
+        "s030"
+      ]
+    },
+    {
+      "event_id": "close",
+      "action_surface": "capped",
+      "vessel_id": "reactor",
+      "equipment_ids": [
+        "cap"
+      ],
+      "evidence_ids": [
+        "s031"
+      ]
+    },
+    {
+      "event_id": "position",
+      "action_surface": "placed into",
+      "vessel_id": "reactor",
+      "equipment_ids": [
+        "heater"
+      ],
+      "evidence_ids": [
+        "s032"
+      ]
+    },
+    {
+      "event_id": "observe",
+      "kind": "observation",
+      "action_surface": "judged by GC/MS",
+      "evidence_ids": [
+        "s033"
+      ]
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "f001",
+      "subject_id": "ir",
+      "attribute": "identity",
+      "value": {
+        "value_type": "text",
+        "text": "[Ir(cod)(OMe)]2",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s001"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "charge"
+    },
+    {
+      "fact_id": "f002",
+      "subject_id": "ir",
+      "attribute": "dose",
+      "value": {
+        "value_type": "quantity",
+        "quantity_kind": "mass",
+        "value": "1.98",
+        "unit": "mg",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s002"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "charge"
+    },
+    {
+      "fact_id": "f003",
+      "subject_id": "ir",
+      "attribute": "relative_loading",
+      "value": {
+        "value_type": "quantity",
+        "quantity_kind": "relative_loading",
+        "value": "1.5",
+        "unit": "mol%",
+        "status": "reported",
+        "basis_ref": null,
+        "basis_status": "not_reported"
+      },
+      "evidence_ids": [
+        "s003"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "charge"
+    },
+    {
+      "fact_id": "f004",
+      "subject_id": "ligand",
+      "attribute": "identity",
+      "value": {
+        "value_type": "text",
+        "text": "L1 ligand",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s004"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "charge"
+    },
+    {
+      "fact_id": "f005",
+      "subject_id": "ligand",
+      "attribute": "dose",
+      "value": {
+        "value_type": "quantity",
+        "quantity_kind": "mass",
+        "value": "2.1",
+        "unit": "mg",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s005"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "charge"
+    },
+    {
+      "fact_id": "f006",
+      "subject_id": "ligand",
+      "attribute": "relative_loading",
+      "value": {
+        "value_type": "quantity",
+        "quantity_kind": "relative_loading",
+        "value": "3.5",
+        "unit": "mol%",
+        "status": "reported",
+        "basis_ref": null,
+        "basis_status": "not_reported"
+      },
+      "evidence_ids": [
+        "s006"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "charge"
+    },
+    {
+      "fact_id": "f007",
+      "subject_id": "b2pin2",
+      "attribute": "identity",
+      "value": {
+        "value_type": "text",
+        "text": "B2pin2",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s007"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "charge"
+    },
+    {
+      "fact_id": "f008",
+      "subject_id": "b2pin2",
+      "attribute": "dose",
+      "value": {
+        "value_type": "quantity",
+        "quantity_kind": "mass",
+        "value": "50.8",
+        "unit": "mg",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s008"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "charge"
+    },
+    {
+      "fact_id": "f009",
+      "subject_id": "b2pin2",
+      "attribute": "relative_loading",
+      "value": {
+        "value_type": "quantity",
+        "quantity_kind": "relative_loading",
+        "value": "1.0",
+        "unit": "equiv.",
+        "status": "reported",
+        "basis_ref": null,
+        "basis_status": "not_reported"
+      },
+      "evidence_ids": [
+        "s009"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "charge"
+    },
+    {
+      "fact_id": "f010",
+      "subject_id": "base",
+      "attribute": "identity",
+      "value": {
+        "value_type": "text",
+        "text": "KOtBu",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s010"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "charge"
+    },
+    {
+      "fact_id": "f011",
+      "subject_id": "base",
+      "attribute": "dose",
+      "value": {
+        "value_type": "quantity",
+        "quantity_kind": "mass",
+        "value": "1.0",
+        "unit": "mg",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s011"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "charge"
+    },
+    {
+      "fact_id": "f012",
+      "subject_id": "base",
+      "attribute": "relative_loading",
+      "value": {
+        "value_type": "quantity",
+        "quantity_kind": "relative_loading",
+        "value": "4.5",
+        "unit": "mol%",
+        "status": "reported",
+        "basis_ref": null,
+        "basis_status": "not_reported"
+      },
+      "evidence_ids": [
+        "s012"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "charge"
+    },
+    {
+      "fact_id": "f013",
+      "subject_id": "solvent",
+      "attribute": "identity",
+      "value": {
+        "value_type": "text",
+        "text": "dry THF",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s013"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "charge"
+    },
+    {
+      "fact_id": "f014",
+      "subject_id": "solvent",
+      "attribute": "dose",
+      "value": {
+        "value_type": "quantity",
+        "quantity_kind": "volume",
+        "value": "1.0",
+        "unit": "mL",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s014"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "charge"
+    },
+    {
+      "fact_id": "f015",
+      "subject_id": "benzamide",
+      "attribute": "identity",
+      "value": {
+        "value_type": "text",
+        "text": "benzamide",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s015"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "add_benzamide"
+    },
+    {
+      "fact_id": "f016",
+      "subject_id": "benzamide",
+      "attribute": "dose",
+      "value": {
+        "value_type": "quantity",
+        "quantity_kind": "mass",
+        "value": "24.2",
+        "unit": "mg",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s016"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "add_benzamide"
+    },
+    {
+      "fact_id": "f017",
+      "subject_id": "benzamide",
+      "attribute": "dose",
+      "value": {
+        "value_type": "quantity",
+        "quantity_kind": "amount_of_substance",
+        "value": "0.2",
+        "unit": "mmol",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s016"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "add_benzamide"
+    },
+    {
+      "fact_id": "f018",
+      "subject_id": "reactor",
+      "attribute": "subtype",
+      "value": {
+        "value_type": "text",
+        "text": "microreactor",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s017"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "hardware_config"
+    },
+    {
+      "fact_id": "f019",
+      "subject_id": "reactor",
+      "attribute": "nominal_volume",
+      "value": {
+        "value_type": "quantity",
+        "quantity_kind": "device_volume",
+        "value": "5.0",
+        "unit": "mL",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s017"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "hardware_config"
+    },
+    {
+      "fact_id": "f020",
+      "subject_id": "glovebox",
+      "attribute": "atmosphere",
+      "value": {
+        "value_type": "text",
+        "text": "argon",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s018"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "hardware_config"
+    },
+    {
+      "fact_id": "f021",
+      "subject_id": "mix",
+      "attribute": "duration",
+      "value": {
+        "value_type": "quantity",
+        "quantity_kind": "duration",
+        "value": "2",
+        "unit": "min",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s019"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "mix"
+    },
+    {
+      "fact_id": "f022",
+      "subject_id": "mix",
+      "attribute": "temperature",
+      "value": {
+        "value_type": "missing",
+        "status": "qualitative",
+        "marker": "__QUALITATIVE__",
+        "raw": "room temperature"
+      },
+      "evidence_ids": [
+        "s020"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl_parameter_and_sidecar",
+      "event_id": "mix"
+    },
+    {
+      "fact_id": "f023",
+      "subject_id": "close",
+      "attribute": "closure",
+      "value": {
+        "value_type": "text",
+        "text": "teflon pressure cap",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s021"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "xdl",
+      "event_id": "close"
+    },
+    {
+      "fact_id": "f024",
+      "subject_id": "heater",
+      "attribute": "reported_material_label",
+      "value": {
+        "value_type": "text",
+        "text": "aluminum",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s022"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "hardware_config"
+    },
+    {
+      "fact_id": "f025",
+      "subject_id": "heater",
+      "attribute": "temperature",
+      "value": {
+        "value_type": "quantity",
+        "quantity_kind": "temperature",
+        "value": "80",
+        "unit": "oC",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s023"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "process",
+      "expected_location": "hardware_config",
+      "event_id": "position"
+    },
+    {
+      "fact_id": "f026",
+      "subject_id": "observe",
+      "attribute": "elapsed_time",
+      "value": {
+        "value_type": "quantity",
+        "quantity_kind": "elapsed_time",
+        "value": "12",
+        "unit": "h",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s024"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "context",
+      "expected_location": "context_json",
+      "event_id": "observe"
+    },
+    {
+      "fact_id": "f027",
+      "subject_id": "observe",
+      "attribute": "analysis_method",
+      "value": {
+        "value_type": "text",
+        "text": "GC/MS",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s025"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "outcome",
+      "expected_location": "context_json",
+      "event_id": "observe"
+    },
+    {
+      "fact_id": "f028",
+      "subject_id": "observe",
+      "attribute": "conversion",
+      "value": {
+        "value_type": "quantity",
+        "quantity_kind": "conversion",
+        "value": "23",
+        "unit": "%",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s026"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "outcome",
+      "expected_location": "context_json",
+      "event_id": "observe"
+    },
+    {
+      "fact_id": "f029",
+      "subject_id": "observe",
+      "attribute": "regioisomer_ratio",
+      "value": {
+        "value_type": "text",
+        "text": "meta/para ratio was 1/1.5",
+        "status": "reported"
+      },
+      "evidence_ids": [
+        "s027"
+      ],
+      "requirement": "required",
+      "critical": true,
+      "category": "outcome",
+      "expected_location": "context_json",
+      "event_id": "observe"
+    }
+  ],
+  "relations": [
+    {
+      "from": "charge",
+      "relation": "precedes",
+      "to": "mix",
+      "status": "draft_textual_order",
+      "requirement": "required"
+    },
+    {
+      "from": "mix",
+      "relation": "precedes",
+      "to": "add_benzamide",
+      "status": "draft_textual_order",
+      "requirement": "required"
+    },
+    {
+      "from": "add_benzamide",
+      "relation": "precedes",
+      "to": "close",
+      "status": "draft_textual_order",
+      "requirement": "required"
+    },
+    {
+      "from": "close",
+      "relation": "precedes",
+      "to": "position",
+      "status": "draft_textual_order",
+      "requirement": "required"
+    },
+    {
+      "from": "position",
+      "relation": "precedes",
+      "to": "observe",
+      "status": "draft_textual_order",
+      "requirement": "required"
+    }
+  ],
+  "unknown_expectations": [
+    {
+      "subject_id": "reactor",
+      "attribute": "flow_mode",
+      "status": "not_reported",
+      "expected_value": null,
+      "requirement": "do_not_infer"
+    },
+    {
+      "subject_id": "reactor",
+      "attribute": "channel_geometry",
+      "status": "not_reported",
+      "expected_value": null,
+      "requirement": "do_not_infer"
+    },
+    {
+      "subject_id": "reactor",
+      "attribute": "pressure_rating",
+      "status": "not_reported",
+      "expected_value": null,
+      "requirement": "do_not_infer"
+    },
+    {
+      "subject_id": "reactor",
+      "attribute": "wetted_material",
+      "status": "not_reported",
+      "expected_value": null,
+      "requirement": "do_not_infer"
+    },
+    {
+      "subject_id": "mix",
+      "attribute": "temperature_numeric",
+      "status": "qualitative",
+      "raw": "room temperature",
+      "requirement": "do_not_infer_25C"
+    },
+    {
+      "subject_id": "heater",
+      "attribute": "sample_temperature",
+      "status": "not_reported",
+      "requirement": "do_not_equate_to_heater_temperature"
+    }
+  ],
+  "expert_questions": [
+    "Confirm the appropriate XDL encoding of a pre-heated block at 80 oC; the text does not directly report the sample temperature.",
+    "Confirm whether After 12 h should become an elapsed-time relation or a controlled thermal hold. Do not assume the latter before review.",
+    "Confirm event relations and completeness of this draft; the shared initial charge does not establish an order among its five materials.",
+    "Confirm the intended reference basis of relative loadings; no unreported baseline material is assigned."
+  ],
+  "spans": [
+    {
+      "span_id": "s001",
+      "start": 77,
+      "end": 92,
+      "quote": "[Ir(cod)(OMe)]2"
+    },
+    {
+      "span_id": "s002",
+      "start": 77,
+      "end": 101,
+      "quote": "[Ir(cod)(OMe)]2 (1.98 mg"
+    },
+    {
+      "span_id": "s003",
+      "start": 103,
+      "end": 111,
+      "quote": "1.5 mol%"
+    },
+    {
+      "span_id": "s004",
+      "start": 114,
+      "end": 123,
+      "quote": "L1 ligand"
+    },
+    {
+      "span_id": "s005",
+      "start": 114,
+      "end": 131,
+      "quote": "L1 ligand (2.1 mg"
+    },
+    {
+      "span_id": "s006",
+      "start": 133,
+      "end": 141,
+      "quote": "3.5 mol%"
+    },
+    {
+      "span_id": "s007",
+      "start": 144,
+      "end": 150,
+      "quote": "B2pin2"
+    },
+    {
+      "span_id": "s008",
+      "start": 144,
+      "end": 159,
+      "quote": "B2pin2 (50.8 mg"
+    },
+    {
+      "span_id": "s009",
+      "start": 161,
+      "end": 171,
+      "quote": "1.0 equiv."
+    },
+    {
+      "span_id": "s010",
+      "start": 174,
+      "end": 179,
+      "quote": "KOtBu"
+    },
+    {
+      "span_id": "s011",
+      "start": 174,
+      "end": 187,
+      "quote": "KOtBu (1.0 mg"
+    },
+    {
+      "span_id": "s012",
+      "start": 189,
+      "end": 197,
+      "quote": "4.5 mol%"
+    },
+    {
+      "span_id": "s013",
+      "start": 204,
+      "end": 211,
+      "quote": "dry THF"
+    },
+    {
+      "span_id": "s014",
+      "start": 204,
+      "end": 219,
+      "quote": "dry THF (1.0 mL"
+    },
+    {
+      "span_id": "s015",
+      "start": 307,
+      "end": 316,
+      "quote": "benzamide"
+    },
+    {
+      "span_id": "s016",
+      "start": 307,
+      "end": 336,
+      "quote": "benzamide (24.2 mg, 0.2 mmol)"
+    },
+    {
+      "span_id": "s017",
+      "start": 32,
+      "end": 59,
+      "quote": "5.0 mL wheaton microreactor"
+    },
+    {
+      "span_id": "s018",
+      "start": 6,
+      "end": 28,
+      "quote": "argon filled glove box"
+    },
+    {
+      "span_id": "s019",
+      "start": 247,
+      "end": 268,
+      "quote": "stirred for 2 minutes"
+    },
+    {
+      "span_id": "s020",
+      "start": 272,
+      "end": 288,
+      "quote": "room temperature"
+    },
+    {
+      "span_id": "s021",
+      "start": 369,
+      "end": 402,
+      "quote": "capped with a teflon pressure cap"
+    },
+    {
+      "span_id": "s022",
+      "start": 419,
+      "end": 444,
+      "quote": "pre-heated aluminum block"
+    },
+    {
+      "span_id": "s023",
+      "start": 419,
+      "end": 453,
+      "quote": "pre-heated aluminum block at 80 oC"
+    },
+    {
+      "span_id": "s024",
+      "start": 455,
+      "end": 465,
+      "quote": "After 12 h"
+    },
+    {
+      "span_id": "s025",
+      "start": 468,
+      "end": 483,
+      "quote": "judged by GC/MS"
+    },
+    {
+      "span_id": "s026",
+      "start": 504,
+      "end": 522,
+      "quote": "conversion was 23%"
+    },
+    {
+      "span_id": "s027",
+      "start": 527,
+      "end": 552,
+      "quote": "meta/para ratio was 1/1.5"
+    },
+    {
+      "span_id": "s028",
+      "start": 0,
+      "end": 221,
+      "quote": "In an argon filled glove box, a 5.0 mL wheaton microreactor was charged with [Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%), L1 ligand (2.1 mg, 3.5 mol%), B2pin2 (50.8 mg, 1.0 equiv.), KOtBu (1.0 mg, 4.5 mol%), and dry THF (1.0 mL)."
+    },
+    {
+      "span_id": "s029",
+      "start": 222,
+      "end": 289,
+      "quote": "The reaction mixture was stirred for 2 minutes at room temperature."
+    },
+    {
+      "span_id": "s030",
+      "start": 290,
+      "end": 347,
+      "quote": "To this mixture, benzamide (24.2 mg, 0.2 mmol) was added."
+    },
+    {
+      "span_id": "s031",
+      "start": 348,
+      "end": 402,
+      "quote": "The microreactor was capped with a teflon pressure cap"
+    },
+    {
+      "span_id": "s032",
+      "start": 407,
+      "end": 453,
+      "quote": "placed into pre-heated aluminum block at 80 oC"
+    },
+    {
+      "span_id": "s033",
+      "start": 455,
+      "end": 553,
+      "quote": "After 12 h, (judged by GC/MS), we found that the conversion was 23% and meta/para ratio was 1/1.5."
+    }
+  ]
+}
