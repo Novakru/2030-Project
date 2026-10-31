@@ -8,7 +8,7 @@ from audit import db
 from audit.export_db_to_json import export_database
 from audit.import_json_to_db import import_documents, import_paths
 from mosaic.audit_bridge import publish
-from tests.test_conversion import convert_text
+from tests.legacy.test_conversion import convert_text
 
 
 def record(identifier="conversion_1"):

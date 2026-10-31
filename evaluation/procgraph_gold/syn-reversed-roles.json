@@ -1,0 +1,267 @@
+{
+ "schema": "mosaic.procgraph-gold/1",
+ "source_id": "syn-reversed-roles",
+ "status": "assistant_draft_needs_expert_review",
+ "text": "A suspension of compound B (2.00 g) and compound C (0.50 g) in toluene (20 mL) was added dropwise to a solution of compound A (1.00 g, 4.0 mmol) in THF (10 mL) at 0 °C. The mixture was stirred for 2 h.",
+ "tagger_version": "pg-tagger/1",
+ "quantities": [
+  {
+   "id": "Q1",
+   "text": "2.00 g",
+   "start": 28,
+   "end": 34
+  },
+  {
+   "id": "Q2",
+   "text": "0.50 g",
+   "start": 52,
+   "end": 58
+  },
+  {
+   "id": "Q3",
+   "text": "20 mL",
+   "start": 72,
+   "end": 77
+  },
+  {
+   "id": "Q4",
+   "text": "1.00 g",
+   "start": 127,
+   "end": 133
+  },
+  {
+   "id": "Q5",
+   "text": "4.0 mmol",
+   "start": 135,
+   "end": 143
+  },
+  {
+   "id": "Q6",
+   "text": "10 mL",
+   "start": 153,
+   "end": 158
+  },
+  {
+   "id": "Q7",
+   "text": "0 °C",
+   "start": 163,
+   "end": 167
+  },
+  {
+   "id": "Q8",
+   "text": "2 h",
+   "start": 197,
+   "end": 200
+  }
+ ],
+ "optional_materials": [],
+ "graph": {
+  "schema": "mosaic.procgraph/1",
+  "source_id": "syn-reversed-roles",
+  "text_sha256": "426f810fb4642fd4abedef64303ba40bb1d374c5c8222174a8ef07a5edb78cf9",
+  "materials": [
+   {
+    "id": "mA",
+    "name": "compound A",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "mB",
+    "name": "compound B",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "mC",
+    "name": "compound C",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "mT",
+    "name": "THF",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "mTol",
+    "name": "toluene",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   }
+  ],
+  "equipment": [],
+  "steps": [
+   {
+    "id": "t1",
+    "op": "prepare",
+    "op_label": "",
+    "origin": "described",
+    "sentences": [
+     "S1"
+    ],
+    "surface": "",
+    "target": null,
+    "inputs": [
+     {
+      "ref": "mB",
+      "amounts": [
+       "Q1"
+      ],
+      "role": "",
+      "note": ""
+     },
+     {
+      "ref": "mC",
+      "amounts": [
+       "Q2"
+      ],
+      "role": "",
+      "note": ""
+     },
+     {
+      "ref": "mTol",
+      "amounts": [
+       "Q3"
+      ],
+      "role": "solvent",
+      "note": ""
+     }
+    ],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x1",
+      "role": "main",
+      "label": "suspension of B and C"
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t2",
+    "op": "prepare",
+    "op_label": "",
+    "origin": "described",
+    "sentences": [
+     "S1"
+    ],
+    "surface": "",
+    "target": null,
+    "inputs": [
+     {
+      "ref": "mA",
+      "amounts": [
+       "Q4",
+       "Q5"
+      ],
+      "role": "solute",
+      "note": ""
+     },
+     {
+      "ref": "mT",
+      "amounts": [
+       "Q6"
+      ],
+      "role": "solvent",
+      "note": ""
+     }
+    ],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x2",
+      "role": "main",
+      "label": "solution of A in THF"
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t3",
+    "op": "add",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S1"
+    ],
+    "surface": "",
+    "target": "x2",
+    "inputs": [
+     {
+      "ref": "x1",
+      "amounts": [],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {
+     "method": {
+      "text": "dropwise"
+     },
+     "temperature": {
+      "q": [
+       "Q7"
+      ]
+     }
+    },
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x3",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t4",
+    "op": "stir",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S2"
+    ],
+    "surface": "",
+    "target": "x3",
+    "inputs": [],
+    "params": {
+     "duration": {
+      "q": [
+       "Q8"
+      ]
+     }
+    },
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x4",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   }
+  ],
+  "products": [],
+  "observations": [],
+  "unbound": []
+ }
+}

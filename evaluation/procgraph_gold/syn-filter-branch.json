@@ -1,0 +1,289 @@
+{
+ "schema": "mosaic.procgraph-gold/1",
+ "source_id": "syn-filter-branch",
+ "status": "assistant_draft_needs_expert_review",
+ "text": "The reaction mixture was filtered through Celite. The filter cake was washed with ethyl acetate (2 x 10 mL) and discarded. The combined filtrate was washed with brine (20 mL), dried over Na2SO4 and concentrated to give the crude product (1.2 g).",
+ "tagger_version": "pg-tagger/1",
+ "quantities": [
+  {
+   "id": "Q1",
+   "text": "2 x",
+   "start": 97,
+   "end": 100
+  },
+  {
+   "id": "Q2",
+   "text": "10 mL",
+   "start": 101,
+   "end": 106
+  },
+  {
+   "id": "Q3",
+   "text": "20 mL",
+   "start": 168,
+   "end": 173
+  },
+  {
+   "id": "Q4",
+   "text": "1.2 g",
+   "start": 238,
+   "end": 243
+  }
+ ],
+ "optional_materials": [],
+ "graph": {
+  "schema": "mosaic.procgraph/1",
+  "source_id": "syn-filter-branch",
+  "text_sha256": "f42b58001d905a90d365d1c499340f07732095c5840a52a5649fd495e77045ac",
+  "materials": [
+   {
+    "id": "m1",
+    "name": "reaction mixture",
+    "aliases": [],
+    "kind": "unknown",
+    "sentences": []
+   },
+   {
+    "id": "m2",
+    "name": "Celite",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m3",
+    "name": "ethyl acetate",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m4",
+    "name": "brine",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m5",
+    "name": "Na2SO4",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m6",
+    "name": "crude product",
+    "aliases": [],
+    "kind": "unknown",
+    "sentences": []
+   }
+  ],
+  "equipment": [],
+  "steps": [
+   {
+    "id": "t1",
+    "op": "filter",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S1"
+    ],
+    "surface": "",
+    "target": "m1",
+    "inputs": [],
+    "params": {
+     "method": {
+      "text": "through Celite"
+     }
+    },
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x1",
+      "role": "solid",
+      "label": "filter cake"
+     },
+     {
+      "id": "x2",
+      "role": "filtrate",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t2",
+    "op": "wash",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S2"
+    ],
+    "surface": "",
+    "target": "x1",
+    "inputs": [
+     {
+      "ref": "m3",
+      "amounts": [
+       "Q2"
+      ],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {
+     "repeat": {
+      "q": [
+       "Q1"
+      ]
+     }
+    },
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x3",
+      "role": "main",
+      "label": ""
+     },
+     {
+      "id": "x4",
+      "role": "washings",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t3",
+    "op": "discard",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S2"
+    ],
+    "surface": "",
+    "target": "x3",
+    "inputs": [],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t4",
+    "op": "wash",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S3"
+    ],
+    "surface": "",
+    "target": "x2",
+    "inputs": [
+     {
+      "ref": "m4",
+      "amounts": [
+       "Q3"
+      ],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {
+     "note": {
+      "text": "combined with washings"
+     }
+    },
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x5",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t5",
+    "op": "dry",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S3"
+    ],
+    "surface": "",
+    "target": "x5",
+    "inputs": [
+     {
+      "ref": "m5",
+      "amounts": [],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x6",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t6",
+    "op": "concentrate",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S3"
+    ],
+    "surface": "",
+    "target": "x6",
+    "inputs": [],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x7",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   }
+  ],
+  "products": [
+   {
+    "ref": "m6",
+    "state": "x7",
+    "amounts": [
+     "Q4"
+    ],
+    "yield": [],
+    "form": "",
+    "sentences": [
+     "S3"
+    ]
+   }
+  ],
+  "observations": [],
+  "unbound": []
+ }
+}

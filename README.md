@@ -1,5 +1,8 @@
 # MOSAIC
 
+> **新：ProcGraph 链路（推荐）。** 自然语言 → 物料流操作图（带接收物/加入物角色和状态引用，能表达"先配 B 再加 A"）→ XDL 与任务数据。数量由程序识别、模型只做绑定；规整与自动修复吸收格式偏差；校验→修复→审查多智能体循环。
+> 快速开始：`copy .env.example .env` 填写密钥后运行 `python -m mosaic.pg ping` 和 `python -m mosaic.pg bench`。设计与用法见 [docs/PROCGRAPH.md](docs/PROCGRAPH.md)。下文描述的是旧 Facts 链路，代码保留，其测试移至 `tests/legacy/`。
+
 MOSAIC 将实验流程原文转换为带来源证据的扩展 XDL。同一份 Facts IR 贯穿提取、核查、库映射和编译；不从 ORD 投料、条件、产率等结构字段补写原文。最终由专家审核。
 
 ## 使用

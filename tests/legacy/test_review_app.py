@@ -8,7 +8,7 @@ pytest.importorskip("pandas")
 from streamlit.testing.v1 import AppTest
 
 from mosaic.audit_bridge import publish
-from tests.test_conversion import convert_text
+from tests.legacy.test_conversion import convert_text
 
 
 def test_explicit_database_opens_new_facts_and_all_amounts_are_visible(tmp_path, monkeypatch):

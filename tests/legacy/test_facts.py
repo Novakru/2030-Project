@@ -8,7 +8,7 @@ from mosaic.fact_binding import bind_facts
 from mosaic.fact_xdl import compile_facts
 from mosaic.evaluation import check_conservation, score_reference
 from mosaic.registry import Registry
-from tests.facts_fixture import TEXT, graph
+from tests.legacy.facts_fixture import TEXT, graph
 
 
 def compiled():

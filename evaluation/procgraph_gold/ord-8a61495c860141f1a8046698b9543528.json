@@ -1,0 +1,421 @@
+{
+ "schema": "mosaic.procgraph-gold/1",
+ "source_id": "ord-8a61495c860141f1a8046698b9543528",
+ "status": "assistant_draft_needs_expert_review",
+ "text": "In an argon filled glove box, a 5.0 mL wheaton microreactor was charged with [Ir(cod)(OMe)]2 (1.98 mg, 1.5 mol%), L1 ligand (2.1 mg, 3.5 mol%), B2pin2 (50.8 mg, 1.0 equiv.), KOtBu (1.0 mg, 4.5 mol%), and dry THF (1.0 mL). The reaction mixture was stirred for 2 minutes at room temperature. To this mixture, benzamide (24.2 mg, 0.2 mmol) was added. The microreactor was capped with a teflon pressure cap and placed into pre-heated aluminum block at 80 oC. After 12 h, (judged by GC/MS), we found that the conversion was 23% and meta/para ratio was 1/1.5.",
+ "tagger_version": "pg-tagger/1",
+ "quantities": [
+  {
+   "id": "Q1",
+   "text": "5.0 mL",
+   "start": 32,
+   "end": 38
+  },
+  {
+   "id": "Q2",
+   "text": "1.98 mg",
+   "start": 94,
+   "end": 101
+  },
+  {
+   "id": "Q3",
+   "text": "1.5 mol%",
+   "start": 103,
+   "end": 111
+  },
+  {
+   "id": "Q4",
+   "text": "2.1 mg",
+   "start": 125,
+   "end": 131
+  },
+  {
+   "id": "Q5",
+   "text": "3.5 mol%",
+   "start": 133,
+   "end": 141
+  },
+  {
+   "id": "Q6",
+   "text": "50.8 mg",
+   "start": 152,
+   "end": 159
+  },
+  {
+   "id": "Q7",
+   "text": "1.0 equiv.",
+   "start": 161,
+   "end": 171
+  },
+  {
+   "id": "Q8",
+   "text": "1.0 mg",
+   "start": 181,
+   "end": 187
+  },
+  {
+   "id": "Q9",
+   "text": "4.5 mol%",
+   "start": 189,
+   "end": 197
+  },
+  {
+   "id": "Q10",
+   "text": "1.0 mL",
+   "start": 213,
+   "end": 219
+  },
+  {
+   "id": "Q11",
+   "text": "2 minutes",
+   "start": 259,
+   "end": 268
+  },
+  {
+   "id": "Q12",
+   "text": "24.2 mg",
+   "start": 318,
+   "end": 325
+  },
+  {
+   "id": "Q13",
+   "text": "0.2 mmol",
+   "start": 327,
+   "end": 335
+  },
+  {
+   "id": "Q14",
+   "text": "80 oC",
+   "start": 448,
+   "end": 453
+  },
+  {
+   "id": "Q15",
+   "text": "12 h",
+   "start": 461,
+   "end": 465
+  },
+  {
+   "id": "Q16",
+   "text": "23%",
+   "start": 519,
+   "end": 522
+  }
+ ],
+ "optional_materials": [],
+ "graph": {
+  "schema": "mosaic.procgraph/1",
+  "source_id": "ord-8a61495c860141f1a8046698b9543528",
+  "text_sha256": "d2080c1404f471c56d491716580b2202873ecd3e808a97a73487a836ce8db15f",
+  "materials": [
+   {
+    "id": "m1",
+    "name": "[Ir(cod)(OMe)]2",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m2",
+    "name": "L1 ligand",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m3",
+    "name": "B2pin2",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m4",
+    "name": "KOtBu",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m5",
+    "name": "dry THF",
+    "aliases": [
+     "THF"
+    ],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m6",
+    "name": "benzamide",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m7",
+    "name": "argon",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   }
+  ],
+  "equipment": [
+   {
+    "id": "e1",
+    "name": "wheaton microreactor",
+    "type": "vessel",
+    "props": {
+     "capacity": {
+      "q": [
+       "Q1"
+      ]
+     }
+    },
+    "sentences": []
+   },
+   {
+    "id": "e2",
+    "name": "glove box",
+    "type": "location",
+    "props": {},
+    "sentences": []
+   },
+   {
+    "id": "e3",
+    "name": "teflon pressure cap",
+    "type": "consumable",
+    "props": {},
+    "sentences": []
+   },
+   {
+    "id": "e4",
+    "name": "aluminum block",
+    "type": "instrument",
+    "props": {},
+    "sentences": []
+   }
+  ],
+  "steps": [
+   {
+    "id": "t1",
+    "op": "add",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S1"
+    ],
+    "surface": "was charged with",
+    "target": null,
+    "inputs": [
+     {
+      "ref": "m1",
+      "amounts": [
+       "Q2",
+       "Q3"
+      ],
+      "role": "",
+      "note": ""
+     },
+     {
+      "ref": "m2",
+      "amounts": [
+       "Q4",
+       "Q5"
+      ],
+      "role": "",
+      "note": ""
+     },
+     {
+      "ref": "m3",
+      "amounts": [
+       "Q6",
+       "Q7"
+      ],
+      "role": "",
+      "note": ""
+     },
+     {
+      "ref": "m4",
+      "amounts": [
+       "Q8",
+       "Q9"
+      ],
+      "role": "",
+      "note": ""
+     },
+     {
+      "ref": "m5",
+      "amounts": [
+       "Q10"
+      ],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {
+     "atmosphere": {
+      "text": "argon filled glove box"
+     }
+    },
+    "vessel": "e1",
+    "equipment": [
+     "e2"
+    ],
+    "outputs": [
+     {
+      "id": "x1",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t2",
+    "op": "stir",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S2"
+    ],
+    "surface": "",
+    "target": "x1",
+    "inputs": [],
+    "params": {
+     "duration": {
+      "q": [
+       "Q11"
+      ]
+     },
+     "temperature": {
+      "text": "room temperature"
+     }
+    },
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x2",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t3",
+    "op": "add",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S3"
+    ],
+    "surface": "",
+    "target": "x2",
+    "inputs": [
+     {
+      "ref": "m6",
+      "amounts": [
+       "Q12",
+       "Q13"
+      ],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x3",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t4",
+    "op": "seal",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S4"
+    ],
+    "surface": "capped",
+    "target": "x3",
+    "inputs": [],
+    "params": {},
+    "vessel": null,
+    "equipment": [
+     "e3"
+    ],
+    "outputs": [
+     {
+      "id": "x4",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t5",
+    "op": "heat",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S4"
+    ],
+    "surface": "placed into pre-heated aluminum block",
+    "target": "x4",
+    "inputs": [],
+    "params": {
+     "temperature": {
+      "q": [
+       "Q14"
+      ]
+     },
+     "duration": {
+      "q": [
+       "Q15"
+      ]
+     }
+    },
+    "vessel": null,
+    "equipment": [
+     "e4"
+    ],
+    "outputs": [
+     {
+      "id": "x5",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   }
+  ],
+  "products": [],
+  "observations": [
+   {
+    "sentences": [
+     "S5"
+    ],
+    "text": "conversion 23%, meta/para ratio 1/1.5 (GC/MS)",
+    "step": "t5",
+    "quantities": [
+     "Q16"
+    ]
+   }
+  ],
+  "unbound": []
+ }
+}

@@ -11,7 +11,7 @@ from mosaic.sources import load_text_sources
 from mosaic.verification import verify_conversion
 
 
-from tests.facts_fixture import TEXT, graph
+from tests.legacy.facts_fixture import TEXT, graph
 from mosaic.fact_extraction import EXTRACT, VERIFY
 
 

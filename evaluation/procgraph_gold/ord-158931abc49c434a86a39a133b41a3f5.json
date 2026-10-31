@@ -1,0 +1,503 @@
+{
+ "schema": "mosaic.procgraph-gold/1",
+ "source_id": "ord-158931abc49c434a86a39a133b41a3f5",
+ "status": "assistant_draft_needs_expert_review",
+ "text": "1.0 g of (Nα,Nε -ditertbutoxycarbonyl-L-lysyl)-N-(4-bromo-2-picolinoylphenyl)glycinamide was stirred for 1 hour in a solution of hydrogen chloride in dioxan (4-M). Diethyl ether was added and the solid which separated was filtered off, washed with diethyl ether and dried. The solid was dissolved in methanol and precipitated with ethyl acetate. The precipitate was dissolved in 20 ml of water and, after extraction with chloroform, the aqueous solution was lyophilised to yield 0.7 g (88%) of L-lysyl-N-(4-bromo-2-picolinoylphenyl)glycinamide trihydrochloride 1.5 H2O; [α]D20 =+20.1° (c=1 in water).",
+ "tagger_version": "pg-tagger/1",
+ "quantities": [
+  {
+   "id": "Q1",
+   "text": "1.0 g",
+   "start": 0,
+   "end": 5
+  },
+  {
+   "id": "Q2",
+   "text": "1 hour",
+   "start": 105,
+   "end": 111
+  },
+  {
+   "id": "Q3",
+   "text": "4-M",
+   "start": 158,
+   "end": 161
+  },
+  {
+   "id": "Q4",
+   "text": "20 ml",
+   "start": 379,
+   "end": 384
+  },
+  {
+   "id": "Q5",
+   "text": "0.7 g",
+   "start": 479,
+   "end": 484
+  },
+  {
+   "id": "Q6",
+   "text": "88%",
+   "start": 486,
+   "end": 489
+  }
+ ],
+ "optional_materials": [],
+ "graph": {
+  "schema": "mosaic.procgraph/1",
+  "source_id": "ord-158931abc49c434a86a39a133b41a3f5",
+  "text_sha256": "ce5a00d284be27c1cb61e0ff2d66df4e0610685e22673a88dba7142e48d7fde8",
+  "materials": [
+   {
+    "id": "m1",
+    "name": "(Nα,Nε -ditertbutoxycarbonyl-L-lysyl)-N-(4-bromo-2-picolinoylphenyl)glycinamide",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m2",
+    "name": "hydrogen chloride",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m3",
+    "name": "dioxan",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m4",
+    "name": "diethyl ether",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m5",
+    "name": "methanol",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m6",
+    "name": "ethyl acetate",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m7",
+    "name": "water",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m8",
+    "name": "chloroform",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m9",
+    "name": "L-lysyl-N-(4-bromo-2-picolinoylphenyl)glycinamide trihydrochloride 1.5 H2O",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   }
+  ],
+  "equipment": [],
+  "steps": [
+   {
+    "id": "t1",
+    "op": "prepare",
+    "op_label": "",
+    "origin": "described",
+    "sentences": [
+     "S1"
+    ],
+    "surface": "",
+    "target": null,
+    "inputs": [
+     {
+      "ref": "m2",
+      "amounts": [],
+      "role": "solute",
+      "note": ""
+     },
+     {
+      "ref": "m3",
+      "amounts": [],
+      "role": "solvent",
+      "note": ""
+     }
+    ],
+    "params": {
+     "concentration": {
+      "q": [
+       "Q3"
+      ]
+     }
+    },
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x1",
+      "role": "main",
+      "label": "HCl in dioxan"
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t2",
+    "op": "add",
+    "op_label": "",
+    "origin": "described",
+    "sentences": [
+     "S1"
+    ],
+    "surface": "was stirred for 1 hour in",
+    "target": "x1",
+    "inputs": [
+     {
+      "ref": "m1",
+      "amounts": [
+       "Q1"
+      ],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x2",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t3",
+    "op": "stir",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S1"
+    ],
+    "surface": "",
+    "target": "x2",
+    "inputs": [],
+    "params": {
+     "duration": {
+      "q": [
+       "Q2"
+      ]
+     }
+    },
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x3",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t4",
+    "op": "add",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S2"
+    ],
+    "surface": "",
+    "target": "x3",
+    "inputs": [
+     {
+      "ref": "m4",
+      "amounts": [],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x4",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t5",
+    "op": "filter",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S2"
+    ],
+    "surface": "",
+    "target": "x4",
+    "inputs": [],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x5",
+      "role": "solid",
+      "label": "solid which separated"
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t6",
+    "op": "wash",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S2"
+    ],
+    "surface": "",
+    "target": "x5",
+    "inputs": [
+     {
+      "ref": "m4",
+      "amounts": [],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x6",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t7",
+    "op": "dry",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S2"
+    ],
+    "surface": "",
+    "target": "x6",
+    "inputs": [],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x7",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t8",
+    "op": "dissolve",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S3"
+    ],
+    "surface": "",
+    "target": "x7",
+    "inputs": [
+     {
+      "ref": "m5",
+      "amounts": [],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x8",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t9",
+    "op": "precipitate",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S3"
+    ],
+    "surface": "",
+    "target": "x8",
+    "inputs": [
+     {
+      "ref": "m6",
+      "amounts": [],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x9",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t10",
+    "op": "dissolve",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S4"
+    ],
+    "surface": "",
+    "target": "x9",
+    "inputs": [
+     {
+      "ref": "m7",
+      "amounts": [
+       "Q4"
+      ],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x10",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t11",
+    "op": "extract",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S4"
+    ],
+    "surface": "",
+    "target": "x10",
+    "inputs": [
+     {
+      "ref": "m8",
+      "amounts": [],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x11",
+      "role": "aqueous",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t12",
+    "op": "lyophilize",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S4"
+    ],
+    "surface": "",
+    "target": "x11",
+    "inputs": [],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x12",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   }
+  ],
+  "products": [
+   {
+    "ref": "m9",
+    "state": "x12",
+    "amounts": [
+     "Q5"
+    ],
+    "yield": [
+     "Q6"
+    ],
+    "form": "",
+    "sentences": [
+     "S4"
+    ]
+   }
+  ],
+  "observations": [],
+  "unbound": []
+ }
+}

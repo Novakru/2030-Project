@@ -1,0 +1,348 @@
+# mosaic.procgraph operation contracts (version 1)
+#
+# Every step in a ProcGraph has op ∈ this list (or op=other + op_label, which
+# enters the curation queue). Contracts are data, read by: the prompt builder,
+# the validator (role checks), the compiler (XDL mapping) and the curator.
+#
+# target : the material/state being acted on or receiving something
+#          (required | optional | none)
+# inputs : materials/states introduced into the target (required | optional | none)
+# outputs: allowed output roles. "main" = the target after the step.
+# xdl    : XDL step name used by the compiler (null = companion JSON only)
+schema: mosaic.procgraph-ops/1
+ops:
+  prepare:
+    desc: A mixture/solution/suspension made of listed components. Use origin=described when the text only names an existing mixture ("a suspension of A in B"), origin=action when the text says it was prepared.
+    target: none
+    inputs: required
+    outputs: [main]
+    params: [concentration, temperature, method, note]
+    xdl: Add
+    aliases: [make up, combine, premix, stock solution]
+  add:
+    desc: Introduce inputs INTO target (receiver). "X was added to Y" -> target=Y, inputs=[X]. "flask charged with A, B" -> target=null, vessel=flask, inputs=[A,B].
+    target: optional
+    inputs: required
+    outputs: [main]
+    params: [method, rate, temperature, duration, atmosphere, scope, repeat]
+    xdl: Add
+    aliases: [charge, dose, dispense, introduce, pour, load, place, transfer into]
+  transfer:
+    desc: Move an existing state (inputs[0]) into another vessel/state (target, or vessel). Use for "the solution was transferred to", "an aliquot was taken and dispensed into".
+    target: optional
+    inputs: required
+    outputs: [main, remainder]
+    params: [method, scope, rate]
+    xdl: Transfer
+    aliases: [cannulate, decant into, pipette, aliquot]
+  dissolve:
+    desc: Dissolve target (solid) in input solvent(s).
+    target: required
+    inputs: optional
+    outputs: [main]
+    params: [temperature, duration, method]
+    xdl: Dissolve
+  suspend:
+    desc: Suspend/slurry target solid in input liquid.
+    target: required
+    inputs: optional
+    outputs: [main]
+    params: [temperature, duration]
+    xdl: Add
+  dilute:
+    desc: Dilute target with input liquid.
+    target: required
+    inputs: required
+    outputs: [main]
+    params: [scope]
+    xdl: Add
+  stir:
+    desc: Stir/agitate/shake target. Put temperature and duration as params of the same step.
+    target: required
+    inputs: none
+    outputs: [main]
+    params: [duration, temperature, stir_speed, atmosphere, until, method]
+    xdl: Stir
+    aliases: [agitate, shake, tumble-stir, mix, swirl, invert]
+  heat:
+    desc: Heat target (to/at temperature). Stirring during heating -> params.stirring.
+    target: required
+    inputs: none
+    outputs: [main]
+    params: [temperature, duration, stirring, atmosphere, until, pressure]
+    xdl: HeatChill
+    aliases: [warm, activate at, maintain at, keep at]
+  reflux:
+    desc: Heat target at reflux.
+    target: required
+    inputs: none
+    outputs: [main]
+    params: [duration, stirring, atmosphere, until]
+    xdl: HeatChill
+  cool:
+    desc: Cool target (to temperature).
+    target: required
+    inputs: none
+    outputs: [main]
+    params: [temperature, duration, method]
+    xdl: HeatChill
+    aliases: [chill, ice bath, cool to rt]
+  wait:
+    desc: Let target stand / age without another stated action.
+    target: optional
+    inputs: none
+    outputs: [main]
+    params: [duration, temperature, until]
+    xdl: Wait
+    aliases: [stand, age, leave]
+  inert:
+    desc: Establish/maintain an atmosphere (purge, degas, sparge, evacuate-refill) on target or vessel.
+    target: optional
+    inputs: optional
+    outputs: [main]
+    params: [atmosphere, duration, repeat, method, pressure]
+    xdl: EvacuateAndRefill
+    aliases: [purge, degas, sparge, flush, backfill, evacuate]
+  seal:
+    desc: Seal/cap/cover a vessel or plate.
+    target: optional
+    inputs: none
+    outputs: [main]
+    params: [method]
+    xdl: null
+    aliases: [cap, cover, close]
+  open:
+    desc: Open a vessel / expose to air.
+    target: optional
+    inputs: none
+    outputs: [main]
+    params: [atmosphere]
+    xdl: null
+  setup:
+    desc: Arrange apparatus without material change (place vessel in block, equip stir bar, remove from heat/glovebox).
+    target: optional
+    inputs: optional
+    outputs: [main]
+    params: [method, temperature, scope, note]
+    xdl: null
+    aliases: [place, equip, mount, position, remove from]
+  quench:
+    desc: Quench target with input.
+    target: required
+    inputs: optional
+    outputs: [main]
+    params: [temperature, method]
+    xdl: Add
+  adjust_ph:
+    desc: Adjust/neutralize pH of target with input.
+    target: required
+    inputs: optional
+    outputs: [main]
+    params: [ph, method]
+    xdl: Add
+    aliases: [neutralize, acidify, basify]
+  extract:
+    desc: Liquid-liquid extraction of target with input solvent. Outputs organic/aqueous (whichever are referenced later).
+    target: required
+    inputs: optional
+    outputs: [organic, aqueous, main]
+    params: [repeat, scope]
+    xdl: Separate
+    aliases: [extraction, partition]
+  separate_phases:
+    desc: Separate phases of target. Outputs organic/aqueous.
+    target: required
+    inputs: none
+    outputs: [organic, aqueous, main]
+    params: [method]
+    xdl: Separate
+  wash:
+    desc: Wash target (a solid, organic phase...) with input. Solid washes keep the solid as main.
+    target: required
+    inputs: required
+    outputs: [main, washings]
+    params: [repeat, temperature, method]
+    xdl: WashSolid
+  dry:
+    desc: Dry target (over drying agent = inputs, or in vacuo / oven). Removing a drying agent by filtration is a separate filter step if stated.
+    target: required
+    inputs: optional
+    outputs: [main]
+    params: [temperature, duration, pressure, method]
+    xdl: Dry
+    aliases: [desiccate]
+  filter:
+    desc: Filter target. Outputs solid (filter cake/precipitate) and/or filtrate. Create only outputs that matter; the one used later must be referenced by its id.
+    target: required
+    inputs: none
+    outputs: [solid, filtrate]
+    params: [method, temperature]
+    xdl: Filter
+    aliases: [filter off, collect by filtration, suction filter, filtration]
+  centrifuge:
+    desc: Centrifuge target. Outputs pellet/supernatant (or main).
+    target: required
+    inputs: none
+    outputs: [main, pellet, supernatant]
+    params: [duration, stir_speed, centrifugal_force, temperature]
+    xdl: null
+  decant:
+    desc: Decant liquid from target. Outputs solid/liquid.
+    target: required
+    inputs: none
+    outputs: [solid, liquid]
+    params: []
+    xdl: null
+  concentrate:
+    desc: Remove solvent from target (rotary evaporation, in vacuo, centrifugal evaporation). Output residue/main.
+    target: required
+    inputs: none
+    outputs: [main]
+    params: [temperature, pressure, duration, method, volume_target]
+    xdl: Evaporate
+    aliases: [evaporate, strip, remove solvent, reduce volume, evaporation, rotavap, rotary evaporation, concentration]
+  distill:
+    desc: Distill/fractionate target. Outputs distillate/residue.
+    target: required
+    inputs: none
+    outputs: [main, distillate, residue]
+    params: [temperature, pressure, method]
+    xdl: Distill
+    aliases: [fractionate]
+  lyophilize:
+    desc: Freeze-dry target.
+    target: required
+    inputs: none
+    outputs: [main]
+    params: [duration, temperature, pressure]
+    xdl: Dry
+    aliases: [lyophilise, freeze-dry, freeze dry, lyophilization]
+  crystallize:
+    desc: Crystallize/recrystallize target (from input solvent).
+    target: required
+    inputs: optional
+    outputs: [main]
+    params: [temperature, duration]
+    xdl: Recrystallize
+    aliases: [recrystallize, recrystallise, crystallise, recrystallization, crystallization]
+  precipitate:
+    desc: Precipitate from target by adding input antisolvent / by cooling. Output main (suspension with the precipitate).
+    target: required
+    inputs: optional
+    outputs: [main]
+    params: [temperature, duration]
+    xdl: Add
+  triturate:
+    desc: Triturate target with input solvent.
+    target: required
+    inputs: optional
+    outputs: [main]
+    params: [repeat]
+    xdl: null
+  chromatograph:
+    desc: Purify target by column/flash/prep-HPLC/TLC. params.eluent (text) + eluent_ratio (Q ratio).
+    target: required
+    inputs: none
+    outputs: [main]
+    params: [eluent, eluent_ratio, stationary_phase, method]
+    xdl: RunColumn
+    aliases: [purify, column, flash, chromatography, chromatographed]
+  collect:
+    desc: Collect a product/fraction/solid from target (when not already the output of filter etc.).
+    target: required
+    inputs: none
+    outputs: [main]
+    params: [method]
+    xdl: null
+  sample:
+    desc: Take an aliquot of target for analysis/transfer. Output main = the aliquot.
+    target: required
+    inputs: none
+    outputs: [main, remainder]
+    params: [scope, method]
+    xdl: null
+  analyze:
+    desc: Analyze/measure target (LC-MS, NMR, GC, TLC...). No material change.
+    target: required
+    inputs: none
+    outputs: [main]
+    params: [method, note]
+    xdl: null
+  monitor:
+    desc: Follow the reaction by a technique over time.
+    target: required
+    inputs: none
+    outputs: [main]
+    params: [method, duration, until]
+    xdl: null
+  discard:
+    desc: Discard target.
+    target: required
+    inputs: none
+    outputs: []
+    params: []
+    xdl: null
+  store:
+    desc: Store/keep target (freezer, fridge, dark).
+    target: required
+    inputs: none
+    outputs: [main]
+    params: [temperature, duration, method]
+    xdl: Wait
+  irradiate:
+    desc: Irradiate target with light.
+    target: required
+    inputs: none
+    outputs: [main]
+    params: [wavelength, power, duration, temperature]
+    xdl: Irradiate
+  sonicate:
+    desc: Sonicate target.
+    target: required
+    inputs: none
+    outputs: [main]
+    params: [duration, temperature, power]
+    xdl: Sonicate
+  grind:
+    desc: Grind/mill target.
+    target: required
+    inputs: none
+    outputs: [main]
+    params: [duration, method]
+    xdl: null
+  react:
+    desc: Generic "the reaction was run/allowed to proceed" with only conditions and no specific stated physical action.
+    target: required
+    inputs: none
+    outputs: [main]
+    params: [temperature, duration, atmosphere, stirring, until]
+    xdl: HeatChill
+  reference_procedure:
+    desc: The text points to another procedure ("as in Example 2", "following general procedure A"); params.note keeps the stated modifications.
+    target: optional
+    inputs: optional
+    outputs: [main]
+    params: [note]
+    xdl: null
+  other:
+    desc: An operation not covered above. Set op_label to a short lemma; it goes to the curation queue.
+    target: optional
+    inputs: optional
+    outputs: [main, solid, filtrate, organic, aqueous, residue]
+    params: []
+    xdl: null
+
+param_kinds:
+  temperature: [temperature]
+  duration: [time]
+  stir_speed: [rotation_speed]
+  centrifugal_force: [centrifugal_force, rotation_speed]
+  pressure: [pressure]
+  concentration: [concentration, percent, mass_concentration]
+  repeat: [count]
+  eluent_ratio: [ratio, percent]
+  rate: [flow_rate, time]
+  wavelength: [length]
+  power: [power]
+  ph: []
+  volume_target: [volume, relative_volume]

@@ -10,7 +10,7 @@ from mosaic.facts import validate_facts
 from mosaic.sources import text_document
 from mosaic.store import RunStore
 from mosaic.protocol.io import read_jsonl
-from tests.facts_fixture import TEXT, graph
+from tests.legacy.facts_fixture import TEXT, graph
 
 
 ISSUE = {"issue_id": "wrong_scope", "kind": "wrong_scope", "object_ids": ["mass"],

@@ -1,0 +1,359 @@
+{
+ "schema": "mosaic.procgraph-gold/1",
+ "source_id": "ord-8841b6b409c7485da9c83fc3053ea8a7",
+ "status": "assistant_draft_needs_expert_review",
+ "text": "18 ml of a 15% strength solution of sodium methylate in methanol were added dropwise, at room temperature, to a suspension of 25.4 g of 3,7-dichloro-8-triphenylphosphoniummethylquinoline chloride and 11.3 g of 3,7-dichloro-8-formylquinoline in 150 ml of ethanol. The mixture was stirred for 2 hours, after which the yellow precipitate was filtered off under suction, treated with water and again filtered off under suction.",
+ "tagger_version": "pg-tagger/1",
+ "quantities": [
+  {
+   "id": "Q1",
+   "text": "18 ml",
+   "start": 0,
+   "end": 5
+  },
+  {
+   "id": "Q2",
+   "text": "15%",
+   "start": 11,
+   "end": 14
+  },
+  {
+   "id": "Q3",
+   "text": "25.4 g",
+   "start": 126,
+   "end": 132
+  },
+  {
+   "id": "Q4",
+   "text": "11.3 g",
+   "start": 200,
+   "end": 206
+  },
+  {
+   "id": "Q5",
+   "text": "150 ml",
+   "start": 244,
+   "end": 250
+  },
+  {
+   "id": "Q6",
+   "text": "2 hours",
+   "start": 291,
+   "end": 298
+  }
+ ],
+ "optional_materials": [],
+ "graph": {
+  "schema": "mosaic.procgraph/1",
+  "source_id": "ord-8841b6b409c7485da9c83fc3053ea8a7",
+  "text_sha256": "1bc48ce315db8998890032730b5bd1e3d1df7fbc235fa6eab11c462535c46519",
+  "materials": [
+   {
+    "id": "m1",
+    "name": "sodium methylate",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m2",
+    "name": "methanol",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m3",
+    "name": "3,7-dichloro-8-triphenylphosphoniummethylquinoline chloride",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m4",
+    "name": "3,7-dichloro-8-formylquinoline",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m5",
+    "name": "ethanol",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m6",
+    "name": "water",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   }
+  ],
+  "equipment": [],
+  "steps": [
+   {
+    "id": "t1",
+    "op": "prepare",
+    "op_label": "",
+    "origin": "described",
+    "sentences": [
+     "S1"
+    ],
+    "surface": "solution of sodium methylate in methanol",
+    "target": null,
+    "inputs": [
+     {
+      "ref": "m1",
+      "amounts": [],
+      "role": "solute",
+      "note": ""
+     },
+     {
+      "ref": "m2",
+      "amounts": [],
+      "role": "solvent",
+      "note": ""
+     }
+    ],
+    "params": {
+     "concentration": {
+      "q": [
+       "Q2"
+      ]
+     }
+    },
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x1",
+      "role": "main",
+      "label": "15% sodium methylate in methanol"
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t2",
+    "op": "prepare",
+    "op_label": "",
+    "origin": "described",
+    "sentences": [
+     "S1"
+    ],
+    "surface": "a suspension of",
+    "target": null,
+    "inputs": [
+     {
+      "ref": "m3",
+      "amounts": [
+       "Q3"
+      ],
+      "role": "",
+      "note": ""
+     },
+     {
+      "ref": "m4",
+      "amounts": [
+       "Q4"
+      ],
+      "role": "",
+      "note": ""
+     },
+     {
+      "ref": "m5",
+      "amounts": [
+       "Q5"
+      ],
+      "role": "solvent",
+      "note": ""
+     }
+    ],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x2",
+      "role": "main",
+      "label": "suspension"
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t3",
+    "op": "add",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S1"
+    ],
+    "surface": "were added dropwise",
+    "target": "x2",
+    "inputs": [
+     {
+      "ref": "x1",
+      "amounts": [
+       "Q1"
+      ],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {
+     "method": {
+      "text": "dropwise"
+     },
+     "temperature": {
+      "text": "room temperature"
+     }
+    },
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x3",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t4",
+    "op": "stir",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S2"
+    ],
+    "surface": "",
+    "target": "x3",
+    "inputs": [],
+    "params": {
+     "duration": {
+      "q": [
+       "Q6"
+      ]
+     }
+    },
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x4",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t5",
+    "op": "filter",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S2"
+    ],
+    "surface": "",
+    "target": "x4",
+    "inputs": [],
+    "params": {
+     "method": {
+      "text": "under suction"
+     }
+    },
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x5",
+      "role": "solid",
+      "label": "yellow precipitate"
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t6",
+    "op": "wash",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S2"
+    ],
+    "surface": "treated with water",
+    "target": "x5",
+    "inputs": [
+     {
+      "ref": "m6",
+      "amounts": [],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x6",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t7",
+    "op": "filter",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S2"
+    ],
+    "surface": "",
+    "target": "x6",
+    "inputs": [],
+    "params": {
+     "method": {
+      "text": "under suction"
+     }
+    },
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x7",
+      "role": "solid",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   }
+  ],
+  "products": [],
+  "observations": [
+   {
+    "sentences": [
+     "S2"
+    ],
+    "text": "yellow precipitate",
+    "step": "t5",
+    "quantities": []
+   }
+  ],
+  "unbound": []
+ }
+}

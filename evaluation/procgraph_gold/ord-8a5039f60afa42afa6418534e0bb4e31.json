@@ -1,0 +1,282 @@
+{
+ "schema": "mosaic.procgraph-gold/1",
+ "source_id": "ord-8a5039f60afa42afa6418534e0bb4e31",
+ "status": "assistant_draft_needs_expert_review",
+ "text": "The procedure of Example 2 was repeated except that the fructose was replaced with sodium 4-hydroxybutyrate (manufactured by Aldrich Corporation) to produce 1.2 g of 3-hydroxybutyrate-4-hydroxybutyrate copolymer (comprising 20% by mole of 4-hydroxybutyrate unit) having a number average molecular weight of 467,000. The thus produced copolymer product was added to a 100 ml solution comprising 1 volume of aqueous solution of sodium hypochroride (manufactured by Wako Pharmaceutical K.K.) and 1 volume of distilled water, and the suspension was heated to 50° C. for 2 hours. The resulting product had a number average molecular weight of 182,000.",
+ "tagger_version": "pg-tagger/1",
+ "quantities": [
+  {
+   "id": "Q1",
+   "text": "1.2 g",
+   "start": 157,
+   "end": 162
+  },
+  {
+   "id": "Q2",
+   "text": "20%",
+   "start": 224,
+   "end": 227
+  },
+  {
+   "id": "Q3",
+   "text": "100 ml",
+   "start": 367,
+   "end": 373
+  },
+  {
+   "id": "Q4",
+   "text": "1 volume",
+   "start": 394,
+   "end": 402
+  },
+  {
+   "id": "Q5",
+   "text": "1 volume",
+   "start": 493,
+   "end": 501
+  },
+  {
+   "id": "Q6",
+   "text": "50° C.",
+   "start": 555,
+   "end": 561
+  },
+  {
+   "id": "Q7",
+   "text": "2 hours",
+   "start": 566,
+   "end": 573
+  }
+ ],
+ "optional_materials": [],
+ "graph": {
+  "schema": "mosaic.procgraph/1",
+  "source_id": "ord-8a5039f60afa42afa6418534e0bb4e31",
+  "text_sha256": "dca7dc74cb3abbfcb47556d7366ffe610ba05dff19f2ea39aab76c3b6ad2fa94",
+  "materials": [
+   {
+    "id": "m1",
+    "name": "fructose",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m2",
+    "name": "sodium 4-hydroxybutyrate",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m3",
+    "name": "3-hydroxybutyrate-4-hydroxybutyrate copolymer",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m4",
+    "name": "aqueous solution of sodium hypochroride",
+    "aliases": [
+     "sodium hypochroride"
+    ],
+    "kind": "substance",
+    "sentences": []
+   },
+   {
+    "id": "m5",
+    "name": "distilled water",
+    "aliases": [],
+    "kind": "substance",
+    "sentences": []
+   }
+  ],
+  "equipment": [],
+  "steps": [
+   {
+    "id": "t1",
+    "op": "reference_procedure",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S1"
+    ],
+    "surface": "",
+    "target": null,
+    "inputs": [
+     {
+      "ref": "m2",
+      "amounts": [],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {
+     "note": {
+      "text": "procedure of Example 2 repeated with sodium 4-hydroxybutyrate instead of fructose"
+     }
+    },
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x1",
+      "role": "main",
+      "label": "copolymer"
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t2",
+    "op": "prepare",
+    "op_label": "",
+    "origin": "described",
+    "sentences": [
+     "S2"
+    ],
+    "surface": "",
+    "target": null,
+    "inputs": [
+     {
+      "ref": "m4",
+      "amounts": [
+       "Q4"
+      ],
+      "role": "",
+      "note": ""
+     },
+     {
+      "ref": "m5",
+      "amounts": [
+       "Q5"
+      ],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {
+     "total_volume": {
+      "q": [
+       "Q3"
+      ]
+     }
+    },
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x2",
+      "role": "main",
+      "label": "100 ml solution"
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t3",
+    "op": "add",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S2"
+    ],
+    "surface": "",
+    "target": "x2",
+    "inputs": [
+     {
+      "ref": "x1",
+      "amounts": [],
+      "role": "",
+      "note": ""
+     }
+    ],
+    "params": {},
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x3",
+      "role": "main",
+      "label": "suspension"
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   },
+   {
+    "id": "t4",
+    "op": "heat",
+    "op_label": "",
+    "origin": "action",
+    "sentences": [
+     "S2"
+    ],
+    "surface": "",
+    "target": "x3",
+    "inputs": [],
+    "params": {
+     "temperature": {
+      "q": [
+       "Q6"
+      ]
+     },
+     "duration": {
+      "q": [
+       "Q7"
+      ]
+     }
+    },
+    "vessel": null,
+    "equipment": [],
+    "outputs": [
+     {
+      "id": "x4",
+      "role": "main",
+      "label": ""
+     }
+    ],
+    "concurrent_with": null,
+    "after": []
+   }
+  ],
+  "products": [
+   {
+    "ref": "m3",
+    "state": "x1",
+    "amounts": [
+     "Q1"
+    ],
+    "yield": [],
+    "form": "",
+    "sentences": [
+     "S1"
+    ]
+   }
+  ],
+  "observations": [
+   {
+    "sentences": [
+     "S1"
+    ],
+    "text": "copolymer comprises 20% by mole 4-hydroxybutyrate unit; Mn 467,000",
+    "step": null,
+    "quantities": [
+     "Q2"
+    ]
+   },
+   {
+    "sentences": [
+     "S3"
+    ],
+    "text": "Mn of resulting product 182,000",
+    "step": "t4",
+    "quantities": []
+   }
+  ],
+  "unbound": []
+ }
+}

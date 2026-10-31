@@ -8,7 +8,7 @@ from mosaic.fact_xdl import compile_facts
 from mosaic.evaluation import check_conservation
 from mosaic.facts import validate_facts
 from mosaic.registry import Registry
-from tests.facts_fixture import TEXT, graph
+from tests.legacy.facts_fixture import TEXT, graph
 
 
 class Curator:
